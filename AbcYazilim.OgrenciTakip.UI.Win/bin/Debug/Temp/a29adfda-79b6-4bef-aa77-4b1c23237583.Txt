@@ -1,0 +1,3 @@
+Rehber Kartlarý
+Kod            	Adý Soyadý    	Telefon 1      	Telefon 2      	Açýklama
+Rehber-0001    	Ýrtibar Deneme	(123) 456 78 90	(987) 654 32 10	

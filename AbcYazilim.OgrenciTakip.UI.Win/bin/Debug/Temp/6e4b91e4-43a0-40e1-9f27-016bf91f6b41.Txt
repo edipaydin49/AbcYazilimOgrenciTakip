@@ -1,0 +1,4 @@
+Evrak Kartlarý
+Kod           	Evrak Adý	Açýklama
+Evrak-0001    	Fotoðraf 	
+Evrak-0002    	Diploma  	

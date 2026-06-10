@@ -1,0 +1,185 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{EEBF58D5-3B90-4457-8DFE-6C296B1BA5E0}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AbcYazilim.OgrenciTakip.Bll</RootNamespace>
+    <AssemblyName>AbcYazilim.OgrenciTakip.Bll</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Anthropic.SDK, Version=5.5.0.0, Culture=neutral, PublicKeyToken=964e90d2b32b1213, processorArchitecture=MSIL">
+      <HintPath>..\packages\Anthropic.SDK.5.10.0\lib\netstandard2.0\Anthropic.SDK.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=10.0.0.3, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.10.0.3\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.AI.Abstractions, Version=10.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.AI.Abstractions.10.3.0\lib\net462\Microsoft.Extensions.AI.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.6.1\lib\net462\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.IO.Pipelines, Version=10.0.0.3, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Pipelines.10.0.3\lib\net462\System.IO.Pipelines.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Memory, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.6.3\lib\net462\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.6.1\lib\net462\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.1.2\lib\net462\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Encodings.Web, Version=10.0.0.3, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encodings.Web.10.0.3\lib\net462\System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Json, Version=10.0.0.3, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Json.10.0.3\lib\net462\System.Text.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.4.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.6.3\lib\net462\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Base\BaseBll.cs" />
+    <Compile Include="Base\BaseGenelBll.cs" />
+    <Compile Include="Base\BaseHareletBll.cs" />
+    <Compile Include="Functions\Converts.cs" />
+    <Compile Include="Functions\Crypto.cs" />
+    <Compile Include="Functions\GeneralFunctions.cs" />
+    <Compile Include="Functions\ValidationFunctions.cs" />
+    <Compile Include="General\AileBilgiBll.cs" />
+    <Compile Include="General\AileBilgileriBll.cs" />
+    <Compile Include="General\AvukatBll.cs" />
+    <Compile Include="General\BankaBll.cs" />
+    <Compile Include="General\BankaHesapBll.cs" />
+    <Compile Include="General\BankaSubeBll.cs" />
+    <Compile Include="General\BelgeHareketleriBll.cs" />
+    <Compile Include="General\BelgeSecimBll.cs" />
+    <Compile Include="General\BilgiNotlariBll.cs" />
+    <Compile Include="General\CariBll.cs" />
+    <Compile Include="General\EposBilgileriBll.cs" />
+    <Compile Include="General\EvrakBilgileriBll.cs" />
+    <Compile Include="General\EvrakBll.cs" />
+    <Compile Include="General\FiltreBll.cs" />
+    <Compile Include="General\GeriOdemeBilgileriBll.cs" />
+    <Compile Include="General\GorevBll.cs" />
+    <Compile Include="General\HizmetBilgileriBll.cs" />
+    <Compile Include="General\HizmetBll.cs" />
+    <Compile Include="General\HizmetTuruBll.cs" />
+    <Compile Include="General\IlBll.cs" />
+    <Compile Include="General\IlceBll.cs" />
+    <Compile Include="General\IletisimBilgileriBll.cs" />
+    <Compile Include="General\IletisimBll.cs" />
+    <Compile Include="General\IndirimBilgileriBll.cs" />
+    <Compile Include="General\IndirimBll.cs" />
+    <Compile Include="General\IndiriminUygulanacagiHizmetBilgileriBll.cs" />
+    <Compile Include="General\IndirimTuruBll.cs" />
+    <Compile Include="General\IptalNedeniBll.cs" />
+    <Compile Include="General\IsyeriBll.cs" />
+    <Compile Include="General\KardesBilgileriBll.cs" />
+    <Compile Include="General\KasaBll.cs" />
+    <Compile Include="General\KontejanBll.cs" />
+    <Compile Include="General\MakbuzBll.cs" />
+    <Compile Include="General\MakbuzHareketleriBll.cs" />
+    <Compile Include="General\MeslekBll.cs" />
+    <Compile Include="General\OdemeBilgileriBll.cs" />
+    <Compile Include="General\OdemeTuruBll.cs" />
+    <Compile Include="General\OgrenciBll.cs" />
+    <Compile Include="General\OkulBll.cs" />
+    <Compile Include="General\OzelKodBll.cs" />
+    <Compile Include="General\PromosyonBilgileriBll.cs" />
+    <Compile Include="General\PromosyonBll.cs" />
+    <Compile Include="General\RaporBll.cs" />
+    <Compile Include="General\RehberBll.cs" />
+    <Compile Include="General\ServisBll.cs" />
+    <Compile Include="General\SinavBilgileriBll.cs" />
+    <Compile Include="General\SinifBll.cs" />
+    <Compile Include="General\SinifGrupBll.cs" />
+    <Compile Include="General\TahakkukBll.cs" />
+    <Compile Include="General\TesvikBll.cs" />
+    <Compile Include="General\YabanciDilBll.cs" />
+    <Compile Include="General\YakinlikBll.cs" />
+    <Compile Include="Interfaces\IBaseBll.cs" />
+    <Compile Include="Interfaces\IBaseCommonBll.cs" />
+    <Compile Include="Interfaces\IBaseGenelBll.cs" />
+    <Compile Include="Interfaces\IBaseHareketGenelBll.cs" />
+    <Compile Include="Interfaces\IBaseHareketSelectBll.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AbcYazilim.Dal\AbcYazilim.Dal.csproj">
+      <Project>{6F0B3B2F-EFBC-4AA2-85AB-9345BAD81145}</Project>
+      <Name>AbcYazilim.Dal</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AbcYazilim.OgrenciTakip.Common\AbcYazilim.OgrenciTakip.Common.csproj">
+      <Project>{C8E139AE-4BB8-4921-817D-9B91C33E5F60}</Project>
+      <Name>AbcYazilim.OgrenciTakip.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AbcYazilim.OgrenciTakip.Data\AbcYazilim.OgrenciTakip.Data.csproj">
+      <Project>{adfcf7ec-ac5d-429a-a857-2149ba25beed}</Project>
+      <Name>AbcYazilim.OgrenciTakip.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AbcYazilim.OgrenciTakip.Model\AbcYazilim.OgrenciTakip.Model.csproj">
+      <Project>{6967FAC2-88D9-4B3A-A32C-F0CD87526B8B}</Project>
+      <Name>AbcYazilim.OgrenciTakip.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\System.ValueTuple.4.6.1\build\net471\System.ValueTuple.targets" Condition="Exists('..\packages\System.ValueTuple.4.6.1\build\net471\System.ValueTuple.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\System.ValueTuple.4.6.1\build\net471\System.ValueTuple.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\System.ValueTuple.4.6.1\build\net471\System.ValueTuple.targets'))" />
+  </Target>
+</Project>
