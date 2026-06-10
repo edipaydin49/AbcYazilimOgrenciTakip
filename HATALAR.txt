@@ -1,0 +1,11 @@
+BASELISTFORM  btnAktifPasifKartlar (IsMdiChild) bu değerden dolayı görünmüyor şimdilik bu değeri sildik ancak kod tekrar gözden geçirilmesi gerek
+
+
+BANKA KARTI veri girişinde
+ozelkod1 ve ozelkod2 ı BANKAKARTI database ine kayıt yapmıyor...
+(ozelkod alanına kayıt yapıyor)
+
+Tahakkuk Kartları iletişim bölümü çalıştığı işyeri adı gelmiyor
+Tahakkuk Kartında Geri Ödemeler kısmında banka seçildiğinde bankalar listelenmiyor(bölüm 3 video 37)
+
+4/6 TAHAKKUK RAPORLARI 19-20-21 (_ogrenciBilgileri = (OgrenciR)prm[0]; bu kodda hata veriyor ) HATA veriyo
