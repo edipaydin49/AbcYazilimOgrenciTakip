@@ -1,0 +1,9109 @@
+[
+ {
+  "id": 1,
+  "konu": "Unit 1 · Life",
+  "zorluk": "Kolay",
+  "soru": "“<b>get up</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "yüzünü yıkamak",
+   "öğle yemeği yemek",
+   "yataktan kalkmak",
+   "kahvaltı yapmak"
+  ],
+  "dogru": 2,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 2,
+  "konu": "Unit 1 · Life",
+  "zorluk": "Kolay",
+  "soru": "“<b>yataktan kalkmak</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "weekend",
+   "early",
+   "wash your face",
+   "get up"
+  ],
+  "dogru": 3,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 3,
+  "konu": "Unit 1 · Life",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "early",
+   "wake up",
+   "get up",
+   "take a shower"
+  ],
+  "dogru": 2,
+  "tur": "Listening",
+  "ses": "get up"
+ },
+ {
+  "id": 4,
+  "konu": "Unit 1 · Life",
+  "zorluk": "Kolay",
+  "soru": "“<b>wake up</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "uyanmak",
+   "kahvaltı yapmak",
+   "yatmak",
+   "her gün"
+  ],
+  "dogru": 0,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 5,
+  "konu": "Unit 1 · Life",
+  "zorluk": "Kolay",
+  "soru": "“<b>uyanmak</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "late",
+   "take a shower",
+   "have lunch",
+   "wake up"
+  ],
+  "dogru": 3,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 6,
+  "konu": "Unit 1 · Life",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "wake up",
+   "weekend",
+   "do homework",
+   "have lunch"
+  ],
+  "dogru": 0,
+  "tur": "Listening",
+  "ses": "wake up"
+ },
+ {
+  "id": 7,
+  "konu": "Unit 1 · Life",
+  "zorluk": "Kolay",
+  "soru": "“<b>have breakfast</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "uyanmak",
+   "kahvaltı yapmak",
+   "yüzünü yıkamak",
+   "hafta sonu"
+  ],
+  "dogru": 1,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 8,
+  "konu": "Unit 1 · Life",
+  "zorluk": "Kolay",
+  "soru": "“<b>kahvaltı yapmak</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "have breakfast",
+   "late",
+   "brush your teeth",
+   "at noon"
+  ],
+  "dogru": 0,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 9,
+  "konu": "Unit 1 · Life",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "have breakfast",
+   "do homework",
+   "go to bed",
+   "have lunch"
+  ],
+  "dogru": 0,
+  "tur": "Listening",
+  "ses": "have breakfast"
+ },
+ {
+  "id": 10,
+  "konu": "Unit 1 · Life",
+  "zorluk": "Kolay",
+  "soru": "“<b>brush your teeth</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "her gün",
+   "ödev yapmak",
+   "uyanmak",
+   "dişlerini fırçalamak"
+  ],
+  "dogru": 3,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 11,
+  "konu": "Unit 1 · Life",
+  "zorluk": "Kolay",
+  "soru": "“<b>dişlerini fırçalamak</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "do homework",
+   "every day",
+   "early",
+   "brush your teeth"
+  ],
+  "dogru": 3,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 12,
+  "konu": "Unit 1 · Life",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "take a shower",
+   "brush your teeth",
+   "have breakfast",
+   "early"
+  ],
+  "dogru": 1,
+  "tur": "Listening",
+  "ses": "brush your teeth"
+ },
+ {
+  "id": 13,
+  "konu": "Unit 1 · Life",
+  "zorluk": "Kolay",
+  "soru": "“<b>take a shower</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "ödev yapmak",
+   "erken",
+   "öğlen",
+   "duş almak"
+  ],
+  "dogru": 3,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 14,
+  "konu": "Unit 1 · Life",
+  "zorluk": "Kolay",
+  "soru": "“<b>duş almak</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "brush your teeth",
+   "wake up",
+   "late",
+   "take a shower"
+  ],
+  "dogru": 3,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 15,
+  "konu": "Unit 1 · Life",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "at noon",
+   "wash your face",
+   "get dressed",
+   "take a shower"
+  ],
+  "dogru": 3,
+  "tur": "Listening",
+  "ses": "take a shower"
+ },
+ {
+  "id": 16,
+  "konu": "Unit 1 · Life",
+  "zorluk": "Kolay",
+  "soru": "“<b>get dressed</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "yüzünü yıkamak",
+   "geç",
+   "hafta sonu",
+   "giyinmek"
+  ],
+  "dogru": 3,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 17,
+  "konu": "Unit 1 · Life",
+  "zorluk": "Kolay",
+  "soru": "“<b>giyinmek</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "take a shower",
+   "weekend",
+   "get dressed",
+   "brush your teeth"
+  ],
+  "dogru": 2,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 18,
+  "konu": "Unit 1 · Life",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "go to bed",
+   "late",
+   "early",
+   "get dressed"
+  ],
+  "dogru": 3,
+  "tur": "Listening",
+  "ses": "get dressed"
+ },
+ {
+  "id": 19,
+  "konu": "Unit 1 · Life",
+  "zorluk": "Kolay",
+  "soru": "“<b>have lunch</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "duş almak",
+   "öğlen",
+   "yatmak",
+   "öğle yemeği yemek"
+  ],
+  "dogru": 3,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 20,
+  "konu": "Unit 1 · Life",
+  "zorluk": "Kolay",
+  "soru": "“<b>öğle yemeği yemek</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "have lunch",
+   "wash your face",
+   "do homework",
+   "weekend"
+  ],
+  "dogru": 0,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 21,
+  "konu": "Unit 1 · Life",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "go to bed",
+   "weekend",
+   "wake up",
+   "have lunch"
+  ],
+  "dogru": 3,
+  "tur": "Listening",
+  "ses": "have lunch"
+ },
+ {
+  "id": 22,
+  "konu": "Unit 1 · Life",
+  "zorluk": "Kolay",
+  "soru": "“<b>do homework</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "öğle yemeği yemek",
+   "kahvaltı yapmak",
+   "yatmak",
+   "ödev yapmak"
+  ],
+  "dogru": 3,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 23,
+  "konu": "Unit 1 · Life",
+  "zorluk": "Kolay",
+  "soru": "“<b>ödev yapmak</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "go to bed",
+   "do homework",
+   "wake up",
+   "get dressed"
+  ],
+  "dogru": 1,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 24,
+  "konu": "Unit 1 · Life",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "get up",
+   "go to bed",
+   "do homework",
+   "have breakfast"
+  ],
+  "dogru": 2,
+  "tur": "Listening",
+  "ses": "do homework"
+ },
+ {
+  "id": 25,
+  "konu": "Unit 1 · Life",
+  "zorluk": "Kolay",
+  "soru": "“<b>go to bed</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "yatmak",
+   "uyanmak",
+   "erken",
+   "yüzünü yıkamak"
+  ],
+  "dogru": 0,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 26,
+  "konu": "Unit 1 · Life",
+  "zorluk": "Kolay",
+  "soru": "“<b>yatmak</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "early",
+   "get up",
+   "go to bed",
+   "wash your face"
+  ],
+  "dogru": 2,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 27,
+  "konu": "Unit 1 · Life",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "get up",
+   "have breakfast",
+   "get dressed",
+   "go to bed"
+  ],
+  "dogru": 3,
+  "tur": "Listening",
+  "ses": "go to bed"
+ },
+ {
+  "id": 28,
+  "konu": "Unit 1 · Life",
+  "zorluk": "Kolay",
+  "soru": "“<b>wash your face</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "yatmak",
+   "yüzünü yıkamak",
+   "ödev yapmak",
+   "dişlerini fırçalamak"
+  ],
+  "dogru": 1,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 29,
+  "konu": "Unit 1 · Life",
+  "zorluk": "Kolay",
+  "soru": "“<b>yüzünü yıkamak</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "late",
+   "wash your face",
+   "wake up",
+   "have lunch"
+  ],
+  "dogru": 1,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 30,
+  "konu": "Unit 1 · Life",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "wash your face",
+   "go to bed",
+   "weekend",
+   "have lunch"
+  ],
+  "dogru": 0,
+  "tur": "Listening",
+  "ses": "wash your face"
+ },
+ {
+  "id": 31,
+  "konu": "Unit 1 · Life",
+  "zorluk": "Kolay",
+  "soru": "“<b>early</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "yataktan kalkmak",
+   "uyanmak",
+   "öğle yemeği yemek",
+   "erken"
+  ],
+  "dogru": 3,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 32,
+  "konu": "Unit 1 · Life",
+  "zorluk": "Kolay",
+  "soru": "“<b>erken</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "get dressed",
+   "early",
+   "every day",
+   "late"
+  ],
+  "dogru": 1,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 33,
+  "konu": "Unit 1 · Life",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "go to bed",
+   "early",
+   "do homework",
+   "get dressed"
+  ],
+  "dogru": 1,
+  "tur": "Listening",
+  "ses": "early"
+ },
+ {
+  "id": 34,
+  "konu": "Unit 1 · Life",
+  "zorluk": "Kolay",
+  "soru": "“<b>late</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "geç",
+   "hafta sonu",
+   "uyanmak",
+   "ödev yapmak"
+  ],
+  "dogru": 0,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 35,
+  "konu": "Unit 1 · Life",
+  "zorluk": "Kolay",
+  "soru": "“<b>geç</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "wash your face",
+   "have lunch",
+   "get dressed",
+   "late"
+  ],
+  "dogru": 3,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 36,
+  "konu": "Unit 1 · Life",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "at noon",
+   "wake up",
+   "early",
+   "late"
+  ],
+  "dogru": 3,
+  "tur": "Listening",
+  "ses": "late"
+ },
+ {
+  "id": 37,
+  "konu": "Unit 1 · Life",
+  "zorluk": "Kolay",
+  "soru": "“<b>at noon</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "yataktan kalkmak",
+   "öğlen",
+   "kahvaltı yapmak",
+   "erken"
+  ],
+  "dogru": 1,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 38,
+  "konu": "Unit 1 · Life",
+  "zorluk": "Kolay",
+  "soru": "“<b>öğlen</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "late",
+   "early",
+   "at noon",
+   "do homework"
+  ],
+  "dogru": 2,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 39,
+  "konu": "Unit 1 · Life",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "at noon",
+   "weekend",
+   "have breakfast",
+   "go to bed"
+  ],
+  "dogru": 0,
+  "tur": "Listening",
+  "ses": "at noon"
+ },
+ {
+  "id": 40,
+  "konu": "Unit 1 · Life",
+  "zorluk": "Kolay",
+  "soru": "“<b>weekend</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "her gün",
+   "duş almak",
+   "öğle yemeği yemek",
+   "hafta sonu"
+  ],
+  "dogru": 3,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 41,
+  "konu": "Unit 1 · Life",
+  "zorluk": "Kolay",
+  "soru": "“<b>hafta sonu</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "take a shower",
+   "get dressed",
+   "weekend",
+   "have breakfast"
+  ],
+  "dogru": 2,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 42,
+  "konu": "Unit 1 · Life",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "weekend",
+   "do homework",
+   "at noon",
+   "have lunch"
+  ],
+  "dogru": 0,
+  "tur": "Listening",
+  "ses": "weekend"
+ },
+ {
+  "id": 43,
+  "konu": "Unit 1 · Life",
+  "zorluk": "Kolay",
+  "soru": "“<b>every day</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "ödev yapmak",
+   "yatmak",
+   "giyinmek",
+   "her gün"
+  ],
+  "dogru": 3,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 44,
+  "konu": "Unit 1 · Life",
+  "zorluk": "Kolay",
+  "soru": "“<b>her gün</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "every day",
+   "brush your teeth",
+   "weekend",
+   "wake up"
+  ],
+  "dogru": 0,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 45,
+  "konu": "Unit 1 · Life",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "early",
+   "do homework",
+   "get dressed",
+   "every day"
+  ],
+  "dogru": 3,
+  "tur": "Listening",
+  "ses": "every day"
+ },
+ {
+  "id": 46,
+  "konu": "Unit 1 · Life",
+  "zorluk": "Orta",
+  "soru": "Boşluğa hangisi gelmelidir?<br><i>My brother ___ up at 7 o'clock every morning.</i>",
+  "secenekler": [
+   "is get",
+   "gets",
+   "getting",
+   "get"
+  ],
+  "dogru": 1,
+  "tur": "Grammar",
+  "aciklama": "He/She/It ile geniş zamanda fiile -s takısı gelir: gets."
+ },
+ {
+  "id": 47,
+  "konu": "Unit 1 · Life",
+  "zorluk": "Orta",
+  "soru": "Boşluğa hangisi gelmelidir?<br><i>I ___ breakfast at 8 a.m.</i>",
+  "secenekler": [
+   "having",
+   "has",
+   "have",
+   "to have"
+  ],
+  "dogru": 2,
+  "tur": "Grammar",
+  "aciklama": "I/You/We/They ile fiil yalın kullanılır: have."
+ },
+ {
+  "id": 48,
+  "konu": "Unit 1 · Life",
+  "zorluk": "Orta",
+  "soru": "Boşluğa hangisi gelmelidir?<br><i>She ___ her teeth twice a day.</i>",
+  "secenekler": [
+   "brushes",
+   "brushs",
+   "brushing",
+   "brush"
+  ],
+  "dogru": 0,
+  "tur": "Grammar",
+  "aciklama": "-sh ile biten fiiller He/She/It ile -es alır: brushes."
+ },
+ {
+  "id": 49,
+  "konu": "Unit 1 · Life",
+  "zorluk": "Orta",
+  "soru": "Boşluğa hangisi gelmelidir?<br><i>What time ___ you go to school?</i>",
+  "secenekler": [
+   "does",
+   "do",
+   "is",
+   "are"
+  ],
+  "dogru": 1,
+  "tur": "Grammar",
+  "aciklama": "You ile geniş zaman sorusu 'do' ile kurulur."
+ },
+ {
+  "id": 50,
+  "konu": "Unit 1 · Life",
+  "zorluk": "Orta",
+  "soru": "Boşluğa hangisi gelmelidir?<br><i>What time does he ___ to bed?</i>",
+  "secenekler": [
+   "going",
+   "goes",
+   "go",
+   "went"
+  ],
+  "dogru": 2,
+  "tur": "Grammar",
+  "aciklama": "Does kullanılan soruda fiil yalın hâle döner: go."
+ },
+ {
+  "id": 51,
+  "konu": "Unit 1 · Life",
+  "zorluk": "Orta",
+  "soru": "Boşluğa hangisi gelmelidir?<br><i>We have lunch ___ noon.</i>",
+  "secenekler": [
+   "to",
+   "at",
+   "on",
+   "in"
+  ],
+  "dogru": 1,
+  "tur": "Grammar",
+  "aciklama": "Saatlerle ve 'noon, night' ile 'at' kullanılır."
+ },
+ {
+  "id": 52,
+  "konu": "Unit 1 · Life",
+  "zorluk": "Orta",
+  "soru": "Boşluğa hangisi gelmelidir?<br><i>I do my homework ___ the evening.</i>",
+  "secenekler": [
+   "on",
+   "to",
+   "at",
+   "in"
+  ],
+  "dogru": 3,
+  "tur": "Grammar",
+  "aciklama": "the morning / the afternoon / the evening ile 'in' kullanılır."
+ },
+ {
+  "id": 53,
+  "konu": "Unit 1 · Life",
+  "zorluk": "Orta",
+  "soru": "Boşluğa hangisi gelmelidir?<br><i>Ali ___ TV on weekdays.</i>",
+  "secenekler": [
+   "isn't watch",
+   "doesn't watch",
+   "not watch",
+   "don't watch"
+  ],
+  "dogru": 1,
+  "tur": "Grammar",
+  "aciklama": "He/She/It olumsuzunda doesn't + yalın fiil kullanılır."
+ },
+ {
+  "id": 54,
+  "konu": "Unit 1 · Life",
+  "zorluk": "Orta",
+  "soru": "Boşluğa hangisi gelmelidir?<br><i>My parents ___ coffee in the morning.</i>",
+  "secenekler": [
+   "drink",
+   "drinking",
+   "is drink",
+   "drinks"
+  ],
+  "dogru": 0,
+  "tur": "Grammar",
+  "aciklama": "They (my parents) ile fiil yalın kullanılır."
+ },
+ {
+  "id": 55,
+  "konu": "Unit 1 · Life",
+  "zorluk": "Orta",
+  "soru": "Boşluğa hangisi gelmelidir?<br><i>___ your sister take a shower in the morning?</i>",
+  "secenekler": [
+   "Is",
+   "Do",
+   "Does",
+   "Are"
+  ],
+  "dogru": 2,
+  "tur": "Grammar",
+  "aciklama": "Your sister = she; soru 'Does' ile başlar."
+ },
+ {
+  "id": 56,
+  "konu": "Unit 1 · Life",
+  "zorluk": "Orta",
+  "soru": "Boşluğa hangisi gelmelidir?<br><i>I go to school ___ Monday ___ Friday.</i>",
+  "secenekler": [
+   "from / to",
+   "in / at",
+   "at / on",
+   "on / in"
+  ],
+  "dogru": 0,
+  "tur": "Grammar",
+  "aciklama": "Bir aralığı anlatırken 'from ... to ...' kullanılır."
+ },
+ {
+  "id": 57,
+  "konu": "Unit 1 · Life",
+  "zorluk": "Orta",
+  "soru": "Diyaloğu tamamlayınız.<br><b>A:</b> What time do you get up?<br><b>B:</b> ______",
+  "secenekler": [
+   "At seven o'clock.",
+   "In the kitchen.",
+   "Yes, I do.",
+   "With my brother."
+  ],
+  "dogru": 0,
+  "tur": "Dialogue"
+ },
+ {
+  "id": 58,
+  "konu": "Unit 1 · Life",
+  "zorluk": "Zor",
+  "soru": "Dinleyin. Duyduğunuz soruya verilecek en uygun cevap hangisidir?",
+  "secenekler": [
+   "At seven o'clock.",
+   "With my brother.",
+   "Yes, I do.",
+   "In the kitchen."
+  ],
+  "dogru": 0,
+  "tur": "Listening",
+  "ses": "What time do you get up?"
+ },
+ {
+  "id": 59,
+  "konu": "Unit 1 · Life",
+  "zorluk": "Orta",
+  "soru": "Diyaloğu tamamlayınız.<br><b>A:</b> Do you have breakfast every day?<br><b>B:</b> ______",
+  "secenekler": [
+   "At 8 o'clock.",
+   "No, he doesn't.",
+   "Yes, I am.",
+   "Yes, I do."
+  ],
+  "dogru": 3,
+  "tur": "Dialogue"
+ },
+ {
+  "id": 60,
+  "konu": "Unit 1 · Life",
+  "zorluk": "Zor",
+  "soru": "Dinleyin. Duyduğunuz soruya verilecek en uygun cevap hangisidir?",
+  "secenekler": [
+   "At 8 o'clock.",
+   "No, he doesn't.",
+   "Yes, I do.",
+   "Yes, I am."
+  ],
+  "dogru": 2,
+  "tur": "Listening",
+  "ses": "Do you have breakfast every day?"
+ },
+ {
+  "id": 61,
+  "konu": "Unit 1 · Life",
+  "zorluk": "Orta",
+  "soru": "Diyaloğu tamamlayınız.<br><b>A:</b> What do you do after school?<br><b>B:</b> ______",
+  "secenekler": [
+   "It's on Monday.",
+   "I do my homework.",
+   "I'm twelve.",
+   "Yes, I did."
+  ],
+  "dogru": 1,
+  "tur": "Dialogue"
+ },
+ {
+  "id": 62,
+  "konu": "Unit 1 · Life",
+  "zorluk": "Zor",
+  "soru": "Dinleyin. Duyduğunuz soruya verilecek en uygun cevap hangisidir?",
+  "secenekler": [
+   "I'm twelve.",
+   "I do my homework.",
+   "It's on Monday.",
+   "Yes, I did."
+  ],
+  "dogru": 1,
+  "tur": "Listening",
+  "ses": "What do you do after school?"
+ },
+ {
+  "id": 63,
+  "konu": "Unit 1 · Life",
+  "zorluk": "Zor",
+  "soru": "<i>Hi, I'm Deniz. I get up at 7:00 every day. I have breakfast with my family at 7:30. I go to school by bus. School starts at 8:30. After school, I do my homework and play basketball. I go to bed at 10 p.m.</i><br><br><b>What time does Deniz have breakfast?</b>",
+  "secenekler": [
+   "At 7:30.",
+   "At 10 p.m.",
+   "At 8:30.",
+   "At 7:00."
+  ],
+  "dogru": 0,
+  "tur": "Reading"
+ },
+ {
+  "id": 64,
+  "konu": "Unit 1 · Life",
+  "zorluk": "Zor",
+  "soru": "<i>Hi, I'm Deniz. I get up at 7:00 every day. I have breakfast with my family at 7:30. I go to school by bus. School starts at 8:30. After school, I do my homework and play basketball. I go to bed at 10 p.m.</i><br><br><b>How does Deniz go to school?</b>",
+  "secenekler": [
+   "On foot.",
+   "By bus.",
+   "By bike.",
+   "By car."
+  ],
+  "dogru": 1,
+  "tur": "Reading"
+ },
+ {
+  "id": 65,
+  "konu": "Unit 1 · Life",
+  "zorluk": "Zor",
+  "soru": "<i>Hi, I'm Deniz. I get up at 7:00 every day. I have breakfast with my family at 7:30. I go to school by bus. School starts at 8:30. After school, I do my homework and play basketball. I go to bed at 10 p.m.</i><br><br><b>What does Deniz do after school?</b>",
+  "secenekler": [
+   "Goes to bed.",
+   "Watches TV.",
+   "Has breakfast.",
+   "Homework and basketball."
+  ],
+  "dogru": 3,
+  "tur": "Reading"
+ },
+ {
+  "id": 66,
+  "konu": "Unit 2 · Yummy Breakfast",
+  "zorluk": "Kolay",
+  "soru": "“<b>cheese</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "sosis",
+   "peynir",
+   "ekmek",
+   "süt"
+  ],
+  "dogru": 1,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 67,
+  "konu": "Unit 2 · Yummy Breakfast",
+  "zorluk": "Kolay",
+  "soru": "“<b>peynir</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "olive",
+   "bread",
+   "healthy",
+   "cheese"
+  ],
+  "dogru": 3,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 68,
+  "konu": "Unit 2 · Yummy Breakfast",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "cheese",
+   "egg",
+   "bread",
+   "pepper"
+  ],
+  "dogru": 0,
+  "tur": "Listening",
+  "ses": "cheese"
+ },
+ {
+  "id": 69,
+  "konu": "Unit 2 · Yummy Breakfast",
+  "zorluk": "Kolay",
+  "soru": "“<b>olive</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "portakal suyu",
+   "zeytin",
+   "ekmek",
+   "peynir"
+  ],
+  "dogru": 1,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 70,
+  "konu": "Unit 2 · Yummy Breakfast",
+  "zorluk": "Kolay",
+  "soru": "“<b>zeytin</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "honey",
+   "jam",
+   "olive",
+   "pepper"
+  ],
+  "dogru": 2,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 71,
+  "konu": "Unit 2 · Yummy Breakfast",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "olive",
+   "milk",
+   "jam",
+   "bread"
+  ],
+  "dogru": 0,
+  "tur": "Listening",
+  "ses": "olive"
+ },
+ {
+  "id": 72,
+  "konu": "Unit 2 · Yummy Breakfast",
+  "zorluk": "Kolay",
+  "soru": "“<b>honey</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "portakal suyu",
+   "ekmek",
+   "reçel",
+   "bal"
+  ],
+  "dogru": 3,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 73,
+  "konu": "Unit 2 · Yummy Breakfast",
+  "zorluk": "Kolay",
+  "soru": "“<b>bal</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "honey",
+   "tomato",
+   "butter",
+   "delicious"
+  ],
+  "dogru": 0,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 74,
+  "konu": "Unit 2 · Yummy Breakfast",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "sausage",
+   "milk",
+   "cheese",
+   "honey"
+  ],
+  "dogru": 3,
+  "tur": "Listening",
+  "ses": "honey"
+ },
+ {
+  "id": 75,
+  "konu": "Unit 2 · Yummy Breakfast",
+  "zorluk": "Kolay",
+  "soru": "“<b>jam</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "tereyağı",
+   "peynir",
+   "reçel",
+   "lezzetli"
+  ],
+  "dogru": 2,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 76,
+  "konu": "Unit 2 · Yummy Breakfast",
+  "zorluk": "Kolay",
+  "soru": "“<b>reçel</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "jam",
+   "tomato",
+   "bread",
+   "egg"
+  ],
+  "dogru": 0,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 77,
+  "konu": "Unit 2 · Yummy Breakfast",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "jam",
+   "honey",
+   "milk",
+   "healthy"
+  ],
+  "dogru": 0,
+  "tur": "Listening",
+  "ses": "jam"
+ },
+ {
+  "id": 78,
+  "konu": "Unit 2 · Yummy Breakfast",
+  "zorluk": "Kolay",
+  "soru": "“<b>butter</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "sosis",
+   "tereyağı",
+   "ekmek",
+   "süt"
+  ],
+  "dogru": 1,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 79,
+  "konu": "Unit 2 · Yummy Breakfast",
+  "zorluk": "Kolay",
+  "soru": "“<b>tereyağı</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "jam",
+   "cucumber",
+   "butter",
+   "sausage"
+  ],
+  "dogru": 2,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 80,
+  "konu": "Unit 2 · Yummy Breakfast",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "butter",
+   "tomato",
+   "pepper",
+   "healthy"
+  ],
+  "dogru": 0,
+  "tur": "Listening",
+  "ses": "butter"
+ },
+ {
+  "id": 81,
+  "konu": "Unit 2 · Yummy Breakfast",
+  "zorluk": "Kolay",
+  "soru": "“<b>egg</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "ekmek",
+   "yumurta",
+   "reçel",
+   "sağlıklı"
+  ],
+  "dogru": 1,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 82,
+  "konu": "Unit 2 · Yummy Breakfast",
+  "zorluk": "Kolay",
+  "soru": "“<b>yumurta</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "delicious",
+   "egg",
+   "milk",
+   "cucumber"
+  ],
+  "dogru": 1,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 83,
+  "konu": "Unit 2 · Yummy Breakfast",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "honey",
+   "tomato",
+   "sausage",
+   "egg"
+  ],
+  "dogru": 3,
+  "tur": "Listening",
+  "ses": "egg"
+ },
+ {
+  "id": 84,
+  "konu": "Unit 2 · Yummy Breakfast",
+  "zorluk": "Kolay",
+  "soru": "“<b>bread</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "süt",
+   "biber",
+   "sağlıklı",
+   "ekmek"
+  ],
+  "dogru": 3,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 85,
+  "konu": "Unit 2 · Yummy Breakfast",
+  "zorluk": "Kolay",
+  "soru": "“<b>ekmek</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "butter",
+   "bread",
+   "olive",
+   "egg"
+  ],
+  "dogru": 1,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 86,
+  "konu": "Unit 2 · Yummy Breakfast",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "milk",
+   "cheese",
+   "bread",
+   "jam"
+  ],
+  "dogru": 2,
+  "tur": "Listening",
+  "ses": "bread"
+ },
+ {
+  "id": 87,
+  "konu": "Unit 2 · Yummy Breakfast",
+  "zorluk": "Kolay",
+  "soru": "“<b>tomato</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "domates",
+   "ekmek",
+   "süt",
+   "sağlıklı"
+  ],
+  "dogru": 0,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 88,
+  "konu": "Unit 2 · Yummy Breakfast",
+  "zorluk": "Kolay",
+  "soru": "“<b>domates</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "olive",
+   "pepper",
+   "honey",
+   "tomato"
+  ],
+  "dogru": 3,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 89,
+  "konu": "Unit 2 · Yummy Breakfast",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "pepper",
+   "tomato",
+   "butter",
+   "cheese"
+  ],
+  "dogru": 1,
+  "tur": "Listening",
+  "ses": "tomato"
+ },
+ {
+  "id": 90,
+  "konu": "Unit 2 · Yummy Breakfast",
+  "zorluk": "Kolay",
+  "soru": "“<b>cucumber</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "salatalık",
+   "süt",
+   "tereyağı",
+   "sağlıklı"
+  ],
+  "dogru": 0,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 91,
+  "konu": "Unit 2 · Yummy Breakfast",
+  "zorluk": "Kolay",
+  "soru": "“<b>salatalık</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "cucumber",
+   "pepper",
+   "sausage",
+   "jam"
+  ],
+  "dogru": 0,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 92,
+  "konu": "Unit 2 · Yummy Breakfast",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "cucumber",
+   "bread",
+   "milk",
+   "egg"
+  ],
+  "dogru": 0,
+  "tur": "Listening",
+  "ses": "cucumber"
+ },
+ {
+  "id": 93,
+  "konu": "Unit 2 · Yummy Breakfast",
+  "zorluk": "Kolay",
+  "soru": "“<b>milk</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "süt",
+   "salatalık",
+   "bal",
+   "yumurta"
+  ],
+  "dogru": 0,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 94,
+  "konu": "Unit 2 · Yummy Breakfast",
+  "zorluk": "Kolay",
+  "soru": "“<b>süt</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "sausage",
+   "milk",
+   "cucumber",
+   "olive"
+  ],
+  "dogru": 1,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 95,
+  "konu": "Unit 2 · Yummy Breakfast",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "milk",
+   "egg",
+   "jam",
+   "butter"
+  ],
+  "dogru": 0,
+  "tur": "Listening",
+  "ses": "milk"
+ },
+ {
+  "id": 96,
+  "konu": "Unit 2 · Yummy Breakfast",
+  "zorluk": "Kolay",
+  "soru": "“<b>orange juice</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "zeytin",
+   "yumurta",
+   "bal",
+   "portakal suyu"
+  ],
+  "dogru": 3,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 97,
+  "konu": "Unit 2 · Yummy Breakfast",
+  "zorluk": "Kolay",
+  "soru": "“<b>portakal suyu</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "butter",
+   "bread",
+   "orange juice",
+   "milk"
+  ],
+  "dogru": 2,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 98,
+  "konu": "Unit 2 · Yummy Breakfast",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "tomato",
+   "orange juice",
+   "delicious",
+   "egg"
+  ],
+  "dogru": 1,
+  "tur": "Listening",
+  "ses": "orange juice"
+ },
+ {
+  "id": 99,
+  "konu": "Unit 2 · Yummy Breakfast",
+  "zorluk": "Kolay",
+  "soru": "“<b>sausage</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "sağlıklı",
+   "yumurta",
+   "portakal suyu",
+   "sosis"
+  ],
+  "dogru": 3,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 100,
+  "konu": "Unit 2 · Yummy Breakfast",
+  "zorluk": "Kolay",
+  "soru": "“<b>sosis</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "olive",
+   "delicious",
+   "healthy",
+   "sausage"
+  ],
+  "dogru": 3,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 101,
+  "konu": "Unit 2 · Yummy Breakfast",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "delicious",
+   "jam",
+   "sausage",
+   "orange juice"
+  ],
+  "dogru": 2,
+  "tur": "Listening",
+  "ses": "sausage"
+ },
+ {
+  "id": 102,
+  "konu": "Unit 2 · Yummy Breakfast",
+  "zorluk": "Kolay",
+  "soru": "“<b>pepper</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "salatalık",
+   "sağlıklı",
+   "biber",
+   "yumurta"
+  ],
+  "dogru": 2,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 103,
+  "konu": "Unit 2 · Yummy Breakfast",
+  "zorluk": "Kolay",
+  "soru": "“<b>biber</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "honey",
+   "bread",
+   "pepper",
+   "egg"
+  ],
+  "dogru": 2,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 104,
+  "konu": "Unit 2 · Yummy Breakfast",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "healthy",
+   "pepper",
+   "sausage",
+   "egg"
+  ],
+  "dogru": 1,
+  "tur": "Listening",
+  "ses": "pepper"
+ },
+ {
+  "id": 105,
+  "konu": "Unit 2 · Yummy Breakfast",
+  "zorluk": "Kolay",
+  "soru": "“<b>delicious</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "reçel",
+   "domates",
+   "lezzetli",
+   "bal"
+  ],
+  "dogru": 2,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 106,
+  "konu": "Unit 2 · Yummy Breakfast",
+  "zorluk": "Kolay",
+  "soru": "“<b>lezzetli</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "egg",
+   "delicious",
+   "olive",
+   "healthy"
+  ],
+  "dogru": 1,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 107,
+  "konu": "Unit 2 · Yummy Breakfast",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "delicious",
+   "cucumber",
+   "honey",
+   "orange juice"
+  ],
+  "dogru": 0,
+  "tur": "Listening",
+  "ses": "delicious"
+ },
+ {
+  "id": 108,
+  "konu": "Unit 2 · Yummy Breakfast",
+  "zorluk": "Kolay",
+  "soru": "“<b>healthy</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "bal",
+   "sağlıklı",
+   "salatalık",
+   "zeytin"
+  ],
+  "dogru": 1,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 109,
+  "konu": "Unit 2 · Yummy Breakfast",
+  "zorluk": "Kolay",
+  "soru": "“<b>sağlıklı</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "healthy",
+   "bread",
+   "pepper",
+   "orange juice"
+  ],
+  "dogru": 0,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 110,
+  "konu": "Unit 2 · Yummy Breakfast",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "healthy",
+   "bread",
+   "egg",
+   "orange juice"
+  ],
+  "dogru": 0,
+  "tur": "Listening",
+  "ses": "healthy"
+ },
+ {
+  "id": 111,
+  "konu": "Unit 2 · Yummy Breakfast",
+  "zorluk": "Orta",
+  "soru": "Boşluğa hangisi gelmelidir?<br><i>I like eggs but I ___ like sausages.</i>",
+  "secenekler": [
+   "doesn't",
+   "isn't",
+   "don't",
+   "am not"
+  ],
+  "dogru": 2,
+  "tur": "Grammar",
+  "aciklama": "I ile olumsuz geniş zaman: don't + fiil."
+ },
+ {
+  "id": 112,
+  "konu": "Unit 2 · Yummy Breakfast",
+  "zorluk": "Orta",
+  "soru": "Boşluğa hangisi gelmelidir?<br><i>My father ___ olives.</i>",
+  "secenekler": [
+   "loves",
+   "loving",
+   "love",
+   "is love"
+  ],
+  "dogru": 0,
+  "tur": "Grammar",
+  "aciklama": "He/She/It ile fiil -s alır: loves."
+ },
+ {
+  "id": 113,
+  "konu": "Unit 2 · Yummy Breakfast",
+  "zorluk": "Orta",
+  "soru": "Boşluğa hangisi gelmelidir?<br><i>Can I have ___ orange juice, please?</i>",
+  "secenekler": [
+   "many",
+   "some",
+   "a",
+   "an"
+  ],
+  "dogru": 1,
+  "tur": "Grammar",
+  "aciklama": "Sayılamayan isimlerle (juice, milk) 'some' kullanılır."
+ },
+ {
+  "id": 114,
+  "konu": "Unit 2 · Yummy Breakfast",
+  "zorluk": "Orta",
+  "soru": "Boşluğa hangisi gelmelidir?<br><i>There ___ some milk in the fridge.</i>",
+  "secenekler": [
+   "is",
+   "am",
+   "are",
+   "be"
+  ],
+  "dogru": 0,
+  "tur": "Grammar",
+  "aciklama": "Sayılamayan isimlerle 'There is' kullanılır."
+ },
+ {
+  "id": 115,
+  "konu": "Unit 2 · Yummy Breakfast",
+  "zorluk": "Orta",
+  "soru": "Boşluğa hangisi gelmelidir?<br><i>There ___ two eggs on the plate.</i>",
+  "secenekler": [
+   "is",
+   "be",
+   "am",
+   "are"
+  ],
+  "dogru": 3,
+  "tur": "Grammar",
+  "aciklama": "Çoğul isimlerle 'There are' kullanılır."
+ },
+ {
+  "id": 116,
+  "konu": "Unit 2 · Yummy Breakfast",
+  "zorluk": "Orta",
+  "soru": "Boşluğa hangisi gelmelidir?<br><i>___ you like honey? — Yes, I do.</i>",
+  "secenekler": [
+   "Are",
+   "Do",
+   "Does",
+   "Is"
+  ],
+  "dogru": 1,
+  "tur": "Grammar",
+  "aciklama": "Cevap 'Yes, I do.' olduğuna göre soru 'Do' ile kurulur."
+ },
+ {
+  "id": 117,
+  "konu": "Unit 2 · Yummy Breakfast",
+  "zorluk": "Orta",
+  "soru": "Boşluğa hangisi gelmelidir?<br><i>She ___ like tea. She likes milk.</i>",
+  "secenekler": [
+   "doesn't",
+   "don't",
+   "not",
+   "isn't"
+  ],
+  "dogru": 0,
+  "tur": "Grammar",
+  "aciklama": "She ile olumsuz: doesn't + yalın fiil."
+ },
+ {
+  "id": 118,
+  "konu": "Unit 2 · Yummy Breakfast",
+  "zorluk": "Orta",
+  "soru": "Boşluğa hangisi gelmelidir?<br><i>I would like ___ apple, please.</i>",
+  "secenekler": [
+   "an",
+   "a",
+   "some",
+   "many"
+  ],
+  "dogru": 0,
+  "tur": "Grammar",
+  "aciklama": "Sesli harfle başlayan tekil isimden önce 'an' gelir."
+ },
+ {
+  "id": 119,
+  "konu": "Unit 2 · Yummy Breakfast",
+  "zorluk": "Orta",
+  "soru": "Boşluğa hangisi gelmelidir?<br><i>Would you like some cheese? — No, ___.</i>",
+  "secenekler": [
+   "please",
+   "you are",
+   "thanks",
+   "I like"
+  ],
+  "dogru": 2,
+  "tur": "Grammar",
+  "aciklama": "Kibarca reddetmek için 'No, thanks.' denir."
+ },
+ {
+  "id": 120,
+  "konu": "Unit 2 · Yummy Breakfast",
+  "zorluk": "Orta",
+  "soru": "Boşluğa hangisi gelmelidir?<br><i>How ___ eggs do you want?</i>",
+  "secenekler": [
+   "any",
+   "many",
+   "much",
+   "a"
+  ],
+  "dogru": 1,
+  "tur": "Grammar",
+  "aciklama": "Sayılabilen çoğul isimlerle 'How many' kullanılır."
+ },
+ {
+  "id": 121,
+  "konu": "Unit 2 · Yummy Breakfast",
+  "zorluk": "Orta",
+  "soru": "Diyaloğu tamamlayınız.<br><b>A:</b> Would you like some tea?<br><b>B:</b> ______",
+  "secenekler": [
+   "No, I'm not.",
+   "It's on the table.",
+   "Yes, please.",
+   "Yes, I am."
+  ],
+  "dogru": 2,
+  "tur": "Dialogue"
+ },
+ {
+  "id": 122,
+  "konu": "Unit 2 · Yummy Breakfast",
+  "zorluk": "Zor",
+  "soru": "Dinleyin. Duyduğunuz soruya verilecek en uygun cevap hangisidir?",
+  "secenekler": [
+   "Yes, please.",
+   "No, I'm not.",
+   "Yes, I am.",
+   "It's on the table."
+  ],
+  "dogru": 0,
+  "tur": "Listening",
+  "ses": "Would you like some tea?"
+ },
+ {
+  "id": 123,
+  "konu": "Unit 2 · Yummy Breakfast",
+  "zorluk": "Orta",
+  "soru": "Diyaloğu tamamlayınız.<br><b>A:</b> Can I have some bread, please?<br><b>B:</b> ______",
+  "secenekler": [
+   "Here you are.",
+   "I'm twelve.",
+   "It's sunny.",
+   "See you!"
+  ],
+  "dogru": 0,
+  "tur": "Dialogue"
+ },
+ {
+  "id": 124,
+  "konu": "Unit 2 · Yummy Breakfast",
+  "zorluk": "Zor",
+  "soru": "Dinleyin. Duyduğunuz soruya verilecek en uygun cevap hangisidir?",
+  "secenekler": [
+   "Here you are.",
+   "See you!",
+   "I'm twelve.",
+   "It's sunny."
+  ],
+  "dogru": 0,
+  "tur": "Listening",
+  "ses": "Can I have some bread, please?"
+ },
+ {
+  "id": 125,
+  "konu": "Unit 2 · Yummy Breakfast",
+  "zorluk": "Orta",
+  "soru": "Diyaloğu tamamlayınız.<br><b>A:</b> What do you have for breakfast?<br><b>B:</b> ______",
+  "secenekler": [
+   "Cheese, olives and eggs.",
+   "I'm fine.",
+   "At the park.",
+   "By bus."
+  ],
+  "dogru": 0,
+  "tur": "Dialogue"
+ },
+ {
+  "id": 126,
+  "konu": "Unit 2 · Yummy Breakfast",
+  "zorluk": "Zor",
+  "soru": "Dinleyin. Duyduğunuz soruya verilecek en uygun cevap hangisidir?",
+  "secenekler": [
+   "Cheese, olives and eggs.",
+   "At the park.",
+   "By bus.",
+   "I'm fine."
+  ],
+  "dogru": 0,
+  "tur": "Listening",
+  "ses": "What do you have for breakfast?"
+ },
+ {
+  "id": 127,
+  "konu": "Unit 2 · Yummy Breakfast",
+  "zorluk": "Zor",
+  "soru": "<i>Emre's family has breakfast together on Sundays. There are eggs, cheese, olives, tomatoes and honey on the table. Emre likes honey but he doesn't like olives. His mother drinks tea and his father drinks orange juice.</i><br><br><b>What doesn't Emre like?</b>",
+  "secenekler": [
+   "Olives.",
+   "Honey.",
+   "Cheese.",
+   "Eggs."
+  ],
+  "dogru": 0,
+  "tur": "Reading"
+ },
+ {
+  "id": 128,
+  "konu": "Unit 2 · Yummy Breakfast",
+  "zorluk": "Zor",
+  "soru": "<i>Emre's family has breakfast together on Sundays. There are eggs, cheese, olives, tomatoes and honey on the table. Emre likes honey but he doesn't like olives. His mother drinks tea and his father drinks orange juice.</i><br><br><b>What does Emre's father drink?</b>",
+  "secenekler": [
+   "Tea.",
+   "Milk.",
+   "Coffee.",
+   "Orange juice."
+  ],
+  "dogru": 3,
+  "tur": "Reading"
+ },
+ {
+  "id": 129,
+  "konu": "Unit 2 · Yummy Breakfast",
+  "zorluk": "Zor",
+  "soru": "<i>Emre's family has breakfast together on Sundays. There are eggs, cheese, olives, tomatoes and honey on the table. Emre likes honey but he doesn't like olives. His mother drinks tea and his father drinks orange juice.</i><br><br><b>When does the family have breakfast together?</b>",
+  "secenekler": [
+   "Every day.",
+   "On Sundays.",
+   "On Mondays.",
+   "In the evening."
+  ],
+  "dogru": 1,
+  "tur": "Reading"
+ },
+ {
+  "id": 130,
+  "konu": "Unit 3 · Downtown",
+  "zorluk": "Kolay",
+  "soru": "“<b>shopping mall</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "gürültülü",
+   "postane",
+   "otobüs durağı",
+   "alışveriş merkezi"
+  ],
+  "dogru": 3,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 131,
+  "konu": "Unit 3 · Downtown",
+  "zorluk": "Kolay",
+  "soru": "“<b>alışveriş merkezi</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "bus stop",
+   "shopping mall",
+   "bank",
+   "quiet"
+  ],
+  "dogru": 1,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 132,
+  "konu": "Unit 3 · Downtown",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "post office",
+   "bakery",
+   "dangerous",
+   "shopping mall"
+  ],
+  "dogru": 3,
+  "tur": "Listening",
+  "ses": "shopping mall"
+ },
+ {
+  "id": 133,
+  "konu": "Unit 3 · Downtown",
+  "zorluk": "Kolay",
+  "soru": "“<b>bank</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "güvenli",
+   "postane",
+   "kalabalık",
+   "banka"
+  ],
+  "dogru": 3,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 134,
+  "konu": "Unit 3 · Downtown",
+  "zorluk": "Kolay",
+  "soru": "“<b>banka</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "bank",
+   "shopping mall",
+   "pharmacy",
+   "noisy"
+  ],
+  "dogru": 0,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 135,
+  "konu": "Unit 3 · Downtown",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "bus stop",
+   "bank",
+   "noisy",
+   "museum"
+  ],
+  "dogru": 1,
+  "tur": "Listening",
+  "ses": "bank"
+ },
+ {
+  "id": 136,
+  "konu": "Unit 3 · Downtown",
+  "zorluk": "Kolay",
+  "soru": "“<b>museum</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "müze",
+   "tehlikeli",
+   "sessiz",
+   "fırın"
+  ],
+  "dogru": 0,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 137,
+  "konu": "Unit 3 · Downtown",
+  "zorluk": "Kolay",
+  "soru": "“<b>müze</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "post office",
+   "dangerous",
+   "crowded",
+   "museum"
+  ],
+  "dogru": 3,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 138,
+  "konu": "Unit 3 · Downtown",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "library",
+   "shopping mall",
+   "noisy",
+   "museum"
+  ],
+  "dogru": 3,
+  "tur": "Listening",
+  "ses": "museum"
+ },
+ {
+  "id": 139,
+  "konu": "Unit 3 · Downtown",
+  "zorluk": "Kolay",
+  "soru": "“<b>hospital</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "hastane",
+   "eczane",
+   "tehlikeli",
+   "kalabalık"
+  ],
+  "dogru": 0,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 140,
+  "konu": "Unit 3 · Downtown",
+  "zorluk": "Kolay",
+  "soru": "“<b>hastane</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "safe",
+   "post office",
+   "dangerous",
+   "hospital"
+  ],
+  "dogru": 3,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 141,
+  "konu": "Unit 3 · Downtown",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "hospital",
+   "pharmacy",
+   "bakery",
+   "quiet"
+  ],
+  "dogru": 0,
+  "tur": "Listening",
+  "ses": "hospital"
+ },
+ {
+  "id": 142,
+  "konu": "Unit 3 · Downtown",
+  "zorluk": "Kolay",
+  "soru": "“<b>library</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "müze",
+   "kütüphane",
+   "tehlikeli",
+   "güvenli"
+  ],
+  "dogru": 1,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 143,
+  "konu": "Unit 3 · Downtown",
+  "zorluk": "Kolay",
+  "soru": "“<b>kütüphane</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "dirty",
+   "library",
+   "post office",
+   "dangerous"
+  ],
+  "dogru": 1,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 144,
+  "konu": "Unit 3 · Downtown",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "bakery",
+   "crowded",
+   "library",
+   "safe"
+  ],
+  "dogru": 2,
+  "tur": "Listening",
+  "ses": "library"
+ },
+ {
+  "id": 145,
+  "konu": "Unit 3 · Downtown",
+  "zorluk": "Kolay",
+  "soru": "“<b>post office</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "postane",
+   "müze",
+   "alışveriş merkezi",
+   "güvenli"
+  ],
+  "dogru": 0,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 146,
+  "konu": "Unit 3 · Downtown",
+  "zorluk": "Kolay",
+  "soru": "“<b>postane</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "quiet",
+   "pharmacy",
+   "noisy",
+   "post office"
+  ],
+  "dogru": 3,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 147,
+  "konu": "Unit 3 · Downtown",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "hospital",
+   "library",
+   "post office",
+   "crowded"
+  ],
+  "dogru": 2,
+  "tur": "Listening",
+  "ses": "post office"
+ },
+ {
+  "id": 148,
+  "konu": "Unit 3 · Downtown",
+  "zorluk": "Kolay",
+  "soru": "“<b>bakery</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "güvenli",
+   "sessiz",
+   "otobüs durağı",
+   "fırın"
+  ],
+  "dogru": 3,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 149,
+  "konu": "Unit 3 · Downtown",
+  "zorluk": "Kolay",
+  "soru": "“<b>fırın</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "crowded",
+   "bakery",
+   "safe",
+   "museum"
+  ],
+  "dogru": 1,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 150,
+  "konu": "Unit 3 · Downtown",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "bakery",
+   "shopping mall",
+   "bank",
+   "post office"
+  ],
+  "dogru": 0,
+  "tur": "Listening",
+  "ses": "bakery"
+ },
+ {
+  "id": 151,
+  "konu": "Unit 3 · Downtown",
+  "zorluk": "Kolay",
+  "soru": "“<b>pharmacy</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "eczane",
+   "hastane",
+   "kalabalık",
+   "müze"
+  ],
+  "dogru": 0,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 152,
+  "konu": "Unit 3 · Downtown",
+  "zorluk": "Kolay",
+  "soru": "“<b>eczane</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "hospital",
+   "pharmacy",
+   "dirty",
+   "museum"
+  ],
+  "dogru": 1,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 153,
+  "konu": "Unit 3 · Downtown",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "hospital",
+   "post office",
+   "museum",
+   "pharmacy"
+  ],
+  "dogru": 3,
+  "tur": "Listening",
+  "ses": "pharmacy"
+ },
+ {
+  "id": 154,
+  "konu": "Unit 3 · Downtown",
+  "zorluk": "Kolay",
+  "soru": "“<b>bus stop</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "eczane",
+   "güvenli",
+   "otobüs durağı",
+   "postane"
+  ],
+  "dogru": 2,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 155,
+  "konu": "Unit 3 · Downtown",
+  "zorluk": "Kolay",
+  "soru": "“<b>otobüs durağı</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "noisy",
+   "pharmacy",
+   "bus stop",
+   "crowded"
+  ],
+  "dogru": 2,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 156,
+  "konu": "Unit 3 · Downtown",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "dangerous",
+   "bank",
+   "bus stop",
+   "dirty"
+  ],
+  "dogru": 2,
+  "tur": "Listening",
+  "ses": "bus stop"
+ },
+ {
+  "id": 157,
+  "konu": "Unit 3 · Downtown",
+  "zorluk": "Kolay",
+  "soru": "“<b>crowded</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "hastane",
+   "müze",
+   "banka",
+   "kalabalık"
+  ],
+  "dogru": 3,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 158,
+  "konu": "Unit 3 · Downtown",
+  "zorluk": "Kolay",
+  "soru": "“<b>kalabalık</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "shopping mall",
+   "crowded",
+   "bus stop",
+   "museum"
+  ],
+  "dogru": 1,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 159,
+  "konu": "Unit 3 · Downtown",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "bakery",
+   "pharmacy",
+   "shopping mall",
+   "crowded"
+  ],
+  "dogru": 3,
+  "tur": "Listening",
+  "ses": "crowded"
+ },
+ {
+  "id": 160,
+  "konu": "Unit 3 · Downtown",
+  "zorluk": "Kolay",
+  "soru": "“<b>noisy</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "gürültülü",
+   "eczane",
+   "banka",
+   "müze"
+  ],
+  "dogru": 0,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 161,
+  "konu": "Unit 3 · Downtown",
+  "zorluk": "Kolay",
+  "soru": "“<b>gürültülü</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "noisy",
+   "pharmacy",
+   "bakery",
+   "post office"
+  ],
+  "dogru": 0,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 162,
+  "konu": "Unit 3 · Downtown",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "noisy",
+   "quiet",
+   "library",
+   "dangerous"
+  ],
+  "dogru": 0,
+  "tur": "Listening",
+  "ses": "noisy"
+ },
+ {
+  "id": 163,
+  "konu": "Unit 3 · Downtown",
+  "zorluk": "Kolay",
+  "soru": "“<b>quiet</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "sessiz",
+   "tehlikeli",
+   "otobüs durağı",
+   "postane"
+  ],
+  "dogru": 0,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 164,
+  "konu": "Unit 3 · Downtown",
+  "zorluk": "Kolay",
+  "soru": "“<b>sessiz</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "crowded",
+   "bank",
+   "quiet",
+   "shopping mall"
+  ],
+  "dogru": 2,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 165,
+  "konu": "Unit 3 · Downtown",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "crowded",
+   "bank",
+   "bakery",
+   "quiet"
+  ],
+  "dogru": 3,
+  "tur": "Listening",
+  "ses": "quiet"
+ },
+ {
+  "id": 166,
+  "konu": "Unit 3 · Downtown",
+  "zorluk": "Kolay",
+  "soru": "“<b>safe</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "alışveriş merkezi",
+   "güvenli",
+   "otobüs durağı",
+   "müze"
+  ],
+  "dogru": 1,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 167,
+  "konu": "Unit 3 · Downtown",
+  "zorluk": "Kolay",
+  "soru": "“<b>güvenli</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "bank",
+   "safe",
+   "dirty",
+   "bakery"
+  ],
+  "dogru": 1,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 168,
+  "konu": "Unit 3 · Downtown",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "dirty",
+   "safe",
+   "quiet",
+   "shopping mall"
+  ],
+  "dogru": 1,
+  "tur": "Listening",
+  "ses": "safe"
+ },
+ {
+  "id": 169,
+  "konu": "Unit 3 · Downtown",
+  "zorluk": "Kolay",
+  "soru": "“<b>dangerous</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "sessiz",
+   "kirli",
+   "tehlikeli",
+   "postane"
+  ],
+  "dogru": 2,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 170,
+  "konu": "Unit 3 · Downtown",
+  "zorluk": "Kolay",
+  "soru": "“<b>tehlikeli</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "post office",
+   "hospital",
+   "quiet",
+   "dangerous"
+  ],
+  "dogru": 3,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 171,
+  "konu": "Unit 3 · Downtown",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "dangerous",
+   "bakery",
+   "hospital",
+   "bus stop"
+  ],
+  "dogru": 0,
+  "tur": "Listening",
+  "ses": "dangerous"
+ },
+ {
+  "id": 172,
+  "konu": "Unit 3 · Downtown",
+  "zorluk": "Kolay",
+  "soru": "“<b>dirty</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "kalabalık",
+   "eczane",
+   "kirli",
+   "hastane"
+  ],
+  "dogru": 2,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 173,
+  "konu": "Unit 3 · Downtown",
+  "zorluk": "Kolay",
+  "soru": "“<b>kirli</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "safe",
+   "bank",
+   "crowded",
+   "dirty"
+  ],
+  "dogru": 3,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 174,
+  "konu": "Unit 3 · Downtown",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "shopping mall",
+   "bus stop",
+   "pharmacy",
+   "dirty"
+  ],
+  "dogru": 3,
+  "tur": "Listening",
+  "ses": "dirty"
+ },
+ {
+  "id": 175,
+  "konu": "Unit 3 · Downtown",
+  "zorluk": "Orta",
+  "soru": "Boşluğa hangisi gelmelidir?<br><i>The city is ___ than the village.</i>",
+  "secenekler": [
+   "noisier",
+   "more noisy",
+   "noisiest",
+   "noisy"
+  ],
+  "dogru": 0,
+  "tur": "Grammar",
+  "aciklama": "-y ile biten kısa sıfatlar -ier alır: noisy → noisier."
+ },
+ {
+  "id": 176,
+  "konu": "Unit 3 · Downtown",
+  "zorluk": "Orta",
+  "soru": "Boşluğa hangisi gelmelidir?<br><i>Istanbul is more crowded ___ Bursa.</i>",
+  "secenekler": [
+   "as",
+   "then",
+   "than",
+   "from"
+  ],
+  "dogru": 2,
+  "tur": "Grammar",
+  "aciklama": "Karşılaştırmada 'than' kullanılır."
+ },
+ {
+  "id": 177,
+  "konu": "Unit 3 · Downtown",
+  "zorluk": "Orta",
+  "soru": "Boşluğa hangisi gelmelidir?<br><i>The museum is ___ than the shopping mall.</i>",
+  "secenekler": [
+   "interestinger",
+   "more interesting",
+   "most interesting",
+   "interesting"
+  ],
+  "dogru": 1,
+  "tur": "Grammar",
+  "aciklama": "Uzun sıfatlarda 'more + sıfat + than' kullanılır."
+ },
+ {
+  "id": 178,
+  "konu": "Unit 3 · Downtown",
+  "zorluk": "Orta",
+  "soru": "Boşluğa hangisi gelmelidir?<br><i>My street is ___ than your street.</i>",
+  "secenekler": [
+   "quietest",
+   "quieter",
+   "more quiet",
+   "quiet"
+  ],
+  "dogru": 1,
+  "tur": "Grammar",
+  "aciklama": "Kısa sıfatlar -er alır: quiet → quieter."
+ },
+ {
+  "id": 179,
+  "konu": "Unit 3 · Downtown",
+  "zorluk": "Orta",
+  "soru": "Boşluğa hangisi gelmelidir?<br><i>The bank is ___ the post office and the bakery.</i>",
+  "secenekler": [
+   "between",
+   "in",
+   "at",
+   "next"
+  ],
+  "dogru": 0,
+  "tur": "Grammar",
+  "aciklama": "İki yerin arası 'between ... and ...' ile anlatılır."
+ },
+ {
+  "id": 180,
+  "konu": "Unit 3 · Downtown",
+  "zorluk": "Orta",
+  "soru": "Boşluğa hangisi gelmelidir?<br><i>The pharmacy is next ___ the hospital.</i>",
+  "secenekler": [
+   "to",
+   "at",
+   "on",
+   "of"
+  ],
+  "dogru": 0,
+  "tur": "Grammar",
+  "aciklama": "'Yanında' anlamı için 'next to' kullanılır."
+ },
+ {
+  "id": 181,
+  "konu": "Unit 3 · Downtown",
+  "zorluk": "Orta",
+  "soru": "Boşluğa hangisi gelmelidir?<br><i>Excuse me, ___ is the library? — It's on Green Street.</i>",
+  "secenekler": [
+   "what",
+   "when",
+   "where",
+   "who"
+  ],
+  "dogru": 2,
+  "tur": "Grammar",
+  "aciklama": "Yer sormak için 'where' kullanılır."
+ },
+ {
+  "id": 182,
+  "konu": "Unit 3 · Downtown",
+  "zorluk": "Orta",
+  "soru": "Boşluğa hangisi gelmelidir?<br><i>Big cities are ___ than small towns.</i>",
+  "secenekler": [
+   "busiest",
+   "more busy",
+   "busier",
+   "busy"
+  ],
+  "dogru": 2,
+  "tur": "Grammar",
+  "aciklama": "busy → busier."
+ },
+ {
+  "id": 183,
+  "konu": "Unit 3 · Downtown",
+  "zorluk": "Orta",
+  "soru": "Boşluğa hangisi gelmelidir?<br><i>A village is ___ than a city.</i>",
+  "secenekler": [
+   "more safe",
+   "safest",
+   "safe",
+   "safer"
+  ],
+  "dogru": 3,
+  "tur": "Grammar",
+  "aciklama": "-e ile biten kısa sıfatlar yalnızca -r alır: safe → safer."
+ },
+ {
+  "id": 184,
+  "konu": "Unit 3 · Downtown",
+  "zorluk": "Orta",
+  "soru": "Boşluğa hangisi gelmelidir?<br><i>The shopping mall is ___ than the bakery.</i>",
+  "secenekler": [
+   "big",
+   "bigger",
+   "biger",
+   "more big"
+  ],
+  "dogru": 1,
+  "tur": "Grammar",
+  "aciklama": "Kısa sıfatlarda son harf ikilenebilir: big → bigger."
+ },
+ {
+  "id": 185,
+  "konu": "Unit 3 · Downtown",
+  "zorluk": "Orta",
+  "soru": "Diyaloğu tamamlayınız.<br><b>A:</b> Excuse me, where is the bank?<br><b>B:</b> ______",
+  "secenekler": [
+   "It's sunny.",
+   "It's next to the bakery.",
+   "I like it.",
+   "At 9 o'clock."
+  ],
+  "dogru": 1,
+  "tur": "Dialogue"
+ },
+ {
+  "id": 186,
+  "konu": "Unit 3 · Downtown",
+  "zorluk": "Zor",
+  "soru": "Dinleyin. Duyduğunuz soruya verilecek en uygun cevap hangisidir?",
+  "secenekler": [
+   "It's next to the bakery.",
+   "At 9 o'clock.",
+   "It's sunny.",
+   "I like it."
+  ],
+  "dogru": 0,
+  "tur": "Listening",
+  "ses": "Excuse me, where is the bank?"
+ },
+ {
+  "id": 187,
+  "konu": "Unit 3 · Downtown",
+  "zorluk": "Orta",
+  "soru": "Diyaloğu tamamlayınız.<br><b>A:</b> Which is more crowded, the city or the village?<br><b>B:</b> ______",
+  "secenekler": [
+   "The city is more crowded.",
+   "I go by bus.",
+   "Yes, it is.",
+   "At the station."
+  ],
+  "dogru": 0,
+  "tur": "Dialogue"
+ },
+ {
+  "id": 188,
+  "konu": "Unit 3 · Downtown",
+  "zorluk": "Zor",
+  "soru": "Dinleyin. Duyduğunuz soruya verilecek en uygun cevap hangisidir?",
+  "secenekler": [
+   "I go by bus.",
+   "The city is more crowded.",
+   "At the station.",
+   "Yes, it is."
+  ],
+  "dogru": 1,
+  "tur": "Listening",
+  "ses": "Which is more crowded, the city or the village?"
+ },
+ {
+  "id": 189,
+  "konu": "Unit 3 · Downtown",
+  "zorluk": "Orta",
+  "soru": "Diyaloğu tamamlayınız.<br><b>A:</b> How can I get to the museum?<br><b>B:</b> ______",
+  "secenekler": [
+   "It's a museum.",
+   "I'm from Izmir.",
+   "Go straight and turn left.",
+   "It's 10 lira."
+  ],
+  "dogru": 2,
+  "tur": "Dialogue"
+ },
+ {
+  "id": 190,
+  "konu": "Unit 3 · Downtown",
+  "zorluk": "Zor",
+  "soru": "Dinleyin. Duyduğunuz soruya verilecek en uygun cevap hangisidir?",
+  "secenekler": [
+   "It's 10 lira.",
+   "I'm from Izmir.",
+   "Go straight and turn left.",
+   "It's a museum."
+  ],
+  "dogru": 2,
+  "tur": "Listening",
+  "ses": "How can I get to the museum?"
+ },
+ {
+  "id": 191,
+  "konu": "Unit 3 · Downtown",
+  "zorluk": "Zor",
+  "soru": "<i>My town is small and quiet. There is a bakery next to the post office. The library is between the bank and the park. My favourite place is the library because it is quieter than the park.</i><br><br><b>Where is the library?</b>",
+  "secenekler": [
+   "In the shopping mall.",
+   "Between the bank and the park.",
+   "Behind the bakery.",
+   "Next to the post office."
+  ],
+  "dogru": 1,
+  "tur": "Reading"
+ },
+ {
+  "id": 192,
+  "konu": "Unit 3 · Downtown",
+  "zorluk": "Zor",
+  "soru": "<i>My town is small and quiet. There is a bakery next to the post office. The library is between the bank and the park. My favourite place is the library because it is quieter than the park.</i><br><br><b>Why does the writer like the library?</b>",
+  "secenekler": [
+   "It is quieter than the park.",
+   "It is bigger than the bank.",
+   "It is noisy.",
+   "It sells bread."
+  ],
+  "dogru": 0,
+  "tur": "Reading"
+ },
+ {
+  "id": 193,
+  "konu": "Unit 3 · Downtown",
+  "zorluk": "Zor",
+  "soru": "<i>My town is small and quiet. There is a bakery next to the post office. The library is between the bank and the park. My favourite place is the library because it is quieter than the park.</i><br><br><b>What is next to the post office?</b>",
+  "secenekler": [
+   "A bank.",
+   "A bakery.",
+   "A library.",
+   "A park."
+  ],
+  "dogru": 1,
+  "tur": "Reading"
+ },
+ {
+  "id": 194,
+  "konu": "Unit 4 · Weather and Emotions",
+  "zorluk": "Kolay",
+  "soru": "“<b>sunny</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "güneşli",
+   "heyecanlı",
+   "sıkılmış",
+   "fırtınalı"
+  ],
+  "dogru": 0,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 195,
+  "konu": "Unit 4 · Weather and Emotions",
+  "zorluk": "Kolay",
+  "soru": "“<b>güneşli</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "sunny",
+   "cloudy",
+   "scared",
+   "tired"
+  ],
+  "dogru": 0,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 196,
+  "konu": "Unit 4 · Weather and Emotions",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "sunny",
+   "rainy",
+   "sad",
+   "angry"
+  ],
+  "dogru": 0,
+  "tur": "Listening",
+  "ses": "sunny"
+ },
+ {
+  "id": 197,
+  "konu": "Unit 4 · Weather and Emotions",
+  "zorluk": "Kolay",
+  "soru": "“<b>rainy</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "rüzgârlı",
+   "bulutlu",
+   "yağmurlu",
+   "üzgün"
+  ],
+  "dogru": 2,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 198,
+  "konu": "Unit 4 · Weather and Emotions",
+  "zorluk": "Kolay",
+  "soru": "“<b>yağmurlu</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "angry",
+   "happy",
+   "cloudy",
+   "rainy"
+  ],
+  "dogru": 3,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 199,
+  "konu": "Unit 4 · Weather and Emotions",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "snowy",
+   "rainy",
+   "relaxed",
+   "windy"
+  ],
+  "dogru": 1,
+  "tur": "Listening",
+  "ses": "rainy"
+ },
+ {
+  "id": 200,
+  "konu": "Unit 4 · Weather and Emotions",
+  "zorluk": "Kolay",
+  "soru": "“<b>cloudy</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "heyecanlı",
+   "mutlu",
+   "bulutlu",
+   "fırtınalı"
+  ],
+  "dogru": 2,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 201,
+  "konu": "Unit 4 · Weather and Emotions",
+  "zorluk": "Kolay",
+  "soru": "“<b>bulutlu</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "cloudy",
+   "sunny",
+   "rainy",
+   "foggy"
+  ],
+  "dogru": 0,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 202,
+  "konu": "Unit 4 · Weather and Emotions",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "relaxed",
+   "cloudy",
+   "tired",
+   "sad"
+  ],
+  "dogru": 1,
+  "tur": "Listening",
+  "ses": "cloudy"
+ },
+ {
+  "id": 203,
+  "konu": "Unit 4 · Weather and Emotions",
+  "zorluk": "Kolay",
+  "soru": "“<b>snowy</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "üzgün",
+   "kızgın",
+   "karlı",
+   "bulutlu"
+  ],
+  "dogru": 2,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 204,
+  "konu": "Unit 4 · Weather and Emotions",
+  "zorluk": "Kolay",
+  "soru": "“<b>karlı</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "relaxed",
+   "happy",
+   "rainy",
+   "snowy"
+  ],
+  "dogru": 3,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 205,
+  "konu": "Unit 4 · Weather and Emotions",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "bored",
+   "snowy",
+   "excited",
+   "foggy"
+  ],
+  "dogru": 1,
+  "tur": "Listening",
+  "ses": "snowy"
+ },
+ {
+  "id": 206,
+  "konu": "Unit 4 · Weather and Emotions",
+  "zorluk": "Kolay",
+  "soru": "“<b>windy</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "karlı",
+   "rüzgârlı",
+   "fırtınalı",
+   "heyecanlı"
+  ],
+  "dogru": 1,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 207,
+  "konu": "Unit 4 · Weather and Emotions",
+  "zorluk": "Kolay",
+  "soru": "“<b>rüzgârlı</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "excited",
+   "stormy",
+   "windy",
+   "bored"
+  ],
+  "dogru": 2,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 208,
+  "konu": "Unit 4 · Weather and Emotions",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "sunny",
+   "windy",
+   "tired",
+   "foggy"
+  ],
+  "dogru": 1,
+  "tur": "Listening",
+  "ses": "windy"
+ },
+ {
+  "id": 209,
+  "konu": "Unit 4 · Weather and Emotions",
+  "zorluk": "Kolay",
+  "soru": "“<b>stormy</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "karlı",
+   "yağmurlu",
+   "sıkılmış",
+   "fırtınalı"
+  ],
+  "dogru": 3,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 210,
+  "konu": "Unit 4 · Weather and Emotions",
+  "zorluk": "Kolay",
+  "soru": "“<b>fırtınalı</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "stormy",
+   "relaxed",
+   "cloudy",
+   "rainy"
+  ],
+  "dogru": 0,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 211,
+  "konu": "Unit 4 · Weather and Emotions",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "stormy",
+   "windy",
+   "happy",
+   "cloudy"
+  ],
+  "dogru": 0,
+  "tur": "Listening",
+  "ses": "stormy"
+ },
+ {
+  "id": 212,
+  "konu": "Unit 4 · Weather and Emotions",
+  "zorluk": "Kolay",
+  "soru": "“<b>foggy</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "heyecanlı",
+   "sisli",
+   "mutlu",
+   "bulutlu"
+  ],
+  "dogru": 1,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 213,
+  "konu": "Unit 4 · Weather and Emotions",
+  "zorluk": "Kolay",
+  "soru": "“<b>sisli</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "stormy",
+   "snowy",
+   "rainy",
+   "foggy"
+  ],
+  "dogru": 3,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 214,
+  "konu": "Unit 4 · Weather and Emotions",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "windy",
+   "foggy",
+   "sad",
+   "scared"
+  ],
+  "dogru": 1,
+  "tur": "Listening",
+  "ses": "foggy"
+ },
+ {
+  "id": 215,
+  "konu": "Unit 4 · Weather and Emotions",
+  "zorluk": "Kolay",
+  "soru": "“<b>happy</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "yorgun",
+   "sisli",
+   "sıkılmış",
+   "mutlu"
+  ],
+  "dogru": 3,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 216,
+  "konu": "Unit 4 · Weather and Emotions",
+  "zorluk": "Kolay",
+  "soru": "“<b>mutlu</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "cloudy",
+   "rainy",
+   "happy",
+   "relaxed"
+  ],
+  "dogru": 2,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 217,
+  "konu": "Unit 4 · Weather and Emotions",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "relaxed",
+   "windy",
+   "tired",
+   "happy"
+  ],
+  "dogru": 3,
+  "tur": "Listening",
+  "ses": "happy"
+ },
+ {
+  "id": 218,
+  "konu": "Unit 4 · Weather and Emotions",
+  "zorluk": "Kolay",
+  "soru": "“<b>sad</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "yağmurlu",
+   "bulutlu",
+   "üzgün",
+   "korkmuş"
+  ],
+  "dogru": 2,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 219,
+  "konu": "Unit 4 · Weather and Emotions",
+  "zorluk": "Kolay",
+  "soru": "“<b>üzgün</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "excited",
+   "stormy",
+   "bored",
+   "sad"
+  ],
+  "dogru": 3,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 220,
+  "konu": "Unit 4 · Weather and Emotions",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "angry",
+   "sad",
+   "relaxed",
+   "foggy"
+  ],
+  "dogru": 1,
+  "tur": "Listening",
+  "ses": "sad"
+ },
+ {
+  "id": 221,
+  "konu": "Unit 4 · Weather and Emotions",
+  "zorluk": "Kolay",
+  "soru": "“<b>angry</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "bulutlu",
+   "kızgın",
+   "karlı",
+   "üzgün"
+  ],
+  "dogru": 1,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 222,
+  "konu": "Unit 4 · Weather and Emotions",
+  "zorluk": "Kolay",
+  "soru": "“<b>kızgın</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "windy",
+   "foggy",
+   "angry",
+   "cloudy"
+  ],
+  "dogru": 2,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 223,
+  "konu": "Unit 4 · Weather and Emotions",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "angry",
+   "happy",
+   "relaxed",
+   "excited"
+  ],
+  "dogru": 0,
+  "tur": "Listening",
+  "ses": "angry"
+ },
+ {
+  "id": 224,
+  "konu": "Unit 4 · Weather and Emotions",
+  "zorluk": "Kolay",
+  "soru": "“<b>bored</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "yorgun",
+   "güneşli",
+   "sıkılmış",
+   "kızgın"
+  ],
+  "dogru": 2,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 225,
+  "konu": "Unit 4 · Weather and Emotions",
+  "zorluk": "Kolay",
+  "soru": "“<b>sıkılmış</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "relaxed",
+   "foggy",
+   "bored",
+   "snowy"
+  ],
+  "dogru": 2,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 226,
+  "konu": "Unit 4 · Weather and Emotions",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "foggy",
+   "bored",
+   "relaxed",
+   "stormy"
+  ],
+  "dogru": 1,
+  "tur": "Listening",
+  "ses": "bored"
+ },
+ {
+  "id": 227,
+  "konu": "Unit 4 · Weather and Emotions",
+  "zorluk": "Kolay",
+  "soru": "“<b>excited</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "heyecanlı",
+   "sisli",
+   "üzgün",
+   "korkmuş"
+  ],
+  "dogru": 0,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 228,
+  "konu": "Unit 4 · Weather and Emotions",
+  "zorluk": "Kolay",
+  "soru": "“<b>heyecanlı</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "tired",
+   "sunny",
+   "excited",
+   "stormy"
+  ],
+  "dogru": 2,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 229,
+  "konu": "Unit 4 · Weather and Emotions",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "angry",
+   "cloudy",
+   "happy",
+   "excited"
+  ],
+  "dogru": 3,
+  "tur": "Listening",
+  "ses": "excited"
+ },
+ {
+  "id": 230,
+  "konu": "Unit 4 · Weather and Emotions",
+  "zorluk": "Kolay",
+  "soru": "“<b>tired</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "üzgün",
+   "yorgun",
+   "sisli",
+   "karlı"
+  ],
+  "dogru": 1,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 231,
+  "konu": "Unit 4 · Weather and Emotions",
+  "zorluk": "Kolay",
+  "soru": "“<b>yorgun</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "snowy",
+   "relaxed",
+   "rainy",
+   "tired"
+  ],
+  "dogru": 3,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 232,
+  "konu": "Unit 4 · Weather and Emotions",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "bored",
+   "tired",
+   "stormy",
+   "angry"
+  ],
+  "dogru": 1,
+  "tur": "Listening",
+  "ses": "tired"
+ },
+ {
+  "id": 233,
+  "konu": "Unit 4 · Weather and Emotions",
+  "zorluk": "Kolay",
+  "soru": "“<b>scared</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "güneşli",
+   "rüzgârlı",
+   "korkmuş",
+   "fırtınalı"
+  ],
+  "dogru": 2,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 234,
+  "konu": "Unit 4 · Weather and Emotions",
+  "zorluk": "Kolay",
+  "soru": "“<b>korkmuş</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "cloudy",
+   "happy",
+   "bored",
+   "scared"
+  ],
+  "dogru": 3,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 235,
+  "konu": "Unit 4 · Weather and Emotions",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "sad",
+   "relaxed",
+   "snowy",
+   "scared"
+  ],
+  "dogru": 3,
+  "tur": "Listening",
+  "ses": "scared"
+ },
+ {
+  "id": 236,
+  "konu": "Unit 4 · Weather and Emotions",
+  "zorluk": "Kolay",
+  "soru": "“<b>relaxed</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "fırtınalı",
+   "rahatlamış",
+   "yağmurlu",
+   "korkmuş"
+  ],
+  "dogru": 1,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 237,
+  "konu": "Unit 4 · Weather and Emotions",
+  "zorluk": "Kolay",
+  "soru": "“<b>rahatlamış</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "rainy",
+   "sad",
+   "happy",
+   "relaxed"
+  ],
+  "dogru": 3,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 238,
+  "konu": "Unit 4 · Weather and Emotions",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "happy",
+   "bored",
+   "sunny",
+   "relaxed"
+  ],
+  "dogru": 3,
+  "tur": "Listening",
+  "ses": "relaxed"
+ },
+ {
+  "id": 239,
+  "konu": "Unit 4 · Weather and Emotions",
+  "zorluk": "Orta",
+  "soru": "Boşluğa hangisi gelmelidir?<br><i>What's the weather ___ in Ankara today? — It's snowy.</i>",
+  "secenekler": [
+   "do",
+   "is",
+   "likes",
+   "like"
+  ],
+  "dogru": 3,
+  "tur": "Grammar",
+  "aciklama": "Hava durumu 'What's the weather like?' ile sorulur."
+ },
+ {
+  "id": 240,
+  "konu": "Unit 4 · Weather and Emotions",
+  "zorluk": "Orta",
+  "soru": "Boşluğa hangisi gelmelidir?<br><i>It's raining. Take your ___!</i>",
+  "secenekler": [
+   "fan",
+   "sunglasses",
+   "swimsuit",
+   "umbrella"
+  ],
+  "dogru": 3,
+  "tur": "Grammar",
+  "aciklama": "Yağmurlu havada şemsiye (umbrella) gerekir."
+ },
+ {
+  "id": 241,
+  "konu": "Unit 4 · Weather and Emotions",
+  "zorluk": "Orta",
+  "soru": "Boşluğa hangisi gelmelidir?<br><i>When it's sunny, I ___ happy.</i>",
+  "secenekler": [
+   "feeling",
+   "feel",
+   "am feel",
+   "feels"
+  ],
+  "dogru": 1,
+  "tur": "Grammar",
+  "aciklama": "I ile fiil yalın: feel."
+ },
+ {
+  "id": 242,
+  "konu": "Unit 4 · Weather and Emotions",
+  "zorluk": "Orta",
+  "soru": "Boşluğa hangisi gelmelidir?<br><i>How ___ you feel when it's stormy? — I feel scared.</i>",
+  "secenekler": [
+   "are",
+   "does",
+   "is",
+   "do"
+  ],
+  "dogru": 3,
+  "tur": "Grammar",
+  "aciklama": "You ile geniş zaman sorusu 'do' ile kurulur."
+ },
+ {
+  "id": 243,
+  "konu": "Unit 4 · Weather and Emotions",
+  "zorluk": "Orta",
+  "soru": "Boşluğa hangisi gelmelidir?<br><i>My sister ___ bored on rainy days.</i>",
+  "secenekler": [
+   "feeling",
+   "feel",
+   "feels",
+   "is feel"
+  ],
+  "dogru": 2,
+  "tur": "Grammar",
+  "aciklama": "She ile fiil -s alır: feels."
+ },
+ {
+  "id": 244,
+  "konu": "Unit 4 · Weather and Emotions",
+  "zorluk": "Orta",
+  "soru": "Boşluğa hangisi gelmelidir?<br><i>It's very ___ today. You can't see the road.</i>",
+  "secenekler": [
+   "hot",
+   "warm",
+   "sunny",
+   "foggy"
+  ],
+  "dogru": 3,
+  "tur": "Grammar",
+  "aciklama": "Yolu göremiyorsak hava sislidir (foggy)."
+ },
+ {
+  "id": 245,
+  "konu": "Unit 4 · Weather and Emotions",
+  "zorluk": "Orta",
+  "soru": "Boşluğa hangisi gelmelidir?<br><i>It's ___ today. Let's fly a kite!</i>",
+  "secenekler": [
+   "windy",
+   "rainy",
+   "foggy",
+   "snowy"
+  ],
+  "dogru": 0,
+  "tur": "Grammar",
+  "aciklama": "Uçurtma uçurmak için rüzgârlı (windy) hava gerekir."
+ },
+ {
+  "id": 246,
+  "konu": "Unit 4 · Weather and Emotions",
+  "zorluk": "Orta",
+  "soru": "Boşluğa hangisi gelmelidir?<br><i>It's snowy. Let's make a ___!</i>",
+  "secenekler": [
+   "sandcastle",
+   "snowman",
+   "kite",
+   "picnic"
+  ],
+  "dogru": 1,
+  "tur": "Grammar",
+  "aciklama": "Karlı havada kardan adam (snowman) yapılır."
+ },
+ {
+  "id": 247,
+  "konu": "Unit 4 · Weather and Emotions",
+  "zorluk": "Orta",
+  "soru": "Diyaloğu tamamlayınız.<br><b>A:</b> What's the weather like today?<br><b>B:</b> ______",
+  "secenekler": [
+   "It's Monday.",
+   "It's cloudy and cold.",
+   "I like apples.",
+   "I'm thirteen."
+  ],
+  "dogru": 1,
+  "tur": "Dialogue"
+ },
+ {
+  "id": 248,
+  "konu": "Unit 4 · Weather and Emotions",
+  "zorluk": "Zor",
+  "soru": "Dinleyin. Duyduğunuz soruya verilecek en uygun cevap hangisidir?",
+  "secenekler": [
+   "It's cloudy and cold.",
+   "It's Monday.",
+   "I'm thirteen.",
+   "I like apples."
+  ],
+  "dogru": 0,
+  "tur": "Listening",
+  "ses": "What's the weather like today?"
+ },
+ {
+  "id": 249,
+  "konu": "Unit 4 · Weather and Emotions",
+  "zorluk": "Orta",
+  "soru": "Diyaloğu tamamlayınız.<br><b>A:</b> How do you feel on snowy days?<br><b>B:</b> ______",
+  "secenekler": [
+   "I feel excited.",
+   "I'm from Kars.",
+   "Yes, I do.",
+   "It's snowy."
+  ],
+  "dogru": 0,
+  "tur": "Dialogue"
+ },
+ {
+  "id": 250,
+  "konu": "Unit 4 · Weather and Emotions",
+  "zorluk": "Zor",
+  "soru": "Dinleyin. Duyduğunuz soruya verilecek en uygun cevap hangisidir?",
+  "secenekler": [
+   "It's snowy.",
+   "I feel excited.",
+   "I'm from Kars.",
+   "Yes, I do."
+  ],
+  "dogru": 1,
+  "tur": "Listening",
+  "ses": "How do you feel on snowy days?"
+ },
+ {
+  "id": 251,
+  "konu": "Unit 4 · Weather and Emotions",
+  "zorluk": "Orta",
+  "soru": "Diyaloğu tamamlayınız.<br><b>A:</b> Why are you sad?<br><b>B:</b> ______",
+  "secenekler": [
+   "Because it's rainy and I can't go out.",
+   "I'm fine, thanks.",
+   "Yes, I am.",
+   "It's on the desk."
+  ],
+  "dogru": 0,
+  "tur": "Dialogue"
+ },
+ {
+  "id": 252,
+  "konu": "Unit 4 · Weather and Emotions",
+  "zorluk": "Zor",
+  "soru": "Dinleyin. Duyduğunuz soruya verilecek en uygun cevap hangisidir?",
+  "secenekler": [
+   "Yes, I am.",
+   "I'm fine, thanks.",
+   "It's on the desk.",
+   "Because it's rainy and I can't go out."
+  ],
+  "dogru": 3,
+  "tur": "Listening",
+  "ses": "Why are you sad?"
+ },
+ {
+  "id": 253,
+  "konu": "Unit 4 · Weather and Emotions",
+  "zorluk": "Zor",
+  "soru": "<i>Today it is cold and windy in Erzurum. Tomorrow it will be snowy. Ela loves snowy days. She feels excited because she can make a snowman. Her brother Can doesn't like cold weather. He feels bored at home.</i><br><br><b>What is the weather like in Erzurum today?</b>",
+  "secenekler": [
+   "Hot and sunny.",
+   "Rainy.",
+   "Cold and windy.",
+   "Foggy."
+  ],
+  "dogru": 2,
+  "tur": "Reading"
+ },
+ {
+  "id": 254,
+  "konu": "Unit 4 · Weather and Emotions",
+  "zorluk": "Zor",
+  "soru": "<i>Today it is cold and windy in Erzurum. Tomorrow it will be snowy. Ela loves snowy days. She feels excited because she can make a snowman. Her brother Can doesn't like cold weather. He feels bored at home.</i><br><br><b>How does Ela feel on snowy days?</b>",
+  "secenekler": [
+   "Bored.",
+   "Excited.",
+   "Angry.",
+   "Scared."
+  ],
+  "dogru": 1,
+  "tur": "Reading"
+ },
+ {
+  "id": 255,
+  "konu": "Unit 4 · Weather and Emotions",
+  "zorluk": "Zor",
+  "soru": "<i>Today it is cold and windy in Erzurum. Tomorrow it will be snowy. Ela loves snowy days. She feels excited because she can make a snowman. Her brother Can doesn't like cold weather. He feels bored at home.</i><br><br><b>Who doesn't like cold weather?</b>",
+  "secenekler": [
+   "Ela.",
+   "Can.",
+   "Their teacher.",
+   "Ela's friend."
+  ],
+  "dogru": 1,
+  "tur": "Reading"
+ },
+ {
+  "id": 256,
+  "konu": "Unit 5 · At the Fair",
+  "zorluk": "Kolay",
+  "soru": "“<b>fair</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "çarpışan arabalar",
+   "lunapark",
+   "bilet",
+   "sıkıcı"
+  ],
+  "dogru": 1,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 257,
+  "konu": "Unit 5 · At the Fair",
+  "zorluk": "Kolay",
+  "soru": "“<b>lunapark</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "haunted house",
+   "fun",
+   "fair",
+   "Ferris wheel"
+  ],
+  "dogru": 2,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 258,
+  "konu": "Unit 5 · At the Fair",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "fair",
+   "ticket",
+   "dizzy",
+   "candy floss"
+  ],
+  "dogru": 0,
+  "tur": "Listening",
+  "ses": "fair"
+ },
+ {
+  "id": 259,
+  "konu": "Unit 5 · At the Fair",
+  "zorluk": "Kolay",
+  "soru": "“<b>roller coaster</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "heyecan verici",
+   "başı dönmüş",
+   "dehşet verici",
+   "hız treni"
+  ],
+  "dogru": 3,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 260,
+  "konu": "Unit 5 · At the Fair",
+  "zorluk": "Kolay",
+  "soru": "“<b>hız treni</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "dizzy",
+   "Ferris wheel",
+   "ticket",
+   "roller coaster"
+  ],
+  "dogru": 3,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 261,
+  "konu": "Unit 5 · At the Fair",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "terrifying",
+   "fun",
+   "ticket",
+   "roller coaster"
+  ],
+  "dogru": 3,
+  "tur": "Listening",
+  "ses": "roller coaster"
+ },
+ {
+  "id": 262,
+  "konu": "Unit 5 · At the Fair",
+  "zorluk": "Kolay",
+  "soru": "“<b>Ferris wheel</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "dehşet verici",
+   "dönme dolap",
+   "bilet",
+   "heyecan verici"
+  ],
+  "dogru": 1,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 263,
+  "konu": "Unit 5 · At the Fair",
+  "zorluk": "Kolay",
+  "soru": "“<b>dönme dolap</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "ticket",
+   "exciting",
+   "fair",
+   "Ferris wheel"
+  ],
+  "dogru": 3,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 264,
+  "konu": "Unit 5 · At the Fair",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "boring",
+   "merry-go-round",
+   "Ferris wheel",
+   "candy floss"
+  ],
+  "dogru": 2,
+  "tur": "Listening",
+  "ses": "Ferris wheel"
+ },
+ {
+  "id": 265,
+  "konu": "Unit 5 · At the Fair",
+  "zorluk": "Kolay",
+  "soru": "“<b>bumper cars</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "heyecan verici",
+   "atlıkarınca",
+   "çarpışan arabalar",
+   "dehşet verici"
+  ],
+  "dogru": 2,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 266,
+  "konu": "Unit 5 · At the Fair",
+  "zorluk": "Kolay",
+  "soru": "“<b>çarpışan arabalar</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "haunted house",
+   "candy floss",
+   "bumper cars",
+   "fair"
+  ],
+  "dogru": 2,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 267,
+  "konu": "Unit 5 · At the Fair",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "fair",
+   "ticket",
+   "Ferris wheel",
+   "bumper cars"
+  ],
+  "dogru": 3,
+  "tur": "Listening",
+  "ses": "bumper cars"
+ },
+ {
+  "id": 268,
+  "konu": "Unit 5 · At the Fair",
+  "zorluk": "Kolay",
+  "soru": "“<b>haunted house</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "dönme dolap",
+   "hız treni",
+   "atlıkarınca",
+   "korku evi"
+  ],
+  "dogru": 3,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 269,
+  "konu": "Unit 5 · At the Fair",
+  "zorluk": "Kolay",
+  "soru": "“<b>korku evi</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "haunted house",
+   "roller coaster",
+   "terrifying",
+   "candy floss"
+  ],
+  "dogru": 0,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 270,
+  "konu": "Unit 5 · At the Fair",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "haunted house",
+   "scary",
+   "Ferris wheel",
+   "fair"
+  ],
+  "dogru": 0,
+  "tur": "Listening",
+  "ses": "haunted house"
+ },
+ {
+  "id": 271,
+  "konu": "Unit 5 · At the Fair",
+  "zorluk": "Kolay",
+  "soru": "“<b>merry-go-round</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "sıkıcı",
+   "başı dönmüş",
+   "bilet",
+   "atlıkarınca"
+  ],
+  "dogru": 3,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 272,
+  "konu": "Unit 5 · At the Fair",
+  "zorluk": "Kolay",
+  "soru": "“<b>atlıkarınca</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "haunted house",
+   "exciting",
+   "merry-go-round",
+   "Ferris wheel"
+  ],
+  "dogru": 2,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 273,
+  "konu": "Unit 5 · At the Fair",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "merry-go-round",
+   "fair",
+   "exciting",
+   "fun"
+  ],
+  "dogru": 0,
+  "tur": "Listening",
+  "ses": "merry-go-round"
+ },
+ {
+  "id": 274,
+  "konu": "Unit 5 · At the Fair",
+  "zorluk": "Kolay",
+  "soru": "“<b>ticket</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "başı dönmüş",
+   "bilet",
+   "korkutucu",
+   "dehşet verici"
+  ],
+  "dogru": 1,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 275,
+  "konu": "Unit 5 · At the Fair",
+  "zorluk": "Kolay",
+  "soru": "“<b>bilet</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "Ferris wheel",
+   "roller coaster",
+   "terrifying",
+   "ticket"
+  ],
+  "dogru": 3,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 276,
+  "konu": "Unit 5 · At the Fair",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "boring",
+   "ticket",
+   "candy floss",
+   "scary"
+  ],
+  "dogru": 1,
+  "tur": "Listening",
+  "ses": "ticket"
+ },
+ {
+  "id": 277,
+  "konu": "Unit 5 · At the Fair",
+  "zorluk": "Kolay",
+  "soru": "“<b>exciting</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "pamuk şeker",
+   "korku evi",
+   "heyecan verici",
+   "dönme dolap"
+  ],
+  "dogru": 2,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 278,
+  "konu": "Unit 5 · At the Fair",
+  "zorluk": "Kolay",
+  "soru": "“<b>heyecan verici</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "exciting",
+   "scary",
+   "ticket",
+   "roller coaster"
+  ],
+  "dogru": 0,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 279,
+  "konu": "Unit 5 · At the Fair",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "fun",
+   "exciting",
+   "merry-go-round",
+   "fair"
+  ],
+  "dogru": 1,
+  "tur": "Listening",
+  "ses": "exciting"
+ },
+ {
+  "id": 280,
+  "konu": "Unit 5 · At the Fair",
+  "zorluk": "Kolay",
+  "soru": "“<b>scary</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "korku evi",
+   "korkutucu",
+   "atlıkarınca",
+   "çarpışan arabalar"
+  ],
+  "dogru": 1,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 281,
+  "konu": "Unit 5 · At the Fair",
+  "zorluk": "Kolay",
+  "soru": "“<b>korkutucu</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "boring",
+   "roller coaster",
+   "bumper cars",
+   "scary"
+  ],
+  "dogru": 3,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 282,
+  "konu": "Unit 5 · At the Fair",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "candy floss",
+   "scary",
+   "terrifying",
+   "Ferris wheel"
+  ],
+  "dogru": 1,
+  "tur": "Listening",
+  "ses": "scary"
+ },
+ {
+  "id": 283,
+  "konu": "Unit 5 · At the Fair",
+  "zorluk": "Kolay",
+  "soru": "“<b>boring</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "başı dönmüş",
+   "hız treni",
+   "sıkıcı",
+   "bilet"
+  ],
+  "dogru": 2,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 284,
+  "konu": "Unit 5 · At the Fair",
+  "zorluk": "Kolay",
+  "soru": "“<b>sıkıcı</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "merry-go-round",
+   "candy floss",
+   "boring",
+   "bumper cars"
+  ],
+  "dogru": 2,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 285,
+  "konu": "Unit 5 · At the Fair",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "roller coaster",
+   "boring",
+   "fun",
+   "dizzy"
+  ],
+  "dogru": 1,
+  "tur": "Listening",
+  "ses": "boring"
+ },
+ {
+  "id": 286,
+  "konu": "Unit 5 · At the Fair",
+  "zorluk": "Kolay",
+  "soru": "“<b>fun</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "eğlenceli",
+   "korkutucu",
+   "dehşet verici",
+   "lunapark"
+  ],
+  "dogru": 0,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 287,
+  "konu": "Unit 5 · At the Fair",
+  "zorluk": "Kolay",
+  "soru": "“<b>eğlenceli</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "fun",
+   "dizzy",
+   "exciting",
+   "fair"
+  ],
+  "dogru": 0,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 288,
+  "konu": "Unit 5 · At the Fair",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "roller coaster",
+   "exciting",
+   "fun",
+   "ticket"
+  ],
+  "dogru": 2,
+  "tur": "Listening",
+  "ses": "fun"
+ },
+ {
+  "id": 289,
+  "konu": "Unit 5 · At the Fair",
+  "zorluk": "Kolay",
+  "soru": "“<b>dizzy</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "başı dönmüş",
+   "bilet",
+   "eğlenceli",
+   "korku evi"
+  ],
+  "dogru": 0,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 290,
+  "konu": "Unit 5 · At the Fair",
+  "zorluk": "Kolay",
+  "soru": "“<b>başı dönmüş</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "Ferris wheel",
+   "terrifying",
+   "dizzy",
+   "haunted house"
+  ],
+  "dogru": 2,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 291,
+  "konu": "Unit 5 · At the Fair",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "dizzy",
+   "terrifying",
+   "roller coaster",
+   "ticket"
+  ],
+  "dogru": 0,
+  "tur": "Listening",
+  "ses": "dizzy"
+ },
+ {
+  "id": 292,
+  "konu": "Unit 5 · At the Fair",
+  "zorluk": "Kolay",
+  "soru": "“<b>candy floss</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "lunapark",
+   "pamuk şeker",
+   "korkutucu",
+   "başı dönmüş"
+  ],
+  "dogru": 1,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 293,
+  "konu": "Unit 5 · At the Fair",
+  "zorluk": "Kolay",
+  "soru": "“<b>pamuk şeker</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "fun",
+   "candy floss",
+   "merry-go-round",
+   "roller coaster"
+  ],
+  "dogru": 1,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 294,
+  "konu": "Unit 5 · At the Fair",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "scary",
+   "candy floss",
+   "fun",
+   "merry-go-round"
+  ],
+  "dogru": 1,
+  "tur": "Listening",
+  "ses": "candy floss"
+ },
+ {
+  "id": 295,
+  "konu": "Unit 5 · At the Fair",
+  "zorluk": "Kolay",
+  "soru": "“<b>terrifying</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "eğlenceli",
+   "sıkıcı",
+   "heyecan verici",
+   "dehşet verici"
+  ],
+  "dogru": 3,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 296,
+  "konu": "Unit 5 · At the Fair",
+  "zorluk": "Kolay",
+  "soru": "“<b>dehşet verici</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "terrifying",
+   "fair",
+   "fun",
+   "dizzy"
+  ],
+  "dogru": 0,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 297,
+  "konu": "Unit 5 · At the Fair",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "terrifying",
+   "scary",
+   "haunted house",
+   "candy floss"
+  ],
+  "dogru": 0,
+  "tur": "Listening",
+  "ses": "terrifying"
+ },
+ {
+  "id": 298,
+  "konu": "Unit 5 · At the Fair",
+  "zorluk": "Orta",
+  "soru": "Boşluğa hangisi gelmelidir?<br><i>The roller coaster is ___ than the merry-go-round.</i>",
+  "secenekler": [
+   "more exciting",
+   "most exciting",
+   "excitinger",
+   "exciting"
+  ],
+  "dogru": 0,
+  "tur": "Grammar",
+  "aciklama": "Uzun sıfatlar: more exciting than."
+ },
+ {
+  "id": 299,
+  "konu": "Unit 5 · At the Fair",
+  "zorluk": "Orta",
+  "soru": "Boşluğa hangisi gelmelidir?<br><i>The haunted house is ___ than the bumper cars.</i>",
+  "secenekler": [
+   "more scary",
+   "scarier",
+   "scariest",
+   "scary"
+  ],
+  "dogru": 1,
+  "tur": "Grammar",
+  "aciklama": "scary → scarier."
+ },
+ {
+  "id": 300,
+  "konu": "Unit 5 · At the Fair",
+  "zorluk": "Orta",
+  "soru": "Boşluğa hangisi gelmelidir?<br><i>Let's ___ the Ferris wheel!</i>",
+  "secenekler": [
+   "to ride",
+   "riding",
+   "rides",
+   "ride"
+  ],
+  "dogru": 3,
+  "tur": "Grammar",
+  "aciklama": "Let's'ten sonra fiil yalın kullanılır."
+ },
+ {
+  "id": 301,
+  "konu": "Unit 5 · At the Fair",
+  "zorluk": "Orta",
+  "soru": "Boşluğa hangisi gelmelidir?<br><i>I think the merry-go-round is ___ than the roller coaster.</i>",
+  "secenekler": [
+   "most boring",
+   "boring",
+   "boringer",
+   "more boring"
+  ],
+  "dogru": 3,
+  "tur": "Grammar",
+  "aciklama": "Uzun sıfatlar: more boring than."
+ },
+ {
+  "id": 302,
+  "konu": "Unit 5 · At the Fair",
+  "zorluk": "Orta",
+  "soru": "Boşluğa hangisi gelmelidir?<br><i>How about going to the fair? — ___</i>",
+  "secenekler": [
+   "See you yesterday.",
+   "That's a great idea!",
+   "You're welcome.",
+   "I'm fine, thanks."
+  ],
+  "dogru": 1,
+  "tur": "Grammar",
+  "aciklama": "Bir öneriyi kabul ederken 'That's a great idea!' denir."
+ },
+ {
+  "id": 303,
+  "konu": "Unit 5 · At the Fair",
+  "zorluk": "Orta",
+  "soru": "Boşluğa hangisi gelmelidir?<br><i>The Ferris wheel is ___ than the roller coaster.</i>",
+  "secenekler": [
+   "slowest",
+   "slow",
+   "slower",
+   "more slow"
+  ],
+  "dogru": 2,
+  "tur": "Grammar",
+  "aciklama": "Kısa sıfatlar -er alır: slow → slower."
+ },
+ {
+  "id": 304,
+  "konu": "Unit 5 · At the Fair",
+  "zorluk": "Orta",
+  "soru": "Boşluğa hangisi gelmelidir?<br><i>I ___ scared of the haunted house.</i>",
+  "secenekler": [
+   "be",
+   "is",
+   "am",
+   "are"
+  ],
+  "dogru": 2,
+  "tur": "Grammar",
+  "aciklama": "I ile 'am' kullanılır."
+ },
+ {
+  "id": 305,
+  "konu": "Unit 5 · At the Fair",
+  "zorluk": "Orta",
+  "soru": "Boşluğa hangisi gelmelidir?<br><i>Which ride is ___, the roller coaster or the bumper cars?</i>",
+  "secenekler": [
+   "more fast",
+   "fast",
+   "fastest",
+   "faster"
+  ],
+  "dogru": 3,
+  "tur": "Grammar",
+  "aciklama": "İki şeyi karşılaştırırken -er kullanılır: faster."
+ },
+ {
+  "id": 306,
+  "konu": "Unit 5 · At the Fair",
+  "zorluk": "Orta",
+  "soru": "Diyaloğu tamamlayınız.<br><b>A:</b> Let's go to the fair!<br><b>B:</b> ______",
+  "secenekler": [
+   "No, she isn't.",
+   "It's on the table.",
+   "Sure, why not?",
+   "I was born in 2014."
+  ],
+  "dogru": 2,
+  "tur": "Dialogue"
+ },
+ {
+  "id": 307,
+  "konu": "Unit 5 · At the Fair",
+  "zorluk": "Zor",
+  "soru": "Dinleyin. Duyduğunuz soruya verilecek en uygun cevap hangisidir?",
+  "secenekler": [
+   "Sure, why not?",
+   "It's on the table.",
+   "I was born in 2014.",
+   "No, she isn't."
+  ],
+  "dogru": 0,
+  "tur": "Listening",
+  "ses": "Let's go to the fair!"
+ },
+ {
+  "id": 308,
+  "konu": "Unit 5 · At the Fair",
+  "zorluk": "Orta",
+  "soru": "Diyaloğu tamamlayınız.<br><b>A:</b> Which ride is more exciting?<br><b>B:</b> ______",
+  "secenekler": [
+   "Yes, it is.",
+   "The roller coaster.",
+   "At the fair.",
+   "Two tickets."
+  ],
+  "dogru": 1,
+  "tur": "Dialogue"
+ },
+ {
+  "id": 309,
+  "konu": "Unit 5 · At the Fair",
+  "zorluk": "Zor",
+  "soru": "Dinleyin. Duyduğunuz soruya verilecek en uygun cevap hangisidir?",
+  "secenekler": [
+   "At the fair.",
+   "Yes, it is.",
+   "The roller coaster.",
+   "Two tickets."
+  ],
+  "dogru": 2,
+  "tur": "Listening",
+  "ses": "Which ride is more exciting?"
+ },
+ {
+  "id": 310,
+  "konu": "Unit 5 · At the Fair",
+  "zorluk": "Orta",
+  "soru": "Diyaloğu tamamlayınız.<br><b>A:</b> How much is a ticket for the Ferris wheel?<br><b>B:</b> ______",
+  "secenekler": [
+   "It's exciting.",
+   "It's 50 lira.",
+   "It's next to the café.",
+   "I'm scared."
+  ],
+  "dogru": 1,
+  "tur": "Dialogue"
+ },
+ {
+  "id": 311,
+  "konu": "Unit 5 · At the Fair",
+  "zorluk": "Zor",
+  "soru": "Dinleyin. Duyduğunuz soruya verilecek en uygun cevap hangisidir?",
+  "secenekler": [
+   "It's next to the café.",
+   "I'm scared.",
+   "It's exciting.",
+   "It's 50 lira."
+  ],
+  "dogru": 3,
+  "tur": "Listening",
+  "ses": "How much is a ticket for the Ferris wheel?"
+ },
+ {
+  "id": 312,
+  "konu": "Unit 5 · At the Fair",
+  "zorluk": "Zor",
+  "soru": "<i>Last Saturday, Mert and Ada were at the fair. Mert loved the roller coaster because it was very exciting. Ada was scared of the haunted house. She thinks the Ferris wheel is more relaxing.</i><br><br><b>Which ride did Mert love?</b>",
+  "secenekler": [
+   "The haunted house.",
+   "The bumper cars.",
+   "The Ferris wheel.",
+   "The roller coaster."
+  ],
+  "dogru": 3,
+  "tur": "Reading"
+ },
+ {
+  "id": 313,
+  "konu": "Unit 5 · At the Fair",
+  "zorluk": "Zor",
+  "soru": "<i>Last Saturday, Mert and Ada were at the fair. Mert loved the roller coaster because it was very exciting. Ada was scared of the haunted house. She thinks the Ferris wheel is more relaxing.</i><br><br><b>What was Ada scared of?</b>",
+  "secenekler": [
+   "The roller coaster.",
+   "The haunted house.",
+   "Mert.",
+   "The Ferris wheel."
+  ],
+  "dogru": 1,
+  "tur": "Reading"
+ },
+ {
+  "id": 314,
+  "konu": "Unit 5 · At the Fair",
+  "zorluk": "Zor",
+  "soru": "<i>Last Saturday, Mert and Ada were at the fair. Mert loved the roller coaster because it was very exciting. Ada was scared of the haunted house. She thinks the Ferris wheel is more relaxing.</i><br><br><b>When were they at the fair?</b>",
+  "secenekler": [
+   "Last Saturday.",
+   "Last Sunday.",
+   "Yesterday.",
+   "Every day."
+  ],
+  "dogru": 0,
+  "tur": "Reading"
+ },
+ {
+  "id": 315,
+  "konu": "Unit 6 · Occupations",
+  "zorluk": "Kolay",
+  "soru": "“<b>nurse</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "meslek, iş",
+   "öğretmen",
+   "hemşire",
+   "cesur"
+  ],
+  "dogru": 2,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 316,
+  "konu": "Unit 6 · Occupations",
+  "zorluk": "Kolay",
+  "soru": "“<b>hemşire</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "dentist",
+   "nurse",
+   "brave",
+   "teacher"
+  ],
+  "dogru": 1,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 317,
+  "konu": "Unit 6 · Occupations",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "architect",
+   "dentist",
+   "nurse",
+   "cook"
+  ],
+  "dogru": 2,
+  "tur": "Listening",
+  "ses": "nurse"
+ },
+ {
+  "id": 318,
+  "konu": "Unit 6 · Occupations",
+  "zorluk": "Kolay",
+  "soru": "“<b>engineer</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "mimar",
+   "cesur",
+   "mühendis",
+   "hemşire"
+  ],
+  "dogru": 2,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 319,
+  "konu": "Unit 6 · Occupations",
+  "zorluk": "Kolay",
+  "soru": "“<b>mühendis</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "engineer",
+   "waiter",
+   "farmer",
+   "teacher"
+  ],
+  "dogru": 0,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 320,
+  "konu": "Unit 6 · Occupations",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "police officer",
+   "teacher",
+   "farmer",
+   "engineer"
+  ],
+  "dogru": 3,
+  "tur": "Listening",
+  "ses": "engineer"
+ },
+ {
+  "id": 321,
+  "konu": "Unit 6 · Occupations",
+  "zorluk": "Kolay",
+  "soru": "“<b>farmer</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "veteriner",
+   "polis memuru",
+   "çiftçi",
+   "öğretmen"
+  ],
+  "dogru": 2,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 322,
+  "konu": "Unit 6 · Occupations",
+  "zorluk": "Kolay",
+  "soru": "“<b>çiftçi</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "nurse",
+   "farmer",
+   "engineer",
+   "teacher"
+  ],
+  "dogru": 1,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 323,
+  "konu": "Unit 6 · Occupations",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "job",
+   "police officer",
+   "farmer",
+   "mechanic"
+  ],
+  "dogru": 2,
+  "tur": "Listening",
+  "ses": "farmer"
+ },
+ {
+  "id": 324,
+  "konu": "Unit 6 · Occupations",
+  "zorluk": "Kolay",
+  "soru": "“<b>cook</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "hemşire",
+   "aşçı",
+   "itfaiyeci",
+   "garson"
+  ],
+  "dogru": 1,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 325,
+  "konu": "Unit 6 · Occupations",
+  "zorluk": "Kolay",
+  "soru": "“<b>aşçı</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "architect",
+   "job",
+   "firefighter",
+   "cook"
+  ],
+  "dogru": 3,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 326,
+  "konu": "Unit 6 · Occupations",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "job",
+   "cook",
+   "lawyer",
+   "farmer"
+  ],
+  "dogru": 1,
+  "tur": "Listening",
+  "ses": "cook"
+ },
+ {
+  "id": 327,
+  "konu": "Unit 6 · Occupations",
+  "zorluk": "Kolay",
+  "soru": "“<b>dentist</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "diş hekimi",
+   "çiftçi",
+   "veteriner",
+   "hemşire"
+  ],
+  "dogru": 0,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 328,
+  "konu": "Unit 6 · Occupations",
+  "zorluk": "Kolay",
+  "soru": "“<b>diş hekimi</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "job",
+   "dentist",
+   "lawyer",
+   "vet"
+  ],
+  "dogru": 1,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 329,
+  "konu": "Unit 6 · Occupations",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "dentist",
+   "nurse",
+   "job",
+   "engineer"
+  ],
+  "dogru": 0,
+  "tur": "Listening",
+  "ses": "dentist"
+ },
+ {
+  "id": 330,
+  "konu": "Unit 6 · Occupations",
+  "zorluk": "Kolay",
+  "soru": "“<b>firefighter</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "hemşire",
+   "itfaiyeci",
+   "çiftçi",
+   "garson"
+  ],
+  "dogru": 1,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 331,
+  "konu": "Unit 6 · Occupations",
+  "zorluk": "Kolay",
+  "soru": "“<b>itfaiyeci</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "mechanic",
+   "firefighter",
+   "nurse",
+   "job"
+  ],
+  "dogru": 1,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 332,
+  "konu": "Unit 6 · Occupations",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "mechanic",
+   "cook",
+   "firefighter",
+   "job"
+  ],
+  "dogru": 2,
+  "tur": "Listening",
+  "ses": "firefighter"
+ },
+ {
+  "id": 333,
+  "konu": "Unit 6 · Occupations",
+  "zorluk": "Kolay",
+  "soru": "“<b>police officer</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "hemşire",
+   "itfaiyeci",
+   "aşçı",
+   "polis memuru"
+  ],
+  "dogru": 3,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 334,
+  "konu": "Unit 6 · Occupations",
+  "zorluk": "Kolay",
+  "soru": "“<b>polis memuru</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "lawyer",
+   "nurse",
+   "dentist",
+   "police officer"
+  ],
+  "dogru": 3,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 335,
+  "konu": "Unit 6 · Occupations",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "brave",
+   "teacher",
+   "police officer",
+   "vet"
+  ],
+  "dogru": 2,
+  "tur": "Listening",
+  "ses": "police officer"
+ },
+ {
+  "id": 336,
+  "konu": "Unit 6 · Occupations",
+  "zorluk": "Kolay",
+  "soru": "“<b>vet</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "aşçı",
+   "itfaiyeci",
+   "veteriner",
+   "polis memuru"
+  ],
+  "dogru": 2,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 337,
+  "konu": "Unit 6 · Occupations",
+  "zorluk": "Kolay",
+  "soru": "“<b>veteriner</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "vet",
+   "cook",
+   "farmer",
+   "nurse"
+  ],
+  "dogru": 0,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 338,
+  "konu": "Unit 6 · Occupations",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "vet",
+   "nurse",
+   "brave",
+   "dentist"
+  ],
+  "dogru": 0,
+  "tur": "Listening",
+  "ses": "vet"
+ },
+ {
+  "id": 339,
+  "konu": "Unit 6 · Occupations",
+  "zorluk": "Kolay",
+  "soru": "“<b>architect</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "polis memuru",
+   "diş hekimi",
+   "mimar",
+   "çiftçi"
+  ],
+  "dogru": 2,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 340,
+  "konu": "Unit 6 · Occupations",
+  "zorluk": "Kolay",
+  "soru": "“<b>mimar</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "architect",
+   "police officer",
+   "vet",
+   "engineer"
+  ],
+  "dogru": 0,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 341,
+  "konu": "Unit 6 · Occupations",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "mechanic",
+   "cook",
+   "architect",
+   "brave"
+  ],
+  "dogru": 2,
+  "tur": "Listening",
+  "ses": "architect"
+ },
+ {
+  "id": 342,
+  "konu": "Unit 6 · Occupations",
+  "zorluk": "Kolay",
+  "soru": "“<b>lawyer</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "hemşire",
+   "veteriner",
+   "avukat",
+   "polis memuru"
+  ],
+  "dogru": 2,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 343,
+  "konu": "Unit 6 · Occupations",
+  "zorluk": "Kolay",
+  "soru": "“<b>avukat</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "nurse",
+   "vet",
+   "firefighter",
+   "lawyer"
+  ],
+  "dogru": 3,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 344,
+  "konu": "Unit 6 · Occupations",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "lawyer",
+   "brave",
+   "mechanic",
+   "teacher"
+  ],
+  "dogru": 0,
+  "tur": "Listening",
+  "ses": "lawyer"
+ },
+ {
+  "id": 345,
+  "konu": "Unit 6 · Occupations",
+  "zorluk": "Kolay",
+  "soru": "“<b>mechanic</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "aşçı",
+   "meslek, iş",
+   "öğretmen",
+   "tamirci"
+  ],
+  "dogru": 3,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 346,
+  "konu": "Unit 6 · Occupations",
+  "zorluk": "Kolay",
+  "soru": "“<b>tamirci</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "engineer",
+   "waiter",
+   "vet",
+   "mechanic"
+  ],
+  "dogru": 3,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 347,
+  "konu": "Unit 6 · Occupations",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "mechanic",
+   "farmer",
+   "engineer",
+   "architect"
+  ],
+  "dogru": 0,
+  "tur": "Listening",
+  "ses": "mechanic"
+ },
+ {
+  "id": 348,
+  "konu": "Unit 6 · Occupations",
+  "zorluk": "Kolay",
+  "soru": "“<b>waiter</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "hemşire",
+   "polis memuru",
+   "tamirci",
+   "garson"
+  ],
+  "dogru": 3,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 349,
+  "konu": "Unit 6 · Occupations",
+  "zorluk": "Kolay",
+  "soru": "“<b>garson</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "waiter",
+   "firefighter",
+   "architect",
+   "dentist"
+  ],
+  "dogru": 0,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 350,
+  "konu": "Unit 6 · Occupations",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "cook",
+   "engineer",
+   "firefighter",
+   "waiter"
+  ],
+  "dogru": 3,
+  "tur": "Listening",
+  "ses": "waiter"
+ },
+ {
+  "id": 351,
+  "konu": "Unit 6 · Occupations",
+  "zorluk": "Kolay",
+  "soru": "“<b>teacher</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "meslek, iş",
+   "mimar",
+   "öğretmen",
+   "çiftçi"
+  ],
+  "dogru": 2,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 352,
+  "konu": "Unit 6 · Occupations",
+  "zorluk": "Kolay",
+  "soru": "“<b>öğretmen</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "architect",
+   "dentist",
+   "teacher",
+   "cook"
+  ],
+  "dogru": 2,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 353,
+  "konu": "Unit 6 · Occupations",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "engineer",
+   "mechanic",
+   "teacher",
+   "vet"
+  ],
+  "dogru": 2,
+  "tur": "Listening",
+  "ses": "teacher"
+ },
+ {
+  "id": 354,
+  "konu": "Unit 6 · Occupations",
+  "zorluk": "Kolay",
+  "soru": "“<b>job</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "garson",
+   "polis memuru",
+   "aşçı",
+   "meslek, iş"
+  ],
+  "dogru": 3,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 355,
+  "konu": "Unit 6 · Occupations",
+  "zorluk": "Kolay",
+  "soru": "“<b>meslek, iş</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "job",
+   "mechanic",
+   "lawyer",
+   "nurse"
+  ],
+  "dogru": 0,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 356,
+  "konu": "Unit 6 · Occupations",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "job",
+   "waiter",
+   "dentist",
+   "brave"
+  ],
+  "dogru": 0,
+  "tur": "Listening",
+  "ses": "job"
+ },
+ {
+  "id": 357,
+  "konu": "Unit 6 · Occupations",
+  "zorluk": "Kolay",
+  "soru": "“<b>brave</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "diş hekimi",
+   "hemşire",
+   "cesur",
+   "garson"
+  ],
+  "dogru": 2,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 358,
+  "konu": "Unit 6 · Occupations",
+  "zorluk": "Kolay",
+  "soru": "“<b>cesur</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "brave",
+   "cook",
+   "vet",
+   "architect"
+  ],
+  "dogru": 0,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 359,
+  "konu": "Unit 6 · Occupations",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "brave",
+   "police officer",
+   "job",
+   "nurse"
+  ],
+  "dogru": 0,
+  "tur": "Listening",
+  "ses": "brave"
+ },
+ {
+  "id": 360,
+  "konu": "Unit 6 · Occupations",
+  "zorluk": "Orta",
+  "soru": "Boşluğa hangisi gelmelidir?<br><i>What ___ your mother do? — She is a nurse.</i>",
+  "secenekler": [
+   "are",
+   "does",
+   "is",
+   "do"
+  ],
+  "dogru": 1,
+  "tur": "Grammar",
+  "aciklama": "Meslek sorusu: What does he/she do?"
+ },
+ {
+  "id": 361,
+  "konu": "Unit 6 · Occupations",
+  "zorluk": "Orta",
+  "soru": "Boşluğa hangisi gelmelidir?<br><i>My father ___ at a hospital. He is a doctor.</i>",
+  "secenekler": [
+   "works",
+   "working",
+   "work",
+   "is work"
+  ],
+  "dogru": 0,
+  "tur": "Grammar",
+  "aciklama": "He ile fiil -s alır: works."
+ },
+ {
+  "id": 362,
+  "konu": "Unit 6 · Occupations",
+  "zorluk": "Orta",
+  "soru": "Boşluğa hangisi gelmelidir?<br><i>A ___ flies planes.</i>",
+  "secenekler": [
+   "vet",
+   "dentist",
+   "pilot",
+   "farmer"
+  ],
+  "dogru": 2,
+  "tur": "Grammar",
+  "aciklama": "Uçak uçuran kişi pilottur."
+ },
+ {
+  "id": 363,
+  "konu": "Unit 6 · Occupations",
+  "zorluk": "Orta",
+  "soru": "Boşluğa hangisi gelmelidir?<br><i>A ___ helps sick animals.</i>",
+  "secenekler": [
+   "vet",
+   "pilot",
+   "architect",
+   "lawyer"
+  ],
+  "dogru": 0,
+  "tur": "Grammar",
+  "aciklama": "Hasta hayvanlara veteriner (vet) bakar."
+ },
+ {
+  "id": 364,
+  "konu": "Unit 6 · Occupations",
+  "zorluk": "Orta",
+  "soru": "Boşluğa hangisi gelmelidir?<br><i>A ___ designs buildings.</i>",
+  "secenekler": [
+   "architect",
+   "waiter",
+   "cook",
+   "farmer"
+  ],
+  "dogru": 0,
+  "tur": "Grammar",
+  "aciklama": "Binaları mimar (architect) tasarlar."
+ },
+ {
+  "id": 365,
+  "konu": "Unit 6 · Occupations",
+  "zorluk": "Orta",
+  "soru": "Boşluğa hangisi gelmelidir?<br><i>A ___ grows vegetables and fruits.</i>",
+  "secenekler": [
+   "mechanic",
+   "pilot",
+   "farmer",
+   "nurse"
+  ],
+  "dogru": 2,
+  "tur": "Grammar",
+  "aciklama": "Sebze ve meyve yetiştiren kişi çiftçidir."
+ },
+ {
+  "id": 366,
+  "konu": "Unit 6 · Occupations",
+  "zorluk": "Orta",
+  "soru": "Boşluğa hangisi gelmelidir?<br><i>Where does a firefighter work? — At a ___.</i>",
+  "secenekler": [
+   "bakery",
+   "fire station",
+   "bank",
+   "farm"
+  ],
+  "dogru": 1,
+  "tur": "Grammar",
+  "aciklama": "İtfaiyeciler itfaiye istasyonunda (fire station) çalışır."
+ },
+ {
+  "id": 367,
+  "konu": "Unit 6 · Occupations",
+  "zorluk": "Orta",
+  "soru": "Boşluğa hangisi gelmelidir?<br><i>My uncle ___ a teacher. He teaches English.</i>",
+  "secenekler": [
+   "are",
+   "does",
+   "is",
+   "am"
+  ],
+  "dogru": 2,
+  "tur": "Grammar",
+  "aciklama": "He ile 'is' kullanılır."
+ },
+ {
+  "id": 368,
+  "konu": "Unit 6 · Occupations",
+  "zorluk": "Orta",
+  "soru": "Boşluğa hangisi gelmelidir?<br><i>Does your brother work at a bank? — No, he ___.</i>",
+  "secenekler": [
+   "isn't",
+   "doesn't",
+   "not",
+   "don't"
+  ],
+  "dogru": 1,
+  "tur": "Grammar",
+  "aciklama": "Does ile sorulan soruya kısa cevap: No, he doesn't."
+ },
+ {
+  "id": 369,
+  "konu": "Unit 6 · Occupations",
+  "zorluk": "Orta",
+  "soru": "Boşluğa hangisi gelmelidir?<br><i>She is ___ engineer.</i>",
+  "secenekler": [
+   "an",
+   "the",
+   "some",
+   "a"
+  ],
+  "dogru": 0,
+  "tur": "Grammar",
+  "aciklama": "Sesli harfle başlayan 'engineer' kelimesinden önce 'an' gelir."
+ },
+ {
+  "id": 370,
+  "konu": "Unit 6 · Occupations",
+  "zorluk": "Orta",
+  "soru": "Diyaloğu tamamlayınız.<br><b>A:</b> What does your father do?<br><b>B:</b> ______",
+  "secenekler": [
+   "He's at home.",
+   "He likes football.",
+   "He's an engineer.",
+   "He's fine."
+  ],
+  "dogru": 2,
+  "tur": "Dialogue"
+ },
+ {
+  "id": 371,
+  "konu": "Unit 6 · Occupations",
+  "zorluk": "Zor",
+  "soru": "Dinleyin. Duyduğunuz soruya verilecek en uygun cevap hangisidir?",
+  "secenekler": [
+   "He's fine.",
+   "He's an engineer.",
+   "He likes football.",
+   "He's at home."
+  ],
+  "dogru": 1,
+  "tur": "Listening",
+  "ses": "What does your father do?"
+ },
+ {
+  "id": 372,
+  "konu": "Unit 6 · Occupations",
+  "zorluk": "Orta",
+  "soru": "Diyaloğu tamamlayınız.<br><b>A:</b> Where does a nurse work?<br><b>B:</b> ______",
+  "secenekler": [
+   "She is kind.",
+   "Every day.",
+   "A doctor.",
+   "At a hospital."
+  ],
+  "dogru": 3,
+  "tur": "Dialogue"
+ },
+ {
+  "id": 373,
+  "konu": "Unit 6 · Occupations",
+  "zorluk": "Zor",
+  "soru": "Dinleyin. Duyduğunuz soruya verilecek en uygun cevap hangisidir?",
+  "secenekler": [
+   "Every day.",
+   "She is kind.",
+   "At a hospital.",
+   "A doctor."
+  ],
+  "dogru": 2,
+  "tur": "Listening",
+  "ses": "Where does a nurse work?"
+ },
+ {
+  "id": 374,
+  "konu": "Unit 6 · Occupations",
+  "zorluk": "Orta",
+  "soru": "Diyaloğu tamamlayınız.<br><b>A:</b> What do you want to be in the future?<br><b>B:</b> ______",
+  "secenekler": [
+   "Yes, I want.",
+   "I want to be an architect.",
+   "I was a student.",
+   "At the school."
+  ],
+  "dogru": 1,
+  "tur": "Dialogue"
+ },
+ {
+  "id": 375,
+  "konu": "Unit 6 · Occupations",
+  "zorluk": "Zor",
+  "soru": "Dinleyin. Duyduğunuz soruya verilecek en uygun cevap hangisidir?",
+  "secenekler": [
+   "I was a student.",
+   "At the school.",
+   "Yes, I want.",
+   "I want to be an architect."
+  ],
+  "dogru": 3,
+  "tur": "Listening",
+  "ses": "What do you want to be in the future?"
+ },
+ {
+  "id": 376,
+  "konu": "Unit 6 · Occupations",
+  "zorluk": "Zor",
+  "soru": "<i>My name is Selin. My mother is a vet. She works at an animal clinic and helps sick animals. My father is a cook. He works at a restaurant and makes delicious food. I want to be a pilot in the future.</i><br><br><b>What does Selin's mother do?</b>",
+  "secenekler": [
+   "She's a nurse.",
+   "She's a cook.",
+   "She's a vet.",
+   "She's a pilot."
+  ],
+  "dogru": 2,
+  "tur": "Reading"
+ },
+ {
+  "id": 377,
+  "konu": "Unit 6 · Occupations",
+  "zorluk": "Zor",
+  "soru": "<i>My name is Selin. My mother is a vet. She works at an animal clinic and helps sick animals. My father is a cook. He works at a restaurant and makes delicious food. I want to be a pilot in the future.</i><br><br><b>Where does Selin's father work?</b>",
+  "secenekler": [
+   "At an animal clinic.",
+   "At a school.",
+   "At a restaurant.",
+   "At an airport."
+  ],
+  "dogru": 2,
+  "tur": "Reading"
+ },
+ {
+  "id": 378,
+  "konu": "Unit 6 · Occupations",
+  "zorluk": "Zor",
+  "soru": "<i>My name is Selin. My mother is a vet. She works at an animal clinic and helps sick animals. My father is a cook. He works at a restaurant and makes delicious food. I want to be a pilot in the future.</i><br><br><b>What does Selin want to be?</b>",
+  "secenekler": [
+   "A vet.",
+   "A teacher.",
+   "A cook.",
+   "A pilot."
+  ],
+  "dogru": 3,
+  "tur": "Reading"
+ },
+ {
+  "id": 379,
+  "konu": "Unit 7 · Holidays",
+  "zorluk": "Kolay",
+  "soru": "“<b>holiday</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "çadır",
+   "tatil",
+   "plaj",
+   "bavul"
+  ],
+  "dogru": 1,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 380,
+  "konu": "Unit 7 · Holidays",
+  "zorluk": "Kolay",
+  "soru": "“<b>tatil</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "beach",
+   "view",
+   "visit",
+   "holiday"
+  ],
+  "dogru": 3,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 381,
+  "konu": "Unit 7 · Holidays",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "visit",
+   "sightseeing",
+   "tent",
+   "holiday"
+  ],
+  "dogru": 3,
+  "tur": "Listening",
+  "ses": "holiday"
+ },
+ {
+  "id": 382,
+  "konu": "Unit 7 · Holidays",
+  "zorluk": "Kolay",
+  "soru": "“<b>beach</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "pasaport",
+   "plaj",
+   "hediyelik eşya",
+   "gezip görme"
+  ],
+  "dogru": 1,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 383,
+  "konu": "Unit 7 · Holidays",
+  "zorluk": "Kolay",
+  "soru": "“<b>plaj</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "beach",
+   "sunbathe",
+   "tent",
+   "campsite"
+  ],
+  "dogru": 0,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 384,
+  "konu": "Unit 7 · Holidays",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "beach",
+   "yesterday",
+   "holiday",
+   "tent"
+  ],
+  "dogru": 0,
+  "tur": "Listening",
+  "ses": "beach"
+ },
+ {
+  "id": 385,
+  "konu": "Unit 7 · Holidays",
+  "zorluk": "Kolay",
+  "soru": "“<b>tent</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "güneşlenmek",
+   "manzara",
+   "çadır",
+   "plaj"
+  ],
+  "dogru": 2,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 386,
+  "konu": "Unit 7 · Holidays",
+  "zorluk": "Kolay",
+  "soru": "“<b>çadır</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "view",
+   "campsite",
+   "tent",
+   "souvenir"
+  ],
+  "dogru": 2,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 387,
+  "konu": "Unit 7 · Holidays",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "souvenir",
+   "campsite",
+   "tent",
+   "holiday"
+  ],
+  "dogru": 2,
+  "tur": "Listening",
+  "ses": "tent"
+ },
+ {
+  "id": 388,
+  "konu": "Unit 7 · Holidays",
+  "zorluk": "Kolay",
+  "soru": "“<b>souvenir</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "plaj",
+   "hediyelik eşya",
+   "dün",
+   "pasaport"
+  ],
+  "dogru": 1,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 389,
+  "konu": "Unit 7 · Holidays",
+  "zorluk": "Kolay",
+  "soru": "“<b>hediyelik eşya</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "yesterday",
+   "view",
+   "souvenir",
+   "beach"
+  ],
+  "dogru": 2,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 390,
+  "konu": "Unit 7 · Holidays",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "yesterday",
+   "souvenir",
+   "last summer",
+   "holiday"
+  ],
+  "dogru": 1,
+  "tur": "Listening",
+  "ses": "souvenir"
+ },
+ {
+  "id": 391,
+  "konu": "Unit 7 · Holidays",
+  "zorluk": "Kolay",
+  "soru": "“<b>suitcase</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "plaj",
+   "ziyaret etmek",
+   "bavul",
+   "gezi, yolculuk"
+  ],
+  "dogru": 2,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 392,
+  "konu": "Unit 7 · Holidays",
+  "zorluk": "Kolay",
+  "soru": "“<b>bavul</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "suitcase",
+   "view",
+   "visit",
+   "beach"
+  ],
+  "dogru": 0,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 393,
+  "konu": "Unit 7 · Holidays",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "yesterday",
+   "visit",
+   "souvenir",
+   "suitcase"
+  ],
+  "dogru": 3,
+  "tur": "Listening",
+  "ses": "suitcase"
+ },
+ {
+  "id": 394,
+  "konu": "Unit 7 · Holidays",
+  "zorluk": "Kolay",
+  "soru": "“<b>passport</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "gezip görme",
+   "dün",
+   "manzara",
+   "pasaport"
+  ],
+  "dogru": 3,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 395,
+  "konu": "Unit 7 · Holidays",
+  "zorluk": "Kolay",
+  "soru": "“<b>pasaport</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "passport",
+   "visit",
+   "suitcase",
+   "holiday"
+  ],
+  "dogru": 0,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 396,
+  "konu": "Unit 7 · Holidays",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "passport",
+   "tent",
+   "suitcase",
+   "sunbathe"
+  ],
+  "dogru": 0,
+  "tur": "Listening",
+  "ses": "passport"
+ },
+ {
+  "id": 397,
+  "konu": "Unit 7 · Holidays",
+  "zorluk": "Kolay",
+  "soru": "“<b>campsite</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "yurt dışı",
+   "bavul",
+   "çadır",
+   "kamp alanı"
+  ],
+  "dogru": 3,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 398,
+  "konu": "Unit 7 · Holidays",
+  "zorluk": "Kolay",
+  "soru": "“<b>kamp alanı</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "trip",
+   "tent",
+   "visit",
+   "campsite"
+  ],
+  "dogru": 3,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 399,
+  "konu": "Unit 7 · Holidays",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "abroad",
+   "visit",
+   "trip",
+   "campsite"
+  ],
+  "dogru": 3,
+  "tur": "Listening",
+  "ses": "campsite"
+ },
+ {
+  "id": 400,
+  "konu": "Unit 7 · Holidays",
+  "zorluk": "Kolay",
+  "soru": "“<b>sunbathe</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "ziyaret etmek",
+   "yurt dışı",
+   "güneşlenmek",
+   "bavul"
+  ],
+  "dogru": 2,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 401,
+  "konu": "Unit 7 · Holidays",
+  "zorluk": "Kolay",
+  "soru": "“<b>güneşlenmek</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "sunbathe",
+   "campsite",
+   "visit",
+   "holiday"
+  ],
+  "dogru": 0,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 402,
+  "konu": "Unit 7 · Holidays",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "sunbathe",
+   "suitcase",
+   "last summer",
+   "campsite"
+  ],
+  "dogru": 0,
+  "tur": "Listening",
+  "ses": "sunbathe"
+ },
+ {
+  "id": 403,
+  "konu": "Unit 7 · Holidays",
+  "zorluk": "Kolay",
+  "soru": "“<b>abroad</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "geçen yaz",
+   "yurt dışı",
+   "kamp alanı",
+   "tatil"
+  ],
+  "dogru": 1,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 404,
+  "konu": "Unit 7 · Holidays",
+  "zorluk": "Kolay",
+  "soru": "“<b>yurt dışı</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "visit",
+   "abroad",
+   "sightseeing",
+   "souvenir"
+  ],
+  "dogru": 1,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 405,
+  "konu": "Unit 7 · Holidays",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "sightseeing",
+   "last summer",
+   "abroad",
+   "trip"
+  ],
+  "dogru": 2,
+  "tur": "Listening",
+  "ses": "abroad"
+ },
+ {
+  "id": 406,
+  "konu": "Unit 7 · Holidays",
+  "zorluk": "Kolay",
+  "soru": "“<b>yesterday</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "güneşlenmek",
+   "tatil",
+   "plaj",
+   "dün"
+  ],
+  "dogru": 3,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 407,
+  "konu": "Unit 7 · Holidays",
+  "zorluk": "Kolay",
+  "soru": "“<b>dün</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "campsite",
+   "yesterday",
+   "suitcase",
+   "last summer"
+  ],
+  "dogru": 1,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 408,
+  "konu": "Unit 7 · Holidays",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "yesterday",
+   "sunbathe",
+   "tent",
+   "holiday"
+  ],
+  "dogru": 0,
+  "tur": "Listening",
+  "ses": "yesterday"
+ },
+ {
+  "id": 409,
+  "konu": "Unit 7 · Holidays",
+  "zorluk": "Kolay",
+  "soru": "“<b>last summer</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "çadır",
+   "manzara",
+   "kamp alanı",
+   "geçen yaz"
+  ],
+  "dogru": 3,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 410,
+  "konu": "Unit 7 · Holidays",
+  "zorluk": "Kolay",
+  "soru": "“<b>geçen yaz</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "campsite",
+   "sunbathe",
+   "passport",
+   "last summer"
+  ],
+  "dogru": 3,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 411,
+  "konu": "Unit 7 · Holidays",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "suitcase",
+   "last summer",
+   "visit",
+   "campsite"
+  ],
+  "dogru": 1,
+  "tur": "Listening",
+  "ses": "last summer"
+ },
+ {
+  "id": 412,
+  "konu": "Unit 7 · Holidays",
+  "zorluk": "Kolay",
+  "soru": "“<b>trip</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "geçen yaz",
+   "hediyelik eşya",
+   "tatil",
+   "gezi, yolculuk"
+  ],
+  "dogru": 3,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 413,
+  "konu": "Unit 7 · Holidays",
+  "zorluk": "Kolay",
+  "soru": "“<b>gezi, yolculuk</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "holiday",
+   "last summer",
+   "yesterday",
+   "trip"
+  ],
+  "dogru": 3,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 414,
+  "konu": "Unit 7 · Holidays",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "visit",
+   "sightseeing",
+   "souvenir",
+   "trip"
+  ],
+  "dogru": 3,
+  "tur": "Listening",
+  "ses": "trip"
+ },
+ {
+  "id": 415,
+  "konu": "Unit 7 · Holidays",
+  "zorluk": "Kolay",
+  "soru": "“<b>visit</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "dün",
+   "tatil",
+   "manzara",
+   "ziyaret etmek"
+  ],
+  "dogru": 3,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 416,
+  "konu": "Unit 7 · Holidays",
+  "zorluk": "Kolay",
+  "soru": "“<b>ziyaret etmek</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "visit",
+   "abroad",
+   "holiday",
+   "tent"
+  ],
+  "dogru": 0,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 417,
+  "konu": "Unit 7 · Holidays",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "visit",
+   "sunbathe",
+   "holiday",
+   "view"
+  ],
+  "dogru": 0,
+  "tur": "Listening",
+  "ses": "visit"
+ },
+ {
+  "id": 418,
+  "konu": "Unit 7 · Holidays",
+  "zorluk": "Kolay",
+  "soru": "“<b>sightseeing</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "gezip görme",
+   "dün",
+   "çadır",
+   "manzara"
+  ],
+  "dogru": 0,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 419,
+  "konu": "Unit 7 · Holidays",
+  "zorluk": "Kolay",
+  "soru": "“<b>gezip görme</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "sightseeing",
+   "abroad",
+   "tent",
+   "sunbathe"
+  ],
+  "dogru": 0,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 420,
+  "konu": "Unit 7 · Holidays",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "sightseeing",
+   "trip",
+   "visit",
+   "tent"
+  ],
+  "dogru": 0,
+  "tur": "Listening",
+  "ses": "sightseeing"
+ },
+ {
+  "id": 421,
+  "konu": "Unit 7 · Holidays",
+  "zorluk": "Kolay",
+  "soru": "“<b>view</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "plaj",
+   "manzara",
+   "güneşlenmek",
+   "ziyaret etmek"
+  ],
+  "dogru": 1,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 422,
+  "konu": "Unit 7 · Holidays",
+  "zorluk": "Kolay",
+  "soru": "“<b>manzara</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "tent",
+   "view",
+   "suitcase",
+   "souvenir"
+  ],
+  "dogru": 1,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 423,
+  "konu": "Unit 7 · Holidays",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "sunbathe",
+   "trip",
+   "visit",
+   "view"
+  ],
+  "dogru": 3,
+  "tur": "Listening",
+  "ses": "view"
+ },
+ {
+  "id": 424,
+  "konu": "Unit 7 · Holidays",
+  "zorluk": "Orta",
+  "soru": "Boşluğa hangisi gelmelidir?<br><i>Where ___ you last summer? — I was in Bodrum.</i>",
+  "secenekler": [
+   "did",
+   "were",
+   "are",
+   "was"
+  ],
+  "dogru": 1,
+  "tur": "Grammar",
+  "aciklama": "You ile geçmiş zamanda 'were' kullanılır."
+ },
+ {
+  "id": 425,
+  "konu": "Unit 7 · Holidays",
+  "zorluk": "Orta",
+  "soru": "Boşluğa hangisi gelmelidir?<br><i>How ___ the weather? — It was hot and sunny.</i>",
+  "secenekler": [
+   "was",
+   "is",
+   "were",
+   "did"
+  ],
+  "dogru": 0,
+  "tur": "Grammar",
+  "aciklama": "The weather = it; geçmiş zamanda 'was'."
+ },
+ {
+  "id": 426,
+  "konu": "Unit 7 · Holidays",
+  "zorluk": "Orta",
+  "soru": "Boşluğa hangisi gelmelidir?<br><i>My parents ___ at the hotel last week.</i>",
+  "secenekler": [
+   "was",
+   "were",
+   "are",
+   "is"
+  ],
+  "dogru": 1,
+  "tur": "Grammar",
+  "aciklama": "They (my parents) ile geçmiş zamanda 'were'."
+ },
+ {
+  "id": 427,
+  "konu": "Unit 7 · Holidays",
+  "zorluk": "Orta",
+  "soru": "Boşluğa hangisi gelmelidir?<br><i>I ___ at home yesterday. I was in the park.</i>",
+  "secenekler": [
+   "am not",
+   "didn't",
+   "weren't",
+   "wasn't"
+  ],
+  "dogru": 3,
+  "tur": "Grammar",
+  "aciklama": "I ile olumsuz geçmiş: wasn't."
+ },
+ {
+  "id": 428,
+  "konu": "Unit 7 · Holidays",
+  "zorluk": "Orta",
+  "soru": "Boşluğa hangisi gelmelidir?<br><i>___ you at the beach last weekend? — Yes, I was.</i>",
+  "secenekler": [
+   "Were",
+   "Are",
+   "Was",
+   "Did"
+  ],
+  "dogru": 0,
+  "tur": "Grammar",
+  "aciklama": "You ile geçmiş zaman sorusu 'Were' ile başlar."
+ },
+ {
+  "id": 429,
+  "konu": "Unit 7 · Holidays",
+  "zorluk": "Orta",
+  "soru": "Boşluğa hangisi gelmelidir?<br><i>A ___ is a small thing you buy to remember a place.</i>",
+  "secenekler": [
+   "souvenir",
+   "ticket",
+   "tent",
+   "passport"
+  ],
+  "dogru": 0,
+  "tur": "Grammar",
+  "aciklama": "Bir yeri hatırlamak için alınan küçük eşya hediyelik eşyadır."
+ },
+ {
+  "id": 430,
+  "konu": "Unit 7 · Holidays",
+  "zorluk": "Orta",
+  "soru": "Boşluğa hangisi gelmelidir?<br><i>It ___ cold in Uludağ last winter.</i>",
+  "secenekler": [
+   "be",
+   "is",
+   "was",
+   "were"
+  ],
+  "dogru": 2,
+  "tur": "Grammar",
+  "aciklama": "It ile geçmiş zamanda 'was'."
+ },
+ {
+  "id": 431,
+  "konu": "Unit 7 · Holidays",
+  "zorluk": "Orta",
+  "soru": "Boşluğa hangisi gelmelidir?<br><i>We ___ in Antalya two years ago.</i>",
+  "secenekler": [
+   "was",
+   "are",
+   "is",
+   "were"
+  ],
+  "dogru": 3,
+  "tur": "Grammar",
+  "aciklama": "We ile geçmiş zamanda 'were'."
+ },
+ {
+  "id": 432,
+  "konu": "Unit 7 · Holidays",
+  "zorluk": "Orta",
+  "soru": "Boşluğa hangisi gelmelidir?<br><i>The food at the hotel ___ delicious. I didn't like it.</i>",
+  "secenekler": [
+   "isn't",
+   "wasn't",
+   "was",
+   "weren't"
+  ],
+  "dogru": 1,
+  "tur": "Grammar",
+  "aciklama": "Beğenmediyse yemek lezzetli değildi: wasn't."
+ },
+ {
+  "id": 433,
+  "konu": "Unit 7 · Holidays",
+  "zorluk": "Orta",
+  "soru": "Diyaloğu tamamlayınız.<br><b>A:</b> Where were you last weekend?<br><b>B:</b> ______",
+  "secenekler": [
+   "I will go to Izmir.",
+   "It was sunny.",
+   "I was at my grandmother's house.",
+   "I am at school."
+  ],
+  "dogru": 2,
+  "tur": "Dialogue"
+ },
+ {
+  "id": 434,
+  "konu": "Unit 7 · Holidays",
+  "zorluk": "Zor",
+  "soru": "Dinleyin. Duyduğunuz soruya verilecek en uygun cevap hangisidir?",
+  "secenekler": [
+   "It was sunny.",
+   "I will go to Izmir.",
+   "I was at my grandmother's house.",
+   "I am at school."
+  ],
+  "dogru": 2,
+  "tur": "Listening",
+  "ses": "Where were you last weekend?"
+ },
+ {
+  "id": 435,
+  "konu": "Unit 7 · Holidays",
+  "zorluk": "Orta",
+  "soru": "Diyaloğu tamamlayınız.<br><b>A:</b> How was your holiday?<br><b>B:</b> ______",
+  "secenekler": [
+   "By plane.",
+   "Yes, I do.",
+   "I was in Antalya.",
+   "It was fantastic!"
+  ],
+  "dogru": 3,
+  "tur": "Dialogue"
+ },
+ {
+  "id": 436,
+  "konu": "Unit 7 · Holidays",
+  "zorluk": "Zor",
+  "soru": "Dinleyin. Duyduğunuz soruya verilecek en uygun cevap hangisidir?",
+  "secenekler": [
+   "Yes, I do.",
+   "It was fantastic!",
+   "By plane.",
+   "I was in Antalya."
+  ],
+  "dogru": 1,
+  "tur": "Listening",
+  "ses": "How was your holiday?"
+ },
+ {
+  "id": 437,
+  "konu": "Unit 7 · Holidays",
+  "zorluk": "Orta",
+  "soru": "Diyaloğu tamamlayınız.<br><b>A:</b> Were you in Trabzon last summer?<br><b>B:</b> ______",
+  "secenekler": [
+   "No, I'm not.",
+   "No, I wasn't.",
+   "No, I don't.",
+   "No, it wasn't me."
+  ],
+  "dogru": 1,
+  "tur": "Dialogue"
+ },
+ {
+  "id": 438,
+  "konu": "Unit 7 · Holidays",
+  "zorluk": "Zor",
+  "soru": "Dinleyin. Duyduğunuz soruya verilecek en uygun cevap hangisidir?",
+  "secenekler": [
+   "No, I wasn't.",
+   "No, it wasn't me.",
+   "No, I'm not.",
+   "No, I don't."
+  ],
+  "dogru": 0,
+  "tur": "Listening",
+  "ses": "Were you in Trabzon last summer?"
+ },
+ {
+  "id": 439,
+  "konu": "Unit 7 · Holidays",
+  "zorluk": "Zor",
+  "soru": "<i>Last summer, I was in Fethiye with my family. The weather was hot and sunny. We were at the beach every day. My sister was very happy because the sea was clean and warm. The hotel was great but the food wasn't delicious.</i><br><br><b>Where was the writer last summer?</b>",
+  "secenekler": [
+   "In Erzurum.",
+   "At home.",
+   "In Fethiye.",
+   "In Ankara."
+  ],
+  "dogru": 2,
+  "tur": "Reading"
+ },
+ {
+  "id": 440,
+  "konu": "Unit 7 · Holidays",
+  "zorluk": "Zor",
+  "soru": "<i>Last summer, I was in Fethiye with my family. The weather was hot and sunny. We were at the beach every day. My sister was very happy because the sea was clean and warm. The hotel was great but the food wasn't delicious.</i><br><br><b>How was the weather?</b>",
+  "secenekler": [
+   "Hot and sunny.",
+   "Cold and rainy.",
+   "Snowy.",
+   "Foggy."
+  ],
+  "dogru": 0,
+  "tur": "Reading"
+ },
+ {
+  "id": 441,
+  "konu": "Unit 7 · Holidays",
+  "zorluk": "Zor",
+  "soru": "<i>Last summer, I was in Fethiye with my family. The weather was hot and sunny. We were at the beach every day. My sister was very happy because the sea was clean and warm. The hotel was great but the food wasn't delicious.</i><br><br><b>What wasn't good on the holiday?</b>",
+  "secenekler": [
+   "The weather.",
+   "The sea.",
+   "The hotel.",
+   "The food."
+  ],
+  "dogru": 3,
+  "tur": "Reading"
+ },
+ {
+  "id": 442,
+  "konu": "Unit 8 · Bookworms",
+  "zorluk": "Kolay",
+  "soru": "“<b>fairy tale</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "masal",
+   "kitap kurdu",
+   "şiir",
+   "macera"
+  ],
+  "dogru": 0,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 443,
+  "konu": "Unit 8 · Bookworms",
+  "zorluk": "Kolay",
+  "soru": "“<b>masal</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "poem",
+   "story",
+   "comic",
+   "fairy tale"
+  ],
+  "dogru": 3,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 444,
+  "konu": "Unit 8 · Bookworms",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "fairy tale",
+   "science fiction",
+   "comic",
+   "biography"
+  ],
+  "dogru": 0,
+  "tur": "Listening",
+  "ses": "fairy tale"
+ },
+ {
+  "id": 445,
+  "konu": "Unit 8 · Bookworms",
+  "zorluk": "Kolay",
+  "soru": "“<b>comic</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "dedektif hikâyesi",
+   "hikâye",
+   "karakter",
+   "çizgi roman"
+  ],
+  "dogru": 3,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 446,
+  "konu": "Unit 8 · Bookworms",
+  "zorluk": "Kolay",
+  "soru": "“<b>çizgi roman</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "comic",
+   "biography",
+   "be born",
+   "writer"
+  ],
+  "dogru": 0,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 447,
+  "konu": "Unit 8 · Bookworms",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "fairy tale",
+   "novel",
+   "comic",
+   "be born"
+  ],
+  "dogru": 2,
+  "tur": "Listening",
+  "ses": "comic"
+ },
+ {
+  "id": 448,
+  "konu": "Unit 8 · Bookworms",
+  "zorluk": "Kolay",
+  "soru": "“<b>science fiction</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "dedektif hikâyesi",
+   "yazar",
+   "bilim kurgu",
+   "çizgi roman"
+  ],
+  "dogru": 2,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 449,
+  "konu": "Unit 8 · Bookworms",
+  "zorluk": "Kolay",
+  "soru": "“<b>bilim kurgu</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "science fiction",
+   "famous",
+   "story",
+   "adventure"
+  ],
+  "dogru": 0,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 450,
+  "konu": "Unit 8 · Bookworms",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "detective story",
+   "science fiction",
+   "be born",
+   "fairy tale"
+  ],
+  "dogru": 1,
+  "tur": "Listening",
+  "ses": "science fiction"
+ },
+ {
+  "id": 451,
+  "konu": "Unit 8 · Bookworms",
+  "zorluk": "Kolay",
+  "soru": "“<b>horror story</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "korku hikâyesi",
+   "yazar",
+   "kitap kurdu",
+   "roman"
+  ],
+  "dogru": 0,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 452,
+  "konu": "Unit 8 · Bookworms",
+  "zorluk": "Kolay",
+  "soru": "“<b>korku hikâyesi</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "be born",
+   "bookworm",
+   "famous",
+   "horror story"
+  ],
+  "dogru": 3,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 453,
+  "konu": "Unit 8 · Bookworms",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "comic",
+   "fairy tale",
+   "horror story",
+   "famous"
+  ],
+  "dogru": 2,
+  "tur": "Listening",
+  "ses": "horror story"
+ },
+ {
+  "id": 454,
+  "konu": "Unit 8 · Bookworms",
+  "zorluk": "Kolay",
+  "soru": "“<b>adventure</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "şiir",
+   "macera",
+   "ünlü",
+   "dedektif hikâyesi"
+  ],
+  "dogru": 1,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 455,
+  "konu": "Unit 8 · Bookworms",
+  "zorluk": "Kolay",
+  "soru": "“<b>macera</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "adventure",
+   "biography",
+   "famous",
+   "novel"
+  ],
+  "dogru": 0,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 456,
+  "konu": "Unit 8 · Bookworms",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "story",
+   "fairy tale",
+   "adventure",
+   "comic"
+  ],
+  "dogru": 2,
+  "tur": "Listening",
+  "ses": "adventure"
+ },
+ {
+  "id": 457,
+  "konu": "Unit 8 · Bookworms",
+  "zorluk": "Kolay",
+  "soru": "“<b>detective story</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "dedektif hikâyesi",
+   "karakter",
+   "masal",
+   "kitap kurdu"
+  ],
+  "dogru": 0,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 458,
+  "konu": "Unit 8 · Bookworms",
+  "zorluk": "Kolay",
+  "soru": "“<b>dedektif hikâyesi</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "detective story",
+   "famous",
+   "be born",
+   "writer"
+  ],
+  "dogru": 0,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 459,
+  "konu": "Unit 8 · Bookworms",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "adventure",
+   "detective story",
+   "horror story",
+   "comic"
+  ],
+  "dogru": 1,
+  "tur": "Listening",
+  "ses": "detective story"
+ },
+ {
+  "id": 460,
+  "konu": "Unit 8 · Bookworms",
+  "zorluk": "Kolay",
+  "soru": "“<b>biography</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "doğmak",
+   "korku hikâyesi",
+   "hikâye",
+   "biyografi"
+  ],
+  "dogru": 3,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 461,
+  "konu": "Unit 8 · Bookworms",
+  "zorluk": "Kolay",
+  "soru": "“<b>biyografi</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "character",
+   "detective story",
+   "comic",
+   "biography"
+  ],
+  "dogru": 3,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 462,
+  "konu": "Unit 8 · Bookworms",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "adventure",
+   "famous",
+   "science fiction",
+   "biography"
+  ],
+  "dogru": 3,
+  "tur": "Listening",
+  "ses": "biography"
+ },
+ {
+  "id": 463,
+  "konu": "Unit 8 · Bookworms",
+  "zorluk": "Kolay",
+  "soru": "“<b>poem</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "kitap kurdu",
+   "yazar",
+   "şiir",
+   "masal"
+  ],
+  "dogru": 2,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 464,
+  "konu": "Unit 8 · Bookworms",
+  "zorluk": "Kolay",
+  "soru": "“<b>şiir</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "character",
+   "fairy tale",
+   "writer",
+   "poem"
+  ],
+  "dogru": 3,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 465,
+  "konu": "Unit 8 · Bookworms",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "biography",
+   "writer",
+   "poem",
+   "detective story"
+  ],
+  "dogru": 2,
+  "tur": "Listening",
+  "ses": "poem"
+ },
+ {
+  "id": 466,
+  "konu": "Unit 8 · Bookworms",
+  "zorluk": "Kolay",
+  "soru": "“<b>novel</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "dedektif hikâyesi",
+   "macera",
+   "yazar",
+   "roman"
+  ],
+  "dogru": 3,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 467,
+  "konu": "Unit 8 · Bookworms",
+  "zorluk": "Kolay",
+  "soru": "“<b>roman</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "novel",
+   "horror story",
+   "adventure",
+   "bookworm"
+  ],
+  "dogru": 0,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 468,
+  "konu": "Unit 8 · Bookworms",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "biography",
+   "novel",
+   "comic",
+   "horror story"
+  ],
+  "dogru": 1,
+  "tur": "Listening",
+  "ses": "novel"
+ },
+ {
+  "id": 469,
+  "konu": "Unit 8 · Bookworms",
+  "zorluk": "Kolay",
+  "soru": "“<b>writer</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "yazar",
+   "biyografi",
+   "masal",
+   "karakter"
+  ],
+  "dogru": 0,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 470,
+  "konu": "Unit 8 · Bookworms",
+  "zorluk": "Kolay",
+  "soru": "“<b>yazar</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "writer",
+   "biography",
+   "famous",
+   "be born"
+  ],
+  "dogru": 0,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 471,
+  "konu": "Unit 8 · Bookworms",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "story",
+   "writer",
+   "horror story",
+   "be born"
+  ],
+  "dogru": 1,
+  "tur": "Listening",
+  "ses": "writer"
+ },
+ {
+  "id": 472,
+  "konu": "Unit 8 · Bookworms",
+  "zorluk": "Kolay",
+  "soru": "“<b>character</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "karakter",
+   "kitap kurdu",
+   "korku hikâyesi",
+   "macera"
+  ],
+  "dogru": 0,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 473,
+  "konu": "Unit 8 · Bookworms",
+  "zorluk": "Kolay",
+  "soru": "“<b>karakter</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "story",
+   "famous",
+   "poem",
+   "character"
+  ],
+  "dogru": 3,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 474,
+  "konu": "Unit 8 · Bookworms",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "character",
+   "comic",
+   "writer",
+   "be born"
+  ],
+  "dogru": 0,
+  "tur": "Listening",
+  "ses": "character"
+ },
+ {
+  "id": 475,
+  "konu": "Unit 8 · Bookworms",
+  "zorluk": "Kolay",
+  "soru": "“<b>be born</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "biyografi",
+   "roman",
+   "doğmak",
+   "çizgi roman"
+  ],
+  "dogru": 2,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 476,
+  "konu": "Unit 8 · Bookworms",
+  "zorluk": "Kolay",
+  "soru": "“<b>doğmak</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "be born",
+   "fairy tale",
+   "biography",
+   "writer"
+  ],
+  "dogru": 0,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 477,
+  "konu": "Unit 8 · Bookworms",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "comic",
+   "be born",
+   "adventure",
+   "horror story"
+  ],
+  "dogru": 1,
+  "tur": "Listening",
+  "ses": "be born"
+ },
+ {
+  "id": 478,
+  "konu": "Unit 8 · Bookworms",
+  "zorluk": "Kolay",
+  "soru": "“<b>bookworm</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "kitap kurdu",
+   "çizgi roman",
+   "roman",
+   "hikâye"
+  ],
+  "dogru": 0,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 479,
+  "konu": "Unit 8 · Bookworms",
+  "zorluk": "Kolay",
+  "soru": "“<b>kitap kurdu</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "detective story",
+   "story",
+   "biography",
+   "bookworm"
+  ],
+  "dogru": 3,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 480,
+  "konu": "Unit 8 · Bookworms",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "poem",
+   "science fiction",
+   "bookworm",
+   "be born"
+  ],
+  "dogru": 2,
+  "tur": "Listening",
+  "ses": "bookworm"
+ },
+ {
+  "id": 481,
+  "konu": "Unit 8 · Bookworms",
+  "zorluk": "Kolay",
+  "soru": "“<b>story</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "hikâye",
+   "çizgi roman",
+   "biyografi",
+   "macera"
+  ],
+  "dogru": 0,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 482,
+  "konu": "Unit 8 · Bookworms",
+  "zorluk": "Kolay",
+  "soru": "“<b>hikâye</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "story",
+   "novel",
+   "science fiction",
+   "adventure"
+  ],
+  "dogru": 0,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 483,
+  "konu": "Unit 8 · Bookworms",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "famous",
+   "story",
+   "fairy tale",
+   "novel"
+  ],
+  "dogru": 1,
+  "tur": "Listening",
+  "ses": "story"
+ },
+ {
+  "id": 484,
+  "konu": "Unit 8 · Bookworms",
+  "zorluk": "Kolay",
+  "soru": "“<b>famous</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "şiir",
+   "karakter",
+   "yazar",
+   "ünlü"
+  ],
+  "dogru": 3,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 485,
+  "konu": "Unit 8 · Bookworms",
+  "zorluk": "Kolay",
+  "soru": "“<b>ünlü</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "story",
+   "poem",
+   "biography",
+   "famous"
+  ],
+  "dogru": 3,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 486,
+  "konu": "Unit 8 · Bookworms",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "story",
+   "writer",
+   "bookworm",
+   "famous"
+  ],
+  "dogru": 3,
+  "tur": "Listening",
+  "ses": "famous"
+ },
+ {
+  "id": 487,
+  "konu": "Unit 8 · Bookworms",
+  "zorluk": "Orta",
+  "soru": "Boşluğa hangisi gelmelidir?<br><i>Atatürk ___ born in 1881.</i>",
+  "secenekler": [
+   "were",
+   "is",
+   "did",
+   "was"
+  ],
+  "dogru": 3,
+  "tur": "Grammar",
+  "aciklama": "Doğum bilgisi 'was/were born' ile verilir; he → was."
+ },
+ {
+  "id": 488,
+  "konu": "Unit 8 · Bookworms",
+  "zorluk": "Orta",
+  "soru": "Boşluğa hangisi gelmelidir?<br><i>My grandparents ___ born in Rize.</i>",
+  "secenekler": [
+   "was",
+   "were",
+   "are",
+   "is"
+  ],
+  "dogru": 1,
+  "tur": "Grammar",
+  "aciklama": "They ile 'were born'."
+ },
+ {
+  "id": 489,
+  "konu": "Unit 8 · Bookworms",
+  "zorluk": "Orta",
+  "soru": "Boşluğa hangisi gelmelidir?<br><i>Long ago, a king ___ in a big castle.</i>",
+  "secenekler": [
+   "lives",
+   "lived",
+   "living",
+   "live"
+  ],
+  "dogru": 1,
+  "tur": "Grammar",
+  "aciklama": "Geçmişte olan olaylar için düzenli fiiller -ed alır: lived."
+ },
+ {
+  "id": 490,
+  "konu": "Unit 8 · Bookworms",
+  "zorluk": "Orta",
+  "soru": "Boşluğa hangisi gelmelidir?<br><i>The children ___ in the garden yesterday.</i>",
+  "secenekler": [
+   "played",
+   "plays",
+   "playing",
+   "play"
+  ],
+  "dogru": 0,
+  "tur": "Grammar",
+  "aciklama": "'Yesterday' geçmiş zamandır: played."
+ },
+ {
+  "id": 491,
+  "konu": "Unit 8 · Bookworms",
+  "zorluk": "Orta",
+  "soru": "Boşluğa hangisi gelmelidir?<br><i>Sherlock Holmes stories are ___ stories.</i>",
+  "secenekler": [
+   "detective",
+   "fairy",
+   "poetry",
+   "horror"
+  ],
+  "dogru": 0,
+  "tur": "Grammar",
+  "aciklama": "Sherlock Holmes bir dedektiftir."
+ },
+ {
+  "id": 492,
+  "konu": "Unit 8 · Bookworms",
+  "zorluk": "Orta",
+  "soru": "Boşluğa hangisi gelmelidir?<br><i>A book about a person's life is a ___.</i>",
+  "secenekler": [
+   "fairy tale",
+   "comic",
+   "horror story",
+   "biography"
+  ],
+  "dogru": 3,
+  "tur": "Grammar",
+  "aciklama": "Bir kişinin hayatını anlatan kitap biyografidir."
+ },
+ {
+  "id": 493,
+  "konu": "Unit 8 · Bookworms",
+  "zorluk": "Orta",
+  "soru": "Boşluğa hangisi gelmelidir?<br><i>Stories with dragons, princesses and magic are ___.</i>",
+  "secenekler": [
+   "biographies",
+   "detective stories",
+   "newspapers",
+   "fairy tales"
+  ],
+  "dogru": 3,
+  "tur": "Grammar",
+  "aciklama": "Ejderha, prenses ve sihir masallarda (fairy tales) olur."
+ },
+ {
+  "id": 494,
+  "konu": "Unit 8 · Bookworms",
+  "zorluk": "Orta",
+  "soru": "Boşluğa hangisi gelmelidir?<br><i>Where ___ Mozart born? — In Salzburg.</i>",
+  "secenekler": [
+   "is",
+   "was",
+   "were",
+   "did"
+  ],
+  "dogru": 1,
+  "tur": "Grammar",
+  "aciklama": "He (Mozart) ile 'was born'."
+ },
+ {
+  "id": 495,
+  "konu": "Unit 8 · Bookworms",
+  "zorluk": "Orta",
+  "soru": "Boşluğa hangisi gelmelidir?<br><i>When were you born? — I was born ___ 2014.</i>",
+  "secenekler": [
+   "on",
+   "to",
+   "in",
+   "at"
+  ],
+  "dogru": 2,
+  "tur": "Grammar",
+  "aciklama": "Yıllardan önce 'in' kullanılır."
+ },
+ {
+  "id": 496,
+  "konu": "Unit 8 · Bookworms",
+  "zorluk": "Orta",
+  "soru": "Boşluğa hangisi gelmelidir?<br><i>I ___ a fairy tale to my little brother last night.</i>",
+  "secenekler": [
+   "am read",
+   "reading",
+   "reads",
+   "read"
+  ],
+  "dogru": 3,
+  "tur": "Grammar",
+  "aciklama": "'Last night' geçmiş zamandır; read fiilinin geçmiş hâli de 'read' yazılır."
+ },
+ {
+  "id": 497,
+  "konu": "Unit 8 · Bookworms",
+  "zorluk": "Orta",
+  "soru": "Diyaloğu tamamlayınız.<br><b>A:</b> What kind of books do you like?<br><b>B:</b> ______",
+  "secenekler": [
+   "At the library.",
+   "I read it yesterday.",
+   "It was born in 1990.",
+   "I like adventure stories."
+  ],
+  "dogru": 3,
+  "tur": "Dialogue"
+ },
+ {
+  "id": 498,
+  "konu": "Unit 8 · Bookworms",
+  "zorluk": "Zor",
+  "soru": "Dinleyin. Duyduğunuz soruya verilecek en uygun cevap hangisidir?",
+  "secenekler": [
+   "I read it yesterday.",
+   "It was born in 1990.",
+   "At the library.",
+   "I like adventure stories."
+  ],
+  "dogru": 3,
+  "tur": "Listening",
+  "ses": "What kind of books do you like?"
+ },
+ {
+  "id": 499,
+  "konu": "Unit 8 · Bookworms",
+  "zorluk": "Orta",
+  "soru": "Diyaloğu tamamlayınız.<br><b>A:</b> When was your grandfather born?<br><b>B:</b> ______",
+  "secenekler": [
+   "In Trabzon.",
+   "Yes, he was.",
+   "He was born in 1950.",
+   "He is a doctor."
+  ],
+  "dogru": 2,
+  "tur": "Dialogue"
+ },
+ {
+  "id": 500,
+  "konu": "Unit 8 · Bookworms",
+  "zorluk": "Zor",
+  "soru": "Dinleyin. Duyduğunuz soruya verilecek en uygun cevap hangisidir?",
+  "secenekler": [
+   "In Trabzon.",
+   "Yes, he was.",
+   "He was born in 1950.",
+   "He is a doctor."
+  ],
+  "dogru": 2,
+  "tur": "Listening",
+  "ses": "When was your grandfather born?"
+ },
+ {
+  "id": 501,
+  "konu": "Unit 8 · Bookworms",
+  "zorluk": "Orta",
+  "soru": "Diyaloğu tamamlayınız.<br><b>A:</b> Who is your favourite writer?<br><b>B:</b> ______",
+  "secenekler": [
+   "In 1884.",
+   "Two books.",
+   "A fairy tale.",
+   "Ömer Seyfettin."
+  ],
+  "dogru": 3,
+  "tur": "Dialogue"
+ },
+ {
+  "id": 502,
+  "konu": "Unit 8 · Bookworms",
+  "zorluk": "Zor",
+  "soru": "Dinleyin. Duyduğunuz soruya verilecek en uygun cevap hangisidir?",
+  "secenekler": [
+   "Two books.",
+   "In 1884.",
+   "Ömer Seyfettin.",
+   "A fairy tale."
+  ],
+  "dogru": 2,
+  "tur": "Listening",
+  "ses": "Who is your favourite writer?"
+ },
+ {
+  "id": 503,
+  "konu": "Unit 8 · Bookworms",
+  "zorluk": "Zor",
+  "soru": "<i>Roald Dahl was a famous writer. He was born in 1916 in Wales. His books are very popular with children. 'Charlie and the Chocolate Factory' is one of his famous books.</i><br><br><b>When was Roald Dahl born?</b>",
+  "secenekler": [
+   "In 2016.",
+   "In 1961.",
+   "In 1906.",
+   "In 1916."
+  ],
+  "dogru": 3,
+  "tur": "Reading"
+ },
+ {
+  "id": 504,
+  "konu": "Unit 8 · Bookworms",
+  "zorluk": "Zor",
+  "soru": "<i>Roald Dahl was a famous writer. He was born in 1916 in Wales. His books are very popular with children. 'Charlie and the Chocolate Factory' is one of his famous books.</i><br><br><b>Where was he born?</b>",
+  "secenekler": [
+   "In Türkiye.",
+   "In London.",
+   "In Wales.",
+   "In America."
+  ],
+  "dogru": 2,
+  "tur": "Reading"
+ },
+ {
+  "id": 505,
+  "konu": "Unit 8 · Bookworms",
+  "zorluk": "Zor",
+  "soru": "<i>Roald Dahl was a famous writer. He was born in 1916 in Wales. His books are very popular with children. 'Charlie and the Chocolate Factory' is one of his famous books.</i><br><br><b>Who loves his books?</b>",
+  "secenekler": [
+   "Only teachers.",
+   "Nobody.",
+   "Doctors.",
+   "Children."
+  ],
+  "dogru": 3,
+  "tur": "Reading"
+ },
+ {
+  "id": 506,
+  "konu": "Unit 9 · Saving the Planet",
+  "zorluk": "Kolay",
+  "soru": "“<b>recycle</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "kapatmak",
+   "geri dönüştürmek",
+   "cam",
+   "çevre"
+  ],
+  "dogru": 1,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 507,
+  "konu": "Unit 9 · Saving the Planet",
+  "zorluk": "Kolay",
+  "soru": "“<b>geri dönüştürmek</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "reduce",
+   "recycle",
+   "reuse",
+   "tap"
+  ],
+  "dogru": 1,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 508,
+  "konu": "Unit 9 · Saving the Planet",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "nature",
+   "recycle",
+   "tap",
+   "waste"
+  ],
+  "dogru": 1,
+  "tur": "Listening",
+  "ses": "recycle"
+ },
+ {
+  "id": 509,
+  "konu": "Unit 9 · Saving the Planet",
+  "zorluk": "Kolay",
+  "soru": "“<b>reduce</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "azaltmak",
+   "(bitki) dikmek",
+   "yeniden kullanmak",
+   "tasarruf etmek"
+  ],
+  "dogru": 0,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 510,
+  "konu": "Unit 9 · Saving the Planet",
+  "zorluk": "Kolay",
+  "soru": "“<b>azaltmak</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "reuse",
+   "reduce",
+   "environment",
+   "waste"
+  ],
+  "dogru": 1,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 511,
+  "konu": "Unit 9 · Saving the Planet",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "turn off",
+   "protect",
+   "plant",
+   "reduce"
+  ],
+  "dogru": 3,
+  "tur": "Listening",
+  "ses": "reduce"
+ },
+ {
+  "id": 512,
+  "konu": "Unit 9 · Saving the Planet",
+  "zorluk": "Kolay",
+  "soru": "“<b>reuse</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "yeniden kullanmak",
+   "çöp",
+   "(bitki) dikmek",
+   "doğa"
+  ],
+  "dogru": 0,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 513,
+  "konu": "Unit 9 · Saving the Planet",
+  "zorluk": "Kolay",
+  "soru": "“<b>yeniden kullanmak</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "reuse",
+   "waste",
+   "save",
+   "plant"
+  ],
+  "dogru": 0,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 514,
+  "konu": "Unit 9 · Saving the Planet",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "reuse",
+   "glass",
+   "pollution",
+   "save"
+  ],
+  "dogru": 0,
+  "tur": "Listening",
+  "ses": "reuse"
+ },
+ {
+  "id": 515,
+  "konu": "Unit 9 · Saving the Planet",
+  "zorluk": "Kolay",
+  "soru": "“<b>pollution</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "(bitki) dikmek",
+   "kirlilik",
+   "israf etmek",
+   "azaltmak"
+  ],
+  "dogru": 1,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 516,
+  "konu": "Unit 9 · Saving the Planet",
+  "zorluk": "Kolay",
+  "soru": "“<b>kirlilik</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "energy",
+   "pollution",
+   "save",
+   "recycle"
+  ],
+  "dogru": 1,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 517,
+  "konu": "Unit 9 · Saving the Planet",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "glass",
+   "pollution",
+   "tap",
+   "rubbish"
+  ],
+  "dogru": 1,
+  "tur": "Listening",
+  "ses": "pollution"
+ },
+ {
+  "id": 518,
+  "konu": "Unit 9 · Saving the Planet",
+  "zorluk": "Kolay",
+  "soru": "“<b>waste</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "kirlilik",
+   "israf etmek",
+   "tasarruf etmek",
+   "azaltmak"
+  ],
+  "dogru": 1,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 519,
+  "konu": "Unit 9 · Saving the Planet",
+  "zorluk": "Kolay",
+  "soru": "“<b>israf etmek</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "waste",
+   "environment",
+   "reduce",
+   "tap"
+  ],
+  "dogru": 0,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 520,
+  "konu": "Unit 9 · Saving the Planet",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "protect",
+   "waste",
+   "save",
+   "nature"
+  ],
+  "dogru": 1,
+  "tur": "Listening",
+  "ses": "waste"
+ },
+ {
+  "id": 521,
+  "konu": "Unit 9 · Saving the Planet",
+  "zorluk": "Kolay",
+  "soru": "“<b>save</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "tasarruf etmek",
+   "israf etmek",
+   "cam",
+   "enerji"
+  ],
+  "dogru": 0,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 522,
+  "konu": "Unit 9 · Saving the Planet",
+  "zorluk": "Kolay",
+  "soru": "“<b>tasarruf etmek</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "reuse",
+   "protect",
+   "rubbish",
+   "save"
+  ],
+  "dogru": 3,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 523,
+  "konu": "Unit 9 · Saving the Planet",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "save",
+   "nature",
+   "reuse",
+   "environment"
+  ],
+  "dogru": 0,
+  "tur": "Listening",
+  "ses": "save"
+ },
+ {
+  "id": 524,
+  "konu": "Unit 9 · Saving the Planet",
+  "zorluk": "Kolay",
+  "soru": "“<b>environment</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "yeniden kullanmak",
+   "çevre",
+   "korumak",
+   "çöp"
+  ],
+  "dogru": 1,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 525,
+  "konu": "Unit 9 · Saving the Planet",
+  "zorluk": "Kolay",
+  "soru": "“<b>çevre</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "glass",
+   "protect",
+   "energy",
+   "environment"
+  ],
+  "dogru": 3,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 526,
+  "konu": "Unit 9 · Saving the Planet",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "save",
+   "energy",
+   "environment",
+   "tap"
+  ],
+  "dogru": 2,
+  "tur": "Listening",
+  "ses": "environment"
+ },
+ {
+  "id": 527,
+  "konu": "Unit 9 · Saving the Planet",
+  "zorluk": "Kolay",
+  "soru": "“<b>rubbish</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "çöp",
+   "(bitki) dikmek",
+   "azaltmak",
+   "yeniden kullanmak"
+  ],
+  "dogru": 0,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 528,
+  "konu": "Unit 9 · Saving the Planet",
+  "zorluk": "Kolay",
+  "soru": "“<b>çöp</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "reuse",
+   "turn off",
+   "rubbish",
+   "environment"
+  ],
+  "dogru": 2,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 529,
+  "konu": "Unit 9 · Saving the Planet",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "recycle",
+   "rubbish",
+   "environment",
+   "save"
+  ],
+  "dogru": 1,
+  "tur": "Listening",
+  "ses": "rubbish"
+ },
+ {
+  "id": 530,
+  "konu": "Unit 9 · Saving the Planet",
+  "zorluk": "Kolay",
+  "soru": "“<b>plant</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "korumak",
+   "(bitki) dikmek",
+   "enerji",
+   "geri dönüştürmek"
+  ],
+  "dogru": 1,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 531,
+  "konu": "Unit 9 · Saving the Planet",
+  "zorluk": "Kolay",
+  "soru": "“<b>(bitki) dikmek</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "waste",
+   "plant",
+   "environment",
+   "save"
+  ],
+  "dogru": 1,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 532,
+  "konu": "Unit 9 · Saving the Planet",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "nature",
+   "plant",
+   "glass",
+   "reuse"
+  ],
+  "dogru": 1,
+  "tur": "Listening",
+  "ses": "plant"
+ },
+ {
+  "id": 533,
+  "konu": "Unit 9 · Saving the Planet",
+  "zorluk": "Kolay",
+  "soru": "“<b>turn off</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "kapatmak",
+   "cam",
+   "(bitki) dikmek",
+   "enerji"
+  ],
+  "dogru": 0,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 534,
+  "konu": "Unit 9 · Saving the Planet",
+  "zorluk": "Kolay",
+  "soru": "“<b>kapatmak</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "turn off",
+   "reuse",
+   "environment",
+   "nature"
+  ],
+  "dogru": 0,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 535,
+  "konu": "Unit 9 · Saving the Planet",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "turn off",
+   "energy",
+   "plant",
+   "tap"
+  ],
+  "dogru": 0,
+  "tur": "Listening",
+  "ses": "turn off"
+ },
+ {
+  "id": 536,
+  "konu": "Unit 9 · Saving the Planet",
+  "zorluk": "Kolay",
+  "soru": "“<b>tap</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "israf etmek",
+   "musluk",
+   "(bitki) dikmek",
+   "cam"
+  ],
+  "dogru": 1,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 537,
+  "konu": "Unit 9 · Saving the Planet",
+  "zorluk": "Kolay",
+  "soru": "“<b>musluk</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "tap",
+   "glass",
+   "turn off",
+   "energy"
+  ],
+  "dogru": 0,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 538,
+  "konu": "Unit 9 · Saving the Planet",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "reduce",
+   "reuse",
+   "tap",
+   "turn off"
+  ],
+  "dogru": 2,
+  "tur": "Listening",
+  "ses": "tap"
+ },
+ {
+  "id": 539,
+  "konu": "Unit 9 · Saving the Planet",
+  "zorluk": "Kolay",
+  "soru": "“<b>protect</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "kirlilik",
+   "tasarruf etmek",
+   "korumak",
+   "enerji"
+  ],
+  "dogru": 2,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 540,
+  "konu": "Unit 9 · Saving the Planet",
+  "zorluk": "Kolay",
+  "soru": "“<b>korumak</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "glass",
+   "energy",
+   "waste",
+   "protect"
+  ],
+  "dogru": 3,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 541,
+  "konu": "Unit 9 · Saving the Planet",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "tap",
+   "save",
+   "protect",
+   "reduce"
+  ],
+  "dogru": 2,
+  "tur": "Listening",
+  "ses": "protect"
+ },
+ {
+  "id": 542,
+  "konu": "Unit 9 · Saving the Planet",
+  "zorluk": "Kolay",
+  "soru": "“<b>nature</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "doğa",
+   "kapatmak",
+   "kirlilik",
+   "musluk"
+  ],
+  "dogru": 0,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 543,
+  "konu": "Unit 9 · Saving the Planet",
+  "zorluk": "Kolay",
+  "soru": "“<b>doğa</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "rubbish",
+   "nature",
+   "protect",
+   "recycle"
+  ],
+  "dogru": 1,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 544,
+  "konu": "Unit 9 · Saving the Planet",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "tap",
+   "pollution",
+   "reduce",
+   "nature"
+  ],
+  "dogru": 3,
+  "tur": "Listening",
+  "ses": "nature"
+ },
+ {
+  "id": 545,
+  "konu": "Unit 9 · Saving the Planet",
+  "zorluk": "Kolay",
+  "soru": "“<b>glass</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "cam",
+   "kirlilik",
+   "musluk",
+   "çöp"
+  ],
+  "dogru": 0,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 546,
+  "konu": "Unit 9 · Saving the Planet",
+  "zorluk": "Kolay",
+  "soru": "“<b>cam</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "plant",
+   "recycle",
+   "save",
+   "glass"
+  ],
+  "dogru": 3,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 547,
+  "konu": "Unit 9 · Saving the Planet",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "save",
+   "glass",
+   "protect",
+   "recycle"
+  ],
+  "dogru": 1,
+  "tur": "Listening",
+  "ses": "glass"
+ },
+ {
+  "id": 548,
+  "konu": "Unit 9 · Saving the Planet",
+  "zorluk": "Kolay",
+  "soru": "“<b>energy</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "musluk",
+   "doğa",
+   "korumak",
+   "enerji"
+  ],
+  "dogru": 3,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 549,
+  "konu": "Unit 9 · Saving the Planet",
+  "zorluk": "Kolay",
+  "soru": "“<b>enerji</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "reuse",
+   "pollution",
+   "energy",
+   "save"
+  ],
+  "dogru": 2,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 550,
+  "konu": "Unit 9 · Saving the Planet",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "pollution",
+   "protect",
+   "save",
+   "energy"
+  ],
+  "dogru": 3,
+  "tur": "Listening",
+  "ses": "energy"
+ },
+ {
+  "id": 551,
+  "konu": "Unit 9 · Saving the Planet",
+  "zorluk": "Orta",
+  "soru": "Boşluğa hangisi gelmelidir?<br><i>We should ___ paper, glass and plastic.</i>",
+  "secenekler": [
+   "recycle",
+   "pollute",
+   "waste",
+   "throw"
+  ],
+  "dogru": 0,
+  "tur": "Grammar",
+  "aciklama": "Kâğıt, cam ve plastik geri dönüştürülmelidir (recycle)."
+ },
+ {
+  "id": 552,
+  "konu": "Unit 9 · Saving the Planet",
+  "zorluk": "Orta",
+  "soru": "Boşluğa hangisi gelmelidir?<br><i>___ off the lights when you leave the room.</i>",
+  "secenekler": [
+   "Turn",
+   "Turning",
+   "To turned",
+   "Turns"
+  ],
+  "dogru": 0,
+  "tur": "Grammar",
+  "aciklama": "Emir cümleleri yalın fiille başlar: Turn off."
+ },
+ {
+  "id": 553,
+  "konu": "Unit 9 · Saving the Planet",
+  "zorluk": "Orta",
+  "soru": "Boşluğa hangisi gelmelidir?<br><i>Don't ___ water. Turn off the tap.</i>",
+  "secenekler": [
+   "save",
+   "reuse",
+   "waste",
+   "recycle"
+  ],
+  "dogru": 2,
+  "tur": "Grammar",
+  "aciklama": "Su israf edilmemelidir: Don't waste water."
+ },
+ {
+  "id": 554,
+  "konu": "Unit 9 · Saving the Planet",
+  "zorluk": "Orta",
+  "soru": "Boşluğa hangisi gelmelidir?<br><i>We ___ plant more trees.</i>",
+  "secenekler": [
+   "is",
+   "should",
+   "shouldn't",
+   "does"
+  ],
+  "dogru": 1,
+  "tur": "Grammar",
+  "aciklama": "Öneri bildirirken 'should + yalın fiil' kullanılır."
+ },
+ {
+  "id": 555,
+  "konu": "Unit 9 · Saving the Planet",
+  "zorluk": "Orta",
+  "soru": "Boşluğa hangisi gelmelidir?<br><i>We shouldn't ___ rubbish on the ground.</i>",
+  "secenekler": [
+   "recycle",
+   "throw",
+   "plant",
+   "save"
+  ],
+  "dogru": 1,
+  "tur": "Grammar",
+  "aciklama": "Yere çöp atmamalıyız: shouldn't throw."
+ },
+ {
+  "id": 556,
+  "konu": "Unit 9 · Saving the Planet",
+  "zorluk": "Orta",
+  "soru": "Boşluğa hangisi gelmelidir?<br><i>Factories cause air ___.</i>",
+  "secenekler": [
+   "recycling",
+   "nature",
+   "pollution",
+   "energy"
+  ],
+  "dogru": 2,
+  "tur": "Grammar",
+  "aciklama": "Fabrikalar hava kirliliğine (pollution) neden olur."
+ },
+ {
+  "id": 557,
+  "konu": "Unit 9 · Saving the Planet",
+  "zorluk": "Orta",
+  "soru": "Boşluğa hangisi gelmelidir?<br><i>Use a cloth bag. ___ use plastic bags.</i>",
+  "secenekler": [
+   "No",
+   "Doesn't",
+   "Don't",
+   "Not"
+  ],
+  "dogru": 2,
+  "tur": "Grammar",
+  "aciklama": "Olumsuz emir 'Don't + fiil' ile kurulur."
+ },
+ {
+  "id": 558,
+  "konu": "Unit 9 · Saving the Planet",
+  "zorluk": "Orta",
+  "soru": "Boşluğa hangisi gelmelidir?<br><i>___ water! Take shorter showers.</i>",
+  "secenekler": [
+   "Pollute",
+   "Save",
+   "Waste",
+   "Throw"
+  ],
+  "dogru": 1,
+  "tur": "Grammar",
+  "aciklama": "Kısa duş alarak su tasarrufu (save) yapılır."
+ },
+ {
+  "id": 559,
+  "konu": "Unit 9 · Saving the Planet",
+  "zorluk": "Orta",
+  "soru": "Boşluğa hangisi gelmelidir?<br><i>We can ___ old jars as pencil holders.</i>",
+  "secenekler": [
+   "throw",
+   "reuse",
+   "waste",
+   "pollute"
+  ],
+  "dogru": 1,
+  "tur": "Grammar",
+  "aciklama": "Eski kavanozları yeniden kullanabiliriz (reuse)."
+ },
+ {
+  "id": 560,
+  "konu": "Unit 9 · Saving the Planet",
+  "zorluk": "Orta",
+  "soru": "Diyaloğu tamamlayınız.<br><b>A:</b> How can we save energy?<br><b>B:</b> ______",
+  "secenekler": [
+   "At 7 o'clock.",
+   "It's my bag.",
+   "We should waste water.",
+   "We should turn off the lights."
+  ],
+  "dogru": 3,
+  "tur": "Dialogue"
+ },
+ {
+  "id": 561,
+  "konu": "Unit 9 · Saving the Planet",
+  "zorluk": "Zor",
+  "soru": "Dinleyin. Duyduğunuz soruya verilecek en uygun cevap hangisidir?",
+  "secenekler": [
+   "At 7 o'clock.",
+   "We should turn off the lights.",
+   "It's my bag.",
+   "We should waste water."
+  ],
+  "dogru": 1,
+  "tur": "Listening",
+  "ses": "How can we save energy?"
+ },
+ {
+  "id": 562,
+  "konu": "Unit 9 · Saving the Planet",
+  "zorluk": "Orta",
+  "soru": "Diyaloğu tamamlayınız.<br><b>A:</b> What should we do with old bottles?<br><b>B:</b> ______",
+  "secenekler": [
+   "Yes, we do.",
+   "We should throw them in the sea.",
+   "We should recycle them.",
+   "They are blue."
+  ],
+  "dogru": 2,
+  "tur": "Dialogue"
+ },
+ {
+  "id": 563,
+  "konu": "Unit 9 · Saving the Planet",
+  "zorluk": "Zor",
+  "soru": "Dinleyin. Duyduğunuz soruya verilecek en uygun cevap hangisidir?",
+  "secenekler": [
+   "They are blue.",
+   "We should recycle them.",
+   "We should throw them in the sea.",
+   "Yes, we do."
+  ],
+  "dogru": 1,
+  "tur": "Listening",
+  "ses": "What should we do with old bottles?"
+ },
+ {
+  "id": 564,
+  "konu": "Unit 9 · Saving the Planet",
+  "zorluk": "Orta",
+  "soru": "Diyaloğu tamamlayınız.<br><b>A:</b> Can you turn off the tap, please?<br><b>B:</b> ______",
+  "secenekler": [
+   "It's a tap.",
+   "Yes, I was.",
+   "At the beach.",
+   "Sure, no problem."
+  ],
+  "dogru": 3,
+  "tur": "Dialogue"
+ },
+ {
+  "id": 565,
+  "konu": "Unit 9 · Saving the Planet",
+  "zorluk": "Zor",
+  "soru": "Dinleyin. Duyduğunuz soruya verilecek en uygun cevap hangisidir?",
+  "secenekler": [
+   "It's a tap.",
+   "At the beach.",
+   "Yes, I was.",
+   "Sure, no problem."
+  ],
+  "dogru": 3,
+  "tur": "Listening",
+  "ses": "Can you turn off the tap, please?"
+ },
+ {
+  "id": 566,
+  "konu": "Unit 9 · Saving the Planet",
+  "zorluk": "Zor",
+  "soru": "<i>Our school has a recycling club. Every Friday, we collect paper, glass and plastic. We also plant trees in the school garden. Our teacher always says, 'Turn off the lights and don't waste water.'</i><br><br><b>When does the club collect paper, glass and plastic?</b>",
+  "secenekler": [
+   "Every day.",
+   "Every Monday.",
+   "Every Friday.",
+   "At the weekend."
+  ],
+  "dogru": 2,
+  "tur": "Reading"
+ },
+ {
+  "id": 567,
+  "konu": "Unit 9 · Saving the Planet",
+  "zorluk": "Zor",
+  "soru": "<i>Our school has a recycling club. Every Friday, we collect paper, glass and plastic. We also plant trees in the school garden. Our teacher always says, 'Turn off the lights and don't waste water.'</i><br><br><b>Where do they plant trees?</b>",
+  "secenekler": [
+   "On the street.",
+   "In the forest.",
+   "In the park.",
+   "In the school garden."
+  ],
+  "dogru": 3,
+  "tur": "Reading"
+ },
+ {
+  "id": 568,
+  "konu": "Unit 9 · Saving the Planet",
+  "zorluk": "Zor",
+  "soru": "<i>Our school has a recycling club. Every Friday, we collect paper, glass and plastic. We also plant trees in the school garden. Our teacher always says, 'Turn off the lights and don't waste water.'</i><br><br><b>What does the teacher say?</b>",
+  "secenekler": [
+   "Don't waste water.",
+   "Leave the lights on.",
+   "Use more plastic.",
+   "Throw rubbish on the ground."
+  ],
+  "dogru": 0,
+  "tur": "Reading"
+ },
+ {
+  "id": 569,
+  "konu": "Unit 10 · Democracy",
+  "zorluk": "Kolay",
+  "soru": "“<b>vote</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "oy vermek",
+   "konuşma",
+   "kazanmak",
+   "söz vermek"
+  ],
+  "dogru": 0,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 570,
+  "konu": "Unit 10 · Democracy",
+  "zorluk": "Kolay",
+  "soru": "“<b>oy vermek</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "vote",
+   "win",
+   "class president",
+   "fair"
+  ],
+  "dogru": 0,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 571,
+  "konu": "Unit 10 · Democracy",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "candidate",
+   "vote",
+   "election",
+   "win"
+  ],
+  "dogru": 1,
+  "tur": "Listening",
+  "ses": "vote"
+ },
+ {
+  "id": 572,
+  "konu": "Unit 10 · Democracy",
+  "zorluk": "Kolay",
+  "soru": "“<b>election</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "kampanya",
+   "oy vermek",
+   "saygı göstermek",
+   "seçim"
+  ],
+  "dogru": 3,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 573,
+  "konu": "Unit 10 · Democracy",
+  "zorluk": "Kolay",
+  "soru": "“<b>seçim</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "equal",
+   "fair",
+   "win",
+   "election"
+  ],
+  "dogru": 3,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 574,
+  "konu": "Unit 10 · Democracy",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "campaign",
+   "right",
+   "win",
+   "election"
+  ],
+  "dogru": 3,
+  "tur": "Listening",
+  "ses": "election"
+ },
+ {
+  "id": 575,
+  "konu": "Unit 10 · Democracy",
+  "zorluk": "Kolay",
+  "soru": "“<b>candidate</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "aday",
+   "konuşma",
+   "eşit",
+   "kampanya"
+  ],
+  "dogru": 0,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 576,
+  "konu": "Unit 10 · Democracy",
+  "zorluk": "Kolay",
+  "soru": "“<b>aday</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "fair",
+   "equal",
+   "candidate",
+   "rule"
+  ],
+  "dogru": 2,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 577,
+  "konu": "Unit 10 · Democracy",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "class president",
+   "ballot box",
+   "candidate",
+   "equal"
+  ],
+  "dogru": 2,
+  "tur": "Listening",
+  "ses": "candidate"
+ },
+ {
+  "id": 578,
+  "konu": "Unit 10 · Democracy",
+  "zorluk": "Kolay",
+  "soru": "“<b>class president</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "oy vermek",
+   "kural",
+   "sınıf başkanı",
+   "eşit"
+  ],
+  "dogru": 2,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 579,
+  "konu": "Unit 10 · Democracy",
+  "zorluk": "Kolay",
+  "soru": "“<b>sınıf başkanı</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "right",
+   "campaign",
+   "respect",
+   "class president"
+  ],
+  "dogru": 3,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 580,
+  "konu": "Unit 10 · Democracy",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "right",
+   "respect",
+   "campaign",
+   "class president"
+  ],
+  "dogru": 3,
+  "tur": "Listening",
+  "ses": "class president"
+ },
+ {
+  "id": 581,
+  "konu": "Unit 10 · Democracy",
+  "zorluk": "Kolay",
+  "soru": "“<b>ballot box</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "adil",
+   "sınıf başkanı",
+   "seçmek",
+   "oy sandığı"
+  ],
+  "dogru": 3,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 582,
+  "konu": "Unit 10 · Democracy",
+  "zorluk": "Kolay",
+  "soru": "“<b>oy sandığı</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "fair",
+   "ballot box",
+   "equal",
+   "choose"
+  ],
+  "dogru": 1,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 583,
+  "konu": "Unit 10 · Democracy",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "equal",
+   "election",
+   "ballot box",
+   "right"
+  ],
+  "dogru": 2,
+  "tur": "Listening",
+  "ses": "ballot box"
+ },
+ {
+  "id": 584,
+  "konu": "Unit 10 · Democracy",
+  "zorluk": "Kolay",
+  "soru": "“<b>right</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "kampanya",
+   "hak",
+   "sınıf başkanı",
+   "seçim"
+  ],
+  "dogru": 1,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 585,
+  "konu": "Unit 10 · Democracy",
+  "zorluk": "Kolay",
+  "soru": "“<b>hak</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "vote",
+   "ballot box",
+   "right",
+   "choose"
+  ],
+  "dogru": 2,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 586,
+  "konu": "Unit 10 · Democracy",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "right",
+   "candidate",
+   "class president",
+   "respect"
+  ],
+  "dogru": 0,
+  "tur": "Listening",
+  "ses": "right"
+ },
+ {
+  "id": 587,
+  "konu": "Unit 10 · Democracy",
+  "zorluk": "Kolay",
+  "soru": "“<b>respect</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "saygı göstermek",
+   "oy vermek",
+   "kampanya",
+   "konuşma"
+  ],
+  "dogru": 0,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 588,
+  "konu": "Unit 10 · Democracy",
+  "zorluk": "Kolay",
+  "soru": "“<b>saygı göstermek</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "rule",
+   "respect",
+   "choose",
+   "fair"
+  ],
+  "dogru": 1,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 589,
+  "konu": "Unit 10 · Democracy",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "promise",
+   "respect",
+   "equal",
+   "campaign"
+  ],
+  "dogru": 1,
+  "tur": "Listening",
+  "ses": "respect"
+ },
+ {
+  "id": 590,
+  "konu": "Unit 10 · Democracy",
+  "zorluk": "Kolay",
+  "soru": "“<b>equal</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "söz vermek",
+   "seçmek",
+   "eşit",
+   "kampanya"
+  ],
+  "dogru": 2,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 591,
+  "konu": "Unit 10 · Democracy",
+  "zorluk": "Kolay",
+  "soru": "“<b>eşit</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "rule",
+   "choose",
+   "right",
+   "equal"
+  ],
+  "dogru": 3,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 592,
+  "konu": "Unit 10 · Democracy",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "campaign",
+   "equal",
+   "fair",
+   "ballot box"
+  ],
+  "dogru": 1,
+  "tur": "Listening",
+  "ses": "equal"
+ },
+ {
+  "id": 593,
+  "konu": "Unit 10 · Democracy",
+  "zorluk": "Kolay",
+  "soru": "“<b>campaign</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "oy vermek",
+   "söz vermek",
+   "kampanya",
+   "adil"
+  ],
+  "dogru": 2,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 594,
+  "konu": "Unit 10 · Democracy",
+  "zorluk": "Kolay",
+  "soru": "“<b>kampanya</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "respect",
+   "candidate",
+   "choose",
+   "campaign"
+  ],
+  "dogru": 3,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 595,
+  "konu": "Unit 10 · Democracy",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "win",
+   "class president",
+   "equal",
+   "campaign"
+  ],
+  "dogru": 3,
+  "tur": "Listening",
+  "ses": "campaign"
+ },
+ {
+  "id": 596,
+  "konu": "Unit 10 · Democracy",
+  "zorluk": "Kolay",
+  "soru": "“<b>speech</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "kazanmak",
+   "adil",
+   "saygı göstermek",
+   "konuşma"
+  ],
+  "dogru": 3,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 597,
+  "konu": "Unit 10 · Democracy",
+  "zorluk": "Kolay",
+  "soru": "“<b>konuşma</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "equal",
+   "speech",
+   "win",
+   "choose"
+  ],
+  "dogru": 1,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 598,
+  "konu": "Unit 10 · Democracy",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "speech",
+   "campaign",
+   "win",
+   "ballot box"
+  ],
+  "dogru": 0,
+  "tur": "Listening",
+  "ses": "speech"
+ },
+ {
+  "id": 599,
+  "konu": "Unit 10 · Democracy",
+  "zorluk": "Kolay",
+  "soru": "“<b>win</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "oy vermek",
+   "kazanmak",
+   "söz vermek",
+   "konuşma"
+  ],
+  "dogru": 1,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 600,
+  "konu": "Unit 10 · Democracy",
+  "zorluk": "Kolay",
+  "soru": "“<b>kazanmak</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "speech",
+   "rule",
+   "win",
+   "equal"
+  ],
+  "dogru": 2,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 601,
+  "konu": "Unit 10 · Democracy",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "fair",
+   "candidate",
+   "win",
+   "ballot box"
+  ],
+  "dogru": 2,
+  "tur": "Listening",
+  "ses": "win"
+ },
+ {
+  "id": 602,
+  "konu": "Unit 10 · Democracy",
+  "zorluk": "Kolay",
+  "soru": "“<b>choose</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "seçmek",
+   "oy sandığı",
+   "eşit",
+   "oy vermek"
+  ],
+  "dogru": 0,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 603,
+  "konu": "Unit 10 · Democracy",
+  "zorluk": "Kolay",
+  "soru": "“<b>seçmek</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "campaign",
+   "choose",
+   "rule",
+   "win"
+  ],
+  "dogru": 1,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 604,
+  "konu": "Unit 10 · Democracy",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "choose",
+   "respect",
+   "promise",
+   "speech"
+  ],
+  "dogru": 0,
+  "tur": "Listening",
+  "ses": "choose"
+ },
+ {
+  "id": 605,
+  "konu": "Unit 10 · Democracy",
+  "zorluk": "Kolay",
+  "soru": "“<b>rule</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "oy sandığı",
+   "konuşma",
+   "sınıf başkanı",
+   "kural"
+  ],
+  "dogru": 3,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 606,
+  "konu": "Unit 10 · Democracy",
+  "zorluk": "Kolay",
+  "soru": "“<b>kural</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "right",
+   "rule",
+   "vote",
+   "candidate"
+  ],
+  "dogru": 1,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 607,
+  "konu": "Unit 10 · Democracy",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "vote",
+   "rule",
+   "respect",
+   "equal"
+  ],
+  "dogru": 1,
+  "tur": "Listening",
+  "ses": "rule"
+ },
+ {
+  "id": 608,
+  "konu": "Unit 10 · Democracy",
+  "zorluk": "Kolay",
+  "soru": "“<b>promise</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "sınıf başkanı",
+   "söz vermek",
+   "adil",
+   "hak"
+  ],
+  "dogru": 1,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 609,
+  "konu": "Unit 10 · Democracy",
+  "zorluk": "Kolay",
+  "soru": "“<b>söz vermek</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "vote",
+   "ballot box",
+   "equal",
+   "promise"
+  ],
+  "dogru": 3,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 610,
+  "konu": "Unit 10 · Democracy",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "promise",
+   "class president",
+   "choose",
+   "equal"
+  ],
+  "dogru": 0,
+  "tur": "Listening",
+  "ses": "promise"
+ },
+ {
+  "id": 611,
+  "konu": "Unit 10 · Democracy",
+  "zorluk": "Kolay",
+  "soru": "“<b>fair</b>” kelimesinin Türkçe anlamı hangisidir?",
+  "secenekler": [
+   "konuşma",
+   "kural",
+   "kazanmak",
+   "adil"
+  ],
+  "dogru": 3,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 612,
+  "konu": "Unit 10 · Democracy",
+  "zorluk": "Kolay",
+  "soru": "“<b>adil</b>” kelimesinin İngilizcesi hangisidir?",
+  "secenekler": [
+   "win",
+   "respect",
+   "fair",
+   "candidate"
+  ],
+  "dogru": 2,
+  "tur": "Vocabulary"
+ },
+ {
+  "id": 613,
+  "konu": "Unit 10 · Democracy",
+  "zorluk": "Kolay",
+  "soru": "Dinleyin. Duyduğunuz kelime hangisidir?",
+  "secenekler": [
+   "fair",
+   "speech",
+   "candidate",
+   "ballot box"
+  ],
+  "dogru": 0,
+  "tur": "Listening",
+  "ses": "fair"
+ },
+ {
+  "id": 614,
+  "konu": "Unit 10 · Democracy",
+  "zorluk": "Orta",
+  "soru": "Boşluğa hangisi gelmelidir?<br><i>I will ___ for Elif in the class election.</i>",
+  "secenekler": [
+   "vote",
+   "voted",
+   "votes",
+   "voting"
+  ],
+  "dogru": 0,
+  "tur": "Grammar",
+  "aciklama": "'Will'den sonra fiil yalın kullanılır."
+ },
+ {
+  "id": 615,
+  "konu": "Unit 10 · Democracy",
+  "zorluk": "Orta",
+  "soru": "Boşluğa hangisi gelmelidir?<br><i>If I become class president, I ___ make our classroom cleaner.</i>",
+  "secenekler": [
+   "was",
+   "will",
+   "did",
+   "am"
+  ],
+  "dogru": 1,
+  "tur": "Grammar",
+  "aciklama": "Gelecekle ilgili söz verirken 'will' kullanılır."
+ },
+ {
+  "id": 616,
+  "konu": "Unit 10 · Democracy",
+  "zorluk": "Orta",
+  "soru": "Boşluğa hangisi gelmelidir?<br><i>Each student puts the vote in the ___ box.</i>",
+  "secenekler": [
+   "lunch",
+   "ballot",
+   "toy",
+   "pencil"
+  ],
+  "dogru": 1,
+  "tur": "Grammar",
+  "aciklama": "Oylar oy sandığına (ballot box) atılır."
+ },
+ {
+  "id": 617,
+  "konu": "Unit 10 · Democracy",
+  "zorluk": "Orta",
+  "soru": "Boşluğa hangisi gelmelidir?<br><i>A person who wants to win an election is a ___.</i>",
+  "secenekler": [
+   "ballot",
+   "candidate",
+   "vote",
+   "rule"
+  ],
+  "dogru": 1,
+  "tur": "Grammar",
+  "aciklama": "Seçimde yarışan kişi adaydır (candidate)."
+ },
+ {
+  "id": 618,
+  "konu": "Unit 10 · Democracy",
+  "zorluk": "Orta",
+  "soru": "Boşluğa hangisi gelmelidir?<br><i>Everyone ___ equal rights in a democracy.</i>",
+  "secenekler": [
+   "have",
+   "has",
+   "is",
+   "having"
+  ],
+  "dogru": 1,
+  "tur": "Grammar",
+  "aciklama": "Everyone tekil kabul edilir: has."
+ },
+ {
+  "id": 619,
+  "konu": "Unit 10 · Democracy",
+  "zorluk": "Orta",
+  "soru": "Boşluğa hangisi gelmelidir?<br><i>Ayşe ___ the class president last year.</i>",
+  "secenekler": [
+   "was",
+   "is",
+   "will",
+   "were"
+  ],
+  "dogru": 0,
+  "tur": "Grammar",
+  "aciklama": "'Last year' geçmiş zamandır; she → was."
+ },
+ {
+  "id": 620,
+  "konu": "Unit 10 · Democracy",
+  "zorluk": "Orta",
+  "soru": "Boşluğa hangisi gelmelidir?<br><i>We should ___ other people's ideas.</i>",
+  "secenekler": [
+   "throw",
+   "waste",
+   "respect",
+   "pollute"
+  ],
+  "dogru": 2,
+  "tur": "Grammar",
+  "aciklama": "Başkalarının fikirlerine saygı (respect) göstermeliyiz."
+ },
+ {
+  "id": 621,
+  "konu": "Unit 10 · Democracy",
+  "zorluk": "Orta",
+  "soru": "Boşluğa hangisi gelmelidir?<br><i>Who will you vote for? — I ___ vote for Can.</i>",
+  "secenekler": [
+   "am",
+   "was",
+   "did",
+   "will"
+  ],
+  "dogru": 3,
+  "tur": "Grammar",
+  "aciklama": "Soruda 'will' varsa cevapta da 'will' kullanılır."
+ },
+ {
+  "id": 622,
+  "konu": "Unit 10 · Democracy",
+  "zorluk": "Orta",
+  "soru": "Boşluğa hangisi gelmelidir?<br><i>I ___ organise a book fair if I win.</i>",
+  "secenekler": [
+   "will",
+   "was",
+   "am",
+   "do"
+  ],
+  "dogru": 0,
+  "tur": "Grammar",
+  "aciklama": "Gelecekle ilgili plan: will + yalın fiil."
+ },
+ {
+  "id": 623,
+  "konu": "Unit 10 · Democracy",
+  "zorluk": "Orta",
+  "soru": "Diyaloğu tamamlayınız.<br><b>A:</b> Who will you vote for?<br><b>B:</b> ______",
+  "secenekler": [
+   "I will vote for Mert.",
+   "It's a ballot box.",
+   "Yes, I was.",
+   "On Monday."
+  ],
+  "dogru": 0,
+  "tur": "Dialogue"
+ },
+ {
+  "id": 624,
+  "konu": "Unit 10 · Democracy",
+  "zorluk": "Zor",
+  "soru": "Dinleyin. Duyduğunuz soruya verilecek en uygun cevap hangisidir?",
+  "secenekler": [
+   "On Monday.",
+   "Yes, I was.",
+   "It's a ballot box.",
+   "I will vote for Mert."
+  ],
+  "dogru": 3,
+  "tur": "Listening",
+  "ses": "Who will you vote for?"
+ },
+ {
+  "id": 625,
+  "konu": "Unit 10 · Democracy",
+  "zorluk": "Orta",
+  "soru": "Diyaloğu tamamlayınız.<br><b>A:</b> What will you do if you become class president?<br><b>B:</b> ______",
+  "secenekler": [
+   "It's in the box.",
+   "I was a class president.",
+   "Yes, I will.",
+   "I will organise a book fair."
+  ],
+  "dogru": 3,
+  "tur": "Dialogue"
+ },
+ {
+  "id": 626,
+  "konu": "Unit 10 · Democracy",
+  "zorluk": "Zor",
+  "soru": "Dinleyin. Duyduğunuz soruya verilecek en uygun cevap hangisidir?",
+  "secenekler": [
+   "I will organise a book fair.",
+   "I was a class president.",
+   "It's in the box.",
+   "Yes, I will."
+  ],
+  "dogru": 0,
+  "tur": "Listening",
+  "ses": "What will you do if you become class president?"
+ },
+ {
+  "id": 627,
+  "konu": "Unit 10 · Democracy",
+  "zorluk": "Orta",
+  "soru": "Diyaloğu tamamlayınız.<br><b>A:</b> Is the election on Friday?<br><b>B:</b> ______",
+  "secenekler": [
+   "Yes, I do.",
+   "Yes, they are.",
+   "Yes, I will.",
+   "Yes, it is."
+  ],
+  "dogru": 3,
+  "tur": "Dialogue"
+ },
+ {
+  "id": 628,
+  "konu": "Unit 10 · Democracy",
+  "zorluk": "Zor",
+  "soru": "Dinleyin. Duyduğunuz soruya verilecek en uygun cevap hangisidir?",
+  "secenekler": [
+   "Yes, they are.",
+   "Yes, it is.",
+   "Yes, I do.",
+   "Yes, I will."
+  ],
+  "dogru": 1,
+  "tur": "Listening",
+  "ses": "Is the election on Friday?"
+ },
+ {
+  "id": 629,
+  "konu": "Unit 10 · Democracy",
+  "zorluk": "Zor",
+  "soru": "<i>Our class had an election last week. There were three candidates: Ece, Burak and Zeynep. Every student voted. Zeynep won the election with 14 votes. She promised a cleaner classroom and a book corner.</i><br><br><b>How many candidates were there?</b>",
+  "secenekler": [
+   "Fourteen.",
+   "Four.",
+   "Three.",
+   "Two."
+  ],
+  "dogru": 2,
+  "tur": "Reading"
+ },
+ {
+  "id": 630,
+  "konu": "Unit 10 · Democracy",
+  "zorluk": "Zor",
+  "soru": "<i>Our class had an election last week. There were three candidates: Ece, Burak and Zeynep. Every student voted. Zeynep won the election with 14 votes. She promised a cleaner classroom and a book corner.</i><br><br><b>Who won the election?</b>",
+  "secenekler": [
+   "Ece.",
+   "The teacher.",
+   "Zeynep.",
+   "Burak."
+  ],
+  "dogru": 2,
+  "tur": "Reading"
+ },
+ {
+  "id": 631,
+  "konu": "Unit 10 · Democracy",
+  "zorluk": "Zor",
+  "soru": "<i>Our class had an election last week. There were three candidates: Ece, Burak and Zeynep. Every student voted. Zeynep won the election with 14 votes. She promised a cleaner classroom and a book corner.</i><br><br><b>What did Zeynep promise?</b>",
+  "secenekler": [
+   "A new computer.",
+   "A school trip.",
+   "More homework.",
+   "A cleaner classroom and a book corner."
+  ],
+  "dogru": 3,
+  "tur": "Reading"
+ }
+]

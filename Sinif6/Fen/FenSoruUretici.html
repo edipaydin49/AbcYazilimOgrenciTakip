@@ -1,0 +1,441 @@
+<!doctype html>
+<html lang="tr">
+<title>Fen Bilimleri 6 Soru Üretici</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Nunito:wght@400;600;800&display=swap">
+<style>
+/* Düzen: solda ayar paneli (telefonda üstte), sağda kareli kâğıt üzerinde soru listesi */
+:root {
+  --paper: #f5f8fc;
+  --sheet: #ffffff;
+  --grid: #dde7f3;
+  --ink: #1d2b44;
+  --muted: #5b6a82;
+  --cobalt: #2453c7;
+  --cobalt-soft: #e3ebfb;
+  --sun: #f2b632;
+  --good: #1d8a4e;
+  --good-soft: #def3e6;
+  --bad: #c7362f;
+  --bad-soft: #fbe4e2;
+  --cube-top: #ffd979;
+  --cube-left: #f2b632;
+  --cube-right: #d48e12;
+  --line: #c9d5e6;
+  --font-display: "Baloo 2", "Trebuchet MS", system-ui, sans-serif;
+  --font-body: "Nunito", "Segoe UI", system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #111827; --sheet: #172033; --grid: #1f2b42; --ink: #e6ecf7; --muted: #9aa8c0;
+    --cobalt: #7ea2ff; --cobalt-soft: #22325a; --sun: #f5c24f;
+    --good: #5fd08f; --good-soft: #173a2a; --bad: #ff7b72; --bad-soft: #43201f;
+    --cube-top: #f5c24f; --cube-left: #c8901a; --cube-right: #94660c; --line: #2c3b58;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #111827; --sheet: #172033; --grid: #1f2b42; --ink: #e6ecf7; --muted: #9aa8c0;
+  --cobalt: #7ea2ff; --cobalt-soft: #22325a; --sun: #f5c24f;
+  --good: #5fd08f; --good-soft: #173a2a; --bad: #ff7b72; --bad-soft: #43201f;
+  --cube-top: #f5c24f; --cube-left: #c8901a; --cube-right: #94660c; --line: #2c3b58;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body {
+  margin: 0; background: var(--paper); color: var(--ink);
+  font: 16px/1.5 var(--font-body);
+  background-image: linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+.wrap { max-width: 1120px; margin: 0 auto; padding-inline: 16px; padding-block: 24px 48px; display: grid; grid-template-columns: 300px minmax(0, 1fr); gap: 24px; align-items: start; }
+header.top { grid-column: 1 / -1; display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+header.top svg { flex: none; }
+h1 { font: 800 clamp(1.8rem, 4vw, 2.6rem)/1.05 var(--font-display); margin: 0; text-wrap: balance; }
+h1 sup { color: var(--cobalt); font-size: .6em; }
+.lead { margin: 2px 0 0; color: var(--muted); }
+
+aside.panel { background: var(--sheet); border: 1px solid var(--line); border-radius: 14px; padding: 18px; display: grid; gap: 18px; position: sticky; top: calc(env(safe-area-inset-top, 0px) + 12px); }
+.field { display: grid; gap: 8px; }
+.label { font-weight: 800; font-size: .78rem; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.count { display: flex; align-items: center; gap: 8px; }
+.count input { width: 84px; font: 800 1.3rem var(--font-display); text-align: center; border: 2px solid var(--line); border-radius: 10px; padding: 4px 6px; background: var(--paper); color: var(--ink); }
+.count button { width: 36px; height: 36px; border-radius: 10px; border: 2px solid var(--line); background: var(--sheet); color: var(--ink); font-size: 1.2rem; cursor: pointer; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { position: relative; }
+.chip input { position: absolute; opacity: 0; inset: 0; }
+.chip span { display: inline-block; padding: 5px 11px; border-radius: 999px; border: 2px solid var(--line); font-weight: 700; font-size: .9rem; cursor: pointer; user-select: none; }
+.chip input:checked + span { background: var(--cobalt); border-color: var(--cobalt); color: var(--sheet); }
+.chip input:focus-visible + span { outline: 3px solid var(--sun); outline-offset: 2px; }
+.pool { font-size: .9rem; color: var(--muted); background: var(--paper); border-radius: 10px; padding: 8px 10px; font-variant-numeric: tabular-nums; }
+.pool b { color: var(--ink); }
+.btn { font: 800 1rem var(--font-body); border-radius: 12px; padding: 11px 16px; border: 2px solid var(--cobalt); cursor: pointer; background: var(--sheet); color: var(--cobalt); }
+.btn.primary { background: var(--cobalt); color: var(--sheet); box-shadow: 0 3px 0 var(--ink); }
+.btn.primary:active { transform: translateY(2px); box-shadow: 0 1px 0 var(--ink); }
+.btn:focus-visible, .opt:focus-visible, .count button:focus-visible { outline: 3px solid var(--sun); outline-offset: 2px; }
+.btn[disabled] { opacity: .45; cursor: not-allowed; }
+.actions { display: grid; gap: 8px; }
+.note { font-size: .82rem; color: var(--muted); margin: 0; }
+
+main { display: grid; gap: 16px; min-width: 0; }
+.sheet-head { display: none; }
+.scorebar { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; background: var(--sheet); border: 2px solid var(--cobalt); border-radius: 14px; padding: 12px 16px; }
+.scorebar .big { font: 800 2rem/1 var(--font-display); font-variant-numeric: tabular-nums; }
+.meter { flex: 1 1 160px; height: 12px; border-radius: 99px; background: var(--cobalt-soft); overflow: hidden; }
+.meter i { display: block; height: 100%; background: var(--good); width: 0; transition: width .5s; }
+.q { background: var(--sheet); border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; display: grid; gap: 12px; break-inside: avoid; }
+.q.ok { border-color: var(--good); box-shadow: inset 4px 0 0 var(--good); }
+.q.no { border-color: var(--bad); box-shadow: inset 4px 0 0 var(--bad); }
+.qhead { display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; }
+.num { font: 800 1.35rem/1 var(--font-display); color: var(--cobalt); min-width: 1.8em; font-variant-numeric: tabular-nums; }
+.tag { font-size: .72rem; font-weight: 800; letter-spacing: .05em; text-transform: uppercase; padding: 2px 8px; border-radius: 6px; background: var(--paper); color: var(--muted); }
+.tag.Kolay { color: var(--good); } .tag.Orta { color: var(--cobalt); } .tag.Zor { color: var(--bad); }
+.qbody { display: flex; gap: 18px; align-items: center; flex-wrap: wrap; }
+.qtext { flex: 1 1 260px; min-width: 0; font-size: 1.08rem; font-weight: 600; margin: 0; }
+.dinle { display: inline-flex; align-items: center; gap: 6px; font: 800 .9rem var(--font-body); color: var(--cobalt); background: var(--cobalt-soft); border: 2px solid var(--cobalt); border-radius: 999px; padding: 5px 12px; cursor: pointer; }
+.dinle svg { width: 18px; height: 18px; fill: currentColor; }
+.dinle:focus-visible { outline: 3px solid var(--sun); outline-offset: 2px; }
+.aciklama { margin: 0; font-size: .95rem; background: var(--paper); border-radius: 10px; padding: 8px 12px; color: var(--ink); }
+.aciklama b { color: var(--cobalt); }
+.fig { flex: none; max-width: 100%; }
+.fig svg { display: block; max-width: 100%; height: auto; }
+.opts { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 8px; }
+.opts.uzun { grid-template-columns: minmax(0, 1fr); }
+.opt u { text-decoration-thickness: 2px; text-underline-offset: 3px; }
+.opt { display: flex; align-items: center; gap: 10px; text-align: left; font: 600 1rem var(--font-body); color: var(--ink); background: var(--paper); border: 2px solid var(--line); border-radius: 10px; padding: 8px 10px; cursor: pointer; }
+.opt b { flex: none; display: grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; border: 2px solid var(--line); font-family: var(--font-display); }
+.opt.sel { border-color: var(--cobalt); background: var(--cobalt-soft); }
+.opt.sel b { background: var(--cobalt); border-color: var(--cobalt); color: var(--sheet); }
+.opt.right { border-color: var(--good); background: var(--good-soft); }
+.opt.right b { background: var(--good); border-color: var(--good); color: var(--sheet); }
+.opt.wrong { border-color: var(--bad); background: var(--bad-soft); }
+.locked .opt { cursor: default; }
+.key { background: var(--sheet); border: 1px dashed var(--cobalt); border-radius: 14px; padding: 14px 18px; }
+.key h2 { font: 800 1.3rem var(--font-display); margin: 0 0 8px; }
+.keygrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(64px, 1fr)); gap: 6px; font-variant-numeric: tabular-nums; }
+.keygrid span { padding: 4px 6px; border-radius: 6px; background: var(--paper); font-weight: 700; }
+.empty { background: var(--sheet); border: 2px dashed var(--line); border-radius: 14px; padding: 28px; text-align: center; color: var(--muted); }
+svg .ct { fill: var(--cube-top); } svg .cl { fill: var(--cube-left); } svg .cr { fill: var(--cube-right); }
+svg .edge { stroke: var(--ink); stroke-width: 1.4; stroke-linejoin: round; }
+svg .lbl { fill: var(--ink); font: 800 15px var(--font-body); }
+svg .vurgu { fill: var(--bad); font-size: 18px; }
+svg .cizgi { stroke: var(--ink); stroke-width: 2; }
+svg .yay { stroke: var(--cobalt); stroke-width: 2; fill: none; }
+svg .dolu { fill: var(--ink); }
+svg .kare { fill: var(--cube-top); }
+svg .asal { fill: var(--cobalt-soft); }
+
+@media (max-width: 820px) {
+  .wrap { grid-template-columns: minmax(0, 1fr); }
+  aside.panel { position: static; }
+}
+@media (prefers-reduced-motion: reduce) { .meter i { transition: none; } }
+@media print {
+  .dinle { display: none !important; }
+  body { background: #fff; color: #000; font-size: 13px; }
+  .wrap { display: block; padding: 0; max-width: none; }
+  header.top, aside.panel, .scorebar { display: none !important; }
+  .sheet-head { display: flex !important; justify-content: space-between; gap: 12px; border-bottom: 2px solid #000; padding-bottom: 8px; margin-bottom: 10px; font-weight: 700; }
+  .q { border: 1px solid #999; box-shadow: none; padding: 8px 10px; margin-bottom: 8px; }
+  .opt { background: #fff; border-color: #bbb; }
+  .key { display: block !important; page-break-before: always; border: none; }
+}
+</style>
+
+<div class="wrap" lang="tr">
+  <header class="top">
+    <svg width="58" height="58" viewBox="0 0 58 58" aria-hidden="true">
+      <circle class="kare edge" cx="29" cy="29" r="12"></circle>
+      <ellipse class="cizgi" cx="29" cy="29" rx="25" ry="9" fill="none"></ellipse>
+      <circle class="asal edge" cx="52" cy="27" r="4"></circle>
+    </svg>
+    <div>
+      <h1>Fen Bilimleri 6</h1>
+      <p class="lead">6. sınıf Fen Bilimleri · <span id="poolTotal"></span> soruluk havuzdan rastgele test</p>
+    </div>
+  </header>
+
+  <aside class="panel" aria-label="Test ayarları">
+    <div class="field">
+      <label class="label" for="adet">Soru sayısı</label>
+      <div class="count">
+        <button type="button" id="eksi" aria-label="Azalt">−</button>
+        <input id="adet" type="number" min="1" max="100" value="10">
+        <button type="button" id="arti" aria-label="Artır">+</button>
+      </div>
+    </div>
+    <div class="field">
+      <span class="label">Konular</span>
+      <div class="chips" id="konular"></div>
+    </div>
+    <div class="field">
+      <span class="label">Zorluk</span>
+      <div class="chips" id="zorluklar"></div>
+    </div>
+    <div class="field" id="turAlan" hidden>
+      <span class="label">Soru türü</span>
+      <div class="chips" id="turler"></div>
+    </div>
+    <div class="pool" id="poolInfo" aria-live="polite"></div>
+    <div class="actions">
+      <button class="btn primary" id="uret" type="button">Yeni Sorular Üret</button>
+      <button class="btn" id="kontrol" type="button">Cevapları Kontrol Et</button>
+      <button class="btn" id="anahtar" type="button">Cevap Anahtarını Göster</button>
+      <button class="btn" id="yazdir" type="button">Yazdır (çalışma kâğıdı)</button>
+    </div>
+    <p class="note" id="printNote">Yazdırınca sorular bir sayfada, cevap anahtarı ayrı sayfada çıkar.</p>
+  </aside>
+
+  <main id="main">
+    <div class="sheet-head"><span>Ad Soyad: ..............................</span><span>Sınıf: ........</span><span>Tarih: ....../....../......</span></div>
+    <div class="scorebar" id="score" hidden>
+      <span class="big" id="scoreText"></span>
+      <div class="meter"><i id="scoreBar"></i></div>
+      <span id="scoreNote"></span>
+    </div>
+    <div id="list"></div>
+    <section class="key" id="key" hidden>
+      <h2>Cevap Anahtarı</h2>
+      <div class="keygrid" id="keygrid"></div>
+    </section>
+  </main>
+</div>
+
+<script>
+/* ===== SORU HAVUZU =====
+   Yeni soru eklemek için listeye aynı biçimde bir kayıt ekleyin:
+   {"id": 999, "konu": "Küpün Hacmi", "zorluk": "Kolay", "soru": "...", "secenekler": ["a","b","c","d"], "dogru": 0}
+   "dogru" doğru seçeneğin sırasıdır (0 = ilk seçenek). Şekil isterseniz:
+   "sekil": {"tip": "kup", "etiket": "5 cm"}            tek küp
+            {"tip": "yapi", "h": [[2,1],[1,0]]}         birim küplerle yapı
+            {"tip": "dikdortgen", "en": 6, "boy": 4}     birim karelerden dikdörtgen
+            {"tip": "dogru", "adim": 4, "adet": 6, "goster": [0,1], "soru": 4}   sayı doğrusu
+            {"tip": "agac", "dugum": [60, [2], [30, [2], [15, [3], [5]]]], "gizli": "15"}   çarpan ağacı
+            {"tip": "merdiven", "satirlar": [[60,2],[30,2],[15,3],[5,5],[1]], "gizli": [2,0]}   bölen merdiveni */
+const HAVUZ = [{"id": 1, "konu": "Güneş Sistemi ve Tutulmalar", "zorluk": "Kolay", "soru": "Güneş'e en yakın gezegen hangisidir?", "secenekler": ["Merkür", "Neptün", "Mars", "Venüs"], "dogru": 0}, {"id": 2, "konu": "Güneş Sistemi ve Tutulmalar", "zorluk": "Kolay", "soru": "Güneş Sistemi'ndeki en büyük gezegen hangisidir?", "secenekler": ["Satürn", "Uranüs", "Jüpiter", "Dünya"], "dogru": 2}, {"id": 3, "konu": "Güneş Sistemi ve Tutulmalar", "zorluk": "Kolay", "soru": "Belirgin halkalarıyla tanınan gezegen hangisidir?", "secenekler": ["Merkür", "Mars", "Satürn", "Venüs"], "dogru": 2}, {"id": 4, "konu": "Güneş Sistemi ve Tutulmalar", "zorluk": "Kolay", "soru": "Yüzeyindeki demir oksit nedeniyle “Kızıl Gezegen” olarak bilinen gezegen hangisidir?", "secenekler": ["Neptün", "Venüs", "Jüpiter", "Mars"], "dogru": 3}, {"id": 5, "konu": "Güneş Sistemi ve Tutulmalar", "zorluk": "Kolay", "soru": "Güneş'e en uzak gezegen hangisidir?", "secenekler": ["Neptün", "Uranüs", "Jüpiter", "Satürn"], "dogru": 0}, {"id": 6, "konu": "Güneş Sistemi ve Tutulmalar", "zorluk": "Kolay", "soru": "Güneş Sistemi'nde kaç gezegen vardır?", "secenekler": ["9", "7", "8", "10"], "dogru": 2}, {"id": 7, "konu": "Güneş Sistemi ve Tutulmalar", "zorluk": "Kolay", "soru": "Güneş Sistemi'nin merkezinde bulunan gök cismi hangisidir?", "secenekler": ["Dünya", "Ay", "Jüpiter", "Güneş"], "dogru": 3}, {"id": 8, "konu": "Güneş Sistemi ve Tutulmalar", "zorluk": "Kolay", "soru": "Güneş hangi gök cismi grubunda yer alır?", "secenekler": ["Uydu", "Yıldız", "Asteroit", "Gezegen"], "dogru": 1}, {"id": 9, "konu": "Güneş Sistemi ve Tutulmalar", "zorluk": "Kolay", "soru": "Dünya'nın doğal uydusu hangisidir?", "secenekler": ["Venüs", "Mars", "Güneş", "Ay"], "dogru": 3}, {"id": 10, "konu": "Güneş Sistemi ve Tutulmalar", "zorluk": "Kolay", "soru": "Güneş Sistemi'ndeki en sıcak gezegen hangisidir?", "secenekler": ["Mars", "Jüpiter", "Venüs", "Merkür"], "dogru": 2}, {"id": 11, "konu": "Güneş Sistemi ve Tutulmalar", "zorluk": "Orta", "soru": "Aşağıdakilerden hangisi iç gezegenlerden biri değildir?", "secenekler": ["Venüs", "Merkür", "Mars", "Jüpiter"], "dogru": 3}, {"id": 12, "konu": "Güneş Sistemi ve Tutulmalar", "zorluk": "Orta", "soru": "Aşağıdakilerden hangisi dış gezegenlerden biridir?", "secenekler": ["Dünya", "Mars", "Uranüs", "Merkür"], "dogru": 2}, {"id": 13, "konu": "Güneş Sistemi ve Tutulmalar", "zorluk": "Orta", "soru": "İç gezegenler ile dış gezegenleri birbirinden ayıran yapı hangisidir?", "secenekler": ["Asteroit kuşağı", "Atmosfer", "Samanyolu", "Ay'ın yörüngesi"], "dogru": 0}, {"id": 14, "konu": "Güneş Sistemi ve Tutulmalar", "zorluk": "Orta", "soru": "Uydusu olmayan gezegenler hangileridir?", "secenekler": ["Uranüs ve Neptün", "Jüpiter ve Satürn", "Merkür ve Venüs", "Mars ve Dünya"], "dogru": 2}, {"id": 15, "konu": "Güneş Sistemi ve Tutulmalar", "zorluk": "Orta", "soru": "İç gezegenlerin ortak özelliği hangisidir?", "secenekler": ["Yüzeyleri kayalıktır.", "Gaz hâlindedirler.", "Hepsinin halkası vardır.", "Güneş'e en uzak gezegenlerdir."], "dogru": 0}, {"id": 16, "konu": "Güneş Sistemi ve Tutulmalar", "zorluk": "Orta", "soru": "Dış gezegenlerin ortak özelliği hangisidir?", "secenekler": ["Büyük kısmı gazlardan oluşur.", "Hiç uyduları yoktur.", "Yüzeyleri kayalıktır.", "Güneş'e en yakın gezegenlerdir."], "dogru": 0}, {"id": 17, "konu": "Güneş Sistemi ve Tutulmalar", "zorluk": "Orta", "soru": "Gezegenler için aşağıdakilerden hangisi doğrudur?", "secenekler": ["Hepsinin uydusu vardır.", "Kendi ışıklarını üretmezler.", "Kendi ışıklarını üretirler.", "Güneş'in çevresinde dolanmazlar."], "dogru": 1}, {"id": 18, "konu": "Güneş Sistemi ve Tutulmalar", "zorluk": "Orta", "soru": "Ay tutulması hangi ay evresinde gerçekleşir?", "secenekler": ["Yeni ay", "Dolunay", "İlk dördün", "Son dördün"], "dogru": 1}, {"id": 19, "konu": "Güneş Sistemi ve Tutulmalar", "zorluk": "Orta", "soru": "Güneş tutulması hangi ay evresinde gerçekleşir?", "secenekler": ["Yeni ay", "İlk dördün", "Son dördün", "Dolunay"], "dogru": 0}, {"id": 20, "konu": "Güneş Sistemi ve Tutulmalar", "zorluk": "Zor", "soru": "Ay tutulması sırasında Güneş, Dünya ve Ay nasıl sıralanır?", "secenekler": ["Güneş – Dünya – Ay", "Dünya – Güneş – Ay", "Ay – Güneş – Dünya", "Güneş – Ay – Dünya"], "dogru": 0}, {"id": 21, "konu": "Güneş Sistemi ve Tutulmalar", "zorluk": "Zor", "soru": "Güneş tutulması sırasında Güneş, Ay ve Dünya nasıl sıralanır?", "secenekler": ["Güneş – Dünya – Ay", "Güneş – Ay – Dünya", "Ay – Güneş – Dünya", "Dünya – Güneş – Ay"], "dogru": 1}, {"id": 22, "konu": "Güneş Sistemi ve Tutulmalar", "zorluk": "Zor", "soru": "Güneş tutulması neden çıplak gözle izlenmemelidir?", "secenekler": ["Ay'ın gölgesi gözü üşütür.", "Tutulma sırasında Güneş görünmez.", "Güneş ışınları göze zarar verir.", "Tutulma gece gerçekleşir."], "dogru": 2}, {"id": 23, "konu": "Güneş Sistemi ve Tutulmalar", "zorluk": "Zor", "soru": "Ay tutulmasında Ay'ın görünmez hâle gelmesinin nedeni nedir?", "secenekler": ["Dünya'nın Ay'ın gölgesinde kalması", "Ay'ın Dünya'nın gölgesinde kalması", "Güneş'in Ay'ın gölgesinde kalması", "Ay'ın kendi ışığını kaybetmesi"], "dogru": 1}, {"id": 24, "konu": "Güneş Sistemi ve Tutulmalar", "zorluk": "Zor", "soru": "Güneş tutulması Dünya'nın neresinden gözlenebilir?", "secenekler": ["Ay'ın gölgesinin düştüğü bölgelerden", "Yalnızca gece olan bölgelerden", "Dünya'nın her yerinden", "Yalnızca kutuplardan"], "dogru": 0}, {"id": 25, "konu": "Vücudumuzdaki Sistemler", "zorluk": "Kolay", "soru": "Vücudumuza şekil veren, iç organları koruyan sistem hangisidir?", "secenekler": ["Sindirim sistemi", "Solunum sistemi", "Boşaltım sistemi", "Destek ve hareket sistemi"], "dogru": 3}, {"id": 26, "konu": "Vücudumuzdaki Sistemler", "zorluk": "Kolay", "soru": "Kemiklerin birleşme yerlerine ne ad verilir?", "secenekler": ["Kıkırdak", "Eklem", "Kas", "Damar"], "dogru": 1}, {"id": 27, "konu": "Vücudumuzdaki Sistemler", "zorluk": "Kolay", "soru": "Kafatası kemikleri arasında hangi tür eklem bulunur?", "secenekler": ["Oynamaz eklem", "Hareketli eklem", "Yarı oynar eklem", "Menteşe eklem"], "dogru": 0}, {"id": 28, "konu": "Vücudumuzdaki Sistemler", "zorluk": "Kolay", "soru": "Dirsek ve diz hangi tür ekleme örnektir?", "secenekler": ["Hareketli eklem", "Yarı oynar eklem", "Oynamaz eklem", "Hiçbiri"], "dogru": 0}, {"id": 29, "konu": "Vücudumuzdaki Sistemler", "zorluk": "Kolay", "soru": "Omurga kemikleri arasında hangi tür eklem bulunur?", "secenekler": ["Sabit eklem", "Hareketli eklem", "Yarı oynar eklem", "Oynamaz eklem"], "dogru": 2}, {"id": 30, "konu": "Vücudumuzdaki Sistemler", "zorluk": "Kolay", "soru": "Kalp kaç odacıktan oluşur?", "secenekler": ["3", "6", "4", "2"], "dogru": 2}, {"id": 31, "konu": "Vücudumuzdaki Sistemler", "zorluk": "Kolay", "soru": "Kalpten vücuda kan taşıyan damarlara ne ad verilir?", "secenekler": ["Atardamar", "Toplardamar", "Lenf damarı", "Kılcal damar"], "dogru": 0}, {"id": 32, "konu": "Vücudumuzdaki Sistemler", "zorluk": "Kolay", "soru": "Vücuttan kalbe kan getiren damarlara ne ad verilir?", "secenekler": ["Kılcal damar", "Akciğer atardamarı", "Atardamar", "Toplardamar"], "dogru": 3}, {"id": 33, "konu": "Vücudumuzdaki Sistemler", "zorluk": "Kolay", "soru": "Kanı süzerek idrar oluşturan organ hangisidir?", "secenekler": ["Karaciğer", "Mide", "Böbrek", "Akciğer"], "dogru": 2}, {"id": 34, "konu": "Vücudumuzdaki Sistemler", "zorluk": "Kolay", "soru": "Solunum sisteminde gaz alışverişinin gerçekleştiği yapı hangisidir?", "secenekler": ["Alveol (hava kesecikleri)", "Burun", "Soluk borusu", "Gırtlak"], "dogru": 0}, {"id": 35, "konu": "Vücudumuzdaki Sistemler", "zorluk": "Kolay", "soru": "Sindirimin tamamlandığı ve besinlerin kana geçtiği organ hangisidir?", "secenekler": ["Kalın bağırsak", "Mide", "Yemek borusu", "İnce bağırsak"], "dogru": 3}, {"id": 36, "konu": "Vücudumuzdaki Sistemler", "zorluk": "Kolay", "soru": "Oksijen taşıyan kan hücresi hangisidir?", "secenekler": ["Akyuvar", "Alyuvar", "Kan plazması", "Kan pulcuğu"], "dogru": 1}, {"id": 37, "konu": "Vücudumuzdaki Sistemler", "zorluk": "Orta", "soru": "Vücudu mikroplara karşı savunan kan hücresi hangisidir?", "secenekler": ["Kan pulcuğu", "Akyuvar", "Alyuvar", "Plazma"], "dogru": 1}, {"id": 38, "konu": "Vücudumuzdaki Sistemler", "zorluk": "Orta", "soru": "Kanın pıhtılaşmasını sağlayan yapı hangisidir?", "secenekler": ["Kan pulcukları", "Alyuvarlar", "Akyuvarlar", "Kan plazması"], "dogru": 0}, {"id": 39, "konu": "Vücudumuzdaki Sistemler", "zorluk": "Orta", "soru": "Atardamar ile toplardamar arasında madde alışverişini sağlayan damarlar hangileridir?", "secenekler": ["Kılcal damarlar", "Aort damarı", "Akciğer toplardamarı", "Lenf damarları"], "dogru": 0}, {"id": 40, "konu": "Vücudumuzdaki Sistemler", "zorluk": "Orta", "soru": "Kalp – akciğer – kalp arasında gerçekleşen dolaşıma ne ad verilir?", "secenekler": ["Küçük kan dolaşımı", "Lenf dolaşımı", "Büyük kan dolaşımı", "Sindirim dolaşımı"], "dogru": 0}, {"id": 41, "konu": "Vücudumuzdaki Sistemler", "zorluk": "Orta", "soru": "Kalp – vücut – kalp arasında gerçekleşen dolaşıma ne ad verilir?", "secenekler": ["Büyük kan dolaşımı", "Küçük kan dolaşımı", "Böbrek dolaşımı", "Akciğer dolaşımı"], "dogru": 0}, {"id": 42, "konu": "Vücudumuzdaki Sistemler", "zorluk": "Orta", "soru": "Karbonhidrat (nişasta) sindirimi hangi organda başlar?", "secenekler": ["Ağız", "Mide", "Kalın bağırsak", "İnce bağırsak"], "dogru": 0}, {"id": 43, "konu": "Vücudumuzdaki Sistemler", "zorluk": "Orta", "soru": "Protein sindirimi hangi organda başlar?", "secenekler": ["Yemek borusu", "Kalın bağırsak", "Mide", "Ağız"], "dogru": 2}, {"id": 44, "konu": "Vücudumuzdaki Sistemler", "zorluk": "Orta", "soru": "Yağların küçük damlacıklara ayrılmasını sağlayan safra sıvısını üreten organ hangisidir?", "secenekler": ["Mide", "Böbrek", "Pankreas", "Karaciğer"], "dogru": 3}, {"id": 45, "konu": "Vücudumuzdaki Sistemler", "zorluk": "Orta", "soru": "Kalın bağırsağın temel görevi hangisidir?", "secenekler": ["Protein sindiriminin başlaması", "Safra üretimi", "Su ve minerallerin emilmesi", "Kanın süzülmesi"], "dogru": 2}, {"id": 46, "konu": "Vücudumuzdaki Sistemler", "zorluk": "Orta", "soru": "Kendi isteğimizle çalıştıramadığımız, mide ve bağırsak duvarında bulunan kas çeşidi hangisidir?", "secenekler": ["İskelet kası", "Kol kası", "Çizgili kas", "Düz kas"], "dogru": 3}, {"id": 47, "konu": "Vücudumuzdaki Sistemler", "zorluk": "Orta", "soru": "Kalp kası için aşağıdakilerden hangisi doğrudur?", "secenekler": ["İstemli çalışır.", "Çizgili görünümlüdür ama istemsiz çalışır.", "Düz kas grubundandır ve isteğimizle çalışır.", "Yalnızca uykuda çalışır."], "dogru": 1}, {"id": 48, "konu": "Vücudumuzdaki Sistemler", "zorluk": "Orta", "soru": "Böbreğin kanı süzen en küçük yapı birimine ne ad verilir?", "secenekler": ["Nefron", "Alveol", "Nöron", "Bronşçuk"], "dogru": 0}, {"id": 49, "konu": "Vücudumuzdaki Sistemler", "zorluk": "Orta", "soru": "Oluşan idrarın biriktirildiği organ hangisidir?", "secenekler": ["İdrar kesesi", "Karaciğer", "Üreter", "Böbrek"], "dogru": 0}, {"id": 50, "konu": "Vücudumuzdaki Sistemler", "zorluk": "Orta", "soru": "Kırmızı kemik iliğinin görevi hangisidir?", "secenekler": ["Besinleri sindirmek", "Safra üretmek", "Kan hücrelerini üretmek", "Kanı süzmek"], "dogru": 2}, {"id": 51, "konu": "Vücudumuzdaki Sistemler", "zorluk": "Orta", "soru": "Yemek borusunda hangi tür sindirim gerçekleşir?", "secenekler": ["Sindirim gerçekleşmez, besin mideye iletilir.", "Karbonhidrat sindirimi tamamlanır.", "Protein sindirimi", "Yağ sindirimi"], "dogru": 0}, {"id": 52, "konu": "Vücudumuzdaki Sistemler", "zorluk": "Zor", "soru": "Soluk alma sırasında diyafram kasında ne olur?", "secenekler": ["Gevşer ve yukarı doğru çıkar.", "Hiç hareket etmez.", "Gevşer ve aşağı iner.", "Kasılır ve aşağı doğru iner."], "dogru": 3}, {"id": 53, "konu": "Vücudumuzdaki Sistemler", "zorluk": "Zor", "soru": "Soluk verme sırasında göğüs boşluğunun hacmi nasıl değişir?", "secenekler": ["Değişmez.", "Artar.", "Azalır.", "Önce artar sonra artmaya devam eder."], "dogru": 2}, {"id": 54, "konu": "Vücudumuzdaki Sistemler", "zorluk": "Zor", "soru": "Solunum yolunun doğru sıralaması hangisidir?", "secenekler": ["Alveol – bronşçuk – bronş – burun – soluk borusu", "Burun – alveol – bronş – soluk borusu – bronşçuk", "Burun – bronş – soluk borusu – alveol – bronşçuk", "Burun – soluk borusu – bronş – bronşçuk – alveol"], "dogru": 3}, {"id": 55, "konu": "Vücudumuzdaki Sistemler", "zorluk": "Zor", "soru": "Genel verici olarak bilinen kan grubu hangisidir?", "secenekler": ["B Rh(−)", "A Rh(+)", "AB Rh(+)", "0 Rh(−)"], "dogru": 3}, {"id": 56, "konu": "Vücudumuzdaki Sistemler", "zorluk": "Zor", "soru": "Genel alıcı olarak bilinen kan grubu hangisidir?", "secenekler": ["A Rh(−)", "0 Rh(−)", "AB Rh(+)", "B Rh(+)"], "dogru": 2}, {"id": 57, "konu": "Vücudumuzdaki Sistemler", "zorluk": "Zor", "soru": "Aşağıdakilerden hangisi boşaltım görevi de yapan bir organ değildir?", "secenekler": ["Mide", "Deri", "Böbrek", "Akciğer"], "dogru": 0}, {"id": 58, "konu": "Vücudumuzdaki Sistemler", "zorluk": "Zor", "soru": "Akciğerlerin boşaltıma katkısı hangisidir?", "secenekler": ["Safra salgılar.", "İdrar üretir.", "Karbondioksit ve su buharını vücuttan atar.", "Ter üretir."], "dogru": 2}, {"id": 59, "konu": "Vücudumuzdaki Sistemler", "zorluk": "Zor", "soru": "Pankreasın sindirime katkısı hangisidir?", "secenekler": ["İnce bağırsağa sindirim enzimleri gönderir.", "Su emilimini yapar.", "Safra üretir.", "Besinleri mideye iletir."], "dogru": 0}, {"id": 60, "konu": "Kuvvet ve Hareket", "zorluk": "Kolay", "soru": "Bir cisme aynı yönde 10 N ve 6 N büyüklüğünde iki kuvvet uygulanıyor. Bileşke kuvvet kaç N'dir?", "secenekler": ["16 N", "60 N", "4 N", "10 N"], "dogru": 0}, {"id": 61, "konu": "Kuvvet ve Hareket", "zorluk": "Kolay", "soru": "Bir cisme aynı yönde 15 N ve 15 N büyüklüğünde iki kuvvet uygulanıyor. Bileşke kuvvet kaç N'dir?", "secenekler": ["1 N", "15 N", "225 N", "30 N"], "dogru": 3}, {"id": 62, "konu": "Kuvvet ve Hareket", "zorluk": "Kolay", "soru": "Bir cisme aynı yönde 20 N ve 8 N büyüklüğünde iki kuvvet uygulanıyor. Bileşke kuvvet kaç N'dir?", "secenekler": ["12 N", "160 N", "20 N", "28 N"], "dogru": 3}, {"id": 63, "konu": "Kuvvet ve Hareket", "zorluk": "Kolay", "soru": "Bir cisme aynı yönde 12 N ve 5 N büyüklüğünde iki kuvvet uygulanıyor. Bileşke kuvvet kaç N'dir?", "secenekler": ["60 N", "17 N", "12 N", "7 N"], "dogru": 1}, {"id": 64, "konu": "Kuvvet ve Hareket", "zorluk": "Kolay", "soru": "Bir cisme aynı yönde 30 N ve 12 N büyüklüğünde iki kuvvet uygulanıyor. Bileşke kuvvet kaç N'dir?", "secenekler": ["18 N", "42 N", "30 N", "360 N"], "dogru": 1}, {"id": 65, "konu": "Kuvvet ve Hareket", "zorluk": "Kolay", "soru": "Bir cisme aynı yönde 7 N ve 9 N büyüklüğünde iki kuvvet uygulanıyor. Bileşke kuvvet kaç N'dir?", "secenekler": ["63 N", "16 N", "9 N", "2 N"], "dogru": 1}, {"id": 66, "konu": "Kuvvet ve Hareket", "zorluk": "Kolay", "soru": "Bir cisme aynı yönde 25 N ve 10 N büyüklüğünde iki kuvvet uygulanıyor. Bileşke kuvvet kaç N'dir?", "secenekler": ["15 N", "25 N", "35 N", "250 N"], "dogru": 2}, {"id": 67, "konu": "Kuvvet ve Hareket", "zorluk": "Orta", "soru": "Bir cisme zıt yönlerde 10 N ve 6 N büyüklüğünde iki kuvvet uygulanıyor. Bileşke kuvvet kaç N'dir?", "secenekler": ["4 N", "16 N", "6 N", "10 N"], "dogru": 0}, {"id": 68, "konu": "Kuvvet ve Hareket", "zorluk": "Orta", "soru": "Bir cisme zıt yönlerde 20 N ve 8 N büyüklüğünde iki kuvvet uygulanıyor. Bileşke kuvvet kaç N'dir?", "secenekler": ["20 N", "28 N", "8 N", "12 N"], "dogru": 3}, {"id": 69, "konu": "Kuvvet ve Hareket", "zorluk": "Orta", "soru": "Bir cisme zıt yönlerde 12 N ve 5 N büyüklüğünde iki kuvvet uygulanıyor. Bileşke kuvvet kaç N'dir?", "secenekler": ["12 N", "5 N", "17 N", "7 N"], "dogru": 3}, {"id": 70, "konu": "Kuvvet ve Hareket", "zorluk": "Orta", "soru": "Bir cisme zıt yönlerde 30 N ve 12 N büyüklüğünde iki kuvvet uygulanıyor. Bileşke kuvvet kaç N'dir?", "secenekler": ["42 N", "30 N", "12 N", "18 N"], "dogru": 3}, {"id": 71, "konu": "Kuvvet ve Hareket", "zorluk": "Orta", "soru": "Bir cisme zıt yönlerde 9 N ve 16 N büyüklüğünde iki kuvvet uygulanıyor. Bileşke kuvvet kaç N'dir?", "secenekler": ["9 N", "16 N", "7 N", "25 N"], "dogru": 2}, {"id": 72, "konu": "Kuvvet ve Hareket", "zorluk": "Orta", "soru": "Bir cisme zıt yönlerde 25 N ve 10 N büyüklüğünde iki kuvvet uygulanıyor. Bileşke kuvvet kaç N'dir?", "secenekler": ["15 N", "10 N", "25 N", "35 N"], "dogru": 0}, {"id": 73, "konu": "Kuvvet ve Hareket", "zorluk": "Orta", "soru": "100 m yolu 20 saniyede alan bir koşucunun sürati kaç m/s'dir?", "secenekler": ["80 m/s", "2000 m/s", "7 m/s", "5 m/s"], "dogru": 3}, {"id": 74, "konu": "Kuvvet ve Hareket", "zorluk": "Orta", "soru": "60 m yolu 12 saniyede alan bir koşucunun sürati kaç m/s'dir?", "secenekler": ["7 m/s", "5 m/s", "48 m/s", "720 m/s"], "dogru": 1}, {"id": 75, "konu": "Kuvvet ve Hareket", "zorluk": "Orta", "soru": "150 m yolu 30 saniyede alan bir koşucunun sürati kaç m/s'dir?", "secenekler": ["4500 m/s", "120 m/s", "5 m/s", "7 m/s"], "dogru": 2}, {"id": 76, "konu": "Kuvvet ve Hareket", "zorluk": "Orta", "soru": "240 m yolu 40 saniyede alan bir koşucunun sürati kaç m/s'dir?", "secenekler": ["9600 m/s", "8 m/s", "6 m/s", "200 m/s"], "dogru": 2}, {"id": 77, "konu": "Kuvvet ve Hareket", "zorluk": "Orta", "soru": "90 m yolu 15 saniyede alan bir koşucunun sürati kaç m/s'dir?", "secenekler": ["8 m/s", "6 m/s", "1350 m/s", "75 m/s"], "dogru": 1}, {"id": 78, "konu": "Kuvvet ve Hareket", "zorluk": "Orta", "soru": "360 m yolu 60 saniyede alan bir koşucunun sürati kaç m/s'dir?", "secenekler": ["21600 m/s", "300 m/s", "6 m/s", "8 m/s"], "dogru": 2}, {"id": 79, "konu": "Kuvvet ve Hareket", "zorluk": "Zor", "soru": "Sürati 60 km/h olan bir otomobil 3 saatte kaç km yol alır?", "secenekler": ["180 km", "63 km", "240 km", "20 km"], "dogru": 0}, {"id": 80, "konu": "Kuvvet ve Hareket", "zorluk": "Zor", "soru": "Sürati 80 km/h olan bir otomobil 2 saatte kaç km yol alır?", "secenekler": ["240 km", "160 km", "82 km", "40 km"], "dogru": 1}, {"id": 81, "konu": "Kuvvet ve Hareket", "zorluk": "Zor", "soru": "Sürati 90 km/h olan bir otomobil 4 saatte kaç km yol alır?", "secenekler": ["360 km", "94 km", "450 km", "370 km"], "dogru": 0}, {"id": 82, "konu": "Kuvvet ve Hareket", "zorluk": "Zor", "soru": "Sürati 50 km/h olan bir otomobil 5 saatte kaç km yol alır?", "secenekler": ["300 km", "250 km", "55 km", "10 km"], "dogru": 1}, {"id": 83, "konu": "Kuvvet ve Hareket", "zorluk": "Zor", "soru": "Sürati 70 km/h olan bir otomobil 3 saatte kaç km yol alır?", "secenekler": ["220 km", "73 km", "210 km", "280 km"], "dogru": 2}, {"id": 84, "konu": "Kuvvet ve Hareket", "zorluk": "Kolay", "soru": "Kuvvetin birimi hangisidir?", "secenekler": ["Metre (m)", "Saniye (s)", "Newton (N)", "Kilogram (kg)"], "dogru": 2}, {"id": 85, "konu": "Kuvvet ve Hareket", "zorluk": "Kolay", "soru": "Kuvvet hangi araçla ölçülür?", "secenekler": ["Dinamometre", "Barometre", "Ampermetre", "Termometre"], "dogru": 0}, {"id": 86, "konu": "Kuvvet ve Hareket", "zorluk": "Kolay", "soru": "Birim zamanda alınan yola ne ad verilir?", "secenekler": ["Enerji", "Sürat", "Kuvvet", "Kütle"], "dogru": 1}, {"id": 87, "konu": "Kuvvet ve Hareket", "zorluk": "Kolay", "soru": "Sürat nasıl hesaplanır?", "secenekler": ["Alınan yol + geçen süre", "Alınan yol ÷ geçen süre", "Alınan yol · geçen süre", "Geçen süre ÷ alınan yol"], "dogru": 1}, {"id": 88, "konu": "Kuvvet ve Hareket", "zorluk": "Orta", "soru": "Bir cisme etki eden kuvvetlerin bileşkesi sıfır ise bu kuvvetlere ne ad verilir?", "secenekler": ["Dengelenmemiş kuvvetler", "Sürtünme kuvvetleri", "Dengelenmiş kuvvetler", "Kütle çekim kuvvetleri"], "dogru": 2}, {"id": 89, "konu": "Kuvvet ve Hareket", "zorluk": "Orta", "soru": "Duran bir cisme dengelenmiş kuvvetler etki ederse cisim ne yapar?", "secenekler": ["Yavaşlar.", "Hızlanır.", "Yön değiştirir.", "Durmaya devam eder."], "dogru": 3}, {"id": 90, "konu": "Kuvvet ve Hareket", "zorluk": "Orta", "soru": "Zıt yönlü iki kuvvetin bileşkesinin yönü nasıl belirlenir?", "secenekler": ["Her zaman sağa doğrudur.", "Yönü yoktur.", "Büyük olan kuvvetin yönündedir.", "Küçük olan kuvvetin yönündedir."], "dogru": 2}, {"id": 91, "konu": "Kuvvet ve Hareket", "zorluk": "Zor", "soru": "Halat çekme oyununda iki takım eşit kuvvetle çekerse ne olur?", "secenekler": ["Halat sağa hareket eder.", "Halat hareket etmez.", "Halat kopar.", "Halat sola hareket eder."], "dogru": 1}, {"id": 92, "konu": "Kuvvet ve Hareket", "zorluk": "Zor", "soru": "Sürat–zaman grafiğinde yatay bir çizgi neyi gösterir?", "secenekler": ["Cismin durduğunu", "Cismin yavaşladığını", "Cismin sabit süratle hareket ettiğini", "Cismin hızlandığını"], "dogru": 2}, {"id": 93, "konu": "Madde ve Isı", "zorluk": "Orta", "soru": "Kütlesi 20 g, hacmi 5 cm³ olan bir maddenin yoğunluğu kaç g/cm³'tür?", "secenekler": ["5 g/cm³", "4 g/cm³", "100 g/cm³", "15 g/cm³"], "dogru": 1}, {"id": 94, "konu": "Madde ve Isı", "zorluk": "Orta", "soru": "Kütlesi 60 g, hacmi 20 cm³ olan bir maddenin yoğunluğu kaç g/cm³'tür?", "secenekler": ["3 g/cm³", "1200 g/cm³", "4 g/cm³", "40 g/cm³"], "dogru": 0}, {"id": 95, "konu": "Madde ve Isı", "zorluk": "Orta", "soru": "Kütlesi 48 g, hacmi 12 cm³ olan bir maddenin yoğunluğu kaç g/cm³'tür?", "secenekler": ["4 g/cm³", "5 g/cm³", "36 g/cm³", "576 g/cm³"], "dogru": 0}, {"id": 96, "konu": "Madde ve Isı", "zorluk": "Orta", "soru": "Kütlesi 90 g, hacmi 30 cm³ olan bir maddenin yoğunluğu kaç g/cm³'tür?", "secenekler": ["4 g/cm³", "60 g/cm³", "3 g/cm³", "2700 g/cm³"], "dogru": 2}, {"id": 97, "konu": "Madde ve Isı", "zorluk": "Orta", "soru": "Kütlesi 27 g, hacmi 9 cm³ olan bir maddenin yoğunluğu kaç g/cm³'tür?", "secenekler": ["4 g/cm³", "18 g/cm³", "243 g/cm³", "3 g/cm³"], "dogru": 3}, {"id": 98, "konu": "Madde ve Isı", "zorluk": "Orta", "soru": "Kütlesi 100 g, hacmi 50 cm³ olan bir maddenin yoğunluğu kaç g/cm³'tür?", "secenekler": ["2 g/cm³", "50 g/cm³", "3 g/cm³", "5000 g/cm³"], "dogru": 0}, {"id": 99, "konu": "Madde ve Isı", "zorluk": "Zor", "soru": "Yoğunluğu 2 g/cm³ olan bir maddenin 15 cm³'ünün kütlesi kaç g'dır?", "secenekler": ["19 g", "30 g", "45 g", "17 g"], "dogru": 1}, {"id": 100, "konu": "Madde ve Isı", "zorluk": "Zor", "soru": "Yoğunluğu 3 g/cm³ olan bir maddenin 10 cm³'ünün kütlesi kaç g'dır?", "secenekler": ["40 g", "16 g", "30 g", "13 g"], "dogru": 2}, {"id": 101, "konu": "Madde ve Isı", "zorluk": "Zor", "soru": "Yoğunluğu 5 g/cm³ olan bir maddenin 8 cm³'ünün kütlesi kaç g'dır?", "secenekler": ["40 g", "18 g", "13 g", "48 g"], "dogru": 0}, {"id": 102, "konu": "Madde ve Isı", "zorluk": "Zor", "soru": "Yoğunluğu 4 g/cm³ olan bir maddenin 6 cm³'ünün kütlesi kaç g'dır?", "secenekler": ["14 g", "24 g", "10 g", "30 g"], "dogru": 1}, {"id": 103, "konu": "Madde ve Isı", "zorluk": "Kolay", "soru": "Sıcaklığı ölçmek için kullanılan araç hangisidir?", "secenekler": ["Cetvel", "Barometre", "Dinamometre", "Termometre"], "dogru": 3}, {"id": 104, "konu": "Madde ve Isı", "zorluk": "Kolay", "soru": "Isı hangi yönde akar?", "secenekler": ["Soğuk maddeden sıcak maddeye", "Isı hiç akmaz", "Her iki yöne eşit", "Sıcak maddeden soğuk maddeye"], "dogru": 3}, {"id": 105, "konu": "Madde ve Isı", "zorluk": "Kolay", "soru": "Aşağıdakilerden hangisi ısıyı iyi ileten bir maddedir?", "secenekler": ["Plastik", "Strafor", "Tahta", "Bakır"], "dogru": 3}, {"id": 106, "konu": "Madde ve Isı", "zorluk": "Kolay", "soru": "Aşağıdakilerden hangisi ısı yalıtımında kullanılır?", "secenekler": ["Bakır", "Strafor (köpük)", "Alüminyum", "Demir"], "dogru": 1}, {"id": 107, "konu": "Madde ve Isı", "zorluk": "Kolay", "soru": "Aşağıdakilerden hangisi gaz yakıttır?", "secenekler": ["Benzin", "Odun", "Kömür", "Doğal gaz"], "dogru": 3}, {"id": 108, "konu": "Madde ve Isı", "zorluk": "Kolay", "soru": "Aşağıdakilerden hangisi katı yakıttır?", "secenekler": ["Benzin", "Doğal gaz", "Mazot", "Kömür"], "dogru": 3}, {"id": 109, "konu": "Madde ve Isı", "zorluk": "Kolay", "soru": "Aşağıdakilerden hangisi sıvı yakıttır?", "secenekler": ["Benzin", "Doğal gaz", "Kömür", "Odun"], "dogru": 0}, {"id": 110, "konu": "Madde ve Isı", "zorluk": "Orta", "soru": "Isı ile sıcaklık arasındaki fark için hangisi doğrudur?", "secenekler": ["Isı termometre ile ölçülür.", "İkisi aynı şeydir.", "Isı bir enerji türüdür, sıcaklık ise ölçülebilen bir büyüklüktür.", "Sıcaklık bir enerji türüdür."], "dogru": 2}, {"id": 111, "konu": "Madde ve Isı", "zorluk": "Orta", "soru": "Sıcaklık birimi olarak günlük hayatta en çok kullanılan birim hangisidir?", "secenekler": ["Joule", "Newton", "Kilogram", "Santigrat derece (°C)"], "dogru": 3}, {"id": 112, "konu": "Madde ve Isı", "zorluk": "Orta", "soru": "Kışın evlerin dış duvarlarına yalıtım malzemesi kaplanmasının amacı nedir?", "secenekler": ["Isı kaybını azaltmak", "Sesi artırmak", "Evi daha ağır yapmak", "Elektrik iletmek"], "dogru": 0}, {"id": 113, "konu": "Madde ve Isı", "zorluk": "Orta", "soru": "Sobalı evlerde karbonmonoksit zehirlenmesini önlemek için ne yapılmalıdır?", "secenekler": ["Baca düzenli temizlenmeli ve oda havalandırılmalıdır.", "Odanın pencereleri hiç açılmamalıdır.", "Sobanın kapağı açık bırakılıp uyunmalıdır.", "Sobaya ıslak odun konulmalıdır."], "dogru": 0}, {"id": 114, "konu": "Madde ve Isı", "zorluk": "Orta", "soru": "Yoğunluk nasıl hesaplanır?", "secenekler": ["Hacim ÷ kütle", "Kütle · hacim", "Kütle ÷ hacim", "Kütle + hacim"], "dogru": 2}, {"id": 115, "konu": "Madde ve Isı", "zorluk": "Zor", "soru": "Su dolu bir kaba atılan cisim batıyorsa bu cisim için ne söylenebilir?", "secenekler": ["Yoğunluğu suya eşittir.", "Kütlesi yoktur.", "Yoğunluğu sudan küçüktür.", "Yoğunluğu sudan büyüktür."], "dogru": 3}, {"id": 116, "konu": "Madde ve Isı", "zorluk": "Zor", "soru": "Zeytinyağı suyun üzerinde kalır. Bunun nedeni nedir?", "secenekler": ["Zeytinyağının yoğunluğu sudan büyüktür.", "Zeytinyağının yoğunluğu sudan küçüktür.", "Zeytinyağı daha sıcaktır.", "Zeytinyağının kütlesi yoktur."], "dogru": 1}, {"id": 117, "konu": "Ses ve Özellikleri", "zorluk": "Kolay", "soru": "Ses nasıl oluşur?", "secenekler": ["Işığın kırılmasıyla", "Maddelerin erimesiyle", "Isının akmasıyla", "Maddelerin titreşmesiyle"], "dogru": 3}, {"id": 118, "konu": "Ses ve Özellikleri", "zorluk": "Kolay", "soru": "Ses hangi ortamda yayılamaz?", "secenekler": ["Suda", "Demirde", "Boşlukta", "Havada"], "dogru": 2}, {"id": 119, "konu": "Ses ve Özellikleri", "zorluk": "Kolay", "soru": "Sesin bir engele çarpıp geri dönmesine ne ad verilir?", "secenekler": ["Sesin erimesi", "Sesin soğurulması", "Sesin yansıması", "Sesin kırılması"], "dogru": 2}, {"id": 120, "konu": "Ses ve Özellikleri", "zorluk": "Kolay", "soru": "Yankı oluşmasının nedeni nedir?", "secenekler": ["Sesin boşlukta yayılması", "Sesin yansıması", "Sesin donması", "Sesin ışığa dönüşmesi"], "dogru": 1}, {"id": 121, "konu": "Ses ve Özellikleri", "zorluk": "Orta", "soru": "Ses genellikle hangi ortamda en hızlı yayılır?", "secenekler": ["Boşluk", "Gaz", "Katı", "Sıvı"], "dogru": 2}, {"id": 122, "konu": "Ses ve Özellikleri", "zorluk": "Orta", "soru": "Aşağıdakilerden hangisi sesi en iyi soğurur?", "secenekler": ["Demir", "Mermer", "Sünger", "Cam"], "dogru": 2}, {"id": 123, "konu": "Ses ve Özellikleri", "zorluk": "Orta", "soru": "Konser salonlarının duvarlarının yumuşak ve gözenekli malzemelerle kaplanmasının amacı nedir?", "secenekler": ["Salonu ısıtmak", "Sesi daha çok yansıtmak", "Sesin yansımasını azaltmak", "Elektriği iletmek"], "dogru": 2}, {"id": 124, "konu": "Ses ve Özellikleri", "zorluk": "Orta", "soru": "Uzay boşluğunda iki astronotun telsiz olmadan konuşamamasının nedeni nedir?", "secenekler": ["Uzayda ışık yoktur.", "Uzay çok soğuktur.", "Ses boşlukta çok hızlı yayılır.", "Sesin yayılması için maddesel ortam gerekir."], "dogru": 3}, {"id": 125, "konu": "Ses ve Özellikleri", "zorluk": "Zor", "soru": "Ses yalıtımı için duvarlar arasına hangisi konulursa en uygun olur?", "secenekler": ["Metal levha", "Cam levha", "Gözenekli köpük malzeme", "Mermer plaka"], "dogru": 2}, {"id": 126, "konu": "Ses ve Özellikleri", "zorluk": "Zor", "soru": "Kulağını demiryolu rayına dayayan kişi treni neden daha erken duyar?", "secenekler": ["Ses katılarda daha yavaş yayılır.", "Hava sesi hiç iletmez.", "Rayda ses oluşmaz.", "Ses katılarda havaya göre daha hızlı yayılır."], "dogru": 3}, {"id": 127, "konu": "Elektriğin İletimi", "zorluk": "Kolay", "soru": "Aşağıdakilerden hangisi elektriği iyi iletir?", "secenekler": ["Tahta kalem", "Plastik cetvel", "Lastik silgi", "Bakır tel"], "dogru": 3}, {"id": 128, "konu": "Elektriğin İletimi", "zorluk": "Kolay", "soru": "Aşağıdakilerden hangisi elektriği iletmez (yalıtkandır)?", "secenekler": ["Bakır", "Alüminyum", "Plastik", "Demir"], "dogru": 2}, {"id": 129, "konu": "Elektriğin İletimi", "zorluk": "Kolay", "soru": "Elektrik kablolarının dış kısmı neden plastikle kaplanır?", "secenekler": ["Kablo daha ağır olsun diye.", "Plastik elektriği iyi iletir.", "Kablo daha çok ısınsın diye.", "Plastik yalıtkan olduğu için elektrik çarpmasını önler."], "dogru": 3}, {"id": 130, "konu": "Elektriğin İletimi", "zorluk": "Kolay", "soru": "Direncin birimi hangisidir?", "secenekler": ["Newton (N)", "Volt (V)", "Joule (J)", "Ohm (Ω)"], "dogru": 3}, {"id": 131, "konu": "Elektriğin İletimi", "zorluk": "Orta", "soru": "Kurşun kalemin ucu (grafit) için hangisi doğrudur?", "secenekler": ["Elektriği iletir.", "Elektriği iletmez.", "Isıyı hiç iletmez.", "Manyetiktir."], "dogru": 0}, {"id": 132, "konu": "Elektriğin İletimi", "zorluk": "Orta", "soru": "Bir devrede iletken telin uzunluğu artırılırsa ampulün parlaklığı nasıl değişir?", "secenekler": ["Değişmez.", "Artar.", "Azalır.", "Ampul patlar."], "dogru": 2}, {"id": 133, "konu": "Elektriğin İletimi", "zorluk": "Orta", "soru": "Bir devrede iletken telin kesit alanı (kalınlığı) artırılırsa direnç nasıl değişir?", "secenekler": ["Sıfır olur.", "Değişmez.", "Azalır.", "Artar."], "dogru": 2}, {"id": 134, "konu": "Elektriğin İletimi", "zorluk": "Orta", "soru": "İletken bir telin elektrik akımına karşı gösterdiği zorluğa ne ad verilir?", "secenekler": ["Gerilim", "Sürat", "Kuvvet", "Direnç"], "dogru": 3}, {"id": 135, "konu": "Elektriğin İletimi", "zorluk": "Zor", "soru": "Aynı maddeden yapılmış tellerden hangisinin direnci en büyüktür?", "secenekler": ["Kısa ve kalın tel", "Uzun ve kalın tel", "Uzun ve ince tel", "Kısa ve ince tel"], "dogru": 2}, {"id": 136, "konu": "Elektriğin İletimi", "zorluk": "Zor", "soru": "Islak elle elektrikli aletlere dokunmak neden tehlikelidir?", "secenekler": ["Su elektriği iletebilir ve çarpılma riski oluşur.", "Su yalıtkan olduğu için tehlike yoktur.", "Su elektriği tamamen keser.", "Islak el aleti bozar ama tehlikesi yoktur."], "dogru": 0}];
+const ETIKET_DILI = "tr";  // konu ve soru türü etiketlerinin dili (büyük harf dönüşümü için)
+
+const KONULAR = [...new Set(HAVUZ.map(s => s.konu))];
+const ZORLUKLAR = ["Kolay", "Orta", "Zor"];
+const TURLER = [...new Set(HAVUZ.map(s => s.tur).filter(Boolean))];
+const HARF = "ABCD";
+let test = [];
+let kontrolEdildi = false;
+
+const $ = id => document.getElementById(id);
+$("poolTotal").textContent = HAVUZ.length;
+
+function chip(kap, ad, deger) {
+  const l = document.createElement("label");
+  l.className = "chip";
+  l.innerHTML = `<input type="checkbox" checked id="${ad}-${kap.children.length}" value="${deger}"><span>${deger}</span>`;
+  l.querySelector("input").addEventListener("change", havuzBilgisi);
+  kap.appendChild(l);
+}
+KONULAR.forEach(k => chip($("konular"), "k", k));
+ZORLUKLAR.forEach(z => chip($("zorluklar"), "z", z));
+TURLER.forEach(t => chip($("turler"), "t", t));
+$("turAlan").hidden = TURLER.length === 0;
+
+const secili = kap => [...$(kap).querySelectorAll("input:checked")].map(i => i.value);
+const uygunlar = () => {
+  const k = secili("konular"), z = secili("zorluklar"), t = secili("turler");
+  return HAVUZ.filter(s => k.includes(s.konu) && z.includes(s.zorluk) && (!s.tur || t.includes(s.tur)));
+};
+function havuzBilgisi() {
+  const n = uygunlar().length, istenen = +$("adet").value || 0;
+  $("poolInfo").innerHTML = n === 0
+    ? "Seçimlere uyan soru yok. En az bir konu ve bir zorluk seçin."
+    : `Seçimlere uyan <b>${n}</b> soru var.` + (istenen > n ? ` En fazla ${n} soru üretilecek.` : "");
+  $("uret").disabled = n === 0;
+}
+
+function karistir(dizi) {
+  const a = dizi.slice();
+  for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; }
+  return a;
+}
+
+/* ---- Şekiller: izometrik çizim ---- */
+const C = Math.cos(Math.PI / 6);
+function izo(s, x, y, z) { return [(x - y) * C * s, (x + y) * 0.5 * s - z * s]; }
+function poly(cls, pts) { return `<polygon class="${cls} edge" points="${pts.map(p => p.map(v => v.toFixed(1)).join(",")).join(" ")}"></polygon>`; }
+function kupYuzleri(s, x, y, z) {
+  const P = (a, b, c) => izo(s, a, b, c);
+  return poly("ct", [P(x, y, z + 1), P(x + 1, y, z + 1), P(x + 1, y + 1, z + 1), P(x, y + 1, z + 1)]) +
+         poly("cr", [P(x + 1, y, z), P(x + 1, y + 1, z), P(x + 1, y + 1, z + 1), P(x + 1, y, z + 1)]) +
+         poly("cl", [P(x, y + 1, z), P(x + 1, y + 1, z), P(x + 1, y + 1, z + 1), P(x, y + 1, z + 1)]);
+}
+function svgSar(icerik, noktalar, pay, en) {
+  const xs = noktalar.map(p => p[0]), ys = noktalar.map(p => p[1]);
+  const x0 = Math.min(...xs) - pay, y0 = Math.min(...ys) - pay, w = Math.max(...xs) - x0 + pay, h = Math.max(...ys) - y0 + pay;
+  return `<svg viewBox="${x0.toFixed(1)} ${y0.toFixed(1)} ${w.toFixed(1)} ${h.toFixed(1)}" width="${en}" role="img" aria-label="Soru şekli">${icerik}</svg>`;
+}
+/* ---- Şekiller: düz çizimler (dikdörtgen, sayı doğrusu, çarpan ağacı, bölen merdiveni) ---- */
+const yazi = (x, y, t, sinif = "lbl") => `<text class="${sinif}" x="${x}" y="${y}" text-anchor="middle">${t}</text>`;
+function dikdortgenCiz(sk) {
+  const k = Math.max(10, Math.min(24, Math.floor(220 / Math.max(sk.en, sk.boy))));
+  let ic = "";
+  for (let i = 0; i < sk.boy; i++) for (let j = 0; j < sk.en; j++)
+    ic += `<rect class="kare edge" x="${j * k}" y="${i * k}" width="${k}" height="${k}"></rect>`;
+  const w = sk.en * k, h = sk.boy * k;
+  ic += yazi(w / 2, h + 20, sk.etiketEn ?? sk.en) + yazi(w + 16, h / 2 + 5, sk.etiketBoy ?? sk.boy);
+  return `<svg viewBox="-4 -4 ${w + 34} ${h + 30}" width="${Math.min(260, w + 34)}" role="img" aria-label="Birim karelerden dikdörtgen">${ic}</svg>`;
+}
+function dogruCiz(sk) {
+  const ara = 46, n = sk.adet, w = ara * n + 30;
+  let ic = `<line class="cizgi" x1="0" y1="50" x2="${w}" y2="50"></line><polygon class="dolu" points="${w},50 ${w - 9},45 ${w - 9},55"></polygon>`;
+  for (let i = 0; i <= n; i++) {
+    const x = 10 + i * ara;
+    ic += `<line class="cizgi" x1="${x}" y1="43" x2="${x}" y2="57"></line>`;
+    if (i < n) ic += `<path class="yay" d="M${x + 3},44 Q${x + ara / 2},14 ${x + ara - 3},44"></path>`;
+    if (sk.goster.includes(i)) ic += yazi(x, 76, i * sk.adim);
+    else if (i === sk.soru) ic += yazi(x, 76, "?", "lbl vurgu");
+  }
+  return `<svg viewBox="-6 6 ${w + 14} 80" width="${Math.min(340, w + 14)}" role="img" aria-label="Sayı doğrusu">${ic}</svg>`;
+}
+function agacCiz(sk) {
+  /* dugum: [sayı, solAlt, sağAlt]; yaprak: [sayı]. Asal yapraklar daire içinde. */
+  const ust = [], cizgi = [];
+  let sutun = 0;
+  function yerlestir(d, derinlik) {
+    if (d.length === 1) { const n = { d, x: sutun++ * 46, y: derinlik * 58 }; ust.push(n); return n; }
+    const sol = yerlestir(d[1], derinlik + 1), sag = yerlestir(d[2], derinlik + 1);
+    const n = { d, x: (sol.x + sag.x) / 2, y: derinlik * 58 };
+    cizgi.push([n, sol], [n, sag]); ust.push(n); return n;
+  }
+  yerlestir(sk.dugum, 0);
+  let ic = cizgi.map(([a, b]) => `<line class="cizgi" x1="${a.x}" y1="${a.y + 12}" x2="${b.x}" y2="${b.y - 14}"></line>`).join("");
+  for (const n of ust) {
+    const gizli = String(n.d[0]) === String(sk.gizli);
+    const metin = gizli ? "A" : n.d[0];
+    if (n.d.length === 1) ic += `<circle class="asal edge" cx="${n.x}" cy="${n.y}" r="16"></circle>`;
+    ic += yazi(n.x, n.y + 5, metin, gizli ? "lbl vurgu" : "lbl");
+  }
+  const xs = ust.map(n => n.x), ys = ust.map(n => n.y);
+  const x0 = Math.min(...xs) - 26, w = Math.max(...xs) - x0 + 26, h = Math.max(...ys) + 46;
+  return `<svg viewBox="${x0} -22 ${w} ${h}" width="${Math.min(260, w)}" role="img" aria-label="Çarpan ağacı">${ic}</svg>`;
+}
+function merdivenCiz(sk) {
+  const sat = 30, n = sk.satirlar.length;
+  let ic = `<line class="cizgi" x1="70" y1="0" x2="70" y2="${n * sat - 8}"></line>`;
+  sk.satirlar.forEach((r, i) => r.forEach((v, j) => {
+    const gizli = sk.gizli[0] === i && sk.gizli[1] === j;
+    ic += yazi(j === 0 ? 36 : 100, i * sat + 20, gizli ? "?" : v, gizli ? "lbl vurgu" : "lbl");
+  }));
+  return `<svg viewBox="0 0 140 ${n * sat}" width="140" role="img" aria-label="Bölen merdiveni">${ic}</svg>`;
+}
+const DUZ_SEKILLER = { dikdortgen: dikdortgenCiz, dogru: dogruCiz, agac: agacCiz, merdiven: merdivenCiz };
+
+function sekilCiz(sk) {
+  if (!sk) return "";
+  if (DUZ_SEKILLER[sk.tip]) return DUZ_SEKILLER[sk.tip](sk);
+  if (sk.tip === "kup") {
+    const s = 70, P = (a, b, c) => izo(s, a, b, c);
+    const alt1 = P(1, 0, 0), alt2 = P(1, 1, 0);
+    const mx = (alt1[0] + alt2[0]) / 2 + 8, my = (alt1[1] + alt2[1]) / 2 + 22;
+    const icerik = kupYuzleri(s, 0, 0, 0) + `<text class="lbl" x="${mx.toFixed(1)}" y="${my.toFixed(1)}">${sk.etiket}</text>`;
+    return svgSar(icerik, [P(0, 0, 1), P(1, 0, 0), P(0, 1, 0), P(1, 1, 0), P(1, 0, 1), P(0, 1, 1), [mx + 50, my]], 6, 150);
+  }
+  const h = sk.h, s = 26, kupler = [], noktalar = [];
+  h.forEach((satir, y) => satir.forEach((yuk, x) => { for (let z = 0; z < yuk; z++) kupler.push([x, y, z]); }));
+  kupler.sort((a, b) => (a[0] + a[1] + a[2]) - (b[0] + b[1] + b[2]) || a[2] - b[2]);
+  let icerik = "";
+  for (const [x, y, z] of kupler) {
+    icerik += kupYuzleri(s, x, y, z);
+    noktalar.push(izo(s, x, y, z + 1), izo(s, x + 1, y + 1, z), izo(s, x + 1, y, z), izo(s, x, y + 1, z));
+  }
+  return svgSar(icerik, noktalar, 4, Math.min(200, 50 + 40 * Math.max(h.length, h[0].length)));
+}
+
+/* ---- Test ---- */
+function uret() {
+  const adet = Math.max(1, Math.min(100, +$("adet").value || 1));
+  test = karistir(uygunlar()).slice(0, adet).map(s => {
+    const sira = karistir([0, 1, 2, 3]);
+    return { ...s, sira, dogruYeni: sira.indexOf(s.dogru), cevap: null };
+  });
+  kontrolEdildi = false;
+  $("score").hidden = true;
+  $("key").hidden = true;
+  $("anahtar").textContent = "Cevap Anahtarını Göster";
+  ciz();
+}
+function ciz() {
+  const liste = $("list");
+  if (!test.length) { liste.innerHTML = `<div class="empty">Ayarları seçip <b>Yeni Sorular Üret</b> düğmesine basın.</div>`; return; }
+  liste.innerHTML = test.map((q, i) => `
+    <article class="q${kontrolEdildi ? (q.cevap === q.dogruYeni ? " ok" : " no") : ""}${kontrolEdildi ? " locked" : ""}">
+      <div class="qhead"><span class="num">${i + 1}.</span><span class="tag" lang="${ETIKET_DILI}">${q.konu}</span><span class="tag ${q.zorluk}">${q.zorluk}</span>${q.tur ? `<span class="tag" lang="${ETIKET_DILI}">${q.tur}</span>` : ""}</div>
+      <div class="qbody"><p class="qtext">${q.soru}</p>${q.sekil ? `<div class="fig">${sekilCiz(q.sekil)}</div>` : ""}</div>
+      ${q.ses && SES_VAR ? `<div><button type="button" class="dinle" data-ses="${i}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4zm12.5 3a4.5 4.5 0 0 0-2.5-4v8a4.5 4.5 0 0 0 2.5-4zM14 3.2v2.1a7 7 0 0 1 0 13.4v2.1a9 9 0 0 0 0-17.6z"></path></svg>Dinle</button></div>` : ""}
+      <div class="opts${q.secenekler.some(x => x.replace(/<[^>]+>/g, "").length > 30) ? " uzun" : ""}" role="radiogroup" aria-label="Soru ${i + 1} seçenekleri">
+        ${q.sira.map((orj, j) => {
+          let c = "opt";
+          if (q.cevap === j) c += " sel";
+          if (kontrolEdildi && j === q.dogruYeni) c += " right";
+          else if (kontrolEdildi && q.cevap === j) c += " wrong";
+          return `<button type="button" class="${c}" role="radio" aria-checked="${q.cevap === j}" data-q="${i}" data-o="${j}"><b>${HARF[j]}</b><span>${q.secenekler[orj]}</span></button>`;
+        }).join("")}
+      </div>
+      ${kontrolEdildi && q.aciklama ? `<p class="aciklama"><b>Açıklama:</b> ${q.aciklama}</p>` : ""}
+    </article>`).join("");
+  $("keygrid").innerHTML = test.map((q, i) => `<span>${i + 1}-${HARF[q.dogruYeni]}</span>`).join("");
+}
+/* İngilizce sorular için tarayıcının yerleşik seslendirmesi (internet gerekmez). */
+const SES_VAR = "speechSynthesis" in window;
+function seslendir(metin) {
+  try {
+    speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(metin);
+    u.lang = "en-GB"; u.rate = 0.85;
+    const ses = speechSynthesis.getVoices().find(v => v.lang && v.lang.startsWith("en"));
+    if (ses) u.voice = ses;
+    speechSynthesis.speak(u);
+  } catch (e) { /* seslendirme desteklenmiyor */ }
+}
+$("list").addEventListener("click", e => {
+  const d = e.target.closest(".dinle");
+  if (d) { seslendir(test[+d.dataset.ses].ses); return; }
+  const b = e.target.closest(".opt");
+  if (!b || kontrolEdildi) return;
+  const q = test[+b.dataset.q];
+  q.cevap = q.cevap === +b.dataset.o ? null : +b.dataset.o;
+  ciz();
+});
+$("kontrol").addEventListener("click", () => {
+  if (!test.length) return;
+  kontrolEdildi = true;
+  const d = test.filter(q => q.cevap === q.dogruYeni).length;
+  const bos = test.filter(q => q.cevap === null).length;
+  $("score").hidden = false;
+  $("scoreText").textContent = `${d} / ${test.length}`;
+  $("scoreBar").style.width = (100 * d / test.length) + "%";
+  $("scoreNote").textContent = `${d} doğru · ${test.length - d - bos} yanlış · ${bos} boş · Puan: ${Math.round(100 * d / test.length)}`;
+  ciz();
+});
+$("anahtar").addEventListener("click", () => {
+  $("key").hidden = !$("key").hidden;
+  $("anahtar").textContent = $("key").hidden ? "Cevap Anahtarını Göster" : "Cevap Anahtarını Gizle";
+});
+$("uret").addEventListener("click", uret);
+$("adet").addEventListener("input", havuzBilgisi);
+$("eksi").addEventListener("click", () => { $("adet").value = Math.max(1, (+$("adet").value || 1) - 1); havuzBilgisi(); });
+$("arti").addEventListener("click", () => { $("adet").value = Math.min(100, (+$("adet").value || 0) + 1); havuzBilgisi(); });
+
+/* Yazdırma yalnızca dosya bilgisayarda doğrudan açıldığında çalışır. */
+const gomulu = (() => { try { return window.self !== window.top; } catch (e) { return true; } })();
+if (gomulu) {
+  $("yazdir").hidden = true;
+  $("printNote").textContent = "Yazdırmak için KupSoruUretici.html dosyasını bilgisayarınızda tarayıcıyla açın.";
+} else {
+  $("yazdir").addEventListener("click", () => window.print());
+}
+
+havuzBilgisi();
+uret();
+</script>
+</html>

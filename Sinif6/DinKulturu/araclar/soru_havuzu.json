@@ -1,0 +1,821 @@
+[
+ {
+  "id": 1,
+  "konu": "Peygamber ve İlahi Kitaplara İman",
+  "zorluk": "Kolay",
+  "soru": "Tevrat hangi peygambere indirilmiştir?",
+  "secenekler": [
+   "Hz. Muhammed",
+   "Hz. Davud",
+   "Hz. Musa",
+   "Hz. İsa"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 2,
+  "konu": "Peygamber ve İlahi Kitaplara İman",
+  "zorluk": "Kolay",
+  "soru": "Hz. Musa'ya indirilen ilahi kitap hangisidir?",
+  "secenekler": [
+   "İncil",
+   "Kur'an-ı Kerim",
+   "Zebur",
+   "Tevrat"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 3,
+  "konu": "Peygamber ve İlahi Kitaplara İman",
+  "zorluk": "Kolay",
+  "soru": "Zebur hangi peygambere indirilmiştir?",
+  "secenekler": [
+   "Hz. İsa",
+   "Hz. Davud",
+   "Hz. Muhammed",
+   "Hz. Musa"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 4,
+  "konu": "Peygamber ve İlahi Kitaplara İman",
+  "zorluk": "Kolay",
+  "soru": "Hz. Davud'a indirilen ilahi kitap hangisidir?",
+  "secenekler": [
+   "Kur'an-ı Kerim",
+   "Zebur",
+   "Tevrat",
+   "İncil"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 5,
+  "konu": "Peygamber ve İlahi Kitaplara İman",
+  "zorluk": "Kolay",
+  "soru": "İncil hangi peygambere indirilmiştir?",
+  "secenekler": [
+   "Hz. İsa",
+   "Hz. Muhammed",
+   "Hz. Davud",
+   "Hz. Musa"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 6,
+  "konu": "Peygamber ve İlahi Kitaplara İman",
+  "zorluk": "Kolay",
+  "soru": "Hz. İsa'ya indirilen ilahi kitap hangisidir?",
+  "secenekler": [
+   "Kur'an-ı Kerim",
+   "İncil",
+   "Zebur",
+   "Tevrat"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 7,
+  "konu": "Peygamber ve İlahi Kitaplara İman",
+  "zorluk": "Kolay",
+  "soru": "Kur'an-ı Kerim hangi peygambere indirilmiştir?",
+  "secenekler": [
+   "Hz. Musa",
+   "Hz. İsa",
+   "Hz. Davud",
+   "Hz. Muhammed"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 8,
+  "konu": "Peygamber ve İlahi Kitaplara İman",
+  "zorluk": "Kolay",
+  "soru": "Hz. Muhammed'e indirilen ilahi kitap hangisidir?",
+  "secenekler": [
+   "İncil",
+   "Zebur",
+   "Kur'an-ı Kerim",
+   "Tevrat"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 9,
+  "konu": "Peygamber ve İlahi Kitaplara İman",
+  "zorluk": "Orta",
+  "soru": "Peygamberlerin “doğru sözlü olmak” özelliğine ne ad verilir?",
+  "secenekler": [
+   "Fetanet",
+   "İsmet",
+   "Emanet",
+   "Sıdk"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 10,
+  "konu": "Peygamber ve İlahi Kitaplara İman",
+  "zorluk": "Orta",
+  "soru": "Peygamberlerin “güvenilir olmak” özelliğine ne ad verilir?",
+  "secenekler": [
+   "Sıdk",
+   "Fetanet",
+   "Emanet",
+   "İsmet"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 11,
+  "konu": "Peygamber ve İlahi Kitaplara İman",
+  "zorluk": "Orta",
+  "soru": "Peygamberlerin “akıllı ve zeki olmak” özelliğine ne ad verilir?",
+  "secenekler": [
+   "Emanet",
+   "Fetanet",
+   "Sıdk",
+   "İsmet"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 12,
+  "konu": "Peygamber ve İlahi Kitaplara İman",
+  "zorluk": "Orta",
+  "soru": "Peygamberlerin “günah işlememek” özelliğine ne ad verilir?",
+  "secenekler": [
+   "İsmet",
+   "Sıdk",
+   "Fetanet",
+   "Emanet"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 13,
+  "konu": "Peygamber ve İlahi Kitaplara İman",
+  "zorluk": "Orta",
+  "soru": "Peygamberlerin “Allah'ın emirlerini insanlara eksiksiz iletmek” özelliğine ne ad verilir?",
+  "secenekler": [
+   "Sıdk",
+   "Tebliğ",
+   "Fetanet",
+   "Emanet"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 14,
+  "konu": "Peygamber ve İlahi Kitaplara İman",
+  "zorluk": "Kolay",
+  "soru": "İlk peygamber kimdir?",
+  "secenekler": [
+   "Hz. Âdem",
+   "Hz. Musa",
+   "Hz. Nuh",
+   "Hz. İbrahim"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 15,
+  "konu": "Peygamber ve İlahi Kitaplara İman",
+  "zorluk": "Kolay",
+  "soru": "Son peygamber kimdir?",
+  "secenekler": [
+   "Hz. Musa",
+   "Hz. İsa",
+   "Hz. Âdem",
+   "Hz. Muhammed"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 16,
+  "konu": "Peygamber ve İlahi Kitaplara İman",
+  "zorluk": "Kolay",
+  "soru": "Allah'ın emirlerini peygamberlere ileten melek hangisidir?",
+  "secenekler": [
+   "Mikail",
+   "İsrafil",
+   "Azrail",
+   "Cebrail"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 17,
+  "konu": "Peygamber ve İlahi Kitaplara İman",
+  "zorluk": "Kolay",
+  "soru": "Kur'an-ı Kerim'de adı geçen peygamber sayısı kaçtır?",
+  "secenekler": [
+   "25",
+   "99",
+   "10",
+   "40"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 18,
+  "konu": "Peygamber ve İlahi Kitaplara İman",
+  "zorluk": "Orta",
+  "soru": "Bazı peygamberlere indirilen küçük kitapçıklara ne ad verilir?",
+  "secenekler": [
+   "Hadis",
+   "Suhuf",
+   "Siyer",
+   "Tefsir"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 19,
+  "konu": "Peygamber ve İlahi Kitaplara İman",
+  "zorluk": "Orta",
+  "soru": "Allah'ın peygamberlerine bildirdiği emir ve yasaklara ne ad verilir?",
+  "secenekler": [
+   "Vahiy",
+   "Rüya",
+   "İlham",
+   "Kıssa"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 20,
+  "konu": "Peygamber ve İlahi Kitaplara İman",
+  "zorluk": "Orta",
+  "soru": "Peygamberlerin gönderilme amacı hangisidir?",
+  "secenekler": [
+   "Ülkeler fethetmek",
+   "İnsanlara doğru yolu göstermek",
+   "Yalnızca mucize göstermek",
+   "Zengin olmak"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 21,
+  "konu": "Peygamber ve İlahi Kitaplara İman",
+  "zorluk": "Zor",
+  "soru": "Peygamberlerin insanlar arasından seçilmesinin nedeni hangisidir?",
+  "secenekler": [
+   "İnsanlara örnek olabilmeleri",
+   "Melek olmamaları için",
+   "Yalnızca savaşmaları için",
+   "Hiç yorulmamaları için"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 22,
+  "konu": "Peygamber ve İlahi Kitaplara İman",
+  "zorluk": "Zor",
+  "soru": "Peygamberlerin tebliğ sıfatına sahip olması ne anlama gelir?",
+  "secenekler": [
+   "Günah işlememeleri",
+   "Çok zeki olmaları",
+   "Her zaman doğru söylemeleri",
+   "Vahyi eksiksiz olarak insanlara iletmeleri"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 23,
+  "konu": "Namaz",
+  "zorluk": "Kolay",
+  "soru": "Günde kaç vakit namaz kılınır?",
+  "secenekler": [
+   "4",
+   "7",
+   "5",
+   "3"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 24,
+  "konu": "Namaz",
+  "zorluk": "Kolay",
+  "soru": "Namaza çağrı için okunan söze ne ad verilir?",
+  "secenekler": [
+   "Ezan",
+   "Dua",
+   "Kamet",
+   "Tekbir"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 25,
+  "konu": "Namaz",
+  "zorluk": "Kolay",
+  "soru": "Namaz kılarken yönelinen yere ne ad verilir?",
+  "secenekler": [
+   "Kürsü",
+   "Mihrap",
+   "Minare",
+   "Kıble"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 26,
+  "konu": "Namaz",
+  "zorluk": "Kolay",
+  "soru": "Aşağıdakilerden hangisi beş vakit namazdan biri değildir?",
+  "secenekler": [
+   "Sabah",
+   "İkindi",
+   "Yatsı",
+   "Teravih"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 27,
+  "konu": "Namaz",
+  "zorluk": "Kolay",
+  "soru": "Haftada bir kez, cemaatle kılınan namaz hangisidir?",
+  "secenekler": [
+   "Cuma namazı",
+   "Teravih namazı",
+   "Bayram namazı",
+   "Cenaze namazı"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 28,
+  "konu": "Namaz",
+  "zorluk": "Orta",
+  "soru": "Namazın kaç farzı vardır?",
+  "secenekler": [
+   "10",
+   "4",
+   "12",
+   "6"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 29,
+  "konu": "Namaz",
+  "zorluk": "Orta",
+  "soru": "Abdestin kaç farzı vardır?",
+  "secenekler": [
+   "4",
+   "12",
+   "2",
+   "6"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 30,
+  "konu": "Namaz",
+  "zorluk": "Orta",
+  "soru": "Aşağıdakilerden hangisi namazın dışındaki farzlardan (şartlarından) biridir?",
+  "secenekler": [
+   "Rükû",
+   "Kıbleye yönelmek",
+   "Secde",
+   "Kıyam"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 31,
+  "konu": "Namaz",
+  "zorluk": "Orta",
+  "soru": "Aşağıdakilerden hangisi namazın içindeki farzlardan (rükünlerinden) biridir?",
+  "secenekler": [
+   "Vakit",
+   "Secde",
+   "Abdest almak",
+   "Niyet"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 32,
+  "konu": "Namaz",
+  "zorluk": "Orta",
+  "soru": "Namaza “Allahu Ekber” diyerek başlamaya ne ad verilir?",
+  "secenekler": [
+   "Selam",
+   "İftitah tekbiri",
+   "Kıraat",
+   "Rükû"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 33,
+  "konu": "Namaz",
+  "zorluk": "Orta",
+  "soru": "Namazda ayakta durmaya ne ad verilir?",
+  "secenekler": [
+   "Kıyam",
+   "Kıraat",
+   "Secde",
+   "Kade"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 34,
+  "konu": "Namaz",
+  "zorluk": "Orta",
+  "soru": "Namazda Kur'an'dan ayet ya da sure okumaya ne ad verilir?",
+  "secenekler": [
+   "Kıyam",
+   "Rükû",
+   "Kıraat",
+   "Tekbir"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 35,
+  "konu": "Namaz",
+  "zorluk": "Zor",
+  "soru": "Aşağıdakilerden hangisi abdestin farzlarından biri değildir?",
+  "secenekler": [
+   "Yüzü yıkamak",
+   "Ayakları topuklarla birlikte yıkamak",
+   "Kolları dirseklerle birlikte yıkamak",
+   "Ağza su vermek"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 36,
+  "konu": "Namaz",
+  "zorluk": "Zor",
+  "soru": "Namazın son oturuşuna ne ad verilir?",
+  "secenekler": [
+   "Rükû",
+   "İftitah tekbiri",
+   "Kıyam",
+   "Ka'de-i ahîre"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 37,
+  "konu": "Zararlı Alışkanlıklar",
+  "zorluk": "Kolay",
+  "soru": "Aşağıdakilerden hangisi zararlı bir alışkanlıktır?",
+  "secenekler": [
+   "Erken uyumak",
+   "Spor yapmak",
+   "Kitap okumak",
+   "Sigara içmek"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 38,
+  "konu": "Zararlı Alışkanlıklar",
+  "zorluk": "Kolay",
+  "soru": "İhtiyaçtan fazla tüketerek nimetleri boşa harcamaya ne ad verilir?",
+  "secenekler": [
+   "İsraf",
+   "Tasarruf",
+   "Cömertlik",
+   "Kanaat"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 39,
+  "konu": "Zararlı Alışkanlıklar",
+  "zorluk": "Orta",
+  "soru": "Zararlı alışkanlıklardan korunmanın en etkili yolu hangisidir?",
+  "secenekler": [
+   "Hiç başlamamak ve olumsuz arkadaş ortamından uzak durmak",
+   "Arkadaş baskısına uymak",
+   "Merak edilen her şeyi denemek",
+   "Bir kez denemek"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 40,
+  "konu": "Zararlı Alışkanlıklar",
+  "zorluk": "Orta",
+  "soru": "Kumar oynamak neden zararlıdır?",
+  "secenekler": [
+   "Kişinin emeğini ve aile huzurunu kaybetmesine neden olur.",
+   "Sağlığı güçlendirir.",
+   "Aile bağlarını kuvvetlendirir.",
+   "Zenginliği garanti eder."
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 41,
+  "konu": "Zararlı Alışkanlıklar",
+  "zorluk": "Orta",
+  "soru": "Teknoloji bağımlılığını önlemek için ne yapılmalıdır?",
+  "secenekler": [
+   "Bütün gün telefonla oynanmalıdır.",
+   "Uyku saatleri azaltılmalıdır.",
+   "Arkadaşlarla görüşülmemelidir.",
+   "Ekran süresi sınırlandırılmalı ve farklı etkinliklere zaman ayrılmalıdır."
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 42,
+  "konu": "Zararlı Alışkanlıklar",
+  "zorluk": "Zor",
+  "soru": "Dinimizin bedeni korumayı emretmesinin amacı nedir?",
+  "secenekler": [
+   "Sağlığın Allah'ın bir emaneti olması",
+   "Spor yarışmalarını kazanmak",
+   "Başkalarından üstün olmak",
+   "Kişinin yalnızca güçlü görünmesi"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 43,
+  "konu": "Hz. Muhammed'in Hayatı",
+  "zorluk": "Kolay",
+  "soru": "Hz. Muhammed hangi şehirde doğmuştur?",
+  "secenekler": [
+   "Mekke",
+   "Medine",
+   "Taif",
+   "Kudüs"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 44,
+  "konu": "Hz. Muhammed'in Hayatı",
+  "zorluk": "Kolay",
+  "soru": "Hz. Muhammed'in annesinin adı nedir?",
+  "secenekler": [
+   "Fatıma",
+   "Âmine",
+   "Hatice",
+   "Halime"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 45,
+  "konu": "Hz. Muhammed'in Hayatı",
+  "zorluk": "Kolay",
+  "soru": "Hz. Muhammed'in babasının adı nedir?",
+  "secenekler": [
+   "Hamza",
+   "Abdülmuttalib",
+   "Ebu Talip",
+   "Abdullah"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 46,
+  "konu": "Hz. Muhammed'in Hayatı",
+  "zorluk": "Kolay",
+  "soru": "Hz. Muhammed'e verilen “güvenilir kişi” anlamındaki lakap hangisidir?",
+  "secenekler": [
+   "el-Emin",
+   "es-Sıddık",
+   "el-Faruk",
+   "Seyfullah"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 47,
+  "konu": "Hz. Muhammed'in Hayatı",
+  "zorluk": "Kolay",
+  "soru": "İlk vahiy hangi mağarada gelmiştir?",
+  "secenekler": [
+   "Sevr",
+   "Uhud",
+   "Kuba",
+   "Hira"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 48,
+  "konu": "Hz. Muhammed'in Hayatı",
+  "zorluk": "Kolay",
+  "soru": "İlk Müslüman olan kişi kimdir?",
+  "secenekler": [
+   "Hz. Osman",
+   "Hz. Ömer",
+   "Hz. Hamza",
+   "Hz. Hatice"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 49,
+  "konu": "Hz. Muhammed'in Hayatı",
+  "zorluk": "Orta",
+  "soru": "Hz. Muhammed hangi yılda doğmuştur?",
+  "secenekler": [
+   "571",
+   "632",
+   "622",
+   "610"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 50,
+  "konu": "Hz. Muhammed'in Hayatı",
+  "zorluk": "Orta",
+  "soru": "İlk vahiy hangi yılda gelmiştir?",
+  "secenekler": [
+   "630",
+   "610",
+   "571",
+   "622"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 51,
+  "konu": "Hz. Muhammed'in Hayatı",
+  "zorluk": "Orta",
+  "soru": "Mekke'den Medine'ye hicret hangi yılda gerçekleşmiştir?",
+  "secenekler": [
+   "622",
+   "632",
+   "610",
+   "571"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 52,
+  "konu": "Hz. Muhammed'in Hayatı",
+  "zorluk": "Orta",
+  "soru": "Babası ve annesi vefat ettikten sonra Hz. Muhammed'i yanına alan dedesi kimdir?",
+  "secenekler": [
+   "Ebu Talip",
+   "Abdülmuttalib",
+   "Abdullah",
+   "Ebu Bekir"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 53,
+  "konu": "Hz. Muhammed'in Hayatı",
+  "zorluk": "Orta",
+  "soru": "Hz. Muhammed'in süt annesi kimdir?",
+  "secenekler": [
+   "Halime",
+   "Ümmü Eymen",
+   "Hatice",
+   "Âmine"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 54,
+  "konu": "Hz. Muhammed'in Hayatı",
+  "zorluk": "Orta",
+  "soru": "İlk inen ayetler hangi surededir?",
+  "secenekler": [
+   "Alak",
+   "Fatiha",
+   "İhlas",
+   "Bakara"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 55,
+  "konu": "Hz. Muhammed'in Hayatı",
+  "zorluk": "Zor",
+  "soru": "Mekke'nin fethi hangi yılda gerçekleşmiştir?",
+  "secenekler": [
+   "630",
+   "622",
+   "571",
+   "610"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 56,
+  "konu": "Hz. Muhammed'in Hayatı",
+  "zorluk": "Zor",
+  "soru": "Hz. Muhammed'in vefat ettiği yıl hangisidir?",
+  "secenekler": [
+   "630",
+   "610",
+   "632",
+   "622"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 57,
+  "konu": "Hz. Muhammed'in Hayatı",
+  "zorluk": "Zor",
+  "soru": "Hz. Muhammed'in son haccında yaptığı ve insan haklarını vurgulayan konuşmaya ne ad verilir?",
+  "secenekler": [
+   "Veda Hutbesi",
+   "Medine Sözleşmesi",
+   "Hilfu'l-Fudul",
+   "Akabe Biatı"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 58,
+  "konu": "Hz. Muhammed'in Hayatı",
+  "zorluk": "Zor",
+  "soru": "Gençliğinde haksızlığa uğrayanlara yardım etmek amacıyla katıldığı topluluk hangisidir?",
+  "secenekler": [
+   "Ehl-i Suffe",
+   "Muhacirler",
+   "Ensar",
+   "Hilfu'l-Fudul (Erdemliler Topluluğu)"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 59,
+  "konu": "Temel Değerlerimiz",
+  "zorluk": "Kolay",
+  "soru": "Herkese hakkını vermeye ne ad verilir?",
+  "secenekler": [
+   "Kibir",
+   "Adalet",
+   "Cimrilik",
+   "İsraf"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 60,
+  "konu": "Temel Değerlerimiz",
+  "zorluk": "Kolay",
+  "soru": "Aşağıdakilerden hangisi merhametli bir davranıştır?",
+  "secenekler": [
+   "Sokak hayvanlarına su ve yiyecek bırakmak",
+   "Çevreyi kirletmek",
+   "Arkadaşıyla alay etmek",
+   "Sırayı bozmak"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 61,
+  "konu": "Temel Değerlerimiz",
+  "zorluk": "Kolay",
+  "soru": "Sözünde durmak hangi değerle ilgilidir?",
+  "secenekler": [
+   "Bencillik",
+   "Tembellik",
+   "Kıskançlık",
+   "Güvenilirlik"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 62,
+  "konu": "Temel Değerlerimiz",
+  "zorluk": "Orta",
+  "soru": "Komşumuzun ihtiyacı olduğunda yardım etmemiz hangi değere örnektir?",
+  "secenekler": [
+   "Kibir",
+   "Haset",
+   "İsraf",
+   "Yardımlaşma"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 63,
+  "konu": "Temel Değerlerimiz",
+  "zorluk": "Orta",
+  "soru": "Sınavda kopya çekmemek hangi değere örnektir?",
+  "secenekler": [
+   "Kıskançlık",
+   "Tembellik",
+   "Dürüstlük",
+   "Cimrilik"
+  ],
+  "dogru": 2
+ }
+]

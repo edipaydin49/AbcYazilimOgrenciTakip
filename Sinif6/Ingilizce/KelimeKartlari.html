@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="tr">
+<title>Kelime Kartları</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Nunito:wght@400;600;800&display=swap">
+<style>
+/* Düzen: üstte ayarlar, ortada tek büyük kart, altta kutu (Leitner) ilerlemesi */
+:root {
+  --paper: #f5f8fc; --sheet: #ffffff; --grid: #dde7f3; --ink: #1d2b44; --muted: #5b6a82;
+  --cobalt: #2453c7; --cobalt-soft: #e3ebfb; --sun: #f2b632; --sun-soft: #fff3d1;
+  --good: #1d8a4e; --good-soft: #def3e6; --bad: #c7362f; --bad-soft: #fbe4e2; --line: #c9d5e6;
+  --font-display: "Baloo 2", "Trebuchet MS", system-ui, sans-serif;
+  --font-body: "Nunito", "Segoe UI", system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #111827; --sheet: #172033; --grid: #1f2b42; --ink: #e6ecf7; --muted: #9aa8c0;
+    --cobalt: #7ea2ff; --cobalt-soft: #22325a; --sun: #f5c24f; --sun-soft: #3a3016;
+    --good: #5fd08f; --good-soft: #173a2a; --bad: #ff7b72; --bad-soft: #43201f; --line: #2c3b58;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #111827; --sheet: #172033; --grid: #1f2b42; --ink: #e6ecf7; --muted: #9aa8c0;
+  --cobalt: #7ea2ff; --cobalt-soft: #22325a; --sun: #f5c24f; --sun-soft: #3a3016;
+  --good: #5fd08f; --good-soft: #173a2a; --bad: #ff7b72; --bad-soft: #43201f; --line: #2c3b58;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 16px/1.5 var(--font-body);
+  background-image: linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 24px 24px; }
+.wrap { max-width: 760px; margin: 0 auto; padding-inline: 16px; padding-block: 24px 48px; display: grid; gap: 18px; }
+h1 { font: 800 clamp(1.8rem, 5vw, 2.5rem)/1.05 var(--font-display); margin: 0; text-wrap: balance; }
+.lead { margin: 4px 0 0; color: var(--muted); }
+.panel { background: var(--sheet); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; display: grid; gap: 12px; }
+.label { font-weight: 800; font-size: .76rem; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.row { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.chip { position: relative; }
+.chip input { position: absolute; opacity: 0; inset: 0; }
+.chip span { display: inline-block; padding: 4px 10px; border-radius: 999px; border: 2px solid var(--line); font-weight: 700; font-size: .85rem; cursor: pointer; user-select: none; }
+.chip input:checked + span { background: var(--cobalt); border-color: var(--cobalt); color: var(--sheet); }
+.chip input:focus-visible + span { outline: 3px solid var(--sun); outline-offset: 2px; }
+.stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.stat { background: var(--sheet); border: 1px solid var(--line); border-radius: 12px; padding: 10px 12px; }
+.stat b { display: block; font: 800 1.6rem/1.1 var(--font-display); font-variant-numeric: tabular-nums; }
+.stat span { font-size: .82rem; color: var(--muted); }
+.card { background: var(--sheet); border: 2px solid var(--cobalt); border-radius: 18px; padding: 22px 20px; display: grid; gap: 14px; text-align: center; box-shadow: 0 4px 0 var(--cobalt-soft); min-height: 300px; align-content: center; }
+.unit { font-size: .78rem; font-weight: 800; letter-spacing: .05em; text-transform: uppercase; color: var(--muted); }
+.front { font: 800 clamp(2rem, 7vw, 3rem)/1.1 var(--font-display); margin: 0; overflow-wrap: anywhere; }
+.back { font-size: 1.35rem; font-weight: 800; color: var(--good); margin: 0; }
+.example { margin: 0; color: var(--muted); font-style: italic; }
+.box-tag { justify-self: center; font-size: .8rem; font-weight: 800; background: var(--sun-soft); color: var(--ink); border-radius: 999px; padding: 2px 10px; }
+.btn { font: 800 1rem var(--font-body); border-radius: 12px; padding: 11px 16px; border: 2px solid var(--cobalt); cursor: pointer; background: var(--sheet); color: var(--cobalt); }
+.btn.primary { background: var(--cobalt); color: var(--sheet); box-shadow: 0 3px 0 var(--ink); }
+.btn.good { background: var(--good); border-color: var(--good); color: var(--sheet); }
+.btn.bad { background: var(--sheet); border-color: var(--bad); color: var(--bad); }
+.btn:focus-visible { outline: 3px solid var(--sun); outline-offset: 2px; }
+.actions { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+.dinle { justify-self: center; display: inline-flex; align-items: center; gap: 6px; font: 800 .95rem var(--font-body); color: var(--cobalt); background: var(--cobalt-soft); border: 2px solid var(--cobalt); border-radius: 999px; padding: 6px 14px; cursor: pointer; }
+.dinle svg { width: 20px; height: 20px; fill: currentColor; }
+.yaz { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
+.yaz input { font: 700 1.15rem var(--font-body); padding: 9px 12px; border-radius: 10px; border: 2px solid var(--line); background: var(--paper); color: var(--ink); width: min(320px, 100%); }
+.sonuc { font-weight: 800; margin: 0; }
+.sonuc.ok { color: var(--good); } .sonuc.no { color: var(--bad); }
+.boxes { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; }
+.kutu { background: var(--sheet); border: 1px solid var(--line); border-radius: 12px; padding: 8px; text-align: center; }
+.kutu b { display: block; font: 800 1.3rem var(--font-display); font-variant-numeric: tabular-nums; }
+.kutu span { font-size: .72rem; color: var(--muted); }
+.bar { height: 8px; border-radius: 99px; background: var(--cobalt-soft); overflow: hidden; margin-top: 6px; }
+.bar i { display: block; height: 100%; background: var(--cobalt); }
+.note { font-size: .85rem; color: var(--muted); margin: 0; }
+.bitti { font: 800 1.4rem var(--font-display); margin: 0; }
+@media (max-width: 520px) { .stats, .boxes { gap: 6px; } .stat b { font-size: 1.3rem; } .stat span { font-size: .74rem; } }
+</style>
+
+<div class="wrap" lang="tr">
+  <header>
+    <h1>Kelime Kartları</h1>
+    <p class="lead">6. sınıf İngilizce · <span id="toplam"></span> kelime · aralıklı tekrarla günde 15 dakika</p>
+  </header>
+
+  <section class="panel" aria-label="Ayarlar">
+    <div class="row"><span class="label">Üniteler</span></div>
+    <div class="row" id="uniteler"></div>
+    <div class="row">
+      <span class="label">Kart yönü</span>
+      <label class="chip"><input type="radio" name="yon" id="yon-en" value="en" checked><span>İngilizce → Türkçe</span></label>
+      <label class="chip"><input type="radio" name="yon" id="yon-tr" value="tr"><span>Türkçe → İngilizce</span></label>
+      <span class="label">Cevap</span>
+      <label class="chip"><input type="radio" name="mod" id="mod-cevir" value="cevir" checked><span>Kartı çevir</span></label>
+      <label class="chip"><input type="radio" name="mod" id="mod-yaz" value="yaz"><span>Yazarak</span></label>
+    </div>
+  </section>
+
+  <div class="stats">
+    <div class="stat"><b id="sBugun">0</b><span>bugün çalışılan kart</span></div>
+    <div class="stat"><b id="sSira">0</b><span>sırada bekleyen kart</span></div>
+    <div class="stat"><b id="sOgrenilen">0</b><span>öğrenilen kelime (5. kutu)</span></div>
+  </div>
+
+  <section class="card" id="kart" aria-live="polite">
+    <span class="unit" id="kUnite" lang="en"></span>
+    <p class="front" id="kOn"></p>
+    <button type="button" class="dinle" id="dinle"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4zm12.5 3a4.5 4.5 0 0 0-2.5-4v8a4.5 4.5 0 0 0 2.5-4zM14 3.2v2.1a7 7 0 0 1 0 13.4v2.1a9 9 0 0 0 0-17.6z"></path></svg>Dinle</button>
+    <div class="yaz" id="yazAlan" hidden>
+      <input id="yazGiris" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Cevabınız" placeholder="Cevabı yazın">
+      <button type="button" class="btn primary" id="yazKontrol">Kontrol et</button>
+    </div>
+    <p class="sonuc" id="sonuc" hidden></p>
+    <div id="arka" hidden>
+      <p class="back" id="kArka"></p>
+      <p class="example" id="kOrnek"></p>
+    </div>
+    <span class="box-tag" id="kKutu"></span>
+    <div class="actions" id="cevirAlan">
+      <button type="button" class="btn primary" id="cevir">Kartı çevir</button>
+    </div>
+    <div class="actions" id="degerlendir" hidden>
+      <button type="button" class="btn bad" id="bilmiyorum">Bilmiyorum</button>
+      <button type="button" class="btn good" id="biliyorum">Biliyorum</button>
+    </div>
+  </section>
+
+  <section class="panel" aria-label="Kutular">
+    <span class="label">Kutular · bildiğin kelime bir sonraki kutuya geçer, bilmediğin 1. kutuya döner</span>
+    <div class="boxes" id="kutular"></div>
+    <p class="note">1. kutu her gün, 2. kutu 2 günde bir, 3. kutu 4 günde bir, 4. kutu haftada bir, 5. kutu iki haftada bir tekrar edilir. İlerleme bu tarayıcıda saklanır.</p>
+  </section>
+</div>
+
+<script>
+const KELIMELER = [{"unite": "Unit 1 · Life", "en": "get up", "tr": "yataktan kalkmak", "ornek": "I get up at seven o'clock."}, {"unite": "Unit 1 · Life", "en": "wake up", "tr": "uyanmak", "ornek": "I wake up early on weekdays."}, {"unite": "Unit 1 · Life", "en": "have breakfast", "tr": "kahvaltı yapmak", "ornek": "We have breakfast together."}, {"unite": "Unit 1 · Life", "en": "brush your teeth", "tr": "dişlerini fırçalamak", "ornek": "Brush your teeth twice a day."}, {"unite": "Unit 1 · Life", "en": "take a shower", "tr": "duş almak", "ornek": "She takes a shower in the morning."}, {"unite": "Unit 1 · Life", "en": "get dressed", "tr": "giyinmek", "ornek": "He gets dressed quickly."}, {"unite": "Unit 1 · Life", "en": "have lunch", "tr": "öğle yemeği yemek", "ornek": "We have lunch at noon."}, {"unite": "Unit 1 · Life", "en": "do homework", "tr": "ödev yapmak", "ornek": "I do my homework after school."}, {"unite": "Unit 1 · Life", "en": "go to bed", "tr": "yatmak", "ornek": "I go to bed at ten."}, {"unite": "Unit 1 · Life", "en": "wash your face", "tr": "yüzünü yıkamak", "ornek": "Wash your face with cold water."}, {"unite": "Unit 1 · Life", "en": "early", "tr": "erken", "ornek": "My father gets up early."}, {"unite": "Unit 1 · Life", "en": "late", "tr": "geç", "ornek": "Don't be late for school!"}, {"unite": "Unit 1 · Life", "en": "at noon", "tr": "öğlen", "ornek": "The shop closes at noon."}, {"unite": "Unit 1 · Life", "en": "weekend", "tr": "hafta sonu", "ornek": "I play football at the weekend."}, {"unite": "Unit 1 · Life", "en": "every day", "tr": "her gün", "ornek": "I read a book every day."}, {"unite": "Unit 2 · Yummy Breakfast", "en": "cheese", "tr": "peynir", "ornek": "I like white cheese."}, {"unite": "Unit 2 · Yummy Breakfast", "en": "olive", "tr": "zeytin", "ornek": "Black olives are delicious."}, {"unite": "Unit 2 · Yummy Breakfast", "en": "honey", "tr": "bal", "ornek": "I eat bread with honey."}, {"unite": "Unit 2 · Yummy Breakfast", "en": "jam", "tr": "reçel", "ornek": "Strawberry jam is my favourite."}, {"unite": "Unit 2 · Yummy Breakfast", "en": "butter", "tr": "tereyağı", "ornek": "Can I have some butter, please?"}, {"unite": "Unit 2 · Yummy Breakfast", "en": "egg", "tr": "yumurta", "ornek": "I have a boiled egg for breakfast."}, {"unite": "Unit 2 · Yummy Breakfast", "en": "bread", "tr": "ekmek", "ornek": "There is fresh bread on the table."}, {"unite": "Unit 2 · Yummy Breakfast", "en": "tomato", "tr": "domates", "ornek": "Tomatoes are red."}, {"unite": "Unit 2 · Yummy Breakfast", "en": "cucumber", "tr": "salatalık", "ornek": "I like cucumbers in my salad."}, {"unite": "Unit 2 · Yummy Breakfast", "en": "milk", "tr": "süt", "ornek": "I drink a glass of milk every morning."}, {"unite": "Unit 2 · Yummy Breakfast", "en": "orange juice", "tr": "portakal suyu", "ornek": "Would you like some orange juice?"}, {"unite": "Unit 2 · Yummy Breakfast", "en": "sausage", "tr": "sosis", "ornek": "My brother doesn't like sausages."}, {"unite": "Unit 2 · Yummy Breakfast", "en": "pepper", "tr": "biber", "ornek": "Green peppers are healthy."}, {"unite": "Unit 2 · Yummy Breakfast", "en": "delicious", "tr": "lezzetli", "ornek": "This cake is delicious!"}, {"unite": "Unit 2 · Yummy Breakfast", "en": "healthy", "tr": "sağlıklı", "ornek": "A good breakfast is healthy."}, {"unite": "Unit 3 · Downtown", "en": "shopping mall", "tr": "alışveriş merkezi", "ornek": "The shopping mall is very big."}, {"unite": "Unit 3 · Downtown", "en": "bank", "tr": "banka", "ornek": "My mother works at a bank."}, {"unite": "Unit 3 · Downtown", "en": "museum", "tr": "müze", "ornek": "We visited a history museum."}, {"unite": "Unit 3 · Downtown", "en": "hospital", "tr": "hastane", "ornek": "The hospital is next to the park."}, {"unite": "Unit 3 · Downtown", "en": "library", "tr": "kütüphane", "ornek": "I borrow books from the library."}, {"unite": "Unit 3 · Downtown", "en": "post office", "tr": "postane", "ornek": "I sent a letter from the post office."}, {"unite": "Unit 3 · Downtown", "en": "bakery", "tr": "fırın", "ornek": "The bakery sells fresh bread."}, {"unite": "Unit 3 · Downtown", "en": "pharmacy", "tr": "eczane", "ornek": "You can buy medicine at the pharmacy."}, {"unite": "Unit 3 · Downtown", "en": "bus stop", "tr": "otobüs durağı", "ornek": "Wait for me at the bus stop."}, {"unite": "Unit 3 · Downtown", "en": "crowded", "tr": "kalabalık", "ornek": "The city centre is crowded."}, {"unite": "Unit 3 · Downtown", "en": "noisy", "tr": "gürültülü", "ornek": "Big cities are noisy."}, {"unite": "Unit 3 · Downtown", "en": "quiet", "tr": "sessiz", "ornek": "The village is quiet."}, {"unite": "Unit 3 · Downtown", "en": "safe", "tr": "güvenli", "ornek": "My neighbourhood is safe."}, {"unite": "Unit 3 · Downtown", "en": "dangerous", "tr": "tehlikeli", "ornek": "This street is dangerous at night."}, {"unite": "Unit 3 · Downtown", "en": "dirty", "tr": "kirli", "ornek": "The river is dirty."}, {"unite": "Unit 4 · Weather and Emotions", "en": "sunny", "tr": "güneşli", "ornek": "It's sunny today."}, {"unite": "Unit 4 · Weather and Emotions", "en": "rainy", "tr": "yağmurlu", "ornek": "I feel sad on rainy days."}, {"unite": "Unit 4 · Weather and Emotions", "en": "cloudy", "tr": "bulutlu", "ornek": "The sky is cloudy."}, {"unite": "Unit 4 · Weather and Emotions", "en": "snowy", "tr": "karlı", "ornek": "It's snowy in Kars."}, {"unite": "Unit 4 · Weather and Emotions", "en": "windy", "tr": "rüzgârlı", "ornek": "It's windy. Let's fly a kite!"}, {"unite": "Unit 4 · Weather and Emotions", "en": "stormy", "tr": "fırtınalı", "ornek": "It's stormy. Stay at home."}, {"unite": "Unit 4 · Weather and Emotions", "en": "foggy", "tr": "sisli", "ornek": "It's foggy. Drive slowly."}, {"unite": "Unit 4 · Weather and Emotions", "en": "happy", "tr": "mutlu", "ornek": "I feel happy on sunny days."}, {"unite": "Unit 4 · Weather and Emotions", "en": "sad", "tr": "üzgün", "ornek": "Why are you sad?"}, {"unite": "Unit 4 · Weather and Emotions", "en": "angry", "tr": "kızgın", "ornek": "My dad is angry with me."}, {"unite": "Unit 4 · Weather and Emotions", "en": "bored", "tr": "sıkılmış", "ornek": "I feel bored at home."}, {"unite": "Unit 4 · Weather and Emotions", "en": "excited", "tr": "heyecanlı", "ornek": "We are excited about the trip."}, {"unite": "Unit 4 · Weather and Emotions", "en": "tired", "tr": "yorgun", "ornek": "I'm tired after the match."}, {"unite": "Unit 4 · Weather and Emotions", "en": "scared", "tr": "korkmuş", "ornek": "The little boy is scared of the storm."}, {"unite": "Unit 4 · Weather and Emotions", "en": "relaxed", "tr": "rahatlamış", "ornek": "I feel relaxed at the beach."}, {"unite": "Unit 5 · At the Fair", "en": "fair", "tr": "lunapark", "ornek": "Let's go to the fair on Saturday!"}, {"unite": "Unit 5 · At the Fair", "en": "roller coaster", "tr": "hız treni", "ornek": "The roller coaster is very fast."}, {"unite": "Unit 5 · At the Fair", "en": "Ferris wheel", "tr": "dönme dolap", "ornek": "We can see the city from the Ferris wheel."}, {"unite": "Unit 5 · At the Fair", "en": "bumper cars", "tr": "çarpışan arabalar", "ornek": "Bumper cars are fun."}, {"unite": "Unit 5 · At the Fair", "en": "haunted house", "tr": "korku evi", "ornek": "The haunted house is scary."}, {"unite": "Unit 5 · At the Fair", "en": "merry-go-round", "tr": "atlıkarınca", "ornek": "Little children love the merry-go-round."}, {"unite": "Unit 5 · At the Fair", "en": "ticket", "tr": "bilet", "ornek": "How much is a ticket?"}, {"unite": "Unit 5 · At the Fair", "en": "exciting", "tr": "heyecan verici", "ornek": "The roller coaster is exciting."}, {"unite": "Unit 5 · At the Fair", "en": "scary", "tr": "korkutucu", "ornek": "The haunted house is scarier than the bumper cars."}, {"unite": "Unit 5 · At the Fair", "en": "boring", "tr": "sıkıcı", "ornek": "This game is boring."}, {"unite": "Unit 5 · At the Fair", "en": "fun", "tr": "eğlenceli", "ornek": "The fair is really fun."}, {"unite": "Unit 5 · At the Fair", "en": "dizzy", "tr": "başı dönmüş", "ornek": "I feel dizzy after the ride."}, {"unite": "Unit 5 · At the Fair", "en": "candy floss", "tr": "pamuk şeker", "ornek": "I bought pink candy floss."}, {"unite": "Unit 5 · At the Fair", "en": "terrifying", "tr": "dehşet verici", "ornek": "The ghost train was terrifying!"}, {"unite": "Unit 6 · Occupations", "en": "nurse", "tr": "hemşire", "ornek": "The nurse helps the doctor."}, {"unite": "Unit 6 · Occupations", "en": "engineer", "tr": "mühendis", "ornek": "My aunt is an engineer."}, {"unite": "Unit 6 · Occupations", "en": "farmer", "tr": "çiftçi", "ornek": "The farmer grows vegetables."}, {"unite": "Unit 6 · Occupations", "en": "cook", "tr": "aşçı", "ornek": "The cook makes delicious soup."}, {"unite": "Unit 6 · Occupations", "en": "dentist", "tr": "diş hekimi", "ornek": "I go to the dentist twice a year."}, {"unite": "Unit 6 · Occupations", "en": "firefighter", "tr": "itfaiyeci", "ornek": "Firefighters are very brave."}, {"unite": "Unit 6 · Occupations", "en": "police officer", "tr": "polis memuru", "ornek": "The police officer helps people."}, {"unite": "Unit 6 · Occupations", "en": "vet", "tr": "veteriner", "ornek": "The vet looks after sick animals."}, {"unite": "Unit 6 · Occupations", "en": "architect", "tr": "mimar", "ornek": "An architect designs buildings."}, {"unite": "Unit 6 · Occupations", "en": "lawyer", "tr": "avukat", "ornek": "My uncle is a lawyer."}, {"unite": "Unit 6 · Occupations", "en": "mechanic", "tr": "tamirci", "ornek": "The mechanic repairs cars."}, {"unite": "Unit 6 · Occupations", "en": "waiter", "tr": "garson", "ornek": "The waiter brings our food."}, {"unite": "Unit 6 · Occupations", "en": "teacher", "tr": "öğretmen", "ornek": "Our teacher is very kind."}, {"unite": "Unit 6 · Occupations", "en": "job", "tr": "meslek, iş", "ornek": "What's your dream job?"}, {"unite": "Unit 6 · Occupations", "en": "brave", "tr": "cesur", "ornek": "Firefighters are brave."}, {"unite": "Unit 7 · Holidays", "en": "holiday", "tr": "tatil", "ornek": "Where were you on holiday?"}, {"unite": "Unit 7 · Holidays", "en": "beach", "tr": "plaj", "ornek": "We were at the beach all day."}, {"unite": "Unit 7 · Holidays", "en": "tent", "tr": "çadır", "ornek": "We slept in a tent."}, {"unite": "Unit 7 · Holidays", "en": "souvenir", "tr": "hediyelik eşya", "ornek": "I bought a souvenir for my friend."}, {"unite": "Unit 7 · Holidays", "en": "suitcase", "tr": "bavul", "ornek": "My suitcase was very heavy."}, {"unite": "Unit 7 · Holidays", "en": "passport", "tr": "pasaport", "ornek": "Don't forget your passport!"}, {"unite": "Unit 7 · Holidays", "en": "campsite", "tr": "kamp alanı", "ornek": "The campsite was near a lake."}, {"unite": "Unit 7 · Holidays", "en": "sunbathe", "tr": "güneşlenmek", "ornek": "My mother likes to sunbathe."}, {"unite": "Unit 7 · Holidays", "en": "abroad", "tr": "yurt dışı", "ornek": "We went abroad last summer."}, {"unite": "Unit 7 · Holidays", "en": "yesterday", "tr": "dün", "ornek": "I was at home yesterday."}, {"unite": "Unit 7 · Holidays", "en": "last summer", "tr": "geçen yaz", "ornek": "Last summer we were in Muğla."}, {"unite": "Unit 7 · Holidays", "en": "trip", "tr": "gezi, yolculuk", "ornek": "The school trip was great."}, {"unite": "Unit 7 · Holidays", "en": "visit", "tr": "ziyaret etmek", "ornek": "We visited our grandparents."}, {"unite": "Unit 7 · Holidays", "en": "sightseeing", "tr": "gezip görme", "ornek": "We went sightseeing in Rome."}, {"unite": "Unit 7 · Holidays", "en": "view", "tr": "manzara", "ornek": "The view from the hotel was amazing."}, {"unite": "Unit 8 · Bookworms", "en": "fairy tale", "tr": "masal", "ornek": "Cinderella is a famous fairy tale."}, {"unite": "Unit 8 · Bookworms", "en": "comic", "tr": "çizgi roman", "ornek": "My brother reads comics."}, {"unite": "Unit 8 · Bookworms", "en": "science fiction", "tr": "bilim kurgu", "ornek": "I love science fiction films."}, {"unite": "Unit 8 · Bookworms", "en": "horror story", "tr": "korku hikâyesi", "ornek": "Horror stories scare me."}, {"unite": "Unit 8 · Bookworms", "en": "adventure", "tr": "macera", "ornek": "This adventure book is exciting."}, {"unite": "Unit 8 · Bookworms", "en": "detective story", "tr": "dedektif hikâyesi", "ornek": "Sherlock Holmes is in detective stories."}, {"unite": "Unit 8 · Bookworms", "en": "biography", "tr": "biyografi", "ornek": "I read a biography of Atatürk."}, {"unite": "Unit 8 · Bookworms", "en": "poem", "tr": "şiir", "ornek": "She wrote a poem about spring."}, {"unite": "Unit 8 · Bookworms", "en": "novel", "tr": "roman", "ornek": "This novel has 300 pages."}, {"unite": "Unit 8 · Bookworms", "en": "writer", "tr": "yazar", "ornek": "Who is your favourite writer?"}, {"unite": "Unit 8 · Bookworms", "en": "character", "tr": "karakter", "ornek": "The main character is a brave girl."}, {"unite": "Unit 8 · Bookworms", "en": "be born", "tr": "doğmak", "ornek": "I was born in 2014."}, {"unite": "Unit 8 · Bookworms", "en": "bookworm", "tr": "kitap kurdu", "ornek": "My sister is a real bookworm."}, {"unite": "Unit 8 · Bookworms", "en": "story", "tr": "hikâye", "ornek": "Tell me a story, please."}, {"unite": "Unit 8 · Bookworms", "en": "famous", "tr": "ünlü", "ornek": "He was a famous writer."}, {"unite": "Unit 9 · Saving the Planet", "en": "recycle", "tr": "geri dönüştürmek", "ornek": "We recycle paper and glass."}, {"unite": "Unit 9 · Saving the Planet", "en": "reduce", "tr": "azaltmak", "ornek": "Reduce the use of plastic bags."}, {"unite": "Unit 9 · Saving the Planet", "en": "reuse", "tr": "yeniden kullanmak", "ornek": "Reuse your old bottles."}, {"unite": "Unit 9 · Saving the Planet", "en": "pollution", "tr": "kirlilik", "ornek": "Air pollution is a big problem."}, {"unite": "Unit 9 · Saving the Planet", "en": "waste", "tr": "israf etmek", "ornek": "Don't waste water."}, {"unite": "Unit 9 · Saving the Planet", "en": "save", "tr": "tasarruf etmek", "ornek": "Save energy at home."}, {"unite": "Unit 9 · Saving the Planet", "en": "environment", "tr": "çevre", "ornek": "We must protect the environment."}, {"unite": "Unit 9 · Saving the Planet", "en": "rubbish", "tr": "çöp", "ornek": "Put the rubbish in the bin."}, {"unite": "Unit 9 · Saving the Planet", "en": "plant", "tr": "(bitki) dikmek", "ornek": "Let's plant trees in the garden."}, {"unite": "Unit 9 · Saving the Planet", "en": "turn off", "tr": "kapatmak", "ornek": "Turn off the lights."}, {"unite": "Unit 9 · Saving the Planet", "en": "tap", "tr": "musluk", "ornek": "Turn off the tap."}, {"unite": "Unit 9 · Saving the Planet", "en": "protect", "tr": "korumak", "ornek": "Protect the animals and plants."}, {"unite": "Unit 9 · Saving the Planet", "en": "nature", "tr": "doğa", "ornek": "I love walking in nature."}, {"unite": "Unit 9 · Saving the Planet", "en": "glass", "tr": "cam", "ornek": "Recycle glass bottles."}, {"unite": "Unit 9 · Saving the Planet", "en": "energy", "tr": "enerji", "ornek": "Solar energy is clean."}, {"unite": "Unit 10 · Democracy", "en": "vote", "tr": "oy vermek", "ornek": "I will vote for Elif."}, {"unite": "Unit 10 · Democracy", "en": "election", "tr": "seçim", "ornek": "We have a class election today."}, {"unite": "Unit 10 · Democracy", "en": "candidate", "tr": "aday", "ornek": "There are three candidates."}, {"unite": "Unit 10 · Democracy", "en": "class president", "tr": "sınıf başkanı", "ornek": "Who is your class president?"}, {"unite": "Unit 10 · Democracy", "en": "ballot box", "tr": "oy sandığı", "ornek": "Put your vote in the ballot box."}, {"unite": "Unit 10 · Democracy", "en": "right", "tr": "hak", "ornek": "Every child has rights."}, {"unite": "Unit 10 · Democracy", "en": "respect", "tr": "saygı göstermek", "ornek": "Respect other people's ideas."}, {"unite": "Unit 10 · Democracy", "en": "equal", "tr": "eşit", "ornek": "All people are equal."}, {"unite": "Unit 10 · Democracy", "en": "campaign", "tr": "kampanya", "ornek": "Her campaign was very creative."}, {"unite": "Unit 10 · Democracy", "en": "speech", "tr": "konuşma", "ornek": "He gave a great speech."}, {"unite": "Unit 10 · Democracy", "en": "win", "tr": "kazanmak", "ornek": "Who will win the election?"}, {"unite": "Unit 10 · Democracy", "en": "choose", "tr": "seçmek", "ornek": "Choose the best candidate."}, {"unite": "Unit 10 · Democracy", "en": "rule", "tr": "kural", "ornek": "Follow the class rules."}, {"unite": "Unit 10 · Democracy", "en": "promise", "tr": "söz vermek", "ornek": "I promise a cleaner classroom."}, {"unite": "Unit 10 · Democracy", "en": "fair", "tr": "adil", "ornek": "The election was fair."}];
+const ARALIK = [0, 1, 2, 4, 7, 14];          // kutu → kaç gün sonra tekrar
+const YENI_LIMIT = 15;                        // günde en fazla yeni kelime
+const ANAHTAR = "kelimeKartlari6";
+const $ = id => document.getElementById(id);
+const bugun = () => Math.floor((Date.now() - new Date().getTimezoneOffset() * 60000) / 86400000);
+const kimlik = k => k.unite + "|" + k.en;
+
+let durum = { kartlar: {}, gun: bugun(), bugunSayi: 0, yeniSayi: 0 };
+try { const d = JSON.parse(localStorage.getItem(ANAHTAR)); if (d && d.kartlar) durum = d; } catch (e) {}
+if (durum.gun !== bugun()) { durum.gun = bugun(); durum.bugunSayi = 0; durum.yeniSayi = 0; }
+function kaydet() { try { localStorage.setItem(ANAHTAR, JSON.stringify(durum)); } catch (e) {} }
+
+const UNITELER = [...new Set(KELIMELER.map(k => k.unite))];
+$("toplam").textContent = KELIMELER.length;
+UNITELER.forEach((u, i) => {
+  const l = document.createElement("label");
+  l.className = "chip";
+  l.innerHTML = `<input type="checkbox" id="u-${i}" value="${u}" ${i === 0 ? "checked" : ""}><span>${u.replace(/ · .*/, "")}</span>`;
+  l.title = u;
+  l.querySelector("input").addEventListener("change", sonraki);
+  $("uniteler").appendChild(l);
+});
+document.querySelectorAll('input[name="yon"], input[name="mod"]').forEach(r => r.addEventListener("change", goster));
+
+const seciliUniteler = () => [...$("uniteler").querySelectorAll("input:checked")].map(i => i.value);
+const kutuNo = k => (durum.kartlar[kimlik(k)] || {}).kutu || 0;
+function siradakiler() {
+  const u = seciliUniteler(), g = bugun();
+  const havuz = KELIMELER.filter(k => u.includes(k.unite));
+  const tekrar = havuz.filter(k => { const d = durum.kartlar[kimlik(k)]; return d && d.zaman <= g; })
+                      .sort((a, b) => kutuNo(a) - kutuNo(b));
+  const yeni = havuz.filter(k => !durum.kartlar[kimlik(k)]);
+  return tekrar.concat(yeni.slice(0, Math.max(0, YENI_LIMIT - durum.yeniSayi)));
+}
+
+let aktif = null, cevrildi = false;
+function sonraki() {
+  const s = siradakiler();
+  aktif = s.length ? s[0] : null;
+  cevrildi = false;
+  goster();
+}
+function goster() {
+  const yon = document.querySelector('input[name="yon"]:checked').value;
+  const mod = document.querySelector('input[name="mod"]:checked').value;
+  const s = siradakiler();
+  $("sBugun").textContent = durum.bugunSayi;
+  $("sSira").textContent = s.length;
+  $("sOgrenilen").textContent = KELIMELER.filter(k => kutuNo(k) === 5).length;
+  kutulariCiz();
+  if (!aktif) {
+    $("kUnite").textContent = "";
+    $("kOn").innerHTML = "";
+    $("kKutu").textContent = "";
+    $("dinle").hidden = true; $("yazAlan").hidden = true; $("cevirAlan").hidden = true;
+    $("degerlendir").hidden = true; $("arka").hidden = true; $("sonuc").hidden = false;
+    $("sonuc").className = "sonuc ok";
+    $("sonuc").textContent = seciliUniteler().length
+      ? "Bugünlük bu ünitelerde çalışılacak kart kalmadı. Yarın tekrar gel ya da başka bir ünite seç."
+      : "Çalışmak için en az bir ünite seçin.";
+    return;
+  }
+  const on = yon === "en" ? aktif.en : aktif.tr;
+  const arka = yon === "en" ? aktif.tr : aktif.en;
+  $("kUnite").textContent = aktif.unite;
+  $("kOn").textContent = on;
+  $("kArka").textContent = arka;
+  $("kOrnek").textContent = aktif.ornek;
+  const k = kutuNo(aktif);
+  $("kKutu").textContent = k ? `${k}. kutu` : "Yeni kelime";
+  $("dinle").hidden = !("speechSynthesis" in window) || (yon === "tr" && !cevrildi);
+  $("arka").hidden = !cevrildi;
+  $("degerlendir").hidden = !cevrildi;
+  $("cevirAlan").hidden = cevrildi || mod === "yaz";
+  $("yazAlan").hidden = cevrildi || mod !== "yaz";
+  if (!cevrildi) { $("sonuc").hidden = true; $("yazGiris").value = ""; }
+}
+function kutulariCiz() {
+  const u = seciliUniteler();
+  const havuz = KELIMELER.filter(k => u.includes(k.unite));
+  const say = [0, 0, 0, 0, 0, 0];
+  havuz.forEach(k => say[kutuNo(k)]++);
+  $("kutular").innerHTML = [1, 2, 3, 4, 5].map(i =>
+    `<div class="kutu"><b>${say[i]}</b><span>${i}. kutu</span><div class="bar"><i style="width:${havuz.length ? 100 * say[i] / havuz.length : 0}%"></i></div></div>`).join("");
+}
+function cevir() { cevrildi = true; goster(); seslendir(aktif.en); }
+function degerlendir(bildi) {
+  const id = kimlik(aktif);
+  const d = durum.kartlar[id];
+  if (!d) durum.yeniSayi++;
+  const yeniKutu = bildi ? Math.min(5, (d ? d.kutu : 0) + 1) : 1;
+  durum.kartlar[id] = { kutu: yeniKutu, zaman: bugun() + (bildi ? ARALIK[yeniKutu] : 0) };
+  if (!bildi) durum.kartlar[id].zaman = bugun();
+  durum.bugunSayi++;
+  kaydet();
+  // Bilinmeyen kart bugünkü sıranın sonuna gider; aynı kart arka arkaya gelmesin.
+  const s = siradakiler();
+  aktif = s.find(k => kimlik(k) !== id) || (bildi ? null : aktif);
+  cevrildi = false;
+  goster();
+}
+function normal(t) { return t.toLocaleLowerCase("tr").replace(/[^a-zçğıöşü\s-]/g, "").replace(/\s+/g, " ").trim(); }
+function yaziKontrol() {
+  const yon = document.querySelector('input[name="yon"]:checked').value;
+  const beklenen = yon === "en" ? aktif.tr : aktif.en;
+  const verilen = normal($("yazGiris").value);
+  const dogru = beklenen.split(/[,(]/).map(normal).filter(Boolean).some(b => b === verilen) || normal(beklenen) === verilen;
+  $("sonuc").hidden = false;
+  $("sonuc").className = "sonuc " + (dogru ? "ok" : "no");
+  $("sonuc").textContent = dogru ? "Doğru!" : `Doğrusu: ${beklenen}`;
+  cevrildi = true;
+  goster();
+  $("sonuc").hidden = false;
+  seslendir(aktif.en);
+}
+function seslendir(metin) {
+  try {
+    speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(metin);
+    u.lang = "en-GB"; u.rate = 0.85;
+    const ses = speechSynthesis.getVoices().find(v => v.lang && v.lang.startsWith("en"));
+    if (ses) u.voice = ses;
+    speechSynthesis.speak(u);
+  } catch (e) {}
+}
+$("cevir").addEventListener("click", cevir);
+$("biliyorum").addEventListener("click", () => degerlendir(true));
+$("bilmiyorum").addEventListener("click", () => degerlendir(false));
+$("dinle").addEventListener("click", () => seslendir(aktif.en));
+$("yazKontrol").addEventListener("click", yaziKontrol);
+$("yazGiris").addEventListener("keydown", e => { if (e.key === "Enter") yaziKontrol(); });
+document.addEventListener("keydown", e => {
+  if (e.target.tagName === "INPUT" && e.target.type === "text") return;
+  if (!aktif) return;
+  if (e.key === " " && !cevrildi && !$("cevirAlan").hidden) { e.preventDefault(); cevir(); }
+  else if (cevrildi && (e.key === "ArrowRight" || e.key === "1")) degerlendir(true);
+  else if (cevrildi && (e.key === "ArrowLeft" || e.key === "2")) degerlendir(false);
+});
+sonraki();
+</script>
+</html>
