@@ -98,6 +98,8 @@ main { display: grid; gap: 16px; min-width: 0; }
 .fig { flex: none; max-width: 100%; }
 .fig svg { display: block; max-width: 100%; height: auto; }
 .opts { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 8px; }
+.opts.uzun { grid-template-columns: minmax(0, 1fr); }
+.opt u { text-decoration-thickness: 2px; text-underline-offset: 3px; }
 .opt { display: flex; align-items: center; gap: 10px; text-align: left; font: 600 1rem var(--font-body); color: var(--ink); background: var(--paper); border: 2px solid var(--line); border-radius: 10px; padding: 8px 10px; cursor: pointer; }
 .opt b { flex: none; display: grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; border: 2px solid var(--line); font-family: var(--font-display); }
 .opt.sel { border-color: var(--cobalt); background: var(--cobalt-soft); }
@@ -355,7 +357,7 @@ function ciz() {
     <article class="q${kontrolEdildi ? (q.cevap === q.dogruYeni ? " ok" : " no") : ""}${kontrolEdildi ? " locked" : ""}">
       <div class="qhead"><span class="num">${i + 1}.</span><span class="tag">${q.konu}</span><span class="tag ${q.zorluk}">${q.zorluk}</span></div>
       <div class="qbody"><p class="qtext">${q.soru}</p>${q.sekil ? `<div class="fig">${sekilCiz(q.sekil)}</div>` : ""}</div>
-      <div class="opts" role="radiogroup" aria-label="Soru ${i + 1} seçenekleri">
+      <div class="opts${q.secenekler.some(x => x.replace(/<[^>]+>/g, "").length > 30) ? " uzun" : ""}" role="radiogroup" aria-label="Soru ${i + 1} seçenekleri">
         ${q.sira.map((orj, j) => {
           let c = "opt";
           if (q.cevap === j) c += " sel";
