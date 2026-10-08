@@ -11,15 +11,19 @@ from openpyxl.worksheet.datavalidation import DataValidation
 
 BURA = Path(__file__).parent
 KOK = BURA.parent
+sys.path.insert(0, str(KOK.parent / "ortak"))
+from sayfa_olustur import sayfa_yaz  # noqa: E402
+
 havuz = json.loads((BURA / "soru_havuzu.json").read_text(encoding="utf-8"))
 
 # ---------- HTML ----------
-sablon = (BURA / "sablon.html").read_text(encoding="utf-8")
-govde = sablon.replace("/*HAVUZ*/", json.dumps(havuz, ensure_ascii=False))
-(KOK / "KupSoruUretici.html").write_text('<!doctype html>\n<html lang="tr">\n' + govde + "</html>\n", encoding="utf-8")
-if len(sys.argv) > 1:  # yayın kopyası (iskeletsiz)
-    Path(sys.argv[1]).write_text(govde.replace('<meta charset="utf-8">\n', "").replace(
-        '<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n', ""), encoding="utf-8")
+LOGO = """<svg width="58" height="58" viewBox="0 0 58 58" aria-hidden="true">
+      <polygon class="ct edge" points="29,4 52,16 29,28 6,16"></polygon>
+      <polygon class="cl edge" points="6,16 29,28 29,54 6,42"></polygon>
+      <polygon class="cr edge" points="29,28 52,16 52,42 29,54"></polygon>
+    </svg>"""
+sayfa_yaz(havuz, KOK / "KupSoruUretici.html", "Küp Soru Üretici", "Küp Soru Üretici <sup>a³</sup>", "6. sınıf", LOGO,
+          sys.argv[1] if len(sys.argv) > 1 else None)
 
 # ---------- Excel ----------
 SATIR = 1000          # havuz sayfasında formül kapsayan satır (öğretmen yeni soru ekleyebilsin)

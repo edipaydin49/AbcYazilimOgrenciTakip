@@ -1,0 +1,6413 @@
+[
+ {
+  "id": 1,
+  "konu": "Çarpanlar",
+  "zorluk": "Kolay",
+  "soru": "Aşağıdakilerden hangisi 12 sayısının çarpanlarından biridir?",
+  "secenekler": [
+   "11",
+   "7",
+   "9",
+   "3"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 2,
+  "konu": "Çarpanlar",
+  "zorluk": "Kolay",
+  "soru": "Aşağıdakilerden hangisi 18 sayısının çarpanlarından biridir?",
+  "secenekler": [
+   "13",
+   "4",
+   "11",
+   "3"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 3,
+  "konu": "Çarpanlar",
+  "zorluk": "Kolay",
+  "soru": "Aşağıdakilerden hangisi 20 sayısının çarpanlarından biridir?",
+  "secenekler": [
+   "16",
+   "13",
+   "18",
+   "10"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 4,
+  "konu": "Çarpanlar",
+  "zorluk": "Kolay",
+  "soru": "Aşağıdakilerden hangisi 24 sayısının çarpanlarından biridir?",
+  "secenekler": [
+   "22",
+   "20",
+   "12",
+   "11"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 5,
+  "konu": "Çarpanlar",
+  "zorluk": "Kolay",
+  "soru": "Aşağıdakilerden hangisi 28 sayısının çarpanlarından biridir?",
+  "secenekler": [
+   "20",
+   "2",
+   "18",
+   "23"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 6,
+  "konu": "Çarpanlar",
+  "zorluk": "Kolay",
+  "soru": "Aşağıdakilerden hangisi 30 sayısının çarpanlarından biridir?",
+  "secenekler": [
+   "24",
+   "15",
+   "21",
+   "11"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 7,
+  "konu": "Çarpanlar",
+  "zorluk": "Kolay",
+  "soru": "Aşağıdakilerden hangisi 36 sayısının çarpanlarından biridir?",
+  "secenekler": [
+   "8",
+   "29",
+   "33",
+   "9"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 8,
+  "konu": "Çarpanlar",
+  "zorluk": "Kolay",
+  "soru": "Aşağıdakilerden hangisi 40 sayısının çarpanlarından biridir?",
+  "secenekler": [
+   "3",
+   "26",
+   "27",
+   "10"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 9,
+  "konu": "Çarpanlar",
+  "zorluk": "Kolay",
+  "soru": "Aşağıdakilerden hangisi 42 sayısının çarpanlarından biridir?",
+  "secenekler": [
+   "6",
+   "38",
+   "25",
+   "27"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 10,
+  "konu": "Çarpanlar",
+  "zorluk": "Kolay",
+  "soru": "Aşağıdakilerden hangisi 45 sayısının çarpanlarından biridir?",
+  "secenekler": [
+   "13",
+   "23",
+   "9",
+   "40"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 11,
+  "konu": "Çarpanlar",
+  "zorluk": "Kolay",
+  "soru": "Aşağıdakilerden hangisi 48 sayısının çarpanlarından biridir?",
+  "secenekler": [
+   "24",
+   "26",
+   "46",
+   "32"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 12,
+  "konu": "Çarpanlar",
+  "zorluk": "Kolay",
+  "soru": "Aşağıdakilerden hangisi 54 sayısının çarpanlarından biridir?",
+  "secenekler": [
+   "4",
+   "46",
+   "27",
+   "34"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 13,
+  "konu": "Çarpanlar",
+  "zorluk": "Kolay",
+  "soru": "Aşağıdakilerden hangisi 60 sayısının çarpanlarından biridir?",
+  "secenekler": [
+   "6",
+   "42",
+   "54",
+   "31"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 14,
+  "konu": "Çarpanlar",
+  "zorluk": "Kolay",
+  "soru": "Aşağıdakilerden hangisi 72 sayısının çarpanlarından biridir?",
+  "secenekler": [
+   "39",
+   "57",
+   "55",
+   "4"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 15,
+  "konu": "Çarpanlar",
+  "zorluk": "Kolay",
+  "soru": "Aşağıdakilerden hangisi 16 sayısının çarpanlarından biri <b>değildir</b>?",
+  "secenekler": [
+   "8",
+   "4",
+   "3",
+   "2"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 16,
+  "konu": "Çarpanlar",
+  "zorluk": "Kolay",
+  "soru": "Aşağıdakilerden hangisi 18 sayısının çarpanlarından biri <b>değildir</b>?",
+  "secenekler": [
+   "2",
+   "12",
+   "3",
+   "9"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 17,
+  "konu": "Çarpanlar",
+  "zorluk": "Kolay",
+  "soru": "Aşağıdakilerden hangisi 24 sayısının çarpanlarından biri <b>değildir</b>?",
+  "secenekler": [
+   "2",
+   "8",
+   "10",
+   "4"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 18,
+  "konu": "Çarpanlar",
+  "zorluk": "Kolay",
+  "soru": "Aşağıdakilerden hangisi 30 sayısının çarpanlarından biri <b>değildir</b>?",
+  "secenekler": [
+   "3",
+   "15",
+   "10",
+   "4"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 19,
+  "konu": "Çarpanlar",
+  "zorluk": "Kolay",
+  "soru": "Aşağıdakilerden hangisi 32 sayısının çarpanlarından biri <b>değildir</b>?",
+  "secenekler": [
+   "8",
+   "22",
+   "16",
+   "2"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 20,
+  "konu": "Çarpanlar",
+  "zorluk": "Kolay",
+  "soru": "Aşağıdakilerden hangisi 36 sayısının çarpanlarından biri <b>değildir</b>?",
+  "secenekler": [
+   "28",
+   "18",
+   "2",
+   "3"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 21,
+  "konu": "Çarpanlar",
+  "zorluk": "Kolay",
+  "soru": "Aşağıdakilerden hangisi 40 sayısının çarpanlarından biri <b>değildir</b>?",
+  "secenekler": [
+   "20",
+   "5",
+   "19",
+   "2"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 22,
+  "konu": "Çarpanlar",
+  "zorluk": "Kolay",
+  "soru": "Aşağıdakilerden hangisi 48 sayısının çarpanlarından biri <b>değildir</b>?",
+  "secenekler": [
+   "20",
+   "4",
+   "2",
+   "6"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 23,
+  "konu": "Çarpanlar",
+  "zorluk": "Kolay",
+  "soru": "Aşağıdakilerden hangisi 50 sayısının çarpanlarından biri <b>değildir</b>?",
+  "secenekler": [
+   "5",
+   "10",
+   "2",
+   "14"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 24,
+  "konu": "Çarpanlar",
+  "zorluk": "Kolay",
+  "soru": "Aşağıdakilerden hangisi 56 sayısının çarpanlarından biri <b>değildir</b>?",
+  "secenekler": [
+   "4",
+   "8",
+   "7",
+   "53"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 25,
+  "konu": "Çarpanlar",
+  "zorluk": "Kolay",
+  "soru": "Aşağıdakilerden hangisi 63 sayısının çarpanlarından biri <b>değildir</b>?",
+  "secenekler": [
+   "17",
+   "7",
+   "9",
+   "3"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 26,
+  "konu": "Çarpanlar",
+  "zorluk": "Kolay",
+  "soru": "Aşağıdakilerden hangisi 64 sayısının çarpanlarından biri <b>değildir</b>?",
+  "secenekler": [
+   "8",
+   "2",
+   "4",
+   "54"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 27,
+  "konu": "Çarpanlar",
+  "zorluk": "Kolay",
+  "soru": "Şekilde 12 birim kare ile oluşturulmuş bir dikdörtgen modeli verilmiştir. Bu model 12 sayısının hangi çarpan çiftini gösterir?",
+  "secenekler": [
+   "2 ve 6",
+   "3 ve 5",
+   "2 ve 7",
+   "6 ve 6"
+  ],
+  "dogru": 0,
+  "sekil": {
+   "tip": "dikdortgen",
+   "en": 6,
+   "boy": 2
+  }
+ },
+ {
+  "id": 28,
+  "konu": "Çarpanlar",
+  "zorluk": "Kolay",
+  "soru": "Şekilde 12 birim kare ile oluşturulmuş bir dikdörtgen modeli verilmiştir. Bu model 12 sayısının hangi çarpan çiftini gösterir?",
+  "secenekler": [
+   "2 ve 7",
+   "3 ve 4",
+   "4 ve 4",
+   "3 ve 5"
+  ],
+  "dogru": 1,
+  "sekil": {
+   "tip": "dikdortgen",
+   "en": 4,
+   "boy": 3
+  }
+ },
+ {
+  "id": 29,
+  "konu": "Çarpanlar",
+  "zorluk": "Kolay",
+  "soru": "Şekilde 18 birim kare ile oluşturulmuş bir dikdörtgen modeli verilmiştir. Bu model 18 sayısının hangi çarpan çiftini gösterir?",
+  "secenekler": [
+   "3 ve 6",
+   "6 ve 6",
+   "3 ve 7",
+   "2 ve 10"
+  ],
+  "dogru": 0,
+  "sekil": {
+   "tip": "dikdortgen",
+   "en": 6,
+   "boy": 3
+  }
+ },
+ {
+  "id": 30,
+  "konu": "Çarpanlar",
+  "zorluk": "Kolay",
+  "soru": "Şekilde 20 birim kare ile oluşturulmuş bir dikdörtgen modeli verilmiştir. Bu model 20 sayısının hangi çarpan çiftini gösterir?",
+  "secenekler": [
+   "4 ve 6",
+   "2 ve 11",
+   "5 ve 5",
+   "4 ve 5"
+  ],
+  "dogru": 3,
+  "sekil": {
+   "tip": "dikdortgen",
+   "en": 5,
+   "boy": 4
+  }
+ },
+ {
+  "id": 31,
+  "konu": "Çarpanlar",
+  "zorluk": "Kolay",
+  "soru": "Şekilde 24 birim kare ile oluşturulmuş bir dikdörtgen modeli verilmiştir. Bu model 24 sayısının hangi çarpan çiftini gösterir?",
+  "secenekler": [
+   "8 ve 8",
+   "3 ve 9",
+   "3 ve 8",
+   "2 ve 13"
+  ],
+  "dogru": 2,
+  "sekil": {
+   "tip": "dikdortgen",
+   "en": 8,
+   "boy": 3
+  }
+ },
+ {
+  "id": 32,
+  "konu": "Çarpanlar",
+  "zorluk": "Kolay",
+  "soru": "Şekilde 18 birim kare ile oluşturulmuş bir dikdörtgen modeli verilmiştir. Bu model 18 sayısının hangi çarpan çiftini gösterir?",
+  "secenekler": [
+   "2 ve 10",
+   "3 ve 8",
+   "2 ve 9",
+   "9 ve 9"
+  ],
+  "dogru": 2,
+  "sekil": {
+   "tip": "dikdortgen",
+   "en": 9,
+   "boy": 2
+  }
+ },
+ {
+  "id": 33,
+  "konu": "Çarpanlar",
+  "zorluk": "Kolay",
+  "soru": "Şekilde 24 birim kare ile oluşturulmuş bir dikdörtgen modeli verilmiştir. Bu model 24 sayısının hangi çarpan çiftini gösterir?",
+  "secenekler": [
+   "2 ve 13",
+   "6 ve 6",
+   "4 ve 7",
+   "4 ve 6"
+  ],
+  "dogru": 3,
+  "sekil": {
+   "tip": "dikdortgen",
+   "en": 6,
+   "boy": 4
+  }
+ },
+ {
+  "id": 34,
+  "konu": "Çarpanlar",
+  "zorluk": "Kolay",
+  "soru": "Şekilde 21 birim kare ile oluşturulmuş bir dikdörtgen modeli verilmiştir. Bu model 21 sayısının hangi çarpan çiftini gösterir?",
+  "secenekler": [
+   "3 ve 8",
+   "3 ve 7",
+   "7 ve 7",
+   "2 ve 11"
+  ],
+  "dogru": 1,
+  "sekil": {
+   "tip": "dikdortgen",
+   "en": 7,
+   "boy": 3
+  }
+ },
+ {
+  "id": 35,
+  "konu": "Çarpanlar",
+  "zorluk": "Kolay",
+  "soru": "Şekilde 20 birim kare ile oluşturulmuş bir dikdörtgen modeli verilmiştir. Bu model 20 sayısının hangi çarpan çiftini gösterir?",
+  "secenekler": [
+   "10 ve 10",
+   "3 ve 9",
+   "2 ve 11",
+   "2 ve 10"
+  ],
+  "dogru": 3,
+  "sekil": {
+   "tip": "dikdortgen",
+   "en": 10,
+   "boy": 2
+  }
+ },
+ {
+  "id": 36,
+  "konu": "Çarpanlar",
+  "zorluk": "Kolay",
+  "soru": "Şekilde 32 birim kare ile oluşturulmuş bir dikdörtgen modeli verilmiştir. Bu model 32 sayısının hangi çarpan çiftini gösterir?",
+  "secenekler": [
+   "4 ve 8",
+   "4 ve 9",
+   "8 ve 8",
+   "2 ve 17"
+  ],
+  "dogru": 0,
+  "sekil": {
+   "tip": "dikdortgen",
+   "en": 8,
+   "boy": 4
+  }
+ },
+ {
+  "id": 37,
+  "konu": "Çarpanlar",
+  "zorluk": "Orta",
+  "soru": "12 sayısının kaç tane çarpanı vardır?",
+  "secenekler": [
+   "4",
+   "7",
+   "6",
+   "5"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 38,
+  "konu": "Çarpanlar",
+  "zorluk": "Orta",
+  "soru": "16 sayısının kaç tane çarpanı vardır?",
+  "secenekler": [
+   "5",
+   "6",
+   "4",
+   "3"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 39,
+  "konu": "Çarpanlar",
+  "zorluk": "Orta",
+  "soru": "18 sayısının kaç tane çarpanı vardır?",
+  "secenekler": [
+   "7",
+   "4",
+   "6",
+   "5"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 40,
+  "konu": "Çarpanlar",
+  "zorluk": "Orta",
+  "soru": "20 sayısının kaç tane çarpanı vardır?",
+  "secenekler": [
+   "7",
+   "5",
+   "6",
+   "4"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 41,
+  "konu": "Çarpanlar",
+  "zorluk": "Orta",
+  "soru": "24 sayısının kaç tane çarpanı vardır?",
+  "secenekler": [
+   "8",
+   "7",
+   "6",
+   "9"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 42,
+  "konu": "Çarpanlar",
+  "zorluk": "Orta",
+  "soru": "28 sayısının kaç tane çarpanı vardır?",
+  "secenekler": [
+   "5",
+   "4",
+   "6",
+   "7"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 43,
+  "konu": "Çarpanlar",
+  "zorluk": "Orta",
+  "soru": "30 sayısının kaç tane çarpanı vardır?",
+  "secenekler": [
+   "6",
+   "8",
+   "9",
+   "7"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 44,
+  "konu": "Çarpanlar",
+  "zorluk": "Orta",
+  "soru": "36 sayısının kaç tane çarpanı vardır?",
+  "secenekler": [
+   "8",
+   "10",
+   "9",
+   "7"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 45,
+  "konu": "Çarpanlar",
+  "zorluk": "Orta",
+  "soru": "40 sayısının kaç tane çarpanı vardır?",
+  "secenekler": [
+   "6",
+   "9",
+   "8",
+   "7"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 46,
+  "konu": "Çarpanlar",
+  "zorluk": "Orta",
+  "soru": "45 sayısının kaç tane çarpanı vardır?",
+  "secenekler": [
+   "4",
+   "7",
+   "6",
+   "5"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 47,
+  "konu": "Çarpanlar",
+  "zorluk": "Orta",
+  "soru": "48 sayısının kaç tane çarpanı vardır?",
+  "secenekler": [
+   "9",
+   "11",
+   "10",
+   "8"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 48,
+  "konu": "Çarpanlar",
+  "zorluk": "Orta",
+  "soru": "60 sayısının kaç tane çarpanı vardır?",
+  "secenekler": [
+   "12",
+   "10",
+   "11",
+   "13"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 49,
+  "konu": "Çarpanlar",
+  "zorluk": "Orta",
+  "soru": "64 sayısının kaç tane çarpanı vardır?",
+  "secenekler": [
+   "6",
+   "7",
+   "8",
+   "5"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 50,
+  "konu": "Çarpanlar",
+  "zorluk": "Orta",
+  "soru": "72 sayısının kaç tane çarpanı vardır?",
+  "secenekler": [
+   "10",
+   "11",
+   "13",
+   "12"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 51,
+  "konu": "Çarpanlar",
+  "zorluk": "Orta",
+  "soru": "100 sayısının kaç tane çarpanı vardır?",
+  "secenekler": [
+   "7",
+   "10",
+   "9",
+   "8"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 52,
+  "konu": "Çarpanlar",
+  "zorluk": "Orta",
+  "soru": "12 birim karenin tamamı kullanılarak, birim kareler arasında boşluk kalmayacak şekilde kaç farklı dikdörtgen oluşturulabilir? (2 × 3 ile 3 × 2 aynı kabul edilir.)",
+  "secenekler": [
+   "4",
+   "2",
+   "6",
+   "3"
+  ],
+  "dogru": 3,
+  "sekil": {
+   "tip": "dikdortgen",
+   "en": 4,
+   "boy": 3
+  }
+ },
+ {
+  "id": 53,
+  "konu": "Çarpanlar",
+  "zorluk": "Orta",
+  "soru": "16 birim karenin tamamı kullanılarak, birim kareler arasında boşluk kalmayacak şekilde kaç farklı dikdörtgen oluşturulabilir? (2 × 3 ile 3 × 2 aynı kabul edilir.)",
+  "secenekler": [
+   "4",
+   "3",
+   "2",
+   "5"
+  ],
+  "dogru": 1,
+  "sekil": {
+   "tip": "dikdortgen",
+   "en": 4,
+   "boy": 4
+  }
+ },
+ {
+  "id": 54,
+  "konu": "Çarpanlar",
+  "zorluk": "Orta",
+  "soru": "18 birim karenin tamamı kullanılarak, birim kareler arasında boşluk kalmayacak şekilde kaç farklı dikdörtgen oluşturulabilir? (2 × 3 ile 3 × 2 aynı kabul edilir.)",
+  "secenekler": [
+   "6",
+   "2",
+   "4",
+   "3"
+  ],
+  "dogru": 3,
+  "sekil": {
+   "tip": "dikdortgen",
+   "en": 6,
+   "boy": 3
+  }
+ },
+ {
+  "id": 55,
+  "konu": "Çarpanlar",
+  "zorluk": "Orta",
+  "soru": "20 birim karenin tamamı kullanılarak, birim kareler arasında boşluk kalmayacak şekilde kaç farklı dikdörtgen oluşturulabilir? (2 × 3 ile 3 × 2 aynı kabul edilir.)",
+  "secenekler": [
+   "6",
+   "3",
+   "4",
+   "2"
+  ],
+  "dogru": 1,
+  "sekil": {
+   "tip": "dikdortgen",
+   "en": 5,
+   "boy": 4
+  }
+ },
+ {
+  "id": 56,
+  "konu": "Çarpanlar",
+  "zorluk": "Orta",
+  "soru": "24 birim karenin tamamı kullanılarak, birim kareler arasında boşluk kalmayacak şekilde kaç farklı dikdörtgen oluşturulabilir? (2 × 3 ile 3 × 2 aynı kabul edilir.)",
+  "secenekler": [
+   "5",
+   "8",
+   "3",
+   "4"
+  ],
+  "dogru": 3,
+  "sekil": {
+   "tip": "dikdortgen",
+   "en": 6,
+   "boy": 4
+  }
+ },
+ {
+  "id": 57,
+  "konu": "Çarpanlar",
+  "zorluk": "Orta",
+  "soru": "30 birim karenin tamamı kullanılarak, birim kareler arasında boşluk kalmayacak şekilde kaç farklı dikdörtgen oluşturulabilir? (2 × 3 ile 3 × 2 aynı kabul edilir.)",
+  "secenekler": [
+   "5",
+   "4",
+   "3",
+   "8"
+  ],
+  "dogru": 1,
+  "sekil": {
+   "tip": "dikdortgen",
+   "en": 6,
+   "boy": 5
+  }
+ },
+ {
+  "id": 58,
+  "konu": "Çarpanlar",
+  "zorluk": "Orta",
+  "soru": "36 birim karenin tamamı kullanılarak, birim kareler arasında boşluk kalmayacak şekilde kaç farklı dikdörtgen oluşturulabilir? (2 × 3 ile 3 × 2 aynı kabul edilir.)",
+  "secenekler": [
+   "9",
+   "4",
+   "6",
+   "5"
+  ],
+  "dogru": 3,
+  "sekil": {
+   "tip": "dikdortgen",
+   "en": 6,
+   "boy": 6
+  }
+ },
+ {
+  "id": 59,
+  "konu": "Çarpanlar",
+  "zorluk": "Orta",
+  "soru": "40 birim karenin tamamı kullanılarak, birim kareler arasında boşluk kalmayacak şekilde kaç farklı dikdörtgen oluşturulabilir? (2 × 3 ile 3 × 2 aynı kabul edilir.)",
+  "secenekler": [
+   "4",
+   "3",
+   "5",
+   "8"
+  ],
+  "dogru": 0,
+  "sekil": {
+   "tip": "dikdortgen",
+   "en": 8,
+   "boy": 5
+  }
+ },
+ {
+  "id": 60,
+  "konu": "Çarpanlar",
+  "zorluk": "Orta",
+  "soru": "18 sayısının çarpanları küçükten büyüğe şöyle sıralanmıştır: 1, 2, A, 6, 9, 18. A yerine hangi sayı gelmelidir?",
+  "secenekler": [
+   "4",
+   "3",
+   "6",
+   "2"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 61,
+  "konu": "Çarpanlar",
+  "zorluk": "Orta",
+  "soru": "20 sayısının çarpanları küçükten büyüğe şöyle sıralanmıştır: 1, 2, 4, A, 10, 20. A yerine hangi sayı gelmelidir?",
+  "secenekler": [
+   "6",
+   "5",
+   "4",
+   "10"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 62,
+  "konu": "Çarpanlar",
+  "zorluk": "Orta",
+  "soru": "24 sayısının çarpanları küçükten büyüğe şöyle sıralanmıştır: 1, 2, 3, A, 6, 8, 12, 24. A yerine hangi sayı gelmelidir?",
+  "secenekler": [
+   "8",
+   "3",
+   "5",
+   "4"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 63,
+  "konu": "Çarpanlar",
+  "zorluk": "Orta",
+  "soru": "28 sayısının çarpanları küçükten büyüğe şöyle sıralanmıştır: 1, 2, A, 7, 14, 28. A yerine hangi sayı gelmelidir?",
+  "secenekler": [
+   "8",
+   "4",
+   "3",
+   "5"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 64,
+  "konu": "Çarpanlar",
+  "zorluk": "Orta",
+  "soru": "30 sayısının çarpanları küçükten büyüğe şöyle sıralanmıştır: 1, 2, 3, 5, A, 10, 15, 30. A yerine hangi sayı gelmelidir?",
+  "secenekler": [
+   "5",
+   "6",
+   "7",
+   "12"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 65,
+  "konu": "Çarpanlar",
+  "zorluk": "Orta",
+  "soru": "36 sayısının çarpanları küçükten büyüğe şöyle sıralanmıştır: 1, 2, 3, A, 6, 9, 12, 18, 36. A yerine hangi sayı gelmelidir?",
+  "secenekler": [
+   "3",
+   "8",
+   "4",
+   "5"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 66,
+  "konu": "Çarpanlar",
+  "zorluk": "Orta",
+  "soru": "40 sayısının çarpanları küçükten büyüğe şöyle sıralanmıştır: 1, 2, 4, A, 8, 10, 20, 40. A yerine hangi sayı gelmelidir?",
+  "secenekler": [
+   "5",
+   "6",
+   "10",
+   "4"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 67,
+  "konu": "Çarpanlar",
+  "zorluk": "Orta",
+  "soru": "42 sayısının çarpanları küçükten büyüğe şöyle sıralanmıştır: 1, 2, A, 6, 7, 14, 21, 42. A yerine hangi sayı gelmelidir?",
+  "secenekler": [
+   "3",
+   "4",
+   "6",
+   "2"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 68,
+  "konu": "Çarpanlar",
+  "zorluk": "Orta",
+  "soru": "48 sayısının çarpanları küçükten büyüğe şöyle sıralanmıştır: 1, 2, 3, 4, 6, A, 12, 16, 24, 48. A yerine hangi sayı gelmelidir?",
+  "secenekler": [
+   "8",
+   "9",
+   "7",
+   "16"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 69,
+  "konu": "Çarpanlar",
+  "zorluk": "Orta",
+  "soru": "54 sayısının çarpanları küçükten büyüğe şöyle sıralanmıştır: 1, 2, 3, 6, A, 18, 27, 54. A yerine hangi sayı gelmelidir?",
+  "secenekler": [
+   "9",
+   "8",
+   "18",
+   "10"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 70,
+  "konu": "Çarpanlar",
+  "zorluk": "Zor",
+  "soru": "24 sayısının çarpanlarının toplamı kaçtır?",
+  "secenekler": [
+   "60",
+   "59",
+   "72",
+   "36"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 71,
+  "konu": "Çarpanlar",
+  "zorluk": "Zor",
+  "soru": "30 sayısının çarpanlarının toplamı kaçtır?",
+  "secenekler": [
+   "72",
+   "87",
+   "71",
+   "42"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 72,
+  "konu": "Çarpanlar",
+  "zorluk": "Zor",
+  "soru": "36 sayısının çarpanlarının toplamı kaçtır?",
+  "secenekler": [
+   "90",
+   "109",
+   "91",
+   "55"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 73,
+  "konu": "Çarpanlar",
+  "zorluk": "Zor",
+  "soru": "40 sayısının çarpanlarının toplamı kaçtır?",
+  "secenekler": [
+   "110",
+   "89",
+   "50",
+   "90"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 74,
+  "konu": "Çarpanlar",
+  "zorluk": "Zor",
+  "soru": "48 sayısının çarpanlarının toplamı kaçtır?",
+  "secenekler": [
+   "123",
+   "148",
+   "124",
+   "76"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 75,
+  "konu": "Çarpanlar",
+  "zorluk": "Zor",
+  "soru": "60 sayısının çarpanlarının toplamı kaçtır?",
+  "secenekler": [
+   "108",
+   "198",
+   "168",
+   "167"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 76,
+  "konu": "Çarpanlar",
+  "zorluk": "Zor",
+  "soru": "36 sayısının çarpanlarından kaç tanesi tek sayıdır?",
+  "secenekler": [
+   "6",
+   "4",
+   "3",
+   "2"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 77,
+  "konu": "Çarpanlar",
+  "zorluk": "Zor",
+  "soru": "48 sayısının çarpanlarından kaç tanesi tek sayıdır?",
+  "secenekler": [
+   "2",
+   "3",
+   "8",
+   "1"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 78,
+  "konu": "Çarpanlar",
+  "zorluk": "Zor",
+  "soru": "60 sayısının çarpanlarından kaç tanesi tek sayıdır?",
+  "secenekler": [
+   "4",
+   "5",
+   "3",
+   "8"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 79,
+  "konu": "Çarpanlar",
+  "zorluk": "Zor",
+  "soru": "72 sayısının çarpanlarından kaç tanesi tek sayıdır?",
+  "secenekler": [
+   "4",
+   "2",
+   "9",
+   "3"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 80,
+  "konu": "Çarpanlar",
+  "zorluk": "Zor",
+  "soru": "90 sayısının çarpanlarından kaç tanesi tek sayıdır?",
+  "secenekler": [
+   "7",
+   "5",
+   "6",
+   "8"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 81,
+  "konu": "Çarpanlar",
+  "zorluk": "Zor",
+  "soru": "Bir öğretmen 24 öğrenciyi, her grupta eşit sayıda öğrenci olacak ve hiç öğrenci açıkta kalmayacak şekilde gruplara ayıracaktır. Her grupta en az 2 öğrenci ve en az 2 grup olacaksa öğretmen kaç farklı şekilde gruplama yapabilir?",
+  "secenekler": [
+   "6",
+   "7",
+   "8",
+   "5"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 82,
+  "konu": "Çarpanlar",
+  "zorluk": "Zor",
+  "soru": "Bir öğretmen 30 öğrenciyi, her grupta eşit sayıda öğrenci olacak ve hiç öğrenci açıkta kalmayacak şekilde gruplara ayıracaktır. Her grupta en az 2 öğrenci ve en az 2 grup olacaksa öğretmen kaç farklı şekilde gruplama yapabilir?",
+  "secenekler": [
+   "5",
+   "6",
+   "8",
+   "7"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 83,
+  "konu": "Çarpanlar",
+  "zorluk": "Zor",
+  "soru": "Bir öğretmen 36 öğrenciyi, her grupta eşit sayıda öğrenci olacak ve hiç öğrenci açıkta kalmayacak şekilde gruplara ayıracaktır. Her grupta en az 2 öğrenci ve en az 2 grup olacaksa öğretmen kaç farklı şekilde gruplama yapabilir?",
+  "secenekler": [
+   "6",
+   "8",
+   "9",
+   "7"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 84,
+  "konu": "Çarpanlar",
+  "zorluk": "Zor",
+  "soru": "Bir öğretmen 48 öğrenciyi, her grupta eşit sayıda öğrenci olacak ve hiç öğrenci açıkta kalmayacak şekilde gruplara ayıracaktır. Her grupta en az 2 öğrenci ve en az 2 grup olacaksa öğretmen kaç farklı şekilde gruplama yapabilir?",
+  "secenekler": [
+   "7",
+   "8",
+   "9",
+   "10"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 85,
+  "konu": "Katlar",
+  "zorluk": "Kolay",
+  "soru": "Aşağıdakilerden hangisi 3 sayısının katlarından biridir?",
+  "secenekler": [
+   "9",
+   "70",
+   "94",
+   "56"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 86,
+  "konu": "Katlar",
+  "zorluk": "Kolay",
+  "soru": "Aşağıdakilerden hangisi 4 sayısının katlarından biridir?",
+  "secenekler": [
+   "18",
+   "93",
+   "17",
+   "20"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 87,
+  "konu": "Katlar",
+  "zorluk": "Kolay",
+  "soru": "Aşağıdakilerden hangisi 6 sayısının katlarından biridir?",
+  "secenekler": [
+   "52",
+   "30",
+   "17",
+   "38"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 88,
+  "konu": "Katlar",
+  "zorluk": "Kolay",
+  "soru": "Aşağıdakilerden hangisi 7 sayısının katlarından biridir?",
+  "secenekler": [
+   "63",
+   "25",
+   "54",
+   "92"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 89,
+  "konu": "Katlar",
+  "zorluk": "Kolay",
+  "soru": "Aşağıdakilerden hangisi 8 sayısının katlarından biridir?",
+  "secenekler": [
+   "71",
+   "59",
+   "40",
+   "67"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 90,
+  "konu": "Katlar",
+  "zorluk": "Kolay",
+  "soru": "Aşağıdakilerden hangisi 9 sayısının katlarından biridir?",
+  "secenekler": [
+   "54",
+   "89",
+   "39",
+   "65"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 91,
+  "konu": "Katlar",
+  "zorluk": "Kolay",
+  "soru": "Aşağıdakilerden hangisi 11 sayısının katlarından biridir?",
+  "secenekler": [
+   "92",
+   "32",
+   "46",
+   "66"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 92,
+  "konu": "Katlar",
+  "zorluk": "Kolay",
+  "soru": "Aşağıdakilerden hangisi 12 sayısının katlarından biridir?",
+  "secenekler": [
+   "27",
+   "14",
+   "84",
+   "56"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 93,
+  "konu": "Katlar",
+  "zorluk": "Kolay",
+  "soru": "Aşağıdakilerden hangisi 13 sayısının katlarından biridir?",
+  "secenekler": [
+   "65",
+   "32",
+   "49",
+   "19"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 94,
+  "konu": "Katlar",
+  "zorluk": "Kolay",
+  "soru": "Aşağıdakilerden hangisi 15 sayısının katlarından biridir?",
+  "secenekler": [
+   "28",
+   "66",
+   "29",
+   "45"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 95,
+  "konu": "Katlar",
+  "zorluk": "Kolay",
+  "soru": "Aşağıdakilerden hangisi 4 sayısının katı <b>değildir</b>?",
+  "secenekler": [
+   "12",
+   "16",
+   "39",
+   "36"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 96,
+  "konu": "Katlar",
+  "zorluk": "Kolay",
+  "soru": "Aşağıdakilerden hangisi 6 sayısının katı <b>değildir</b>?",
+  "secenekler": [
+   "46",
+   "36",
+   "24",
+   "18"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 97,
+  "konu": "Katlar",
+  "zorluk": "Kolay",
+  "soru": "Aşağıdakilerden hangisi 7 sayısının katı <b>değildir</b>?",
+  "secenekler": [
+   "38",
+   "63",
+   "49",
+   "28"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 98,
+  "konu": "Katlar",
+  "zorluk": "Kolay",
+  "soru": "Aşağıdakilerden hangisi 8 sayısının katı <b>değildir</b>?",
+  "secenekler": [
+   "32",
+   "72",
+   "24",
+   "81"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 99,
+  "konu": "Katlar",
+  "zorluk": "Kolay",
+  "soru": "Aşağıdakilerden hangisi 9 sayısının katı <b>değildir</b>?",
+  "secenekler": [
+   "81",
+   "36",
+   "66",
+   "27"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 100,
+  "konu": "Katlar",
+  "zorluk": "Kolay",
+  "soru": "Aşağıdakilerden hangisi 12 sayısının katı <b>değildir</b>?",
+  "secenekler": [
+   "84",
+   "48",
+   "51",
+   "72"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 101,
+  "konu": "Katlar",
+  "zorluk": "Kolay",
+  "soru": "3 sayısının sıfırdan büyük katları küçükten büyüğe sıralandığında 5. sırada hangi sayı bulunur?",
+  "secenekler": [
+   "12",
+   "18",
+   "15",
+   "8"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 102,
+  "konu": "Katlar",
+  "zorluk": "Kolay",
+  "soru": "4 sayısının sıfırdan büyük katları küçükten büyüğe sıralandığında 6. sırada hangi sayı bulunur?",
+  "secenekler": [
+   "24",
+   "10",
+   "20",
+   "28"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 103,
+  "konu": "Katlar",
+  "zorluk": "Kolay",
+  "soru": "6 sayısının sıfırdan büyük katları küçükten büyüğe sıralandığında 4. sırada hangi sayı bulunur?",
+  "secenekler": [
+   "10",
+   "18",
+   "30",
+   "24"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 104,
+  "konu": "Katlar",
+  "zorluk": "Kolay",
+  "soru": "7 sayısının sıfırdan büyük katları küçükten büyüğe sıralandığında 5. sırada hangi sayı bulunur?",
+  "secenekler": [
+   "42",
+   "28",
+   "12",
+   "35"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 105,
+  "konu": "Katlar",
+  "zorluk": "Kolay",
+  "soru": "8 sayısının sıfırdan büyük katları küçükten büyüğe sıralandığında 3. sırada hangi sayı bulunur?",
+  "secenekler": [
+   "16",
+   "11",
+   "32",
+   "24"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 106,
+  "konu": "Katlar",
+  "zorluk": "Kolay",
+  "soru": "9 sayısının sıfırdan büyük katları küçükten büyüğe sıralandığında 6. sırada hangi sayı bulunur?",
+  "secenekler": [
+   "45",
+   "63",
+   "54",
+   "15"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 107,
+  "konu": "Katlar",
+  "zorluk": "Kolay",
+  "soru": "11 sayısının sıfırdan büyük katları küçükten büyüğe sıralandığında 4. sırada hangi sayı bulunur?",
+  "secenekler": [
+   "44",
+   "15",
+   "33",
+   "55"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 108,
+  "konu": "Katlar",
+  "zorluk": "Kolay",
+  "soru": "12 sayısının sıfırdan büyük katları küçükten büyüğe sıralandığında 5. sırada hangi sayı bulunur?",
+  "secenekler": [
+   "72",
+   "60",
+   "48",
+   "17"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 109,
+  "konu": "Katlar",
+  "zorluk": "Kolay",
+  "soru": "Aşağıdaki ifadelerden hangisi doğrudur?",
+  "secenekler": [
+   "20 sayısı 4 sayısının çarpanıdır.",
+   "4 sayısı 20 sayısının katıdır.",
+   "4 sayısı 20 sayısının çarpanı değildir.",
+   "20 sayısı 4 sayısının katıdır."
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 110,
+  "konu": "Katlar",
+  "zorluk": "Kolay",
+  "soru": "Aşağıdaki ifadelerden hangisi doğrudur?",
+  "secenekler": [
+   "30 sayısı 6 sayısının katıdır.",
+   "6 sayısı 30 sayısının katıdır.",
+   "30 sayısı 6 sayısının çarpanıdır.",
+   "6 sayısı 30 sayısının çarpanı değildir."
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 111,
+  "konu": "Katlar",
+  "zorluk": "Kolay",
+  "soru": "Aşağıdaki ifadelerden hangisi doğrudur?",
+  "secenekler": [
+   "21 sayısı 3 sayısının katıdır.",
+   "21 sayısı 3 sayısının çarpanıdır.",
+   "3 sayısı 21 sayısının çarpanı değildir.",
+   "3 sayısı 21 sayısının katıdır."
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 112,
+  "konu": "Katlar",
+  "zorluk": "Kolay",
+  "soru": "Aşağıdaki ifadelerden hangisi doğrudur?",
+  "secenekler": [
+   "35 sayısı 5 sayısının çarpanıdır.",
+   "35 sayısı 5 sayısının katıdır.",
+   "5 sayısı 35 sayısının katıdır.",
+   "5 sayısı 35 sayısının çarpanı değildir."
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 113,
+  "konu": "Katlar",
+  "zorluk": "Kolay",
+  "soru": "Aşağıdaki ifadelerden hangisi doğrudur?",
+  "secenekler": [
+   "24 sayısı 8 sayısının katıdır.",
+   "8 sayısı 24 sayısının çarpanı değildir.",
+   "24 sayısı 8 sayısının çarpanıdır.",
+   "8 sayısı 24 sayısının katıdır."
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 114,
+  "konu": "Katlar",
+  "zorluk": "Kolay",
+  "soru": "Aşağıdaki ifadelerden hangisi doğrudur?",
+  "secenekler": [
+   "7 sayısı 28 sayısının katıdır.",
+   "28 sayısı 7 sayısının katıdır.",
+   "7 sayısı 28 sayısının çarpanı değildir.",
+   "28 sayısı 7 sayısının çarpanıdır."
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 115,
+  "konu": "Katlar",
+  "zorluk": "Kolay",
+  "soru": "Aşağıdaki ifadelerden hangisi doğrudur?",
+  "secenekler": [
+   "9 sayısı 45 sayısının çarpanı değildir.",
+   "45 sayısı 9 sayısının katıdır.",
+   "45 sayısı 9 sayısının çarpanıdır.",
+   "9 sayısı 45 sayısının katıdır."
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 116,
+  "konu": "Katlar",
+  "zorluk": "Kolay",
+  "soru": "Aşağıdaki ifadelerden hangisi doğrudur?",
+  "secenekler": [
+   "36 sayısı 12 sayısının çarpanıdır.",
+   "12 sayısı 36 sayısının katıdır.",
+   "12 sayısı 36 sayısının çarpanı değildir.",
+   "36 sayısı 12 sayısının katıdır."
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 117,
+  "konu": "Katlar",
+  "zorluk": "Orta",
+  "soru": "Sayı doğrusunda 0'dan başlanarak eşit adımlarla ilerleniyor. Soru işareti (?) yerine hangi sayı gelmelidir?",
+  "secenekler": [
+   "15",
+   "12",
+   "18",
+   "8"
+  ],
+  "dogru": 0,
+  "sekil": {
+   "tip": "dogru",
+   "adim": 3,
+   "adet": 6,
+   "goster": [
+    0,
+    1
+   ],
+   "soru": 5
+  }
+ },
+ {
+  "id": 118,
+  "konu": "Katlar",
+  "zorluk": "Orta",
+  "soru": "Sayı doğrusunda 0'dan başlanarak eşit adımlarla ilerleniyor. Soru işareti (?) yerine hangi sayı gelmelidir?",
+  "secenekler": [
+   "20",
+   "12",
+   "16",
+   "8"
+  ],
+  "dogru": 2,
+  "sekil": {
+   "tip": "dogru",
+   "adim": 4,
+   "adet": 5,
+   "goster": [
+    0,
+    1
+   ],
+   "soru": 4
+  }
+ },
+ {
+  "id": 119,
+  "konu": "Katlar",
+  "zorluk": "Orta",
+  "soru": "Sayı doğrusunda 0'dan başlanarak eşit adımlarla ilerleniyor. Soru işareti (?) yerine hangi sayı gelmelidir?",
+  "secenekler": [
+   "30",
+   "25",
+   "11",
+   "35"
+  ],
+  "dogru": 0,
+  "sekil": {
+   "tip": "dogru",
+   "adim": 5,
+   "adet": 7,
+   "goster": [
+    0,
+    1
+   ],
+   "soru": 6
+  }
+ },
+ {
+  "id": 120,
+  "konu": "Katlar",
+  "zorluk": "Orta",
+  "soru": "Sayı doğrusunda 0'dan başlanarak eşit adımlarla ilerleniyor. Soru işareti (?) yerine hangi sayı gelmelidir?",
+  "secenekler": [
+   "30",
+   "24",
+   "11",
+   "36"
+  ],
+  "dogru": 0,
+  "sekil": {
+   "tip": "dogru",
+   "adim": 6,
+   "adet": 6,
+   "goster": [
+    0,
+    1
+   ],
+   "soru": 5
+  }
+ },
+ {
+  "id": 121,
+  "konu": "Katlar",
+  "zorluk": "Orta",
+  "soru": "Sayı doğrusunda 0'dan başlanarak eşit adımlarla ilerleniyor. Soru işareti (?) yerine hangi sayı gelmelidir?",
+  "secenekler": [
+   "28",
+   "21",
+   "11",
+   "35"
+  ],
+  "dogru": 0,
+  "sekil": {
+   "tip": "dogru",
+   "adim": 7,
+   "adet": 5,
+   "goster": [
+    0,
+    1
+   ],
+   "soru": 4
+  }
+ },
+ {
+  "id": 122,
+  "konu": "Katlar",
+  "zorluk": "Orta",
+  "soru": "Sayı doğrusunda 0'dan başlanarak eşit adımlarla ilerleniyor. Soru işareti (?) yerine hangi sayı gelmelidir?",
+  "secenekler": [
+   "32",
+   "48",
+   "40",
+   "13"
+  ],
+  "dogru": 2,
+  "sekil": {
+   "tip": "dogru",
+   "adim": 8,
+   "adet": 6,
+   "goster": [
+    0,
+    1
+   ],
+   "soru": 5
+  }
+ },
+ {
+  "id": 123,
+  "konu": "Katlar",
+  "zorluk": "Orta",
+  "soru": "Sayı doğrusunda 0'dan başlanarak eşit adımlarla ilerleniyor. Soru işareti (?) yerine hangi sayı gelmelidir?",
+  "secenekler": [
+   "45",
+   "13",
+   "27",
+   "36"
+  ],
+  "dogru": 3,
+  "sekil": {
+   "tip": "dogru",
+   "adim": 9,
+   "adet": 5,
+   "goster": [
+    0,
+    1
+   ],
+   "soru": 4
+  }
+ },
+ {
+  "id": 124,
+  "konu": "Katlar",
+  "zorluk": "Orta",
+  "soru": "Sayı doğrusunda 0'dan başlanarak eşit adımlarla ilerleniyor. Soru işareti (?) yerine hangi sayı gelmelidir?",
+  "secenekler": [
+   "48",
+   "24",
+   "15",
+   "36"
+  ],
+  "dogru": 3,
+  "sekil": {
+   "tip": "dogru",
+   "adim": 12,
+   "adet": 4,
+   "goster": [
+    0,
+    1
+   ],
+   "soru": 3
+  }
+ },
+ {
+  "id": 125,
+  "konu": "Katlar",
+  "zorluk": "Orta",
+  "soru": "Sayı doğrusunda 0'dan başlanarak eşit adımlarla ilerleniyor. Soru işareti (?) yerine hangi sayı gelmelidir?",
+  "secenekler": [
+   "19",
+   "75",
+   "60",
+   "45"
+  ],
+  "dogru": 2,
+  "sekil": {
+   "tip": "dogru",
+   "adim": 15,
+   "adet": 5,
+   "goster": [
+    0,
+    1
+   ],
+   "soru": 4
+  }
+ },
+ {
+  "id": 126,
+  "konu": "Katlar",
+  "zorluk": "Orta",
+  "soru": "Sayı doğrusunda 0'dan başlanarak eşit adımlarla ilerleniyor. Soru işareti (?) yerine hangi sayı gelmelidir?",
+  "secenekler": [
+   "28",
+   "75",
+   "100",
+   "50"
+  ],
+  "dogru": 1,
+  "sekil": {
+   "tip": "dogru",
+   "adim": 25,
+   "adet": 4,
+   "goster": [
+    0,
+    1
+   ],
+   "soru": 3
+  }
+ },
+ {
+  "id": 127,
+  "konu": "Katlar",
+  "zorluk": "Orta",
+  "soru": "20 ile 60 arasında 6 sayısının kaç katı vardır?",
+  "secenekler": [
+   "6",
+   "8",
+   "5",
+   "7"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 128,
+  "konu": "Katlar",
+  "zorluk": "Orta",
+  "soru": "30 ile 80 arasında 7 sayısının kaç katı vardır?",
+  "secenekler": [
+   "7",
+   "6",
+   "8",
+   "9"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 129,
+  "konu": "Katlar",
+  "zorluk": "Orta",
+  "soru": "10 ile 70 arasında 8 sayısının kaç katı vardır?",
+  "secenekler": [
+   "7",
+   "8",
+   "9",
+   "6"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 130,
+  "konu": "Katlar",
+  "zorluk": "Orta",
+  "soru": "40 ile 100 arasında 9 sayısının kaç katı vardır?",
+  "secenekler": [
+   "9",
+   "7",
+   "6",
+   "8"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 131,
+  "konu": "Katlar",
+  "zorluk": "Orta",
+  "soru": "25 ile 55 arasında 4 sayısının kaç katı vardır?",
+  "secenekler": [
+   "7",
+   "9",
+   "6",
+   "8"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 132,
+  "konu": "Katlar",
+  "zorluk": "Orta",
+  "soru": "30 ile 110 arasında 12 sayısının kaç katı vardır?",
+  "secenekler": [
+   "7",
+   "8",
+   "9",
+   "6"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 133,
+  "konu": "Katlar",
+  "zorluk": "Orta",
+  "soru": "12 ile 68 arasında 5 sayısının kaç katı vardır?",
+  "secenekler": [
+   "12",
+   "11",
+   "13",
+   "10"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 134,
+  "konu": "Katlar",
+  "zorluk": "Orta",
+  "soru": "20 ile 100 arasında 11 sayısının kaç katı vardır?",
+  "secenekler": [
+   "10",
+   "8",
+   "7",
+   "9"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 135,
+  "konu": "Katlar",
+  "zorluk": "Orta",
+  "soru": "6 sayısının katı olan en büyük iki basamaklı sayı kaçtır?",
+  "secenekler": [
+   "90",
+   "84",
+   "96",
+   "99"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 136,
+  "konu": "Katlar",
+  "zorluk": "Orta",
+  "soru": "7 sayısının katı olan en büyük iki basamaklı sayı kaçtır?",
+  "secenekler": [
+   "99",
+   "84",
+   "91",
+   "98"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 137,
+  "konu": "Katlar",
+  "zorluk": "Orta",
+  "soru": "8 sayısının katı olan en büyük iki basamaklı sayı kaçtır?",
+  "secenekler": [
+   "80",
+   "99",
+   "88",
+   "96"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 138,
+  "konu": "Katlar",
+  "zorluk": "Orta",
+  "soru": "9 sayısının katı olan en büyük iki basamaklı sayı kaçtır?",
+  "secenekler": [
+   "99",
+   "90",
+   "98",
+   "81"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 139,
+  "konu": "Katlar",
+  "zorluk": "Orta",
+  "soru": "12 sayısının katı olan en büyük iki basamaklı sayı kaçtır?",
+  "secenekler": [
+   "99",
+   "84",
+   "96",
+   "72"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 140,
+  "konu": "Katlar",
+  "zorluk": "Orta",
+  "soru": "13 sayısının katı olan en büyük iki basamaklı sayı kaçtır?",
+  "secenekler": [
+   "78",
+   "65",
+   "99",
+   "91"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 141,
+  "konu": "Katlar",
+  "zorluk": "Orta",
+  "soru": "15 sayısının katı olan en büyük iki basamaklı sayı kaçtır?",
+  "secenekler": [
+   "75",
+   "60",
+   "99",
+   "90"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 142,
+  "konu": "Katlar",
+  "zorluk": "Orta",
+  "soru": "17 sayısının katı olan en büyük iki basamaklı sayı kaçtır?",
+  "secenekler": [
+   "99",
+   "68",
+   "51",
+   "85"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 143,
+  "konu": "Katlar",
+  "zorluk": "Orta",
+  "soru": "7 sayısının katı olan en küçük üç basamaklı sayı kaçtır?",
+  "secenekler": [
+   "112",
+   "100",
+   "105",
+   "98"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 144,
+  "konu": "Katlar",
+  "zorluk": "Orta",
+  "soru": "8 sayısının katı olan en küçük üç basamaklı sayı kaçtır?",
+  "secenekler": [
+   "104",
+   "112",
+   "96",
+   "100"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 145,
+  "konu": "Katlar",
+  "zorluk": "Orta",
+  "soru": "9 sayısının katı olan en küçük üç basamaklı sayı kaçtır?",
+  "secenekler": [
+   "100",
+   "117",
+   "99",
+   "108"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 146,
+  "konu": "Katlar",
+  "zorluk": "Orta",
+  "soru": "11 sayısının katı olan en küçük üç basamaklı sayı kaçtır?",
+  "secenekler": [
+   "110",
+   "100",
+   "121",
+   "99"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 147,
+  "konu": "Katlar",
+  "zorluk": "Orta",
+  "soru": "12 sayısının katı olan en küçük üç basamaklı sayı kaçtır?",
+  "secenekler": [
+   "100",
+   "120",
+   "108",
+   "96"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 148,
+  "konu": "Katlar",
+  "zorluk": "Orta",
+  "soru": "13 sayısının katı olan en küçük üç basamaklı sayı kaçtır?",
+  "secenekler": [
+   "117",
+   "100",
+   "104",
+   "91"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 149,
+  "konu": "Katlar",
+  "zorluk": "Orta",
+  "soru": "14 sayısının katı olan en küçük üç basamaklı sayı kaçtır?",
+  "secenekler": [
+   "126",
+   "98",
+   "112",
+   "100"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 150,
+  "konu": "Katlar",
+  "zorluk": "Zor",
+  "soru": "6 sayısının sıfırdan büyük ilk 4 katının toplamı kaçtır?",
+  "secenekler": [
+   "66",
+   "24",
+   "60",
+   "54"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 151,
+  "konu": "Katlar",
+  "zorluk": "Zor",
+  "soru": "8 sayısının sıfırdan büyük ilk 5 katının toplamı kaçtır?",
+  "secenekler": [
+   "128",
+   "120",
+   "112",
+   "40"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 152,
+  "konu": "Katlar",
+  "zorluk": "Zor",
+  "soru": "12 sayısının sıfırdan büyük ilk 3 katının toplamı kaçtır?",
+  "secenekler": [
+   "60",
+   "72",
+   "36",
+   "84"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 153,
+  "konu": "Katlar",
+  "zorluk": "Zor",
+  "soru": "15 sayısının sıfırdan büyük ilk 4 katının toplamı kaçtır?",
+  "secenekler": [
+   "165",
+   "135",
+   "60",
+   "150"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 154,
+  "konu": "Katlar",
+  "zorluk": "Zor",
+  "soru": "9 sayısının sıfırdan büyük ilk 6 katının toplamı kaçtır?",
+  "secenekler": [
+   "180",
+   "198",
+   "54",
+   "189"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 155,
+  "konu": "Katlar",
+  "zorluk": "Zor",
+  "soru": "Bir sayı örüntüsü 9, 14, 19, 24, ... şeklinde devam etmektedir. Bu örüntünün 10. terimi kaçtır?",
+  "secenekler": [
+   "59",
+   "50",
+   "54",
+   "49"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 156,
+  "konu": "Katlar",
+  "zorluk": "Zor",
+  "soru": "Bir sayı örüntüsü 8, 11, 14, 17, ... şeklinde devam etmektedir. Bu örüntünün 10. terimi kaçtır?",
+  "secenekler": [
+   "30",
+   "38",
+   "35",
+   "32"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 157,
+  "konu": "Katlar",
+  "zorluk": "Zor",
+  "soru": "Bir sayı örüntüsü 11, 15, 19, 23, ... şeklinde devam etmektedir. Bu örüntünün 10. terimi kaçtır?",
+  "secenekler": [
+   "51",
+   "40",
+   "47",
+   "43"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 158,
+  "konu": "Katlar",
+  "zorluk": "Zor",
+  "soru": "Bir sayı örüntüsü 7, 13, 19, 25, ... şeklinde devam etmektedir. Bu örüntünün 10. terimi kaçtır?",
+  "secenekler": [
+   "60",
+   "55",
+   "61",
+   "67"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 159,
+  "konu": "Katlar",
+  "zorluk": "Zor",
+  "soru": "Bir kutudaki kalemler 4'er 4'er sayıldığında hiç kalem artmıyor. Kutudaki kalem sayısı 40 ile 90 arasında olduğuna göre aşağıdakilerden hangisi kutudaki kalem sayısı olabilir?",
+  "secenekler": [
+   "64",
+   "81",
+   "87",
+   "85"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 160,
+  "konu": "Katlar",
+  "zorluk": "Zor",
+  "soru": "Bir kutudaki kalemler 6'şar 6'şar sayıldığında hiç kalem artmıyor. Kutudaki kalem sayısı 40 ile 90 arasında olduğuna göre aşağıdakilerden hangisi kutudaki kalem sayısı olabilir?",
+  "secenekler": [
+   "83",
+   "60",
+   "50",
+   "55"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 161,
+  "konu": "Katlar",
+  "zorluk": "Zor",
+  "soru": "Bir kutudaki kalemler 9'ar 9'ar sayıldığında hiç kalem artmıyor. Kutudaki kalem sayısı 40 ile 90 arasında olduğuna göre aşağıdakilerden hangisi kutudaki kalem sayısı olabilir?",
+  "secenekler": [
+   "56",
+   "55",
+   "63",
+   "71"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 162,
+  "konu": "Asal Sayılar",
+  "zorluk": "Kolay",
+  "soru": "Aşağıdakilerden hangisi asal sayıdır?",
+  "secenekler": [
+   "65",
+   "7",
+   "21",
+   "91"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 163,
+  "konu": "Asal Sayılar",
+  "zorluk": "Kolay",
+  "soru": "Aşağıdakilerden hangisi asal sayıdır?",
+  "secenekler": [
+   "69",
+   "1",
+   "45",
+   "47"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 164,
+  "konu": "Asal Sayılar",
+  "zorluk": "Kolay",
+  "soru": "Aşağıdakilerden hangisi asal sayıdır?",
+  "secenekler": [
+   "21",
+   "81",
+   "77",
+   "47"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 165,
+  "konu": "Asal Sayılar",
+  "zorluk": "Kolay",
+  "soru": "Aşağıdakilerden hangisi asal sayıdır?",
+  "secenekler": [
+   "43",
+   "27",
+   "9",
+   "65"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 166,
+  "konu": "Asal Sayılar",
+  "zorluk": "Kolay",
+  "soru": "Aşağıdakilerden hangisi asal sayıdır?",
+  "secenekler": [
+   "23",
+   "39",
+   "15",
+   "57"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 167,
+  "konu": "Asal Sayılar",
+  "zorluk": "Kolay",
+  "soru": "Aşağıdakilerden hangisi asal sayıdır?",
+  "secenekler": [
+   "65",
+   "37",
+   "45",
+   "15"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 168,
+  "konu": "Asal Sayılar",
+  "zorluk": "Kolay",
+  "soru": "Aşağıdakilerden hangisi asal sayıdır?",
+  "secenekler": [
+   "9",
+   "25",
+   "27",
+   "47"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 169,
+  "konu": "Asal Sayılar",
+  "zorluk": "Kolay",
+  "soru": "Aşağıdakilerden hangisi asal sayıdır?",
+  "secenekler": [
+   "11",
+   "91",
+   "25",
+   "15"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 170,
+  "konu": "Asal Sayılar",
+  "zorluk": "Kolay",
+  "soru": "Aşağıdakilerden hangisi asal sayıdır?",
+  "secenekler": [
+   "61",
+   "65",
+   "33",
+   "39"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 171,
+  "konu": "Asal Sayılar",
+  "zorluk": "Kolay",
+  "soru": "Aşağıdakilerden hangisi asal sayıdır?",
+  "secenekler": [
+   "9",
+   "63",
+   "51",
+   "37"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 172,
+  "konu": "Asal Sayılar",
+  "zorluk": "Kolay",
+  "soru": "Aşağıdakilerden hangisi asal sayı <b>değildir</b>?",
+  "secenekler": [
+   "41",
+   "91",
+   "67",
+   "7"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 173,
+  "konu": "Asal Sayılar",
+  "zorluk": "Kolay",
+  "soru": "Aşağıdakilerden hangisi asal sayı <b>değildir</b>?",
+  "secenekler": [
+   "37",
+   "53",
+   "7",
+   "57"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 174,
+  "konu": "Asal Sayılar",
+  "zorluk": "Kolay",
+  "soru": "Aşağıdakilerden hangisi asal sayı <b>değildir</b>?",
+  "secenekler": [
+   "31",
+   "57",
+   "47",
+   "3"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 175,
+  "konu": "Asal Sayılar",
+  "zorluk": "Kolay",
+  "soru": "Aşağıdakilerden hangisi asal sayı <b>değildir</b>?",
+  "secenekler": [
+   "1",
+   "31",
+   "41",
+   "11"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 176,
+  "konu": "Asal Sayılar",
+  "zorluk": "Kolay",
+  "soru": "Aşağıdakilerden hangisi asal sayı <b>değildir</b>?",
+  "secenekler": [
+   "3",
+   "51",
+   "61",
+   "59"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 177,
+  "konu": "Asal Sayılar",
+  "zorluk": "Kolay",
+  "soru": "Aşağıdakilerden hangisi asal sayı <b>değildir</b>?",
+  "secenekler": [
+   "11",
+   "1",
+   "17",
+   "71"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 178,
+  "konu": "Asal Sayılar",
+  "zorluk": "Kolay",
+  "soru": "Aşağıdakilerden hangisi asal sayı <b>değildir</b>?",
+  "secenekler": [
+   "59",
+   "15",
+   "31",
+   "53"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 179,
+  "konu": "Asal Sayılar",
+  "zorluk": "Kolay",
+  "soru": "Aşağıdakilerden hangisi asal sayı <b>değildir</b>?",
+  "secenekler": [
+   "31",
+   "5",
+   "33",
+   "11"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 180,
+  "konu": "Asal Sayılar",
+  "zorluk": "Kolay",
+  "soru": "En küçük asal sayı kaçtır?",
+  "secenekler": [
+   "3",
+   "2",
+   "1",
+   "4"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 181,
+  "konu": "Asal Sayılar",
+  "zorluk": "Kolay",
+  "soru": "Hem asal hem de çift olan sayı hangisidir?",
+  "secenekler": [
+   "4",
+   "2",
+   "1",
+   "6"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 182,
+  "konu": "Asal Sayılar",
+  "zorluk": "Kolay",
+  "soru": "Asal sayılar için aşağıdakilerden hangisi doğrudur?",
+  "secenekler": [
+   "1 bir asal sayıdır.",
+   "Yalnızca 2 çarpanı vardır: 1 ve kendisi.",
+   "Asal sayıların çarpanı yoktur.",
+   "Bütün asal sayılar tek sayıdır."
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 183,
+  "konu": "Asal Sayılar",
+  "zorluk": "Kolay",
+  "soru": "1 sayısı neden asal sayı değildir?",
+  "secenekler": [
+   "Yalnızca 1 tane çarpanı vardır.",
+   "Çift sayı olduğu için",
+   "Tek basamaklı olduğu için",
+   "Çok fazla çarpanı olduğu için"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 184,
+  "konu": "Asal Sayılar",
+  "zorluk": "Orta",
+  "soru": "1 ile 20 arasında kaç tane asal sayı vardır?",
+  "secenekler": [
+   "7",
+   "8",
+   "10",
+   "9"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 185,
+  "konu": "Asal Sayılar",
+  "zorluk": "Orta",
+  "soru": "10 ile 30 arasında kaç tane asal sayı vardır?",
+  "secenekler": [
+   "5",
+   "8",
+   "7",
+   "6"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 186,
+  "konu": "Asal Sayılar",
+  "zorluk": "Orta",
+  "soru": "20 ile 40 arasında kaç tane asal sayı vardır?",
+  "secenekler": [
+   "4",
+   "5",
+   "6",
+   "3"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 187,
+  "konu": "Asal Sayılar",
+  "zorluk": "Orta",
+  "soru": "30 ile 50 arasında kaç tane asal sayı vardır?",
+  "secenekler": [
+   "6",
+   "5",
+   "4",
+   "7"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 188,
+  "konu": "Asal Sayılar",
+  "zorluk": "Orta",
+  "soru": "40 ile 60 arasında kaç tane asal sayı vardır?",
+  "secenekler": [
+   "4",
+   "5",
+   "7",
+   "6"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 189,
+  "konu": "Asal Sayılar",
+  "zorluk": "Orta",
+  "soru": "50 ile 70 arasında kaç tane asal sayı vardır?",
+  "secenekler": [
+   "4",
+   "6",
+   "5",
+   "3"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 190,
+  "konu": "Asal Sayılar",
+  "zorluk": "Orta",
+  "soru": "60 ile 80 arasında kaç tane asal sayı vardır?",
+  "secenekler": [
+   "5",
+   "4",
+   "6",
+   "7"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 191,
+  "konu": "Asal Sayılar",
+  "zorluk": "Orta",
+  "soru": "70 ile 100 arasında kaç tane asal sayı vardır?",
+  "secenekler": [
+   "7",
+   "6",
+   "8",
+   "5"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 192,
+  "konu": "Asal Sayılar",
+  "zorluk": "Orta",
+  "soru": "1 ile 30 arasında kaç tane asal sayı vardır?",
+  "secenekler": [
+   "11",
+   "9",
+   "10",
+   "12"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 193,
+  "konu": "Asal Sayılar",
+  "zorluk": "Orta",
+  "soru": "10 ile 50 arasında kaç tane asal sayı vardır?",
+  "secenekler": [
+   "11",
+   "10",
+   "12",
+   "13"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 194,
+  "konu": "Asal Sayılar",
+  "zorluk": "Orta",
+  "soru": "İki basamaklı en küçük asal sayı kaçtır?",
+  "secenekler": [
+   "11",
+   "10",
+   "13",
+   "12"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 195,
+  "konu": "Asal Sayılar",
+  "zorluk": "Orta",
+  "soru": "İki basamaklı en büyük asal sayı kaçtır?",
+  "secenekler": [
+   "99",
+   "91",
+   "97",
+   "89"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 196,
+  "konu": "Asal Sayılar",
+  "zorluk": "Orta",
+  "soru": "Tek basamaklı asal sayıların toplamı kaçtır?",
+  "secenekler": [
+   "25",
+   "17",
+   "15",
+   "16"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 197,
+  "konu": "Asal Sayılar",
+  "zorluk": "Orta",
+  "soru": "Tek basamaklı kaç tane asal sayı vardır?",
+  "secenekler": [
+   "5",
+   "6",
+   "4",
+   "3"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 198,
+  "konu": "Asal Sayılar",
+  "zorluk": "Zor",
+  "soru": "10 ile 20 arasındaki asal sayıların toplamı kaçtır?",
+  "secenekler": [
+   "58",
+   "62",
+   "69",
+   "60"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 199,
+  "konu": "Asal Sayılar",
+  "zorluk": "Zor",
+  "soru": "20 ile 30 arasındaki asal sayıların toplamı kaçtır?",
+  "secenekler": [
+   "52",
+   "61",
+   "50",
+   "54"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 200,
+  "konu": "Asal Sayılar",
+  "zorluk": "Zor",
+  "soru": "30 ile 40 arasındaki asal sayıların toplamı kaçtır?",
+  "secenekler": [
+   "68",
+   "77",
+   "70",
+   "66"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 201,
+  "konu": "Asal Sayılar",
+  "zorluk": "Zor",
+  "soru": "40 ile 50 arasındaki asal sayıların toplamı kaçtır?",
+  "secenekler": [
+   "133",
+   "131",
+   "129",
+   "140"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 202,
+  "konu": "Asal Sayılar",
+  "zorluk": "Zor",
+  "soru": "1 ile 10 arasındaki asal sayıların toplamı kaçtır?",
+  "secenekler": [
+   "17",
+   "26",
+   "15",
+   "19"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 203,
+  "konu": "Asal Sayılar",
+  "zorluk": "Zor",
+  "soru": "50 ile 60 arasındaki asal sayıların toplamı kaçtır?",
+  "secenekler": [
+   "121",
+   "114",
+   "110",
+   "112"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 204,
+  "konu": "Asal Sayılar",
+  "zorluk": "Zor",
+  "soru": "40 sayısından küçük en büyük asal sayı kaçtır?",
+  "secenekler": [
+   "39",
+   "35",
+   "37",
+   "38"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 205,
+  "konu": "Asal Sayılar",
+  "zorluk": "Zor",
+  "soru": "50 sayısından küçük en büyük asal sayı kaçtır?",
+  "secenekler": [
+   "45",
+   "49",
+   "48",
+   "47"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 206,
+  "konu": "Asal Sayılar",
+  "zorluk": "Zor",
+  "soru": "60 sayısından küçük en büyük asal sayı kaçtır?",
+  "secenekler": [
+   "60",
+   "59",
+   "57",
+   "55"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 207,
+  "konu": "Asal Sayılar",
+  "zorluk": "Zor",
+  "soru": "70 sayısından küçük en büyük asal sayı kaçtır?",
+  "secenekler": [
+   "68",
+   "67",
+   "69",
+   "65"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 208,
+  "konu": "Asal Sayılar",
+  "zorluk": "Zor",
+  "soru": "80 sayısından küçük en büyük asal sayı kaçtır?",
+  "secenekler": [
+   "80",
+   "79",
+   "77",
+   "75"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 209,
+  "konu": "Asal Sayılar",
+  "zorluk": "Zor",
+  "soru": "90 sayısından küçük en büyük asal sayı kaçtır?",
+  "secenekler": [
+   "90",
+   "89",
+   "87",
+   "85"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 210,
+  "konu": "Asal Sayılar",
+  "zorluk": "Zor",
+  "soru": "20 sayısından büyük en küçük asal sayı kaçtır?",
+  "secenekler": [
+   "21",
+   "24",
+   "23",
+   "25"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 211,
+  "konu": "Asal Sayılar",
+  "zorluk": "Zor",
+  "soru": "30 sayısından büyük en küçük asal sayı kaçtır?",
+  "secenekler": [
+   "31",
+   "35",
+   "32",
+   "33"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 212,
+  "konu": "Asal Sayılar",
+  "zorluk": "Zor",
+  "soru": "50 sayısından büyük en küçük asal sayı kaçtır?",
+  "secenekler": [
+   "54",
+   "51",
+   "53",
+   "55"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 213,
+  "konu": "Asal Sayılar",
+  "zorluk": "Zor",
+  "soru": "60 sayısından büyük en küçük asal sayı kaçtır?",
+  "secenekler": [
+   "65",
+   "61",
+   "63",
+   "62"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 214,
+  "konu": "Asal Sayılar",
+  "zorluk": "Zor",
+  "soru": "80 sayısından büyük en küçük asal sayı kaçtır?",
+  "secenekler": [
+   "81",
+   "85",
+   "84",
+   "83"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 215,
+  "konu": "Asal Sayılar",
+  "zorluk": "Zor",
+  "soru": "90 sayısından büyük en küçük asal sayı kaçtır?",
+  "secenekler": [
+   "95",
+   "91",
+   "97",
+   "99"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 216,
+  "konu": "Asal Sayılar",
+  "zorluk": "Zor",
+  "soru": "Aralarındaki fark 2 olan iki asal sayının toplamı 8 ise büyük olan sayı kaçtır?",
+  "secenekler": [
+   "7",
+   "5",
+   "4",
+   "3"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 217,
+  "konu": "Asal Sayılar",
+  "zorluk": "Zor",
+  "soru": "Aralarındaki fark 2 olan iki asal sayının toplamı 12 ise büyük olan sayı kaçtır?",
+  "secenekler": [
+   "5",
+   "7",
+   "9",
+   "6"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 218,
+  "konu": "Asal Sayılar",
+  "zorluk": "Zor",
+  "soru": "Aralarındaki fark 2 olan iki asal sayının toplamı 24 ise büyük olan sayı kaçtır?",
+  "secenekler": [
+   "12",
+   "11",
+   "13",
+   "15"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 219,
+  "konu": "Asal Sayılar",
+  "zorluk": "Zor",
+  "soru": "Aralarındaki fark 2 olan iki asal sayının toplamı 36 ise büyük olan sayı kaçtır?",
+  "secenekler": [
+   "17",
+   "19",
+   "21",
+   "18"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 220,
+  "konu": "Asal Sayılar",
+  "zorluk": "Zor",
+  "soru": "Aralarındaki fark 2 olan iki asal sayının toplamı 60 ise büyük olan sayı kaçtır?",
+  "secenekler": [
+   "33",
+   "29",
+   "31",
+   "30"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 221,
+  "konu": "Asal Sayılar",
+  "zorluk": "Zor",
+  "soru": "Aralarındaki fark 2 olan iki asal sayının toplamı 84 ise büyük olan sayı kaçtır?",
+  "secenekler": [
+   "42",
+   "45",
+   "41",
+   "43"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 222,
+  "konu": "Asal Çarpanlara Ayırma",
+  "zorluk": "Kolay",
+  "soru": "12 sayısının asal çarpanları hangileridir?",
+  "secenekler": [
+   "2, 5",
+   "2, 11",
+   "2, 3, 4",
+   "2, 3"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 223,
+  "konu": "Asal Çarpanlara Ayırma",
+  "zorluk": "Kolay",
+  "soru": "18 sayısının asal çarpanları hangileridir?",
+  "secenekler": [
+   "2, 11",
+   "2, 3",
+   "2, 3, 9",
+   "2, 5"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 224,
+  "konu": "Asal Çarpanlara Ayırma",
+  "zorluk": "Kolay",
+  "soru": "20 sayısının asal çarpanları hangileridir?",
+  "secenekler": [
+   "2, 3",
+   "2, 5",
+   "2, 11",
+   "2, 5, 10"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 225,
+  "konu": "Asal Çarpanlara Ayırma",
+  "zorluk": "Kolay",
+  "soru": "24 sayısının asal çarpanları hangileridir?",
+  "secenekler": [
+   "2, 11",
+   "2, 3, 8",
+   "2, 3",
+   "2, 5"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 226,
+  "konu": "Asal Çarpanlara Ayırma",
+  "zorluk": "Kolay",
+  "soru": "28 sayısının asal çarpanları hangileridir?",
+  "secenekler": [
+   "2, 11",
+   "2, 7",
+   "2, 3",
+   "2, 7, 14"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 227,
+  "konu": "Asal Çarpanlara Ayırma",
+  "zorluk": "Kolay",
+  "soru": "30 sayısının asal çarpanları hangileridir?",
+  "secenekler": [
+   "2, 3, 5, 6",
+   "2, 3, 5",
+   "2, 11",
+   "2, 3, 7"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 228,
+  "konu": "Asal Çarpanlara Ayırma",
+  "zorluk": "Kolay",
+  "soru": "36 sayısının asal çarpanları hangileridir?",
+  "secenekler": [
+   "2, 3",
+   "2, 11",
+   "2, 5",
+   "2, 3, 4"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 229,
+  "konu": "Asal Çarpanlara Ayırma",
+  "zorluk": "Kolay",
+  "soru": "40 sayısının asal çarpanları hangileridir?",
+  "secenekler": [
+   "2, 11",
+   "2, 3",
+   "2, 5",
+   "2, 5, 10"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 230,
+  "konu": "Asal Çarpanlara Ayırma",
+  "zorluk": "Kolay",
+  "soru": "42 sayısının asal çarpanları hangileridir?",
+  "secenekler": [
+   "2, 3, 5",
+   "2, 3, 7, 21",
+   "2, 3, 7",
+   "2, 11"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 231,
+  "konu": "Asal Çarpanlara Ayırma",
+  "zorluk": "Kolay",
+  "soru": "45 sayısının asal çarpanları hangileridir?",
+  "secenekler": [
+   "3, 5",
+   "3, 11",
+   "3, 5, 15",
+   "2, 3"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 232,
+  "konu": "Asal Çarpanlara Ayırma",
+  "zorluk": "Kolay",
+  "soru": "48 sayısının asal çarpanları hangileridir?",
+  "secenekler": [
+   "2, 5",
+   "2, 3",
+   "2, 11",
+   "2, 3, 8"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 233,
+  "konu": "Asal Çarpanlara Ayırma",
+  "zorluk": "Kolay",
+  "soru": "50 sayısının asal çarpanları hangileridir?",
+  "secenekler": [
+   "2, 11",
+   "2, 5, 25",
+   "2, 3",
+   "2, 5"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 234,
+  "konu": "Asal Çarpanlara Ayırma",
+  "zorluk": "Kolay",
+  "soru": "54 sayısının asal çarpanları hangileridir?",
+  "secenekler": [
+   "2, 5",
+   "2, 11",
+   "2, 3",
+   "2, 3, 6"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 235,
+  "konu": "Asal Çarpanlara Ayırma",
+  "zorluk": "Kolay",
+  "soru": "56 sayısının asal çarpanları hangileridir?",
+  "secenekler": [
+   "2, 11",
+   "2, 7",
+   "2, 3",
+   "2, 7, 8"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 236,
+  "konu": "Asal Çarpanlara Ayırma",
+  "zorluk": "Kolay",
+  "soru": "60 sayısının asal çarpanları hangileridir?",
+  "secenekler": [
+   "2, 3, 4, 5",
+   "2, 11",
+   "2, 3, 7",
+   "2, 3, 5"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 237,
+  "konu": "Asal Çarpanlara Ayırma",
+  "zorluk": "Kolay",
+  "soru": "63 sayısının asal çarpanları hangileridir?",
+  "secenekler": [
+   "2, 3",
+   "3, 11",
+   "3, 7",
+   "3, 7, 9"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 238,
+  "konu": "Asal Çarpanlara Ayırma",
+  "zorluk": "Orta",
+  "soru": "12 sayısının asal çarpanlarının üslü ifade ile gösterimi hangisidir?",
+  "secenekler": [
+   "2 · 3",
+   "2³ · 3",
+   "2² · 3",
+   "2² · 3²"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 239,
+  "konu": "Asal Çarpanlara Ayırma",
+  "zorluk": "Orta",
+  "soru": "18 sayısının asal çarpanlarının üslü ifade ile gösterimi hangisidir?",
+  "secenekler": [
+   "2 · 3²",
+   "2² · 3²",
+   "6 · 3",
+   "2 · 3³"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 240,
+  "konu": "Asal Çarpanlara Ayırma",
+  "zorluk": "Orta",
+  "soru": "20 sayısının asal çarpanlarının üslü ifade ile gösterimi hangisidir?",
+  "secenekler": [
+   "2³ · 5",
+   "2² · 5²",
+   "2² · 5",
+   "2 · 5"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 241,
+  "konu": "Asal Çarpanlara Ayırma",
+  "zorluk": "Orta",
+  "soru": "24 sayısının asal çarpanlarının üslü ifade ile gösterimi hangisidir?",
+  "secenekler": [
+   "2² · 3",
+   "2³ · 3²",
+   "2³ · 3",
+   "2⁴ · 3"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 242,
+  "konu": "Asal Çarpanlara Ayırma",
+  "zorluk": "Orta",
+  "soru": "28 sayısının asal çarpanlarının üslü ifade ile gösterimi hangisidir?",
+  "secenekler": [
+   "2³ · 7",
+   "2 · 7",
+   "2² · 7²",
+   "2² · 7"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 243,
+  "konu": "Asal Çarpanlara Ayırma",
+  "zorluk": "Orta",
+  "soru": "30 sayısının asal çarpanlarının üslü ifade ile gösterimi hangisidir?",
+  "secenekler": [
+   "2² · 3 · 5",
+   "6 · 5",
+   "2 · 3 · 5²",
+   "2 · 3 · 5"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 244,
+  "konu": "Asal Çarpanlara Ayırma",
+  "zorluk": "Orta",
+  "soru": "36 sayısının asal çarpanlarının üslü ifade ile gösterimi hangisidir?",
+  "secenekler": [
+   "2³ · 3²",
+   "2 · 3²",
+   "2² · 3²",
+   "2² · 3³"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 245,
+  "konu": "Asal Çarpanlara Ayırma",
+  "zorluk": "Orta",
+  "soru": "40 sayısının asal çarpanlarının üslü ifade ile gösterimi hangisidir?",
+  "secenekler": [
+   "2⁴ · 5",
+   "2³ · 5²",
+   "2³ · 5",
+   "2² · 5"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 246,
+  "konu": "Asal Çarpanlara Ayırma",
+  "zorluk": "Orta",
+  "soru": "42 sayısının asal çarpanlarının üslü ifade ile gösterimi hangisidir?",
+  "secenekler": [
+   "2 · 3 · 7",
+   "2 · 3 · 7²",
+   "2² · 3 · 7",
+   "6 · 7"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 247,
+  "konu": "Asal Çarpanlara Ayırma",
+  "zorluk": "Orta",
+  "soru": "45 sayısının asal çarpanlarının üslü ifade ile gösterimi hangisidir?",
+  "secenekler": [
+   "3² · 5²",
+   "3² · 5",
+   "3³ · 5",
+   "3 · 5"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 248,
+  "konu": "Asal Çarpanlara Ayırma",
+  "zorluk": "Orta",
+  "soru": "48 sayısının asal çarpanlarının üslü ifade ile gösterimi hangisidir?",
+  "secenekler": [
+   "2³ · 3",
+   "2⁴ · 3²",
+   "2⁴ · 3",
+   "2⁵ · 3"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 249,
+  "konu": "Asal Çarpanlara Ayırma",
+  "zorluk": "Orta",
+  "soru": "50 sayısının asal çarpanlarının üslü ifade ile gösterimi hangisidir?",
+  "secenekler": [
+   "2 · 5²",
+   "2² · 5²",
+   "2 · 5³",
+   "10 · 5"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 250,
+  "konu": "Asal Çarpanlara Ayırma",
+  "zorluk": "Orta",
+  "soru": "54 sayısının asal çarpanlarının üslü ifade ile gösterimi hangisidir?",
+  "secenekler": [
+   "2 · 3⁴",
+   "2² · 3³",
+   "2 · 3³",
+   "6 · 9"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 251,
+  "konu": "Asal Çarpanlara Ayırma",
+  "zorluk": "Orta",
+  "soru": "56 sayısının asal çarpanlarının üslü ifade ile gösterimi hangisidir?",
+  "secenekler": [
+   "2³ · 7²",
+   "2² · 7",
+   "2³ · 7",
+   "2⁴ · 7"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 252,
+  "konu": "Asal Çarpanlara Ayırma",
+  "zorluk": "Orta",
+  "soru": "60 sayısının asal çarpanlarının üslü ifade ile gösterimi hangisidir?",
+  "secenekler": [
+   "2³ · 3 · 5",
+   "2² · 3 · 5²",
+   "2² · 3 · 5",
+   "2 · 3 · 5"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 253,
+  "konu": "Asal Çarpanlara Ayırma",
+  "zorluk": "Orta",
+  "soru": "63 sayısının asal çarpanlarının üslü ifade ile gösterimi hangisidir?",
+  "secenekler": [
+   "3³ · 7",
+   "3² · 7",
+   "3² · 7²",
+   "3 · 7"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 254,
+  "konu": "Asal Çarpanlara Ayırma",
+  "zorluk": "Orta",
+  "soru": "72 sayısının asal çarpanlarının üslü ifade ile gösterimi hangisidir?",
+  "secenekler": [
+   "2³ · 3²",
+   "2⁴ · 3²",
+   "2² · 3²",
+   "2³ · 3³"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 255,
+  "konu": "Asal Çarpanlara Ayırma",
+  "zorluk": "Orta",
+  "soru": "75 sayısının asal çarpanlarının üslü ifade ile gösterimi hangisidir?",
+  "secenekler": [
+   "3 · 5²",
+   "3² · 5²",
+   "15 · 5",
+   "3 · 5³"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 256,
+  "konu": "Asal Çarpanlara Ayırma",
+  "zorluk": "Orta",
+  "soru": "80 sayısının asal çarpanlarının üslü ifade ile gösterimi hangisidir?",
+  "secenekler": [
+   "2⁵ · 5",
+   "2³ · 5",
+   "2⁴ · 5²",
+   "2⁴ · 5"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 257,
+  "konu": "Asal Çarpanlara Ayırma",
+  "zorluk": "Orta",
+  "soru": "84 sayısının asal çarpanlarının üslü ifade ile gösterimi hangisidir?",
+  "secenekler": [
+   "2² · 3 · 7",
+   "2³ · 3 · 7",
+   "2 · 3 · 7",
+   "2² · 3 · 7²"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 258,
+  "konu": "Asal Çarpanlara Ayırma",
+  "zorluk": "Orta",
+  "soru": "90 sayısının asal çarpanlarının üslü ifade ile gösterimi hangisidir?",
+  "secenekler": [
+   "2² · 3² · 5",
+   "2 · 3² · 5²",
+   "2 · 3² · 5",
+   "6 · 15"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 259,
+  "konu": "Asal Çarpanlara Ayırma",
+  "zorluk": "Orta",
+  "soru": "96 sayısının asal çarpanlarının üslü ifade ile gösterimi hangisidir?",
+  "secenekler": [
+   "2⁶ · 3",
+   "2⁵ · 3",
+   "2⁵ · 3²",
+   "2⁴ · 3"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 260,
+  "konu": "Asal Çarpanlara Ayırma",
+  "zorluk": "Orta",
+  "soru": "100 sayısının asal çarpanlarının üslü ifade ile gösterimi hangisidir?",
+  "secenekler": [
+   "2² · 5²",
+   "2² · 5³",
+   "2 · 5²",
+   "2³ · 5²"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 261,
+  "konu": "Asal Çarpanlara Ayırma",
+  "zorluk": "Orta",
+  "soru": "120 sayısının asal çarpanlarının üslü ifade ile gösterimi hangisidir?",
+  "secenekler": [
+   "2³ · 3 · 5²",
+   "2² · 3 · 5",
+   "2³ · 3 · 5",
+   "2⁴ · 3 · 5"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 262,
+  "konu": "Asal Çarpanlara Ayırma",
+  "zorluk": "Orta",
+  "soru": "Şekildeki çarpan ağacında A yerine hangi sayı gelmelidir? (Daire içindeki sayılar asal çarpanlardır.)",
+  "secenekler": [
+   "8",
+   "3",
+   "12",
+   "6"
+  ],
+  "dogru": 3,
+  "sekil": {
+   "tip": "agac",
+   "dugum": [
+    24,
+    [
+     2
+    ],
+    [
+     12,
+     [
+      2
+     ],
+     [
+      6,
+      [
+       2
+      ],
+      [
+       3
+      ]
+     ]
+    ]
+   ],
+   "gizli": "6"
+  }
+ },
+ {
+  "id": 263,
+  "konu": "Asal Çarpanlara Ayırma",
+  "zorluk": "Orta",
+  "soru": "Şekildeki çarpan ağacında A yerine hangi sayı gelmelidir? (Daire içindeki sayılar asal çarpanlardır.)",
+  "secenekler": [
+   "7",
+   "17",
+   "15",
+   "30"
+  ],
+  "dogru": 2,
+  "sekil": {
+   "tip": "agac",
+   "dugum": [
+    30,
+    [
+     2
+    ],
+    [
+     15,
+     [
+      3
+     ],
+     [
+      5
+     ]
+    ]
+   ],
+   "gizli": "15"
+  }
+ },
+ {
+  "id": 264,
+  "konu": "Asal Çarpanlara Ayırma",
+  "zorluk": "Orta",
+  "soru": "Şekildeki çarpan ağacında A yerine hangi sayı gelmelidir? (Daire içindeki sayılar asal çarpanlardır.)",
+  "secenekler": [
+   "4",
+   "11",
+   "18",
+   "9"
+  ],
+  "dogru": 3,
+  "sekil": {
+   "tip": "agac",
+   "dugum": [
+    36,
+    [
+     2
+    ],
+    [
+     18,
+     [
+      2
+     ],
+     [
+      9,
+      [
+       3
+      ],
+      [
+       3
+      ]
+     ]
+    ]
+   ],
+   "gizli": "9"
+  }
+ },
+ {
+  "id": 265,
+  "konu": "Asal Çarpanlara Ayırma",
+  "zorluk": "Orta",
+  "soru": "Şekildeki çarpan ağacında A yerine hangi sayı gelmelidir? (Daire içindeki sayılar asal çarpanlardır.)",
+  "secenekler": [
+   "12",
+   "20",
+   "5",
+   "10"
+  ],
+  "dogru": 3,
+  "sekil": {
+   "tip": "agac",
+   "dugum": [
+    40,
+    [
+     2
+    ],
+    [
+     20,
+     [
+      2
+     ],
+     [
+      10,
+      [
+       2
+      ],
+      [
+       5
+      ]
+     ]
+    ]
+   ],
+   "gizli": "10"
+  }
+ },
+ {
+  "id": 266,
+  "konu": "Asal Çarpanlara Ayırma",
+  "zorluk": "Orta",
+  "soru": "Şekildeki çarpan ağacında A yerine hangi sayı gelmelidir? (Daire içindeki sayılar asal çarpanlardır.)",
+  "secenekler": [
+   "23",
+   "10",
+   "21",
+   "42"
+  ],
+  "dogru": 2,
+  "sekil": {
+   "tip": "agac",
+   "dugum": [
+    42,
+    [
+     2
+    ],
+    [
+     21,
+     [
+      3
+     ],
+     [
+      7
+     ]
+    ]
+   ],
+   "gizli": "21"
+  }
+ },
+ {
+  "id": 267,
+  "konu": "Asal Çarpanlara Ayırma",
+  "zorluk": "Orta",
+  "soru": "Şekildeki çarpan ağacında A yerine hangi sayı gelmelidir? (Daire içindeki sayılar asal çarpanlardır.)",
+  "secenekler": [
+   "12",
+   "3",
+   "8",
+   "6"
+  ],
+  "dogru": 3,
+  "sekil": {
+   "tip": "agac",
+   "dugum": [
+    48,
+    [
+     2
+    ],
+    [
+     24,
+     [
+      2
+     ],
+     [
+      12,
+      [
+       2
+      ],
+      [
+       6,
+       [
+        2
+       ],
+       [
+        3
+       ]
+      ]
+     ]
+    ]
+   ],
+   "gizli": "6"
+  }
+ },
+ {
+  "id": 268,
+  "konu": "Asal Çarpanlara Ayırma",
+  "zorluk": "Orta",
+  "soru": "Şekildeki çarpan ağacında A yerine hangi sayı gelmelidir? (Daire içindeki sayılar asal çarpanlardır.)",
+  "secenekler": [
+   "15",
+   "32",
+   "30",
+   "60"
+  ],
+  "dogru": 2,
+  "sekil": {
+   "tip": "agac",
+   "dugum": [
+    60,
+    [
+     2
+    ],
+    [
+     30,
+     [
+      2
+     ],
+     [
+      15,
+      [
+       3
+      ],
+      [
+       5
+      ]
+     ]
+    ]
+   ],
+   "gizli": "30"
+  }
+ },
+ {
+  "id": 269,
+  "konu": "Asal Çarpanlara Ayırma",
+  "zorluk": "Orta",
+  "soru": "Şekildeki çarpan ağacında A yerine hangi sayı gelmelidir? (Daire içindeki sayılar asal çarpanlardır.)",
+  "secenekler": [
+   "36",
+   "18",
+   "9",
+   "20"
+  ],
+  "dogru": 1,
+  "sekil": {
+   "tip": "agac",
+   "dugum": [
+    72,
+    [
+     2
+    ],
+    [
+     36,
+     [
+      2
+     ],
+     [
+      18,
+      [
+       2
+      ],
+      [
+       9,
+       [
+        3
+       ],
+       [
+        3
+       ]
+      ]
+     ]
+    ]
+   ],
+   "gizli": "18"
+  }
+ },
+ {
+  "id": 270,
+  "konu": "Asal Çarpanlara Ayırma",
+  "zorluk": "Orta",
+  "soru": "Şekildeki çarpan ağacında A yerine hangi sayı gelmelidir? (Daire içindeki sayılar asal çarpanlardır.)",
+  "secenekler": [
+   "42",
+   "23",
+   "21",
+   "10"
+  ],
+  "dogru": 2,
+  "sekil": {
+   "tip": "agac",
+   "dugum": [
+    84,
+    [
+     2
+    ],
+    [
+     42,
+     [
+      2
+     ],
+     [
+      21,
+      [
+       3
+      ],
+      [
+       7
+      ]
+     ]
+    ]
+   ],
+   "gizli": "21"
+  }
+ },
+ {
+  "id": 271,
+  "konu": "Asal Çarpanlara Ayırma",
+  "zorluk": "Orta",
+  "soru": "Şekildeki çarpan ağacında A yerine hangi sayı gelmelidir? (Daire içindeki sayılar asal çarpanlardır.)",
+  "secenekler": [
+   "30",
+   "17",
+   "7",
+   "15"
+  ],
+  "dogru": 3,
+  "sekil": {
+   "tip": "agac",
+   "dugum": [
+    90,
+    [
+     2
+    ],
+    [
+     45,
+     [
+      3
+     ],
+     [
+      15,
+      [
+       3
+      ],
+      [
+       5
+      ]
+     ]
+    ]
+   ],
+   "gizli": "15"
+  }
+ },
+ {
+  "id": 272,
+  "konu": "Asal Çarpanlara Ayırma",
+  "zorluk": "Orta",
+  "soru": "Şekildeki çarpan ağacında A yerine hangi sayı gelmelidir? (Daire içindeki sayılar asal çarpanlardır.)",
+  "secenekler": [
+   "100",
+   "52",
+   "25",
+   "50"
+  ],
+  "dogru": 3,
+  "sekil": {
+   "tip": "agac",
+   "dugum": [
+    100,
+    [
+     2
+    ],
+    [
+     50,
+     [
+      2
+     ],
+     [
+      25,
+      [
+       5
+      ],
+      [
+       5
+      ]
+     ]
+    ]
+   ],
+   "gizli": "50"
+  }
+ },
+ {
+  "id": 273,
+  "konu": "Asal Çarpanlara Ayırma",
+  "zorluk": "Orta",
+  "soru": "Şekildeki çarpan ağacında A yerine hangi sayı gelmelidir? (Daire içindeki sayılar asal çarpanlardır.)",
+  "secenekler": [
+   "32",
+   "15",
+   "30",
+   "60"
+  ],
+  "dogru": 2,
+  "sekil": {
+   "tip": "agac",
+   "dugum": [
+    120,
+    [
+     2
+    ],
+    [
+     60,
+     [
+      2
+     ],
+     [
+      30,
+      [
+       2
+      ],
+      [
+       15,
+       [
+        3
+       ],
+       [
+        5
+       ]
+      ]
+     ]
+    ]
+   ],
+   "gizli": "30"
+  }
+ },
+ {
+  "id": 274,
+  "konu": "Asal Çarpanlara Ayırma",
+  "zorluk": "Orta",
+  "soru": "Şekilde bir sayının bölen merdiveni (asal çarpanlarına ayrılması) verilmiştir. Soru işareti (?) yerine hangi sayı gelmelidir?",
+  "secenekler": [
+   "2",
+   "4",
+   "3",
+   "6"
+  ],
+  "dogru": 2,
+  "sekil": {
+   "tip": "merdiven",
+   "satirlar": [
+    [
+     36,
+     2
+    ],
+    [
+     18,
+     2
+    ],
+    [
+     9,
+     3
+    ],
+    [
+     3,
+     3
+    ],
+    [
+     1
+    ]
+   ],
+   "gizli": [
+    3,
+    0
+   ]
+  }
+ },
+ {
+  "id": 275,
+  "konu": "Asal Çarpanlara Ayırma",
+  "zorluk": "Orta",
+  "soru": "Şekilde bir sayının bölen merdiveni (asal çarpanlarına ayrılması) verilmiştir. Soru işareti (?) yerine hangi sayı gelmelidir?",
+  "secenekler": [
+   "9",
+   "11",
+   "20",
+   "10"
+  ],
+  "dogru": 3,
+  "sekil": {
+   "tip": "merdiven",
+   "satirlar": [
+    [
+     40,
+     2
+    ],
+    [
+     20,
+     2
+    ],
+    [
+     10,
+     2
+    ],
+    [
+     5,
+     5
+    ],
+    [
+     1
+    ]
+   ],
+   "gizli": [
+    2,
+    0
+   ]
+  }
+ },
+ {
+  "id": 276,
+  "konu": "Asal Çarpanlara Ayırma",
+  "zorluk": "Orta",
+  "soru": "Şekilde bir sayının bölen merdiveni (asal çarpanlarına ayrılması) verilmiştir. Soru işareti (?) yerine hangi sayı gelmelidir?",
+  "secenekler": [
+   "2",
+   "5",
+   "3",
+   "7"
+  ],
+  "dogru": 1,
+  "sekil": {
+   "tip": "merdiven",
+   "satirlar": [
+    [
+     45,
+     3
+    ],
+    [
+     15,
+     3
+    ],
+    [
+     5,
+     5
+    ],
+    [
+     1
+    ]
+   ],
+   "gizli": [
+    2,
+    1
+   ]
+  }
+ },
+ {
+  "id": 277,
+  "konu": "Asal Çarpanlara Ayırma",
+  "zorluk": "Orta",
+  "soru": "Şekilde bir sayının bölen merdiveni (asal çarpanlarına ayrılması) verilmiştir. Soru işareti (?) yerine hangi sayı gelmelidir?",
+  "secenekler": [
+   "3",
+   "2",
+   "5",
+   "7"
+  ],
+  "dogru": 1,
+  "sekil": {
+   "tip": "merdiven",
+   "satirlar": [
+    [
+     48,
+     2
+    ],
+    [
+     24,
+     2
+    ],
+    [
+     12,
+     2
+    ],
+    [
+     6,
+     2
+    ],
+    [
+     3,
+     3
+    ],
+    [
+     1
+    ]
+   ],
+   "gizli": [
+    3,
+    1
+   ]
+  }
+ },
+ {
+  "id": 278,
+  "konu": "Asal Çarpanlara Ayırma",
+  "zorluk": "Orta",
+  "soru": "Şekilde bir sayının bölen merdiveni (asal çarpanlarına ayrılması) verilmiştir. Soru işareti (?) yerine hangi sayı gelmelidir?",
+  "secenekler": [
+   "4",
+   "2",
+   "3",
+   "6"
+  ],
+  "dogru": 2,
+  "sekil": {
+   "tip": "merdiven",
+   "satirlar": [
+    [
+     54,
+     2
+    ],
+    [
+     27,
+     3
+    ],
+    [
+     9,
+     3
+    ],
+    [
+     3,
+     3
+    ],
+    [
+     1
+    ]
+   ],
+   "gizli": [
+    3,
+    0
+   ]
+  }
+ },
+ {
+  "id": 279,
+  "konu": "Asal Çarpanlara Ayırma",
+  "zorluk": "Orta",
+  "soru": "Şekilde bir sayının bölen merdiveni (asal çarpanlarına ayrılması) verilmiştir. Soru işareti (?) yerine hangi sayı gelmelidir?",
+  "secenekler": [
+   "31",
+   "30",
+   "29",
+   "60"
+  ],
+  "dogru": 1,
+  "sekil": {
+   "tip": "merdiven",
+   "satirlar": [
+    [
+     60,
+     2
+    ],
+    [
+     30,
+     2
+    ],
+    [
+     15,
+     3
+    ],
+    [
+     5,
+     5
+    ],
+    [
+     1
+    ]
+   ],
+   "gizli": [
+    1,
+    0
+   ]
+  }
+ },
+ {
+  "id": 280,
+  "konu": "Asal Çarpanlara Ayırma",
+  "zorluk": "Orta",
+  "soru": "Şekilde bir sayının bölen merdiveni (asal çarpanlarına ayrılması) verilmiştir. Soru işareti (?) yerine hangi sayı gelmelidir?",
+  "secenekler": [
+   "3",
+   "2",
+   "5",
+   "7"
+  ],
+  "dogru": 1,
+  "sekil": {
+   "tip": "merdiven",
+   "satirlar": [
+    [
+     72,
+     2
+    ],
+    [
+     36,
+     2
+    ],
+    [
+     18,
+     2
+    ],
+    [
+     9,
+     3
+    ],
+    [
+     3,
+     3
+    ],
+    [
+     1
+    ]
+   ],
+   "gizli": [
+    1,
+    1
+   ]
+  }
+ },
+ {
+  "id": 281,
+  "konu": "Asal Çarpanlara Ayırma",
+  "zorluk": "Orta",
+  "soru": "Şekilde bir sayının bölen merdiveni (asal çarpanlarına ayrılması) verilmiştir. Soru işareti (?) yerine hangi sayı gelmelidir?",
+  "secenekler": [
+   "21",
+   "20",
+   "22",
+   "42"
+  ],
+  "dogru": 0,
+  "sekil": {
+   "tip": "merdiven",
+   "satirlar": [
+    [
+     84,
+     2
+    ],
+    [
+     42,
+     2
+    ],
+    [
+     21,
+     3
+    ],
+    [
+     7,
+     7
+    ],
+    [
+     1
+    ]
+   ],
+   "gizli": [
+    2,
+    0
+   ]
+  }
+ },
+ {
+  "id": 282,
+  "konu": "Asal Çarpanlara Ayırma",
+  "zorluk": "Orta",
+  "soru": "Şekilde bir sayının bölen merdiveni (asal çarpanlarına ayrılması) verilmiştir. Soru işareti (?) yerine hangi sayı gelmelidir?",
+  "secenekler": [
+   "10",
+   "4",
+   "5",
+   "6"
+  ],
+  "dogru": 2,
+  "sekil": {
+   "tip": "merdiven",
+   "satirlar": [
+    [
+     90,
+     2
+    ],
+    [
+     45,
+     3
+    ],
+    [
+     15,
+     3
+    ],
+    [
+     5,
+     5
+    ],
+    [
+     1
+    ]
+   ],
+   "gizli": [
+    3,
+    0
+   ]
+  }
+ },
+ {
+  "id": 283,
+  "konu": "Asal Çarpanlara Ayırma",
+  "zorluk": "Orta",
+  "soru": "Şekilde bir sayının bölen merdiveni (asal çarpanlarına ayrılması) verilmiştir. Soru işareti (?) yerine hangi sayı gelmelidir?",
+  "secenekler": [
+   "5",
+   "7",
+   "12",
+   "6"
+  ],
+  "dogru": 3,
+  "sekil": {
+   "tip": "merdiven",
+   "satirlar": [
+    [
+     96,
+     2
+    ],
+    [
+     48,
+     2
+    ],
+    [
+     24,
+     2
+    ],
+    [
+     12,
+     2
+    ],
+    [
+     6,
+     2
+    ],
+    [
+     3,
+     3
+    ],
+    [
+     1
+    ]
+   ],
+   "gizli": [
+    4,
+    0
+   ]
+  }
+ },
+ {
+  "id": 284,
+  "konu": "Asal Çarpanlara Ayırma",
+  "zorluk": "Orta",
+  "soru": "Şekilde bir sayının bölen merdiveni (asal çarpanlarına ayrılması) verilmiştir. Soru işareti (?) yerine hangi sayı gelmelidir?",
+  "secenekler": [
+   "25",
+   "26",
+   "24",
+   "50"
+  ],
+  "dogru": 0,
+  "sekil": {
+   "tip": "merdiven",
+   "satirlar": [
+    [
+     100,
+     2
+    ],
+    [
+     50,
+     2
+    ],
+    [
+     25,
+     5
+    ],
+    [
+     5,
+     5
+    ],
+    [
+     1
+    ]
+   ],
+   "gizli": [
+    2,
+    0
+   ]
+  }
+ },
+ {
+  "id": 285,
+  "konu": "Asal Çarpanlara Ayırma",
+  "zorluk": "Orta",
+  "soru": "Şekilde bir sayının bölen merdiveni (asal çarpanlarına ayrılması) verilmiştir. Soru işareti (?) yerine hangi sayı gelmelidir?",
+  "secenekler": [
+   "2",
+   "7",
+   "3",
+   "5"
+  ],
+  "dogru": 2,
+  "sekil": {
+   "tip": "merdiven",
+   "satirlar": [
+    [
+     126,
+     2
+    ],
+    [
+     63,
+     3
+    ],
+    [
+     21,
+     3
+    ],
+    [
+     7,
+     7
+    ],
+    [
+     1
+    ]
+   ],
+   "gizli": [
+    2,
+    1
+   ]
+  }
+ },
+ {
+  "id": 286,
+  "konu": "Asal Çarpanlara Ayırma",
+  "zorluk": "Zor",
+  "soru": "Asal çarpanlarına ayrılmış hali 2² · 3 · 5 olan sayı kaçtır?",
+  "secenekler": [
+   "62",
+   "30",
+   "60",
+   "12"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 287,
+  "konu": "Asal Çarpanlara Ayırma",
+  "zorluk": "Zor",
+  "soru": "Asal çarpanlarına ayrılmış hali 2³ · 3² olan sayı kaçtır?",
+  "secenekler": [
+   "36",
+   "12",
+   "72",
+   "74"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 288,
+  "konu": "Asal Çarpanlara Ayırma",
+  "zorluk": "Zor",
+  "soru": "Asal çarpanlarına ayrılmış hali 2² · 3 · 7 olan sayı kaçtır?",
+  "secenekler": [
+   "86",
+   "14",
+   "42",
+   "84"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 289,
+  "konu": "Asal Çarpanlara Ayırma",
+  "zorluk": "Zor",
+  "soru": "Asal çarpanlarına ayrılmış hali 2 · 3² · 5 olan sayı kaçtır?",
+  "secenekler": [
+   "92",
+   "45",
+   "90",
+   "13"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 290,
+  "konu": "Asal Çarpanlara Ayırma",
+  "zorluk": "Zor",
+  "soru": "Asal çarpanlarına ayrılmış hali 2² · 3³ olan sayı kaçtır?",
+  "secenekler": [
+   "54",
+   "110",
+   "108",
+   "13"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 291,
+  "konu": "Asal Çarpanlara Ayırma",
+  "zorluk": "Zor",
+  "soru": "Asal çarpanlarına ayrılmış hali 2³ · 3 · 5 olan sayı kaçtır?",
+  "secenekler": [
+   "122",
+   "14",
+   "60",
+   "120"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 292,
+  "konu": "Asal Çarpanlara Ayırma",
+  "zorluk": "Zor",
+  "soru": "Asal çarpanlarına ayrılmış hali 2 · 3² · 7 olan sayı kaçtır?",
+  "secenekler": [
+   "15",
+   "128",
+   "126",
+   "63"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 293,
+  "konu": "Asal Çarpanlara Ayırma",
+  "zorluk": "Zor",
+  "soru": "Asal çarpanlarına ayrılmış hali 2 · 3 · 5² olan sayı kaçtır?",
+  "secenekler": [
+   "75",
+   "152",
+   "15",
+   "150"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 294,
+  "konu": "Asal Çarpanlara Ayırma",
+  "zorluk": "Zor",
+  "soru": "Asal çarpanlarına ayrılmış hali 2² · 3² · 5 olan sayı kaçtır?",
+  "secenekler": [
+   "180",
+   "90",
+   "182",
+   "15"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 295,
+  "konu": "Asal Çarpanlara Ayırma",
+  "zorluk": "Zor",
+  "soru": "Asal çarpanlarına ayrılmış hali 2³ · 5² olan sayı kaçtır?",
+  "secenekler": [
+   "16",
+   "202",
+   "100",
+   "200"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 296,
+  "konu": "Asal Çarpanlara Ayırma",
+  "zorluk": "Zor",
+  "soru": "30 sayısının farklı asal çarpanlarının toplamı kaçtır?",
+  "secenekler": [
+   "8",
+   "15",
+   "10",
+   "12"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 297,
+  "konu": "Asal Çarpanlara Ayırma",
+  "zorluk": "Zor",
+  "soru": "42 sayısının farklı asal çarpanlarının toplamı kaçtır?",
+  "secenekler": [
+   "17",
+   "12",
+   "10",
+   "14"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 298,
+  "konu": "Asal Çarpanlara Ayırma",
+  "zorluk": "Zor",
+  "soru": "60 sayısının farklı asal çarpanlarının toplamı kaçtır?",
+  "secenekler": [
+   "10",
+   "12",
+   "8",
+   "15"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 299,
+  "konu": "Asal Çarpanlara Ayırma",
+  "zorluk": "Zor",
+  "soru": "66 sayısının farklı asal çarpanlarının toplamı kaçtır?",
+  "secenekler": [
+   "21",
+   "14",
+   "16",
+   "18"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 300,
+  "konu": "Asal Çarpanlara Ayırma",
+  "zorluk": "Zor",
+  "soru": "70 sayısının farklı asal çarpanlarının toplamı kaçtır?",
+  "secenekler": [
+   "19",
+   "14",
+   "16",
+   "12"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 301,
+  "konu": "Asal Çarpanlara Ayırma",
+  "zorluk": "Zor",
+  "soru": "78 sayısının farklı asal çarpanlarının toplamı kaçtır?",
+  "secenekler": [
+   "23",
+   "16",
+   "18",
+   "20"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 302,
+  "konu": "Asal Çarpanlara Ayırma",
+  "zorluk": "Zor",
+  "soru": "84 sayısının farklı asal çarpanlarının toplamı kaçtır?",
+  "secenekler": [
+   "14",
+   "12",
+   "17",
+   "10"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 303,
+  "konu": "Asal Çarpanlara Ayırma",
+  "zorluk": "Zor",
+  "soru": "90 sayısının farklı asal çarpanlarının toplamı kaçtır?",
+  "secenekler": [
+   "12",
+   "10",
+   "15",
+   "8"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 304,
+  "konu": "Asal Çarpanlara Ayırma",
+  "zorluk": "Zor",
+  "soru": "105 sayısının farklı asal çarpanlarının toplamı kaçtır?",
+  "secenekler": [
+   "13",
+   "20",
+   "17",
+   "15"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 305,
+  "konu": "Asal Çarpanlara Ayırma",
+  "zorluk": "Zor",
+  "soru": "110 sayısının farklı asal çarpanlarının toplamı kaçtır?",
+  "secenekler": [
+   "16",
+   "23",
+   "20",
+   "18"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 306,
+  "konu": "Asal Çarpanlara Ayırma",
+  "zorluk": "Zor",
+  "soru": "36 sayısı asal çarpanlarına ayrıldığında 2 çarpanı kaç kez bulunur?",
+  "secenekler": [
+   "2",
+   "4",
+   "1",
+   "3"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 307,
+  "konu": "Asal Çarpanlara Ayırma",
+  "zorluk": "Zor",
+  "soru": "48 sayısı asal çarpanlarına ayrıldığında 2 çarpanı kaç kez bulunur?",
+  "secenekler": [
+   "5",
+   "2",
+   "3",
+   "4"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 308,
+  "konu": "Asal Çarpanlara Ayırma",
+  "zorluk": "Zor",
+  "soru": "72 sayısı asal çarpanlarına ayrıldığında 2 çarpanı kaç kez bulunur?",
+  "secenekler": [
+   "5",
+   "2",
+   "3",
+   "4"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 309,
+  "konu": "Asal Çarpanlara Ayırma",
+  "zorluk": "Zor",
+  "soru": "96 sayısı asal çarpanlarına ayrıldığında 2 çarpanı kaç kez bulunur?",
+  "secenekler": [
+   "2",
+   "6",
+   "4",
+   "5"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 310,
+  "konu": "Asal Çarpanlara Ayırma",
+  "zorluk": "Zor",
+  "soru": "120 sayısı asal çarpanlarına ayrıldığında 2 çarpanı kaç kez bulunur?",
+  "secenekler": [
+   "2",
+   "5",
+   "4",
+   "3"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 311,
+  "konu": "Ortak Bölenler",
+  "zorluk": "Kolay",
+  "soru": "12 ve 18 sayılarının ortak bölenlerinden biri aşağıdakilerden hangisidir?",
+  "secenekler": [
+   "6",
+   "9",
+   "12",
+   "18"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 312,
+  "konu": "Ortak Bölenler",
+  "zorluk": "Kolay",
+  "soru": "16 ve 24 sayılarının ortak bölenlerinden biri aşağıdakilerden hangisidir?",
+  "secenekler": [
+   "2",
+   "24",
+   "16",
+   "6"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 313,
+  "konu": "Ortak Bölenler",
+  "zorluk": "Kolay",
+  "soru": "18 ve 30 sayılarının ortak bölenlerinden biri aşağıdakilerden hangisidir?",
+  "secenekler": [
+   "2",
+   "9",
+   "10",
+   "18"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 314,
+  "konu": "Ortak Bölenler",
+  "zorluk": "Kolay",
+  "soru": "20 ve 30 sayılarının ortak bölenlerinden biri aşağıdakilerden hangisidir?",
+  "secenekler": [
+   "20",
+   "15",
+   "4",
+   "5"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 315,
+  "konu": "Ortak Bölenler",
+  "zorluk": "Kolay",
+  "soru": "24 ve 36 sayılarının ortak bölenlerinden biri aşağıdakilerden hangisidir?",
+  "secenekler": [
+   "18",
+   "2",
+   "8",
+   "9"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 316,
+  "konu": "Ortak Bölenler",
+  "zorluk": "Kolay",
+  "soru": "30 ve 45 sayılarının ortak bölenlerinden biri aşağıdakilerden hangisidir?",
+  "secenekler": [
+   "6",
+   "9",
+   "2",
+   "5"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 317,
+  "konu": "Ortak Bölenler",
+  "zorluk": "Kolay",
+  "soru": "28 ve 42 sayılarının ortak bölenlerinden biri aşağıdakilerden hangisidir?",
+  "secenekler": [
+   "42",
+   "21",
+   "2",
+   "3"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 318,
+  "konu": "Ortak Bölenler",
+  "zorluk": "Kolay",
+  "soru": "36 ve 48 sayılarının ortak bölenlerinden biri aşağıdakilerden hangisidir?",
+  "secenekler": [
+   "9",
+   "8",
+   "4",
+   "18"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 319,
+  "konu": "Ortak Bölenler",
+  "zorluk": "Kolay",
+  "soru": "40 ve 60 sayılarının ortak bölenlerinden biri aşağıdakilerden hangisidir?",
+  "secenekler": [
+   "8",
+   "10",
+   "6",
+   "3"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 320,
+  "konu": "Ortak Bölenler",
+  "zorluk": "Kolay",
+  "soru": "32 ve 48 sayılarının ortak bölenlerinden biri aşağıdakilerden hangisidir?",
+  "secenekler": [
+   "2",
+   "32",
+   "6",
+   "48"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 321,
+  "konu": "Ortak Bölenler",
+  "zorluk": "Orta",
+  "soru": "12 ve 18 sayılarının en büyük ortak böleni kaçtır?",
+  "secenekler": [
+   "36",
+   "6",
+   "12",
+   "3"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 322,
+  "konu": "Ortak Bölenler",
+  "zorluk": "Orta",
+  "soru": "16 ve 24 sayılarının en büyük ortak böleni kaçtır?",
+  "secenekler": [
+   "48",
+   "4",
+   "16",
+   "8"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 323,
+  "konu": "Ortak Bölenler",
+  "zorluk": "Orta",
+  "soru": "18 ve 30 sayılarının en büyük ortak böleni kaçtır?",
+  "secenekler": [
+   "12",
+   "3",
+   "6",
+   "90"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 324,
+  "konu": "Ortak Bölenler",
+  "zorluk": "Orta",
+  "soru": "20 ve 30 sayılarının en büyük ortak böleni kaçtır?",
+  "secenekler": [
+   "20",
+   "5",
+   "10",
+   "60"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 325,
+  "konu": "Ortak Bölenler",
+  "zorluk": "Orta",
+  "soru": "24 ve 36 sayılarının en büyük ortak böleni kaçtır?",
+  "secenekler": [
+   "24",
+   "72",
+   "12",
+   "6"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 326,
+  "konu": "Ortak Bölenler",
+  "zorluk": "Orta",
+  "soru": "30 ve 45 sayılarının en büyük ortak böleni kaçtır?",
+  "secenekler": [
+   "30",
+   "15",
+   "7",
+   "90"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 327,
+  "konu": "Ortak Bölenler",
+  "zorluk": "Orta",
+  "soru": "28 ve 42 sayılarının en büyük ortak böleni kaçtır?",
+  "secenekler": [
+   "28",
+   "14",
+   "84",
+   "7"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 328,
+  "konu": "Ortak Bölenler",
+  "zorluk": "Orta",
+  "soru": "36 ve 48 sayılarının en büyük ortak böleni kaçtır?",
+  "secenekler": [
+   "6",
+   "12",
+   "24",
+   "144"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 329,
+  "konu": "Ortak Bölenler",
+  "zorluk": "Orta",
+  "soru": "40 ve 60 sayılarının en büyük ortak böleni kaçtır?",
+  "secenekler": [
+   "120",
+   "10",
+   "20",
+   "40"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 330,
+  "konu": "Ortak Bölenler",
+  "zorluk": "Orta",
+  "soru": "32 ve 48 sayılarının en büyük ortak böleni kaçtır?",
+  "secenekler": [
+   "16",
+   "32",
+   "8",
+   "96"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 331,
+  "konu": "Ortak Bölenler",
+  "zorluk": "Orta",
+  "soru": "45 ve 60 sayılarının en büyük ortak böleni kaçtır?",
+  "secenekler": [
+   "30",
+   "180",
+   "15",
+   "7"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 332,
+  "konu": "Ortak Bölenler",
+  "zorluk": "Orta",
+  "soru": "54 ve 72 sayılarının en büyük ortak böleni kaçtır?",
+  "secenekler": [
+   "18",
+   "216",
+   "36",
+   "9"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 333,
+  "konu": "Ortak Bölenler",
+  "zorluk": "Orta",
+  "soru": "48 ve 72 sayılarının en büyük ortak böleni kaçtır?",
+  "secenekler": [
+   "144",
+   "12",
+   "24",
+   "48"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 334,
+  "konu": "Ortak Bölenler",
+  "zorluk": "Orta",
+  "soru": "42 ve 56 sayılarının en büyük ortak böleni kaçtır?",
+  "secenekler": [
+   "7",
+   "14",
+   "28",
+   "168"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 335,
+  "konu": "Ortak Bölenler",
+  "zorluk": "Orta",
+  "soru": "60 ve 90 sayılarının en büyük ortak böleni kaçtır?",
+  "secenekler": [
+   "30",
+   "60",
+   "180",
+   "15"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 336,
+  "konu": "Ortak Bölenler",
+  "zorluk": "Orta",
+  "soru": "12 ve 18 sayılarının kaç tane ortak böleni vardır?",
+  "secenekler": [
+   "4",
+   "5",
+   "3",
+   "6"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 337,
+  "konu": "Ortak Bölenler",
+  "zorluk": "Orta",
+  "soru": "16 ve 24 sayılarının kaç tane ortak böleni vardır?",
+  "secenekler": [
+   "4",
+   "5",
+   "6",
+   "3"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 338,
+  "konu": "Ortak Bölenler",
+  "zorluk": "Orta",
+  "soru": "18 ve 30 sayılarının kaç tane ortak böleni vardır?",
+  "secenekler": [
+   "5",
+   "4",
+   "6",
+   "3"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 339,
+  "konu": "Ortak Bölenler",
+  "zorluk": "Orta",
+  "soru": "20 ve 30 sayılarının kaç tane ortak böleni vardır?",
+  "secenekler": [
+   "4",
+   "5",
+   "3",
+   "6"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 340,
+  "konu": "Ortak Bölenler",
+  "zorluk": "Orta",
+  "soru": "24 ve 36 sayılarının kaç tane ortak böleni vardır?",
+  "secenekler": [
+   "6",
+   "7",
+   "8",
+   "5"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 341,
+  "konu": "Ortak Bölenler",
+  "zorluk": "Orta",
+  "soru": "30 ve 45 sayılarının kaç tane ortak böleni vardır?",
+  "secenekler": [
+   "5",
+   "6",
+   "4",
+   "3"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 342,
+  "konu": "Ortak Bölenler",
+  "zorluk": "Orta",
+  "soru": "28 ve 42 sayılarının kaç tane ortak böleni vardır?",
+  "secenekler": [
+   "5",
+   "3",
+   "4",
+   "6"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 343,
+  "konu": "Ortak Bölenler",
+  "zorluk": "Orta",
+  "soru": "36 ve 48 sayılarının kaç tane ortak böleni vardır?",
+  "secenekler": [
+   "8",
+   "7",
+   "6",
+   "5"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 344,
+  "konu": "Ortak Bölenler",
+  "zorluk": "Orta",
+  "soru": "40 ve 60 sayılarının kaç tane ortak böleni vardır?",
+  "secenekler": [
+   "5",
+   "8",
+   "6",
+   "7"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 345,
+  "konu": "Ortak Bölenler",
+  "zorluk": "Orta",
+  "soru": "32 ve 48 sayılarının kaç tane ortak böleni vardır?",
+  "secenekler": [
+   "5",
+   "7",
+   "6",
+   "4"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 346,
+  "konu": "Ortak Bölenler",
+  "zorluk": "Zor",
+  "soru": "36 m ve 48 m uzunluğundaki iki ip, hiç artmayacak şekilde eşit uzunlukta parçalara ayrılacaktır. Parçalar mümkün olan en uzun boyda olacaksa bir parça kaç m olur?",
+  "secenekler": [
+   "14 m",
+   "6 m",
+   "12 m",
+   "24 m"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 347,
+  "konu": "Ortak Bölenler",
+  "zorluk": "Zor",
+  "soru": "24 m ve 40 m uzunluğundaki iki ip, hiç artmayacak şekilde eşit uzunlukta parçalara ayrılacaktır. Parçalar mümkün olan en uzun boyda olacaksa bir parça kaç m olur?",
+  "secenekler": [
+   "10 m",
+   "4 m",
+   "16 m",
+   "8 m"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 348,
+  "konu": "Ortak Bölenler",
+  "zorluk": "Zor",
+  "soru": "30 m ve 42 m uzunluğundaki iki ip, hiç artmayacak şekilde eşit uzunlukta parçalara ayrılacaktır. Parçalar mümkün olan en uzun boyda olacaksa bir parça kaç m olur?",
+  "secenekler": [
+   "12 m",
+   "3 m",
+   "6 m",
+   "8 m"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 349,
+  "konu": "Ortak Bölenler",
+  "zorluk": "Zor",
+  "soru": "45 m ve 60 m uzunluğundaki iki ip, hiç artmayacak şekilde eşit uzunlukta parçalara ayrılacaktır. Parçalar mümkün olan en uzun boyda olacaksa bir parça kaç m olur?",
+  "secenekler": [
+   "15 m",
+   "17 m",
+   "30 m",
+   "7 m"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 350,
+  "konu": "Ortak Bölenler",
+  "zorluk": "Zor",
+  "soru": "54 m ve 72 m uzunluğundaki iki ip, hiç artmayacak şekilde eşit uzunlukta parçalara ayrılacaktır. Parçalar mümkün olan en uzun boyda olacaksa bir parça kaç m olur?",
+  "secenekler": [
+   "9 m",
+   "20 m",
+   "18 m",
+   "36 m"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 351,
+  "konu": "Ortak Bölenler",
+  "zorluk": "Zor",
+  "soru": "60 m ve 84 m uzunluğundaki iki ip, hiç artmayacak şekilde eşit uzunlukta parçalara ayrılacaktır. Parçalar mümkün olan en uzun boyda olacaksa bir parça kaç m olur?",
+  "secenekler": [
+   "24 m",
+   "14 m",
+   "6 m",
+   "12 m"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 352,
+  "konu": "Ortak Bölenler",
+  "zorluk": "Zor",
+  "soru": "48 m ve 80 m uzunluğundaki iki ip, hiç artmayacak şekilde eşit uzunlukta parçalara ayrılacaktır. Parçalar mümkün olan en uzun boyda olacaksa bir parça kaç m olur?",
+  "secenekler": [
+   "8 m",
+   "18 m",
+   "32 m",
+   "16 m"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 353,
+  "konu": "Ortak Bölenler",
+  "zorluk": "Zor",
+  "soru": "24 kırmızı ve 36 mavi bilye, her pakette yalnızca bir renk ve eşit sayıda bilye olacak şekilde paketlenecektir. Hiç bilye artmayacaksa en az kaç paket gerekir?",
+  "secenekler": [
+   "6",
+   "12",
+   "5",
+   "10"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 354,
+  "konu": "Ortak Bölenler",
+  "zorluk": "Zor",
+  "soru": "30 kırmızı ve 45 mavi bilye, her pakette yalnızca bir renk ve eşit sayıda bilye olacak şekilde paketlenecektir. Hiç bilye artmayacaksa en az kaç paket gerekir?",
+  "secenekler": [
+   "5",
+   "6",
+   "10",
+   "15"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 355,
+  "konu": "Ortak Bölenler",
+  "zorluk": "Zor",
+  "soru": "40 kırmızı ve 56 mavi bilye, her pakette yalnızca bir renk ve eşit sayıda bilye olacak şekilde paketlenecektir. Hiç bilye artmayacaksa en az kaç paket gerekir?",
+  "secenekler": [
+   "24",
+   "8",
+   "12",
+   "13"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 356,
+  "konu": "Ortak Bölenler",
+  "zorluk": "Zor",
+  "soru": "42 kırmızı ve 70 mavi bilye, her pakette yalnızca bir renk ve eşit sayıda bilye olacak şekilde paketlenecektir. Hiç bilye artmayacaksa en az kaç paket gerekir?",
+  "secenekler": [
+   "8",
+   "14",
+   "9",
+   "16"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 357,
+  "konu": "Ortak Bölenler",
+  "zorluk": "Zor",
+  "soru": "48 kırmızı ve 60 mavi bilye, her pakette yalnızca bir renk ve eşit sayıda bilye olacak şekilde paketlenecektir. Hiç bilye artmayacaksa en az kaç paket gerekir?",
+  "secenekler": [
+   "12",
+   "18",
+   "9",
+   "10"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 358,
+  "konu": "Ortak Bölenler",
+  "zorluk": "Zor",
+  "soru": "36 kırmızı ve 54 mavi bilye, her pakette yalnızca bir renk ve eşit sayıda bilye olacak şekilde paketlenecektir. Hiç bilye artmayacaksa en az kaç paket gerekir?",
+  "secenekler": [
+   "6",
+   "18",
+   "5",
+   "10"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 359,
+  "konu": "Ortak Bölenler",
+  "zorluk": "Zor",
+  "soru": "Boyutları 12 m ve 18 m olan dikdörtgen şeklindeki bir bahçe, hiç boşluk kalmayacak şekilde eş kare bölümlere ayrılacaktır. Kare bölümler mümkün olan en büyük boyutta olacaksa kaç kare bölüm oluşur?",
+  "secenekler": [
+   "54",
+   "12",
+   "6",
+   "7"
+  ],
+  "dogru": 2,
+  "sekil": {
+   "tip": "dikdortgen",
+   "en": 3,
+   "boy": 2,
+   "etiketEn": "18 m",
+   "etiketBoy": "12 m"
+  }
+ },
+ {
+  "id": 360,
+  "konu": "Ortak Bölenler",
+  "zorluk": "Zor",
+  "soru": "Boyutları 24 m ve 36 m olan dikdörtgen şeklindeki bir bahçe, hiç boşluk kalmayacak şekilde eş kare bölümlere ayrılacaktır. Kare bölümler mümkün olan en büyük boyutta olacaksa kaç kare bölüm oluşur?",
+  "secenekler": [
+   "12",
+   "7",
+   "6",
+   "216"
+  ],
+  "dogru": 2,
+  "sekil": {
+   "tip": "dikdortgen",
+   "en": 3,
+   "boy": 2,
+   "etiketEn": "36 m",
+   "etiketBoy": "24 m"
+  }
+ },
+ {
+  "id": 361,
+  "konu": "Ortak Bölenler",
+  "zorluk": "Zor",
+  "soru": "Boyutları 30 m ve 42 m olan dikdörtgen şeklindeki bir bahçe, hiç boşluk kalmayacak şekilde eş kare bölümlere ayrılacaktır. Kare bölümler mümkün olan en büyük boyutta olacaksa kaç kare bölüm oluşur?",
+  "secenekler": [
+   "36",
+   "6",
+   "35",
+   "70"
+  ],
+  "dogru": 2,
+  "sekil": {
+   "tip": "dikdortgen",
+   "en": 7,
+   "boy": 5,
+   "etiketEn": "42 m",
+   "etiketBoy": "30 m"
+  }
+ },
+ {
+  "id": 362,
+  "konu": "Ortak Bölenler",
+  "zorluk": "Zor",
+  "soru": "Boyutları 20 m ve 28 m olan dikdörtgen şeklindeki bir bahçe, hiç boşluk kalmayacak şekilde eş kare bölümlere ayrılacaktır. Kare bölümler mümkün olan en büyük boyutta olacaksa kaç kare bölüm oluşur?",
+  "secenekler": [
+   "4",
+   "70",
+   "36",
+   "35"
+  ],
+  "dogru": 3,
+  "sekil": {
+   "tip": "dikdortgen",
+   "en": 7,
+   "boy": 5,
+   "etiketEn": "28 m",
+   "etiketBoy": "20 m"
+  }
+ },
+ {
+  "id": 363,
+  "konu": "Ortak Bölenler",
+  "zorluk": "Zor",
+  "soru": "Boyutları 36 m ve 60 m olan dikdörtgen şeklindeki bir bahçe, hiç boşluk kalmayacak şekilde eş kare bölümlere ayrılacaktır. Kare bölümler mümkün olan en büyük boyutta olacaksa kaç kare bölüm oluşur?",
+  "secenekler": [
+   "12",
+   "16",
+   "15",
+   "30"
+  ],
+  "dogru": 2,
+  "sekil": {
+   "tip": "dikdortgen",
+   "en": 5,
+   "boy": 3,
+   "etiketEn": "60 m",
+   "etiketBoy": "36 m"
+  }
+ },
+ {
+  "id": 364,
+  "konu": "Ortak Bölenler",
+  "zorluk": "Zor",
+  "soru": "Boyutları 40 m ve 72 m olan dikdörtgen şeklindeki bir bahçe, hiç boşluk kalmayacak şekilde eş kare bölümlere ayrılacaktır. Kare bölümler mümkün olan en büyük boyutta olacaksa kaç kare bölüm oluşur?",
+  "secenekler": [
+   "46",
+   "90",
+   "45",
+   "8"
+  ],
+  "dogru": 2,
+  "sekil": {
+   "tip": "dikdortgen",
+   "en": 9,
+   "boy": 5,
+   "etiketEn": "72 m",
+   "etiketBoy": "40 m"
+  }
+ },
+ {
+  "id": 365,
+  "konu": "Ortak Bölenler",
+  "zorluk": "Zor",
+  "soru": "18 kalem ve 24 silgi, hiç artmayacak şekilde öğrencilere eşit olarak dağıtılacaktır. En fazla kaç öğrenciye dağıtım yapılabilir?",
+  "secenekler": [
+   "72",
+   "6",
+   "3",
+   "12"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 366,
+  "konu": "Ortak Bölenler",
+  "zorluk": "Zor",
+  "soru": "36 kalem ve 45 silgi, hiç artmayacak şekilde öğrencilere eşit olarak dağıtılacaktır. En fazla kaç öğrenciye dağıtım yapılabilir?",
+  "secenekler": [
+   "180",
+   "4",
+   "18",
+   "9"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 367,
+  "konu": "Ortak Bölenler",
+  "zorluk": "Zor",
+  "soru": "48 kalem ve 64 silgi, hiç artmayacak şekilde öğrencilere eşit olarak dağıtılacaktır. En fazla kaç öğrenciye dağıtım yapılabilir?",
+  "secenekler": [
+   "8",
+   "32",
+   "16",
+   "192"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 368,
+  "konu": "Ortak Katlar",
+  "zorluk": "Kolay",
+  "soru": "4 ve 6 sayılarının ortak katlarından biri aşağıdakilerden hangisidir?",
+  "secenekler": [
+   "36",
+   "42",
+   "30",
+   "32"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 369,
+  "konu": "Ortak Katlar",
+  "zorluk": "Kolay",
+  "soru": "6 ve 8 sayılarının ortak katlarından biri aşağıdakilerden hangisidir?",
+  "secenekler": [
+   "72",
+   "84",
+   "60",
+   "80"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 370,
+  "konu": "Ortak Katlar",
+  "zorluk": "Kolay",
+  "soru": "6 ve 9 sayılarının ortak katlarından biri aşağıdakilerden hangisidir?",
+  "secenekler": [
+   "18",
+   "45",
+   "48",
+   "60"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 371,
+  "konu": "Ortak Katlar",
+  "zorluk": "Kolay",
+  "soru": "8 ve 12 sayılarının ortak katlarından biri aşağıdakilerden hangisidir?",
+  "secenekler": [
+   "56",
+   "40",
+   "48",
+   "12"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 372,
+  "konu": "Ortak Katlar",
+  "zorluk": "Kolay",
+  "soru": "10 ve 15 sayılarının ortak katlarından biri aşağıdakilerden hangisidir?",
+  "secenekler": [
+   "80",
+   "45",
+   "60",
+   "10"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 373,
+  "konu": "Ortak Katlar",
+  "zorluk": "Kolay",
+  "soru": "9 ve 12 sayılarının ortak katlarından biri aşağıdakilerden hangisidir?",
+  "secenekler": [
+   "18",
+   "120",
+   "72",
+   "48"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 374,
+  "konu": "Ortak Katlar",
+  "zorluk": "Kolay",
+  "soru": "12 ve 18 sayılarının ortak katlarından biri aşağıdakilerden hangisidir?",
+  "secenekler": [
+   "126",
+   "132",
+   "72",
+   "120"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 375,
+  "konu": "Ortak Katlar",
+  "zorluk": "Kolay",
+  "soru": "5 ve 7 sayılarının ortak katlarından biri aşağıdakilerden hangisidir?",
+  "secenekler": [
+   "25",
+   "70",
+   "133",
+   "10"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 376,
+  "konu": "Ortak Katlar",
+  "zorluk": "Kolay",
+  "soru": "4 ve 10 sayılarının ortak katlarından biri aşağıdakilerden hangisidir?",
+  "secenekler": [
+   "24",
+   "10",
+   "20",
+   "12"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 377,
+  "konu": "Ortak Katlar",
+  "zorluk": "Kolay",
+  "soru": "15 ve 20 sayılarının ortak katlarından biri aşağıdakilerden hangisidir?",
+  "secenekler": [
+   "200",
+   "165",
+   "40",
+   "120"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 378,
+  "konu": "Ortak Katlar",
+  "zorluk": "Orta",
+  "soru": "4 ve 6 sayılarının sıfırdan büyük en küçük ortak katı kaçtır?",
+  "secenekler": [
+   "12",
+   "16",
+   "2",
+   "24"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 379,
+  "konu": "Ortak Katlar",
+  "zorluk": "Orta",
+  "soru": "6 ve 8 sayılarının sıfırdan büyük en küçük ortak katı kaçtır?",
+  "secenekler": [
+   "48",
+   "2",
+   "24",
+   "12"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 380,
+  "konu": "Ortak Katlar",
+  "zorluk": "Orta",
+  "soru": "6 ve 9 sayılarının sıfırdan büyük en küçük ortak katı kaçtır?",
+  "secenekler": [
+   "3",
+   "54",
+   "24",
+   "18"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 381,
+  "konu": "Ortak Katlar",
+  "zorluk": "Orta",
+  "soru": "8 ve 12 sayılarının sıfırdan büyük en küçük ortak katı kaçtır?",
+  "secenekler": [
+   "32",
+   "96",
+   "24",
+   "4"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 382,
+  "konu": "Ortak Katlar",
+  "zorluk": "Orta",
+  "soru": "10 ve 15 sayılarının sıfırdan büyük en küçük ortak katı kaçtır?",
+  "secenekler": [
+   "150",
+   "40",
+   "30",
+   "5"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 383,
+  "konu": "Ortak Katlar",
+  "zorluk": "Orta",
+  "soru": "9 ve 12 sayılarının sıfırdan büyük en küçük ortak katı kaçtır?",
+  "secenekler": [
+   "18",
+   "36",
+   "108",
+   "3"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 384,
+  "konu": "Ortak Katlar",
+  "zorluk": "Orta",
+  "soru": "12 ve 18 sayılarının sıfırdan büyük en küçük ortak katı kaçtır?",
+  "secenekler": [
+   "6",
+   "36",
+   "216",
+   "48"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 385,
+  "konu": "Ortak Katlar",
+  "zorluk": "Orta",
+  "soru": "5 ve 7 sayılarının sıfırdan büyük en küçük ortak katı kaçtır?",
+  "secenekler": [
+   "35",
+   "70",
+   "1",
+   "17"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 386,
+  "konu": "Ortak Katlar",
+  "zorluk": "Orta",
+  "soru": "4 ve 10 sayılarının sıfırdan büyük en küçük ortak katı kaçtır?",
+  "secenekler": [
+   "2",
+   "40",
+   "24",
+   "20"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 387,
+  "konu": "Ortak Katlar",
+  "zorluk": "Orta",
+  "soru": "15 ve 20 sayılarının sıfırdan büyük en küçük ortak katı kaçtır?",
+  "secenekler": [
+   "300",
+   "60",
+   "5",
+   "30"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 388,
+  "konu": "Ortak Katlar",
+  "zorluk": "Orta",
+  "soru": "12 ve 16 sayılarının sıfırdan büyük en küçük ortak katı kaçtır?",
+  "secenekler": [
+   "192",
+   "4",
+   "48",
+   "24"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 389,
+  "konu": "Ortak Katlar",
+  "zorluk": "Orta",
+  "soru": "8 ve 10 sayılarının sıfırdan büyük en küçük ortak katı kaçtır?",
+  "secenekler": [
+   "2",
+   "40",
+   "20",
+   "80"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 390,
+  "konu": "Ortak Katlar",
+  "zorluk": "Orta",
+  "soru": "14 ve 21 sayılarının sıfırdan büyük en küçük ortak katı kaçtır?",
+  "secenekler": [
+   "42",
+   "7",
+   "56",
+   "294"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 391,
+  "konu": "Ortak Katlar",
+  "zorluk": "Orta",
+  "soru": "6 ve 15 sayılarının sıfırdan büyük en küçük ortak katı kaçtır?",
+  "secenekler": [
+   "3",
+   "30",
+   "90",
+   "36"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 392,
+  "konu": "Ortak Katlar",
+  "zorluk": "Orta",
+  "soru": "20 ve 30 sayılarının sıfırdan büyük en küçük ortak katı kaçtır?",
+  "secenekler": [
+   "60",
+   "80",
+   "600",
+   "10"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 393,
+  "konu": "Ortak Katlar",
+  "zorluk": "Orta",
+  "soru": "1 ile 50 arasında hem 4 sayısının hem de 6 sayısının katı olan kaç sayı vardır?",
+  "secenekler": [
+   "3",
+   "4",
+   "5",
+   "6"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 394,
+  "konu": "Ortak Katlar",
+  "zorluk": "Orta",
+  "soru": "1 ile 100 arasında hem 6 sayısının hem de 8 sayısının katı olan kaç sayı vardır?",
+  "secenekler": [
+   "4",
+   "3",
+   "6",
+   "5"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 395,
+  "konu": "Ortak Katlar",
+  "zorluk": "Orta",
+  "soru": "20 ile 80 arasında hem 3 sayısının hem de 5 sayısının katı olan kaç sayı vardır?",
+  "secenekler": [
+   "5",
+   "3",
+   "6",
+   "4"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 396,
+  "konu": "Ortak Katlar",
+  "zorluk": "Orta",
+  "soru": "10 ile 90 arasında hem 4 sayısının hem de 10 sayısının katı olan kaç sayı vardır?",
+  "secenekler": [
+   "4",
+   "5",
+   "6",
+   "3"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 397,
+  "konu": "Ortak Katlar",
+  "zorluk": "Orta",
+  "soru": "10 ile 100 arasında hem 6 sayısının hem de 9 sayısının katı olan kaç sayı vardır?",
+  "secenekler": [
+   "4",
+   "5",
+   "6",
+   "7"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 398,
+  "konu": "Ortak Katlar",
+  "zorluk": "Orta",
+  "soru": "1 ile 100 arasında hem 8 sayısının hem de 12 sayısının katı olan kaç sayı vardır?",
+  "secenekler": [
+   "3",
+   "6",
+   "4",
+   "5"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 399,
+  "konu": "Ortak Katlar",
+  "zorluk": "Zor",
+  "soru": "Bir parkta bulunan iki lambadan biri 6 dakikada bir, diğeri 8 dakikada bir yanmaktadır. İki lamba birlikte yandıktan en az kaç dakika sonra tekrar birlikte yanar?",
+  "secenekler": [
+   "2 dk",
+   "24 dk",
+   "14 dk",
+   "48 dk"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 400,
+  "konu": "Ortak Katlar",
+  "zorluk": "Zor",
+  "soru": "Bir parkta bulunan iki lambadan biri 10 dakikada bir, diğeri 15 dakikada bir yanmaktadır. İki lamba birlikte yandıktan en az kaç dakika sonra tekrar birlikte yanar?",
+  "secenekler": [
+   "25 dk",
+   "150 dk",
+   "30 dk",
+   "5 dk"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 401,
+  "konu": "Ortak Katlar",
+  "zorluk": "Zor",
+  "soru": "Bir parkta bulunan iki lambadan biri 12 dakikada bir, diğeri 18 dakikada bir yanmaktadır. İki lamba birlikte yandıktan en az kaç dakika sonra tekrar birlikte yanar?",
+  "secenekler": [
+   "36 dk",
+   "216 dk",
+   "6 dk",
+   "30 dk"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 402,
+  "konu": "Ortak Katlar",
+  "zorluk": "Zor",
+  "soru": "Bir parkta bulunan iki lambadan biri 15 dakikada bir, diğeri 20 dakikada bir yanmaktadır. İki lamba birlikte yandıktan en az kaç dakika sonra tekrar birlikte yanar?",
+  "secenekler": [
+   "300 dk",
+   "35 dk",
+   "60 dk",
+   "5 dk"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 403,
+  "konu": "Ortak Katlar",
+  "zorluk": "Zor",
+  "soru": "Bir parkta bulunan iki lambadan biri 9 dakikada bir, diğeri 12 dakikada bir yanmaktadır. İki lamba birlikte yandıktan en az kaç dakika sonra tekrar birlikte yanar?",
+  "secenekler": [
+   "3 dk",
+   "36 dk",
+   "108 dk",
+   "21 dk"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 404,
+  "konu": "Ortak Katlar",
+  "zorluk": "Zor",
+  "soru": "Bir parkta bulunan iki lambadan biri 20 dakikada bir, diğeri 30 dakikada bir yanmaktadır. İki lamba birlikte yandıktan en az kaç dakika sonra tekrar birlikte yanar?",
+  "secenekler": [
+   "60 dk",
+   "10 dk",
+   "50 dk",
+   "600 dk"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 405,
+  "konu": "Ortak Katlar",
+  "zorluk": "Zor",
+  "soru": "Bir duraktan A otobüsü 15 dakikada bir, B otobüsü 20 dakikada bir kalkmaktadır. Saat 08.00'de birlikte kalkan iki otobüs, en erken saat kaçta tekrar birlikte kalkar?",
+  "secenekler": [
+   "09.00",
+   "08.35",
+   "13.00",
+   "08.30"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 406,
+  "konu": "Ortak Katlar",
+  "zorluk": "Zor",
+  "soru": "Bir duraktan A otobüsü 12 dakikada bir, B otobüsü 18 dakikada bir kalkmaktadır. Saat 09.00'da birlikte kalkan iki otobüs, en erken saat kaçta tekrar birlikte kalkar?",
+  "secenekler": [
+   "09.30",
+   "09.48",
+   "12.36",
+   "09.36"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 407,
+  "konu": "Ortak Katlar",
+  "zorluk": "Zor",
+  "soru": "Bir duraktan A otobüsü 20 dakikada bir, B otobüsü 30 dakikada bir kalkmaktadır. Saat 07.00'de birlikte kalkan iki otobüs, en erken saat kaçta tekrar birlikte kalkar?",
+  "secenekler": [
+   "08.20",
+   "07.50",
+   "12.00",
+   "08.00"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 408,
+  "konu": "Ortak Katlar",
+  "zorluk": "Zor",
+  "soru": "Bir duraktan A otobüsü 10 dakikada bir, B otobüsü 25 dakikada bir kalkmaktadır. Saat 08.00'de birlikte kalkan iki otobüs, en erken saat kaçta tekrar birlikte kalkar?",
+  "secenekler": [
+   "08.50",
+   "09.00",
+   "08.35",
+   "12.10"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 409,
+  "konu": "Ortak Katlar",
+  "zorluk": "Zor",
+  "soru": "Bir duraktan A otobüsü 24 dakikada bir, B otobüsü 36 dakikada bir kalkmaktadır. Saat 10.00'da birlikte kalkan iki otobüs, en erken saat kaçta tekrar birlikte kalkar?",
+  "secenekler": [
+   "11.36",
+   "15.00",
+   "11.00",
+   "11.12"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 410,
+  "konu": "Ortak Katlar",
+  "zorluk": "Zor",
+  "soru": "Kenar uzunlukları 4 cm ve 6 cm olan dikdörtgen kartonlar, aynı yönde ve aralarında boşluk kalmadan yan yana dizilerek bir kare oluşturulacaktır. Oluşturulabilecek en küçük karenin bir kenarı kaç cm olur?",
+  "secenekler": [
+   "24 cm",
+   "10 cm",
+   "12 cm",
+   "4 cm"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 411,
+  "konu": "Ortak Katlar",
+  "zorluk": "Zor",
+  "soru": "Kenar uzunlukları 4 cm ve 6 cm olan dikdörtgen kartonlarla oluşturulabilecek en küçük kare için kaç karton gerekir?",
+  "secenekler": [
+   "8",
+   "12",
+   "6",
+   "5"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 412,
+  "konu": "Ortak Katlar",
+  "zorluk": "Zor",
+  "soru": "Kenar uzunlukları 6 cm ve 10 cm olan dikdörtgen kartonlar, aynı yönde ve aralarında boşluk kalmadan yan yana dizilerek bir kare oluşturulacaktır. Oluşturulabilecek en küçük karenin bir kenarı kaç cm olur?",
+  "secenekler": [
+   "4 cm",
+   "60 cm",
+   "30 cm",
+   "16 cm"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 413,
+  "konu": "Ortak Katlar",
+  "zorluk": "Zor",
+  "soru": "Kenar uzunlukları 6 cm ve 10 cm olan dikdörtgen kartonlarla oluşturulabilecek en küçük kare için kaç karton gerekir?",
+  "secenekler": [
+   "30",
+   "17",
+   "8",
+   "15"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 414,
+  "konu": "Ortak Katlar",
+  "zorluk": "Zor",
+  "soru": "Kenar uzunlukları 8 cm ve 12 cm olan dikdörtgen kartonlar, aynı yönde ve aralarında boşluk kalmadan yan yana dizilerek bir kare oluşturulacaktır. Oluşturulabilecek en küçük karenin bir kenarı kaç cm olur?",
+  "secenekler": [
+   "8 cm",
+   "96 cm",
+   "24 cm",
+   "20 cm"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 415,
+  "konu": "Ortak Katlar",
+  "zorluk": "Zor",
+  "soru": "Kenar uzunlukları 8 cm ve 12 cm olan dikdörtgen kartonlarla oluşturulabilecek en küçük kare için kaç karton gerekir?",
+  "secenekler": [
+   "6",
+   "12",
+   "5",
+   "8"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 416,
+  "konu": "Ortak Katlar",
+  "zorluk": "Zor",
+  "soru": "Kenar uzunlukları 9 cm ve 12 cm olan dikdörtgen kartonlar, aynı yönde ve aralarında boşluk kalmadan yan yana dizilerek bir kare oluşturulacaktır. Oluşturulabilecek en küçük karenin bir kenarı kaç cm olur?",
+  "secenekler": [
+   "108 cm",
+   "21 cm",
+   "36 cm",
+   "6 cm"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 417,
+  "konu": "Ortak Katlar",
+  "zorluk": "Zor",
+  "soru": "Kenar uzunlukları 9 cm ve 12 cm olan dikdörtgen kartonlarla oluşturulabilecek en küçük kare için kaç karton gerekir?",
+  "secenekler": [
+   "14",
+   "24",
+   "7",
+   "12"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 418,
+  "konu": "Ortak Katlar",
+  "zorluk": "Zor",
+  "soru": "Kenar uzunlukları 10 cm ve 15 cm olan dikdörtgen kartonlar, aynı yönde ve aralarında boşluk kalmadan yan yana dizilerek bir kare oluşturulacaktır. Oluşturulabilecek en küçük karenin bir kenarı kaç cm olur?",
+  "secenekler": [
+   "25 cm",
+   "30 cm",
+   "10 cm",
+   "150 cm"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 419,
+  "konu": "Ortak Katlar",
+  "zorluk": "Zor",
+  "soru": "Kenar uzunlukları 10 cm ve 15 cm olan dikdörtgen kartonlarla oluşturulabilecek en küçük kare için kaç karton gerekir?",
+  "secenekler": [
+   "6",
+   "8",
+   "5",
+   "12"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 420,
+  "konu": "Ortak Katlar",
+  "zorluk": "Zor",
+  "soru": "Bir sınıftaki öğrenciler 3'er 3'er sayıldığında da 4'er 4'er sayıldığında da her seferinde 2 öğrenci artıyor. Sınıfta 2'den fazla öğrenci olduğuna göre sınıfta en az kaç öğrenci vardır?",
+  "secenekler": [
+   "10",
+   "12",
+   "15",
+   "14"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 421,
+  "konu": "Ortak Katlar",
+  "zorluk": "Zor",
+  "soru": "Bir sınıftaki öğrenciler 4'er 4'er sayıldığında da 5'er 5'er sayıldığında da her seferinde 1 öğrenci artıyor. Sınıfta 1'den fazla öğrenci olduğuna göre sınıfta en az kaç öğrenci vardır?",
+  "secenekler": [
+   "19",
+   "22",
+   "20",
+   "21"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 422,
+  "konu": "Ortak Katlar",
+  "zorluk": "Zor",
+  "soru": "Bir sınıftaki öğrenciler 5'er 5'er sayıldığında da 6'şar 6'şar sayıldığında da her seferinde 3 öğrenci artıyor. Sınıfta 3'ten fazla öğrenci olduğuna göre sınıfta en az kaç öğrenci vardır?",
+  "secenekler": [
+   "30",
+   "33",
+   "34",
+   "27"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 423,
+  "konu": "Ortak Katlar",
+  "zorluk": "Zor",
+  "soru": "Bir sınıftaki öğrenciler 4'er 4'er sayıldığında da 6'şar 6'şar sayıldığında da her seferinde 1 öğrenci artıyor. Sınıfta 1'den fazla öğrenci olduğuna göre sınıfta en az kaç öğrenci vardır?",
+  "secenekler": [
+   "12",
+   "25",
+   "13",
+   "11"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 424,
+  "konu": "Ortak Katlar",
+  "zorluk": "Zor",
+  "soru": "Bir sınıftaki öğrenciler 6'şar 6'şar sayıldığında da 8'er 8'er sayıldığında da her seferinde 5 öğrenci artıyor. Sınıfta 5'ten fazla öğrenci olduğuna göre sınıfta en az kaç öğrenci vardır?",
+  "secenekler": [
+   "29",
+   "24",
+   "53",
+   "19"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 425,
+  "konu": "Ortak Katlar",
+  "zorluk": "Zor",
+  "soru": "Bir sınıftaki öğrenciler 3'er 3'er sayıldığında da 5'er 5'er sayıldığında da her seferinde 2 öğrenci artıyor. Sınıfta 2'den fazla öğrenci olduğuna göre sınıfta en az kaç öğrenci vardır?",
+  "secenekler": [
+   "13",
+   "17",
+   "15",
+   "18"
+  ],
+  "dogru": 1
+ }
+]
