@@ -50,9 +50,13 @@ table { border-collapse: collapse; width: 100%; min-width: 520px; font-size: .95
 th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
 th { font-size: .76rem; letter-spacing: .05em; text-transform: uppercase; color: var(--muted); }
 td:first-child { font-weight: 800; white-space: nowrap; }
-.projeler { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+.projeler { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+@media (max-width: 960px) { .projeler { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 520px) { .projeler { grid-template-columns: minmax(0, 1fr); } }
 .proje { border: 1px dashed var(--line); border-radius: 14px; padding: 12px 14px; display: grid; gap: 4px; align-content: start; }
 .proje p { margin: 0; font-size: .93rem; color: var(--muted); }
+.tr-kutu { background: var(--sheet); border: 2px solid var(--sun); border-radius: 18px; padding: 20px 22px; display: flex; gap: 16px; align-items: center; justify-content: space-between; flex-wrap: wrap; box-shadow: 0 5px 0 var(--sun-soft); }
+.tr-kutu > div { flex: 1 1 360px; min-width: 0; }
 .dersler { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; }
 .card { background: var(--sheet); border: 1px solid var(--line); border-radius: 16px; padding: 16px; display: grid; gap: 10px; align-content: start; }
 .card .ust { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
@@ -111,6 +115,15 @@ td:first-child { font-weight: 800; white-space: nowrap; }
         <div class="proje"><h3>Haftalık film ve şarkı</h3><p>Haftada bir kısa İngilizce çizgi film ya da şarkı izle. Duyduğun ünite kelimelerini not al.</p></div>
       </div>
     </div>
+  </section>
+
+  <section class="tr-kutu" aria-labelledby="tr-baslik">
+    <div>
+      <span class="label">Türkçe'yi sevdiren bölüm</span>
+      <h2 id="tr-baslik">Türkçe Macerası: Kelimo ile söz varlığı</h2>
+      <p class="lead" style="margin-top:6px">Konular kısa, renkli slaytlarla anlatılır ve sesli okunur. Her konudan sonra bir deneme sorusu, her bölüm sonunda 5 soruluk pratik var. Yanlış cevapta “neden yanlış” tek tek anlatılır; yanlışlar Hata Defteri'nde birikir, yıldız ve rozetlerle ilerleme görünür.</p>
+    </div>
+    <a class="btn primary" href="{{MACERA}}">Maceraya başla</a>
   </section>
 
   <section aria-labelledby="ders-baslik" style="display:grid;gap:14px">

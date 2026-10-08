@@ -469,6 +469,140 @@ tekrar(8, lambda: ekle(K_C, "Kolay", "Aşağıdakilerden hangisi bir <b>yansıma
 tekrar(6, lambda: ekle(K_C, "Kolay", "Aşağıdakilerden hangisi bir <b>yansıma</b> sözcüktür?",
                        rnd.choice(YANSIMA), rnd.sample(YANSIMA_DEGIL, 3)))
 
+# =====================================================================
+# AÇIKLAMALAR: her şık için "neden doğru / neden yanlış" (sorular değişmeden sonradan eklenir)
+# =====================================================================
+TUR_ACIKLAMA = {
+    "Gerçek anlam": "gerçek anlamında kullanılmış: sözcüğün akla gelen ilk, temel anlamı.",
+    "Mecaz anlam": "mecaz anlamda kullanılmış: gerçek anlamından tamamen uzaklaşmış. Kelimesi kelimesine düşünürsen gerçekte olamaz.",
+    "Terim anlam": "terim anlamlı: bir bilim, sanat ya da spor alanına özgü anlamda kullanılmış.",
+    "Yan anlam": "yan anlamda kullanılmış: gerçek anlamla benzerlik bağı korunarak yeni bir anlam kazanmış (masanın ayağı gibi).",
+}
+TUR_TANIM = {
+    "Gerçek anlam": "Gerçek anlam, sözcüğün akla gelen ilk anlamıdır (soğuk su).",
+    "Mecaz anlam": "Mecaz anlam, gerçek anlamdan tamamen uzaklaşan anlamdır (soğuk davranmak).",
+    "Terim anlam": "Terim anlam, bir bilim, sanat ya da meslek alanına özgü anlamdır (üçgenin açısı).",
+    "Yan anlam": "Yan anlam, gerçek anlamla benzerlik bağını koruyan yeni anlamdır (masanın ayağı).",
+}
+DUYU = {"masa": "gözle görülür, elle dokunulur", "kalem": "gözle görülür, elle dokunulur", "rüzgâr": "tenimizle hissedilir",
+        "ses": "kulakla duyulur", "koku": "burunla alınır", "su": "gözle görülür, tadılır", "ağaç": "gözle görülür",
+        "duman": "gözle görülür, kokusu alınır", "gölge": "gözle görülür", "ışık": "gözle görülür", "bulut": "gözle görülür",
+        "kitap": "gözle görülür, elle tutulur", "taş": "gözle görülür, elle tutulur", "hava": "tenimizle hissedilir, rüzgâr olarak duyulur"}
+PEKISTIRME_KOK = {"masmavi": "mavi", "bembeyaz": "beyaz", "kıpkırmızı": "kırmızı", "yemyeşil": "yeşil", "simsiyah": "siyah",
+                  "tertemiz": "temiz", "sapasağlam": "sağlam", "upuzun": "uzun", "dosdoğru": "doğru", "paramparça": "parça",
+                  "yepyeni": "yeni", "kupkuru": "kuru", "sımsıkı": "sıkı", "büsbütün": "bütün", "çırılçıplak": "çıplak", "sapsarı": "sarı"}
+YANSIMA_SES = {"şırıltı": "akan suyun", "hışırtı": "yaprakların", "gümbürtü": "gök gürlemesinin ya da davulun", "miyav": "kedinin",
+               "horultu": "uyuyan birinin", "çatırtı": "kırılan dalın", "vızıltı": "arının ya da sineğin", "tıkırtı": "hafifçe vurulan bir şeyin",
+               "cıvıltı": "kuşların", "fısıltı": "alçak sesle konuşmanın", "şakırtı": "yağmurun ya da zincirin", "gıcırtı": "kapı menteşesinin"}
+IKILEME_BUL = ["yavaş yavaş", "irili ufaklı", "Sabah sabah", "Düşüne düşüne", "eski püskü", "yorgun argın", "birer birer",
+               "çeşit çeşit", "ufak tefek", "er geç", "çoluk çocuk", "bol bol", "şıpır şıpır", "koşa koşa"]
+ZIT_BUL = [("Az", "çok"), ("Gece", "gündüz"), ("Yaşlı", "genç"), ("Sevinçli", "kederli"), ("erken", "geç"), ("İyi", "kötü"),
+           ("Kolay", "zor"), ("Eski", "yeni"), ("Uzun", "kısa"), ("Dar", "geniş")]
+ILISKI_TANIM = {
+    "Eş anlamlılık": "Eş anlamlı sözcüklerin yazılışı farklı, anlamı aynıdır (siyah – kara).",
+    "Zıt anlamlılık": "Zıt anlamlı sözcükler birbirinin karşıtını anlatır (büyük – küçük).",
+    "Genel-özel ilişkisi": "Genel-özel ilişkisinde özel olan, genelin bir türüdür (meyve – elma).",
+    "Parça-bütün ilişkisi": "Parça-bütün ilişkisinde biri diğerinin bir parçasıdır (sayfa – kitap).",
+    "Neden-sonuç ilişkisi": "Neden-sonuç ilişkisinde biri diğerinin oluşmasına yol açar (yağmur – sel).",
+    "Eş seslilik (sesteşlik)": "Eş sesli sözcüklerin yazılışı aynı, anlamları birbirinden tamamen farklıdır (yüz: sayı / surat).",
+}
+
+sozluk = {}  # şık metni -> açıklama (bağlamdan bağımsız olanlar)
+for tur, cumleler in ANLAM_TURU.items():
+    for c in cumleler:
+        sozluk[c] = f"Bu cümlede “{kok(c)}” {TUR_ACIKLAMA[tur]}"
+for w, d in DUYU.items():
+    sozluk[w] = f"“{w}” somut bir addır: {d}."
+for w in SOYUT:
+    sozluk[w] = f"“{w}” soyut bir addır: beş duyudan hiçbiriyle algılanamaz, onu ancak hissederiz ya da zihnimizde düşünürüz."
+for kelime, anlamlar in COK_ANLAMLI.items():
+    for anlam, cumle in anlamlar:
+        sozluk[cumle] = f"Bu cümlede “{kelime}” sözcüğü “{anlam}” anlamında kullanılmış."
+for iliski, ciftler in ILISKI.items():
+    for c in ciftler:
+        sozluk[cift_yaz(c)] = f"“{cift_yaz(c)}”: {ILISKI_TANIM[iliski]}"
+for kelime, anlamlar in ES_SESLI.items():
+    for anlam, cumleler in anlamlar.items():
+        for c in cumleler:
+            sozluk[c] = f"Bu cümlede “{kelime}” sözcüğü “{anlam}” anlamında kullanılmış."
+for deyim, anlam, cumle, _ in DEYIMLER:
+    sozluk[deyim] = f"“{deyim}” deyiminin anlamı: {anlam}."
+    sozluk[anlam] = f"Bu anlam “{deyim}” deyimine aittir."
+    sozluk[cumle] = f"Bu cümlede “{deyim}” deyimi var ({anlam})."
+for soz, anlam, _ in ATASOZLERI:
+    sozluk[soz] = f"“{soz}” bir atasözüdür. Anlamı: {anlam}"
+    sozluk[anlam] = f"Bu, “{soz}” atasözünün anlamıdır."
+for c in ZIT_CUMLE:
+    cift = next(((a, b) for a, b in ZIT_BUL if a in c and b in c), None)
+    sozluk[c] = f"Bu cümlede “{cift[0].lower()}” ile “{cift[1]}” zıt anlamlıdır." if cift else "Bu cümlede zıt anlamlı sözcükler var."
+for c, ik in zip(IKILEME_CUMLE, IKILEME_BUL):
+    sozluk[c] = f"Bu cümlede “{ik.lower()}” ikilemesi var: sözcükler anlamı güçlendirmek için ikili kullanılmış."
+for c in PEKISTIRME_CUMLE:
+    w = next(w for w in PEKISTIRME if w in c)
+    sozluk[c] = f"Bu cümlede “{w}” pekiştirmeli bir sözcüktür: “{PEKISTIRME_KOK[w]}” sözcüğünün anlamı güçlendirilmiş."
+for w, k in PEKISTIRME_KOK.items():
+    sozluk[w] = f"“{w}” pekiştirmelidir: “{k}” sözcüğünün başına bir hece eklenerek anlamı güçlendirilmiş."
+for w in PEKISTIRMESIZ:
+    sozluk[w] = f"“{w}” pekiştirmeli değildir: başına anlamı güçlendiren bir hece (mas-, bem-, ter- gibi) almamış."
+for w, k in YANSIMA_SES.items():
+    sozluk[w] = f"“{w}” yansıma sözcüktür: {k} sesini taklit eder."
+for w in YANSIMA_DEGIL:
+    sozluk[w] = f"“{w}” yansıma değildir: bir sesi taklit etmez, bir varlığın ya da olayın adıdır."
+for etiket, tanim in TUR_TANIM.items():
+    sozluk[etiket] = tanim
+for etiket, tanim in ILISKI_TANIM.items():
+    sozluk[etiket] = tanim
+
+
+def kelime_aciklama(w):
+    parca = []
+    if w in es_es:
+        parca.append(f"eş anlamlısı “{es_es[w]}”")
+    if w in zit_es:
+        parca.append(f"zıt anlamlısı “{zit_es[w]}”")
+    return f"“{w}” sözcüğünün {' ve '.join(parca)}." if parca else None
+
+
+for s in havuz:
+    soru = s["soru"]
+    sa = {}
+    for sec in s["secenekler"]:
+        if "eş anlamlısı aşağıdakilerden" in soru or "zıt anlamlısı aşağıdakilerden" in soru:
+            sa[sec] = kelime_aciklama(sec)
+        elif sec in DUZ_CUMLE:
+            if "ikileme" in soru:
+                sa[sec] = "Bu cümlede ikileme yok: hiçbir sözcük ikili kullanılmamış."
+            elif "pekiştirmeli" in soru:
+                sa[sec] = "Bu cümlede pekiştirmeli sözcük yok."
+            elif "zıt anlamlı" in soru:
+                sa[sec] = "Bu cümlede zıt anlamlı sözcük çifti yok."
+            elif "deyim" in soru:
+                sa[sec] = "Bu cümlede deyim yok: sözcükler gerçek anlamlarıyla kullanılmış."
+        elif sec in sozluk:
+            sa[sec] = sozluk[sec]
+        elif "<u>" in sec and kok(sec) in sozluk:
+            sa[sec] = sozluk[kok(sec)]
+    sa = {k: v for k, v in sa.items() if v}
+    # Anlam sorularında doğru şıkkın açıklaması kendini tekrar etmesin: örnek cümle ya da öğüt verilir.
+    for deyim, anlam, cumle, _ in DEYIMLER:
+        if soru.startswith(f"“{deyim}” deyiminin anlamı") or soru.startswith(f"“{anlam}” anlamına gelen deyim"):
+            dogru_sec = s["secenekler"][s["dogru"]]
+            sa[dogru_sec] = f"“{deyim}” deyimi “{anlam}” anlamına gelir. Örnek: {cumle}"
+    for soz, anlam, _ in ATASOZLERI:
+        if soru.startswith(f"“{soz}” atasözünün anlamı") or soru.startswith(f"“{anlam}” düşüncesini anlatan"):
+            dogru_sec = s["secenekler"][s["dogru"]]
+            sa[dogru_sec] = f"“{soz}” atasözü bize şunu anlatır: {anlam}"
+    if "cümlesinde altı çizili sözcük hangi anlamda" in soru:
+        s["aciklama"] = sozluk[soru.split("“", 1)[1].rsplit("”", 1)[0]]
+    elif soru.startswith("I. "):
+        s["aciklama"] = ("I. cümlede sözcük gerçek anlamında (ilk, temel anlamı); II. cümlede ise "
+                         "gerçek anlamından uzaklaşıp mecaz anlam kazanmış.")
+    elif "Atasözleri ile deyimler arasındaki fark" in soru:
+        s["aciklama"] = ("Atasözü öğüt veren, kalıplaşmış bir cümledir (Damlaya damlaya göl olur.). "
+                         "Deyim ise bir durumu kısa ve etkili anlatır, çoğu -mak/-mek ile biter (göz atmak).")
+    if sa:
+        s["secenekAciklama"] = sa
+
 for i, s in enumerate(havuz, start=1):
     s["id"] = i
 (BURA / "soru_havuzu.json").write_text(json.dumps(havuz, ensure_ascii=False, indent=1), encoding="utf-8")
@@ -482,3 +616,11 @@ sayfa_yaz(havuz, KOK / "SozVarligiSoruUretici.html", "Söz Varlığı", "Söz Va
 print(len(havuz), "soru")
 for (k, z), n in sorted(Counter((s["konu"], s["zorluk"]) for s in havuz).items()):
     print(f"  {k:34} {z:6} {n}")
+
+# Türkçe Macerası: etkileşimli ders sunumu + havuzdan açıklamalı pratik
+macera = (BURA / "macera_sablonu.html").read_text(encoding="utf-8").replace(
+    "/*HAVUZ*/", json.dumps(havuz, ensure_ascii=False).replace("</", "<\\/"))
+(KOK / "TurkceMacerasi.html").write_text('<!doctype html>\n<html lang="tr">\n' + macera + "</html>\n", encoding="utf-8")
+if len(sys.argv) > 2:
+    Path(sys.argv[2]).write_text(macera.replace('<meta charset="utf-8">\n', "").replace(
+        '<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n', ""), encoding="utf-8")

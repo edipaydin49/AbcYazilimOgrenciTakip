@@ -113,6 +113,126 @@ H.liste(DEGER, "Orta", [
     ("Sınavda kopya çekmemek hangi değere örnektir?", "Dürüstlük", ["Cimrilik", "Kıskançlık", "Tembellik"]),
 ])
 
+# ---------------- EK SORULAR (2. sürüm) ----------------
+PEYGAMBER_KISSA = [
+    ("Hz. Nuh", "Büyük tufan sırasında inananlarla birlikte gemiye binen peygamber"),
+    ("Hz. İbrahim", "Kâbe'yi oğlu Hz. İsmail ile birlikte inşa eden peygamber"),
+    ("Hz. Musa", "Firavun'a karşı mücadele eden ve İsrailoğullarını Mısır'dan çıkaran peygamber"),
+    ("Hz. Yusuf", "Kardeşleri tarafından kuyuya atılan, sonra Mısır'da yönetici olan peygamber"),
+    ("Hz. Yunus", "Balığın karnında kalıp Allah'a dua eden peygamber"),
+    ("Hz. Eyyüp", "Hastalıklar karşısında gösterdiği sabırla örnek olan peygamber"),
+    ("Hz. Süleyman", "Hayvanların dilinden anlamasıyla bilinen peygamber"),
+    ("Hz. İsa", "Babasız dünyaya gelen peygamber"),
+]
+for ad, tarif in PEYGAMBER_KISSA:
+    H.ekle(IMAN, "Orta", f"{tarif} kimdir?", ad, [a for a, _ in PEYGAMBER_KISSA if a != ad][:7:2])
+H.liste(IMAN, "Kolay", [
+    ("İman esasları kaç tanedir?", "6", ["4", "5", "8"]),
+    ("Aşağıdakilerden hangisi iman esaslarından biridir?", "Peygamberlere iman", ["Namaz kılmak", "Oruç tutmak", "Zekât vermek"]),
+    ("Kur'an-ı Kerim kaç sureden oluşur?", "114", ["99", "120", "6236"]),
+    ("Kur'an-ı Kerim'in ilk suresi hangisidir?", "Fatiha", ["Bakara", "Nas", "İhlas"]),
+    ("Kur'an-ı Kerim'in son suresi hangisidir?", "Nas", ["Fatiha", "Felak", "Bakara"]),
+    ("Kur'an-ı Kerim'in en uzun suresi hangisidir?", "Bakara", ["Fatiha", "Yasin", "Kevser"]),
+    ("Kur'an-ı Kerim hangi dilde indirilmiştir?", "Arapça", ["Farsça", "İbranice", "Süryanice"]),
+    ("Kur'an-ı Kerim'i ezberleyen kişiye ne ad verilir?", "Hafız", ["İmam", "Müezzin", "Kadı"]),
+])
+H.liste(IMAN, "Orta", [
+    ("Peygamberlerin, Allah'ın izniyle gösterdikleri olağanüstü olaylara ne ad verilir?", "Mucize", ["Keramet", "Vahiy", "Kıssa"]),
+    ("Hz. Muhammed'in en büyük mucizesi hangisidir?", "Kur'an-ı Kerim", ["Hicret", "Miraç", "Ayın ikiye bölünmesi"]),
+    ("Kur'an-ı Kerim'in indirilmeye başlandığı geceye ne ad verilir?", "Kadir Gecesi", ["Miraç Kandili", "Regaib Kandili", "Berat Kandili"]),
+    ("Kur'an-ı Kerim yaklaşık kaç yılda indirilmiştir?", "23 yılda", ["5 yılda", "40 yılda", "1 yılda"]),
+    ("Kur'an-ı Kerim hangi halife döneminde kitap hâline getirilmiştir?", "Hz. Ebubekir", ["Hz. Osman", "Hz. Ali", "Hz. Ömer"]),
+    ("Kur'an-ı Kerim hangi halife döneminde çoğaltılarak farklı şehirlere gönderilmiştir?", "Hz. Osman", ["Hz. Ebubekir", "Hz. Ali", "Hz. Ömer"]),
+    ("Kitap hâline getirilmiş Kur'an-ı Kerim'e ne ad verilir?", "Mushaf", ["Suhuf", "Tefsir", "Meal"]),
+    ("Kur'an-ı Kerim'in başka bir dile çevrilmiş anlamına ne ad verilir?", "Meal", ["Tefsir", "Hadis", "Siyer"]),
+])
+H.liste(IMAN, "Zor", [
+    ("Ülü'l-azm (azim sahibi) peygamberler arasında hangisi yer almaz?", "Hz. Yusuf", ["Hz. Nuh", "Hz. İbrahim", "Hz. Musa"]),
+    ("Kur'an-ı Kerim'in ayetlerini açıklayan bilime ne ad verilir?", "Tefsir", ["Siyer", "Fıkıh", "Meal"]),
+])
+H.liste(NAMAZ, "Kolay", [
+    ("Ezan okuyan görevliye ne ad verilir?", "Müezzin", ["İmam", "Hatip", "Vaiz"]),
+    ("Cemaate namaz kıldıran görevliye ne ad verilir?", "İmam", ["Müezzin", "Kayyum", "Hafız"]),
+    ("Camide imamın namaz kıldırırken durduğu yere ne ad verilir?", "Mihrap", ["Minber", "Minare", "Kürsü"]),
+    ("Cuma ve bayram hutbelerinin okunduğu basamaklı yere ne ad verilir?", "Minber", ["Mihrap", "Kürsü", "Şadırvan"]),
+    ("Ezanın okunduğu, caminin yüksek kulesine ne ad verilir?", "Minare", ["Kubbe", "Mihrap", "Minber"]),
+    ("Beş vakit namazın doğru sıralaması hangisidir?", "Sabah – öğle – ikindi – akşam – yatsı", ["Sabah – ikindi – öğle – yatsı – akşam", "Öğle – sabah – akşam – ikindi – yatsı", "Yatsı – akşam – ikindi – öğle – sabah"]),
+    ("Ramazan ayında yatsı namazından sonra kılınan namaz hangisidir?", "Teravih namazı", ["Cuma namazı", "Bayram namazı", "Cenaze namazı"]),
+])
+H.liste(NAMAZ, "Orta", [
+    ("Sabah namazı kaç rekâttır?", "2 rekât sünnet, 2 rekât farz", ["4 rekât sünnet, 4 rekât farz", "3 rekât farz, 2 rekât sünnet", "2 rekât farz"]),
+    ("Akşam namazının farzı kaç rekâttır?", "3", ["2", "4", "5"]),
+    ("İkindi namazı kaç rekâttır?", "4 rekât sünnet, 4 rekât farz", ["2 rekât sünnet, 2 rekât farz", "3 rekât farz, 2 rekât sünnet", "4 rekât farz, 2 rekât sünnet"]),
+    ("Yatsı namazından sonra kılınan 3 rekâtlık vacip namaz hangisidir?", "Vitir namazı", ["Teravih namazı", "Kuşluk namazı", "Teheccüd namazı"]),
+    ("Farz namazlardan hemen önce okunan, namazın başladığını bildiren söze ne ad verilir?", "Kamet", ["Ezan", "Tekbir", "Salavat"]),
+    ("Su bulunamadığında ya da kullanılamadığında temiz toprakla alınan abdeste ne ad verilir?", "Teyemmüm", ["Gusül", "Mesh", "Kaza"]),
+    ("Vaktinde kılınamayan farz namazın daha sonra kılınmasına ne ad verilir?", "Kaza namazı", ["Teravih", "Vitir", "Nafile"]),
+    ("Cenaze namazının diğer namazlardan farkı nedir?", "Ayakta kılınır, rükû ve secdesi yoktur.", ["Yalnızca oturarak kılınır.", "Sadece secdeden oluşur.", "Günde beş kez kılınır."]),
+    ("Bayram namazları ne zaman kılınır?", "Ramazan ve Kurban Bayramı'nın ilk günü sabah", ["Her cuma öğle vakti", "Her gece yatsıdan sonra", "Ramazan'ın her gecesi"]),
+])
+H.liste(NAMAZ, "Zor", [
+    ("Namazın insana kazandırdıkları arasında hangisi yer almaz?", "Tembellik", ["Düzen ve disiplin", "Temizlik alışkanlığı", "Allah'ı anma"]),
+    ("Cuma namazının kılınma vakti hangisidir?", "Öğle namazı vakti", ["Sabah namazı vakti", "Akşam namazı vakti", "Yatsı namazı vakti"]),
+])
+H.liste(ZARARLI, "Kolay", [
+    ("Sigara içilen ortamda bulunup dumanı solumak zorunda kalan kişiye ne ad verilir?", "Pasif içici", ["Aktif sporcu", "Bağımlı", "Gönüllü"]),
+    ("Bağımlılıkla mücadele eden ve 1920'de kurulan kuruluşumuz hangisidir?", "Yeşilay", ["Kızılay", "AFAD", "TEMA"]),
+    ("Aşağıdakilerden hangisi sağlıklı bir alışkanlıktır?", "Düzenli spor yapmak", ["Geç saate kadar ekrana bakmak", "Sigara içmek", "Sürekli abur cubur yemek"]),
+    ("Kişinin bırakmakta zorlandığı, kendisine zarar veren alışkanlığa ne ad verilir?", "Bağımlılık", ["Hobi", "Yetenek", "Erdem"]),
+])
+H.liste(ZARARLI, "Orta", [
+    ("Sigarayı bırakmak isteyenlerin arayabileceği danışma hattı hangisidir?", "ALO 171", ["112", "155", "110"]),
+    ("Uzun süre ekran başında kalmanın zararlarından biri hangisidir?", "Göz yorgunluğu ve duruş bozukluğu", ["Kasların güçlenmesi", "Uykunun düzelmesi", "Görmenin artması"]),
+    ("Arkadaşı sigara teklif eden bir öğrencinin yapması gereken en doğru davranış hangisidir?", "Kararlı bir şekilde “hayır” demek", ["Bir kez denemek", "Arkadaşı kırılmasın diye kabul etmek", "Gizlice denemek"]),
+    ("Peygamberimizin “Zarar vermek de zarara zararla karşılık vermek de yoktur.” sözü neyi öğütler?", "Kendimize ve başkalarına zarar vermemeyi", ["Zararlı alışkanlıkları denemeyi", "İntikam almayı", "Kuralları çiğnemeyi"]),
+    ("Alkollü içkiler insanın en çok hangi yönüne zarar verir?", "Aklına ve sağlığına", ["Boyuna", "Saçlarına", "Ayakkabısına"]),
+])
+H.liste(ZARARLI, "Zor", [
+    ("Dinimizin korunmasını istediği beş temel değer hangisinde doğru verilmiştir?", "Can, akıl, nesil, mal, din", ["Para, ün, makam, güç, şöhret", "Ev, araba, telefon, giysi, oyuncak", "Spor, müzik, sinema, tiyatro, resim"]),
+    ("Dijital bağımlılıktan korunmak için hangisi etkili bir yöntemdir?", "Günlük ekran süresi belirleyip açık hava etkinlikleri yapmak", ["Telefonu yatağa götürmek", "Yemekte sürekli tablet kullanmak", "Ödevleri ertelemek"]),
+])
+H.liste(HZ, "Kolay", [
+    ("Hz. Muhammed'in doğduğu yıl yaşanan ve bu yıla adını veren olay hangisidir?", "Fil Olayı", ["Hicret", "Bedir Savaşı", "Mekke'nin fethi"]),
+    ("Hicret sırasında Hz. Muhammed'in yol arkadaşı kimdir?", "Hz. Ebubekir", ["Hz. Ömer", "Hz. Osman", "Hz. Hamza"]),
+    ("Hicret yolculuğunda saklanılan mağara hangisidir?", "Sevr Mağarası", ["Hira Mağarası", "Uhud Dağı", "Kuba"]),
+    ("Hz. Muhammed'in vefat ettiği şehir hangisidir?", "Medine", ["Mekke", "Taif", "Kudüs"]),
+    ("Hz. Muhammed'in kızı Hz. Fatıma'nın oğulları kimlerdir?", "Hz. Hasan ve Hz. Hüseyin", ["Hz. Ali ve Hz. Ömer", "Hz. Osman ve Hz. Hamza", "Hz. Zeyd ve Hz. Bilal"]),
+    ("Hz. Muhammed'in sözlerine ne ad verilir?", "Hadis", ["Ayet", "Sure", "Tefsir"]),
+])
+H.liste(HZ, "Orta", [
+    ("Hz. Muhammed kaç yaşında Hz. Hatice ile evlenmiştir?", "25", ["15", "40", "53"]),
+    ("Hz. Muhammed kaç yaşında peygamber olmuştur?", "40", ["25", "30", "53"]),
+    ("Dedesinin vefatından sonra Hz. Muhammed'i yanına alan amcası kimdir?", "Ebu Talip", ["Hamza", "Abbas", "Ebu Leheb"]),
+    ("Gençliğinde Hz. Muhammed hangi işle uğraşmıştır?", "Ticaret", ["Demircilik", "Denizcilik", "Çiftçilik"]),
+    ("İlk Müslüman olan çocuk kimdir?", "Hz. Ali", ["Hz. Zeyd", "Hz. Hasan", "Hz. Osman"]),
+    ("Medine'ye gelen Mekkeli Müslümanlara ne ad verilir?", "Muhacir", ["Ensar", "Sahabe", "Tabiun"]),
+    ("Mekkeli Müslümanlara kucak açan Medineli Müslümanlara ne ad verilir?", "Ensar", ["Muhacir", "Kureyş", "Hanif"]),
+    ("Hicret sırasında Medine yakınlarında inşa edilen ilk mescit hangisidir?", "Kuba Mescidi", ["Mescid-i Nebevi", "Mescid-i Aksa", "Mescid-i Haram"]),
+    ("Hicri takvimin başlangıcı hangi olaydır?", "Hicret", ["Fil Olayı", "İlk vahiy", "Mekke'nin fethi"]),
+    ("Hz. Muhammed'in hayatını inceleyen bilime ne ad verilir?", "Siyer", ["Tefsir", "Fıkıh", "Kelam"]),
+])
+H.liste(HZ, "Zor", [
+    ("Hz. Muhammed'in Kâbe onarımı sırasında Hacerülesved'in yerine konmasıyla ilgili anlaşmazlığı çözmesi hangi özelliğini gösterir?", "Adaletli ve güvenilir olmasını", ["Zengin olmasını", "Güçlü bir savaşçı olmasını", "Çok seyahat etmesini"]),
+    ("Müslümanlarla Mekkeli müşrikler arasında 624 yılında yapılan ilk büyük savaş hangisidir?", "Bedir Savaşı", ["Uhud Savaşı", "Hendek Savaşı", "Huneyn Savaşı"]),
+    ("Medine'yi savunmak için şehrin çevresine hendek kazılan savaş hangisidir?", "Hendek Savaşı", ["Bedir Savaşı", "Uhud Savaşı", "Tebük Seferi"]),
+    ("628 yılında Mekkelilerle yapılan ve sonradan Mekke'nin fethine zemin hazırlayan antlaşma hangisidir?", "Hudeybiye Antlaşması", ["Medine Sözleşmesi", "Akabe Biatı", "Veda Hutbesi"]),
+    ("Mekke'nin fethinden sonra Hz. Muhammed'in Mekkelilere genel af ilan etmesi hangi değeri gösterir?", "Merhamet ve affedicilik", ["İntikam", "Kibir", "Cimrilik"]),
+])
+H.liste(DEGER, "Kolay", [
+    ("Başkasına ait bir hakkı çiğnemeye dinimizde ne ad verilir?", "Kul hakkı yemek", ["Sadaka vermek", "İkram etmek", "Selam vermek"]),
+    ("Alçakgönüllülüğe ne ad verilir?", "Tevazu", ["Kibir", "Haset", "Gıybet"]),
+    ("Kendini başkalarından üstün görmeye ne ad verilir?", "Kibir", ["Tevazu", "Sabır", "Şükür"]),
+    ("Bir kişinin arkasından, duyunca üzüleceği şekilde konuşmaya ne ad verilir?", "Gıybet", ["Nasihat", "Selam", "Dua"]),
+    ("Başkasının sahip olduğu nimetin ondan gitmesini istemeye ne ad verilir?", "Haset (kıskançlık)", ["Şükür", "Tevazu", "Sabır"]),
+])
+H.liste(DEGER, "Orta", [
+    ("Zenginlerin belirli bir mal miktarına sahip olduklarında yılda bir kez ihtiyaç sahiplerine verdiği ibadete ne ad verilir?", "Zekât", ["Fitre", "Kurban", "Hac"]),
+    ("Ramazan ayında, bayramdan önce ihtiyaç sahiplerine verilen yardıma ne ad verilir?", "Fitre (fıtır sadakası)", ["Zekât", "Kurban", "Vergi"]),
+    ("Kendisine bırakılan bir eşyayı koruyup sahibine eksiksiz geri vermek hangi değere örnektir?", "Emanete sadakat", ["İsraf", "Kıskançlık", "Kibir"]),
+    ("Sınavdan düşük not alan öğrencinin vazgeçmeden çalışmaya devam etmesi hangi değere örnektir?", "Sabır ve azim", ["Haset", "Kibir", "Tembellik"]),
+    ("Anne ve babaya iyi davranmak, onlara saygı göstermek dinimizde hangi kavramla anlatılır?", "Ana babaya iyilik", ["Kul hakkı", "Gıybet", "İsraf"]),
+])
+
 for i, s in enumerate(H.sorular, start=1):
     s["id"] = i
 (BURA / "soru_havuzu.json").write_text(json.dumps(H.sorular, ensure_ascii=False, indent=1), encoding="utf-8")

@@ -1766,5 +1766,1461 @@
    "Islak el aleti bozar ama tehlikesi yoktur."
   ],
   "dogru": 0
+ },
+ {
+  "id": 137,
+  "konu": "Güneş Sistemi ve Tutulmalar",
+  "zorluk": "Kolay",
+  "soru": "Güneş'e yakınlık sırasına göre Dünya kaçıncı gezegendir?",
+  "secenekler": [
+   "4.",
+   "3.",
+   "2.",
+   "1."
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 138,
+  "konu": "Güneş Sistemi ve Tutulmalar",
+  "zorluk": "Kolay",
+  "soru": "Güneş Sistemi'ndeki en küçük gezegen hangisidir?",
+  "secenekler": [
+   "Mars",
+   "Merkür",
+   "Neptün",
+   "Venüs"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 139,
+  "konu": "Güneş Sistemi ve Tutulmalar",
+  "zorluk": "Kolay",
+  "soru": "Gezegenlerin Güneş çevresinde izlediği yola ne ad verilir?",
+  "secenekler": [
+   "Yörünge",
+   "Ekvator",
+   "Atmosfer",
+   "Eksen"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 140,
+  "konu": "Güneş Sistemi ve Tutulmalar",
+  "zorluk": "Kolay",
+  "soru": "Dünya'nın kendi ekseni etrafında dönmesi sonucunda ne oluşur?",
+  "secenekler": [
+   "Mevsimler",
+   "Gece ve gündüz",
+   "Gelgit",
+   "Ay tutulması"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 141,
+  "konu": "Güneş Sistemi ve Tutulmalar",
+  "zorluk": "Kolay",
+  "soru": "Dünya, Güneş'in çevresindeki bir turunu yaklaşık ne kadar sürede tamamlar?",
+  "secenekler": [
+   "1 ayda",
+   "1 yılda",
+   "1 günde",
+   "1 haftada"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 142,
+  "konu": "Güneş Sistemi ve Tutulmalar",
+  "zorluk": "Kolay",
+  "soru": "Ay, Dünya'nın çevresindeki bir turunu yaklaşık ne kadar sürede tamamlar?",
+  "secenekler": [
+   "1 günde",
+   "1 haftada",
+   "1 ayda",
+   "1 yılda"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 143,
+  "konu": "Güneş Sistemi ve Tutulmalar",
+  "zorluk": "Kolay",
+  "soru": "Ay'ın parlak görünmesinin nedeni nedir?",
+  "secenekler": [
+   "Çok sıcak olması",
+   "Kendi ışığını üretmesi",
+   "Yıldız olması",
+   "Güneş'ten aldığı ışığı yansıtması"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 144,
+  "konu": "Güneş Sistemi ve Tutulmalar",
+  "zorluk": "Kolay",
+  "soru": "Gökyüzünde “kayan yıldız” olarak gördüğümüz, atmosferde sürtünmeyle yanan gök cismi hangisidir?",
+  "secenekler": [
+   "Meteor",
+   "Gezegen",
+   "Uydu",
+   "Yıldız"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 145,
+  "konu": "Güneş Sistemi ve Tutulmalar",
+  "zorluk": "Kolay",
+  "soru": "Haberleşme ve hava durumu tahmini için Dünya çevresine yerleştirilen araçlara ne ad verilir?",
+  "secenekler": [
+   "Meteor",
+   "Gezegen",
+   "Yapay uydu",
+   "Doğal uydu"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 146,
+  "konu": "Güneş Sistemi ve Tutulmalar",
+  "zorluk": "Kolay",
+  "soru": "Türkiye'nin ilk astronotu kimdir?",
+  "secenekler": [
+   "Aziz Sancar",
+   "Cahit Arf",
+   "Alper Gezeravcı",
+   "Hezarfen Ahmed Çelebi"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 147,
+  "konu": "Güneş Sistemi ve Tutulmalar",
+  "zorluk": "Orta",
+  "soru": "Mars'tan sonra Güneş'e en yakın gezegen hangisidir?",
+  "secenekler": [
+   "Dünya",
+   "Venüs",
+   "Satürn",
+   "Jüpiter"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 148,
+  "konu": "Güneş Sistemi ve Tutulmalar",
+  "zorluk": "Orta",
+  "soru": "Satürn'den sonra gelen gezegen hangisidir?",
+  "secenekler": [
+   "Mars",
+   "Jüpiter",
+   "Uranüs",
+   "Neptün"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 149,
+  "konu": "Güneş Sistemi ve Tutulmalar",
+  "zorluk": "Orta",
+  "soru": "Ekseni neredeyse yan yatmış biçimde dönen gezegen hangisidir?",
+  "secenekler": [
+   "Merkür",
+   "Uranüs",
+   "Venüs",
+   "Mars"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 150,
+  "konu": "Güneş Sistemi ve Tutulmalar",
+  "zorluk": "Orta",
+  "soru": "Üzerindeki dev fırtına “Büyük Kırmızı Leke” ile bilinen gezegen hangisidir?",
+  "secenekler": [
+   "Neptün",
+   "Jüpiter",
+   "Venüs",
+   "Mars"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 151,
+  "konu": "Güneş Sistemi ve Tutulmalar",
+  "zorluk": "Orta",
+  "soru": "Meteorun yeryüzüne ulaşan parçasına ne ad verilir?",
+  "secenekler": [
+   "Göktaşı (meteorit)",
+   "Kuyruklu yıldız",
+   "Uydu",
+   "Asteroit kuşağı"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 152,
+  "konu": "Güneş Sistemi ve Tutulmalar",
+  "zorluk": "Orta",
+  "soru": "Mevsimlerin oluşmasının temel nedeni hangisidir?",
+  "secenekler": [
+   "Dünya'nın kendi çevresinde dönmesi",
+   "Ay'ın Dünya çevresinde dolanması",
+   "Dünya'nın eksen eğikliği ve Güneş çevresinde dolanması",
+   "Güneş'in bazen sönmesi"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 153,
+  "konu": "Güneş Sistemi ve Tutulmalar",
+  "zorluk": "Orta",
+  "soru": "Güneş hangi maddelerden oluşur?",
+  "secenekler": [
+   "Kayalardan",
+   "Demirden",
+   "Sudan",
+   "Büyük ölçüde hidrojen ve helyum gazından"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 154,
+  "konu": "Güneş Sistemi ve Tutulmalar",
+  "zorluk": "Orta",
+  "soru": "Gezegenler Güneş'e yaklaştıkça yüzey sıcaklıkları genel olarak nasıl değişir?",
+  "secenekler": [
+   "Azalır.",
+   "Sıfır olur.",
+   "Artar.",
+   "Değişmez."
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 155,
+  "konu": "Güneş Sistemi ve Tutulmalar",
+  "zorluk": "Zor",
+  "soru": "Her dolunayda Ay tutulması olmamasının nedeni nedir?",
+  "secenekler": [
+   "Ay'ın yörüngesinin Dünya'nın yörüngesine göre eğik olması",
+   "Güneş'in bazen görünmemesi",
+   "Dünya'nın dönmemesi",
+   "Ay'ın kendi ışığının olması"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 156,
+  "konu": "Güneş Sistemi ve Tutulmalar",
+  "zorluk": "Zor",
+  "soru": "Tam Güneş tutulması sırasında gündüz ortalığın kararmasının nedeni nedir?",
+  "secenekler": [
+   "Güneş'in sönmesi",
+   "Bulutların artması",
+   "Ay'ın Güneş ışığını engellemesi",
+   "Dünya'nın Güneş'i engellemesi"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 157,
+  "konu": "Güneş Sistemi ve Tutulmalar",
+  "zorluk": "Zor",
+  "soru": "Güneş tutulmasını güvenle izlemek için ne kullanılmalıdır?",
+  "secenekler": [
+   "Çıplak göz",
+   "Dürbün",
+   "Özel güneş gözlüğü ya da filtre",
+   "Normal güneş gözlüğü"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 158,
+  "konu": "Güneş Sistemi ve Tutulmalar",
+  "zorluk": "Zor",
+  "soru": "Gece ile gündüzün art arda gelmesinin nedeni nedir?",
+  "secenekler": [
+   "Güneş'in Dünya çevresinde dönmesi",
+   "Ay'ın evreleri",
+   "Dünya'nın Güneş çevresinde dolanması",
+   "Dünya'nın kendi ekseni etrafında dönmesi"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 159,
+  "konu": "Vücudumuzdaki Sistemler",
+  "zorluk": "Kolay",
+  "soru": "Vücudumuzdaki en uzun kemik hangisidir?",
+  "secenekler": [
+   "Uyluk kemiği",
+   "Kafatası",
+   "Kaburga",
+   "Bilek kemiği"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 160,
+  "konu": "Vücudumuzdaki Sistemler",
+  "zorluk": "Kolay",
+  "soru": "Beyni koruyan kemik yapı hangisidir?",
+  "secenekler": [
+   "Omurga",
+   "Kafatası",
+   "Göğüs kafesi",
+   "Leğen kemiği"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 161,
+  "konu": "Vücudumuzdaki Sistemler",
+  "zorluk": "Kolay",
+  "soru": "Kalp ve akciğerleri koruyan yapı hangisidir?",
+  "secenekler": [
+   "Uyluk kemiği",
+   "Kafatası",
+   "Göğüs kafesi",
+   "Kürek kemiği"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 162,
+  "konu": "Vücudumuzdaki Sistemler",
+  "zorluk": "Kolay",
+  "soru": "Kemiklerin sağlıklı gelişmesi için en önemli mineral hangisidir?",
+  "secenekler": [
+   "Demir",
+   "Şeker",
+   "Kalsiyum",
+   "Tuz"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 163,
+  "konu": "Vücudumuzdaki Sistemler",
+  "zorluk": "Kolay",
+  "soru": "Kulak kepçesi ve burun ucu hangi yapıdan oluşur?",
+  "secenekler": [
+   "Kemik",
+   "Kıkırdak",
+   "Kas",
+   "Yağ"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 164,
+  "konu": "Vücudumuzdaki Sistemler",
+  "zorluk": "Kolay",
+  "soru": "Kasları kemiklere bağlayan yapıya ne ad verilir?",
+  "secenekler": [
+   "Kiriş (tendon)",
+   "Eklem",
+   "Damar",
+   "Sinir"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 165,
+  "konu": "Vücudumuzdaki Sistemler",
+  "zorluk": "Kolay",
+  "soru": "Dişlerle besinlerin parçalanmasına ne tür sindirim denir?",
+  "secenekler": [
+   "Kimyasal sindirim",
+   "Mekanik sindirim",
+   "Emilim",
+   "Boşaltım"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 166,
+  "konu": "Vücudumuzdaki Sistemler",
+  "zorluk": "Kolay",
+  "soru": "Sindirilen besinlerin kana geçmesine ne ad verilir?",
+  "secenekler": [
+   "Emilim",
+   "Dolaşım",
+   "Boşaltım",
+   "Solunum"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 167,
+  "konu": "Vücudumuzdaki Sistemler",
+  "zorluk": "Kolay",
+  "soru": "Sigaranın en çok zarar verdiği organ hangisidir?",
+  "secenekler": [
+   "Mide",
+   "Böbrek",
+   "Akciğer",
+   "Kemik"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 168,
+  "konu": "Vücudumuzdaki Sistemler",
+  "zorluk": "Kolay",
+  "soru": "Burundaki kılların görevi hangisidir?",
+  "secenekler": [
+   "Besinleri sindirmek",
+   "Havadaki tozları tutmak",
+   "Ses çıkarmak",
+   "Kanı süzmek"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 169,
+  "konu": "Vücudumuzdaki Sistemler",
+  "zorluk": "Orta",
+  "soru": "Sindirim kanalının doğru sıralaması hangisidir?",
+  "secenekler": [
+   "Ağız – mide – yemek borusu – ince bağırsak – kalın bağırsak",
+   "Ağız – yemek borusu – ince bağırsak – mide – kalın bağırsak",
+   "Ağız – yutak – yemek borusu – mide – ince bağırsak – kalın bağırsak",
+   "Mide – ağız – yemek borusu – kalın bağırsak – ince bağırsak"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 170,
+  "konu": "Vücudumuzdaki Sistemler",
+  "zorluk": "Orta",
+  "soru": "Enzimler yardımıyla besinlerin küçük parçalara ayrılmasına ne ad verilir?",
+  "secenekler": [
+   "Mekanik sindirim",
+   "Kimyasal sindirim",
+   "Emilim",
+   "Dolaşım"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 171,
+  "konu": "Vücudumuzdaki Sistemler",
+  "zorluk": "Orta",
+  "soru": "İnce bağırsakta emilim yüzeyini artıran çıkıntılara ne ad verilir?",
+  "secenekler": [
+   "Alveol",
+   "Bağırsak tüyleri (villus)",
+   "Nefron",
+   "Bronşçuk"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 172,
+  "konu": "Vücudumuzdaki Sistemler",
+  "zorluk": "Orta",
+  "soru": "Safranın depolandığı organ hangisidir?",
+  "secenekler": [
+   "Safra kesesi",
+   "İdrar kesesi",
+   "Mide",
+   "Pankreas"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 173,
+  "konu": "Vücudumuzdaki Sistemler",
+  "zorluk": "Orta",
+  "soru": "Kalbin sol tarafında nasıl kan bulunur?",
+  "secenekler": [
+   "Yalnızca plazma",
+   "Karbondioksitçe zengin (kirli) kan",
+   "Kan bulunmaz",
+   "Oksijence zengin (temiz) kan"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 174,
+  "konu": "Vücudumuzdaki Sistemler",
+  "zorluk": "Orta",
+  "soru": "Kalbin sağ tarafında nasıl kan bulunur?",
+  "secenekler": [
+   "Karbondioksitçe zengin (kirli) kan",
+   "Oksijence zengin (temiz) kan",
+   "Kan bulunmaz",
+   "Yalnızca kan pulcukları"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 175,
+  "konu": "Vücudumuzdaki Sistemler",
+  "zorluk": "Orta",
+  "soru": "Vücudumuzun en büyük atardamarı hangisidir?",
+  "secenekler": [
+   "Kılcal damar",
+   "Üst ana toplardamar",
+   "Aort",
+   "Akciğer toplardamarı"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 176,
+  "konu": "Vücudumuzdaki Sistemler",
+  "zorluk": "Orta",
+  "soru": "Nabzımızı hangi tür damarlarda hissederiz?",
+  "secenekler": [
+   "Kılcal damarlarda",
+   "Atardamarlarda",
+   "Toplardamarlarda",
+   "Lenf damarlarında"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 177,
+  "konu": "Vücudumuzdaki Sistemler",
+  "zorluk": "Orta",
+  "soru": "Kanın sıvı kısmına ne ad verilir?",
+  "secenekler": [
+   "Akyuvar",
+   "Kan pulcuğu",
+   "Alyuvar",
+   "Kan plazması"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 178,
+  "konu": "Vücudumuzdaki Sistemler",
+  "zorluk": "Orta",
+  "soru": "Soluk borusunun kapanmasını önleyen yapı hangisidir?",
+  "secenekler": [
+   "Kaslar",
+   "Kıkırdak halkalar",
+   "Kemikler",
+   "Kılcal damarlar"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 179,
+  "konu": "Vücudumuzdaki Sistemler",
+  "zorluk": "Orta",
+  "soru": "İdrarın vücuttan atılma yolu hangi sıradadır?",
+  "secenekler": [
+   "Böbrek – üreter – idrar kesesi – üretra",
+   "Üreter – böbrek – üretra – idrar kesesi",
+   "İdrar kesesi – böbrek – üreter – üretra",
+   "Böbrek – üretra – üreter – idrar kesesi"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 180,
+  "konu": "Vücudumuzdaki Sistemler",
+  "zorluk": "Orta",
+  "soru": "Deri boşaltıma nasıl katkı sağlar?",
+  "secenekler": [
+   "Terle su ve tuzları atar.",
+   "Karbondioksit üretir.",
+   "İdrar üretir.",
+   "Safra salgılar."
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 181,
+  "konu": "Vücudumuzdaki Sistemler",
+  "zorluk": "Orta",
+  "soru": "Böbreklerin sağlığı için ne yapılmalıdır?",
+  "secenekler": [
+   "Çok tuzlu beslenilmelidir.",
+   "Yeterince su içilmeli ve aşırı tuzdan kaçınılmalıdır.",
+   "Sürekli hazır içecek içilmelidir.",
+   "Hiç su içilmemelidir."
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 182,
+  "konu": "Vücudumuzdaki Sistemler",
+  "zorluk": "Orta",
+  "soru": "D vitamininin vücutta üretilmesi için ne gereklidir?",
+  "secenekler": [
+   "Çok uyku",
+   "Güneş ışığı",
+   "Soğuk hava",
+   "Karanlık ortam"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 183,
+  "konu": "Vücudumuzdaki Sistemler",
+  "zorluk": "Zor",
+  "soru": "Kalpten akciğerlere kirli kan taşıyan damar hangisidir?",
+  "secenekler": [
+   "Aort",
+   "Akciğer atardamarı",
+   "Akciğer toplardamarı",
+   "Kılcal damar"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 184,
+  "konu": "Vücudumuzdaki Sistemler",
+  "zorluk": "Zor",
+  "soru": "Kalın bağırsakta bazı vitaminlerin üretilmesini sağlayan canlılar hangileridir?",
+  "secenekler": [
+   "Mantarlar",
+   "Yararlı bakteriler",
+   "Akyuvarlar",
+   "Virüsler"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 185,
+  "konu": "Vücudumuzdaki Sistemler",
+  "zorluk": "Zor",
+  "soru": "Böbrekleri çalışmayan hastalara kanlarının makineyle temizlenmesi için uygulanan işlem hangisidir?",
+  "secenekler": [
+   "Röntgen",
+   "Aşı",
+   "Kan bağışı",
+   "Diyaliz"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 186,
+  "konu": "Vücudumuzdaki Sistemler",
+  "zorluk": "Zor",
+  "soru": "Soluk verirken diyafram ve kaburgalarda ne olur?",
+  "secenekler": [
+   "Diyafram kasılıp aşağı iner, kaburgalar yukarı çıkar.",
+   "Diyafram gevşeyip yukarı çıkar, kaburgalar içe ve aşağı iner.",
+   "Kaburgalar kırılır.",
+   "Hiçbir değişiklik olmaz."
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 187,
+  "konu": "Vücudumuzdaki Sistemler",
+  "zorluk": "Zor",
+  "soru": "Lifli besinler (sebze, tam tahıl) sindirim sistemine nasıl yarar sağlar?",
+  "secenekler": [
+   "Oksijen taşır.",
+   "Bağırsakların düzenli çalışmasına yardım eder.",
+   "Kanı süzer.",
+   "Protein sindirimini başlatır."
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 188,
+  "konu": "Kuvvet ve Hareket",
+  "zorluk": "Zor",
+  "soru": "Bir cisme sağa doğru 10 N ve 5 N, sola doğru 8 N büyüklüğünde kuvvetler uygulanıyor. Bileşke kuvvetin büyüklüğü kaç N'dir?",
+  "secenekler": [
+   "2 N",
+   "23 N",
+   "15 N",
+   "7 N"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 189,
+  "konu": "Kuvvet ve Hareket",
+  "zorluk": "Zor",
+  "soru": "Bir cisme sağa doğru 12 N ve 6 N, sola doğru 20 N büyüklüğünde kuvvetler uygulanıyor. Bileşke kuvvetin büyüklüğü kaç N'dir?",
+  "secenekler": [
+   "8 N",
+   "2 N",
+   "18 N",
+   "38 N"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 190,
+  "konu": "Kuvvet ve Hareket",
+  "zorluk": "Zor",
+  "soru": "Bir cisme sağa doğru 7 N ve 9 N, sola doğru 4 N büyüklüğünde kuvvetler uygulanıyor. Bileşke kuvvetin büyüklüğü kaç N'dir?",
+  "secenekler": [
+   "20 N",
+   "16 N",
+   "3 N",
+   "12 N"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 191,
+  "konu": "Kuvvet ve Hareket",
+  "zorluk": "Zor",
+  "soru": "Bir cisme sağa doğru 15 N ve 5 N, sola doğru 30 N büyüklüğünde kuvvetler uygulanıyor. Bileşke kuvvetin büyüklüğü kaç N'dir?",
+  "secenekler": [
+   "50 N",
+   "10 N",
+   "15 N",
+   "20 N"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 192,
+  "konu": "Kuvvet ve Hareket",
+  "zorluk": "Zor",
+  "soru": "30 km yolu 30 dakikada alan bir aracın sürati kaç km/h'dir?",
+  "secenekler": [
+   "60 km/h",
+   "900 km/h",
+   "80 km/h",
+   "30 km/h"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 193,
+  "konu": "Kuvvet ve Hareket",
+  "zorluk": "Zor",
+  "soru": "60 km yolu 30 dakikada alan bir aracın sürati kaç km/h'dir?",
+  "secenekler": [
+   "60 km/h",
+   "1800 km/h",
+   "120 km/h",
+   "140 km/h"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 194,
+  "konu": "Kuvvet ve Hareket",
+  "zorluk": "Zor",
+  "soru": "20 km yolu 15 dakikada alan bir aracın sürati kaç km/h'dir?",
+  "secenekler": [
+   "40 km/h",
+   "300 km/h",
+   "80 km/h",
+   "20 km/h"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 195,
+  "konu": "Kuvvet ve Hareket",
+  "zorluk": "Zor",
+  "soru": "45 km yolu 45 dakikada alan bir aracın sürati kaç km/h'dir?",
+  "secenekler": [
+   "60 km/h",
+   "45 km/h",
+   "2025 km/h",
+   "30 km/h"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 196,
+  "konu": "Kuvvet ve Hareket",
+  "zorluk": "Kolay",
+  "soru": "50 m yolu 10 saniyede alan bir bisikletlinin sürati kaç m/s'dir?",
+  "secenekler": [
+   "500 m/s",
+   "40 m/s",
+   "5 m/s",
+   "8 m/s"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 197,
+  "konu": "Kuvvet ve Hareket",
+  "zorluk": "Kolay",
+  "soru": "200 m yolu 25 saniyede alan bir bisikletlinin sürati kaç m/s'dir?",
+  "secenekler": [
+   "5000 m/s",
+   "175 m/s",
+   "11 m/s",
+   "8 m/s"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 198,
+  "konu": "Kuvvet ve Hareket",
+  "zorluk": "Kolay",
+  "soru": "120 m yolu 8 saniyede alan bir bisikletlinin sürati kaç m/s'dir?",
+  "secenekler": [
+   "15 m/s",
+   "960 m/s",
+   "112 m/s",
+   "18 m/s"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 199,
+  "konu": "Kuvvet ve Hareket",
+  "zorluk": "Kolay",
+  "soru": "400 m yolu 50 saniyede alan bir bisikletlinin sürati kaç m/s'dir?",
+  "secenekler": [
+   "8 m/s",
+   "11 m/s",
+   "20000 m/s",
+   "350 m/s"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 200,
+  "konu": "Kuvvet ve Hareket",
+  "zorluk": "Orta",
+  "soru": "Aşağıdakilerden hangisi dengelenmemiş kuvvetlerin etkisine örnektir?",
+  "secenekler": [
+   "Masada duran kitabın durmaya devam etmesi",
+   "Halat çekmede eşit kuvvetle çekilen halatın durması",
+   "Duvara asılı tablonun düşmemesi",
+   "Duran bir topa vurulunca topun hareket etmesi"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 201,
+  "konu": "Kuvvet ve Hareket",
+  "zorluk": "Orta",
+  "soru": "Masada duran bir kitaba etki eden kuvvetler için hangisi doğrudur?",
+  "secenekler": [
+   "Dengelenmemiş kuvvetlerdir.",
+   "Kitap yukarı doğru hızlanır.",
+   "Kitaba hiç kuvvet etki etmez.",
+   "Dengelenmiş kuvvetlerdir."
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 202,
+  "konu": "Kuvvet ve Hareket",
+  "zorluk": "Orta",
+  "soru": "Sürat birimi olarak aşağıdakilerden hangisi kullanılır?",
+  "secenekler": [
+   "kg",
+   "km/h",
+   "N",
+   "°C"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 203,
+  "konu": "Kuvvet ve Hareket",
+  "zorluk": "Orta",
+  "soru": "Hareket eden bir cisme dengelenmemiş kuvvet etki ederse aşağıdakilerden hangisi olabilir?",
+  "secenekler": [
+   "Cisim her zaman aynı süratle gider.",
+   "Cisim hızlanır, yavaşlar ya da yön değiştirir.",
+   "Hiçbir şey olmaz.",
+   "Cismin kütlesi değişir."
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 204,
+  "konu": "Madde ve Isı",
+  "zorluk": "Orta",
+  "soru": "Kütlesi 80 g, hacmi 40 cm³ olan bir taşın yoğunluğu kaç g/cm³'tür?",
+  "secenekler": [
+   "2 g/cm³",
+   "3200 g/cm³",
+   "120 g/cm³",
+   "4 g/cm³"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 205,
+  "konu": "Madde ve Isı",
+  "zorluk": "Orta",
+  "soru": "Kütlesi 150 g, hacmi 50 cm³ olan bir taşın yoğunluğu kaç g/cm³'tür?",
+  "secenekler": [
+   "7500 g/cm³",
+   "200 g/cm³",
+   "3 g/cm³",
+   "5 g/cm³"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 206,
+  "konu": "Madde ve Isı",
+  "zorluk": "Orta",
+  "soru": "Kütlesi 36 g, hacmi 4 cm³ olan bir taşın yoğunluğu kaç g/cm³'tür?",
+  "secenekler": [
+   "11 g/cm³",
+   "40 g/cm³",
+   "144 g/cm³",
+   "9 g/cm³"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 207,
+  "konu": "Madde ve Isı",
+  "zorluk": "Orta",
+  "soru": "Kütlesi 72 g, hacmi 8 cm³ olan bir taşın yoğunluğu kaç g/cm³'tür?",
+  "secenekler": [
+   "9 g/cm³",
+   "576 g/cm³",
+   "80 g/cm³",
+   "11 g/cm³"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 208,
+  "konu": "Madde ve Isı",
+  "zorluk": "Kolay",
+  "soru": "Katı bir maddenin ısı alarak sıvı hâle geçmesine ne ad verilir?",
+  "secenekler": [
+   "Donma",
+   "Yoğuşma",
+   "Erime",
+   "Buharlaşma"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 209,
+  "konu": "Madde ve Isı",
+  "zorluk": "Kolay",
+  "soru": "Sıvı bir maddenin ısı vererek katı hâle geçmesine ne ad verilir?",
+  "secenekler": [
+   "Donma",
+   "Kaynama",
+   "Erime",
+   "Yoğuşma"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 210,
+  "konu": "Madde ve Isı",
+  "zorluk": "Kolay",
+  "soru": "Sıvı bir maddenin gaz hâline geçmesine ne ad verilir?",
+  "secenekler": [
+   "Buharlaşma",
+   "Yoğuşma",
+   "Donma",
+   "Erime"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 211,
+  "konu": "Madde ve Isı",
+  "zorluk": "Kolay",
+  "soru": "Su buharının soğuk bir yüzeyde su damlacıklarına dönüşmesine ne ad verilir?",
+  "secenekler": [
+   "Buharlaşma",
+   "Erime",
+   "Yoğuşma",
+   "Süblimleşme"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 212,
+  "konu": "Madde ve Isı",
+  "zorluk": "Kolay",
+  "soru": "Saf su deniz seviyesinde kaç °C'de kaynar?",
+  "secenekler": [
+   "0 °C",
+   "100 °C",
+   "50 °C",
+   "212 °C"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 213,
+  "konu": "Madde ve Isı",
+  "zorluk": "Kolay",
+  "soru": "Saf su kaç °C'de donar?",
+  "secenekler": [
+   "10 °C",
+   "−10 °C",
+   "100 °C",
+   "0 °C"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 214,
+  "konu": "Madde ve Isı",
+  "zorluk": "Kolay",
+  "soru": "Isınan maddelerin hacminin artmasına ne ad verilir?",
+  "secenekler": [
+   "Genleşme",
+   "Büzülme",
+   "Donma",
+   "Yoğuşma"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 215,
+  "konu": "Madde ve Isı",
+  "zorluk": "Kolay",
+  "soru": "Aşağıdakilerden hangisi yenilenebilir enerji kaynağıdır?",
+  "secenekler": [
+   "Doğal gaz",
+   "Güneş enerjisi",
+   "Petrol",
+   "Kömür"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 216,
+  "konu": "Madde ve Isı",
+  "zorluk": "Kolay",
+  "soru": "Aşağıdakilerden hangisi fosil yakıttır?",
+  "secenekler": [
+   "Petrol",
+   "Rüzgâr",
+   "Güneş",
+   "Su gücü"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 217,
+  "konu": "Madde ve Isı",
+  "zorluk": "Orta",
+  "soru": "Katı bir maddenin sıvı olmadan doğrudan gaz hâline geçmesine ne ad verilir?",
+  "secenekler": [
+   "Yoğuşma",
+   "Erime",
+   "Süblimleşme",
+   "Buharlaşma"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 218,
+  "konu": "Madde ve Isı",
+  "zorluk": "Orta",
+  "soru": "Naftalinin zamanla küçülmesi hangi olaya örnektir?",
+  "secenekler": [
+   "Erime",
+   "Yoğuşma",
+   "Süblimleşme",
+   "Donma"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 219,
+  "konu": "Madde ve Isı",
+  "zorluk": "Orta",
+  "soru": "Soğuyan maddelerin hacminin azalmasına ne ad verilir?",
+  "secenekler": [
+   "Büzülme",
+   "Genleşme",
+   "Kaynama",
+   "Erime"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 220,
+  "konu": "Madde ve Isı",
+  "zorluk": "Orta",
+  "soru": "Demiryolu rayları arasında boşluk bırakılmasının nedeni nedir?",
+  "secenekler": [
+   "Rayların kışın genleşmesi",
+   "Rayların hafiflemesi",
+   "Rayların yazın genleşmesi",
+   "Trenin daha hızlı gitmesi"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 221,
+  "konu": "Madde ve Isı",
+  "zorluk": "Orta",
+  "soru": "Elektrik tellerinin yazın daha sarkık görünmesinin nedeni nedir?",
+  "secenekler": [
+   "Tellerin büzülmesi",
+   "Tellerin kütlesinin artması",
+   "Isınan tellerin genleşmesi",
+   "Tellerin donması"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 222,
+  "konu": "Madde ve Isı",
+  "zorluk": "Orta",
+  "soru": "Tencere saplarının plastikten yapılmasının nedeni nedir?",
+  "secenekler": [
+   "Plastiğin ağır olması",
+   "Plastiğin ısıyı çok iyi iletmesi",
+   "Plastiğin ısıyı iyi iletmemesi",
+   "Plastiğin elektriği iletmesi"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 223,
+  "konu": "Madde ve Isı",
+  "zorluk": "Orta",
+  "soru": "Fosil yakıtların çok kullanılmasının çevreye zararı hangisidir?",
+  "secenekler": [
+   "Ormanları büyütmesi",
+   "Hava kirliliğini artırması",
+   "Suyu arıtması",
+   "Havayı temizlemesi"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 224,
+  "konu": "Madde ve Isı",
+  "zorluk": "Zor",
+  "soru": "Buz erirken (hâl değişimi sırasında) sıcaklığı nasıl değişir?",
+  "secenekler": [
+   "Sürekli azalır.",
+   "Önce azalır sonra artar.",
+   "Sürekli artar.",
+   "Değişmez, sabit kalır."
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 225,
+  "konu": "Madde ve Isı",
+  "zorluk": "Zor",
+  "soru": "Kış sabahlarında araba camlarının iç yüzeyinin buğulanması hangi olaya örnektir?",
+  "secenekler": [
+   "Buharlaşma",
+   "Erime",
+   "Süblimleşme",
+   "Yoğuşma"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 226,
+  "konu": "Madde ve Isı",
+  "zorluk": "Zor",
+  "soru": "Islak çamaşırların güneşte kuruması hangi olaya örnektir?",
+  "secenekler": [
+   "Donma",
+   "Yoğuşma",
+   "Erime",
+   "Buharlaşma"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 227,
+  "konu": "Ses ve Özellikleri",
+  "zorluk": "Kolay",
+  "soru": "Ses havada yaklaşık hangi süratle yayılır?",
+  "secenekler": [
+   "340 m/s",
+   "300 000 km/s",
+   "3 m/s",
+   "3000 km/s"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 228,
+  "konu": "Ses ve Özellikleri",
+  "zorluk": "Kolay",
+  "soru": "Şimşeği gök gürültüsünden önce görmemizin nedeni nedir?",
+  "secenekler": [
+   "Gözlerin kulaklardan önde olması",
+   "Sesin ışıktan hızlı olması",
+   "Şimşeğin sessiz olması",
+   "Işığın sesten çok daha hızlı yayılması"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 229,
+  "konu": "Ses ve Özellikleri",
+  "zorluk": "Kolay",
+  "soru": "Çevremizdeki rahatsız edici, istenmeyen seslere ne ad verilir?",
+  "secenekler": [
+   "Gürültü",
+   "Müzik",
+   "Melodi",
+   "Yankı"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 230,
+  "konu": "Ses ve Özellikleri",
+  "zorluk": "Kolay",
+  "soru": "Gürültülü ortamda çalışan işçiler kulaklarını korumak için ne kullanmalıdır?",
+  "secenekler": [
+   "Eldiven",
+   "Maske",
+   "Güneş gözlüğü",
+   "Kulak koruyucu"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 231,
+  "konu": "Ses ve Özellikleri",
+  "zorluk": "Orta",
+  "soru": "Yarasaların karanlıkta yön bulmasını sağlayan olay hangisidir?",
+  "secenekler": [
+   "Sesin yansıması (yankı)",
+   "Işığın kırılması",
+   "Isının iletilmesi",
+   "Sesin boşlukta yayılması"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 232,
+  "konu": "Ses ve Özellikleri",
+  "zorluk": "Orta",
+  "soru": "Gürültü kirliliğinin insan sağlığına zararı hangisidir?",
+  "secenekler": [
+   "Görmenin artması",
+   "Kemiklerin güçlenmesi",
+   "İşitme kaybı ve stres",
+   "Uykunun düzelmesi"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 233,
+  "konu": "Ses ve Özellikleri",
+  "zorluk": "Orta",
+  "soru": "Evlerde çift camlı pencere kullanılmasının sese etkisi nedir?",
+  "secenekler": [
+   "Sese hiçbir etkisi yoktur.",
+   "Sesi yansıtıp çoğaltır.",
+   "Sesi artırır.",
+   "Dışarıdan gelen sesin azalmasını sağlar."
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 234,
+  "konu": "Ses ve Özellikleri",
+  "zorluk": "Orta",
+  "soru": "Ses kaynağından çıkan ses hangi yönlere yayılır?",
+  "secenekler": [
+   "Yalnızca ileri",
+   "Yalnızca aşağı",
+   "Yalnızca yukarı",
+   "Her yöne"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 235,
+  "konu": "Ses ve Özellikleri",
+  "zorluk": "Orta",
+  "soru": "Gitar telinin titreşimi durdurulursa ne olur?",
+  "secenekler": [
+   "Ses değişmez.",
+   "Ses kesilir.",
+   "Ses artar.",
+   "Ses ışığa dönüşür."
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 236,
+  "konu": "Ses ve Özellikleri",
+  "zorluk": "Zor",
+  "soru": "Boş ve eşyalı iki odadan hangisinde ses daha çok yankılanır? Neden?",
+  "secenekler": [
+   "Eşyalı odada; çünkü eşyalar sesi çoğaltır.",
+   "Hiçbirinde; çünkü odalarda ses yansımaz.",
+   "Boş odada; çünkü sesi soğuracak eşya yoktur.",
+   "İkisinde de aynı; çünkü oda boyutu aynıdır."
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 237,
+  "konu": "Ses ve Özellikleri",
+  "zorluk": "Zor",
+  "soru": "Gemilerin deniz tabanının derinliğini ölçmek için kullandığı yöntem hangi olaya dayanır?",
+  "secenekler": [
+   "Isının iletimi",
+   "Sesin yansıması",
+   "Işığın yansıması",
+   "Mıknatıslanma"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 238,
+  "konu": "Elektriğin İletimi",
+  "zorluk": "Kolay",
+  "soru": "Basit bir elektrik devresinde enerji kaynağı olarak ne kullanılır?",
+  "secenekler": [
+   "Anahtar",
+   "Ampul",
+   "Kablo",
+   "Pil"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 239,
+  "konu": "Elektriğin İletimi",
+  "zorluk": "Kolay",
+  "soru": "Devredeki anahtar açık olursa ampul ne olur?",
+  "secenekler": [
+   "Yanmaz.",
+   "Patlar.",
+   "Daha parlak yanar.",
+   "Yanıp söner."
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 240,
+  "konu": "Elektriğin İletimi",
+  "zorluk": "Kolay",
+  "soru": "Aşağıdakilerden hangisi elektrik devresi elemanı değildir?",
+  "secenekler": [
+   "Bağlantı kablosu",
+   "Ampul",
+   "Termometre",
+   "Pil"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 241,
+  "konu": "Elektriğin İletimi",
+  "zorluk": "Kolay",
+  "soru": "Prizlere metal cisim sokulmamasının nedeni nedir?",
+  "secenekler": [
+   "Metal erir.",
+   "Priz bozulur ama tehlikesi yoktur.",
+   "Metaller elektriği iletmez.",
+   "Metaller elektriği iletir ve çarpılmaya neden olur."
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 242,
+  "konu": "Elektriğin İletimi",
+  "zorluk": "Kolay",
+  "soru": "Elektriği tasarruflu kullanmak için hangisi yapılmalıdır?",
+  "secenekler": [
+   "Kullanılmayan odaların ışıkları kapatılmalıdır.",
+   "Buzdolabının kapısı açık bırakılmalıdır.",
+   "Şarj aleti prizde unutulmalıdır.",
+   "Bütün lambalar gün boyu açık bırakılmalıdır."
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 243,
+  "konu": "Elektriğin İletimi",
+  "zorluk": "Orta",
+  "soru": "Aşağıdakilerden hangisi iletken bir maddedir?",
+  "secenekler": [
+   "Cam",
+   "Kuru tahta",
+   "Plastik",
+   "Tuzlu su"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 244,
+  "konu": "Elektriğin İletimi",
+  "zorluk": "Orta",
+  "soru": "Evlerdeki sigortaların görevi nedir?",
+  "secenekler": [
+   "Pili şarj etmek",
+   "Elektriği artırmak",
+   "Aşırı akımda devreyi keserek tehlikeyi önlemek",
+   "Ampulü daha parlak yakmak"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 245,
+  "konu": "Elektriğin İletimi",
+  "zorluk": "Orta",
+  "soru": "Enerji tasarrufu sağlayan ampul türü hangisidir?",
+  "secenekler": [
+   "Gaz lambası",
+   "Eski tip akkor ampul",
+   "Mum",
+   "LED ampul"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 246,
+  "konu": "Elektriğin İletimi",
+  "zorluk": "Orta",
+  "soru": "Bir devreye aynı maddeden daha kalın bir tel bağlanırsa ampulün parlaklığı nasıl değişir?",
+  "secenekler": [
+   "Artar.",
+   "Ampul söner.",
+   "Azalır.",
+   "Değişmez."
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 247,
+  "konu": "Elektriğin İletimi",
+  "zorluk": "Zor",
+  "soru": "Saf su elektriği çok az iletir. Musluk suyunun elektriği iletmesinin nedeni nedir?",
+  "secenekler": [
+   "Çok soğuk olması",
+   "Renkli olması",
+   "İçinde çözünmüş mineraller bulunması",
+   "Hızlı akması"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 248,
+  "konu": "Elektriğin İletimi",
+  "zorluk": "Zor",
+  "soru": "Elektrik çarpmasına uğrayan birine yardım ederken ilk ne yapılmalıdır?",
+  "secenekler": [
+   "Elektrik akımı sigortadan kesilmelidir.",
+   "Kişinin üzerine su dökülmelidir.",
+   "Kişiye çıplak elle hemen dokunulmalıdır.",
+   "Metal bir çubukla itilmelidir."
+  ],
+  "dogru": 0
  }
 ]

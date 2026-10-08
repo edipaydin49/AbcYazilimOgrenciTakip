@@ -1,0 +1,504 @@
+<title>Türkçe Macerası</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Nunito:wght@400;600;800&display=swap">
+<style>
+/* Düzen: tek sütun "macera haritası" — üstte Kelimo ve yıldızlar, ortada bölüm kartları; ders ekranında tek büyük slayt kartı */
+:root {
+  --paper: #f5f8fc; --sheet: #ffffff; --grid: #dde7f3; --ink: #1d2b44; --muted: #5b6a82;
+  --cobalt: #2453c7; --cobalt-soft: #e3ebfb; --sun: #f2b632; --sun-soft: #fff3d1;
+  --good: #1d8a4e; --good-soft: #def3e6; --bad: #c7362f; --bad-soft: #fbe4e2; --line: #c9d5e6;
+  --b1: #2453c7; --b2: #1d8a4e; --b3: #b4541a;
+  --font-display: "Baloo 2", "Trebuchet MS", system-ui, sans-serif;
+  --font-body: "Nunito", "Segoe UI", system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #111827; --sheet: #172033; --grid: #1f2b42; --ink: #e6ecf7; --muted: #9aa8c0;
+    --cobalt: #7ea2ff; --cobalt-soft: #22325a; --sun: #f5c24f; --sun-soft: #3a3016;
+    --good: #5fd08f; --good-soft: #173a2a; --bad: #ff7b72; --bad-soft: #43201f; --line: #2c3b58;
+    --b1: #7ea2ff; --b2: #5fd08f; --b3: #f0a06a;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #111827; --sheet: #172033; --grid: #1f2b42; --ink: #e6ecf7; --muted: #9aa8c0;
+  --cobalt: #7ea2ff; --cobalt-soft: #22325a; --sun: #f5c24f; --sun-soft: #3a3016;
+  --good: #5fd08f; --good-soft: #173a2a; --bad: #ff7b72; --bad-soft: #43201f; --line: #2c3b58;
+  --b1: #7ea2ff; --b2: #5fd08f; --b3: #f0a06a;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 17px/1.55 var(--font-body);
+  background-image: linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 24px 24px; }
+.wrap { max-width: 860px; margin: 0 auto; padding-inline: 16px; padding-block: 20px 56px; display: grid; gap: 18px; }
+h1 { font: 800 clamp(2rem, 6vw, 2.9rem)/1 var(--font-display); margin: 0; text-wrap: balance; }
+h2 { font: 800 clamp(1.4rem, 4vw, 1.9rem)/1.15 var(--font-display); margin: 0; text-wrap: balance; }
+h3 { font: 800 1.15rem/1.2 var(--font-display); margin: 0; }
+.btn { font: 800 1rem var(--font-body); border-radius: 14px; padding: 12px 18px; border: 2px solid var(--cobalt); cursor: pointer; background: var(--sheet); color: var(--cobalt); }
+.btn.primary { background: var(--cobalt); color: var(--sheet); box-shadow: 0 3px 0 var(--ink); }
+.btn.primary:active { transform: translateY(2px); box-shadow: 0 1px 0 var(--ink); }
+.btn:focus-visible, .opt:focus-visible, .bolum:focus-visible { outline: 3px solid var(--sun); outline-offset: 2px; }
+.btn[disabled] { opacity: .45; cursor: not-allowed; }
+.ust { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
+.kelimo { flex: none; }
+.balon { position: relative; background: var(--sheet); border: 2px solid var(--line); border-radius: 16px; padding: 10px 14px; flex: 1 1 260px; min-width: 0; }
+.balon p { margin: 0; }
+.skor { display: flex; gap: 10px; flex-wrap: wrap; }
+.rozetcik { background: var(--sheet); border: 1px solid var(--line); border-radius: 999px; padding: 6px 12px; font-weight: 800; display: inline-flex; gap: 6px; align-items: center; font-variant-numeric: tabular-nums; }
+.yildiz { width: 18px; height: 18px; fill: var(--sun); }
+.gunun { background: var(--sun-soft); border-radius: 16px; padding: 14px 16px; display: grid; gap: 4px; }
+.gunun q { font: 800 1.2rem/1.3 var(--font-display); quotes: "“" "”"; }
+.gunun span { color: var(--muted); }
+.bolumler { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
+.bolum { text-align: left; font: inherit; color: inherit; background: var(--sheet); border: 2px solid var(--line); border-top: 8px solid var(--renk); border-radius: 18px; padding: 16px; display: grid; gap: 8px; cursor: pointer; align-content: start; }
+.bolum .harf { font: 800 2.2rem/1 var(--font-display); color: var(--renk); }
+.bolum p { margin: 0; color: var(--muted); font-size: .95rem; }
+.bar { height: 10px; border-radius: 99px; background: var(--cobalt-soft); overflow: hidden; }
+.bar i { display: block; height: 100%; background: var(--renk, var(--cobalt)); width: 0; transition: width .4s; }
+.durum { font-size: .85rem; font-weight: 800; color: var(--muted); }
+.durum.tamam { color: var(--good); }
+.araclar { display: flex; gap: 10px; flex-wrap: wrap; }
+.slayt { background: var(--sheet); border: 2px solid var(--renk); border-radius: 22px; padding: 22px 20px; display: grid; gap: 14px; box-shadow: 0 5px 0 var(--cobalt-soft); }
+.slayt .etiket { font-weight: 800; font-size: .8rem; letter-spacing: .06em; text-transform: uppercase; color: var(--renk); }
+.slayt .metin { margin: 0; font-size: 1.1rem; }
+.ornekler { display: grid; gap: 8px; }
+.ornek { background: var(--paper); border-radius: 12px; padding: 10px 14px; font-size: 1.08rem; }
+.ornek mark { background: var(--sun-soft); color: var(--ink); border-bottom: 3px solid var(--sun); padding: 0 3px; border-radius: 4px; }
+.ornek small { display: block; color: var(--muted); font-size: .9rem; }
+.ipucu { border: 2px dashed var(--sun); border-radius: 14px; padding: 10px 14px; display: flex; gap: 10px; align-items: flex-start; }
+.ipucu b { color: var(--ink); }
+.ipucu svg { flex: none; width: 26px; height: 26px; fill: var(--sun); }
+.noktalar { display: flex; gap: 6px; flex-wrap: wrap; }
+.noktalar i { width: 12px; height: 12px; border-radius: 50%; background: var(--line); }
+.noktalar i.ok { background: var(--renk); }
+.noktalar i.su { background: var(--sun); transform: scale(1.25); }
+.gezinti { display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; align-items: center; }
+.oku { display: inline-flex; align-items: center; gap: 6px; font: 800 .95rem var(--font-body); color: var(--cobalt); background: var(--cobalt-soft); border: 2px solid var(--cobalt); border-radius: 999px; padding: 6px 14px; cursor: pointer; justify-self: start; }
+.oku svg { width: 18px; height: 18px; fill: currentColor; }
+.soru { font-size: 1.15rem; font-weight: 700; margin: 0; }
+.opts { display: grid; gap: 10px; }
+.opt { display: flex; align-items: center; gap: 12px; text-align: left; font: 600 1.05rem var(--font-body); color: var(--ink); background: var(--paper); border: 2px solid var(--line); border-radius: 14px; padding: 10px 12px; cursor: pointer; }
+.opt b { flex: none; display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; border: 2px solid var(--line); font-family: var(--font-display); }
+.opt.right { border-color: var(--good); background: var(--good-soft); }
+.opt.right b { background: var(--good); border-color: var(--good); color: var(--sheet); }
+.opt.wrong { border-color: var(--bad); background: var(--bad-soft); }
+.opt.wrong b { background: var(--bad); border-color: var(--bad); color: var(--sheet); }
+.opt[disabled] { cursor: default; }
+.geri { border-radius: 16px; padding: 12px 14px; display: grid; gap: 6px; }
+.geri.iyi { background: var(--good-soft); }
+.geri.kotu { background: var(--bad-soft); }
+.geri h3 { font-size: 1.2rem; }
+.geri p { margin: 0; }
+.geri .neden b { color: var(--bad); }
+.geri .dogru b { color: var(--good); }
+.sonuc { text-align: center; display: grid; gap: 12px; justify-items: center; }
+.sonuc .buyuk { font: 800 3.2rem/1 var(--font-display); font-variant-numeric: tabular-nums; }
+.rozetler { display: flex; gap: 12px; flex-wrap: wrap; }
+.rozet { display: grid; justify-items: center; gap: 4px; width: 104px; text-align: center; font-size: .8rem; font-weight: 800; color: var(--muted); }
+.rozet svg { width: 64px; height: 64px; }
+.rozet.kilitli svg { opacity: .3; filter: grayscale(1); }
+.rozet.acik { color: var(--ink); }
+.patla { animation: patla .6s ease-out; }
+@keyframes patla { 0% { transform: scale(.8); } 60% { transform: scale(1.08); } 100% { transform: scale(1); } }
+@media (prefers-reduced-motion: reduce) { .patla { animation: none; } .bar i { transition: none; } }
+</style>
+
+<div class="wrap" lang="tr">
+  <!-- ANA SAYFA -->
+  <section id="ana">
+    <div style="display:grid;gap:18px">
+      <div class="ust">
+        <svg class="kelimo" width="86" height="86" viewBox="0 0 86 86" aria-hidden="true">
+          <rect x="10" y="12" width="66" height="62" rx="12" fill="var(--sun)"></rect>
+          <rect x="10" y="12" width="33" height="62" rx="12" fill="var(--cobalt)"></rect>
+          <rect x="38" y="12" width="10" height="62" fill="var(--sun)"></rect>
+          <circle cx="30" cy="38" r="8" fill="var(--sheet)"></circle><circle cx="56" cy="38" r="8" fill="var(--sheet)"></circle>
+          <circle cx="31" cy="39" r="4" fill="var(--ink)"></circle><circle cx="57" cy="39" r="4" fill="var(--ink)"></circle>
+          <path d="M32 56 q11 9 22 0" stroke="var(--ink)" stroke-width="3.5" fill="none" stroke-linecap="round"></path>
+        </svg>
+        <div class="balon"><p id="selam"></p></div>
+      </div>
+      <div class="ust" style="justify-content:space-between">
+        <h1>Türkçe Macerası</h1>
+        <div class="skor">
+          <span class="rozetcik"><svg class="yildiz" viewBox="0 0 24 24"><path d="M12 2l2.9 6.9 7.1.6-5.4 4.7 1.6 7L12 17.6 5.8 21.2l1.6-7L2 9.5l7.1-.6z"></path></svg><span id="yildizSay">0</span> yıldız</span>
+          <span class="rozetcik"><span id="seriSay">0</span> günlük seri</span>
+        </div>
+      </div>
+      <div class="gunun"><span class="durum">Bugünün atasözü</span><q id="gununSoz"></q><span id="gununAnlam"></span></div>
+      <div class="bolumler" id="bolumler"></div>
+      <div class="araclar">
+        <button type="button" class="btn primary" id="karisik">Karışık meydan okuma (10 soru)</button>
+        <button type="button" class="btn" id="hataBtn">Hata defterim</button>
+      </div>
+      <div>
+        <span class="durum">Rozetlerim</span>
+        <div class="rozetler" id="rozetler"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DERS (SLAYT) EKRANI -->
+  <section id="ders" hidden>
+    <div style="display:grid;gap:14px">
+      <div class="gezinti">
+        <button type="button" class="btn" id="dersCik">← Harita</button>
+        <div class="noktalar" id="noktalar" aria-hidden="true"></div>
+      </div>
+      <article class="slayt" id="slayt" aria-live="polite"></article>
+      <div class="gezinti">
+        <button type="button" class="btn" id="onceki">← Önceki</button>
+        <button type="button" class="btn primary" id="sonraki">Sonraki →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRATİK (SORU) EKRANI -->
+  <section id="pratik" hidden>
+    <div style="display:grid;gap:14px">
+      <div class="gezinti">
+        <button type="button" class="btn" id="pratikCik">← Harita</button>
+        <span class="durum" id="pratikBaslik"></span>
+      </div>
+      <div class="bar" style="--renk:var(--sun)"><i id="pratikBar"></i></div>
+      <article class="slayt" id="pratikKart" aria-live="polite"></article>
+    </div>
+  </section>
+</div>
+
+<script>
+const HAVUZ = /*HAVUZ*/;
+const HARF = "ABCD";
+const $ = id => document.getElementById(id);
+const karistir = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+const IPUCU_IKON = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 21h6v-1H9v1zm3-19a7 7 0 0 0-4 12.7V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.3A7 7 0 0 0 12 2z"></path></svg>';
+const SES_IKON = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4zm12.5 3a4.5 4.5 0 0 0-2.5-4v8a4.5 4.5 0 0 0 2.5-4zM14 3.2v2.1a7 7 0 0 1 0 13.4v2.1a9 9 0 0 0 0-17.6z"></path></svg>';
+
+/* ===== DERS İÇERİĞİ ===== */
+const BOLUMLER = [
+  { id: "a", harf: "A", renk: "var(--b1)", baslik: "Sözcükte Anlam", konu: "Sözcükte Anlam", ozet: "Bir kelime kaç anlam taşıyabilir? Gerçek, mecaz, terim, yan anlam ve somut-soyut.",
+    rozet: "Anlam Dedektifi", slaytlar: [
+    { baslik: "Kelimelerin gizli gücü", metin: "Kelimeler bukalemun gibidir: girdikleri cümleye göre renk değiştirirler. Aynı kelime bir cümlede bir anlama, başka bir cümlede bambaşka bir anlama gelebilir.",
+      ornekler: [["Bardağa <mark>soğuk</mark> su koydum.", "Su gerçekten soğuk: elinle dokunup hissedebilirsin."], ["Bana çok <mark>soğuk</mark> davrandı.", "Kimse buz gibi olmadı; “soğuk” burada “ilgisiz” demek."]],
+      ipucu: "Bu bölümde bir kelimenin hangi anlamda kullanıldığını bulan bir <b>anlam dedektifi</b> olacaksın." },
+    { baslik: "Gerçek anlam", metin: "Bir kelimeyi duyunca aklına gelen <b>ilk</b> anlama gerçek anlam denir. Sözlükte de genellikle ilk sırada yazar.",
+      ornekler: [["Bahçeye büyük bir <mark>taş</mark> düştü.", "Taş: sert, ağır bir doğa parçası. İlk akla gelen anlam."], ["Bu biber çok <mark>acı</mark>.", "Dilimizde yakıcı bir tat bırakıyor."]],
+      ipucu: "Kendine sor: <b>“Bu kelimeyi tek başına duysam ilk ne düşünürdüm?”</b> Cümledeki anlam buysa gerçek anlamdır." },
+    { baslik: "Mecaz anlam", metin: "Kelime gerçek anlamından <b>tamamen uzaklaşırsa</b> mecaz anlam kazanır. Mecaz, dile renk ve duygu katar.",
+      ornekler: [["Onun <mark>taş</mark> kalbini kimse yumuşatamadı.", "Kalp taştan olamaz! “Taş kalpli” = merhametsiz."], ["Bu <mark>acı</mark> haber hepimizi üzdü.", "Haberin tadı olmaz; “acı” burada “üzücü” demek."]],
+      ipucu: "<b>Kafanda resmini çiz!</b> Cümleyi kelimesi kelimesine düşündüğünde gerçekte olamayacak, komik bir resim çıkıyorsa kelime mecazdır." },
+    { tip: "dene", soru: "Hangi cümlede “tatlı” sözcüğü <b>mecaz</b> anlamda kullanılmıştır?", secenekler: [
+      ["Tatlı bir gülümsemesi vardı.", true, "Doğru! Gülümsemenin tadı olmaz. “Tatlı” burada “sevimli, hoş” anlamında; gerçek anlamından uzaklaşmış."],
+      ["Annem tatlı bir kek yaptı.", false, "Kekin tadı gerçekten şekerli. Burada “tatlı” gerçek anlamında kullanılmış."],
+      ["Bu çay çok tatlı olmuş.", false, "Çaya şeker konmuş; dilimizle tadını alırız. Bu gerçek anlam."],
+      ["Karpuz çok tatlı çıktı.", false, "Karpuzun tadı şekerli; dille tadılabilen bir özellik. Bu da gerçek anlam."]] },
+    { baslik: "Yan anlam", metin: "Kelime gerçek anlamıyla <b>bağını koparmadan</b> yeni bir anlam kazanırsa yan anlam olur. İki anlam arasında bir benzerlik vardır.",
+      ornekler: [["Masanın <mark>ayağı</mark> kırılmış.", "Bizim ayağımız bizi taşır; masanın ayağı da masayı taşır. Benzerlik var!"], ["Dağın <mark>eteğinde</mark> bir köy var.", "Etek giysinin alt kısmıdır; dağın eteği de dağın alt kısmı."]],
+      ipucu: "Mecazdan farkı: yan anlamda kelime <b>somut bir şeyi</b> anlatmaya devam eder ve gerçek anlama <b>benzer</b>." },
+    { baslik: "Terim anlam", metin: "Bir bilim, sanat ya da spor dalına <b>özel</b> anlamda kullanılan kelimelere terim denir.",
+      ornekler: [["Üçgenin iç <mark>açıları</mark> toplamı 180 derecedir.", "Matematik terimi"], ["Oyunun ikinci <mark>perdesi</mark> başladı.", "Tiyatro terimi: oyunun bir bölümü"], ["Kaleci <mark>penaltıyı</mark> kurtardı.", "Futbol terimi"]],
+      ipucu: "Kelime bir <b>derste ya da meslekte</b> özel bir anlamla kullanılıyorsa terimdir. Sor: “Bunu hangi derste duyarım?”" },
+    { tip: "dene", soru: "Hangi cümlede “kök” sözcüğü <b>terim</b> anlamlıdır?", secenekler: [
+      ["“Gözlük” kelimesinin kökü “göz”dür.", true, "Doğru! “Kök” burada Türkçe dersinin (dil bilgisinin) bir terimi: kelimenin ek almamış ana parçası."],
+      ["Ağacın kökleri derinlere inmiş.", false, "Ağacın toprak altındaki kısmı: bu, “kök” kelimesinin gerçek anlamı."],
+      ["Bu sorunu kökünden çözdük.", false, "Sorunların kökü olmaz! “Kökünden” burada “temelinden, tamamen” demek; bu mecaz anlam."],
+      ["Çiçeği köküyle birlikte söktü.", false, "Bitkinin toprak altındaki kısmı: yine gerçek anlam."]] },
+    { baslik: "Somut ve soyut", metin: "Beş duyumuzdan <b>en az biriyle</b> algılayabildiğimiz varlıklar somuttur. Hiçbir duyuyla algılayamadığımız, ancak hissettiğimiz ya da düşündüğümüz kavramlar soyuttur.",
+      ornekler: [["Somut: masa, <mark>ses</mark>, <mark>koku</mark>, <mark>rüzgâr</mark>", "Sesi kulakla duyarız, kokuyu burnumuzla alırız, rüzgârı tenimizde hissederiz. Hepsi somut!"], ["Soyut: <mark>sevgi</mark>, umut, korku, özlem", "Sevgiyi göremez, koklayamaz, tutamayız; onu ancak hissederiz."]],
+      ipucu: "<b>Beş duyu testi:</b> gör, duy, kokla, tat, dokun. Bir tanesi bile işe yarıyorsa kelime somuttur." },
+    { tip: "dene", soru: "Aşağıdakilerden hangisi <b>soyut</b> bir addır?", secenekler: [
+      ["özlem", true, "Doğru! Özlemi göremez, duyamaz, koklayamaz, tadamaz, ona dokunamayız; yalnızca hissederiz."],
+      ["ses", false, "Sesi kulağımızla duyarız. Bir duyuyla algılandığı için somuttur."],
+      ["koku", false, "Kokuyu burnumuzla alırız. Bu yüzden somuttur."],
+      ["rüzgâr", false, "Rüzgârı tenimizle hissederiz, uğultusunu duyarız. Somuttur."]] },
+    { baslik: "Çok anlamlılık", metin: "Pek çok kelimenin birden fazla anlamı vardır. Buna çok anlamlılık denir. Cümle, kelimenin hangi anlamda kullanıldığını bize söyler.",
+      ornekler: [["Kaçan hırsızı polis <mark>tuttu</mark>.", "yakalamak"], ["Yazın deniz kenarında bir ev <mark>tuttuk</mark>.", "kiralamak"], ["Sen hangi takımı <mark>tutuyorsun</mark>?", "taraftarı olmak"]],
+      ipucu: "Kelimenin yerine bir eş anlamlısını koymayı dene: “ev <b>kiraladık</b>” oluyorsa anlam “kiralamak”tır." },
+  ] },
+  { id: "b", harf: "B", renk: "var(--b2)", baslik: "Anlam İlişkileri", konu: "Sözcükler Arası Anlam İlişkileri", ozet: "Kelimeler arkadaş olur: eş anlamlı, zıt anlamlı, eş sesli, genel-özel, parça-bütün, neden-sonuç.",
+    rozet: "Kelime Kâşifi", slaytlar: [
+    { baslik: "Kelimelerin arkadaşlıkları", metin: "Kelimeler tek başına yaşamaz; birbirleriyle ilişki kurarlar. Kimi aynı anlamı paylaşır, kimi tam tersini söyler, kimi de birbirinin parçasıdır.",
+      ornekler: [["siyah – kara", "aynı anlam"], ["gece – gündüz", "ters anlam"], ["sayfa – kitap", "biri diğerinin parçası"]],
+      ipucu: "Bu bölümde kelimeler arasındaki bağları keşfeden bir <b>kelime kâşifi</b> olacaksın." },
+    { baslik: "Eş anlamlı sözcükler", metin: "Yazılışları farklı ama anlamları <b>aynı</b> olan kelimelerdir.",
+      ornekler: [["cevap – yanıt", "Soruma bir cevap / yanıt ver."], ["hediye – armağan", "Doğum gününde hediye / armağan aldım."], ["okul – mektep", "mektep eski bir kelimedir, anlamı okuldur."]],
+      ipucu: "<b>Yer değiştirme testi:</b> cümlede birini çıkar, diğerini koy. Anlam bozulmuyorsa eş anlamlıdır." },
+    { tip: "dene", soru: "“armağan” sözcüğünün <b>eş anlamlısı</b> hangisidir?", secenekler: [
+      ["hediye", true, "Doğru! “Sana bir armağan getirdim” ile “Sana bir hediye getirdim” aynı anlamı taşır."],
+      ["bayram", false, "Bayramda armağan verilebilir ama bayram bir gündür; anlamları aynı değil."],
+      ["misafir", false, "“misafir”in eş anlamlısı “konuk”tur, “armağan” değil."],
+      ["paket", false, "Armağan pakette olabilir ama paket bir kutu ya da sargıdır; aynı anlam değil."]] },
+    { baslik: "Zıt anlamlı sözcükler", metin: "Anlamca birbirinin <b>tam karşıtı</b> olan kelimelerdir.",
+      ornekler: [["büyük – küçük", ""], ["erken – geç", "Sabah erken kalktı, akşam geç yattı."], ["kolay – zor", ""]],
+      ipucu: "Biri varsa diğeri aynı anda olamaz: bir şey hem büyük hem küçük olamaz." },
+    { baslik: "Eş sesli (sesteş) sözcükler", metin: "Yazılışları ve okunuşları <b>aynı</b>, anlamları ise <b>birbirinden tamamen farklı</b> olan kelimelerdir.",
+      ornekler: [["Kumbaramda <mark>yüz</mark> lira var.", "sayı"], ["Sabah <mark>yüzünü</mark> yıkadı.", "surat"], ["Havuzda bir saat <mark>yüz</mark>.", "yüzmek"]],
+      ipucu: "Çok anlamlıdan farkı: eş seslilerde anlamlar arasında <b>hiç bağ yoktur</b>. Sayı olan yüz ile surat olan yüz akraba değildir!" },
+    { tip: "dene", soru: "Hangi cümlede “gül” sözcüğü <b>çiçek</b> anlamında kullanılmıştır?", secenekler: [
+      ["Bahçemizdeki gül açtı.", true, "Doğru! Açan şey bir çiçektir: gül çiçeği."],
+      ["Bu şakaya sen de gül.", false, "Burada “gül” gülmek eylemidir: “gülümse, kahkaha at” anlamında."],
+      ["Fotoğraf çekilirken biraz gül.", false, "Fotoğrafta gülümsemek istiyoruz: bu da gülmek eylemi."],
+      ["Ağlama artık, biraz gül!", false, "Burada da gülmek eylemi var: “gülümse” anlamında; çiçekle ilgisi yok."]] },
+    { baslik: "Genel – özel", metin: "Bir kelime diğerinin <b>türü</b> ise aralarında genel-özel ilişkisi vardır. Genel olan büyük bir şemsiye, özel olan onun altındaki bir parçadır.",
+      ornekler: [["meyve → elma", "Elma bir meyve türüdür."], ["taşıt → otobüs", "Otobüs bir taşıttır."], ["kuş → serçe", "Serçe bir kuş türüdür."]],
+      ipucu: "Cümle kur: <b>“… bir … türüdür.”</b> “Elma bir meyve türüdür” diyebiliyorsan genel-özel ilişkisi vardır." },
+    { baslik: "Parça – bütün ve neden – sonuç", metin: "Biri diğerinin <b>parçasıysa</b> parça-bütün, biri diğerinin <b>olmasına yol açıyorsa</b> neden-sonuç ilişkisi vardır.",
+      ornekler: [["yaprak – ağaç, sayfa – kitap", "parça-bütün: yaprak ağacın bir parçasıdır."], ["yağmur – sel, ateş – duman", "neden-sonuç: yağmur yağdığı için sel olur."]],
+      ipucu: "Parça-bütün için: “… , …nın bir parçasıdır.” Neden-sonuç için: “… olduğu için … oldu.” Hangisi uyuyorsa o!" },
+    { tip: "dene", soru: "“yağmur – sel” sözcükleri arasında hangi ilişki vardır?", secenekler: [
+      ["Neden-sonuç ilişkisi", true, "Doğru! Çok yağmur yağdığı için sel olur: yağmur neden, sel sonuçtur."],
+      ["Parça-bütün ilişkisi", false, "Yağmur selin bir parçası değildir; sel yağmurun sonucunda oluşur."],
+      ["Eş anlamlılık", false, "Yağmur gökten düşen sudur, sel ise taşan sudur; anlamları aynı değil."],
+      ["Zıt anlamlılık", false, "Yağmur ile sel birbirinin karşıtı değil; biri diğerine yol açar."]] },
+  ] },
+  { id: "c", harf: "C", renk: "var(--b3)", baslik: "Söz Grupları", konu: "Söz Grupları", ozet: "Dilimizin renkli kalıpları: deyimler, atasözleri, ikilemeler, pekiştirmeler ve yansımalar.",
+    rozet: "Deyim Ustası", slaytlar: [
+    { baslik: "Dilimizin hazineleri", metin: "Atalarımız bize kalıplaşmış söz grupları bıraktı. Bunlar konuşmamızı daha kısa, daha etkili ve daha eğlenceli yapar.",
+      ornekler: [["Karnesini görünce <mark>ağzı kulaklarına vardı</mark>.", "deyim: çok sevindi"], ["<mark>Damlaya damlaya göl olur.</mark>", "atasözü: küçük birikimler büyür"]],
+      ipucu: "Bu bölümün sonunda bir <b>deyim ustası</b> olacaksın!" },
+    { baslik: "Deyimler", metin: "En az iki kelimeden oluşan, genellikle mecaz anlamlı, <b>kalıplaşmış</b> sözlerdir. Bir durumu kısa ve etkili anlatır. Kelimeleri değiştirilemez.",
+      ornekler: [["göz atmak", "kısaca bakmak (“göz fırlatmak” diyemeyiz!)"], ["kulak asmamak", "dinlememek, önemsememek"], ["pireyi deve yapmak", "küçük bir şeyi çok büyütmek"]],
+      ipucu: "<b>Resmini çiz!</b> “Ağzı kulaklarına varmak”ı kelimesi kelimesine düşün: komik bir yüz çıkar. Deyimler gerçek anlamıyla değil, anlattığı durumla anlaşılır." },
+    { tip: "dene", soru: "“kulak asmamak” deyiminin anlamı hangisidir?", secenekler: [
+      ["söyleneni önemsememek, dinlememek", true, "Doğru! “Uyarılarıma kulak asmadı” = uyarılarımı dinlemedi, önemsemedi."],
+      ["gizlice dinlemeye çalışmak", false, "Bu, “kulak kabartmak” deyiminin anlamıdır."],
+      ["çok sevinmek", false, "Bu, “ağzı kulaklarına varmak” deyiminin anlamıdır."],
+      ["kulağına küpe takmak", false, "Bu, deyimi kelimesi kelimesine okumak olur. Deyimler mecaz anlamlıdır."]] },
+    { baslik: "Atasözleri", metin: "Atalarımızın uzun deneyimlerle vardığı, <b>öğüt veren</b>, kalıplaşmış <b>cümlelerdir</b>.",
+      ornekler: [["Damlaya damlaya göl olur.", "Küçük birikimler zamanla büyür."], ["Bugünün işini yarına bırakma.", "İşini zamanında yap."], ["Ağaç yaşken eğilir.", "İnsan küçük yaşta eğitilmeli."]],
+      ipucu: "<b>Deyim mi, atasözü mü?</b> Atasözü bir cümledir ve öğüt verir. Deyim çoğu zaman “-mak / -mek” ile biter ve bir durumu anlatır." },
+    { tip: "dene", soru: "Aşağıdakilerden hangisi bir <b>atasözüdür</b>?", secenekler: [
+      ["Bugünün işini yarına bırakma.", true, "Doğru! Bir cümledir ve bize öğüt verir: işini zamanında yap."],
+      ["göz atmak", false, "Bu bir deyimdir: “-mak” ile biter ve “kısaca bakmak” durumunu anlatır."],
+      ["eli açık olmak", false, "Bu bir deyimdir: “cömert olmak” anlamına gelir, öğüt vermez."],
+      ["dört gözle beklemek", false, "Bu bir deyimdir: “büyük bir istekle beklemek” durumunu anlatır."]] },
+    { baslik: "İkilemeler", metin: "Anlamı güçlendirmek için kelimelerin <b>ikili</b> kullanılmasıdır. Aynı kelime, zıt kelimeler ya da biri anlamsız kelimeler olabilir.",
+      ornekler: [["yavaş yavaş, koşa koşa", "aynı kelimenin tekrarı"], ["er geç, irili ufaklı", "zıt anlamlı kelimeler"], ["eski püskü, çoluk çocuk", "biri tek başına pek kullanılmayan kelime"]],
+      ipucu: "Cümlede <b>yan yana iki kelime</b> bir ritim oluşturuyorsa ikilemeyi yakaladın!" },
+    { baslik: "Pekiştirmeler", metin: "Bir sıfatın anlamını <b>güçlendirmek</b> için başına bir hece eklenir.",
+      ornekler: [["mavi → <mark>mas</mark>mavi", ""], ["beyaz → <mark>bem</mark>beyaz", ""], ["temiz → <mark>ter</mark>temiz", ""]],
+      ipucu: "Eklenen hece genellikle <b>m, p, r, s</b> harflerinden biriyle biter: mas-, bem-, ter-, yep-." },
+    { tip: "dene", soru: "Aşağıdakilerden hangisi <b>pekiştirmeli</b> bir sözcüktür?", secenekler: [
+      ["yemyeşil", true, "Doğru! “yeşil” kelimesinin başına “yem” hecesi eklenerek anlamı güçlendirilmiş."],
+      ["yeşillik", false, "“-lik” eki yeni bir kelime yapar (yeşil alan); anlamı güçlendirmez."],
+      ["yeşilimsi", false, "“-imsi” eki rengin tam yeşil olmadığını, yeşile yakın olduğunu anlatır. Güçlendirme değil, zayıflatma!"],
+      ["yeşermek", false, "“yeşermek” bir eylemdir: “yeşil hâle gelmek” demek. Başına güçlendiren bir hece almamış."]] },
+    { baslik: "Yansımalar", metin: "Doğadaki sesleri <b>taklit ederek</b> oluşturulan kelimelerdir.",
+      ornekler: [["şırıl şırıl, şırıltı", "akan su"], ["vızıltı", "arı ya da sinek"], ["miyav, cıvıltı", "kedi, kuşlar"]],
+      ipucu: "Kelimeyi sesli söyle. <b>Sesin kendisine benziyorsa</b> yansımadır!" },
+  ] },
+];
+const ROZET_IKON = (renk, harf) => `<svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="28" r="22" fill="${renk}"></circle><circle cx="32" cy="28" r="16" fill="var(--sheet)"></circle><text x="32" y="35" text-anchor="middle" font-family="Baloo 2, sans-serif" font-weight="800" font-size="20" fill="${renk}">${harf}</text><path d="M20 46 l-4 16 l10-5 l6 7 l6-7 l10 5 l-4-16z" fill="${renk}"></path></svg>`;
+const OVGU = ["Harikasın!", "Süper! Bir anlam dedektifi gibi düşündün.", "Tam isabet!", "Bravo, çok iyi gidiyorsun!", "Mükemmel! Kelimeler artık senin arkadaşın.", "Aynen böyle devam!"];
+const TESELLI = ["Sorun değil! Yanlış yapmak öğrenmenin bir parçası. Bak nedenine:", "Neredeyse! Hadi birlikte bakalım:", "Bu soru zordu. Şimdi öğrenince bir daha yanılmazsın:", "Hata yapmayan öğrenemez. Nedenine bakalım:"];
+const sec = a => a[Math.floor(Math.random() * a.length)];
+
+/* ===== DURUM (bu tarayıcıda saklanır) ===== */
+const ANAHTAR = "turkceMacerasi6";
+const bugun = () => Math.floor((Date.now() - new Date().getTimezoneOffset() * 60000) / 86400000);
+let d = { yildiz: 0, dersBitti: {}, pratikEnIyi: {}, rozet: {}, hatalar: [], sonGun: null, seri: 0 };
+try { const k = JSON.parse(localStorage.getItem(ANAHTAR)); if (k) d = Object.assign(d, k); } catch (e) {}
+const kaydet = () => { try { localStorage.setItem(ANAHTAR, JSON.stringify(d)); } catch (e) {} };
+function gunuIsle() {
+  const g = bugun();
+  if (d.sonGun === g) return;
+  d.seri = d.sonGun === g - 1 ? d.seri + 1 : 1;
+  d.sonGun = g;
+  kaydet();
+}
+
+/* ===== SESLİ OKUMA ===== */
+function oku(html) {
+  try {
+    speechSynthesis.cancel();
+    const t = document.createElement("div"); t.innerHTML = html;
+    const u = new SpeechSynthesisUtterance(t.textContent.replace(/[“”]/g, ""));
+    u.lang = "tr-TR"; u.rate = 0.9;
+    const ses = speechSynthesis.getVoices().find(v => v.lang && v.lang.toLowerCase().startsWith("tr"));
+    if (ses) u.voice = ses;
+    speechSynthesis.speak(u);
+  } catch (e) {}
+}
+const SES_VAR = "speechSynthesis" in window;
+
+/* ===== EKRANLAR ===== */
+function goster(ekran) { ["ana", "ders", "pratik"].forEach(e => $(e).hidden = e !== ekran); window.scrollTo(0, 0); if (SES_VAR) speechSynthesis.cancel(); }
+
+function anaCiz() {
+  const saat = new Date().getHours();
+  const selam = saat < 12 ? "Günaydın" : saat < 18 ? "Merhaba" : "İyi akşamlar";
+  const bitti = Object.keys(d.dersBitti).length;
+  $("selam").innerHTML = `${selam}! Ben <b>Kelimo</b>. ${bitti === 0 ? "Kelimelerin gizli dünyasına hoş geldin. Haritadan bir bölüm seç, birlikte keşfedelim!" : bitti < 3 ? `Şimdiye kadar ${bitti} bölüm bitirdin. Harika gidiyorsun, sıradaki maceraya hazır mısın?` : "Üç bölümü de bitirdin! Şimdi karışık meydan okumayla ustalığını göster."}`;
+  $("yildizSay").textContent = d.yildiz;
+  $("seriSay").textContent = d.seri;
+  const atasozleri = HAVUZ.filter(s => s.soru.includes("atasözünün anlamı"));
+  if (atasozleri.length) {
+    const s = atasozleri[bugun() % atasozleri.length];
+    $("gununSoz").textContent = s.soru.split("“")[1].split("”")[0];
+    $("gununAnlam").textContent = s.secenekler[s.dogru];
+  }
+  $("bolumler").innerHTML = BOLUMLER.map(b => {
+    const enIyi = d.pratikEnIyi[b.id] || 0;
+    const dersOk = !!d.dersBitti[b.id];
+    const yuzde = (dersOk ? 50 : 0) + Math.min(50, enIyi * 10);
+    return `<button type="button" class="bolum" style="--renk:${b.renk}" data-bolum="${b.id}">
+      <span class="harf">${b.harf}</span><h3>${b.baslik}</h3><p>${b.ozet}</p>
+      <div class="bar"><i style="width:${yuzde}%"></i></div>
+      <span class="durum ${d.rozet[b.id] ? "tamam" : ""}">${d.rozet[b.id] ? `Rozet kazanıldı: ${b.rozet}` : dersOk ? `Ders bitti · pratikte en iyi: ${enIyi}/5` : `${b.slaytlar.length} slayt · sonra 5 soruluk pratik`}</span>
+    </button>`;
+  }).join("");
+  const rozetler = BOLUMLER.map(b => ({ ad: b.rozet, acik: d.rozet[b.id], renk: b.renk, harf: b.harf }))
+    .concat([{ ad: "Hata Avcısı", acik: d.rozet.hata, renk: "var(--bad)", harf: "!" }, { ad: "Türkçe Şampiyonu", acik: d.rozet.sampiyon, renk: "var(--sun)", harf: "★" }]);
+  $("rozetler").innerHTML = rozetler.map(r => `<div class="rozet ${r.acik ? "acik" : "kilitli"}">${ROZET_IKON(r.renk, r.harf)}<span>${r.ad}</span></div>`).join("");
+  $("hataBtn").textContent = `Hata defterim (${d.hatalar.length})`;
+  $("hataBtn").disabled = d.hatalar.length === 0;
+}
+
+/* ----- Ders ----- */
+let bolum = null, sira = 0, deneCevap = null;
+function dersAc(id) {
+  bolum = BOLUMLER.find(b => b.id === id);
+  sira = 0; deneCevap = null;
+  goster("ders"); slaytCiz();
+}
+function slaytCiz() {
+  const s = bolum.slaytlar[sira];
+  const k = $("slayt");
+  k.style.setProperty("--renk", bolum.renk);
+  $("noktalar").style.setProperty("--renk", bolum.renk);
+  $("noktalar").innerHTML = bolum.slaytlar.map((_, i) => `<i class="${i < sira ? "ok" : i === sira ? "su" : ""}"></i>`).join("");
+  if (s.tip === "dene") {
+    const sirali = s._sira || (s._sira = karistir([0, 1, 2, 3]));
+    k.innerHTML = `<span class="etiket">Sıra sende · Dene!</span><p class="soru">${s.soru}</p>
+      <div class="opts">${sirali.map((o, j) => {
+        const [metin, dogru] = s.secenekler[o];
+        let c = "opt";
+        if (deneCevap !== null && dogru) c += " right";
+        if (deneCevap === o && !dogru) c += " wrong";
+        return `<button type="button" class="${c}" data-dene="${o}" ${deneCevap !== null ? "disabled" : ""}><b>${HARF[j]}</b><span>${metin}</span></button>`;
+      }).join("")}</div>${deneCevap !== null ? geriBildirim(s.secenekler[deneCevap], s.secenekler.find(x => x[1])) : ""}`;
+    $("sonraki").disabled = deneCevap === null;
+  } else {
+    k.innerHTML = `<span class="etiket">${bolum.harf} · ${bolum.baslik}</span><h2>${s.baslik}</h2>
+      ${SES_VAR ? `<button type="button" class="oku" id="okuBtn">${SES_IKON}Sesli dinle</button>` : ""}
+      <p class="metin">${s.metin}</p>
+      <div class="ornekler">${s.ornekler.map(([o, n]) => `<div class="ornek">${o}${n ? `<small>${n}</small>` : ""}</div>`).join("")}</div>
+      <div class="ipucu">${IPUCU_IKON}<p style="margin:0">${s.ipucu}</p></div>`;
+    $("sonraki").disabled = false;
+    const ob = $("okuBtn");
+    if (ob) ob.addEventListener("click", () => oku(`${s.baslik}. ${s.metin}. ${s.ornekler.map(([o, n]) => o + ". " + n).join(". ")}. İpucu: ${s.ipucu}`));
+  }
+  $("onceki").disabled = sira === 0;
+  $("sonraki").textContent = sira === bolum.slaytlar.length - 1 ? "Pratiğe geç →" : "Sonraki →";
+}
+function geriBildirim(secilen, dogru) {
+  const iyi = secilen[1];
+  return `<div class="geri ${iyi ? "iyi" : "kotu"} patla"><h3>${iyi ? sec(OVGU) : sec(TESELLI)}</h3>
+    ${iyi ? `<p>${secilen[2]}</p>` : `<p class="neden"><b>Senin seçtiğin:</b> ${secilen[2]}</p><p class="dogru"><b>Doğru cevap:</b> ${dogru[2].replace(/^Doğru! /, "")}</p>`}</div>`;
+}
+$("slayt").addEventListener("click", e => {
+  const b = e.target.closest("[data-dene]");
+  if (!b || deneCevap !== null) return;
+  deneCevap = +b.dataset.dene;
+  const s = bolum.slaytlar[sira];
+  if (s.secenekler[deneCevap][1]) { d.yildiz += 1; kaydet(); }
+  slaytCiz();
+});
+$("onceki").addEventListener("click", () => { if (sira > 0) { sira--; deneCevap = null; bolum.slaytlar[sira]._sira = null; slaytCiz(); window.scrollTo(0, 0); } });
+$("sonraki").addEventListener("click", () => {
+  if (sira < bolum.slaytlar.length - 1) { sira++; deneCevap = null; slaytCiz(); window.scrollTo(0, 0); return; }
+  d.dersBitti[bolum.id] = true; kaydet();
+  pratikBaslat(HAVUZ.filter(s => s.konu === bolum.konu), 5, bolum);
+});
+$("dersCik").addEventListener("click", () => { goster("ana"); anaCiz(); });
+
+/* ----- Pratik (havuzdan, tek tek, anında geri bildirim) ----- */
+let p = null;
+function pratikBaslat(kaynak, adet, b, mod) {
+  const sorular = karistir(kaynak).slice(0, adet).map(s => ({ ...s, sira: karistir([0, 1, 2, 3]), cevap: null }));
+  p = { sorular, i: 0, dogru: 0, bolum: b, mod };
+  $("pratikBaslik").textContent = mod === "hata" ? "Hata defteri tekrarı" : b ? `${b.harf} · ${b.baslik} · pratik` : "Karışık meydan okuma";
+  goster("pratik"); pratikCiz();
+}
+function pratikCiz() {
+  const k = $("pratikKart");
+  const renk = p.bolum ? p.bolum.renk : "var(--sun)";
+  k.style.setProperty("--renk", renk);
+  $("pratikBar").style.width = (100 * p.i / p.sorular.length) + "%";
+  if (p.i >= p.sorular.length) return sonucCiz();
+  const q = p.sorular[p.i];
+  const sa = q.secenekAciklama || {};
+  let html = `<span class="etiket">Soru ${p.i + 1} / ${p.sorular.length} · ${q.zorluk}</span><p class="soru">${q.soru}</p>
+    <div class="opts">${q.sira.map((o, j) => {
+      let c = "opt";
+      if (q.cevap !== null && o === q.dogru) c += " right";
+      if (q.cevap === o && o !== q.dogru) c += " wrong";
+      return `<button type="button" class="${c}" data-p="${o}" ${q.cevap !== null ? "disabled" : ""}><b>${HARF[j]}</b><span>${q.secenekler[o]}</span></button>`;
+    }).join("")}</div>`;
+  if (q.cevap !== null) {
+    const iyi = q.cevap === q.dogru;
+    const dogruMetin = q.secenekler[q.dogru], secilen = q.secenekler[q.cevap];
+    const dogruNeden = sa[dogruMetin] || q.aciklama || "";
+    html += `<div class="geri ${iyi ? "iyi" : "kotu"} patla"><h3>${iyi ? sec(OVGU) : sec(TESELLI)}</h3>
+      ${!iyi && sa[secilen] ? `<p class="neden"><b>Senin seçtiğin:</b> ${sa[secilen]}</p>` : ""}
+      ${dogruNeden ? `<p class="dogru"><b>${iyi ? "Çünkü:" : "Doğru cevap:"}</b> ${!iyi && !sa[dogruMetin] ? `“${dogruMetin}”. ` : ""}${dogruNeden}</p>` : (!iyi ? `<p class="dogru"><b>Doğru cevap:</b> ${dogruMetin}</p>` : "")}
+      ${q.aciklama && sa[dogruMetin] && q.aciklama !== sa[dogruMetin] ? `<p><b>Hatırla:</b> ${q.aciklama}</p>` : ""}
+      ${!iyi ? `<p style="color:var(--muted);font-size:.9rem">Bu soru hata defterine eklendi. Daha sonra tekrar edebilirsin.</p>` : ""}</div>
+      <button type="button" class="btn primary" id="pIleri">${p.i === p.sorular.length - 1 ? "Sonucu gör" : "Sonraki soru →"}</button>`;
+  }
+  k.innerHTML = html;
+  const ileri = $("pIleri");
+  if (ileri) { ileri.addEventListener("click", () => { p.i++; pratikCiz(); window.scrollTo(0, 0); }); ileri.focus(); }
+}
+$("pratikKart").addEventListener("click", e => {
+  const b = e.target.closest("[data-p]");
+  if (!b) return;
+  const q = p.sorular[p.i];
+  if (q.cevap !== null) return;
+  q.cevap = +b.dataset.p;
+  if (q.cevap === q.dogru) {
+    p.dogru++; d.yildiz += 2;
+    if (p.mod === "hata") d.hatalar = d.hatalar.filter(id => id !== q.id);
+  } else if (!d.hatalar.includes(q.id)) d.hatalar.push(q.id);
+  kaydet(); pratikCiz();
+});
+function sonucCiz() {
+  const n = p.sorular.length, dg = p.dogru;
+  let rozetMesaj = "";
+  if (p.bolum) {
+    d.pratikEnIyi[p.bolum.id] = Math.max(d.pratikEnIyi[p.bolum.id] || 0, dg);
+    if (dg >= 4 && !d.rozet[p.bolum.id]) { d.rozet[p.bolum.id] = true; rozetMesaj = `Yeni rozet: <b>${p.bolum.rozet}</b>!`; }
+  }
+  if (p.mod === "hata" && dg >= 3 && !d.rozet.hata) { d.rozet.hata = true; rozetMesaj = "Yeni rozet: <b>Hata Avcısı</b>! Hatalarından öğrendin."; }
+  if (!p.bolum && p.mod !== "hata" && dg >= 8 && !d.rozet.sampiyon) { d.rozet.sampiyon = true; rozetMesaj = "Yeni rozet: <b>Türkçe Şampiyonu</b>!"; }
+  kaydet();
+  const oran = dg / n;
+  const mesaj = oran === 1 ? "Kusursuz! Hepsini bildin, sen bir kelime ustasısın!" : oran >= .8 ? "Çok güzel! Neredeyse hepsi doğru." : oran >= .5 ? "İyi gidiyorsun! Biraz daha pratikle zirvedesin." : "Her deneme seni güçlendirir. Ders slaytlarına bir göz atıp tekrar dene!";
+  $("pratikBar").style.width = "100%";
+  $("pratikKart").innerHTML = `<div class="sonuc patla"><span class="etiket">Sonuç</span><span class="buyuk">${dg} / ${n}</span>
+    <h2>${mesaj}</h2>${rozetMesaj ? `<p class="gunun" style="margin:0">${rozetMesaj}</p>` : ""}
+    <p style="margin:0;color:var(--muted)">Toplam yıldızın: ${d.yildiz}</p>
+    <div class="araclar" style="justify-content:center">
+      <button type="button" class="btn primary" id="tekrarBtn">Yeni sorularla tekrar</button>
+      <button type="button" class="btn" id="haritaBtn">Haritaya dön</button>
+    </div></div>`;
+  $("tekrarBtn").addEventListener("click", () => p.mod === "hata" ? hataBaslat() : pratikBaslat(p.bolum ? HAVUZ.filter(s => s.konu === p.bolum.konu) : HAVUZ, n, p.bolum, p.mod));
+  $("haritaBtn").addEventListener("click", () => { goster("ana"); anaCiz(); });
+}
+function hataBaslat() {
+  const liste = HAVUZ.filter(s => d.hatalar.includes(s.id));
+  if (!liste.length) { goster("ana"); anaCiz(); return; }
+  pratikBaslat(liste, Math.min(5, liste.length), null, "hata");
+}
+$("pratikCik").addEventListener("click", () => { goster("ana"); anaCiz(); });
+$("bolumler").addEventListener("click", e => { const b = e.target.closest("[data-bolum]"); if (b) dersAc(b.dataset.bolum); });
+$("karisik").addEventListener("click", () => pratikBaslat(HAVUZ, 10, null));
+$("hataBtn").addEventListener("click", hataBaslat);
+
+gunuIsle();
+anaCiz();
+</script>

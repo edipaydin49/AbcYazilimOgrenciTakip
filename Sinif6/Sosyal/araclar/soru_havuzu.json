@@ -1090,5 +1090,1331 @@
    "Ticaretin azalması"
   ],
   "dogru": 0
+ },
+ {
+  "id": 85,
+  "konu": "Biz ve Değerlerimiz",
+  "zorluk": "Kolay",
+  "soru": "Toplumun en küçük birimi hangisidir?",
+  "secenekler": [
+   "Aile",
+   "Okul",
+   "Mahalle",
+   "Belediye"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 86,
+  "konu": "Biz ve Değerlerimiz",
+  "zorluk": "Kolay",
+  "soru": "Aşağıdakilerden hangisi her çocuğun sahip olduğu bir haktır?",
+  "secenekler": [
+   "Oy kullanma hakkı",
+   "Milletvekili seçilme hakkı",
+   "Araba kullanma hakkı",
+   "Eğitim hakkı"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 87,
+  "konu": "Biz ve Değerlerimiz",
+  "zorluk": "Kolay",
+  "soru": "Esnafın dürüst çalışmasını ve dayanışmasını sağlayan tarihî teşkilat hangisidir?",
+  "secenekler": [
+   "İmece",
+   "Vakıf",
+   "Ahilik",
+   "Kurultay"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 88,
+  "konu": "Biz ve Değerlerimiz",
+  "zorluk": "Kolay",
+  "soru": "Toplumun yararına hizmet etmek için mal ya da para bağışlanarak kurulan kuruma ne ad verilir?",
+  "secenekler": [
+   "Pazar",
+   "Banka",
+   "Fabrika",
+   "Vakıf"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 89,
+  "konu": "Biz ve Değerlerimiz",
+  "zorluk": "Kolay",
+  "soru": "Aşağıdakilerden hangisi kültürel mirasımıza örnektir?",
+  "secenekler": [
+   "Bilgisayar oyunu",
+   "Halk oyunları",
+   "Akıllı telefon",
+   "Hızlı tren"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 90,
+  "konu": "Biz ve Değerlerimiz",
+  "zorluk": "Orta",
+  "soru": "Aşağıdakilerden hangisi UNESCO Somut Olmayan Kültürel Miras listesinde yer alan değerlerimizden biridir?",
+  "secenekler": [
+   "Sümela Manastırı",
+   "Karagöz",
+   "Galata Kulesi",
+   "Topkapı Sarayı"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 91,
+  "konu": "Biz ve Değerlerimiz",
+  "zorluk": "Orta",
+  "soru": "Ebru sanatı, Türk kahvesi kültürü ve Nasreddin Hoca fıkraları neyin örnekleridir?",
+  "secenekler": [
+   "Ekonomik faaliyetlerin",
+   "Somut olmayan kültürel mirasın",
+   "Doğal afetlerin",
+   "Yönetim birimlerinin"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 92,
+  "konu": "Biz ve Değerlerimiz",
+  "zorluk": "Orta",
+  "soru": "Ahilik teşkilatının kurucusu olarak kabul edilen kişi kimdir?",
+  "secenekler": [
+   "Yunus Emre",
+   "Hacı Bektaş Veli",
+   "Ahi Evran",
+   "Mevlana"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 93,
+  "konu": "Biz ve Değerlerimiz",
+  "zorluk": "Orta",
+  "soru": "Bir kişinin hem öğrenci hem kardeş hem de takım kaptanı olması neyi gösterir?",
+  "secenekler": [
+   "Tek bir rolü olduğunu",
+   "Hiçbir gruba ait olmadığını",
+   "Farklı gruplarda farklı rollerinin olduğunu",
+   "Statüsünün hiç değişmediğini"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 94,
+  "konu": "Biz ve Değerlerimiz",
+  "zorluk": "Orta",
+  "soru": "Okulda bir arkadaşının dışlandığını gören öğrencinin yapması gereken en doğru davranış hangisidir?",
+  "secenekler": [
+   "Arkadaşıyla alay etmek",
+   "Dışlayanlara katılmak",
+   "Arkadaşını gruba katmak ve öğretmene haber vermek",
+   "Görmezden gelmek"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 95,
+  "konu": "Biz ve Değerlerimiz",
+  "zorluk": "Zor",
+  "soru": "Toplumsal dayanışmanın artmasına en çok katkı sağlayan davranış hangisidir?",
+  "secenekler": [
+   "Afet bölgesindeki insanlara yardım kampanyasına katılmak",
+   "Komşularla görüşmemek",
+   "Yalnızca kendi ihtiyacını düşünmek",
+   "Ortak alanları kirletmek"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 96,
+  "konu": "Tarihe Yolculuk",
+  "zorluk": "Kolay",
+  "soru": "Kök Türk Devleti'nin kurucusu kimdir?",
+  "secenekler": [
+   "Bilge Kağan",
+   "Mete Han",
+   "Bumin Kağan",
+   "Attila"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 97,
+  "konu": "Tarihe Yolculuk",
+  "zorluk": "Kolay",
+  "soru": "Avrupa Hun Devleti'nin en ünlü hükümdarı kimdir?",
+  "secenekler": [
+   "Bumin Kağan",
+   "Attila",
+   "Mete Han",
+   "Tuğrul Bey"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 98,
+  "konu": "Tarihe Yolculuk",
+  "zorluk": "Kolay",
+  "soru": "İlk Türk devletlerinde devlet işlerinin görüşüldüğü meclise ne ad verilir?",
+  "secenekler": [
+   "Divan",
+   "Senato",
+   "Kurultay",
+   "Kongre"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 99,
+  "konu": "Tarihe Yolculuk",
+  "zorluk": "Kolay",
+  "soru": "İlk Türk devletlerinde yazısız hukuk kurallarına ne ad verilir?",
+  "secenekler": [
+   "Kurultay",
+   "Töre",
+   "Kut",
+   "Balbal"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 100,
+  "konu": "Tarihe Yolculuk",
+  "zorluk": "Kolay",
+  "soru": "Büyük Selçuklu Devleti'nin kurucusu kimdir?",
+  "secenekler": [
+   "Melikşah",
+   "Alparslan",
+   "Tuğrul Bey",
+   "Gazneli Mahmut"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 101,
+  "konu": "Tarihe Yolculuk",
+  "zorluk": "Kolay",
+  "soru": "İpek Yolu üzerinde tüccarların konaklaması için yapılan yapılara ne ad verilir?",
+  "secenekler": [
+   "Medrese",
+   "Cami",
+   "Kervansaray",
+   "Kale"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 102,
+  "konu": "Tarihe Yolculuk",
+  "zorluk": "Kolay",
+  "soru": "Türkiye Selçuklu Devleti'nin kurucusu kimdir?",
+  "secenekler": [
+   "Mete Han",
+   "Bumin Kağan",
+   "Tuğrul Bey",
+   "Kutalmışoğlu Süleyman Şah"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 103,
+  "konu": "Tarihe Yolculuk",
+  "zorluk": "Orta",
+  "soru": "Kavimler Göçü hangi yılda başlamıştır?",
+  "secenekler": [
+   "552",
+   "1071",
+   "375",
+   "751"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 104,
+  "konu": "Tarihe Yolculuk",
+  "zorluk": "Orta",
+  "soru": "Asya Hun hükümdarı Mete Han'ın orduda kurduğu düzen hangisidir?",
+  "secenekler": [
+   "Devşirme sistemi",
+   "Yeniçeri ocağı",
+   "Onlu sistem",
+   "Tımar sistemi"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 105,
+  "konu": "Tarihe Yolculuk",
+  "zorluk": "Orta",
+  "soru": "İlk Türk devletlerinde hükümdarlık yetkisinin Tanrı tarafından verildiğine inanılmasına ne ad verilir?",
+  "secenekler": [
+   "Balbal",
+   "Töre",
+   "Kut",
+   "Kurultay"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 106,
+  "konu": "Tarihe Yolculuk",
+  "zorluk": "Orta",
+  "soru": "İlk Türklerde mezarların başına dikilen taş heykellere ne ad verilir?",
+  "secenekler": [
+   "Kurgan",
+   "Balbal",
+   "Yazıt",
+   "Kervansaray"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 107,
+  "konu": "Tarihe Yolculuk",
+  "zorluk": "Orta",
+  "soru": "Uygurların benimsediği din hangisidir?",
+  "secenekler": [
+   "Gök Tanrı inancı",
+   "Budizm",
+   "Maniheizm",
+   "Hristiyanlık"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 108,
+  "konu": "Tarihe Yolculuk",
+  "zorluk": "Orta",
+  "soru": "Büyük Selçukluların Bizans ile yaptığı ilk savaş hangisidir?",
+  "secenekler": [
+   "Talas Savaşı (751)",
+   "Malazgirt Savaşı (1071)",
+   "Pasinler Savaşı (1048)",
+   "Dandanakan Savaşı (1040)"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 109,
+  "konu": "Tarihe Yolculuk",
+  "zorluk": "Orta",
+  "soru": "Malazgirt Savaşı'ndan sonra Anadolu'da kurulan ilk Türk beyliklerinden biri hangisidir?",
+  "secenekler": [
+   "Danişmentliler",
+   "Karahanlılar",
+   "Uygurlar",
+   "Osmanlılar"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 110,
+  "konu": "Tarihe Yolculuk",
+  "zorluk": "Orta",
+  "soru": "Türkiye Selçukluları ile Bizans arasında 1176'da yapılan savaş hangisidir?",
+  "secenekler": [
+   "Miryokefalon Savaşı",
+   "Talas Savaşı",
+   "Malazgirt Savaşı",
+   "Pasinler Savaşı"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 111,
+  "konu": "Tarihe Yolculuk",
+  "zorluk": "Orta",
+  "soru": "Kâğıdın Çin'den İslam dünyasına yayılmasında etkili olan savaş hangisidir?",
+  "secenekler": [
+   "Talas Savaşı",
+   "Malazgirt Savaşı",
+   "Dandanakan Savaşı",
+   "Kösedağ Savaşı"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 112,
+  "konu": "Tarihe Yolculuk",
+  "zorluk": "Orta",
+  "soru": "Kutadgu Bilig hangi devlet döneminde yazılmıştır?",
+  "secenekler": [
+   "Karahanlılar",
+   "Uygurlar",
+   "Kök Türkler",
+   "Gazneliler"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 113,
+  "konu": "Tarihe Yolculuk",
+  "zorluk": "Orta",
+  "soru": "Divanü Lügati't-Türk'ün yazılma amacı hangisidir?",
+  "secenekler": [
+   "Araplara Türkçeyi öğretmek",
+   "Savaş taktiklerini anlatmak",
+   "Hükümdarlara öğüt vermek",
+   "Ticaret kurallarını belirlemek"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 114,
+  "konu": "Tarihe Yolculuk",
+  "zorluk": "Orta",
+  "soru": "Hindistan'dan Avrupa'ya baharat taşınan ticaret yoluna ne ad verilir?",
+  "secenekler": [
+   "Kral Yolu",
+   "Kürk Yolu",
+   "İpek Yolu",
+   "Baharat Yolu"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 115,
+  "konu": "Tarihe Yolculuk",
+  "zorluk": "Zor",
+  "soru": "Orta Asya'dan yapılan Türk göçlerinin nedenleri arasında hangisi yoktur?",
+  "secenekler": [
+   "Deniz ticaretinin gelişmesi",
+   "Siyasi baskılar",
+   "Nüfus artışı",
+   "Kuraklık"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 116,
+  "konu": "Tarihe Yolculuk",
+  "zorluk": "Zor",
+  "soru": "Türkiye Selçuklularının Moğollara yenildiği 1243 tarihli savaş hangisidir?",
+  "secenekler": [
+   "Kösedağ Savaşı",
+   "Pasinler Savaşı",
+   "Malazgirt Savaşı",
+   "Miryokefalon Savaşı"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 117,
+  "konu": "Tarihe Yolculuk",
+  "zorluk": "Zor",
+  "soru": "İpek Yolu'nun zamanla önemini kaybetmesinin en önemli nedeni hangisidir?",
+  "secenekler": [
+   "Türklerin ticareti bırakması",
+   "Coğrafi Keşiflerle yeni deniz yollarının bulunması",
+   "Kervansarayların çoğalması",
+   "İpek üretiminin artması"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 118,
+  "konu": "Tarihe Yolculuk",
+  "zorluk": "Zor",
+  "soru": "Uygurların kâğıt ve matbaa kullanması neyi gösterir?",
+  "secenekler": [
+   "Yalnızca hayvancılık yaptıklarını",
+   "Göçebe yaşadıklarını",
+   "Hiç yazı kullanmadıklarını",
+   "Kültür ve bilimde ileri gittiklerini"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 119,
+  "konu": "Yeryüzünde Yaşam",
+  "zorluk": "Kolay",
+  "soru": "Dünya'nın gerçek şekline ne ad verilir?",
+  "secenekler": [
+   "Geoit",
+   "Silindir",
+   "Elips",
+   "Küre"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 120,
+  "konu": "Yeryüzünde Yaşam",
+  "zorluk": "Kolay",
+  "soru": "En uzun paralel hangisidir?",
+  "secenekler": [
+   "Oğlak dönencesi",
+   "Kuzey kutup dairesi",
+   "Ekvator",
+   "Yengeç dönencesi"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 121,
+  "konu": "Yeryüzünde Yaşam",
+  "zorluk": "Kolay",
+  "soru": "Bir yerin enlem ve boylam değerleriyle belirlenen konumuna ne ad verilir?",
+  "secenekler": [
+   "Özel konum",
+   "Yerel konum",
+   "Göreceli konum",
+   "Matematik konum"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 122,
+  "konu": "Yeryüzünde Yaşam",
+  "zorluk": "Kolay",
+  "soru": "Haritadaki işaretlerin ne anlama geldiğini gösteren bölüme ne ad verilir?",
+  "secenekler": [
+   "Lejant (açıklama)",
+   "Başlık",
+   "Pusula",
+   "Ölçek"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 123,
+  "konu": "Yeryüzünde Yaşam",
+  "zorluk": "Kolay",
+  "soru": "Türkiye'de en fazla yağış alan bölge hangisidir?",
+  "secenekler": [
+   "Güneydoğu Anadolu Bölgesi",
+   "İç Anadolu Bölgesi",
+   "Karadeniz Bölgesi",
+   "Ege Bölgesi"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 124,
+  "konu": "Yeryüzünde Yaşam",
+  "zorluk": "Kolay",
+  "soru": "Ülkemizde en çok can kaybına neden olan doğal afet hangisidir?",
+  "secenekler": [
+   "Hortum",
+   "Çığ",
+   "Kasırga",
+   "Deprem"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 125,
+  "konu": "Yeryüzünde Yaşam",
+  "zorluk": "Kolay",
+  "soru": "Afet ve acil durumlarda çalışan devlet kurumumuz hangisidir?",
+  "secenekler": [
+   "TRT",
+   "AFAD",
+   "PTT",
+   "TÜİK"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 126,
+  "konu": "Yeryüzünde Yaşam",
+  "zorluk": "Orta",
+  "soru": "Meridyenlerle ilgili hangisi doğrudur?",
+  "secenekler": [
+   "Birbirine paraleldir.",
+   "Toplam 180 tanedir.",
+   "Hepsinin uzunluğu eşittir ve kutuplarda birleşir.",
+   "Ekvator'dan kutuplara küçülür."
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 127,
+  "konu": "Yeryüzünde Yaşam",
+  "zorluk": "Orta",
+  "soru": "Paralellerle ilgili hangisi doğrudur?",
+  "secenekler": [
+   "Kutuplarda birleşir.",
+   "Toplam 360 tanedir.",
+   "Ekvator'dan kutuplara doğru küçülür.",
+   "Hepsinin uzunluğu eşittir."
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 128,
+  "konu": "Yeryüzünde Yaşam",
+  "zorluk": "Orta",
+  "soru": "Bir yerin çevresindeki dağlara, denizlere ve ülkelere göre konumuna ne ad verilir?",
+  "secenekler": [
+   "Boylam",
+   "Enlem",
+   "Özel konum",
+   "Matematik konum"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 129,
+  "konu": "Yeryüzünde Yaşam",
+  "zorluk": "Orta",
+  "soru": "Türkiye'nin özel konumunun bir sonucu hangisidir?",
+  "secenekler": [
+   "Güney yarım kürede olması",
+   "Ekvator üzerinde bulunması",
+   "Hiç denize kıyısı olmaması",
+   "Asya ile Avrupa arasında köprü olması"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 130,
+  "konu": "Yeryüzünde Yaşam",
+  "zorluk": "Orta",
+  "soru": "Haritadaki uzunlukların gerçek uzunluklara göre ne kadar küçültüldüğünü gösteren orana ne ad verilir?",
+  "secenekler": [
+   "İzohips",
+   "Lejant",
+   "Yön oku",
+   "Ölçek"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 131,
+  "konu": "Yeryüzünde Yaşam",
+  "zorluk": "Orta",
+  "soru": "Yükselti arttıkça hava sıcaklığı genel olarak nasıl değişir?",
+  "secenekler": [
+   "Artar.",
+   "Önce artar sonra azalır.",
+   "Değişmez.",
+   "Azalır."
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 132,
+  "konu": "Yeryüzünde Yaşam",
+  "zorluk": "Orta",
+  "soru": "Her mevsim sıcak ve yağışlı olan, gür ormanların bulunduğu iklim hangisidir?",
+  "secenekler": [
+   "Ekvatoral iklim",
+   "Çöl iklimi",
+   "Karasal iklim",
+   "Kutup iklimi"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 133,
+  "konu": "Yeryüzünde Yaşam",
+  "zorluk": "Orta",
+  "soru": "Yıl boyunca çok az yağış alan, gece ile gündüz arasındaki sıcaklık farkı fazla olan iklim hangisidir?",
+  "secenekler": [
+   "Çöl iklimi",
+   "Karadeniz iklimi",
+   "Muson iklimi",
+   "Ekvatoral iklim"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 134,
+  "konu": "Yeryüzünde Yaşam",
+  "zorluk": "Orta",
+  "soru": "Yazları çok yağış alan, Hindistan'da görülen iklim hangisidir?",
+  "secenekler": [
+   "Muson iklimi",
+   "Çöl iklimi",
+   "Kutup iklimi",
+   "Akdeniz iklimi"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 135,
+  "konu": "Yeryüzünde Yaşam",
+  "zorluk": "Orta",
+  "soru": "Kutup ikliminin görüldüğü yerlerdeki bitki örtüsü hangisidir?",
+  "secenekler": [
+   "Savan",
+   "Maki",
+   "Bozkır",
+   "Tundra"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 136,
+  "konu": "Yeryüzünde Yaşam",
+  "zorluk": "Orta",
+  "soru": "Haritada aynı yükseltideki noktaları birleştiren eğrilere ne ad verilir?",
+  "secenekler": [
+   "Meridyenler",
+   "Eş yükselti eğrileri (izohips)",
+   "Paraleller",
+   "Ölçek çizgileri"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 137,
+  "konu": "Yeryüzünde Yaşam",
+  "zorluk": "Zor",
+  "soru": "Başlangıç meridyeninde (0°) saat 12.00 iken 30° doğu boylamında yerel saat kaçtır?",
+  "secenekler": [
+   "14.00",
+   "10.00",
+   "12.00",
+   "15.00"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 138,
+  "konu": "Yeryüzünde Yaşam",
+  "zorluk": "Zor",
+  "soru": "Başlangıç meridyeninde (0°) saat 12.00 iken 45° doğu boylamında yerel saat kaçtır?",
+  "secenekler": [
+   "10.00",
+   "14.00",
+   "12.00",
+   "15.00"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 139,
+  "konu": "Yeryüzünde Yaşam",
+  "zorluk": "Zor",
+  "soru": "Başlangıç meridyeninde (0°) saat 12.00 iken 15° batı boylamında yerel saat kaçtır?",
+  "secenekler": [
+   "10.00",
+   "13.00",
+   "11.00",
+   "15.00"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 140,
+  "konu": "Yeryüzünde Yaşam",
+  "zorluk": "Zor",
+  "soru": "Başlangıç meridyeninde (0°) saat 12.00 iken 60° doğu boylamında yerel saat kaçtır?",
+  "secenekler": [
+   "16.00",
+   "14.00",
+   "12.00",
+   "10.00"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 141,
+  "konu": "Yeryüzünde Yaşam",
+  "zorluk": "Zor",
+  "soru": "Başlangıç meridyeninde (0°) saat 12.00 iken 30° batı boylamında yerel saat kaçtır?",
+  "secenekler": [
+   "10.00",
+   "15.00",
+   "13.00",
+   "11.00"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 142,
+  "konu": "Yeryüzünde Yaşam",
+  "zorluk": "Zor",
+  "soru": "Kuzey yarım kürede bulunan ülkemizde dağların güneye bakan yamaçları neden daha sıcaktır?",
+  "secenekler": [
+   "Güneş ışınlarını daha dik açıyla aldıkları için",
+   "Rüzgâr almadıkları için",
+   "Denize daha uzak oldukları için",
+   "Daha yüksek oldukları için"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 143,
+  "konu": "Yeryüzünde Yaşam",
+  "zorluk": "Zor",
+  "soru": "Kıyı kesimlerde gece ile gündüz arasındaki sıcaklık farkının az olmasının nedeni nedir?",
+  "secenekler": [
+   "Ekvator'a uzak olması",
+   "Denizin ılımanlaştırıcı etkisi",
+   "Bitki örtüsünün az olması",
+   "Yükseltinin fazla olması"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 144,
+  "konu": "Ekonomi ve Sosyal Hayat",
+  "zorluk": "Kolay",
+  "soru": "Ürünlerin başka ülkelere satılmasına ne ad verilir?",
+  "secenekler": [
+   "Tüketim",
+   "Tasarruf",
+   "İhracat",
+   "İthalat"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 145,
+  "konu": "Ekonomi ve Sosyal Hayat",
+  "zorluk": "Kolay",
+  "soru": "Başka ülkelerden ürün satın alınmasına ne ad verilir?",
+  "secenekler": [
+   "Dağıtım",
+   "İhracat",
+   "Üretim",
+   "İthalat"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 146,
+  "konu": "Ekonomi ve Sosyal Hayat",
+  "zorluk": "Kolay",
+  "soru": "Kayısı üretimiyle ünlü ilimiz hangisidir?",
+  "secenekler": [
+   "Kars",
+   "Edirne",
+   "Rize",
+   "Malatya"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 147,
+  "konu": "Ekonomi ve Sosyal Hayat",
+  "zorluk": "Kolay",
+  "soru": "Fındık üretiminde öne çıkan illerimiz hangileridir?",
+  "secenekler": [
+   "Konya ve Aksaray",
+   "Antalya ve Mersin",
+   "Ordu ve Giresun",
+   "Van ve Muş"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 148,
+  "konu": "Ekonomi ve Sosyal Hayat",
+  "zorluk": "Kolay",
+  "soru": "Muz üretimiyle tanınan ilçemiz hangisidir?",
+  "secenekler": [
+   "Ürgüp",
+   "Anamur",
+   "Bodrum",
+   "Safranbolu"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 149,
+  "konu": "Ekonomi ve Sosyal Hayat",
+  "zorluk": "Kolay",
+  "soru": "Bilinçli bir tüketici alışveriş yaparken ne yapmalıdır?",
+  "secenekler": [
+   "Fiş almamalıdır.",
+   "Ürünün etiketine hiç bakmamalıdır.",
+   "Son kullanma tarihine bakmalı ve fiş almalıdır.",
+   "İhtiyacından fazla almalıdır."
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 150,
+  "konu": "Ekonomi ve Sosyal Hayat",
+  "zorluk": "Orta",
+  "soru": "Hammaddelerin işlenerek ürüne dönüştürüldüğü ekonomik faaliyet hangisidir?",
+  "secenekler": [
+   "Ticaret",
+   "Sanayi",
+   "Turizm",
+   "Tarım"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 151,
+  "konu": "Ekonomi ve Sosyal Hayat",
+  "zorluk": "Orta",
+  "soru": "Üretimi oluşturan faktörlerden biri hangisidir?",
+  "secenekler": [
+   "İsraf",
+   "Borç",
+   "Tatil",
+   "Emek"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 152,
+  "konu": "Ekonomi ve Sosyal Hayat",
+  "zorluk": "Orta",
+  "soru": "GAP (Güneydoğu Anadolu Projesi) ile en çok hangi alanlarda gelişme hedeflenmiştir?",
+  "secenekler": [
+   "Çay tarımı",
+   "Sulama ve enerji üretimi",
+   "Kayak turizmi",
+   "Balıkçılık ve madencilik"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 153,
+  "konu": "Ekonomi ve Sosyal Hayat",
+  "zorluk": "Orta",
+  "soru": "Türkiye'nin en büyük barajı hangisidir?",
+  "secenekler": [
+   "Keban Barajı",
+   "Sarıyar Barajı",
+   "Atatürk Barajı",
+   "Hirfanlı Barajı"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 154,
+  "konu": "Ekonomi ve Sosyal Hayat",
+  "zorluk": "Orta",
+  "soru": "Atatürk Barajı hangi akarsu üzerinde kurulmuştur?",
+  "secenekler": [
+   "Sakarya",
+   "Kızılırmak",
+   "Yeşilırmak",
+   "Fırat"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 155,
+  "konu": "Ekonomi ve Sosyal Hayat",
+  "zorluk": "Orta",
+  "soru": "Şeker pancarı üretiminde öne çıkan bölgemiz hangisidir?",
+  "secenekler": [
+   "Doğu Anadolu Bölgesi",
+   "İç Anadolu Bölgesi",
+   "Karadeniz Bölgesi",
+   "Akdeniz Bölgesi"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 156,
+  "konu": "Ekonomi ve Sosyal Hayat",
+  "zorluk": "Orta",
+  "soru": "Turunçgil (portakal, limon) üretiminin en çok yapıldığı bölgemiz hangisidir?",
+  "secenekler": [
+   "Akdeniz Bölgesi",
+   "İç Anadolu Bölgesi",
+   "Karadeniz Bölgesi",
+   "Doğu Anadolu Bölgesi"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 157,
+  "konu": "Ekonomi ve Sosyal Hayat",
+  "zorluk": "Orta",
+  "soru": "Haklarının ihlal edildiğini düşünen tüketici nereye başvurabilir?",
+  "secenekler": [
+   "Tüketici hakem heyetine",
+   "Kütüphaneye",
+   "Spor kulübüne",
+   "Belediye parkına"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 158,
+  "konu": "Ekonomi ve Sosyal Hayat",
+  "zorluk": "Orta",
+  "soru": "Tarımda makine kullanımının artması neyi sağlar?",
+  "secenekler": [
+   "İş gücünün artmasını",
+   "Üretimin azalmasını",
+   "Verimin artmasını",
+   "Toprağın çoraklaşmasını"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 159,
+  "konu": "Ekonomi ve Sosyal Hayat",
+  "zorluk": "Zor",
+  "soru": "Bir ülkenin ihracatının ithalatından fazla olması neyi gösterir?",
+  "secenekler": [
+   "Dış ticaretin ülke aleyhine olduğunu",
+   "Dış ticaretin ülke lehine olduğunu",
+   "Ülkenin hiç üretim yapmadığını",
+   "Ülkenin hiç ithalat yapmadığını"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 160,
+  "konu": "Ekonomi ve Sosyal Hayat",
+  "zorluk": "Zor",
+  "soru": "Rüzgâr enerjisi santrallerinin en çok Ege ve Marmara kıyılarında kurulmasının nedeni nedir?",
+  "secenekler": [
+   "Bu bölgelerde güneşin hiç görünmemesi",
+   "Bu bölgelerde akarsuyun olmaması",
+   "Bu bölgelerin çok yüksek olması",
+   "Bu bölgelerin sürekli ve güçlü rüzgâr alması"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 161,
+  "konu": "Yönetim ve Demokrasi",
+  "zorluk": "Kolay",
+  "soru": "Türkiye Cumhuriyeti'nin ilk Cumhurbaşkanı kimdir?",
+  "secenekler": [
+   "İsmet İnönü",
+   "Mustafa Kemal Atatürk",
+   "Fevzi Çakmak",
+   "Celal Bayar"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 162,
+  "konu": "Yönetim ve Demokrasi",
+  "zorluk": "Kolay",
+  "soru": "İllerde devleti temsil eden yönetici kimdir?",
+  "secenekler": [
+   "Muhtar",
+   "Vali",
+   "Belediye başkanı",
+   "Milletvekili"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 163,
+  "konu": "Yönetim ve Demokrasi",
+  "zorluk": "Kolay",
+  "soru": "İlçelerde devleti temsil eden yönetici kimdir?",
+  "secenekler": [
+   "Kaymakam",
+   "Vali",
+   "Milletvekili",
+   "Muhtar"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 164,
+  "konu": "Yönetim ve Demokrasi",
+  "zorluk": "Kolay",
+  "soru": "Köy ve mahallelerin yöneticisi kimdir?",
+  "secenekler": [
+   "Kaymakam",
+   "Muhtar",
+   "Vali",
+   "Bakan"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 165,
+  "konu": "Yönetim ve Demokrasi",
+  "zorluk": "Kolay",
+  "soru": "Kanunları yapan, değiştiren ve kaldıran kurum hangisidir?",
+  "secenekler": [
+   "Muhtarlık",
+   "Valilik",
+   "Belediye",
+   "TBMM"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 166,
+  "konu": "Yönetim ve Demokrasi",
+  "zorluk": "Orta",
+  "soru": "Cumhurbaşkanı kaç yıl için seçilir?",
+  "secenekler": [
+   "4 yıl",
+   "7 yıl",
+   "5 yıl",
+   "3 yıl"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 167,
+  "konu": "Yönetim ve Demokrasi",
+  "zorluk": "Orta",
+  "soru": "Saltanat hangi tarihte kaldırılmıştır?",
+  "secenekler": [
+   "23 Nisan 1920",
+   "3 Mart 1924",
+   "1 Kasım 1922",
+   "29 Ekim 1923"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 168,
+  "konu": "Yönetim ve Demokrasi",
+  "zorluk": "Orta",
+  "soru": "Türk kadınına milletvekili seçme ve seçilme hakkı hangi yıl verilmiştir?",
+  "secenekler": [
+   "1934",
+   "1930",
+   "1923",
+   "1950"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 169,
+  "konu": "Yönetim ve Demokrasi",
+  "zorluk": "Orta",
+  "soru": "Türk kadınına belediye seçimlerinde seçme ve seçilme hakkı hangi yıl verilmiştir?",
+  "secenekler": [
+   "1930",
+   "1934",
+   "1920",
+   "1946"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 170,
+  "konu": "Yönetim ve Demokrasi",
+  "zorluk": "Orta",
+  "soru": "Kanunların Anayasa'ya uygun olup olmadığını denetleyen kurum hangisidir?",
+  "secenekler": [
+   "Belediye Meclisi",
+   "İl Genel Meclisi",
+   "Anayasa Mahkemesi",
+   "Sayıştay"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 171,
+  "konu": "Yönetim ve Demokrasi",
+  "zorluk": "Orta",
+  "soru": "Aşağıdakilerden hangisi seçimle göreve gelir?",
+  "secenekler": [
+   "Vali",
+   "Belediye başkanı",
+   "Kaymakam",
+   "Okul müdürü"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 172,
+  "konu": "Yönetim ve Demokrasi",
+  "zorluk": "Orta",
+  "soru": "Yönetimin tek bir kişide olduğu ve babadan oğula geçtiği yönetim biçimine ne ad verilir?",
+  "secenekler": [
+   "Demokrasi",
+   "Cumhuriyet",
+   "Meşrutiyet",
+   "Monarşi"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 173,
+  "konu": "Yönetim ve Demokrasi",
+  "zorluk": "Orta",
+  "soru": "Devletin bütçesini onaylamak hangi kurumun görevidir?",
+  "secenekler": [
+   "Valilikler",
+   "Belediyeler",
+   "TBMM",
+   "Anayasa Mahkemesi"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 174,
+  "konu": "Yönetim ve Demokrasi",
+  "zorluk": "Zor",
+  "soru": "Valilerin seçimle değil atamayla göreve gelmesi neyi gösterir?",
+  "secenekler": [
+   "Yasama yetkisi kullandıklarını",
+   "Yargı yetkisi kullandıklarını",
+   "Yerel yönetimin temsilcisi olduklarını",
+   "Merkezî yönetimin temsilcisi olduklarını"
+  ],
+  "dogru": 3
+ },
+ {
+  "id": 175,
+  "konu": "Yönetim ve Demokrasi",
+  "zorluk": "Zor",
+  "soru": "Cumhuriyet yönetiminin en temel özelliği hangisidir?",
+  "secenekler": [
+   "Tek kişinin her kararı vermesi",
+   "Halkın kendi temsilcilerini seçmesi",
+   "Seçim yapılmaması",
+   "Yönetimin babadan oğula geçmesi"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 176,
+  "konu": "Uluslararası İlişkiler",
+  "zorluk": "Kolay",
+  "soru": "Aşağıdaki ülkelerden hangisi Türkiye'nin komşusu değildir?",
+  "secenekler": [
+   "Bulgaristan",
+   "İran",
+   "Romanya",
+   "Gürcistan"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 177,
+  "konu": "Uluslararası İlişkiler",
+  "zorluk": "Kolay",
+  "soru": "Türkiye ile en uzun kara sınırına sahip komşu ülke hangisidir?",
+  "secenekler": [
+   "Yunanistan",
+   "Suriye",
+   "Gürcistan",
+   "Ermenistan"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 178,
+  "konu": "Uluslararası İlişkiler",
+  "zorluk": "Kolay",
+  "soru": "Türkiye'nin kaç kara komşusu vardır?",
+  "secenekler": [
+   "5",
+   "6",
+   "8",
+   "10"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 179,
+  "konu": "Uluslararası İlişkiler",
+  "zorluk": "Kolay",
+  "soru": "Türk dilini ve kültürünü yurt dışında tanıtmak için kurulan kurum hangisidir?",
+  "secenekler": [
+   "TÜBİTAK",
+   "Yunus Emre Enstitüsü",
+   "AFAD",
+   "Kızılay"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 180,
+  "konu": "Uluslararası İlişkiler",
+  "zorluk": "Orta",
+  "soru": "Yurt dışındaki kalkınma ve yardım projelerini yürüten Türk kurumu hangisidir?",
+  "secenekler": [
+   "TİKA (Türk İşbirliği ve Koordinasyon Ajansı)",
+   "TRT",
+   "TCDD",
+   "PTT"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 181,
+  "konu": "Uluslararası İlişkiler",
+  "zorluk": "Orta",
+  "soru": "Türkiye'nin “iki devlet, tek millet” olarak tanımladığı ülke hangisidir?",
+  "secenekler": [
+   "Azerbaycan",
+   "Bulgaristan",
+   "Gürcistan",
+   "Irak"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 182,
+  "konu": "Uluslararası İlişkiler",
+  "zorluk": "Orta",
+  "soru": "Türkiye'nin üyesi olduğu ve merkezi İstanbul'da bulunan ekonomik örgüt hangisidir?",
+  "secenekler": [
+   "Karadeniz Ekonomik İşbirliği Örgütü",
+   "NATO",
+   "UNESCO",
+   "Avrupa Birliği"
+  ],
+  "dogru": 0
+ },
+ {
+  "id": 183,
+  "konu": "Uluslararası İlişkiler",
+  "zorluk": "Orta",
+  "soru": "Türkiye, İran ve Pakistan'ın kurucu üyesi olduğu ekonomik örgüt hangisidir?",
+  "secenekler": [
+   "D-8",
+   "Ekonomik İşbirliği Teşkilatı (ECO)",
+   "NATO",
+   "BM"
+  ],
+  "dogru": 1
+ },
+ {
+  "id": 184,
+  "konu": "Uluslararası İlişkiler",
+  "zorluk": "Orta",
+  "soru": "Türkiye'nin üyesi olduğu, gelişmekte olan 8 İslam ülkesinin ekonomik örgütü hangisidir?",
+  "secenekler": [
+   "NATO",
+   "G-20",
+   "D-8",
+   "Avrupa Birliği"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 185,
+  "konu": "Uluslararası İlişkiler",
+  "zorluk": "Zor",
+  "soru": "Türkiye'nin başka ülkelerde yaşanan depremlere arama kurtarma ekibi göndermesi neyin göstergesidir?",
+  "secenekler": [
+   "Ticari rekabetin",
+   "Sınır anlaşmazlığının",
+   "Uluslararası yardımlaşmanın",
+   "Askerî ittifakın"
+  ],
+  "dogru": 2
+ },
+ {
+  "id": 186,
+  "konu": "Uluslararası İlişkiler",
+  "zorluk": "Zor",
+  "soru": "Kuzey Kıbrıs Türk Cumhuriyeti'ni tanıyan tek ülke hangisidir?",
+  "secenekler": [
+   "Yunanistan",
+   "Azerbaycan",
+   "İngiltere",
+   "Türkiye"
+  ],
+  "dogru": 3
  }
 ]

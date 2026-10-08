@@ -142,6 +142,144 @@ H.liste(DUNYA, "Zor", [
     ("Türkiye'nin uluslararası örgütlere üye olmasının yararı hangisidir?", "Diğer ülkelerle iş birliğinin artması", ["Ülkenin dünyadan yalıtılması", "Ticaretin azalması", "Komşu ülkelerle ilişkilerin kesilmesi"]),
 ])
 
+# ---------------- EK SORULAR (2. sürüm) ----------------
+H.liste(DEGER, "Kolay", [
+    ("Toplumun en küçük birimi hangisidir?", "Aile", ["Okul", "Belediye", "Mahalle"]),
+    ("Aşağıdakilerden hangisi her çocuğun sahip olduğu bir haktır?", "Eğitim hakkı", ["Araba kullanma hakkı", "Oy kullanma hakkı", "Milletvekili seçilme hakkı"]),
+    ("Esnafın dürüst çalışmasını ve dayanışmasını sağlayan tarihî teşkilat hangisidir?", "Ahilik", ["İmece", "Vakıf", "Kurultay"]),
+    ("Toplumun yararına hizmet etmek için mal ya da para bağışlanarak kurulan kuruma ne ad verilir?", "Vakıf", ["Fabrika", "Banka", "Pazar"]),
+    ("Aşağıdakilerden hangisi kültürel mirasımıza örnektir?", "Halk oyunları", ["Akıllı telefon", "Hızlı tren", "Bilgisayar oyunu"]),
+])
+H.liste(DEGER, "Orta", [
+    ("Aşağıdakilerden hangisi UNESCO Somut Olmayan Kültürel Miras listesinde yer alan değerlerimizden biridir?", "Karagöz", ["Galata Kulesi", "Sümela Manastırı", "Topkapı Sarayı"]),
+    ("Ebru sanatı, Türk kahvesi kültürü ve Nasreddin Hoca fıkraları neyin örnekleridir?", "Somut olmayan kültürel mirasın", ["Doğal afetlerin", "Ekonomik faaliyetlerin", "Yönetim birimlerinin"]),
+    ("Ahilik teşkilatının kurucusu olarak kabul edilen kişi kimdir?", "Ahi Evran", ["Yunus Emre", "Hacı Bektaş Veli", "Mevlana"]),
+    ("Bir kişinin hem öğrenci hem kardeş hem de takım kaptanı olması neyi gösterir?", "Farklı gruplarda farklı rollerinin olduğunu", ["Tek bir rolü olduğunu", "Statüsünün hiç değişmediğini", "Hiçbir gruba ait olmadığını"]),
+    ("Okulda bir arkadaşının dışlandığını gören öğrencinin yapması gereken en doğru davranış hangisidir?", "Arkadaşını gruba katmak ve öğretmene haber vermek", ["Görmezden gelmek", "Dışlayanlara katılmak", "Arkadaşıyla alay etmek"]),
+])
+H.liste(DEGER, "Zor", [
+    ("Toplumsal dayanışmanın artmasına en çok katkı sağlayan davranış hangisidir?", "Afet bölgesindeki insanlara yardım kampanyasına katılmak", ["Yalnızca kendi ihtiyacını düşünmek", "Komşularla görüşmemek", "Ortak alanları kirletmek"]),
+])
+H.liste(TARIH, "Kolay", [
+    ("Kök Türk Devleti'nin kurucusu kimdir?", "Bumin Kağan", ["Mete Han", "Bilge Kağan", "Attila"]),
+    ("Avrupa Hun Devleti'nin en ünlü hükümdarı kimdir?", "Attila", ["Mete Han", "Bumin Kağan", "Tuğrul Bey"]),
+    ("İlk Türk devletlerinde devlet işlerinin görüşüldüğü meclise ne ad verilir?", "Kurultay", ["Divan", "Senato", "Kongre"]),
+    ("İlk Türk devletlerinde yazısız hukuk kurallarına ne ad verilir?", "Töre", ["Kurultay", "Kut", "Balbal"]),
+    ("Büyük Selçuklu Devleti'nin kurucusu kimdir?", "Tuğrul Bey", ["Alparslan", "Melikşah", "Gazneli Mahmut"]),
+    ("İpek Yolu üzerinde tüccarların konaklaması için yapılan yapılara ne ad verilir?", "Kervansaray", ["Medrese", "Kale", "Cami"]),
+    ("Türkiye Selçuklu Devleti'nin kurucusu kimdir?", "Kutalmışoğlu Süleyman Şah", ["Tuğrul Bey", "Mete Han", "Bumin Kağan"]),
+])
+H.liste(TARIH, "Orta", [
+    ("Kavimler Göçü hangi yılda başlamıştır?", "375", ["751", "1071", "552"]),
+    ("Asya Hun hükümdarı Mete Han'ın orduda kurduğu düzen hangisidir?", "Onlu sistem", ["Tımar sistemi", "Yeniçeri ocağı", "Devşirme sistemi"]),
+    ("İlk Türk devletlerinde hükümdarlık yetkisinin Tanrı tarafından verildiğine inanılmasına ne ad verilir?", "Kut", ["Töre", "Kurultay", "Balbal"]),
+    ("İlk Türklerde mezarların başına dikilen taş heykellere ne ad verilir?", "Balbal", ["Kurgan", "Yazıt", "Kervansaray"]),
+    ("Uygurların benimsediği din hangisidir?", "Maniheizm", ["Budizm", "Gök Tanrı inancı", "Hristiyanlık"]),
+    ("Büyük Selçukluların Bizans ile yaptığı ilk savaş hangisidir?", "Pasinler Savaşı (1048)", ["Malazgirt Savaşı (1071)", "Talas Savaşı (751)", "Dandanakan Savaşı (1040)"]),
+    ("Malazgirt Savaşı'ndan sonra Anadolu'da kurulan ilk Türk beyliklerinden biri hangisidir?", "Danişmentliler", ["Osmanlılar", "Karahanlılar", "Uygurlar"]),
+    ("Türkiye Selçukluları ile Bizans arasında 1176'da yapılan savaş hangisidir?", "Miryokefalon Savaşı", ["Malazgirt Savaşı", "Pasinler Savaşı", "Talas Savaşı"]),
+    ("Kâğıdın Çin'den İslam dünyasına yayılmasında etkili olan savaş hangisidir?", "Talas Savaşı", ["Malazgirt Savaşı", "Kösedağ Savaşı", "Dandanakan Savaşı"]),
+    ("Kutadgu Bilig hangi devlet döneminde yazılmıştır?", "Karahanlılar", ["Kök Türkler", "Gazneliler", "Uygurlar"]),
+    ("Divanü Lügati't-Türk'ün yazılma amacı hangisidir?", "Araplara Türkçeyi öğretmek", ["Savaş taktiklerini anlatmak", "Ticaret kurallarını belirlemek", "Hükümdarlara öğüt vermek"]),
+    ("Hindistan'dan Avrupa'ya baharat taşınan ticaret yoluna ne ad verilir?", "Baharat Yolu", ["İpek Yolu", "Kral Yolu", "Kürk Yolu"]),
+])
+H.liste(TARIH, "Zor", [
+    ("Orta Asya'dan yapılan Türk göçlerinin nedenleri arasında hangisi yoktur?", "Deniz ticaretinin gelişmesi", ["Kuraklık", "Nüfus artışı", "Siyasi baskılar"]),
+    ("Türkiye Selçuklularının Moğollara yenildiği 1243 tarihli savaş hangisidir?", "Kösedağ Savaşı", ["Miryokefalon Savaşı", "Malazgirt Savaşı", "Pasinler Savaşı"]),
+    ("İpek Yolu'nun zamanla önemini kaybetmesinin en önemli nedeni hangisidir?", "Coğrafi Keşiflerle yeni deniz yollarının bulunması", ["İpek üretiminin artması", "Kervansarayların çoğalması", "Türklerin ticareti bırakması"]),
+    ("Uygurların kâğıt ve matbaa kullanması neyi gösterir?", "Kültür ve bilimde ileri gittiklerini", ["Göçebe yaşadıklarını", "Hiç yazı kullanmadıklarını", "Yalnızca hayvancılık yaptıklarını"]),
+])
+H.liste(YERYUZU, "Kolay", [
+    ("Dünya'nın gerçek şekline ne ad verilir?", "Geoit", ["Küre", "Elips", "Silindir"]),
+    ("En uzun paralel hangisidir?", "Ekvator", ["Yengeç dönencesi", "Kuzey kutup dairesi", "Oğlak dönencesi"]),
+    ("Bir yerin enlem ve boylam değerleriyle belirlenen konumuna ne ad verilir?", "Matematik konum", ["Özel konum", "Göreceli konum", "Yerel konum"]),
+    ("Haritadaki işaretlerin ne anlama geldiğini gösteren bölüme ne ad verilir?", "Lejant (açıklama)", ["Ölçek", "Pusula", "Başlık"]),
+    ("Türkiye'de en fazla yağış alan bölge hangisidir?", "Karadeniz Bölgesi", ["İç Anadolu Bölgesi", "Güneydoğu Anadolu Bölgesi", "Ege Bölgesi"]),
+    ("Ülkemizde en çok can kaybına neden olan doğal afet hangisidir?", "Deprem", ["Çığ", "Kasırga", "Hortum"]),
+    ("Afet ve acil durumlarda çalışan devlet kurumumuz hangisidir?", "AFAD", ["TÜİK", "TRT", "PTT"]),
+])
+H.liste(YERYUZU, "Orta", [
+    ("Meridyenlerle ilgili hangisi doğrudur?", "Hepsinin uzunluğu eşittir ve kutuplarda birleşir.", ["Ekvator'dan kutuplara küçülür.", "Birbirine paraleldir.", "Toplam 180 tanedir."]),
+    ("Paralellerle ilgili hangisi doğrudur?", "Ekvator'dan kutuplara doğru küçülür.", ["Hepsinin uzunluğu eşittir.", "Kutuplarda birleşir.", "Toplam 360 tanedir."]),
+    ("Bir yerin çevresindeki dağlara, denizlere ve ülkelere göre konumuna ne ad verilir?", "Özel konum", ["Matematik konum", "Enlem", "Boylam"]),
+    ("Türkiye'nin özel konumunun bir sonucu hangisidir?", "Asya ile Avrupa arasında köprü olması", ["Ekvator üzerinde bulunması", "Güney yarım kürede olması", "Hiç denize kıyısı olmaması"]),
+    ("Haritadaki uzunlukların gerçek uzunluklara göre ne kadar küçültüldüğünü gösteren orana ne ad verilir?", "Ölçek", ["Lejant", "İzohips", "Yön oku"]),
+    ("Yükselti arttıkça hava sıcaklığı genel olarak nasıl değişir?", "Azalır.", ["Artar.", "Değişmez.", "Önce artar sonra azalır."]),
+    ("Her mevsim sıcak ve yağışlı olan, gür ormanların bulunduğu iklim hangisidir?", "Ekvatoral iklim", ["Çöl iklimi", "Kutup iklimi", "Karasal iklim"]),
+    ("Yıl boyunca çok az yağış alan, gece ile gündüz arasındaki sıcaklık farkı fazla olan iklim hangisidir?", "Çöl iklimi", ["Ekvatoral iklim", "Karadeniz iklimi", "Muson iklimi"]),
+    ("Yazları çok yağış alan, Hindistan'da görülen iklim hangisidir?", "Muson iklimi", ["Akdeniz iklimi", "Kutup iklimi", "Çöl iklimi"]),
+    ("Kutup ikliminin görüldüğü yerlerdeki bitki örtüsü hangisidir?", "Tundra", ["Maki", "Bozkır", "Savan"]),
+    ("Haritada aynı yükseltideki noktaları birleştiren eğrilere ne ad verilir?", "Eş yükselti eğrileri (izohips)", ["Paraleller", "Meridyenler", "Ölçek çizgileri"]),
+])
+for boylam, yon, saat in [(30, "doğu", "14.00"), (45, "doğu", "15.00"), (15, "batı", "11.00"), (60, "doğu", "16.00"), (30, "batı", "10.00")]:
+    H.ekle(YERYUZU, "Zor", f"Başlangıç meridyeninde (0°) saat 12.00 iken {boylam}° {yon} boylamında yerel saat kaçtır?",
+           saat, [s for s in ("10.00", "11.00", "12.00", "13.00", "14.00", "15.00", "16.00") if s != saat][:6:2])
+H.liste(YERYUZU, "Zor", [
+    ("Kuzey yarım kürede bulunan ülkemizde dağların güneye bakan yamaçları neden daha sıcaktır?", "Güneş ışınlarını daha dik açıyla aldıkları için", ["Denize daha uzak oldukları için", "Daha yüksek oldukları için", "Rüzgâr almadıkları için"]),
+    ("Kıyı kesimlerde gece ile gündüz arasındaki sıcaklık farkının az olmasının nedeni nedir?", "Denizin ılımanlaştırıcı etkisi", ["Yükseltinin fazla olması", "Bitki örtüsünün az olması", "Ekvator'a uzak olması"]),
+])
+H.liste(EKONOMI, "Kolay", [
+    ("Ürünlerin başka ülkelere satılmasına ne ad verilir?", "İhracat", ["İthalat", "Tüketim", "Tasarruf"]),
+    ("Başka ülkelerden ürün satın alınmasına ne ad verilir?", "İthalat", ["İhracat", "Üretim", "Dağıtım"]),
+    ("Kayısı üretimiyle ünlü ilimiz hangisidir?", "Malatya", ["Rize", "Edirne", "Kars"]),
+    ("Fındık üretiminde öne çıkan illerimiz hangileridir?", "Ordu ve Giresun", ["Konya ve Aksaray", "Antalya ve Mersin", "Van ve Muş"]),
+    ("Muz üretimiyle tanınan ilçemiz hangisidir?", "Anamur", ["Ürgüp", "Bodrum", "Safranbolu"]),
+    ("Bilinçli bir tüketici alışveriş yaparken ne yapmalıdır?", "Son kullanma tarihine bakmalı ve fiş almalıdır.", ["Fiş almamalıdır.", "Ürünün etiketine hiç bakmamalıdır.", "İhtiyacından fazla almalıdır."]),
+])
+H.liste(EKONOMI, "Orta", [
+    ("Hammaddelerin işlenerek ürüne dönüştürüldüğü ekonomik faaliyet hangisidir?", "Sanayi", ["Tarım", "Ticaret", "Turizm"]),
+    ("Üretimi oluşturan faktörlerden biri hangisidir?", "Emek", ["İsraf", "Borç", "Tatil"]),
+    ("GAP (Güneydoğu Anadolu Projesi) ile en çok hangi alanlarda gelişme hedeflenmiştir?", "Sulama ve enerji üretimi", ["Balıkçılık ve madencilik", "Kayak turizmi", "Çay tarımı"]),
+    ("Türkiye'nin en büyük barajı hangisidir?", "Atatürk Barajı", ["Keban Barajı", "Hirfanlı Barajı", "Sarıyar Barajı"]),
+    ("Atatürk Barajı hangi akarsu üzerinde kurulmuştur?", "Fırat", ["Kızılırmak", "Sakarya", "Yeşilırmak"]),
+    ("Şeker pancarı üretiminde öne çıkan bölgemiz hangisidir?", "İç Anadolu Bölgesi", ["Karadeniz Bölgesi", "Akdeniz Bölgesi", "Doğu Anadolu Bölgesi"]),
+    ("Turunçgil (portakal, limon) üretiminin en çok yapıldığı bölgemiz hangisidir?", "Akdeniz Bölgesi", ["Doğu Anadolu Bölgesi", "İç Anadolu Bölgesi", "Karadeniz Bölgesi"]),
+    ("Haklarının ihlal edildiğini düşünen tüketici nereye başvurabilir?", "Tüketici hakem heyetine", ["Belediye parkına", "Spor kulübüne", "Kütüphaneye"]),
+    ("Tarımda makine kullanımının artması neyi sağlar?", "Verimin artmasını", ["Üretimin azalmasını", "Toprağın çoraklaşmasını", "İş gücünün artmasını"]),
+])
+H.liste(EKONOMI, "Zor", [
+    ("Bir ülkenin ihracatının ithalatından fazla olması neyi gösterir?", "Dış ticaretin ülke lehine olduğunu", ["Ülkenin hiç üretim yapmadığını", "Dış ticaretin ülke aleyhine olduğunu", "Ülkenin hiç ithalat yapmadığını"]),
+    ("Rüzgâr enerjisi santrallerinin en çok Ege ve Marmara kıyılarında kurulmasının nedeni nedir?", "Bu bölgelerin sürekli ve güçlü rüzgâr alması", ["Bu bölgelerde güneşin hiç görünmemesi", "Bu bölgelerde akarsuyun olmaması", "Bu bölgelerin çok yüksek olması"]),
+])
+H.liste(YONETIM, "Kolay", [
+    ("Türkiye Cumhuriyeti'nin ilk Cumhurbaşkanı kimdir?", "Mustafa Kemal Atatürk", ["İsmet İnönü", "Celal Bayar", "Fevzi Çakmak"]),
+    ("İllerde devleti temsil eden yönetici kimdir?", "Vali", ["Muhtar", "Belediye başkanı", "Milletvekili"]),
+    ("İlçelerde devleti temsil eden yönetici kimdir?", "Kaymakam", ["Vali", "Muhtar", "Milletvekili"]),
+    ("Köy ve mahallelerin yöneticisi kimdir?", "Muhtar", ["Vali", "Kaymakam", "Bakan"]),
+    ("Kanunları yapan, değiştiren ve kaldıran kurum hangisidir?", "TBMM", ["Belediye", "Valilik", "Muhtarlık"]),
+])
+H.liste(YONETIM, "Orta", [
+    ("Cumhurbaşkanı kaç yıl için seçilir?", "5 yıl", ["4 yıl", "7 yıl", "3 yıl"]),
+    ("Saltanat hangi tarihte kaldırılmıştır?", "1 Kasım 1922", ["29 Ekim 1923", "23 Nisan 1920", "3 Mart 1924"]),
+    ("Türk kadınına milletvekili seçme ve seçilme hakkı hangi yıl verilmiştir?", "1934", ["1923", "1930", "1950"]),
+    ("Türk kadınına belediye seçimlerinde seçme ve seçilme hakkı hangi yıl verilmiştir?", "1930", ["1934", "1920", "1946"]),
+    ("Kanunların Anayasa'ya uygun olup olmadığını denetleyen kurum hangisidir?", "Anayasa Mahkemesi", ["Belediye Meclisi", "Sayıştay", "İl Genel Meclisi"]),
+    ("Aşağıdakilerden hangisi seçimle göreve gelir?", "Belediye başkanı", ["Vali", "Kaymakam", "Okul müdürü"]),
+    ("Yönetimin tek bir kişide olduğu ve babadan oğula geçtiği yönetim biçimine ne ad verilir?", "Monarşi", ["Cumhuriyet", "Demokrasi", "Meşrutiyet"]),
+    ("Devletin bütçesini onaylamak hangi kurumun görevidir?", "TBMM", ["Anayasa Mahkemesi", "Belediyeler", "Valilikler"]),
+])
+H.liste(YONETIM, "Zor", [
+    ("Valilerin seçimle değil atamayla göreve gelmesi neyi gösterir?", "Merkezî yönetimin temsilcisi olduklarını", ["Yerel yönetimin temsilcisi olduklarını", "Yargı yetkisi kullandıklarını", "Yasama yetkisi kullandıklarını"]),
+    ("Cumhuriyet yönetiminin en temel özelliği hangisidir?", "Halkın kendi temsilcilerini seçmesi", ["Yönetimin babadan oğula geçmesi", "Seçim yapılmaması", "Tek kişinin her kararı vermesi"]),
+])
+H.liste(DUNYA, "Kolay", [
+    ("Aşağıdaki ülkelerden hangisi Türkiye'nin komşusu değildir?", "Romanya", ["Bulgaristan", "Gürcistan", "İran"]),
+    ("Türkiye ile en uzun kara sınırına sahip komşu ülke hangisidir?", "Suriye", ["Yunanistan", "Gürcistan", "Ermenistan"]),
+    ("Türkiye'nin kaç kara komşusu vardır?", "8", ["5", "6", "10"]),
+    ("Türk dilini ve kültürünü yurt dışında tanıtmak için kurulan kurum hangisidir?", "Yunus Emre Enstitüsü", ["Kızılay", "AFAD", "TÜBİTAK"]),
+])
+H.liste(DUNYA, "Orta", [
+    ("Yurt dışındaki kalkınma ve yardım projelerini yürüten Türk kurumu hangisidir?", "TİKA (Türk İşbirliği ve Koordinasyon Ajansı)", ["TRT", "TCDD", "PTT"]),
+    ("Türkiye'nin “iki devlet, tek millet” olarak tanımladığı ülke hangisidir?", "Azerbaycan", ["Gürcistan", "Bulgaristan", "Irak"]),
+    ("Türkiye'nin üyesi olduğu ve merkezi İstanbul'da bulunan ekonomik örgüt hangisidir?", "Karadeniz Ekonomik İşbirliği Örgütü", ["NATO", "Avrupa Birliği", "UNESCO"]),
+    ("Türkiye, İran ve Pakistan'ın kurucu üyesi olduğu ekonomik örgüt hangisidir?", "Ekonomik İşbirliği Teşkilatı (ECO)", ["NATO", "D-8", "BM"]),
+    ("Türkiye'nin üyesi olduğu, gelişmekte olan 8 İslam ülkesinin ekonomik örgütü hangisidir?", "D-8", ["G-20", "NATO", "Avrupa Birliği"]),
+])
+H.liste(DUNYA, "Zor", [
+    ("Türkiye'nin başka ülkelerde yaşanan depremlere arama kurtarma ekibi göndermesi neyin göstergesidir?", "Uluslararası yardımlaşmanın", ["Ticari rekabetin", "Askerî ittifakın", "Sınır anlaşmazlığının"]),
+    ("Kuzey Kıbrıs Türk Cumhuriyeti'ni tanıyan tek ülke hangisidir?", "Türkiye", ["Yunanistan", "İngiltere", "Azerbaycan"]),
+])
+
 for i, s in enumerate(H.sorular, start=1):
     s["id"] = i
 (BURA / "soru_havuzu.json").write_text(json.dumps(H.sorular, ensure_ascii=False, indent=1), encoding="utf-8")

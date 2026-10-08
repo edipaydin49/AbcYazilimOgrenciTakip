@@ -187,6 +187,150 @@ H.liste(ELEKTRIK, "Zor", [
     ("Islak elle elektrikli aletlere dokunmak neden tehlikelidir?", "Su elektriği iletebilir ve çarpılma riski oluşur.", ["Su elektriği tamamen keser.", "Islak el aleti bozar ama tehlikesi yoktur.", "Su yalıtkan olduğu için tehlike yoktur."]),
 ])
 
+# ---------------- EK SORULAR (2. sürüm) ----------------
+H.liste(GUNES, "Kolay", [
+    ("Güneş'e yakınlık sırasına göre Dünya kaçıncı gezegendir?", "3.", ["1.", "2.", "4."]),
+    ("Güneş Sistemi'ndeki en küçük gezegen hangisidir?", "Merkür", ["Mars", "Venüs", "Neptün"]),
+    ("Gezegenlerin Güneş çevresinde izlediği yola ne ad verilir?", "Yörünge", ["Eksen", "Atmosfer", "Ekvator"]),
+    ("Dünya'nın kendi ekseni etrafında dönmesi sonucunda ne oluşur?", "Gece ve gündüz", ["Mevsimler", "Ay tutulması", "Gelgit"]),
+    ("Dünya, Güneş'in çevresindeki bir turunu yaklaşık ne kadar sürede tamamlar?", "1 yılda", ["1 günde", "1 ayda", "1 haftada"]),
+    ("Ay, Dünya'nın çevresindeki bir turunu yaklaşık ne kadar sürede tamamlar?", "1 ayda", ["1 günde", "1 yılda", "1 haftada"]),
+    ("Ay'ın parlak görünmesinin nedeni nedir?", "Güneş'ten aldığı ışığı yansıtması", ["Kendi ışığını üretmesi", "Çok sıcak olması", "Yıldız olması"]),
+    ("Gökyüzünde “kayan yıldız” olarak gördüğümüz, atmosferde sürtünmeyle yanan gök cismi hangisidir?", "Meteor", ["Gezegen", "Uydu", "Yıldız"]),
+    ("Haberleşme ve hava durumu tahmini için Dünya çevresine yerleştirilen araçlara ne ad verilir?", "Yapay uydu", ["Doğal uydu", "Gezegen", "Meteor"]),
+    ("Türkiye'nin ilk astronotu kimdir?", "Alper Gezeravcı", ["Cahit Arf", "Aziz Sancar", "Hezarfen Ahmed Çelebi"]),
+])
+H.liste(GUNES, "Orta", [
+    ("Mars'tan sonra Güneş'e en yakın gezegen hangisidir?", "Jüpiter", ["Satürn", "Dünya", "Venüs"]),
+    ("Satürn'den sonra gelen gezegen hangisidir?", "Uranüs", ["Neptün", "Jüpiter", "Mars"]),
+    ("Ekseni neredeyse yan yatmış biçimde dönen gezegen hangisidir?", "Uranüs", ["Merkür", "Mars", "Venüs"]),
+    ("Üzerindeki dev fırtına “Büyük Kırmızı Leke” ile bilinen gezegen hangisidir?", "Jüpiter", ["Mars", "Venüs", "Neptün"]),
+    ("Meteorun yeryüzüne ulaşan parçasına ne ad verilir?", "Göktaşı (meteorit)", ["Kuyruklu yıldız", "Uydu", "Asteroit kuşağı"]),
+    ("Mevsimlerin oluşmasının temel nedeni hangisidir?", "Dünya'nın eksen eğikliği ve Güneş çevresinde dolanması", ["Dünya'nın kendi çevresinde dönmesi", "Ay'ın Dünya çevresinde dolanması", "Güneş'in bazen sönmesi"]),
+    ("Güneş hangi maddelerden oluşur?", "Büyük ölçüde hidrojen ve helyum gazından", ["Kayalardan", "Sudan", "Demirden"]),
+    ("Gezegenler Güneş'e yaklaştıkça yüzey sıcaklıkları genel olarak nasıl değişir?", "Artar.", ["Azalır.", "Değişmez.", "Sıfır olur."]),
+])
+H.liste(GUNES, "Zor", [
+    ("Her dolunayda Ay tutulması olmamasının nedeni nedir?", "Ay'ın yörüngesinin Dünya'nın yörüngesine göre eğik olması", ["Ay'ın kendi ışığının olması", "Dünya'nın dönmemesi", "Güneş'in bazen görünmemesi"]),
+    ("Tam Güneş tutulması sırasında gündüz ortalığın kararmasının nedeni nedir?", "Ay'ın Güneş ışığını engellemesi", ["Dünya'nın Güneş'i engellemesi", "Bulutların artması", "Güneş'in sönmesi"]),
+    ("Güneş tutulmasını güvenle izlemek için ne kullanılmalıdır?", "Özel güneş gözlüğü ya da filtre", ["Normal güneş gözlüğü", "Dürbün", "Çıplak göz"]),
+    ("Gece ile gündüzün art arda gelmesinin nedeni nedir?", "Dünya'nın kendi ekseni etrafında dönmesi", ["Dünya'nın Güneş çevresinde dolanması", "Ay'ın evreleri", "Güneş'in Dünya çevresinde dönmesi"]),
+])
+H.liste(SISTEM, "Kolay", [
+    ("Vücudumuzdaki en uzun kemik hangisidir?", "Uyluk kemiği", ["Kafatası", "Kaburga", "Bilek kemiği"]),
+    ("Beyni koruyan kemik yapı hangisidir?", "Kafatası", ["Göğüs kafesi", "Omurga", "Leğen kemiği"]),
+    ("Kalp ve akciğerleri koruyan yapı hangisidir?", "Göğüs kafesi", ["Kafatası", "Uyluk kemiği", "Kürek kemiği"]),
+    ("Kemiklerin sağlıklı gelişmesi için en önemli mineral hangisidir?", "Kalsiyum", ["Demir", "Tuz", "Şeker"]),
+    ("Kulak kepçesi ve burun ucu hangi yapıdan oluşur?", "Kıkırdak", ["Kemik", "Kas", "Yağ"]),
+    ("Kasları kemiklere bağlayan yapıya ne ad verilir?", "Kiriş (tendon)", ["Eklem", "Damar", "Sinir"]),
+    ("Dişlerle besinlerin parçalanmasına ne tür sindirim denir?", "Mekanik sindirim", ["Kimyasal sindirim", "Emilim", "Boşaltım"]),
+    ("Sindirilen besinlerin kana geçmesine ne ad verilir?", "Emilim", ["Boşaltım", "Solunum", "Dolaşım"]),
+    ("Sigaranın en çok zarar verdiği organ hangisidir?", "Akciğer", ["Mide", "Böbrek", "Kemik"]),
+    ("Burundaki kılların görevi hangisidir?", "Havadaki tozları tutmak", ["Kanı süzmek", "Besinleri sindirmek", "Ses çıkarmak"]),
+])
+H.liste(SISTEM, "Orta", [
+    ("Sindirim kanalının doğru sıralaması hangisidir?", "Ağız – yutak – yemek borusu – mide – ince bağırsak – kalın bağırsak", ["Ağız – mide – yemek borusu – ince bağırsak – kalın bağırsak", "Ağız – yemek borusu – ince bağırsak – mide – kalın bağırsak", "Mide – ağız – yemek borusu – kalın bağırsak – ince bağırsak"]),
+    ("Enzimler yardımıyla besinlerin küçük parçalara ayrılmasına ne ad verilir?", "Kimyasal sindirim", ["Mekanik sindirim", "Emilim", "Dolaşım"]),
+    ("İnce bağırsakta emilim yüzeyini artıran çıkıntılara ne ad verilir?", "Bağırsak tüyleri (villus)", ["Alveol", "Nefron", "Bronşçuk"]),
+    ("Safranın depolandığı organ hangisidir?", "Safra kesesi", ["Mide", "Pankreas", "İdrar kesesi"]),
+    ("Kalbin sol tarafında nasıl kan bulunur?", "Oksijence zengin (temiz) kan", ["Karbondioksitçe zengin (kirli) kan", "Kan bulunmaz", "Yalnızca plazma"]),
+    ("Kalbin sağ tarafında nasıl kan bulunur?", "Karbondioksitçe zengin (kirli) kan", ["Oksijence zengin (temiz) kan", "Kan bulunmaz", "Yalnızca kan pulcukları"]),
+    ("Vücudumuzun en büyük atardamarı hangisidir?", "Aort", ["Akciğer toplardamarı", "Kılcal damar", "Üst ana toplardamar"]),
+    ("Nabzımızı hangi tür damarlarda hissederiz?", "Atardamarlarda", ["Toplardamarlarda", "Kılcal damarlarda", "Lenf damarlarında"]),
+    ("Kanın sıvı kısmına ne ad verilir?", "Kan plazması", ["Alyuvar", "Akyuvar", "Kan pulcuğu"]),
+    ("Soluk borusunun kapanmasını önleyen yapı hangisidir?", "Kıkırdak halkalar", ["Kaslar", "Kemikler", "Kılcal damarlar"]),
+    ("İdrarın vücuttan atılma yolu hangi sıradadır?", "Böbrek – üreter – idrar kesesi – üretra", ["Üreter – böbrek – üretra – idrar kesesi", "İdrar kesesi – böbrek – üreter – üretra", "Böbrek – üretra – üreter – idrar kesesi"]),
+    ("Deri boşaltıma nasıl katkı sağlar?", "Terle su ve tuzları atar.", ["İdrar üretir.", "Karbondioksit üretir.", "Safra salgılar."]),
+    ("Böbreklerin sağlığı için ne yapılmalıdır?", "Yeterince su içilmeli ve aşırı tuzdan kaçınılmalıdır.", ["Hiç su içilmemelidir.", "Çok tuzlu beslenilmelidir.", "Sürekli hazır içecek içilmelidir."]),
+    ("D vitamininin vücutta üretilmesi için ne gereklidir?", "Güneş ışığı", ["Soğuk hava", "Karanlık ortam", "Çok uyku"]),
+])
+H.liste(SISTEM, "Zor", [
+    ("Kalpten akciğerlere kirli kan taşıyan damar hangisidir?", "Akciğer atardamarı", ["Akciğer toplardamarı", "Aort", "Kılcal damar"]),
+    ("Kalın bağırsakta bazı vitaminlerin üretilmesini sağlayan canlılar hangileridir?", "Yararlı bakteriler", ["Virüsler", "Mantarlar", "Akyuvarlar"]),
+    ("Böbrekleri çalışmayan hastalara kanlarının makineyle temizlenmesi için uygulanan işlem hangisidir?", "Diyaliz", ["Aşı", "Kan bağışı", "Röntgen"]),
+    ("Soluk verirken diyafram ve kaburgalarda ne olur?", "Diyafram gevşeyip yukarı çıkar, kaburgalar içe ve aşağı iner.", ["Diyafram kasılıp aşağı iner, kaburgalar yukarı çıkar.", "Hiçbir değişiklik olmaz.", "Kaburgalar kırılır."]),
+    ("Lifli besinler (sebze, tam tahıl) sindirim sistemine nasıl yarar sağlar?", "Bağırsakların düzenli çalışmasına yardım eder.", ["Protein sindirimini başlatır.", "Kanı süzer.", "Oksijen taşır."]),
+])
+for f1, f2, f3 in [(10, 5, 8), (12, 6, 20), (7, 9, 4), (15, 5, 30)]:
+    b = f1 + f2 - f3
+    H.ekle(KUVVET, "Zor", f"Bir cisme sağa doğru {f1} N ve {f2} N, sola doğru {f3} N büyüklüğünde kuvvetler uygulanıyor. Bileşke kuvvetin büyüklüğü kaç N'dir?",
+           f"{abs(b)} N", [f"{f1 + f2 + f3} N", f"{f1 + f2} N", f"{abs(f1 - f3)} N" if abs(f1 - f3) != abs(b) else f"{abs(b) + 3} N"])
+for km, dk in [(30, 30), (60, 30), (20, 15), (45, 45)]:
+    surat = km * 60 // dk
+    H.ekle(KUVVET, "Zor", f"{km} km yolu {dk} dakikada alan bir aracın sürati kaç km/h'dir?",
+           f"{surat} km/h", [f"{km} km/h", f"{km * dk} km/h", f"{surat // 2} km/h", f"{surat + 20} km/h"])
+for yol, sure in [(50, 10), (200, 25), (120, 8), (400, 50)]:
+    H.ekle(KUVVET, "Kolay", f"{yol} m yolu {sure} saniyede alan bir bisikletlinin sürati kaç m/s'dir?",
+           f"{yol // sure} m/s", [f"{yol * sure} m/s", f"{yol - sure} m/s", f"{yol // sure + 3} m/s"])
+H.liste(KUVVET, "Orta", [
+    ("Aşağıdakilerden hangisi dengelenmemiş kuvvetlerin etkisine örnektir?", "Duran bir topa vurulunca topun hareket etmesi", ["Masada duran kitabın durmaya devam etmesi", "Halat çekmede eşit kuvvetle çekilen halatın durması", "Duvara asılı tablonun düşmemesi"]),
+    ("Masada duran bir kitaba etki eden kuvvetler için hangisi doğrudur?", "Dengelenmiş kuvvetlerdir.", ["Dengelenmemiş kuvvetlerdir.", "Kitaba hiç kuvvet etki etmez.", "Kitap yukarı doğru hızlanır."]),
+    ("Sürat birimi olarak aşağıdakilerden hangisi kullanılır?", "km/h", ["N", "kg", "°C"]),
+    ("Hareket eden bir cisme dengelenmemiş kuvvet etki ederse aşağıdakilerden hangisi olabilir?", "Cisim hızlanır, yavaşlar ya da yön değiştirir.", ["Cisim her zaman aynı süratle gider.", "Cismin kütlesi değişir.", "Hiçbir şey olmaz."]),
+])
+for m, v in [(80, 40), (150, 50), (36, 4), (72, 8)]:
+    H.ekle(MADDE, "Orta", f"Kütlesi {m} g, hacmi {v} cm³ olan bir taşın yoğunluğu kaç g/cm³'tür?",
+           f"{m // v} g/cm³", [f"{m * v} g/cm³", f"{m + v} g/cm³", f"{m // v + 2} g/cm³"])
+H.liste(MADDE, "Kolay", [
+    ("Katı bir maddenin ısı alarak sıvı hâle geçmesine ne ad verilir?", "Erime", ["Donma", "Buharlaşma", "Yoğuşma"]),
+    ("Sıvı bir maddenin ısı vererek katı hâle geçmesine ne ad verilir?", "Donma", ["Erime", "Kaynama", "Yoğuşma"]),
+    ("Sıvı bir maddenin gaz hâline geçmesine ne ad verilir?", "Buharlaşma", ["Erime", "Donma", "Yoğuşma"]),
+    ("Su buharının soğuk bir yüzeyde su damlacıklarına dönüşmesine ne ad verilir?", "Yoğuşma", ["Buharlaşma", "Erime", "Süblimleşme"]),
+    ("Saf su deniz seviyesinde kaç °C'de kaynar?", "100 °C", ["0 °C", "50 °C", "212 °C"]),
+    ("Saf su kaç °C'de donar?", "0 °C", ["100 °C", "−10 °C", "10 °C"]),
+    ("Isınan maddelerin hacminin artmasına ne ad verilir?", "Genleşme", ["Büzülme", "Donma", "Yoğuşma"]),
+    ("Aşağıdakilerden hangisi yenilenebilir enerji kaynağıdır?", "Güneş enerjisi", ["Kömür", "Petrol", "Doğal gaz"]),
+    ("Aşağıdakilerden hangisi fosil yakıttır?", "Petrol", ["Rüzgâr", "Güneş", "Su gücü"]),
+])
+H.liste(MADDE, "Orta", [
+    ("Katı bir maddenin sıvı olmadan doğrudan gaz hâline geçmesine ne ad verilir?", "Süblimleşme", ["Erime", "Buharlaşma", "Yoğuşma"]),
+    ("Naftalinin zamanla küçülmesi hangi olaya örnektir?", "Süblimleşme", ["Erime", "Donma", "Yoğuşma"]),
+    ("Soğuyan maddelerin hacminin azalmasına ne ad verilir?", "Büzülme", ["Genleşme", "Erime", "Kaynama"]),
+    ("Demiryolu rayları arasında boşluk bırakılmasının nedeni nedir?", "Rayların yazın genleşmesi", ["Rayların kışın genleşmesi", "Trenin daha hızlı gitmesi", "Rayların hafiflemesi"]),
+    ("Elektrik tellerinin yazın daha sarkık görünmesinin nedeni nedir?", "Isınan tellerin genleşmesi", ["Tellerin büzülmesi", "Tellerin donması", "Tellerin kütlesinin artması"]),
+    ("Tencere saplarının plastikten yapılmasının nedeni nedir?", "Plastiğin ısıyı iyi iletmemesi", ["Plastiğin ısıyı çok iyi iletmesi", "Plastiğin ağır olması", "Plastiğin elektriği iletmesi"]),
+    ("Fosil yakıtların çok kullanılmasının çevreye zararı hangisidir?", "Hava kirliliğini artırması", ["Havayı temizlemesi", "Ormanları büyütmesi", "Suyu arıtması"]),
+])
+H.liste(MADDE, "Zor", [
+    ("Buz erirken (hâl değişimi sırasında) sıcaklığı nasıl değişir?", "Değişmez, sabit kalır.", ["Sürekli artar.", "Sürekli azalır.", "Önce azalır sonra artar."]),
+    ("Kış sabahlarında araba camlarının iç yüzeyinin buğulanması hangi olaya örnektir?", "Yoğuşma", ["Buharlaşma", "Süblimleşme", "Erime"]),
+    ("Islak çamaşırların güneşte kuruması hangi olaya örnektir?", "Buharlaşma", ["Yoğuşma", "Donma", "Erime"]),
+])
+H.liste(SES, "Kolay", [
+    ("Ses havada yaklaşık hangi süratle yayılır?", "340 m/s", ["3 m/s", "3000 km/s", "300 000 km/s"]),
+    ("Şimşeği gök gürültüsünden önce görmemizin nedeni nedir?", "Işığın sesten çok daha hızlı yayılması", ["Sesin ışıktan hızlı olması", "Gözlerin kulaklardan önde olması", "Şimşeğin sessiz olması"]),
+    ("Çevremizdeki rahatsız edici, istenmeyen seslere ne ad verilir?", "Gürültü", ["Müzik", "Yankı", "Melodi"]),
+    ("Gürültülü ortamda çalışan işçiler kulaklarını korumak için ne kullanmalıdır?", "Kulak koruyucu", ["Güneş gözlüğü", "Eldiven", "Maske"]),
+])
+H.liste(SES, "Orta", [
+    ("Yarasaların karanlıkta yön bulmasını sağlayan olay hangisidir?", "Sesin yansıması (yankı)", ["Işığın kırılması", "Sesin boşlukta yayılması", "Isının iletilmesi"]),
+    ("Gürültü kirliliğinin insan sağlığına zararı hangisidir?", "İşitme kaybı ve stres", ["Kemiklerin güçlenmesi", "Görmenin artması", "Uykunun düzelmesi"]),
+    ("Evlerde çift camlı pencere kullanılmasının sese etkisi nedir?", "Dışarıdan gelen sesin azalmasını sağlar.", ["Sesi artırır.", "Sesi yansıtıp çoğaltır.", "Sese hiçbir etkisi yoktur."]),
+    ("Ses kaynağından çıkan ses hangi yönlere yayılır?", "Her yöne", ["Yalnızca yukarı", "Yalnızca ileri", "Yalnızca aşağı"]),
+    ("Gitar telinin titreşimi durdurulursa ne olur?", "Ses kesilir.", ["Ses artar.", "Ses değişmez.", "Ses ışığa dönüşür."]),
+])
+H.liste(SES, "Zor", [
+    ("Boş ve eşyalı iki odadan hangisinde ses daha çok yankılanır? Neden?", "Boş odada; çünkü sesi soğuracak eşya yoktur.", ["Eşyalı odada; çünkü eşyalar sesi çoğaltır.", "İkisinde de aynı; çünkü oda boyutu aynıdır.", "Hiçbirinde; çünkü odalarda ses yansımaz."]),
+    ("Gemilerin deniz tabanının derinliğini ölçmek için kullandığı yöntem hangi olaya dayanır?", "Sesin yansıması", ["Işığın yansıması", "Isının iletimi", "Mıknatıslanma"]),
+])
+H.liste(ELEKTRIK, "Kolay", [
+    ("Basit bir elektrik devresinde enerji kaynağı olarak ne kullanılır?", "Pil", ["Ampul", "Anahtar", "Kablo"]),
+    ("Devredeki anahtar açık olursa ampul ne olur?", "Yanmaz.", ["Daha parlak yanar.", "Patlar.", "Yanıp söner."]),
+    ("Aşağıdakilerden hangisi elektrik devresi elemanı değildir?", "Termometre", ["Pil", "Ampul", "Bağlantı kablosu"]),
+    ("Prizlere metal cisim sokulmamasının nedeni nedir?", "Metaller elektriği iletir ve çarpılmaya neden olur.", ["Metaller elektriği iletmez.", "Priz bozulur ama tehlikesi yoktur.", "Metal erir."]),
+    ("Elektriği tasarruflu kullanmak için hangisi yapılmalıdır?", "Kullanılmayan odaların ışıkları kapatılmalıdır.", ["Bütün lambalar gün boyu açık bırakılmalıdır.", "Buzdolabının kapısı açık bırakılmalıdır.", "Şarj aleti prizde unutulmalıdır."]),
+])
+H.liste(ELEKTRIK, "Orta", [
+    ("Aşağıdakilerden hangisi iletken bir maddedir?", "Tuzlu su", ["Cam", "Kuru tahta", "Plastik"]),
+    ("Evlerdeki sigortaların görevi nedir?", "Aşırı akımda devreyi keserek tehlikeyi önlemek", ["Elektriği artırmak", "Ampulü daha parlak yakmak", "Pili şarj etmek"]),
+    ("Enerji tasarrufu sağlayan ampul türü hangisidir?", "LED ampul", ["Eski tip akkor ampul", "Mum", "Gaz lambası"]),
+    ("Bir devreye aynı maddeden daha kalın bir tel bağlanırsa ampulün parlaklığı nasıl değişir?", "Artar.", ["Azalır.", "Değişmez.", "Ampul söner."]),
+])
+H.liste(ELEKTRIK, "Zor", [
+    ("Saf su elektriği çok az iletir. Musluk suyunun elektriği iletmesinin nedeni nedir?", "İçinde çözünmüş mineraller bulunması", ["Çok soğuk olması", "Renkli olması", "Hızlı akması"]),
+    ("Elektrik çarpmasına uğrayan birine yardım ederken ilk ne yapılmalıdır?", "Elektrik akımı sigortadan kesilmelidir.", ["Kişiye çıplak elle hemen dokunulmalıdır.", "Kişinin üzerine su dökülmelidir.", "Metal bir çubukla itilmelidir."]),
+])
+
 for i, s in enumerate(H.sorular, start=1):
     s["id"] = i
 (BURA / "soru_havuzu.json").write_text(json.dumps(H.sorular, ensure_ascii=False, indent=1), encoding="utf-8")

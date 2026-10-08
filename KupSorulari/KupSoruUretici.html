@@ -100,6 +100,9 @@ main { display: grid; gap: 16px; min-width: 0; }
 .dinle:focus-visible { outline: 3px solid var(--sun); outline-offset: 2px; }
 .aciklama { margin: 0; font-size: .95rem; background: var(--paper); border-radius: 10px; padding: 8px 12px; color: var(--ink); }
 .aciklama b { color: var(--cobalt); }
+.aciklama .neden { display: block; }
+.aciklama .neden + .neden { margin-top: 6px; }
+.aciklama .yanlis b { color: var(--bad); }
 .fig { flex: none; max-width: 100%; }
 .fig svg { display: block; max-width: 100%; height: auto; }
 .opts { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 8px; }
@@ -381,7 +384,7 @@ function ciz() {
           return `<button type="button" class="${c}" role="radio" aria-checked="${q.cevap === j}" data-q="${i}" data-o="${j}"><b>${HARF[j]}</b><span>${q.secenekler[orj]}</span></button>`;
         }).join("")}
       </div>
-      ${kontrolEdildi && q.aciklama ? `<p class="aciklama"><b>Açıklama:</b> ${q.aciklama}</p>` : ""}
+      ${kontrolEdildi ? aciklamaYaz(q) : ""}
     </article>`).join("");
   $("keygrid").innerHTML = test.map((q, i) => `<span>${i + 1}-${HARF[q.dogruYeni]}</span>`).join("");
 }
@@ -396,6 +399,20 @@ function seslendir(metin) {
     if (ses) u.voice = ses;
     speechSynthesis.speak(u);
   } catch (e) { /* seslendirme desteklenmiyor */ }
+}
+/* Kontrol sonrası açıklama: yanlış seçilen şıkkın neden yanlış olduğu ve doğru cevabın nedeni. */
+function aciklamaYaz(q) {
+  const sa = q.secenekAciklama || {};
+  const dogruMetin = q.secenekler[q.sira[q.dogruYeni]];
+  const parcalar = [];
+  if (q.cevap !== null && q.cevap !== q.dogruYeni) {
+    const secilen = q.secenekler[q.sira[q.cevap]];
+    if (sa[secilen]) parcalar.push(`<span class="neden yanlis"><b>Senin cevabın (${HARF[q.cevap]}):</b> ${sa[secilen]}</span>`);
+  }
+  const dogruNeden = sa[dogruMetin] || q.aciklama;
+  if (dogruNeden) parcalar.push(`<span class="neden"><b>${q.cevap === q.dogruYeni ? "Doğru, çünkü" : `Doğru cevap (${HARF[q.dogruYeni]}):`}</b> ${dogruNeden}</span>`);
+  if (sa[dogruMetin] && q.aciklama && q.aciklama !== sa[dogruMetin]) parcalar.push(`<span class="neden"><b>Hatırla:</b> ${q.aciklama}</span>`);
+  return parcalar.length ? `<p class="aciklama">${parcalar.join("")}</p>` : "";
 }
 $("list").addEventListener("click", e => {
   const d = e.target.closest(".dinle");
@@ -427,7 +444,7 @@ $("eksi").addEventListener("click", () => { $("adet").value = Math.max(1, (+$("a
 $("arti").addEventListener("click", () => { $("adet").value = Math.min(100, (+$("adet").value || 0) + 1); havuzBilgisi(); });
 
 /* Yazdırma yalnızca dosya bilgisayarda doğrudan açıldığında çalışır. */
-const gomulu = (() => { try { return window.self !== window.top; } catch (e) { return true; } })();
+const gomulu = (() => { try { return window.self !== window.top && location.href !== "about:srcdoc"; } catch (e) { return true; } })();
 if (gomulu) {
   $("yazdir").hidden = true;
   $("printNote").textContent = "Yazdırmak için KupSoruUretici.html dosyasını bilgisayarınızda tarayıcıyla açın.";
