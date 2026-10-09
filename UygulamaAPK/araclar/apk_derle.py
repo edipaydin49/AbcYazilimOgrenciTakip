@@ -1,8 +1,10 @@
 """Android SDK olmadan APK derler.
 
 Adımlar: javac (sahte Android imzalarıyla) → dx (classes.dex) → ikili AndroidManifest.xml ve
-resources.arsc (bu dosyada yazılan kodlayıcılarla) → zip → jarsigner (v1 imza).
-Hedef SDK 29 seçildiği için v1 imza ve hizasız resources.arsc kabul edilir.
+resources.arsc (bu dosyada yazılan kodlayıcılarla) → zip → zipalign → apksigner (v1 + v2 + v3 imza).
+zipalign ve apksigner Ubuntu paketlerinden gelir: apt-get install zipalign apksigner (denetim için: aapt).
+Hedef SDK 34: Android 16'nın Play Protect denetimi için güncel hedef ve v2/v3 imza gerekir;
+35'te zorunlu kenardan kenara görünüm başlığı durum çubuğunun altına iteceği için 34'te kalındı.
 
 Kullanım: python3 apk_derle.py [surum_kodu] [surum_adi]
 Çıktı: UygulamaAPK/OgrenmeYolculugu.apk
@@ -118,7 +120,7 @@ def manifest():
     A = lambda ad, deger, tur: (ad, deger, tur, True)  # noqa: E731
     return axml(("manifest", [("package", PAKET, T_STR, False), A("versionCode", SURUM_KODU, T_DEC),
                               A("versionName", SURUM_ADI, T_STR)], [
-        ("uses-sdk", [A("minSdkVersion", 24, T_DEC), A("targetSdkVersion", 29, T_DEC)], []),
+        ("uses-sdk", [A("minSdkVersion", 24, T_DEC), A("targetSdkVersion", 34, T_DEC)], []),
         ("uses-permission", [A("name", "android.permission.INTERNET", T_STR)], []),
         ("application", [A("label", UYGULAMA_ADI, T_STR), A("icon", 0x7F010000, T_REF)], [
             ("activity", [A("name", PAKET + ".MainActivity", T_STR), A("exported", True, T_BOOL),
@@ -205,10 +207,12 @@ def main():
         calistir("keytool", "-genkeypair", "-keystore", ANAHTAR, "-storepass", "ogrenme6", "-keypass", "ogrenme6",
                  "-alias", "ogrenme", "-keyalg", "RSA", "-keysize", "2048", "-validity", "10000",
                  "-dname", "CN=Ogrenme Yolculugu, O=Aile, C=TR")
-    shutil.copy(imzasiz, CIKTI)
-    calistir("jarsigner", "-keystore", ANAHTAR, "-storepass", "ogrenme6", "-sigalg", "SHA256withRSA",
-             "-digestalg", "SHA-256", CIKTI, "ogrenme", stdout=subprocess.DEVNULL)
-    calistir("jarsigner", "-verify", CIKTI, stdout=subprocess.DEVNULL)
+    hizali = GECICI / "hizali.apk"
+    calistir("zipalign", "-p", "-f", "4", imzasiz, hizali)
+    calistir("apksigner", "sign", "--ks", ANAHTAR, "--ks-pass", "pass:ogrenme6", "--ks-key-alias", "ogrenme",
+             "--key-pass", "pass:ogrenme6", "--v1-signing-enabled", "true", "--v2-signing-enabled", "true",
+             "--v3-signing-enabled", "true", "--out", CIKTI, hizali)
+    calistir("apksigner", "verify", "--min-sdk-version", "24", CIKTI)
     print(f"APK hazır: {CIKTI} ({CIKTI.stat().st_size / 1e6:.2f} MB)")
 
 

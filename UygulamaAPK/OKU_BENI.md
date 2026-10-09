@@ -1,12 +1,12 @@
 # Öğrenme Yolculuğu (6. Sınıf Matematik) — APK
 
-Tablete kurulacak dosya: **`OgrenmeYolculugu.apk`** (70 KB, Android 7 ve üstü; Samsung Galaxy Tab A9+ / One UI 8.5 / Android 16 ile uyumlu).
+Tablete kurulacak dosya: **`OgrenmeYolculugu.apk`** (70 KB, sürüm 1.2, Android 7 ve üstü; Samsung Galaxy Tab A9+ / One UI 8.5 / Android 16 ile uyumlu).
 
 ## 1. Tablete kurulum (bir kez)
 
 1. APK dosyasını tablete gönderin (WhatsApp, e-posta, Google Drive ya da USB kablo).
 2. Tablette dosyaya dokunun. “Bilinmeyen uygulamalar” uyarısı çıkarsa **Ayarlar → Bu kaynağa izin ver** deyin.
-3. Google Play Protect “Bu uygulama Android'in eski bir sürümü için tasarlandı” ya da “taranmamış uygulama” derse **Yine de yükle**'ye basın. (Uygulama Play Store'dan gelmediği için bu uyarı normaldir.)
+3. Google Play Protect uyarı verirse aşağıdaki Samsung bölümündeki adımları izleyin (Play Store'dan gelmeyen uygulamalarda bu uyarı normaldir).
 4. Uygulama açılınca öğrencinin adını ve günlük hedefi (dakika) girin.
 5. **Veli paneli şifresi başlangıçta `1234`.** Veli paneli → Ayarlar'dan değiştirin.
 
@@ -16,7 +16,8 @@ Tablete kurulacak dosya: **`OgrenmeYolculugu.apk`** (70 KB, Android 7 ve üstü;
 
 - **Otomatik Engelleyici:** Samsung tabletlerde bu özellik açıksa APK hiç kurulmaz ("Otomatik Engelleyici tarafından engellendi" yazar). **Ayarlar → Güvenlik ve gizlilik → Otomatik Engelleyici → Kapalı** yapın, APK'yı kurun, sonra isterseniz yeniden açın. Uygulama kurulu kalır. (Güncelleme kurarken yeniden kapatmanız gerekir.)
 - **Bilinmeyen uygulamalara izin:** APK'yı hangi uygulamadan açtıysanız (Dosyalarım, WhatsApp, Chrome) ona izin verilir: **Ayarlar → Uygulamalar → (o uygulama) → Bilinmeyen uygulamaları yükle → İzin ver**.
-- **Play Protect** "Taranmamış uygulama" ya da "eski Android sürümü için hazırlandı" derse **Diğer ayrıntılar → Yine de yükle** deyin. Taramaya gönderme sorusuna "Gönderme" diyebilirsiniz.
+- **Play Protect "Zararlı uygulama" / "Uygulama yüklenmedi":** Play Store'da olmayan, tanınmayan her uygulamaya bu uyarıyı verebilir. Uyarı penceresinde **Diğer ayrıntılar**'a dokunun, açılan **Yine de yükle**'ye basın ("Yükleme" düğmesine basılırsa "Uygulama yüklenmedi" çıkar).
+  Bu seçenek görünmüyorsa: **Play Store → sağ üstte profil resmi → Play Protect → sağ üstte ⚙ → "Uygulamaları Play Protect ile tara" → Kapalı**. APK'yı kurun, sonra aynı ayarı yeniden açın.
 - **Ebeveyn denetimi:** Çocuğun hesabı Google Family Link ile yönetiliyorsa dışarıdan uygulama kurma engellenmiş olabilir. Kurulumu veli hesabıyla yapın ya da Family Link'teki uygulama izinlerini kontrol edin.
 - Android System WebView Android 16'da zaten günceldir; ek bir şey gerekmez.
 - Yatay kullanım önerilir; dönünce uygulama yeniden başlamaz, kaldığı yerden devam eder.
