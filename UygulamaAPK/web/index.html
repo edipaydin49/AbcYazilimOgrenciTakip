@@ -108,6 +108,28 @@ label.alan { display: grid; gap: 4px; font-weight: 600; }
 .grafik text { fill: var(--muted); font-size: 11px; }
 .grafik text.deger { fill: var(--ink); font-weight: 700; }
 .toast { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: var(--ink); color: var(--sheet); padding: 10px 18px; border-radius: 12px; z-index: 30; max-width: 90vw; }
+/* Soru görselleri (SVG): renkler temaya göre */
+.gorsel { background: var(--sheet); border: 1px solid var(--line); border-radius: 12px; padding: 10px; overflow-x: auto; }
+.gorsel-svg { width: 100%; height: auto; max-height: 340px; display: block; margin: 0 auto; }
+.gorsel-tablo table { min-width: 0; }
+.g-cizgi { stroke: var(--ink); } .g-ince { stroke: var(--line); stroke-width: 1; }
+.g-a { fill: var(--cobalt); } .g-b { fill: var(--sun); } .g-c { fill: var(--good); } .g-d { fill: var(--bad); }
+.g-yumusak { fill: var(--cobalt-soft); } .g-bos { fill: var(--sheet); }
+.g-yazi { fill: var(--ink); font-size: 15px; font-family: var(--font); } .g-yazi-k { fill: var(--muted); font-size: 12.5px; font-family: var(--font); }
+.g-cizgi-uc { fill: var(--ink); } .g-ok-a { stroke: var(--cobalt); } .g-ok-a-uc { fill: var(--cobalt); } .g-ok-d { stroke: var(--bad); } .g-ok-d-uc { fill: var(--bad); }
+/* Adım adım çözüm */
+.adimlar { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; counter-reset: adim; }
+.adimlar li { counter-increment: adim; display: grid; grid-template-columns: 30px 1fr; gap: 10px; align-items: start; }
+.adimlar li::before { content: counter(adim); width: 28px; height: 28px; border-radius: 50%; background: var(--cobalt); color: var(--sheet); display: grid; place-items: center; font-weight: 800; font-size: .9rem; }
+.unutma { background: var(--sun-soft); border-left: 4px solid var(--sun); border-radius: 10px; padding: 10px 12px; }
+.ders-sec { display: flex; gap: 8px; flex-wrap: wrap; }
+.ders-sec .sekme { font-size: 1rem; padding: 10px 18px; }
+.yol-iz { font-size: .85rem; color: var(--muted); }
+.yol-iz a { color: var(--cobalt); text-decoration: none; }
+.video-satir { display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 12px; align-items: center; text-align: left; padding: 8px; border-radius: 12px; background: var(--paper); border: 1px solid transparent; cursor: pointer; width: 100%; }
+.video-satir:hover { border-color: var(--line); }
+.video-satir img { width: 120px; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 8px; background: var(--line); }
+@media (max-width: 560px) { .video-satir { grid-template-columns: 90px minmax(0, 1fr); } .video-satir img { width: 90px; } }
 @media (max-width: 560px) { .konu-satir { grid-template-columns: minmax(0, 1fr) 80px; } h1 { font-size: 1.35rem; } }
 @media (prefers-reduced-motion: no-preference) { .geri { animation: gel .25s ease-out; } @keyframes gel { from { opacity: .3; transform: translateY(4px); } to { opacity: 1; transform: none; } } }
 </style>
@@ -120,7 +142,15 @@ label.alan { display: grid; gap: 4px; font-weight: 600; }
   <button type="button" class="ikon-btn" id="veliBtn">Veli</button>
 </header>
 <main id="ana" aria-live="polite"></main>
+<script src="js/ortak.js"></script>
 <script src="js/icerik.js"></script>
+<script src="js/mat_ek.js"></script>
+<script src="js/fen.js"></script>
+<script src="js/fen1.js"></script>
+<script src="js/fen2.js"></script>
+<script src="js/fen3.js"></script>
+<script src="js/videolar.js"></script>
+<script src="js/birlestir.js"></script>
 <script src="js/depo.js"></script>
 <script src="js/analiz.js"></script>
 <script src="js/uygulama.js"></script>

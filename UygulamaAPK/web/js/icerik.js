@@ -1,4 +1,5 @@
 /* 6. sınıf Matematik (Maarif Modeli) içeriği: temalar, konular, kazanımlar, konu anlatımları ve soru üreteçleri.
+ * Ek (görselli) üreteçler mat_ek.js dosyasındadır. Ortak yardımcılar ortak.js içindedir.
  *
  * Her soru şu biçimdedir:
  *  { kaz, duzey, zorluk, soru, secenekler:[{m, dogru, hata, neden}], ipucu, cozum:[adımlar] }
@@ -9,84 +10,7 @@
  */
 (function () {
   "use strict";
-  const R = (a, b) => a + Math.floor(Math.random() * (b - a + 1));
-  const sec = a => a[Math.floor(Math.random() * a.length)];
-  const karistir = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
-  const od = x => String(Number(Number(x).toFixed(6))).replace(".", ",");
-  const bolenler = n => { const b = []; for (let i = 1; i <= n; i++) if (n % i === 0) b.push(i); return b; };
-  const asalMi = n => { if (n < 2) return false; for (let i = 2; i * i <= n; i++) if (n % i === 0) return false; return true; };
-  const ebob = (a, b) => b ? ebob(b, a % b) : a;
-  const ekok = (a, b) => a / ebob(a, b) * b;
-  const sade = (a, b) => { const g = ebob(Math.abs(a), Math.abs(b)) || 1; return [a / g, b / g]; };
-  const kesir = (a, b) => { const [p, q] = sade(a, b); return q === 1 ? String(p) : `${p}/${q}`; };
-  const asalCarpan = n => { const s = {}; let d = 2; while (n > 1) { while (n % d === 0) { s[d] = (s[d] || 0) + 1; n /= d; } d++; } return s; };
-
-  /* Sayıya Türkçe ek: okunuşun son sözcüğüne göre ünlü uyumu (42 → 42'nin, 30 → 30'un, 6 → 6'şar). */
-  const SOZ = { 0: "sıfır", 1: "bir", 2: "iki", 3: "üç", 4: "dört", 5: "beş", 6: "altı", 7: "yedi", 8: "sekiz", 9: "dokuz" };
-  const ONLAR = { 1: "on", 2: "yirmi", 3: "otuz", 4: "kırk", 5: "elli", 6: "altmış", 7: "yetmiş", 8: "seksen", 9: "doksan" };
-  function sonSozcuk(n) {
-    n = Math.abs(Math.round(Number(n)));
-    if (n === 0) return "sıfır";
-    if (n % 10) return SOZ[n % 10];
-    if (n % 100) return ONLAR[(n % 100) / 10];
-    if (n % 1000) return "yüz";
-    if (n % 1000000) return "bin";
-    return "milyon";
-  }
-  function ek(n, tur) {
-    const w = sonSozcuk(n);
-    const unlu = [...w].reverse().find(c => "aeıioöuü".includes(c));
-    const sonUnlu = "aeıioöuü".includes(w[w.length - 1]);
-    const sert = "fstkçşhp".includes(w[w.length - 1]);
-    const dort = { a: "ı", ı: "ı", e: "i", i: "i", o: "u", u: "u", ö: "ü", ü: "ü" }[unlu];
-    const iki = "aıou".includes(unlu) ? "a" : "e";
-    const d = sert ? "t" : "d";
-    const e = {
-      in: sonUnlu ? "n" + dort + "n" : dort + "n",
-      i: sonUnlu ? "y" + dort : dort,
-      e: sonUnlu ? "y" + iki : iki,
-      den: d + iki + "n",
-      dir: d + dort + "r",
-      er: sonUnlu ? "ş" + iki + "r" : iki + "r",
-      ini: sonUnlu ? "s" + dort + "n" + dort : dort + "n" + dort,
-    }[tur];
-    return "'" + e;
-  }
-  const SUP = "⁰¹²³⁴⁵⁶⁷⁸⁹";
-  const us = (t, k) => k === 1 ? String(t) : t + String(k).split("").map(c => SUP[c]).join("");
-  const ustlu = c => Object.keys(c).map(Number).sort((a, b) => a - b).map(p => us(p, c[p])).join(" · ");
-
-  /* Soru kurucu: doğru cevap + çeldiriciler (her birinin hata türü ve nedeni) */
-  function S(o) {
-    const goruldu = new Set([String(o.dogru)]);
-    const yanlis = [];
-    for (const [m, hata, neden] of o.yanlis) {
-      const k = String(m);
-      if (goruldu.has(k) || k === "" || k === "NaN" || k === "undefined") continue;
-      goruldu.add(k); yanlis.push({ m: k, dogru: false, hata, neden });
-      if (yanlis.length === 3) break;
-    }
-    // Yedek çeldiriciler: doğru cevaba yakın, aynı biçimde (kesir, ondalık, birimli) değerler.
-    const ekle = k => { if (!goruldu.has(k) && yanlis.length < 3) { goruldu.add(k); yanlis.push({ m: k, dogru: false, hata: "islem", neden: "Hesaplamada küçük bir hata yapılmış olabilir." }); } };
-    const ds = String(o.dogru);
-    const kes = ds.match(/^(\d+)\/(\d+)$/);
-    const sayiM = ds.match(/^(-?\d+(?:,(\d+))?)(.*)$/);
-    if (kes) {
-      const p = +kes[1], q = +kes[2];
-      [[p + 1, q], [p, q + 1], [Math.max(1, p - 1), q], [q, p], [p + 1, q + 1], [p * 2, q + 1]].forEach(([a, b]) => ekle(a === b ? `${a}/${b + 1}` : `${a}/${b}`));
-    } else if (sayiM) {
-      const ondalik = sayiM[2] ? sayiM[2].length : 0, adim = Math.pow(10, -ondalik), son = sayiM[3] || o.birim || "";
-      const x = Number(sayiM[1].replace(",", "."));
-      for (let d = 1; yanlis.length < 3 && d < 30; d++)
-        for (const a of [x + d * adim, x - d * adim]) if (a >= 0) ekle(od(Math.round(a / adim) * adim) + son);
-    }
-    while (yanlis.length < 3) yanlis.push({ m: "Hiçbiri", dogru: false, hata: "kavrama", neden: "Seçeneklerden biri doğrudur." });
-    return {
-      kaz: o.kaz, duzey: o.duzey, zorluk: o.zorluk, soru: o.soru,
-      secenekler: karistir([{ m: String(o.dogru), dogru: true, hata: null, neden: o.dogruNeden || "" }].concat(yanlis)),
-      ipucu: o.ipucu, cozum: o.cozum,
-    };
-  }
+  const { R, sec, karistir, od, bolenler, asalMi, ebob, ekok, sade, kesir, asalCarpan, ek, us, ustlu, S } = OGR;
 
   /* ============================== TEMA 1 ============================== */
   const T1 = { id: "t1", ad: "Sayılar ve Nicelikler (1)", kisa: "Tema 1" };
@@ -163,11 +87,11 @@
         z => { const k = R(3, 13); const d = k * R(3, 9); const olmayan = karistir([...Array(80).keys()].filter(x => x > 10 && x % k)).slice(0, 2); const carp = sec(bolenler(k).filter(x => x > 1 && x < k)) || 1;
           return S({ kaz: "kat.bul", duzey: "hatirlama", zorluk: 1, soru: `Aşağıdakilerden hangisi ${k} sayısının katıdır?`, dogru: d,
             yanlis: [[olmayan[0], "islem", `${olmayan[0]} ÷ ${k} kalanlıdır.`], [olmayan[1], "islem", `${olmayan[1]} ÷ ${k} kalanlıdır.`], [carp === 1 ? k + 1 : carp, "kavrama", "Bu sayı katı değil; çarpan ile katı karıştırmış olabilirsin."]],
-            ipucu: `${k} ile çarpım tablosunu düşün.`, cozum: [`${k} × ${d / k} = ${d}.`] }); },
+            ipucu: `${k} ile çarpım tablosunu düşün.`, cozum: [`Bir sayının katları, o sayının 1, 2, 3, … ile çarpımıdır: ${k}, ${2 * k}, ${3 * k}, …`, `Seçenekleri ${k}${ek(k, "e")} böl: ${d} ÷ ${k} = ${d / k}, kalan 0.`, `Demek ki ${k} × ${d / k} = ${d}; ${d}, ${k}${ek(k, "in")} katıdır.`] }); },
         z => { const k = R(4, 12), s = R(4, 9);
           return S({ kaz: "kat.bul", duzey: "uygulama", zorluk: 1, soru: `${k} sayısının sıfırdan büyük katları küçükten büyüğe sıralandığında ${s}. sırada hangi sayı bulunur?`, dogru: k * s,
             yanlis: [[k * (s - 1), "dikkat", "Bir önceki katı buldun; sırayı yeniden say."], [k * (s + 1), "dikkat", "0'ı sıraya dahil etmiş olabilirsin; soru sıfırdan büyük katları istiyor."], [k + s, "kavrama", "Kat, çarpımla bulunur; toplama yapmamalısın."]],
-            ipucu: `${s}. kat = ${k} × ${s}.`, cozum: [`${k} × ${s} = ${k * s}.`] }); },
+            ipucu: `${s}. kat = ${k} × ${s}.`, cozum: [`Sıfırdan büyük katlar: 1. kat ${k} × 1 = ${k}, 2. kat ${k} × 2 = ${2 * k}, 3. kat ${k} × 3 = ${3 * k} …`, `Kaçıncı kat isteniyorsa ${k} o sayıyla çarpılır.`, `${s}. kat: ${k} × ${s} = ${k * s}.`] }); },
         z => S({ kaz: "kat.bul", duzey: "aciklama", zorluk: 2, soru: "Katlar ile ilgili aşağıdakilerden hangisi doğrudur?", dogru: "0 her doğal sayının katıdır.",
           yanlis: [["Bir sayının katları sınırlı sayıdadır.", "bilgi", "Katlar sonsuza kadar devam eder."], ["Bir sayının katı her zaman o sayıdan küçüktür.", "kavrama", "Katlar sayının kendisine eşit ya da ondan büyüktür (0 hariç)."], ["1 hiçbir sayının katı değildir.", "kavrama", "1, 1'in katıdır (1 × 1 = 1)."]],
           ipucu: "Herhangi bir sayıyı 0 ile çarparsan ne elde edersin?", cozum: ["Her sayı × 0 = 0.", "Bu yüzden 0 her sayının katıdır."] }),
@@ -186,11 +110,11 @@
         z => { const k = sec([5, 6, 10, 12, 15, 20]), sure = sec([60, 90, 120]);
           return S({ kaz: "kat.problem", duzey: "transfer", zorluk: 2, soru: `Bir otobüs saat 08.00'de duraktan kalkıyor ve ${k} dakikada bir yeni otobüs kalkıyor. 08.00 ile ${sure} dakika sonrası arasında (ikisi de dahil) kaç otobüs kalkar?`, dogru: sure / k + 1,
             yanlis: [[sure / k, "dikkat", "08.00'deki ilk otobüsü saymayı unuttun."], [sure / k + 2, "islem", "Bir fazla saydın; 0, " + k + ", " + 2 * k + " … şeklinde say."], [k, "kavrama", "Kalkış aralığı ile otobüs sayısı farklıdır."]],
-            ipucu: `Kalkış zamanları ${k}${ek(k, "in")} katlarıdır: 0, ${k}, ${2 * k}, …`, cozum: [`0'dan ${sure}${ek(sure, "e")} kadar ${k}${ek(k, "in")} katları: ${sure / k + 1} tane.`] }); },
+            ipucu: `Kalkış zamanları ${k}${ek(k, "in")} katlarıdır: 0, ${k}, ${2 * k}, …`, cozum: [`Otobüsler 0. dakikada ve sonra her ${k} dakikada kalkar: 0, ${k}, ${2 * k}, … Bunlar ${k}${ek(k, "in")} katlarıdır.`, `${sure} ÷ ${k} = ${sure / k}; yani 0'dan sonra ${sure / k} otobüs daha kalkar.`, `08.00'deki ilk otobüsü de ekle: ${sure / k} + 1 = ${sure / k + 1} otobüs.`] }); },
         z => { const k = sec([4, 6, 9]), a = 40, b = 90; const d = sec([...Array(b - a).keys()].map(x => x + a).filter(x => x % k === 0)); const yan = karistir([...Array(b - a).keys()].map(x => x + a).filter(x => x % k)).slice(0, 3);
           return S({ kaz: "kat.problem", duzey: "transfer", zorluk: 2, soru: `Bir kutudaki kalemler ${k}${ek(k, "er")} ${k}${ek(k, "er")} sayıldığında hiç artmıyor. Kalem sayısı 40 ile 90 arasındaysa aşağıdakilerden hangisi kalem sayısı olabilir?`, dogru: d,
             yanlis: yan.map(x => [x, "islem", `${x} ÷ ${k} kalanlıdır; kalem artardı.`]),
-            ipucu: `“Hiç artmıyor” demek kalem sayısının ${k}${ek(k, "in")} katı olması demektir.`, cozum: [`${d} ÷ ${k} = ${d / k}, kalan 0.`] }); },
+            ipucu: `“Hiç artmıyor” demek kalem sayısının ${k}${ek(k, "in")} katı olması demektir.`, cozum: [`${k}${ek(k, "er")} sayınca hiç artmıyorsa kalem sayısı ${k}${ek(k, "in")} katıdır.`, `Seçenekleri ${k}${ek(k, "e")} böl ve kalanı 0 olanı bul.`, `${d} ÷ ${k} = ${d / k}, kalan 0. Cevap ${d}.`] }); },
       ],
     },
   });
@@ -267,7 +191,7 @@
         z => { const n = sec([60, 72, 84, 90, 108, 120, 126, 150, 180]); const c = asalCarpan(n);
           return S({ kaz: "asal.ayir", duzey: "aciklama", zorluk: 2, soru: `Asal çarpanlarına ayrılmış hâli ${ustlu(c)} olan sayı kaçtır?`, dogru: n,
             yanlis: [[Object.entries(c).reduce((s, [p, k]) => s + p * k, 0), "kavrama", "Üslü ifadeyi çarpma yerine p × k olarak hesapladın."], [n / 2, "islem", "Bir çarpanı eksik hesapladın."], [n * 2, "islem", "Bir çarpanı fazla hesapladın."]],
-            ipucu: "Kuvvetleri aç ve hepsini çarp.", cozum: [`${ustlu(c)} = ${Object.entries(c).map(([p, k]) => Array(k).fill(p).join(" · ")).join(" · ")} = ${n}.`] }); },
+            ipucu: "Kuvvetleri aç ve hepsini çarp.", cozum: [`Üslü ifadeyi aç: üs, tabanın kaç kez çarpıldığını gösterir.`, `${ustlu(c)} = ${Object.entries(c).map(([p, k]) => Array(k).fill(p).join(" · ")).join(" · ")}`, `Hepsini çarp: sonuç ${n}.`] }); },
       ],
       "asal.kavram": [
         z => S({ kaz: "asal.kavram", duzey: "aciklama", zorluk: 1, soru: "Asal sayılarla ilgili hangisi doğrudur?", dogru: sec(["2, çift olan tek asal sayıdır.", "Asal sayıların yalnızca iki çarpanı vardır."]),
@@ -348,7 +272,7 @@
             ["30 kalem ve 45 silgi, eşit sayıda olacak şekilde en çok kaç öğrenciye dağıtılır?", "Ortak bölen (EBOB)", "Eşit paylaştırma ve “en çok kişi” ortak bölen ister."]]);
           return S({ kaz: "obol.ayirt", duzey: "aciklama", zorluk: 2, soru: `“${o[0]}” Bu problemi çözmek için hangi kavram kullanılır?`, dogru: o[1], dogruNeden: o[2],
             yanlis: [[o[1].startsWith("Ortak bölen") ? "Ortak kat (EKOK)" : "Ortak bölen (EBOB)", "kavrama", "İki kavramı karıştırdın: " + o[2]], ["Asal çarpanların toplamı", "kavrama", "Bu problem bir ortak kat ya da ortak bölen ister."], ["Sayıların farkı", "bilgi", "Farkı almak bu tür problemleri çözmez."]],
-            ipucu: "Büyüyen bir şey mi arıyorsun (kat), yoksa parçalara mı bölüyorsun (bölen)?", cozum: [o[2]] }); },
+            ipucu: "Büyüyen bir şey mi arıyorsun (kat), yoksa parçalara mı bölüyorsun (bölen)?", cozum: ["Problemdeki anahtar sözcüklere bak: “eşit parçalara ayırma, en büyük, en çok kişiye dağıtma” → ortak bölen; “birlikte tekrar, en az, en küçük kare/zaman” → ortak kat.", o[2], `Bu yüzden cevap: ${o[1]}.`] }); },
       ],
     },
   });
@@ -370,7 +294,7 @@
         z => { const n = sec([20, 40, 50, 60, 80, 100]); const k = R(Math.ceil(n / 10), Math.floor(n * 0.6)); const nesne = sec(["Bir zar", "Bir çark", "Bir para"]);
           return S({ kaz: "ol.tahmin", duzey: "uygulama", zorluk: 1, soru: `Bir torbadan bilye çekip geri bırakma deneyi ${n} kez yapıldı ve ${k} kez kırmızı bilye geldi. Kırmızı bilye çekme olasılığının gözleme dayalı tahmini nedir?`, dogru: kesir(k, n),
             yanlis: [[kesir(n - k, n), "dikkat", "Bu, kırmızı gelmeme olasılığının tahminidir."], [String(k), "kavrama", "Olasılık bir orandır: gerçekleşme sayısı ÷ toplam deneme."], [kesir(k, n - k), "kavrama", "Kırmızıları diğerlerine böldün; toplam deneme sayısına bölmelisin."]],
-            ipucu: "Olasılık tahmini = olayın gerçekleşme sayısı ÷ toplam deneme sayısı.", cozum: [`${k} ÷ ${n} = ${kesir(k, n)}.`] }); },
+            ipucu: "Olasılık tahmini = olayın gerçekleşme sayısı ÷ toplam deneme sayısı.", cozum: [`Gözleme dayalı olasılık = olayın gerçekleşme sayısı ÷ toplam deneme sayısı.`, `Kırmızı ${k} kez geldi, deney ${n} kez yapıldı: ${k}/${n}.`, `Sadeleştir: ${k}/${n} = ${kesir(k, n)}.`] }); },
         z => { const k = [R(8, 20), R(8, 20), R(8, 20)]; const t = k[0] + k[1] + k[2]; const renk = ["Kırmızı", "Mavi", "Yeşil"]; const i = R(0, 2);
           return S({ kaz: "ol.tahmin", duzey: "uygulama", zorluk: 2, soru: `Bir torbadan çekilip geri bırakılan bilyelerin renkleri kaydedildi: Kırmızı ${k[0]}, Mavi ${k[1]}, Yeşil ${k[2]} kez. ${renk[i]} bilye çekme olasılığının tahmini nedir?`, dogru: kesir(k[i], t),
             yanlis: [[kesir(k[i], k[(i + 1) % 3] + k[(i + 2) % 3]), "kavrama", "Toplam deneme sayısına bölmelisin, diğer renklerin toplamına değil."], ["1/3", "kavrama", "Üç renk var diye olasılıklar eşit değildir; gözlem sonuçlarını kullan."], [kesir(k[(i + 1) % 3], t), "dikkat", "Başka bir rengin tahminini hesapladın."]],
@@ -382,7 +306,7 @@
             ["Madenî parayı attığımızda yazı gelmesi", "Eşit olasılıklı (1/2)", "Yazı ve tura gelme şansı eşittir."], ["Ocak ayından sonra şubat ayının gelmesi", "Kesin", "Takvimde her zaman öyledir; olasılığı 1."]]);
           return S({ kaz: "ol.kavram", duzey: "hatirlama", zorluk: 1, soru: `“${o[0]}” olayı nasıl bir olaydır?`, dogru: o[1], dogruNeden: o[2],
             yanlis: [["İmkânsız", "kavrama", "Bu olay gerçekleşebilir."], ["Kesin", "kavrama", "Bu olay her zaman gerçekleşmez."], ["Eşit olasılıklı (1/2)", "kavrama", "Olasılık 1/2 değil."], ["Olasılığı 2'dir", "bilgi", "Olasılık 0 ile 1 arasındadır, 2 olamaz."]].filter(x => x[0] !== o[1]),
-            ipucu: "Olasılık 0 → imkânsız, 1 → kesin.", cozum: [o[2]] }); },
+            ipucu: "Olasılık 0 → imkânsız, 1 → kesin.", cozum: ["Önce olayın gerçekleşip gerçekleşemeyeceğini düşün: hiç olamıyorsa imkânsız (0), her zaman oluyorsa kesin (1), şansı yarı yarıya ise eşit olasılıklı (1/2).", o[2], `Bu yüzden olay: ${o[1]}.`] }); },
         z => S({ kaz: "ol.kavram", duzey: "aciklama", zorluk: 2, soru: "Gözleme dayalı olasılıkla ilgili hangisi doğrudur?", dogru: "Deneme sayısı arttıkça tahmin teorik olasılığa yaklaşır.",
           yanlis: [["Deney az yapılırsa tahmin daha doğru olur.", "kavrama", "Az deneme rastlantıya açıktır; tahmin yanıltıcı olabilir."], ["Gözleme dayalı olasılık 1'den büyük olabilir.", "bilgi", "Olasılık her zaman 0 ile 1 arasındadır."], ["Her deneyde aynı sonuç çıkar.", "kavrama", "Deney sonuçları rastlantısaldır; farklı çıkabilir."]],
           ipucu: "Parayı 10 kez ve 1000 kez attığını düşün.", cozum: ["Çok sayıda deneme, rastlantısal sapmaları dengeler.", "Bu yüzden deneme arttıkça tahmin gerçeğe yaklaşır."] }),
@@ -395,7 +319,7 @@
         z => { const d = [R(5, 15), R(5, 15), R(5, 15), R(5, 15)]; const ad = ["Kırmızı", "Mavi", "Sarı", "Yeşil"]; const mx = Math.max(...d); if (d.filter(x => x === mx).length > 1) return null; const i = d.indexOf(mx);
           return S({ kaz: "ol.yorum", duzey: "uygulama", zorluk: 2, soru: `Dört renkli bir çark ${d.reduce((a, b) => a + b, 0)} kez çevrildi: ${ad.map((a, j) => a + " " + d[j]).join(", ")}. Gözlemlere göre bir sonraki çevirişte en olası renk hangisidir?`, dogru: ad[i],
             yanlis: ad.filter((_, j) => j !== i).map(a => [a, "dikkat", "Bu renk daha az gelmiş; en çok gelen renk en olası tahmindir."]),
-            ipucu: "En çok gözlenen sonuç, en olası tahmindir.", cozum: [`En çok gelen renk ${ad[i]} (${mx} kez).`] }); },
+            ipucu: "En çok gözlenen sonuç, en olası tahmindir.", cozum: [`Her rengin kaç kez geldiğine bak: ${ad.map((a, j) => a + " " + d[j]).join(", ")}.`, `Gözleme dayalı tahminde en çok gerçekleşen sonuç en olası kabul edilir.`, `En çok gelen renk ${ad[i]} (${mx} kez).`] }); },
       ],
     },
   });
@@ -421,17 +345,17 @@
         z => { const ad = ["onda birler", "yüzde birler", "binde birler"]; const i = R(0, 2); const rak = karistir([1, 2, 3, 4, 5, 6, 7, 8, 9]).slice(0, 4);
           return S({ kaz: "bas.ad", duzey: "hatirlama", zorluk: 1, soru: `${rak[0]},${rak[1]}${rak[2]}${rak[3]} sayısının ${ad[i]} basamağındaki rakam hangisidir?`, dogru: rak[i + 1],
             yanlis: [[rak[0], "bilgi", "Bu birler basamağıdır; ondalık basamaklar virgülün sağındadır."], ...[0, 1, 2].filter(j => j !== i).map(j => [rak[j + 1], "bilgi", `Bu rakam ${ad[j]} basamağında.`])],
-            ipucu: "Onda birler virgülden hemen sonraki basamaktır.", cozum: [`Virgülden sonra: ${ad.map((a, j) => a + " " + rak[j + 1]).join(", ")}.`] }); },
+            ipucu: "Onda birler virgülden hemen sonraki basamaktır.", cozum: [`Virgülün solu tam kısımdır: ${rak[0]} birler basamağında.`, `Virgülün sağındaki basamaklar sırayla: ${ad.map((a, j) => a + " → " + rak[j + 1]).join(", ")}.`, `İstenen ${ad[i]} basamağındaki rakam: ${rak[i + 1]}.`] }); },
       ],
       "bas.cozumle": [
         z => { const a = R(1, 9), b = R(1, 9), c = R(1, 9); const s = `${a},${b}${c}`;
           return S({ kaz: "bas.cozumle", duzey: "aciklama", zorluk: 2, soru: `${s} sayısının çözümlenmiş hâli hangisidir?`, dogru: `${a} + ${od(b / 10)} + ${od(c / 100)}`,
             yanlis: [[`${a} + ${b} + ${c}`, "kavrama", "Rakamların basamak değerlerini yazmalısın."], [`${a} + ${od(b / 100)} + ${od(c / 10)}`, "islem", "Onda birler ile yüzde birler yer değiştirmiş."], [`${a} + ${od(b / 10)} + ${od(c / 1000)}`, "islem", "Son basamak yüzde birler basamağıdır."]],
-            ipucu: "Her rakamı basamak değeriyle yaz.", cozum: [`${a} birler → ${a}, ${b} onda birler → ${od(b / 10)}, ${c} yüzde birler → ${od(c / 100)}.`] }); },
+            ipucu: "Her rakamı basamak değeriyle yaz.", cozum: [`Basamakları sırala: ${a} birler, ${b} onda birler, ${c} yüzde birler basamağında.`, `Basamak değerleri: ${a} → ${a}, ${b} → ${od(b / 10)}, ${c} → ${od(c / 100)}.`, `Çözümlenmiş hâl: ${a} + ${od(b / 10)} + ${od(c / 100)}.`] }); },
         z => { const a = R(2, 9), b = R(1, 9), c = R(1, 9); const deger = a + b / 10 + c / 100;
           return S({ kaz: "bas.cozumle", duzey: "transfer", zorluk: 2, soru: `${a} tane 1 TL, ${b} tane 10 kuruş ve ${c} tane 1 kuruş toplam kaç TL eder?`, dogru: od(deger) + " TL",
             yanlis: [[od(a + b / 100 + c / 10) + " TL", "kavrama", "10 kuruş 0,1 TL, 1 kuruş 0,01 TL'dir."], [`${a + b + c} TL`, "kavrama", "Kuruşları TL gibi saydın."], [od(a + b / 10 + c / 10) + " TL", "islem", "1 kuruş 0,01 TL'dir."]],
-            ipucu: "1 TL = 100 kuruş. 10 kuruş = 0,1 TL; 1 kuruş = 0,01 TL.", cozum: [`${a} + ${b} × 0,1 + ${c} × 0,01 = ${od(deger)} TL.`] }); },
+            ipucu: "1 TL = 100 kuruş. 10 kuruş = 0,1 TL; 1 kuruş = 0,01 TL.", cozum: [`1 TL'ler: ${a} TL.`, `10 kuruş = 0,1 TL olduğu için ${b} tane 10 kuruş = ${od(b / 10)} TL.`, `1 kuruş = 0,01 TL olduğu için ${c} tane 1 kuruş = ${od(c / 100)} TL.`, `Topla: ${a} + ${od(b / 10)} + ${od(c / 100)} = ${od(deger)} TL.`] }); },
       ],
     },
   });
@@ -476,23 +400,23 @@
         z => { const a = R(2, 9), b = R(a + 1, 12);
           return S({ kaz: "kb.iliski", duzey: "hatirlama", zorluk: 1, soru: `${a}/${b} kesri hangi bölme işlemini gösterir?`, dogru: `${a} ÷ ${b}`,
             yanlis: [[`${b} ÷ ${a}`, "kavrama", "Pay bölünen, payda bölendir; ters çevirdin."], [`${a} × ${b}`, "bilgi", "Kesir çizgisi bölme anlamına gelir, çarpma değil."], [`${b} − ${a}`, "bilgi", "Kesir çizgisi bölmedir."]],
-            ipucu: "Kesir çizgisi “bölü” demektir.", cozum: [`${a}/${b} = ${a} ÷ ${b}.`] }); },
+            ipucu: "Kesir çizgisi “bölü” demektir.", cozum: [`Kesir çizgisi bölme işaretidir.`, `Pay (üstteki sayı) bölünen, payda (alttaki sayı) bölendir.`, `${a}/${b} = ${a} ÷ ${b}.`] }); },
       ],
       "kb.ondalik": [
         z => { const [a, b, d] = sec([[1, 2, 0.5], [1, 4, 0.25], [3, 4, 0.75], [2, 5, 0.4], [3, 5, 0.6], [4, 5, 0.8], [1, 5, 0.2], [7, 10, 0.7], [9, 20, 0.45], [3, 20, 0.15], [7, 25, 0.28], [1, 8, 0.125], [3, 8, 0.375]]);
           return S({ kaz: "kb.ondalik", duzey: "uygulama", zorluk: b >= 20 ? 2 : 1, soru: `${a}/${b} kesrinin ondalık gösterimi hangisidir?`, dogru: od(d),
             yanlis: [[`${a},${b}`, "kavrama", "Kesir çizgisi virgül demek değildir; payı paydaya bölmelisin."], [Number.isInteger(b / a * 100) ? od(b / a) : od(d / 10), Number.isInteger(b / a * 100) ? "kavrama" : "islem", Number.isInteger(b / a * 100) ? "Paydayı paya böldün; ters işlem." : "Virgülü yanlış yere koydun."], [od(d * 10), "islem", "Virgülü yanlış yere koydun."]],
-            ipucu: `${a} ÷ ${b} işlemini yap ya da paydayı 10, 100 veya 1000'e genişlet.`, cozum: [`${a} ÷ ${b} = ${od(d)}.`] }); },
+            ipucu: `${a} ÷ ${b} işlemini yap ya da paydayı 10, 100 veya 1000'e genişlet.`, cozum: [`Kesri ondalığa çevirmek için paydayı 10, 100 ya da 1000 yapacak sayıyla genişlet.`, (() => { const h = [10, 100, 1000].find(x => x % b === 0); return h ? `${a}/${b} = ${a} × ${h / b} / ${b} × ${h / b} = ${a * h / b}/${h}.` : `${a} ÷ ${b} bölmesini yap.`; })(), `Sonuç: ${od(d)}.`] }); },
       ],
       "kb.paylasim": [
         z => { const a = R(2, 7), b = R(a + 1, 10); const nesne = sec(["pizza", "pasta", "çikolata"]);
           return S({ kaz: "kb.paylasim", duzey: "transfer", zorluk: 2, soru: `${a} ${nesne} ${b} arkadaş arasında eşit olarak paylaştırılırsa her arkadaşa ne kadar ${nesne} düşer?`, dogru: kesir(a, b),
             yanlis: [[kesir(b, a), "kavrama", "Payı ve paydayı ters yazdın: paylaştırılan miktar pay, kişi sayısı paydadır."], [`1/${b}`, "dikkat", "Bu tek bir " + nesne + " paylaştırıldığında düşen paydır."], [String(b - a), "bilgi", "Paylaştırma bölme işlemidir."]],
-            ipucu: "Paylaştırma = bölme. Bölme = kesir.", cozum: [`${a} ÷ ${b} = ${kesir(a, b)}.`] }); },
+            ipucu: "Paylaştırma = bölme. Bölme = kesir.", cozum: [`Eşit paylaştırma bölme işlemidir: ${a} ÷ ${b}.`, `Bölme kesir olarak yazılır: paylaştırılan miktar pay, kişi sayısı payda → ${a}/${b}.`, `Her arkadaşa ${kesir(a, b)} ${nesne} düşer.`] }); },
         z => { const k = R(3, 8), b = sec([4, 5, 8, 10]); const a = R(b + 1, 2 * b - 1);
           return S({ kaz: "kb.paylasim", duzey: "baglanti", zorluk: 3, soru: `${a} litre süt ${b} şişeye eşit olarak dolduruluyor. Her şişede kaç litre süt olur? (Ondalık gösterimle)`, dogru: od(a / b),
             yanlis: [[od(b / a), "kavrama", "Şişe sayısını süt miktarına böldün."], [`${a},${b}`, "kavrama", "Kesir virgülle yazılmaz; böl."], [od(Math.floor(a / b)), "dikkat", "Kalanı da paylaştırmalısın."]],
-            ipucu: `${a} ÷ ${b} = ${a}/${b}; sonra ondalığa çevir.`, cozum: [`${a} ÷ ${b} = ${kesir(a, b)} = ${od(a / b)} litre.`] }); },
+            ipucu: `${a} ÷ ${b} = ${a}/${b}; sonra ondalığa çevir.`, cozum: [`Eşit paylaştırma bölmedir: ${a} ÷ ${b} = ${a}/${b}.`, (() => { const h = [10, 100, 1000].find(x => x % b === 0); return `Paydayı ${h} yap: ${a}/${b} = ${a * h / b}/${h}.`; })(), `Ondalık gösterim: ${od(a / b)} litre.`] }); },
       ],
     },
   });
@@ -557,7 +481,7 @@
         z => { const o = sec([["İki şehir arasındaki uzaklık", "km"], ["Sınıfın uzunluğu", "m"], ["Bir kalemin uzunluğu", "cm"], ["Bir karıncanın boyu", "mm"], ["Bir futbol sahasının uzunluğu", "m"]]);
           return S({ kaz: "uz.birim", duzey: "hatirlama", zorluk: 1, soru: `“${o[0]}” ölçülürken en uygun birim hangisidir?`, dogru: o[1],
             yanlis: ["km", "m", "cm", "mm"].filter(b => b !== o[1]).map(b => [b, "kavrama", "Bu birim ölçülen uzunluğa göre çok " + (["km", "m", "cm", "mm"].indexOf(b) < ["km", "m", "cm", "mm"].indexOf(o[1]) ? "büyük" : "küçük") + " kalır."]),
-            ipucu: "Ölçeceğin şey ne kadar büyük?", cozum: [`${o[0]} için en uygun birim ${o[1]}${ek(o[1], "dir")}.`] }); },
+            ipucu: "Ölçeceğin şey ne kadar büyük?", cozum: ["Birimleri büyükten küçüğe sırala: km (çok uzun yollar) → m (oda, saha) → cm (kalem, defter) → mm (çok küçük şeyler).", `${o[0]} bu sıralamada ${o[1]} ile ölçülecek büyüklüktedir.`, `En uygun birim: ${o[1]}.`] }); },
       ],
       "uz.problem": [
         z => { const tur = sec([200, 250, 400, 500]), n = R(3, 10); const m = tur * n;
@@ -591,11 +515,11 @@
         z => { const tur = sec(["kategorik", "nicel"]); const d = sec(DEGISKEN.filter(x => x[1] === tur)); const yan = karistir(DEGISKEN.filter(x => x[1] !== tur)).slice(0, 3);
           return S({ kaz: "ar.veri", duzey: "hatirlama", zorluk: 1, soru: `Aşağıdakilerden hangisi ${tur} veridir?`, dogru: d[0],
             yanlis: yan.map(x => [x[0], "kavrama", `“${x[0]}” ${x[1]} veridir: ${x[1] === "nicel" ? "sayıyla ölçülür." : "bir grup ya da özellik belirtir."}`]),
-            ipucu: "Sayıyla ölçülüyor ya da sayılıyorsa nicel; bir grup adıysa kategoriktir.", cozum: [`“${d[0]}” ${tur} veridir.`] }); },
+            ipucu: "Sayıyla ölçülüyor ya da sayılıyorsa nicel; bir grup adıysa kategoriktir.", cozum: ["Nicel veri sayıyla ölçülür ya da sayılır; kategorik veri bir grup, ad ya da özellik belirtir.", `“${d[0]}” ${tur === "nicel" ? "sayıyla ölçülür/sayılır" : "bir grup ya da özellik belirtir"}.`, `Bu yüzden “${d[0]}” ${tur} veridir.`] }); },
         z => { const d = sec(DEGISKEN);
           return S({ kaz: "ar.veri", duzey: "aciklama", zorluk: 1, soru: `“${d[0]}” verisi hangi türdendir?`, dogru: d[1] === "nicel" ? "Nicel veri" : "Kategorik veri",
             yanlis: [[d[1] === "nicel" ? "Kategorik veri" : "Nicel veri", "kavrama", d[1] === "nicel" ? "Bu veri sayıyla ölçülür; nicel veridir." : "Bu veri bir grup belirtir; kategorik veridir."], ["Her ikisi de", "kavrama", "Bir veri ya kategorik ya nicel olur."], ["Veri değildir", "bilgi", "Toplanabilen her bilgi veridir."]],
-            ipucu: "Cevaplar sayı mı, yoksa ad/kategori mi?", cozum: [`“${d[0]}” → ${d[1]} veri.`] }); },
+            ipucu: "Cevaplar sayı mı, yoksa ad/kategori mi?", cozum: ["Kendine sor: Bu soruya verilecek cevaplar sayı mı, yoksa bir ad/grup mu?", `“${d[0]}” için cevaplar ${d[1] === "nicel" ? "sayıdır (ölçülür ya da sayılır)" : "ad ya da gruptur"}.`, `Sonuç: ${d[1]} veri.`] }); },
       ],
       "ar.soru": [
         z => { const iyi = sec(["Sınıfımızdaki öğrenciler günde kaç saat uyuyor?", "Okulumuzdaki öğrencilerin en çok tercih ettiği kulüp hangisidir?", "Sınıfımızdaki öğrencilerin kaç kardeşi var?", "6. sınıf öğrencileri haftada kaç kitap okuyor?"]);
@@ -610,7 +534,7 @@
         z => { const o = sec([["Sınıftaki öğrencilerin boy uzunlukları", "Ölçüm yapmak"], ["Öğrencilerin en sevdiği yemek", "Anket yapmak"], ["Okul önünden bir saatte geçen araç sayısı", "Gözlem yapmak"]]);
           return S({ kaz: "ar.plan", duzey: "uygulama", zorluk: 2, soru: `“${o[0]}” hakkında veri toplamak için en uygun yöntem hangisidir?`, dogru: o[1],
             yanlis: ["Ölçüm yapmak", "Anket yapmak", "Gözlem yapmak", "Tahmin etmek"].filter(x => x !== o[1]).map(x => [x, x === "Tahmin etmek" ? "bilgi" : "strateji", x === "Tahmin etmek" ? "Tahmin veri toplama yöntemi değildir." : "Bu yöntem bu veriyi toplamak için en uygun değil."]),
-            ipucu: "Veri soruyla mı, ölçerek mi, yoksa izleyerek mi toplanır?", cozum: [`En uygun yöntem: ${o[1]}.`] }); },
+            ipucu: "Veri soruyla mı, ölçerek mi, yoksa izleyerek mi toplanır?", cozum: ["Veri toplama yolları: ölçüm (cetvel, terazi ile), anket (kişilere sorarak), gözlem (izleyip sayarak).", `“${o[0]}” ${o[1] === "Ölçüm yapmak" ? "bir araçla ölçülür" : o[1] === "Anket yapmak" ? "kişilerin tercihidir; sorarak öğrenilir" : "izlenerek sayılır"}.`, `En uygun yöntem: ${o[1]}.`] }); },
       ],
     },
   });
@@ -629,13 +553,13 @@
     uret: {
       "me.grafik": [
         z => { const ad = sec([["meyve", ["Elma", "Muz", "Çilek", "Portakal"]], ["spor", ["Futbol", "Voleybol", "Basketbol", "Yüzme"]]]); const d = ad[1].map(() => R(3, 12)); const mx = Math.max(...d); if (d.filter(x => x === mx).length > 1) return null; const i = d.indexOf(mx);
-          return S({ kaz: "me.grafik", duzey: "uygulama", zorluk: 1, soru: `Bir sınıfın en sevdiği ${ad[0]} tablosu: ${ad[1].map((a, j) => a + " " + d[j]).join(", ")}. En çok tercih edilen ${ad[0]} hangisidir?`, dogru: ad[1][i],
+          return S({ kaz: "me.grafik", duzey: "uygulama", zorluk: 1, soru: `Bir sınıfın en sevdiği ${ad[0]} grafiği aşağıdadır. En çok tercih edilen ${ad[0]} hangisidir?`, gorsel: OGR.G.sutun(ad[1].map((a, j) => [a, d[j]]), { baslik: "En sevilen " + ad[0], birim: "kişi" }), dogru: ad[1][i],
             yanlis: ad[1].filter((_, j) => j !== i).map(a => [a, "dikkat", "Tablodaki sayıları yeniden karşılaştır."]),
-            ipucu: "En büyük sayıyı bul.", cozum: [`En büyük değer ${mx}: ${ad[1][i]}.`] }); },
+            ipucu: "En büyük sayıyı bul.", cozum: ["Grafikte en uzun sütunu bul; sütunun boyu tercih sayısını gösterir.", `Değerler: ${ad[1].map((a, j) => a + " " + d[j]).join(", ")}.`, `En büyük değer ${mx}: en çok tercih edilen ${ad[1][i]}.`] }); },
         z => { const d = [R(4, 15), R(4, 15), R(4, 15), R(4, 15)]; const ad = ["Pzt", "Salı", "Çrş", "Prş"]; const t = d.reduce((a, b) => a + b, 0);
-          return S({ kaz: "me.grafik", duzey: "uygulama", zorluk: 2, soru: `Bir kütüphaneden günlere göre ödünç alınan kitaplar: ${ad.map((a, j) => a + " " + d[j]).join(", ")}. Dört günde toplam kaç kitap ödünç alınmıştır?`, dogru: t,
+          return S({ kaz: "me.grafik", duzey: "uygulama", zorluk: 2, soru: "Bir kütüphaneden günlere göre ödünç alınan kitap sayıları grafikte verilmiştir. Dört günde toplam kaç kitap ödünç alınmıştır?", gorsel: OGR.G.sutun(ad.map((a, j) => [a, d[j]]), { baslik: "Ödünç alınan kitaplar", birim: "kitap" }), dogru: t,
             yanlis: [[Math.max(...d), "dikkat", "Bu tek bir günün değeri; toplamı istiyor."], [t - d[0], "dikkat", "Bir günü eklemeyi unuttun."], [t + R(1, 4), "islem", "Toplamayı yeniden kontrol et."]],
-            ipucu: "Bütün günlerin değerlerini topla.", cozum: [`${d.join(" + ")} = ${t}.`] }); },
+            ipucu: "Bütün günlerin değerlerini topla.", cozum: ["Grafikten her günün değerini oku.", `Pazartesi ${d[0]}, Salı ${d[1]}, Çarşamba ${d[2]}, Perşembe ${d[3]}.`, `Topla: ${d.join(" + ")} = ${t} kitap.`] }); },
       ],
       "me.ortalama": [
         z => { const n = sec([4, 5]); let v; do { v = Array.from({ length: n }, () => R(4, 20)); } while (v.reduce((a, b) => a + b, 0) % n); const t = v.reduce((a, b) => a + b, 0);
@@ -655,13 +579,13 @@
         z => { const t = R(3, 9); const v = karistir([t, t, t, R(10, 15), R(1, 2), R(16, 20)]);
           return S({ kaz: "me.ortanca", duzey: "hatirlama", zorluk: 1, soru: `${v.join(", ")} verisinin tepe değeri kaçtır?`, dogru: t,
             yanlis: [[Math.max(...v), "kavrama", "Tepe değer en büyük değer değil, en çok tekrar eden değerdir."], [v.length, "dikkat", "Bu veri sayısıdır."], [[...v].sort((a, b) => a - b)[3], "kavrama", "Ortanca ile tepe değeri karıştırdın."]],
-            ipucu: "En çok tekrar eden değer hangisi?", cozum: [`${t} değeri 3 kez tekrar ediyor.`] }); },
+            ipucu: "En çok tekrar eden değer hangisi?", cozum: ["Tepe değer, veride en çok tekrar eden değerdir.", `Her sayının kaç kez geçtiğini say: ${t} sayısı 3 kez, diğerleri birer kez geçiyor.`, `Tepe değer: ${t}.`] }); },
       ],
       "me.aciklik": [
         z => { const v = Array.from({ length: 6 }, () => R(10, 60));
           return S({ kaz: "me.aciklik", duzey: "uygulama", zorluk: 1, soru: `${v.join(", ")} verisinin açıklığı kaçtır?`, dogru: Math.max(...v) - Math.min(...v),
             yanlis: [[Math.max(...v), "bilgi", "Açıklık en büyük değerden en küçük değerin çıkarılmasıdır."], [Math.abs(v[v.length - 1] - v[0]), "dikkat", "İlk ve son değeri değil, en büyük ve en küçük değeri kullan."], [Math.max(...v) + Math.min(...v), "islem", "Toplama değil çıkarma yapılır."]],
-            ipucu: "En büyük − en küçük.", cozum: [`${Math.max(...v)} − ${Math.min(...v)} = ${Math.max(...v) - Math.min(...v)}.`] }); },
+            ipucu: "En büyük − en küçük.", cozum: ["Açıklık = en büyük değer − en küçük değer.", `En büyük değer ${Math.max(...v)}, en küçük değer ${Math.min(...v)}.`, `${Math.max(...v)} − ${Math.min(...v)} = ${Math.max(...v) - Math.min(...v)}.`] }); },
         z => S({ kaz: "me.aciklik", duzey: "baglanti", zorluk: 3, soru: "Bir sınıftaki puanlar: 10, 12, 13, 15, 60. Bu veriyi en iyi temsil eden merkezî eğilim ölçüsü hangisidir? Neden?", dogru: "Ortanca; çünkü 60 uç değeri ortalamayı çok yükseltir.",
           yanlis: [["Ortalama; çünkü bütün değerleri kullanır.", "kavrama", "Ortalama 22 çıkar; öğrencilerin çoğunun puanını temsil etmez."], ["Açıklık; çünkü en büyük farkı gösterir.", "bilgi", "Açıklık bir yayılım ölçüsüdür, merkezî eğilim ölçüsü değildir."], ["En büyük değer; çünkü en başarılıyı gösterir.", "kavrama", "En büyük değer veriyi temsil etmez."]],
           ipucu: "Ortalamayı ve ortancayı hesaplayıp karşılaştır.", cozum: ["Ortalama: 110 ÷ 5 = 22. Ortanca: 13.", "Çoğu öğrenci 10–15 arasında; ortanca daha iyi temsil eder."] }),
@@ -669,36 +593,15 @@
     },
   });
 
-  /* ============================== Dışa aktarım ============================== */
-  const TEMALAR = [T1, T2, T3, T4].map(t => ({ ...t, konular: KONULAR.filter(k => k.tema === t.id).map(k => k.id) }));
-  const KONU = Object.fromEntries(KONULAR.map(k => [k.id, k]));
-  const KAZANIM = {};
-  KONULAR.forEach(k => k.kazanimlar.forEach(z => { KAZANIM[z.id] = { ...z, konu: k.id, tema: k.tema }; }));
-
-  /* Belirli bir kazanımdan, istenen zorluğa en yakın soruyu üretir. */
-  function soruUret(kazId, zorluk) {
-    const konu = KONU[KAZANIM[kazId].konu];
-    const ureteçler = konu.uret[kazId];
-    let enIyi = null;
-    for (let deneme = 0; deneme < 25; deneme++) {
-      const s = sec(ureteçler)(zorluk || 2);
-      if (!s) continue;
-      if (!enIyi || Math.abs(s.zorluk - zorluk) < Math.abs(enIyi.zorluk - zorluk)) enIyi = s;
-      if (!zorluk || s.zorluk === zorluk) break;
-    }
-    enIyi.id = kazId + ":" + Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
-    enIyi.konu = konu.id; enIyi.tema = konu.tema;
-    return enIyi;
-  }
-
-  window.ICERIK = { TEMALAR, KONULAR, KONU, KAZANIM, soruUret, yardim: { R, sec, karistir, od } };
-  window.DUZEY_AD = { hatirlama: "Bilgiyi hatırlama", aciklama: "Kavramı açıklama", uygulama: "Örnek üzerinde uygulama", transfer: "Yeni nesil / transfer", baglanti: "Önceki konularla bağlantı" };
-  window.HATA_AD = { bilgi: "Bilgi eksikliği", kavrama: "Kavrama hatası", islem: "İşlem hatası", dikkat: "Dikkat / okuduğunu anlama", strateji: "Zaman yönetimi / strateji" };
-  window.HATA_ONERI = {
-    bilgi: "Konunun ilgili bölümünü yeniden anlatın; kuralı ya da tanımı birlikte tekrar edin.",
-    kavrama: "Görsel anlatım ve farklı örnekler sunun; kavramı kendi cümleleriyle anlatmasını isteyin.",
-    islem: "Adım adım çözüm çalışması yaptırın; her adımı yazarak ilerlemesini sağlayın.",
-    dikkat: "Soruda verilenleri ve isteneni ayrı ayrı işaretletin; olumsuz ifadelerin altını çizdirin.",
-    strateji: "Alternatif çözüm yollarını gösterin ve süreli kısa alıştırmalar yaptırın.",
-  };
+  /* ============================== Kayıt ============================== */
+  DERS_EKLE({
+    id: "mat", ad: "Matematik", kisa: "Mat", simge: "➗", temalar: [T1, T2, T3, T4], konular: KONULAR,
+    /* Yazılı sınav kapsamları (veli panelinden değiştirilebilir). */
+    yazililar: {
+      d1y1: ["carpan", "kat", "bolunebilme", "asal"],
+      d1y2: ["asal", "ortakkat", "ortakbolen", "olasilik"],
+      d2y1: ["basamak", "yuvarlama", "kesirbolme", "problem"],
+      d2y2: ["uzunluk", "arastirma", "merkezi"],
+    },
+  });
 })();

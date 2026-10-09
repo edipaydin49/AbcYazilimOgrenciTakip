@@ -27,11 +27,12 @@ const sunucu = http.createServer((q, r) => { const u = decodeURIComponent(q.url.
   const t0 = Date.now(); await p.reload(); await p.waitForSelector("main h1"); console.log("Açılış (veri yükleme dahil)".padEnd(28), (Date.now() - t0) + " ms");
   await olc("Ana sayfa", "#/x"); await olc("Ana sayfa", "#/");
   await olc("Konu sayfası", "#/konu/asal");
+  await olc("Yazılı sayfası", "#/yazili/mat/d1y1");
   await p.evaluate(() => { location.hash = "#/konu/asal"; });
   const t1 = Date.now(); await p.click('[data-test="alistirma"]'); await p.waitForSelector(".sec"); console.log("Alıştırma başlatma".padEnd(28), (Date.now() - t1) + " ms");
   const t2 = Date.now(); const i = await p.evaluate(() => TEST_DURUMU().soru.q.secenekler.findIndex(x => x.dogru)); await p.click(`[data-s="${i}"]`); await p.click("#devamB"); await p.waitForSelector(".sec"); console.log("Cevap + sonraki soru".padEnd(28), (Date.now() - t2) + " ms");
   await olc("Gelişimim", "#/gelisim");
   await p.evaluate(() => { location.hash = "#/veli"; }); for (const x of ["1", "2", "3", "4", "Tamam"]) await p.click(`[data-p="${x}"]`);
-  for (const s of ["ozet", "kazanim", "soru", "anlatim", "tekrar", "calisma", "kayit"]) await olc("Veli: " + s, "#/veli/" + s);
+  for (const s of ["ozet", "dersler", "konu/asal", "kazanim", "soru", "anlatim", "tekrar", "calisma", "yazili", "kayit", "icerik"]) await olc("Veli: " + s, "#/veli/" + s);
   await b.close(); sunucu.close();
 })();

@@ -1,8 +1,10 @@
-# Öğrenme Yolculuğu (6. Sınıf Matematik) — APK
+# Öğrenme Yolculuğu (6. Sınıf Matematik ve Fen Bilimleri) — APK
 
-Tablete kurulacak dosya: **`OgrenmeYolculugu.apk`** (70 KB, sürüm 1.2, Android 7 ve üstü; Samsung Galaxy Tab A9+ / One UI 8.5 / Android 16 ile uyumlu).
+Tablete kurulacak dosya: **`OgrenmeYolculugu.apk`** (sürüm 1.3, Android 7 ve üstü; Samsung Galaxy Tab A9+ / One UI 8.5 / Android 16 ile uyumlu).
 
 ## 1. Tablete kurulum (bir kez)
+
+> **Eski sürüm kuruluysa silmeyin.** Yeni APK'yı açıp **Güncelle**'ye basmanız yeterli; aynı imzayla hazırlandığı için öğrencinin bütün kayıtları, ayarlar ve şifre korunur. (Otomatik Engelleyici açıksa kurulum sırasında geçici olarak kapatın.)
 
 1. APK dosyasını tablete gönderin (WhatsApp, e-posta, Google Drive ya da USB kablo).
 2. Tablette dosyaya dokunun. “Bilinmeyen uygulamalar” uyarısı çıkarsa **Ayarlar → Bu kaynağa izin ver** deyin.
@@ -24,34 +26,48 @@ Tablete kurulacak dosya: **`OgrenmeYolculugu.apk`** (70 KB, sürüm 1.2, Android
 
 ## 2. Uygulamada neler var?
 
+**Dersler:** Ana sayfanın üstünden **Matematik** ya da **Fen Bilimleri** seçilir.
+- Matematik: 4 tema, 14 konu, 41 kazanım (ders kitabının içindekiler sayfasıyla aynı sırada).
+- Fen Bilimleri (Maarif Modeli): 7 ünite, 15 konu — Güneş Sistemi ve Tutulmalar, Kuvvetin Etkisinde Hareket, Canlılarda Sistemler, Işığın Yansıması ve Renkler, Maddenin Ayırt Edici Özellikleri, Elektriğin İletimi ve Direnç, Sürdürülebilir Yaşam ve Etkileşim.
+
 **Öğrenci tarafı**
-- 4 tema, 14 konu, 41 kazanım (ders kitabının içindekiler sayfasıyla aynı sırada).
-- Her konu için: konu anlatımı (her bölümün sonunda “konu durağı” sorusu) → alıştırma (10 soru, uyarlanabilir) → konu sonu testi (12 soru; kolay, orta ve zor karışık) → kendi tekrarım.
-- Her tema için **Hazır mıyız?**, **İzleme testi** ve **Ölçme ve değerlendirme**. Bütün temalardan **Genel deneme sınavı**: 20 soru, 30 dakika, sınav modu.
-- Sorular her seferinde yeniden üretilir; aynı test ikinci kez açıldığında sayılar değişir (ezber yerine öğrenme).
-- Yanlış cevapta: seçilen şıkkın **neden yanlış olduğu** gösterilir, “Sence neden yanlış yaptın?” diye sorulur, **tekrar deneme** hakkı verilir ya da **adım adım çözüm** gösterilir. Çözümden sonra **benzer bir soru** çözdürülür (çözüm sonrası kontrol).
+- Her konu için: konu anlatımı (her bölümün sonunda “konu durağı” sorusu) → **konu videoları** → alıştırma (10 soru, uyarlanabilir) → konu sonu testi (12 soru; kolay, orta ve zor karışık) → kendi tekrarım.
+- **Görselli sorular:** sayı doğrusu, çarpan ağacı, birim kare modeli, cetvel, kesir şeridi, sütun grafiği, torba–top, kuvvet okları, ışın çizimleri, devre şemaları, tablolar.
+- **Adım adım çözüm:** her yanlışta seçilen şıkkın neden yanlış olduğu, numaralı çözüm adımları ve “Unutma” kutusunda konunun kuralı gösterilir.
+- **Yazılılara hazırlık** (her ders için 1. dönem 1. ve 2. yazılı, 2. dönem 1. ve 2. yazılı): yazılı konuları, her konunun anlatımı/videosu/alıştırması, **konu tekrar testi** (12), **eksiklerimi kapat** (10, zayıf kazanımlardan), **yazılı provası** (20 soru, 40 dakika, sınav modu) ve hazırlık yüzdesi.
+- Her tema/ünite için **Hazır mıyız?**, **İzleme testi** ve **değerlendirme**. Her dersten **Genel deneme sınavı**: 20 soru, 30 dakika, sınav modu.
+- Sorular her seferinde yeniden üretilir ya da büyük bir havuzdan seçilir; aynı soru kısa sürede tekrar gelmez.
 - **Aralıklı tekrar:** konu sonu testinden 1, 3, 7 ve 30 gün sonra kısa tekrar testleri otomatik olarak açılır.
-- **Hata defteri:** yanlış yapılan sorular birikir ve doğru çözülünce defterden silinir.
-- **Gelişimim:** bugünkü hedef, konu bazlı gelişim, güçlü ve tekrar edilecek konular, sonraki çalışma önerisi, 14 günlük başarı grafiği.
+- **Hata defteri:** yanlış yapılan sorular ders ve konuya göre birikir, çözümleriyle birlikte görülebilir; doğru çözülünce defterden silinir.
+- **Gelişimim:** ders bazında hedef, konu gelişimi, güçlü ve tekrar edilecek konular, 14 günlük başarı grafiği.
+
+**Konu videoları:** Her konuya YouTube'daki farklı kanallardan (Tonguç, İMT Hoca, Hocalara Geldik ve diğerleri) 4–5 hazır konu anlatım videosu eklendi; toplam 140 video. Video bölümlere ayrılmamışsa uygulama onu yaklaşık 4 dakikalık parçalara böler ve her parçanın sonunda kısa soru sorar. Bir video açılmazsa “Başka bir anlatım dene” ile sıradakine geçilir.
 
 **Veli paneli** (sağ üstteki “Veli” düğmesi, şifreli). Sekmeler:
 
+Panelin üstünden **Tüm dersler / Matematik / Fen Bilimleri** seçilir; bütün sekmeler seçilen derse göre süzülür.
+
 | Sekme | İçerik |
 |---|---|
-| **Veli özeti** | Haftalık çalışma süresi, çözülen soru sayısı, başarı ve tamamlanan testler (önceki haftaya göre), gelişim grafiği, günlük süre grafiği, tamamlanan konular, evde desteklenebilecek alanlar. Rapor WhatsApp ile paylaşılabilir. |
+| **Özet** | Derslere göre durum, haftalık çalışma süresi, çözülen soru, başarı ve tamamlanan testler (önceki haftaya göre), gelişim ve süre grafikleri, evde desteklenebilecek alanlar. Rapor her ders için ayrı bölümle WhatsApp'tan paylaşılabilir. |
+| **Ders ve konular** | Ders › tema/ünite › konu ağacı: her konunun soru sayısı, ilk deneme başarısı, ustalığı, konu sonu sonucu, video tamamlama, anlatım durumu ve son çalışma tarihi. **Ayrıntı** ile konunun bütün istatistikleri: kazanımlar, zorluk ve bilişsel düzey başarısı, hata türleri, testler, tekrar planı, izlenen videolar, son 20 soru ve değerlendirme cümlesi. |
 | **Kazanım haritası** | Her kazanım için ilk ve son deneme başarısı, ortalama süre, soru sayısı ve güven düzeyi. |
-| **Soru analizi** | İlk ve son deneme başarısı, ortalama süre, terk oranı, ipucuyla çözülenler, ipucusuz çözme, yanlıştan sonra düzeltme, çözümden sonra benzer soru başarısı, kolay/orta/zor farkı, 5 bilişsel düzey, 5 hata türü ve öneriler, tekrar eden hatalar. |
-| **Anlatım ve video** | Tamamlama oranı, aktif izleme oranı, geri sarma ve duraklatma sayıları, tekrar açılan bölümler, konu durağı başarısı. |
+| **Soru analizi** | İlk/son deneme, süre, terk, ipucu, düzeltme, çözüm sonrası benzer soru, kolay/orta/zor farkı, 5 bilişsel düzey, 5 hata türü ve öneriler, tekrar eden hatalar, test türleri (yazılı çalışmaları dahil). |
+| **Anlatım ve video** | Tamamlama, aktif izleme, geri sarma, duraklatma, tekrar açılan bölümler, konu durağı başarısı. |
 | **Aralıklı tekrar** | Unutma eğrisi (ilk öğrenme → 1, 3, 7, 30 gün) ve konu bazlı tekrar planı. |
-| **Çalışma alışkanlığı** | Günlük ve haftalık süre, plan ile gerçekleşen arasındaki fark, kesintiler, kendi isteğiyle yapılan tekrarlar, yardımsız çözme, hata defterine dönüş, öz değerlendirme ile gerçek başarının karşılaştırması. |
-| **Soru kayıtları** | Son 150 soru tek tek: süre, ilk ve son cevap, ipucu, hata türü. |
-| **Videolar** | Her konuya YouTube bağlantısı, bölümler ve bölüm sonu soruları (otomatik ya da sizin yazdığınız). |
+| **Çalışma alışkanlığı** | Günlük ve haftalık süre, plan farkı, kesintiler, kendi isteğiyle tekrar, yardımsız çözme, hata defterine dönüş, öz değerlendirme. |
+| **Yazılılar** | Her ders ve yazılı için sınav tarihi, kapsamdaki konular (işaretleyerek değiştirilebilir), hazırlık yüzdesi ve prova sonuçları. |
+| **Soru kayıtları** | Son 150 soru tek tek: ders, konu, kazanım, süre, ilk ve son cevap, ipucu, hata türü. |
+| **Videolar** | Hazır videoları gizleme/gösterme; her konuya kendi videonuzu ekleme, bölümlere ayırma ve bölüm sonu sorusu yazma. |
 | **Ayarlar ve eşitleme** | Şifre, hedef, bulut adresi, veriyi kopyala, içe aktar ve sıfırla. |
+
+**Yazılı kapsamları hakkında:** Varsayılan konular okulların yaygın yıllık planına göre seçildi. Öğretmenin duyurduğu konular farklıysa Veli paneli → Yazılılar'dan işaretleri değiştirip tarihi girin; öğrencinin ana sayfasında kalan gün sayısı görünür.
 
 ## 3. YouTube videoları (ebeveyn kilidi olan tablette)
 
 - Video **uygulamanın içinde** oynatılır; YouTube uygulaması açılmaz. Video ekranından YouTube'a geçiş engellenmiştir, çocuk uygulamanın dışına çıkamaz.
-- Veli paneli → **Videolar** → konuyu açın → YouTube bağlantısını yapıştırın → istenirse **Bölüm ekle** (ör. “0:00 Giriş”, “2:30 Çarpan çiftleri”) → **Kaydet**.
+- Hazır videolar her konuda zaten var. Kendi videonuzu eklemek için: Veli paneli → **Videolar** → konuyu açın → YouTube bağlantısını yapıştırın → istenirse **Bölüm ekle** (ör. “0:00 Giriş”, “2:30 Çarpan çiftleri”) → **Kaydet**. Sizin videonuz listenin başında görünür.
+- Hazır videolar YouTube aramasıyla bulundu; bir kanal videosunu kaldırırsa o video açılmaz, uygulama sıradaki videoyu önerir. Beğenmediğiniz videoyu **Gizle** ile listeden çıkarabilirsiniz.
 - Her bölüm bitince video durur ve kısa bir soru gelir. Soruyu otomatik bırakabilir ya da kendiniz yazabilirsiniz.
 - **Sınırlamalar:** Video izlemek için internet gerekir. Sahibi “yerleştirmeye izin ver” seçeneğini kapattıysa video uygulama içinde oynamaz; uygulama bunu söyler, siz başka bir video seçersiniz. Ebeveyn denetim uygulamaları (ör. Family Link) bazı cihazlarda uygulama içi videoları da kısıtlayabilir; tablette bir kez deneyin.
 
@@ -91,4 +107,5 @@ Plandaki yaklaşım (tek ders, birkaç konu, önce ölç sonra genişlet) doğru
 - Uygulama bir Android kabuğu (`android/`) ile `web/` klasöründeki sayfalardan oluşur. Sayfalar `https://appassets.androidplatform.net` adresinden sunulur; YouTube gömme ve kalıcı veri bu sayede çalışır.
 - Derleme: `python3 araclar/apk_derle.py <sürüm_kodu> <sürüm_adı>`. Android SDK gerekmez: `dx` (Maven Central), JDK `jarsigner` ve dosya içindeki ikili manifest/kaynak kodlayıcıları kullanılır.
 - **`anahtar/ogrenme.jks` imza anahtarını silmeyin.** Güncellemeler aynı anahtarla imzalanmazsa tablet yeni sürümü kurmaz; eski sürümü silmek gerekir ve veriler kaybolur.
-- Testler: `node araclar/icerik_test.js` (28 bin soru üretip denetler), `node araclar/arayuz_test.js <klasör>` (uçtan uca), `node araclar/video_test.js` (video takibi), `node araclar/performans_test.js` (6 aylık veriyle, 6 kat yavaş işlemcide süre ölçümü).
+- İçerik dosyaları: `web/js/ortak.js` (yardımcılar, soru görselleri), `icerik.js` + `mat_ek.js` (Matematik), `fen.js` + `fen1.js`–`fen3.js` (Fen), `videolar.js` (hazır videolar), `birlestir.js` (dersleri birleştirir, yazılı kapsamları).
+- Testler: `node araclar/ders_dogrula.js web/js/<ders dosyaları>` (her üreteci 40 kez çalıştırıp denetler), `node araclar/gorsel_onizleme.js <klasör> [ders]` (görselli soruların önizlemesi), `node araclar/icerik_test.js` (28 bin soru üretip denetler), `node araclar/arayuz_test.js <klasör>` (uçtan uca), `node araclar/video_test.js` (video takibi), `node araclar/performans_test.js` (6 aylık veriyle, 6 kat yavaş işlemcide süre ölçümü).

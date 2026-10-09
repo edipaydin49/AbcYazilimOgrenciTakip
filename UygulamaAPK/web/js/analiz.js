@@ -3,7 +3,7 @@
  * Olay türleri (depo.js ile kaydedilir):
  *  soru    : { konu, kaz, duzey, zorluk, mod, testId, ilkDogru, sonDogru, deneme, ilkSure, toplamSure, ipucu,
  *              cozumGoruldu, terk, ilkHata, kendiHata, kontrol, soruNesnesi }
- *  test    : { testId, tur, konu, tema, n, dogru, sure, oz, kendiIstegi }
+ *  test    : { testId, tur, ders, konu, tema, yazili, n, dogru, sure, oz, kendiIstegi }
  *  video   : { konu, vid, toplam, izlenen, oynatilan, geriSarma, ileriSarma, duraklatma, bolumAcma:{i:sayı}, bitti }
  *  durak   : { konu, kaynak: "video"|"metin", bolum, dogru, sure }
  *  anlatim : { konu, okunan, toplam, bitti }
@@ -18,6 +18,14 @@
   const ort = a => (a.length ? a.reduce((x, y) => x + y, 0) / a.length : null);
   const gunNo = t => Math.floor((t - new Date(t).getTimezoneOffset() * 60000) / GUN);
   const bugunNo = () => gunNo(Date.now());
+
+  /* Bir kaydın hangi derse ait olduğu (eski kayıtlarda ders alanı yoktur; konudan ya da temadan çıkarılır). */
+  function dersi(o) {
+    if (o.ders) return o.ders;
+    if (o.konu && ICERIK.KONU[o.konu]) return ICERIK.KONU[o.konu].ders;
+    if (o.tema && ICERIK.TEMA[o.tema]) return ICERIK.TEMA[o.tema].ders;
+    return "mat";  // 1.x sürümünde yalnızca Matematik vardı
+  }
 
   function guven(n) {
     if (n >= 15) return { ad: "Yüksek", n };
@@ -60,9 +68,9 @@
   }
 
   /* Ana hesap: isteğe bağlı zaman aralığı (gün) ve konu süzgeci */
-  function hesapla({ gun = null, konu = null } = {}) {
+  function hesapla({ gun = null, konu = null, ders = null } = {}) {
     const sinir = gun ? Date.now() - gun * GUN : 0;
-    const sec = tip => DEPO.liste(tip).filter(o => o.t >= sinir && (!konu || o.konu === konu));
+    const sec = tip => DEPO.liste(tip).filter(o => o.t >= sinir && (!konu || o.konu === konu) && (!ders || dersi(o) === ders));
     const sorular = sec("soru");
     const testler = sec("test");
     const videolar = sec("video");
@@ -88,22 +96,26 @@
     const kazGrup = {};
     sorular.forEach(s => (kazGrup[s.kaz] = kazGrup[s.kaz] || []).push(s));
     for (const [id, k] of Object.entries(ICERIK.KAZANIM)) {
-      if (konu && k.konu !== konu) continue;
+      if ((konu && k.konu !== konu) || (ders && k.ders !== ders)) continue;
       const ks = kazGrup[id] || [];
       const o = soruOlcumleri(ks);
       const son = ks.filter(s => !s.terk).slice(-8);
       const ustalik = son.length ? son.reduce((a, s, i) => a + (s.ilkDogru ? 1 : 0) * (i + 1), 0) / son.reduce((a, _, i) => a + i + 1, 0) : null;
-      kazanim[id] = { ...o, ustalik, guven: guven(o.cevaplanan), ad: k.ad, konu: k.konu, tema: k.tema };
+      kazanim[id] = { ...o, ustalik, guven: guven(o.cevaplanan), ad: k.ad, konu: k.konu, tema: k.tema, ders: k.ders };
     }
 
     // Konu düzeyi: anlatım, video, durak, konu sonu test, tekrar testleri
     const konuOzet = {};
     for (const k of ICERIK.KONULAR) {
-      if (konu && k.id !== konu) continue;
+      if ((konu && k.id !== konu) || (ders && k.ders !== ders)) continue;
       const ks = sorular.filter(s => s.konu === k.id);
       const vid = videolar.filter(v => v.konu === k.id);
-      const toplamSn = Math.max(0, ...vid.map(v => v.toplam || 0));
-      const izlenenSn = Math.max(0, ...vid.map(v => v.izlenen || 0));     // her oturumda biriken benzersiz saniye
+      // Konuda birden çok video olabilir: her videonun en uzun süresi ve biriken benzersiz izlenen saniyesi toplanır.
+      const vidGrup = {};
+      vid.forEach(v => { const g = vidGrup[v.vid] = vidGrup[v.vid] || { vid: v.vid, toplam: 0, izlenen: 0, oturum: 0, bitti: false }; g.toplam = Math.max(g.toplam, v.toplam || 0); g.izlenen = Math.max(g.izlenen, v.izlenen || 0); g.oturum++; g.bitti = g.bitti || !!v.bitti; });
+      const vidListe = Object.values(vidGrup).map(g => ({ ...g, tamamlama: oran(Math.min(g.izlenen, g.toplam || g.izlenen), g.toplam) }));
+      const toplamSn = vidListe.reduce((a, g) => a + g.toplam, 0);
+      const izlenenSn = vidListe.reduce((a, g) => a + Math.min(g.izlenen, g.toplam || g.izlenen), 0);
       const oynatilanSn = vid.reduce((a, v) => a + (v.oynatilan || 0), 0);
       const bolumAcma = {};
       vid.forEach(v => Object.entries(v.bolumAcma || {}).forEach(([i, n]) => { bolumAcma[i] = (bolumAcma[i] || 0) + n; }));
@@ -113,12 +125,12 @@
       const tekrar = {};
       TEKRAR_GUNLERI.forEach(g => { const t = testler.filter(x => x.konu === k.id && x.tur === "tekrar" + g); tekrar[g] = t.length ? oran(t[t.length - 1].dogru, t[t.length - 1].n) : null; });
       konuOzet[k.id] = {
-        ad: k.ad, tema: k.tema, ...soruOlcumleri(ks),
+        ad: k.ad, tema: k.tema, ders: k.ders, ...soruOlcumleri(ks), testler: testler.filter(t => t.konu === k.id),
         video: vid.length ? {
           tamamlama: oran(izlenenSn, toplamSn), aktif: oran(oynatilanSn, toplamSn), geriSarma: vid.reduce((a, v) => a + (v.geriSarma || 0), 0),
           ileriSarma: vid.reduce((a, v) => a + (v.ileriSarma || 0), 0), duraklatma: vid.reduce((a, v) => a + (v.duraklatma || 0), 0),
           oturum: vid.length, bolumAcma, tekrarlananBolumler: Object.entries(bolumAcma).filter(([, n]) => n > 1).map(([i]) => +i),
-          toplamSn, izlenenSn, oynatilanSn,
+          toplamSn, izlenenSn, oynatilanSn, videolar: vidListe,
         } : null,
         anlatim: anl.length ? { okunan: Math.max(...anl.map(a => a.okunan)), toplam: anl[0].toplam, bitti: anl.some(a => a.bitti) } : null,
         durak: { basari: oran(dur.filter(d => d.dogru).length, dur.length), n: dur.length },
@@ -154,18 +166,18 @@
 
     // Konu sonu testleri ve denemeler
     const testTur = {};
-    testler.forEach(t => { const k = t.tur.startsWith("tekrar") ? "tekrar" : t.tur; (testTur[k] = testTur[k] || { dogru: 0, n: 0, sayi: 0 }); testTur[k].dogru += t.dogru; testTur[k].n += t.n; testTur[k].sayi++; });
+    testler.forEach(t => { const k = t.tur.startsWith("tekrar") ? "tekrar" : t.tur.startsWith("yazili") ? "yazili" : t.tur; (testTur[k] = testTur[k] || { dogru: 0, n: 0, sayi: 0 }); testTur[k].dogru += t.dogru; testTur[k].n += t.n; testTur[k].sayi++; });
 
     return { genel, zorluk, duzey, hataSay, kendiSay, tekrarEdenHata, hataTekrarOrani, kazanim, konuOzet, calisma, tekrarBasari, testTur, sorular, testler };
   }
 
   /* Günlük başarı ve süre serisi (grafikler için) */
-  function gunlukSeri(gunSayisi = 14) {
+  function gunlukSeri(gunSayisi = 14, ders = null) {
     const bas = bugunNo() - gunSayisi + 1;
     const seri = [];
     const sinir = Date.now() - (gunSayisi + 1) * GUN;
     const gunler = {};
-    for (const x of DEPO.liste("soru")) if (x.t >= sinir && !x.terk) { const g = gunNo(x.t); (gunler[g] = gunler[g] || { d: 0, n: 0, sn: 0 }); gunler[g].n++; if (x.ilkDogru) gunler[g].d++; }
+    for (const x of DEPO.liste("soru")) if (x.t >= sinir && !x.terk && (!ders || dersi(x) === ders)) { const g = gunNo(x.t); (gunler[g] = gunler[g] || { d: 0, n: 0, sn: 0 }); gunler[g].n++; if (x.ilkDogru) gunler[g].d++; }
     for (const o of DEPO.liste("oturum")) if (o.t >= sinir) { const g = gunNo(o.t); (gunler[g] = gunler[g] || { d: 0, n: 0, sn: 0 }); gunler[g].sn += o.aktifSn; }
     for (let g = bas; g <= bugunNo(); g++) {
       const x = gunler[g] || { d: 0, n: 0, sn: 0 };
@@ -175,10 +187,11 @@
   }
 
   /* Aralıklı tekrar planı: konu sonu testinden 1, 3, 7 ve 30 gün sonra */
-  function tekrarPlani() {
+  function tekrarPlani(ders = null) {
     const testler = DEPO.liste("test");
     const plan = [];
     for (const k of ICERIK.KONULAR) {
+      if (ders && k.ders !== ders) continue;
       const ilk = testler.find(t => t.konu === k.id && t.tur === "konuSonu");
       if (!ilk) continue;
       for (const g of TEKRAR_GUNLERI) {
@@ -199,20 +212,22 @@
   }
 
   /* Sonraki çalışma önerisi */
-  function oneri(hazir) {
-    const plan = tekrarPlani().filter(p => p.vadesi);
+  function oneri(hazir, ders = null) {
+    const plan = tekrarPlani(ders).filter(p => p.vadesi);
     if (plan.length) return { tur: "tekrar", konu: plan[0].konu, gun: plan[0].gun, metin: `${ICERIK.KONU[plan[0].konu].ad} için ${plan[0].gun}. gün tekrar testi zamanı geldi.` };
-    const h = hazir || hesapla({});
+    const h = hazir || hesapla({ ders });
     const zayif = Object.entries(h.kazanim).filter(([, k]) => k.cevaplanan >= 4 && k.ustalik !== null && k.ustalik < 0.6).sort((a, b) => a[1].ustalik - b[1].ustalik);
     if (zayif.length) return { tur: "alistirma", konu: zayif[0][1].konu, metin: `“${zayif[0][1].ad}” konusunda biraz daha alıştırma iyi gelir.` };
     for (const k of ICERIK.KONULAR) {
+      if (ders && k.ders !== ders) continue;
       const ks = h.konuOzet[k.id];
+      if (!ks) continue;
       if (!ks.konuSonu) {
         if (!ks.anlatim && !ks.video) return { tur: "anlatim", konu: k.id, metin: `Sıradaki konu: ${k.ad}. Önce konu anlatımını izle.` };
         return { tur: ks.n < 8 ? "alistirma" : "konuSonu", konu: k.id, metin: ks.n < 8 ? `${k.ad} konusunda alıştırma yap.` : `${k.ad} konu sonu testine hazırsın.` };
       }
     }
-    return { tur: "deneme", metin: "Bütün konuları tamamladın. Genel deneme ile kendini sına!" };
+    return { tur: "deneme", ders, metin: "Bütün konuları tamamladın. Genel deneme ile kendini sına!" };
   }
 
   /* Güçlü ve tekrar edilmesi gereken kazanımlar */
@@ -224,5 +239,5 @@
     };
   }
 
-  window.ANALIZ = { hesapla, gunlukSeri, tekrarPlani, onerilenZorluk, oneri, gucluZayif, guven, gunNo, bugunNo, TEKRAR_GUNLERI, GUN };
+  window.ANALIZ = { hesapla, gunlukSeri, tekrarPlani, onerilenZorluk, oneri, gucluZayif, guven, gunNo, bugunNo, dersi, TEKRAR_GUNLERI, GUN };
 })();

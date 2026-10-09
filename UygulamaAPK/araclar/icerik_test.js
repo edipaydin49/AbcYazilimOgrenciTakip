@@ -1,6 +1,6 @@
 // İçerik üreteçlerini binlerce kez çalıştırıp tutarlılığı denetler: node araclar/icerik_test.js
-global.window = {};
-require("../web/js/icerik.js");
+global.window = global;
+for (const f of ["ortak", "icerik", "mat_ek", "fen", "fen1", "fen2", "fen3", "videolar", "birlestir"]) { try { require("../web/js/" + f + ".js"); } catch (e) { if (e.code !== "MODULE_NOT_FOUND") throw e; console.log("yok:", f); } }
 const { KONULAR, KAZANIM, soruUret } = window.ICERIK;
 let hata = 0, toplam = 0; const sayac = {};
 for (const k of KONULAR) {
