@@ -613,12 +613,6 @@ window.HAZIR_VIDEOLAR = {
  ],
  "f_hal": [
   {
-   "vid": "Jejn51NgjY8",
-   "baslik": "Maddenin Hal Değişimi 📗 5FEN13 #2026",
-   "kaynak": "Tonguç",
-   "not": "5. sınıf düzeyi (temel tekrar)"
-  },
-  {
    "vid": "uClVgF80K_g",
    "baslik": "Erime ve Kaynama Noktasının Karşılaştırılması",
    "kaynak": ""
@@ -627,6 +621,12 @@ window.HAZIR_VIDEOLAR = {
    "vid": "bQHpHPHJf2A",
    "baslik": "Kaynama Noktası (Bir Soru Bir Çözüm Bir Özet )",
    "kaynak": ""
+  },
+  {
+   "vid": "Jejn51NgjY8",
+   "baslik": "Maddenin Hal Değişimi 📗 5FEN13 #2026",
+   "kaynak": "Tonguç",
+   "not": "5. sınıf düzeyi (temel tekrar)"
   },
   {
    "vid": "xqb1LFIs84c",
@@ -764,6 +764,443 @@ window.HAZIR_VIDEOLAR = {
    "baslik": "Sürdürülebilir Yaşam ve Geri Dönüşüm 5. Sınıf Fen Bilimleri #2025",
    "kaynak": "",
    "not": "5. sınıf düzeyi (temel tekrar)"
+  }
+ ],
+ "tr_seyyah": [
+  {
+   "vid": "BCUgFS8Pny4",
+   "baslik": "Bir Kelime Seyyahı / Dilimizin Zenginliği / 6. Sınıf MEB Yayınları",
+   "kaynak": ""
+  },
+  {
+   "vid": "1VMPwM1Ys_8",
+   "baslik": "BİR KELİME SEYYAHI-KAŞGARLI MAHMUT",
+   "kaynak": ""
+  },
+  {
+   "vid": "wxsyetGqCUs",
+   "baslik": "6. Sınıf Türkçe - Gerçek Anlam, Mecaz Anlam, Terim Anlam",
+   "kaynak": ""
+  },
+  {
+   "vid": "1nlfX_vfMZY",
+   "baslik": "Sözcükte Anlam 6. Sınıf Türkçe #2024",
+   "kaynak": ""
+  },
+  {
+   "vid": "dy_9J0WCzts",
+   "baslik": "BİR KELİME SEYYAHI Metni Cevapları 6.Sınıf Türkçe Ders Kitabı sayfa 13-23",
+   "kaynak": "",
+   "not": "ders kitabı cevapları"
+  }
+ ],
+ "tr_beylik": [
+  {
+   "vid": "X0HmdGzNu5Q",
+   "baslik": "Kök ve Ekler (Yapım - Çekim Ekleri) - Konu Özeti 6TURK1 #2026",
+   "kaynak": "Tonguç"
+  },
+  {
+   "vid": "zQBDmhoU8L0",
+   "baslik": "6. Sınıf Türkçe - Ekler (Yapım Eki, Çekim Eki)",
+   "kaynak": ""
+  },
+  {
+   "vid": "_zzfykJKveI",
+   "baslik": "6.SINIF - TÜRKÇE - YAPIM VE ÇEKİM EKLERİ KONU ANLATIM",
+   "kaynak": ""
+  },
+  {
+   "vid": "kwuymV00fMM",
+   "baslik": "Türkçe Dersi - Çekim Eki, Yapım Eki, Basit, Türemiş ve Birleşik Kelimeler Konu Anlatımı",
+   "kaynak": ""
+  }
+ ],
+ "tr_turkce": [
+  {
+   "vid": "026iq7oEPOE",
+   "baslik": "6. SINIF TÜRKÇE DERS KİTABI MEB YAYINLARI 1. TEMA TÜRKÜZ, TÜRKÇE KONUŞURUZ",
+   "kaynak": ""
+  },
+  {
+   "vid": "E8WA520XGgs",
+   "baslik": "Yabancı Kelimelere Türkçe Karşılıklar",
+   "kaynak": ""
+  },
+  {
+   "vid": "LHGlufU_Uxs",
+   "baslik": "YAZIM KURALLARI : 6.Sınıf Türkçe Konu Anlatımı",
+   "kaynak": ""
+  },
+  {
+   "vid": "c5OO2mZBMEg",
+   "baslik": "Yazım Kuralları 6. Sınıf Türkçe #2024",
+   "kaynak": ""
+  },
+  {
+   "vid": "A_6IetzwsoE",
+   "baslik": "TÜRKÜZ TÜRKÇE KONUŞURUZ Metni Cevapları 6.Sınıf Türkçe Ders Kitabı sayfa 42-49",
+   "kaynak": "",
+   "not": "ders kitabı cevapları"
+  }
+ ],
+ "tr_kasik": [
+  {
+   "vid": "Mse9D9_eKRY",
+   "baslik": "Deyimler ve Atasözleri 6TURK5 #2026",
+   "kaynak": "Tonguç"
+  },
+  {
+   "vid": "Q_dhY3jmeYk",
+   "baslik": "Türk Dil Kurumu Sunar Kaşık 6 Sınıf Türkçe Dersi, Dinleme Metni MEB 1",
+   "kaynak": ""
+  },
+  {
+   "vid": "TMNfo8dlyhM",
+   "baslik": "6.Sınıf 1. Tema 50.Sayfa Türk Dil Kurumu Sunar (Kaşık) Dinleme Metni (MEB Yayınları)",
+   "kaynak": ""
+  },
+  {
+   "vid": "U-VmoHV5RBw",
+   "baslik": "Deyimler ve Atasözleri 6. Sınıf Türkçe #2025",
+   "kaynak": "Tonguç"
+  },
+  {
+   "vid": "eeT_RPyIaDA",
+   "baslik": "6. Sınıf Türkçe - Deyimler ve Atasözleri",
+   "kaynak": "Hocalara Geldik"
+  }
+ ],
+ "tr_azerbaycan": [
+  {
+   "vid": "lwt-XfVBB2U",
+   "baslik": "Azerbaycan Türkçesi ve Türkiye Türkçesi Arasındaki Farklar",
+   "kaynak": ""
+  },
+  {
+   "vid": "bcZHQvQaI9w",
+   "baslik": "Azerbaycan Türkçesi vs. Türkçe: Anlamları Farklı Olan Ortak Kelimeler",
+   "kaynak": ""
+  },
+  {
+   "vid": "sjAnSoHmob4",
+   "baslik": "AZERBAYCAN VE TÜRKİYE TÜRKÇESİNDEKİ SÖZCÜKLERİ KARŞILAŞTIRDIM",
+   "kaynak": ""
+  },
+  {
+   "vid": "Z94pNCe07xs",
+   "baslik": "Türkiye Türkçesi ve Azerbaycan Türkçesi arasındaki farklılıklar. 1. Ders",
+   "kaynak": ""
+  },
+  {
+   "vid": "hryBcSiTiE0",
+   "baslik": "6. Sınıf Türkçe Ders Kitabı Cevapları 1. Kitap Sayfa 61 Meb Yayınları 2025-2026",
+   "kaynak": "",
+   "not": "ders kitabı cevapları"
+  }
+ ],
+ "tr_uret1": [
+  {
+   "vid": "wasfATTxS4c",
+   "baslik": "6. Sınıf Türkçe 1. Dönem Full Tekrar #2025",
+   "kaynak": ""
+  },
+  {
+   "vid": "HsSvd_C3UEM",
+   "baslik": "6.Sınıf Türkçe 1.Dönem 1.Yazılıya Hazırlık #2025",
+   "kaynak": ""
+  },
+  {
+   "vid": "TPACGo1O23c",
+   "baslik": "YARINKİ ÜLKE GENELİ TÜRKÇE SINAVINA HAZIRLIK 6. SINIF #2025",
+   "kaynak": ""
+  },
+  {
+   "vid": "civWaEJsImE",
+   "baslik": "6. Sınıf Türkçe (MEB Yayınları) 1. Dönem 1. Yazılı Soru Örnekleri Çözümleri",
+   "kaynak": ""
+  }
+ ],
+ "tr_at": [
+  {
+   "vid": "c65NZbdrWII",
+   "baslik": "Cepheye Koşan At / 6. Sınıf MEB Yayınları",
+   "kaynak": ""
+  },
+  {
+   "vid": "efxcPc9G-Mk",
+   "baslik": "6. SINIF TÜRKÇE DERS KİTABI MEB YAYINLARI 2. TEMA CEPHEYE KOŞAN AT",
+   "kaynak": ""
+  },
+  {
+   "vid": "BtWihyL6EbQ",
+   "baslik": "CEPHEYE KOŞAN AT Metni Cevapları 6.Sınıf Türkçe Ders Kitabı sayfa 68-77",
+   "kaynak": "",
+   "not": "ders kitabı cevapları"
+  },
+  {
+   "vid": "vJz1r5aJ_DA",
+   "baslik": "Cepheye Koşan At Metni Etkinlik Cevapları 6. Sınıf Türkçe (1. Kitap)",
+   "kaynak": "",
+   "not": "ders kitabı cevapları"
+  }
+ ],
+ "tr_vatan": [
+  {
+   "vid": "NQIpLFoFbpc",
+   "baslik": "6. SINIF TÜRKÇE DERS KİTABI MEB YAYINLARI 2. TEMA VATAN",
+   "kaynak": ""
+  },
+  {
+   "vid": "XT43iaZQdGY",
+   "baslik": "ŞİİRDE TEMA VE ANA DUYGU KONU ANLATIMI VE ÇÖZÜMLÜ ÖRNEKLER",
+   "kaynak": ""
+  },
+  {
+   "vid": "GF1mV5iTTE0",
+   "baslik": "VATAN Metni Cevapları 6.Sınıf Türkçe Ders Kitabı sayfa 78-89 MEB",
+   "kaynak": "",
+   "not": "ders kitabı cevapları"
+  },
+  {
+   "vid": "A4YSF8qKZUw",
+   "baslik": "6.Sınıf Türkçe Ders Kitabı VATAN ŞİİRİ Sayfa 78-88 Cevaplar",
+   "kaynak": "",
+   "not": "ders kitabı cevapları"
+  }
+ ],
+ "tr_istiklal": [
+  {
+   "vid": "3FeYmoRYCuo",
+   "baslik": "Rafadan Tayfa 123. Bölüm (İstiklal Marşı)",
+   "kaynak": "TRT Çocuk"
+  },
+  {
+   "vid": "EdsVvEFlXbM",
+   "baslik": "Rafadan Tayfa İstiklal Marşı Metni 6.Sınıf Türkçe Ders Kitabı sayfa 90-99",
+   "kaynak": ""
+  },
+  {
+   "vid": "M00xl811g0s",
+   "baslik": "İstiklal Marşı'nın Kabulü",
+   "kaynak": ""
+  },
+  {
+   "vid": "2tO-5ysJ7MM",
+   "baslik": "12 Mart İstiklal Marşının Kabulü ve Mehmet Akif Ersoy'un Hayatı",
+   "kaynak": ""
+  },
+  {
+   "vid": "r9jeeXPZrJs",
+   "baslik": "RAFADAN TAYFA İSTİKLAL MARŞI Metni Cevapları 6.Sınıf Türkçe Ders Kitabı sayfa 90-99",
+   "kaynak": "",
+   "not": "ders kitabı cevapları"
+  }
+ ],
+ "tr_zafer": [
+  {
+   "vid": "hWnN5uypk7E",
+   "baslik": "Rafadan Tayfa 124. Bölüm (Malazgirt Zaferi)",
+   "kaynak": "TRT Çocuk"
+  },
+  {
+   "vid": "Tl1svQEm5Zg",
+   "baslik": "Malazgirt Zaferi - Çizgilerle Tarihten Sayfalar 21. Bölüm",
+   "kaynak": "Diyanet TV"
+  },
+  {
+   "vid": "uIJH3KN3OjM",
+   "baslik": "30 Ağustos Zafer Bayramı - Malazgirt'ten Dumlupınar'a",
+   "kaynak": ""
+  },
+  {
+   "vid": "QcV5Ra3fHZw",
+   "baslik": "Malazgirt Zaferi - 26 Ağustos 1071",
+   "kaynak": ""
+  },
+  {
+   "vid": "fbEI6WF1n_s",
+   "baslik": "Türk milletinin büyük zaferi: 30 Ağustos",
+   "kaynak": ""
+  }
+ ],
+ "tr_samsun": [
+  {
+   "vid": "xh0_fGNJCZI",
+   "baslik": "OMU 19 Mayıs 1919 100. Yıl Animasyon Filmi",
+   "kaynak": "Ondokuz Mayıs Üniversitesi"
+  },
+  {
+   "vid": "8PTXzlqamEw",
+   "baslik": "Mustafa Kemal Paşa 19 Mayıs 1919'da Samsun'a Çıkar ve... - TRT Avaz",
+   "kaynak": "TRT Avaz"
+  },
+  {
+   "vid": "bNMBAYUfQVA",
+   "baslik": "Mustafa Kemal Atatürk'ün 19 Mayıs 1919'da Samsuna Çıkışı",
+   "kaynak": ""
+  },
+  {
+   "vid": "lxTrWiMlO-k",
+   "baslik": "MUSTAFA KEMAL PAŞA'NIN SAMSUN'A ÇIKIŞI Metni Cevapları-5.Sınıf Türkçe Ders Kitabı Sayfa 57-60",
+   "kaynak": "",
+   "not": "ders kitabı cevapları"
+  },
+  {
+   "vid": "H6Uw3p1lEtI",
+   "baslik": "Mustafa Kemal Paşa'nın Samsun'a Çıkışı metni Cevapları 5. Sınıf Türkçe 56-60 arası",
+   "kaynak": "",
+   "not": "ders kitabı cevapları"
+  }
+ ],
+ "tr_uret2": [
+  {
+   "vid": "iSgzvwY78kE",
+   "baslik": "6. SINIF 2. ÜNİTE BAĞIMSIZLIK YOLU",
+   "kaynak": ""
+  },
+  {
+   "vid": "cv8SQ8fw1Xw",
+   "baslik": "6.Sınıf Türkçe 1.Dönem 1.Yazılı (Ortak Yazılı)",
+   "kaynak": ""
+  },
+  {
+   "vid": "tAfqJhV0b_w",
+   "baslik": "ORTAK SINAV 6. Sınıf TÜRKÇE 1.Dönem 1.Yazılı Çıkabilir",
+   "kaynak": ""
+  },
+  {
+   "vid": "VIpX1VebVDo",
+   "baslik": "6. Sınıf Türkçe Ders Kitabı Cevapları 1. Kitap Sayfa 75 Meb Yayınları 2025-2026",
+   "kaynak": "",
+   "not": "ders kitabı cevapları"
+  }
+ ],
+ "tr_ova": [
+  {
+   "vid": "zmnimdAacM0",
+   "baslik": "HİKAYE UNSURLARI (Olay, yer, zaman ve kahramanlar)",
+   "kaynak": ""
+  },
+  {
+   "vid": "DSPm34lnLVY",
+   "baslik": "Parçada Anlam -4 - Hikâye Unsurları",
+   "kaynak": ""
+  },
+  {
+   "vid": "Upu1QonQm2Y",
+   "baslik": "Metin Türleri ve Şiir Bilgisi tonguçCUP 4.Sezon - 6TURK16 #2024",
+   "kaynak": "Tonguç"
+  }
+ ],
+ "tr_ulkeler": [
+  {
+   "vid": "U8AVuH-7JTw",
+   "baslik": "Metin Türleri 6TURK7 #2026",
+   "kaynak": "Tonguç"
+  },
+  {
+   "vid": "RcGIQ9o6n0s",
+   "baslik": "METİN TÜRLERİ : 6.Sınıf Türkçe Konu Anlatımı",
+   "kaynak": ""
+  },
+  {
+   "vid": "Hyd_7-gPibE",
+   "baslik": "6.Sınıf Metin Türleri Konu Anlatımı",
+   "kaynak": ""
+  },
+  {
+   "vid": "5sITLPMhbTg",
+   "baslik": "Bilgilendirici Metin Yazma",
+   "kaynak": ""
+  }
+ ],
+ "tr_okullar": [
+  {
+   "vid": "gMwTjBfB6DU",
+   "baslik": "Dünyanın En Tehlikeli Okul Yolları 1/2",
+   "kaynak": ""
+  },
+  {
+   "vid": "HExwrSyijtU",
+   "baslik": "Dünyanın En Tehlikeli Okul Yolları",
+   "kaynak": ""
+  },
+  {
+   "vid": "MBEMfxH6rII",
+   "baslik": "Zorlu Okul Yolları",
+   "kaynak": ""
+  },
+  {
+   "vid": "qmxhERP1Tc0",
+   "baslik": "Nehir üstünde okul yolculuğu",
+   "kaynak": ""
+  }
+ ],
+ "tr_eskimo": [
+  {
+   "vid": "g2Xuc9H7cD4",
+   "baslik": "Ay Avcısı Eskimolar - Çocuklar için Masallar",
+   "kaynak": ""
+  },
+  {
+   "vid": "0-r-_dJeFPY",
+   "baslik": "Ay Avcısı Eskimolar (İzlanda Masalı) - Beyza Öğretmenim",
+   "kaynak": "Beyza Öğretmenim"
+  },
+  {
+   "vid": "1C1eRgiciuQ",
+   "baslik": "Ay Avcısı Eskimolar",
+   "kaynak": ""
+  },
+  {
+   "vid": "PZTCQzUSLZk",
+   "baslik": "Eskimolar",
+   "kaynak": ""
+  }
+ ],
+ "tr_turkdunyasi": [
+  {
+   "vid": "pmVVHSBeUww",
+   "baslik": "TÜRK DEVLETLERİ TEŞKİLATI - İNFOGRAFİK TANITIM FİLMİ",
+   "kaynak": ""
+  },
+  {
+   "vid": "yZwCbAxKep0",
+   "baslik": "GÜNÜMÜZDE VARLIĞINI SÜRDÜREN TÜRK DEVLETLERİ",
+   "kaynak": ""
+  },
+  {
+   "vid": "v7_Nv2GbEM4",
+   "baslik": "Türk Dünyası Keşif Rotası 1. Bölüm",
+   "kaynak": ""
+  },
+  {
+   "vid": "YpcjO46YYIc",
+   "baslik": "TARİH YAZAN ÇOCUKLAR / DEDE KORKUT",
+   "kaynak": ""
+  }
+ ],
+ "tr_uret3": [
+  {
+   "vid": "1s9I1WzxEWQ",
+   "baslik": "6.Sınıf Türkçe 2.Dönem 1.Yazılıya Hazırlık #2025",
+   "kaynak": ""
+  },
+  {
+   "vid": "WefBB5DJLyM",
+   "baslik": "Türkçe 6. Sınıf 2. Dönem 1. Yazılı Ortak Sınav",
+   "kaynak": ""
+  },
+  {
+   "vid": "EucJ6qctmRs",
+   "baslik": "6.Sınıf Türkçe Genel Tekrar 2025 Bursluluk Kampı",
+   "kaynak": ""
+  },
+  {
+   "vid": "u5xME0Sr4SQ",
+   "baslik": "6.Sınıf Türkçe 2.Dönem 2.Yazılıya Hazırlık #2025",
+   "kaynak": ""
   }
  ]
 };
