@@ -211,7 +211,7 @@ def main():
     calistir("zipalign", "-p", "-f", "4", imzasiz, hizali)
     calistir("apksigner", "sign", "--ks", ANAHTAR, "--ks-pass", "pass:ogrenme6", "--ks-key-alias", "ogrenme",
              "--key-pass", "pass:ogrenme6", "--v1-signing-enabled", "true", "--v2-signing-enabled", "true",
-             "--v3-signing-enabled", "true", "--out", CIKTI, hizali)
+             "--v3-signing-enabled", "true", "--v4-signing-enabled", "false", "--out", CIKTI, hizali)
     calistir("apksigner", "verify", "--min-sdk-version", "24", CIKTI)
     print(f"APK hazır: {CIKTI} ({CIKTI.stat().st_size / 1e6:.2f} MB)")
 
