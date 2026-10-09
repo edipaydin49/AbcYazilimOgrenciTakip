@@ -1,6 +1,6 @@
 # Öğrenme Yolculuğu (6. Sınıf Matematik) — APK
 
-Tablete kurulacak dosya: **`OgrenmeYolculugu.apk`** (70 KB, Android 7 ve üstü).
+Tablete kurulacak dosya: **`OgrenmeYolculugu.apk`** (70 KB, Android 7 ve üstü; Samsung Galaxy Tab A9+ / One UI 8.5 / Android 16 ile uyumlu).
 
 ## 1. Tablete kurulum (bir kez)
 
@@ -11,6 +11,15 @@ Tablete kurulacak dosya: **`OgrenmeYolculugu.apk`** (70 KB, Android 7 ve üstü)
 5. **Veli paneli şifresi başlangıçta `1234`.** Veli paneli → Ayarlar'dan değiştirin.
 
 > Tablette **Android System WebView** güncel olmalı (Play Store → “Android System WebView” → Güncelle). Eski bir WebView ile uygulama boş açılabilir.
+
+### Samsung Galaxy Tab A9+ (One UI 8.5, Android 16) için ek adımlar
+
+- **Otomatik Engelleyici:** Samsung tabletlerde bu özellik açıksa APK hiç kurulmaz ("Otomatik Engelleyici tarafından engellendi" yazar). **Ayarlar → Güvenlik ve gizlilik → Otomatik Engelleyici → Kapalı** yapın, APK'yı kurun, sonra isterseniz yeniden açın. Uygulama kurulu kalır. (Güncelleme kurarken yeniden kapatmanız gerekir.)
+- **Bilinmeyen uygulamalara izin:** APK'yı hangi uygulamadan açtıysanız (Dosyalarım, WhatsApp, Chrome) ona izin verilir: **Ayarlar → Uygulamalar → (o uygulama) → Bilinmeyen uygulamaları yükle → İzin ver**.
+- **Play Protect** "Taranmamış uygulama" ya da "eski Android sürümü için hazırlandı" derse **Diğer ayrıntılar → Yine de yükle** deyin. Taramaya gönderme sorusuna "Gönderme" diyebilirsiniz.
+- **Ebeveyn denetimi:** Çocuğun hesabı Google Family Link ile yönetiliyorsa dışarıdan uygulama kurma engellenmiş olabilir. Kurulumu veli hesabıyla yapın ya da Family Link'teki uygulama izinlerini kontrol edin.
+- Android System WebView Android 16'da zaten günceldir; ek bir şey gerekmez.
+- Yatay kullanım önerilir; dönünce uygulama yeniden başlamaz, kaldığı yerden devam eder.
 
 ## 2. Uygulamada neler var?
 

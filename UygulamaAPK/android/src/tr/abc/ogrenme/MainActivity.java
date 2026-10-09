@@ -101,7 +101,7 @@ public class MainActivity extends Activity {
 
         @JavascriptInterface
         public String surum() {
-            return "1.0";
+            return "1.1";
         }
     }
 
