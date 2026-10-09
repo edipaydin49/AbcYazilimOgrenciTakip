@@ -130,6 +130,39 @@ label.alan { display: grid; gap: 4px; font-weight: 600; }
 .video-satir:hover { border-color: var(--line); }
 .video-satir img { width: 120px; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 8px; background: var(--line); }
 @media (max-width: 560px) { .video-satir { grid-template-columns: 90px minmax(0, 1fr); } .video-satir img { width: 90px; } }
+/* Türkçe Diyarı oyunu */
+.oyun-sayac { display: flex; gap: 8px; flex-wrap: wrap; font-weight: 800; }
+.oyun-sayac span { background: var(--sun-soft); border: 1px solid var(--sun); border-radius: 999px; padding: 4px 12px; font-variant-numeric: tabular-nums; }
+.oyun-ada { text-align: left; cursor: pointer; font: inherit; color: inherit; border-width: 2px; }
+.oyun-ada:not(.kilitli):hover { border-color: var(--cobalt); }
+.oyun-ada.kilitli { opacity: .55; cursor: not-allowed; }
+.oyun-ada-simge { font-size: 3.2rem; line-height: 1; }
+.oyun-yildiz { color: var(--sun); font-weight: 800; letter-spacing: 1px; }
+.oyun-rozet { display: inline-grid; place-items: center; text-align: center; font-size: 2.4rem; min-width: 110px; padding: 10px; border-radius: 16px; background: var(--sun-soft); border: 2px solid var(--sun); }
+.oyun-rozet small { font-size: .78rem; font-weight: 700; }
+.oyun-rozet.yok { filter: grayscale(1); opacity: .4; background: var(--paper); border-color: var(--line); }
+.oyun-yol { display: grid; gap: 10px; }
+.oyun-gorev { display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 12px; align-items: center; text-align: left; padding: 12px; border-radius: 16px; border: 2px solid var(--line); background: var(--sheet); cursor: pointer; font: inherit; color: inherit; }
+.oyun-gorev.gecti { border-color: var(--good); }
+.oyun-gorev.kilitli { opacity: .5; cursor: not-allowed; }
+.oyun-dugum { width: 52px; height: 52px; border-radius: 50%; display: grid; place-items: center; font-size: 1.4rem; font-weight: 800; background: var(--cobalt); color: var(--sheet); }
+.oyun-gorev.gecti .oyun-dugum { background: var(--good); }
+.oyun-gorev.kilitli .oyun-dugum { background: var(--line); color: var(--ink); }
+.oyun-eslestir { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.oyun-eslestir > div { display: grid; gap: 8px; align-content: start; }
+.oyun-dizi { margin: 0; padding-left: 26px; display: grid; gap: 6px; }
+.oyun-dizi li { padding: 8px 12px; border-radius: 10px; background: var(--paper); border: 1px dashed var(--line); }
+.oyun-dizi li.dogru { background: var(--good-soft); border: 1px solid var(--good); }
+.oyun-dizi li.yanlis { background: var(--bad-soft); border: 1px solid var(--bad); }
+.oyun-kelime { min-height: 56px; font-size: 2rem; font-weight: 800; letter-spacing: 4px; text-align: center; padding: 6px; border-bottom: 3px solid var(--cobalt); }
+.oyun-harfler { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+.oyun-harf { width: 58px; height: 58px; font-size: 1.6rem; font-weight: 800; border-radius: 14px; border: 2px solid var(--cobalt); background: var(--cobalt-soft); color: var(--ink); cursor: pointer; }
+.oyun-harf:disabled { opacity: .3; }
+.oyun-buyuk-yildiz { font-size: 3rem; color: var(--sun); letter-spacing: 6px; margin: 6px 0; }
+.oyun-ucan { position: fixed; left: 50%; top: 40%; transform: translateX(-50%); font-size: 2.2rem; font-weight: 800; color: var(--sun); text-shadow: 0 2px 6px rgba(0,0,0,.25); z-index: 40; pointer-events: none; }
+@media (prefers-reduced-motion: no-preference) { .oyun-ucan { animation: ucan 1.2s ease-out forwards; } @keyframes ucan { from { opacity: 1; transform: translate(-50%, 0) scale(1); } to { opacity: 0; transform: translate(-50%, -80px) scale(1.4); } } }
+.oyun-giris { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 14px; align-items: center; }
+.oyun-giris .simge { font-size: 3rem; }
 @media (max-width: 560px) { .konu-satir { grid-template-columns: minmax(0, 1fr) 80px; } h1 { font-size: 1.35rem; } }
 @media (prefers-reduced-motion: no-preference) { .geri { animation: gel .25s ease-out; } @keyframes gel { from { opacity: .3; transform: translateY(4px); } to { opacity: 1; transform: none; } } }
 </style>
@@ -149,10 +182,15 @@ label.alan { display: grid; gap: 4px; font-weight: 600; }
 <script src="js/fen1.js"></script>
 <script src="js/fen2.js"></script>
 <script src="js/fen3.js"></script>
+<script src="js/tr.js"></script>
+<script src="js/tr1.js"></script>
+<script src="js/tr2.js"></script>
+<script src="js/tr3.js"></script>
 <script src="js/videolar.js"></script>
 <script src="js/birlestir.js"></script>
 <script src="js/depo.js"></script>
 <script src="js/analiz.js"></script>
+<script src="js/oyun.js"></script>
 <script src="js/uygulama.js"></script>
 </body>
 </html>

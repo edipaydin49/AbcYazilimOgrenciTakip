@@ -30,6 +30,30 @@ for (const d of ctx.DERS_LISTESI) {
       if (dr.secenekler.filter(s => s[1] === true).length !== 1) sorun(k.id + " durak " + i, "tam bir doğru seçenek olmalı");
       dr.secenekler.forEach(s => { if (!s[0] || !s[2]) sorun(k.id + " durak " + i, "seçenek metni ya da açıklaması boş"); });
     });
+    // Oyun görevleri (Türkçe Diyarı): eşleştirme, sıralama ve kelime üretme
+    if (d.id === "tr") {
+      if (!k.gorev || !k.sayfa) sorun(k.id, "gorev ve sayfa alanları gerekli");
+      const kazIds = new Set((k.kazanimlar || []).map(z => z.id));
+      const trKucuk = x => x.toLocaleLowerCase("tr-TR");
+      (k.oyun || []).forEach((o, i) => {
+        const yer = k.id + " oyun " + i; say.oyun = (say.oyun || 0) + 1;
+        if (!kazIds.has(o.kaz)) sorun(yer, "kaz bu konunun kazanımı olmalı: " + o.kaz);
+        if (!o.soru || !o.aciklama) sorun(yer, "soru/aciklama boş");
+        if (o.tur === "eslestir") {
+          if (!Array.isArray(o.ciftler) || o.ciftler.length < 3 || o.ciftler.length > 4) sorun(yer, "eşleştirmede 3–4 çift olmalı");
+          else { const sol = o.ciftler.map(c => c[0]), sag = o.ciftler.map(c => c[1]); if (new Set(sol).size !== sol.length || new Set(sag).size !== sag.length || o.ciftler.some(c => !c[0] || !c[1])) sorun(yer, "eşleştirmede tekrar ya da boş öğe"); }
+        } else if (o.tur === "sirala") {
+          if (!Array.isArray(o.ogeler) || o.ogeler.length < 3 || o.ogeler.length > 5 || new Set(o.ogeler).size !== o.ogeler.length) sorun(yer, "sıralamada 3–5 farklı öğe olmalı");
+        } else if (o.tur === "uret") {
+          const harf = [...trKucuk(o.harfler || "")].filter(c => c.trim());
+          if (harf.length < 4 || harf.length > 9) sorun(yer, "kelime üretmede 4–9 harf olmalı");
+          if (!Array.isArray(o.kelimeler) || o.kelimeler.length < (o.hedef || 3)) sorun(yer, "kabul edilen kelime sayısı hedeften az");
+          (o.kelimeler || []).forEach(w => { const kal = harf.slice(); for (const c of trKucuk(w)) { const j = kal.indexOf(c); if (j < 0) { sorun(yer, `“${w}” verilen harflerle yazılamıyor`); return; } kal.splice(j, 1); } if (w.length < 2) sorun(yer, "çok kısa kelime: " + w); });
+          if (!(o.hedef >= 2 && o.hedef <= 5)) sorun(yer, "hedef 2–5 olmalı");
+        } else sorun(yer, "bilinmeyen oyun türü: " + o.tur);
+      });
+      if ((k.oyun || []).length < 2) sorun(k.id, "en az 2 oyun görevi (eşleştirme/sıralama/kelime üretme) olmalı");
+    }
     for (const z of k.kazanimlar || []) {
       say.kaz++;
       if (ids.has(z.id)) sorun(z.id, "kazanım kimliği tekrar ediyor"); ids.add(z.id);
@@ -66,6 +90,6 @@ for (const d of ctx.DERS_LISTESI) {
   }
 }
 const tekil = [...new Set(sorunlar)];
-console.log(`konu ${say.konu} · kazanım ${say.kaz} · üreteç ${say.uretec} · durak ${say.durak} · denenen soru ${say.soru} · farklı soru ${say.benzersiz}`);
+console.log(`konu ${say.konu} · kazanım ${say.kaz} · üreteç ${say.uretec} · durak ${say.durak} · denenen soru ${say.soru} · farklı soru ${say.benzersiz}${say.oyun ? " · oyun görevi " + say.oyun : ""}`);
 console.log(tekil.length ? "SORUNLAR (" + tekil.length + "):\n" + tekil.slice(0, 80).join("\n") : "SORUN: yok");
 process.exit(tekil.length ? 1 : 0);

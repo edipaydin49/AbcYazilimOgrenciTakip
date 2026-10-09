@@ -11,7 +11,7 @@
   const olaylar = new Map();
 
   const uid = () => Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
-  const VARSAYILAN = { ogrenciAdi: "", pin: "1234", gunlukHedefDk: 30, bulutUrl: "", videolar: {}, gizliVideolar: {}, yazililar: {}, cihaz: "", sonEsitleme: 0, kurulum: false };
+  const VARSAYILAN = { ogrenciAdi: "", pin: "1234", gunlukHedefDk: 30, bulutUrl: "", videolar: {}, gizliVideolar: {}, yazililar: {}, oyunHepsiAcik: false, cihaz: "", sonEsitleme: 0, kurulum: false };
   let ayar = { ...VARSAYILAN };
   try { ayar = { ...VARSAYILAN, ...JSON.parse(localStorage.getItem(AYAR_ANAHTAR) || "{}") }; } catch (e) {}
   if (!ayar.cihaz) ayar.cihaz = "c" + uid();

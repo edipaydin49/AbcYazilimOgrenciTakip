@@ -37,7 +37,7 @@
     veliAcik = false;
     if (yol === "ders") { dersSec(a); return anaSayfa(); }
     ({ "": anaSayfa, konu: () => konuSayfasi(a), anlatim: () => anlatim(a), video: () => videoSayfasi(a, +b || 0), test: testEkrani,
-      sonuc: sonucEkrani, gelisim: gelisimSayfasi, hatalar: hataDefteri, yazili: () => yaziliSayfasi(a, b) }[yol] || anaSayfa)();
+      sonuc: sonucEkrani, gelisim: gelisimSayfasi, hatalar: hataDefteri, yazili: () => yaziliSayfasi(a, b), oyun: () => { dersSec("tr"); OYUN.ac(a, b); } }[yol] || anaSayfa)();
   }
   window.addEventListener("hashchange", yonlendir);
   $("#evBtn").addEventListener("click", () => git("#/"));
@@ -52,7 +52,7 @@
   /* ============================ KURULUM ============================ */
   function kurulum() {
     ana.innerHTML = `<section class="kart vurgu"><h1>Hoş geldin!</h1>
-      <p>Bu uygulama 6. sınıf Matematik ve Fen Bilimleri konularını anlatır, sorular sorar, yazılılara hazırlar ve gelişimini kaydeder. İnternet olmadan da çalışır.</p>
+      <p>Bu uygulama 6. sınıf Matematik, Fen Bilimleri ve Türkçe konularını anlatır, sorular sorar, yazılılara hazırlar ve gelişimini kaydeder. İnternet olmadan da çalışır.</p>
       <label class="alan">Öğrencinin adı<input type="text" id="kAd" maxlength="30" placeholder="Örn. Elif"></label>
       <label class="alan">Günlük çalışma hedefi (dakika)<input type="number" id="kHedef" value="30" min="5" max="180"></label>
       <p class="kucuk-yazi muted">Veli paneli şifresi başlangıçta <b>1234</b>'tür. Veli panelinden değiştirebilirsiniz.</p>
@@ -104,6 +104,8 @@
         ${dersSecici(d.id)}
         <div class="kart sari" style="padding:12px"><span class="kucuk-yazi muted">${d.ad} · sıradaki adım</span><p><b>${kacis(o.metin)}</b></p><div>${oneriButonu(o)}</div></div>
       </section>
+      ${d.id === "tr" && window.OYUN ? (() => { const p = OYUN.ozet(); return `<section class="kart sari oyun-giris"><span class="simge">🎮</span><div style="display:grid;gap:8px"><h2>Türkçe Diyarı</h2>
+        <p>Üç adanın kaybolan yıldızlarını topla! <b>⭐ ${p.yildiz}/${p.toplam}</b> yıldız · <b>🪙 ${p.puan}</b> puan · <b>🏅 ${p.rozet}/3</b> rozet</p><div><a class="btn ana" href="#/oyun">Oyuna gir</a></div></div></section>`; })() : ""}
       ${vadesi.length ? `<section class="kart"><h2>Tekrar zamanı</h2><p class="muted kucuk-yazi">Öğrendiklerini unutmamak için kısa tekrar testleri.</p>
         ${vadesi.map(p => `<div class="satir ara"><span>${KONU[p.konu].ad} · <b>${p.gun}. gün</b> tekrarı</span><button class="btn kucuk" data-test="tekrar${p.gun}" data-konu="${p.konu}">Başla</button></div>`).join("")}</section>` : ""}
       <section class="kart"><h2>Yazılılara hazırlık · ${d.ad}</h2><p class="muted kucuk-yazi">Her yazılı için konu tekrarı, videolar, eksik kapatma ve yazılı provası.</p>
@@ -111,8 +113,9 @@
       ${d.temaListesi.map(t => `<section class="kart">
         <div class="satir ara"><div><span class="etiket">${t.kisa}</span><h2 style="margin-top:4px">${t.ad}</h2></div></div>
         <div class="satir"><button class="btn kucuk" data-test="hazir" data-tema="${t.id}">Hazır mıyız?</button>
-          <button class="btn kucuk" data-test="izleme" data-tema="${t.id}">İzleme testi</button>
-          <button class="btn kucuk" data-test="tema" data-tema="${t.id}">${tekil} değerlendirme</button></div>
+          <button class="btn kucuk" data-test="izleme" data-tema="${t.id}">${d.id === "tr" ? "Bu Tema Başka Tema!" : "İzleme testi"}</button>
+          <button class="btn kucuk" data-test="tema" data-tema="${t.id}">${d.id === "tr" ? "Haydi, Bitirelim!" : tekil + " değerlendirme"}</button>
+          ${d.id === "tr" && window.OYUN ? `<a class="btn kucuk" href="#/oyun/ada/${t.id}">🎮 ${t.ada.ad}</a>` : ""}</div>
         <div style="display:grid;gap:8px">${t.konular.map(k => { const ks = h.konuOzet[k]; const u = ortUstalik(h, k);
           return `<button class="konu-satir" data-git="#/konu/${k}"><span><b>${KONU[k].ad}</b><br><span class="kucuk-yazi muted">${ks.konuSonu ? "Konu sonu: " + yuzde(ks.konuSonu.son) : ks.n ? ks.n + " soru çözüldü" : "Başlanmadı"}</span></span>
             <span><span class="kucuk-yazi muted">${u == null ? "—" : yuzde(u)}</span><span class="bar" style="display:block"><i style="width:${u == null ? 0 : u * 100}%"></i></span></span></button>`; }).join("")}</div>
@@ -189,7 +192,8 @@
           <button class="btn ${ks.anlatim && !ks.n ? "ana" : ""}" data-test="alistirma" data-konu="${id}">2. Alıştırma (10)</button>
           <button class="btn" data-test="konuSonu" data-konu="${id}">3. Konu sonu testi (12)</button>
           <button class="btn" data-test="kendi" data-konu="${id}" data-kendi="1">Kendi tekrarım (6)</button>
-        </div></section>
+          ${k.oyun && window.OYUN ? `<a class="btn" href="#/oyun/gorev/${id}">🎮 Oyun görevi${(o => o ? " · " + "★".repeat(o.enIyi) : "")(OYUN.konuOzet(id))}</a>` : ""}
+        </div>${k.gorev ? `<p class="kucuk-yazi muted">Kitap ${k.sayfa} · ${k.gorev}</p>` : ""}</section>
       ${vl.length ? `<section class="kart"><h2>Konu anlatım videoları</h2><p class="muted kucuk-yazi">Videolar uygulamanın içinde oynar. İzlemek için internet gerekir.</p>
         <div style="display:grid;gap:8px">${vl.map((v, i) => { const o = izlenenOran(v.vid);
           return `<button class="video-satir" data-git="#/video/${id}/${i}"><img src="https://i.ytimg.com/vi/${v.vid}/mqdefault.jpg" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
@@ -366,7 +370,7 @@
 
   /* ============================ TEST MOTORU ============================ */
   const TEST_AD = { alistirma: "Alıştırma", konuSonu: "Konu sonu testi", kendi: "Kendi tekrarım", hazir: "Hazır mıyız?", izleme: "İzleme testi", tema: "Tema / ünite değerlendirme", deneme: "Genel deneme sınavı", hata: "Hata defteri tekrarı",
-    yazili: "Yazılı provası", yaziliTekrar: "Yazılı konu tekrarı", yaziliEksik: "Yazılı: eksik kapatma",
+    yazili: "Yazılı provası", yaziliTekrar: "Yazılı konu tekrarı", yaziliEksik: "Yazılı: eksik kapatma", oyun: "Türkçe Diyarı oyunu",
     tekrar1: "1. gün tekrar testi", tekrar3: "3. gün tekrar testi", tekrar7: "7. gün tekrar testi", tekrar30: "30. gün kalıcılık testi" };
   const KENDI_HATA = [["bilgi", "Konuyu bilmiyordum"], ["kavrama", "Soruyu yanlış anladım"], ["islem", "İşlem hatası yaptım"], ["dikkat", "Dikkatsizlik yaptım"], ["strateji", "Acele ettim / yol bulamadım"]];
 
@@ -737,7 +741,10 @@
       const basla = ks.filter(k => hd.konuOzet[k.id].n).length;
       return `<button class="konu-satir" data-git="#/veli/dersler" onclick="return false" data-vders-ac="${d.id}"><span><b>${d.simge} ${d.ad}</b><br><span class="kucuk-yazi muted">${hd.genel.cevaplanan} soru · ilk deneme ${yuzde(hd.genel.ilkDeneme)} · ${basla}/${ks.length} konuya başlandı · ${hd.calisma.tamamlananKonu} konu tamam</span></span>
         <span><span class="kucuk-yazi muted">${yuzde(hd.genel.ilkDeneme)}</span><span class="bar" style="display:block"><i style="width:${(hd.genel.ilkDeneme || 0) * 100}%"></i></span></span></button>`; }).join("");
+    const op = window.OYUN && OYUN.ozet();
     return `<section class="kart"><h2>Derslere göre durum</h2><div style="display:grid;gap:8px">${dersKartlari}</div></section>
+      ${op && (!veliDers || veliDers === "tr") ? `<section class="kart"><h2>🎮 Türkçe Diyarı oyunu</h2><div class="izgara dar">${metrik(op.yildiz + " / " + op.toplam, "toplanan yıldız", "")}${metrik(op.puan, "toplam puan", "")}${metrik(op.rozet + " / 3", "kazanılan rozet", op.adalar.filter(a => a.rozet).map(a => a.tema.ada.rozet).join(", "))}${metrik(DEPO.liste("oyun").length, "oynanan görev", "")}</div>
+        ${op.adalar.map(a => `<div class="satir ara"><span>${a.tema.ada.simge} ${a.tema.ada.ad}</span><span class="kucuk-yazi">${a.gorevler.filter(g => g.yildiz >= OYUN.GECME_YILDIZ).length}/${a.gorevler.length} görev geçildi · ⭐ ${a.yildiz}/${a.toplam}</span></div>`).join("")}</section>` : ""}
       <section class="izgara dar">
         ${metrik(dk(hk.bu.dk), "bu hafta çalışma (tüm dersler)", fark(hk.bu.dk, hk.onceki.dk, x => Math.round(x) + " dk"))}
         ${metrik(hk.bu.soru, "bu hafta çözülen soru", fark(hk.bu.soru, hk.onceki.soru))}
@@ -835,6 +842,7 @@
         <div class="kart"><h2>Testler</h2>${testler.length ? testler.map(t => `<div class="satir ara"><span>${TEST_AD[t.tur] || t.tur} <span class="kucuk-yazi muted">· ${tarih(t.t)}</span></span><span>${t.dogru}/${t.n}</span></div>`).join("") : '<p class="muted">Bu aralıkta test yok.</p>'}</div>
         <div class="kart"><h2>Aralıklı tekrar planı</h2>${plan.length ? plan.map(p => `<div class="satir ara"><span>${p.gun}. gün</span><span>${p.yapildi ? yuzde(p.sonuc) : p.vadesi ? "<span class='etiket orta'>zamanı geldi</span>" : gunTarih(p.zaman)}</span></div>`).join("") : '<p class="muted">Konu sonu testi yapılınca plan oluşur.</p>'}</div>
       </section>
+      ${k.oyun && window.OYUN ? (o => `<section class="kart"><h2>Türkçe Diyarı oyunu</h2>${o ? `<p>${o.oynama} kez oynandı · en iyi ${o.enIyi}/${OYUN.GOREV_SORU} yıldız · toplam ${o.puan} puan · son oyun ${tarih(o.son.t)} (${o.son.dogru}/${o.son.n})</p>` : '<p class="muted">Bu görev henüz oynanmadı.</p>'}</section>`)(OYUN.konuOzet(konuId)) : ""}
       <section class="kart"><h2>Videolar</h2>${vl.length ? vl.map(v => { const vv = x.video && x.video.videolar.find(y => y.vid === v.vid); return `<div class="satir ara"><span>${kacis(v.baslik)}</span><span class="kucuk-yazi">${vv ? "izlendi " + yuzde(vv.tamamlama) + " · " + vv.oturum + " kez açıldı" : "açılmadı"}</span></div>`; }).join("") : '<p class="muted">Bu konuda video yok.</p>'}
         ${x.video ? `<p class="kucuk-yazi muted">Geri sarma ${x.video.geriSarma} · duraklatma ${x.video.duraklatma} · aktif izleme ${yuzde(x.video.aktif)}</p>` : ""}</section>
       <section class="kart"><h2>Son ${sorular.length} soru</h2><div class="tablo"><table><thead><tr><th>Zaman</th><th>Kazanım</th><th class="sayi">Zorluk</th><th class="sayi">Süre</th><th>İlk</th><th>Son</th><th>Yardım</th><th>Hata türü</th></tr></thead><tbody>
@@ -975,6 +983,7 @@
         <label class="alan">Öğrencinin adı<input type="text" id="aAd" value="${kacis(a.ogrenciAdi)}"></label>
         <label class="alan">Günlük çalışma hedefi (dakika)<input type="number" id="aHedef" value="${a.gunlukHedefDk}" min="5" max="240"></label>
         <label class="alan">Veli paneli şifresi (yalnızca rakam)<input type="password" id="aPin" inputmode="numeric" value="${kacis(a.pin)}"></label>
+        <label class="satir"><input type="checkbox" id="aOyunAcik" ${a.oyunHepsiAcik ? "checked" : ""}> Türkçe Diyarı oyununda bütün adaları ve görevleri aç (sınıfta ileriki temalara geçildiyse)</label>
         <button class="btn ana" id="aKaydet">Kaydet</button></section>
       <section class="kart"><h2>İnternet gelince otomatik gönderme (bulut)</h2>
         <p>Uygulama internet yokken bütün verileri tablette saklar. Aşağıya bir bulut adresi girilirse, internet geldiğinde biriken veriler otomatik gönderilir ve başka bir cihazdan (örneğin velinin telefonundaki aynı uygulamadan) <b>“Buluttan verileri al”</b> ile görülebilir.</p>
@@ -1066,7 +1075,7 @@ function doGet(e) {
       $("#aKaydet").onclick = () => {
         const pin = $("#aPin").value.trim();
         if (!/^\d{4,8}$/.test(pin)) return toast("Şifre 4–8 rakam olmalı.");
-        Object.assign(DEPO.ayar, { ogrenciAdi: $("#aAd").value.trim() || DEPO.ayar.ogrenciAdi, gunlukHedefDk: Math.max(5, +$("#aHedef").value || 30), pin });
+        Object.assign(DEPO.ayar, { ogrenciAdi: $("#aAd").value.trim() || DEPO.ayar.ogrenciAdi, gunlukHedefDk: Math.max(5, +$("#aHedef").value || 30), pin, oyunHepsiAcik: $("#aOyunAcik").checked });
         DEPO.ayarKaydet(); toast("Kaydedildi."); yonlendir();
       };
       $("#aUrlKaydet").onclick = () => { const u = $("#aUrl").value.trim(); if (u && !/^https:\/\//.test(u)) return toast("Adres https:// ile başlamalı."); DEPO.ayar.bulutUrl = u; DEPO.ayarKaydet(); toast("Adres kaydedildi."); };
@@ -1082,6 +1091,7 @@ function doGet(e) {
     },
   };
 
+  window.UYG = { kacis, toast, git, konuVideolari };  // oyun.js için ortak araçlar
   window.TEST_DURUMU = () => durum.test;  // otomatik testler için salt okunur erişim
 
   /* ============================ BAŞLAT ============================ */
