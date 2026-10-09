@@ -1,6 +1,6 @@
-# Öğrenme Yolculuğu (6. Sınıf Matematik ve Fen Bilimleri) — APK
+# Öğrenme Yolculuğu (6. Sınıf Matematik, Fen Bilimleri ve Türkçe) — APK
 
-Tablete kurulacak dosya: **`OgrenmeYolculugu.apk`** (sürüm 1.3, Android 7 ve üstü; Samsung Galaxy Tab A9+ / One UI 8.5 / Android 16 ile uyumlu).
+Tablete kurulacak dosya: **`OgrenmeYolculugu.apk`** (sürüm 1.4, Android 7 ve üstü; Samsung Galaxy Tab A9+ / One UI 8.5 / Android 16 ile uyumlu).
 
 ## 1. Tablete kurulum (bir kez)
 
@@ -26,9 +26,18 @@ Tablete kurulacak dosya: **`OgrenmeYolculugu.apk`** (sürüm 1.3, Android 7 ve �
 
 ## 2. Uygulamada neler var?
 
-**Dersler:** Ana sayfanın üstünden **Matematik** ya da **Fen Bilimleri** seçilir.
+**Dersler:** Ana sayfanın üstünden **Matematik**, **Fen Bilimleri** ya da **Türkçe** seçilir.
 - Matematik: 4 tema, 14 konu, 41 kazanım (ders kitabının içindekiler sayfasıyla aynı sırada).
 - Fen Bilimleri (Maarif Modeli): 7 ünite, 15 konu — Güneş Sistemi ve Tutulmalar, Kuvvetin Etkisinde Hareket, Canlılarda Sistemler, Işığın Yansıması ve Renkler, Maddenin Ayırt Edici Özellikleri, Elektriğin İletimi ve Direnç, Sürdürülebilir Yaşam ve Etkileşim.
+- Türkçe (Maarif Modeli, 1. kitap): 3 tema, 18 konu — kitaptaki metin başlıklarıyla aynı sırada (Bir Kelime Seyyahı, Türkçenin Beyliği … Ay Avcısı Eskimolar, Gelin “Türk Dünyasını” Keşfedelim, Üretmek Gibisi Yok!). Kitap metinleri kullanılmadı; her başlığın becerisine (sözcükte anlam, kök–ek, yazım, deyim, ana fikir, 5N1K, olay sırası, bilgilendirici metin, dinleme stratejileri…) uygun özgün kısa metinler ve sorular yazıldı. Temalarda “Bu Tema Başka Tema!” ve “Haydi, Bitirelim!” testleri var.
+
+**🎮 Türkçe Diyarı oyunu** (Türkçe ana sayfasında “Oyuna gir”)
+- Hikâye: Türkçe Diyarı'ndaki üç adanın (Dilimizin Zenginliği, Bağımsızlık Yolu, Farklı Dünyalar) kaybolan yıldızları toplanır. Her ada bir tema, her görev kitaptaki bir başlıktır (sayfa numarasıyla).
+- Her görevde 5 soru: 3 seçenekli sorular, **eşleştirme**, **sıralama** (ör. 1071 → 1922 olayları) ve **verilen harflerden kelime üretme**.
+- Doğru cevap **+10 puan** ve 1 yıldız, görevi bitirme **+20 puan**. Yanlışta puan silinmez; her cevaptan sonra doğru cevap ve kısa açıklama gösterilir.
+- Bir görevde **3 yıldız** toplayınca sıradaki görev açılır. Adanın bütün görevleri geçilince rozet kazanılır (**Kelime Ustası**, **Bağımsızlık Kâşifi**, **Dünya Kâşifi**) ve sıradaki ada açılır.
+- Sınıf ileriki temalara geçtiyse: Veli paneli → Ayarlar → “Türkçe Diyarı oyununda bütün adaları ve görevleri aç”.
+- Oyunda çözülen sorular da istatistiklere girer; Veli paneli → Özet'te oyun kartı, konu ayrıntısında görevin oynanma sayısı ve en iyi yıldızı görünür.
 
 **Öğrenci tarafı**
 - Her konu için: konu anlatımı (her bölümün sonunda “konu durağı” sorusu) → **konu videoları** → alıştırma (10 soru, uyarlanabilir) → konu sonu testi (12 soru; kolay, orta ve zor karışık) → kendi tekrarım.
@@ -41,7 +50,7 @@ Tablete kurulacak dosya: **`OgrenmeYolculugu.apk`** (sürüm 1.3, Android 7 ve �
 - **Hata defteri:** yanlış yapılan sorular ders ve konuya göre birikir, çözümleriyle birlikte görülebilir; doğru çözülünce defterden silinir.
 - **Gelişimim:** ders bazında hedef, konu gelişimi, güçlü ve tekrar edilecek konular, 14 günlük başarı grafiği.
 
-**Konu videoları:** Her konuya YouTube'daki farklı kanallardan (Tonguç, İMT Hoca, Hocalara Geldik ve diğerleri) 4–5 hazır konu anlatım videosu eklendi; toplam 140 video. Video bölümlere ayrılmamışsa uygulama onu yaklaşık 4 dakikalık parçalara böler ve her parçanın sonunda kısa soru sorar. Bir video açılmazsa “Başka bir anlatım dene” ile sıradakine geçilir.
+**Konu videoları:** Her konuya YouTube'daki farklı kanallardan (Tonguç, İMT Hoca, Hocalara Geldik ve diğerleri) 4–5 hazır konu anlatım videosu eklendi; toplam 218 video (Türkçe'de bazıları kitap metninin okunuşu ya da “ders kitabı cevapları” videosudur; listede bu not yazar). Video bölümlere ayrılmamışsa uygulama onu yaklaşık 4 dakikalık parçalara böler ve her parçanın sonunda kısa soru sorar. Bir video açılmazsa “Başka bir anlatım dene” ile sıradakine geçilir.
 
 **Veli paneli** (sağ üstteki “Veli” düğmesi, şifreli). Sekmeler:
 
@@ -107,5 +116,5 @@ Plandaki yaklaşım (tek ders, birkaç konu, önce ölç sonra genişlet) doğru
 - Uygulama bir Android kabuğu (`android/`) ile `web/` klasöründeki sayfalardan oluşur. Sayfalar `https://appassets.androidplatform.net` adresinden sunulur; YouTube gömme ve kalıcı veri bu sayede çalışır.
 - Derleme: `python3 araclar/apk_derle.py <sürüm_kodu> <sürüm_adı>`. Android SDK gerekmez: `dx` (Maven Central), JDK `jarsigner` ve dosya içindeki ikili manifest/kaynak kodlayıcıları kullanılır.
 - **`anahtar/ogrenme.jks` imza anahtarını silmeyin.** Güncellemeler aynı anahtarla imzalanmazsa tablet yeni sürümü kurmaz; eski sürümü silmek gerekir ve veriler kaybolur.
-- İçerik dosyaları: `web/js/ortak.js` (yardımcılar, soru görselleri), `icerik.js` + `mat_ek.js` (Matematik), `fen.js` + `fen1.js`–`fen3.js` (Fen), `videolar.js` (hazır videolar), `birlestir.js` (dersleri birleştirir, yazılı kapsamları).
-- Testler: `node araclar/ders_dogrula.js web/js/<ders dosyaları>` (her üreteci 40 kez çalıştırıp denetler), `node araclar/gorsel_onizleme.js <klasör> [ders]` (görselli soruların önizlemesi), `node araclar/icerik_test.js` (28 bin soru üretip denetler), `node araclar/arayuz_test.js <klasör>` (uçtan uca), `node araclar/video_test.js` (video takibi), `node araclar/performans_test.js` (6 aylık veriyle, 6 kat yavaş işlemcide süre ölçümü).
+- İçerik dosyaları: `web/js/ortak.js` (yardımcılar, soru görselleri), `icerik.js` + `mat_ek.js` (Matematik), `fen.js` + `fen1.js`–`fen3.js` (Fen), `tr.js` + `tr1.js`–`tr3.js` (Türkçe), `oyun.js` (Türkçe Diyarı), `videolar.js` (hazır videolar), `birlestir.js` (dersleri birleştirir, yazılı kapsamları).
+- Testler: `node araclar/ders_dogrula.js web/js/<ders dosyaları>` (her üreteci 40 kez çalıştırıp denetler), `node araclar/gorsel_onizleme.js <klasör> [ders]` (görselli soruların önizlemesi), `node araclar/oyun_test.js <klasör>` (oyunu uçtan uca oynar), `node araclar/icerik_test.js` (28 bin soru üretip denetler), `node araclar/arayuz_test.js <klasör>` (uçtan uca), `node araclar/video_test.js` (video takibi), `node araclar/performans_test.js` (6 aylık veriyle, 6 kat yavaş işlemcide süre ölçümü).

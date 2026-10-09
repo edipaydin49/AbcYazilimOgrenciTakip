@@ -43,7 +43,7 @@ const sunucu = http.createServer((q, r) => { const u = decodeURIComponent(q.url.
   }
   const turler = new Set();
   async function gorevOyna(konu, dogruSayisi, fotoOnek) {
-    await p.goto("http://localhost:8767/index.html#/oyun/gorev/" + konu); await p.waitForTimeout(100);
+    await p.goto("http://localhost:8767/index.html#/oyun"); await p.goto("http://localhost:8767/index.html#/oyun/gorev/" + konu); await p.waitForTimeout(100);
     const n = await p.evaluate(() => OYUN.durum().ogeler.length);
     for (let i = 0; i < n; i++) { const tur = await p.evaluate(() => { const t = OYUN.durum(); return t.ogeler[t.i].tur; }); turler.add(tur); await coz(i < dogruSayisi, fotoOnek && !turler.has(tur + "f") ? (turler.add(tur + "f"), fotoOnek + tur) : null); }
     return p.evaluate(() => document.querySelector("main").innerText);

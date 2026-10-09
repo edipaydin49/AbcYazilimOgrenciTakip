@@ -93,7 +93,7 @@
   function ust(k) {
     const t = aktif;
     return `<div class="satir ara"><span class="etiket">${k.ad} · görev ${t.i + 1}/${t.ogeler.length}</span><span class="oyun-sayac"><span>⭐ ${t.dogru}</span><span>🪙 ${t.puan}</span></span></div>
-      <div class="ilerleme">${t.ogeler.map((o, j) => `<i class="${j < t.i ? (o.sonuc ? "d" : "y") : j === t.i ? "s" : ""}"></i>`).join("")}</div>`;
+      <div class="ilerleme">${t.ogeler.map((o, j) => `<i class="${j <= t.i && o.sonuc != null ? (o.sonuc ? "d" : "y") : j === t.i ? "s" : ""}"></i>`).join("")}</div>`;
   }
   function kaydet(oge, dogru, ekstra = {}) {
     const k = KONU[aktif.konu];
