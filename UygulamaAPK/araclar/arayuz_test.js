@@ -58,7 +58,7 @@ const sunucu = http.createServer((q, r) => { const f = path.join(KOK, decodeURIC
   for (let i = 0; i < bolum; i++) { await tikla(".sec >> nth=0"); await tikla("#ileriB"); }
   for (const d of ["dogru", "cozum", "dogru", "duzelt", "dogru", "dogru", "yanlis2", "dogru", "dogru", "dogru", "dogru"]) { if (!(await p.$("[data-s]"))) break; await soruCoz(d); if (d === "cozum") await foto("13_fen_cozum"); }
   // Yazılı hazırlık: sayfa, konu tekrar testi, prova (sınav modu)
-  await p.goto("http://localhost:8765/index.html#/yazili/fen/d2y1"); await foto("14_yazili");
+  await p.goto("http://localhost:8765/index.html#/yazili/fen/d1y1"); await foto("14_yazili");
   await tikla('[data-test="yaziliTekrar"]'); for (let i = 0; i < 12; i++) await soruCoz(i % 3 ? "dogru" : "yanlis2");
   await p.goto("http://localhost:8765/index.html#/yazili/mat/d1y1"); await tikla('[data-test="yazili"]');
   for (let i = 0; i < 20; i++) { await tikla(`[data-s="${i % 4}"]`); await tikla("#sonrakiB"); }
