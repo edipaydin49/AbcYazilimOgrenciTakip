@@ -1,6 +1,6 @@
-# Öğrenme Yolculuğu (6. Sınıf Matematik, Fen Bilimleri ve Türkçe) — APK
+# Öğrenme Yolculuğu (6. Sınıf Matematik, Fen Bilimleri, Türkçe ve İngilizce) — APK
 
-Tablete kurulacak dosya: **`OgrenmeYolculugu.apk`** (sürüm 1.4, Android 7 ve üstü; Samsung Galaxy Tab A9+ / One UI 8.5 / Android 16 ile uyumlu).
+Tablete kurulacak dosya: **`OgrenmeYolculugu.apk`** (sürüm 1.5, Android 7 ve üstü; Samsung Galaxy Tab A9+ / One UI 8.5 / Android 16 ile uyumlu).
 
 ## 1. Tablete kurulum (bir kez)
 
@@ -26,10 +26,20 @@ Tablete kurulacak dosya: **`OgrenmeYolculugu.apk`** (sürüm 1.4, Android 7 ve �
 
 ## 2. Uygulamada neler var?
 
-**Dersler:** Ana sayfanın üstünden **Matematik**, **Fen Bilimleri** ya da **Türkçe** seçilir.
+**Dersler:** Ana sayfanın üstünden **Matematik**, **Fen Bilimleri**, **Türkçe** ya da **İngilizce** seçilir.
 - Matematik: 4 tema, 14 konu, 41 kazanım (ders kitabının içindekiler sayfasıyla aynı sırada).
 - Fen Bilimleri (Maarif Modeli): 7 ünite, 15 konu — Güneş Sistemi ve Tutulmalar, Kuvvetin Etkisinde Hareket, Canlılarda Sistemler, Işığın Yansıması ve Renkler, Maddenin Ayırt Edici Özellikleri, Elektriğin İletimi ve Direnç, Sürdürülebilir Yaşam ve Etkileşim.
 - Türkçe (Maarif Modeli, 1. kitap): 3 tema, 18 konu — kitaptaki metin başlıklarıyla aynı sırada (Bir Kelime Seyyahı, Türkçenin Beyliği … Ay Avcısı Eskimolar, Gelin “Türk Dünyasını” Keşfedelim, Üretmek Gibisi Yok!). Kitap metinleri kullanılmadı; her başlığın becerisine (sözcükte anlam, kök–ek, yazım, deyim, ana fikir, 5N1K, olay sırası, bilgilendirici metin, dinleme stratejileri…) uygun özgün kısa metinler ve sorular yazıldı. Temalarda “Bu Tema Başka Tema!” ve “Haydi, Bitirelim!” testleri var.
+
+- İngilizce (Maarif Modeli): 8 tema, 19 konu — School Life, Classroom Life, Personal Life, Family Life, Life in the Neighbourhood & City, Life in the World & Culture, Life in Nature & Global Problems, Life in the Universe & Future (kitabın içindekiler tablosundaki alt temalar ve dil yapılarıyla). Anlatımlar Türkçe, örnekler ve sorular İngilizce; her yanlışta Türkçe açıklama. Her konuda **🃏 Word cards** (kelime kartları) var.
+- **🔊 Sesli okuma:** İngilizce soruların, oyun cümlelerinin ve kelime kartlarının yanındaki 🔊 düğmesi cümleyi tabletin kendi İngilizce sesiyle okur (internet gerekmez). Ses gelmezse: Ayarlar → Genel yönetim → Metin okuma çıkışı → tercih edilen motor (Samsung ya da Google) → dil İngilizce; gerekirse İngilizce ses paketini indirin.
+
+**🎮 İngilizce oyunları** (İngilizce ana sayfasında “Oyunlara gir”)
+- **Downtown Master:** Boş şehir haritasına binaları komutlara göre sürükleyip bırakırsın (“Place the skyscraper between the bank and the museum.”). Between, opposite, next to, to the left/right of; noisy, crowded, quiet, historic gibi sıfat soruları. Doğru yerleştirmede şehir büyür, arabalar dolaşır.
+- **At the Fair · Roller Coaster:** Tren raylarda ilerlerken tüneldeki yüz ifadesine uygun sıfatı süre bitmeden seçersin (exciting / excited, terrifying / scared, boring / bored…). Doğru cevap treni hızlandırır, art arda doğrular bonus puan getirir.
+- **Yummy Breakfast · Chef:** Müşterinin isteğini (“Can I have some olives and honey, please?”) okuyup tabağı hazırlarsın; sevmediği yiyeceği koyarsan müşteri üzülür. Arada kafe diyalogları (Would you like some…? — Yes, please.).
+- **Weather & Clothes · Wardrobe:** Penceredeki havaya ve termometreye bakıp karakteri giydirirsin. Yanlış giysi seçilirse karakter titrer (🥶) ya da terler (🥵).
+- Her oyun puan, en iyi skor ve yıldız verir; cevaplar istatistiklere girer (Veli paneli → Özet'te “İngilizce oyunları” kartı).
 
 **🎮 Türkçe Diyarı oyunu** (Türkçe ana sayfasında “Oyuna gir”)
 - Hikâye: Türkçe Diyarı'ndaki üç adanın (Dilimizin Zenginliği, Bağımsızlık Yolu, Farklı Dünyalar) kaybolan yıldızları toplanır. Her ada bir tema, her görev kitaptaki bir başlıktır (sayfa numarasıyla).
@@ -50,7 +60,7 @@ Tablete kurulacak dosya: **`OgrenmeYolculugu.apk`** (sürüm 1.4, Android 7 ve �
 - **Hata defteri:** yanlış yapılan sorular ders ve konuya göre birikir, çözümleriyle birlikte görülebilir; doğru çözülünce defterden silinir.
 - **Gelişimim:** ders bazında hedef, konu gelişimi, güçlü ve tekrar edilecek konular, 14 günlük başarı grafiği.
 
-**Konu videoları:** Her konuya YouTube'daki farklı kanallardan (Tonguç, İMT Hoca, Hocalara Geldik ve diğerleri) 4–5 hazır konu anlatım videosu eklendi; toplam 218 video (Türkçe'de bazıları kitap metninin okunuşu ya da “ders kitabı cevapları” videosudur; listede bu not yazar). Video bölümlere ayrılmamışsa uygulama onu yaklaşık 4 dakikalık parçalara böler ve her parçanın sonunda kısa soru sorar. Bir video açılmazsa “Başka bir anlatım dene” ile sıradakine geçilir.
+**Konu videoları:** Her konuya YouTube'daki farklı kanallardan (Tonguç, İMT Hoca, Hocalara Geldik ve diğerleri) 4–5 hazır konu anlatım videosu eklendi; toplam 310 video (Türkçe'de bazıları kitap metninin okunuşu ya da “ders kitabı cevapları” videosudur; listede bu not yazar). Video bölümlere ayrılmamışsa uygulama onu yaklaşık 4 dakikalık parçalara böler ve her parçanın sonunda kısa soru sorar. Bir video açılmazsa “Başka bir anlatım dene” ile sıradakine geçilir.
 
 **Veli paneli** (sağ üstteki “Veli” düğmesi, şifreli). Sekmeler:
 
@@ -116,5 +126,5 @@ Plandaki yaklaşım (tek ders, birkaç konu, önce ölç sonra genişlet) doğru
 - Uygulama bir Android kabuğu (`android/`) ile `web/` klasöründeki sayfalardan oluşur. Sayfalar `https://appassets.androidplatform.net` adresinden sunulur; YouTube gömme ve kalıcı veri bu sayede çalışır.
 - Derleme: `python3 araclar/apk_derle.py <sürüm_kodu> <sürüm_adı>`. Android SDK gerekmez: `dx` (Maven Central), JDK `jarsigner` ve dosya içindeki ikili manifest/kaynak kodlayıcıları kullanılır.
 - **`anahtar/ogrenme.jks` imza anahtarını silmeyin.** Güncellemeler aynı anahtarla imzalanmazsa tablet yeni sürümü kurmaz; eski sürümü silmek gerekir ve veriler kaybolur.
-- İçerik dosyaları: `web/js/ortak.js` (yardımcılar, soru görselleri), `icerik.js` + `mat_ek.js` (Matematik), `fen.js` + `fen1.js`–`fen3.js` (Fen), `tr.js` + `tr1.js`–`tr3.js` (Türkçe), `oyun.js` (Türkçe Diyarı), `videolar.js` (hazır videolar), `birlestir.js` (dersleri birleştirir, yazılı kapsamları).
-- Testler: `node araclar/ders_dogrula.js web/js/<ders dosyaları>` (her üreteci 40 kez çalıştırıp denetler), `node araclar/gorsel_onizleme.js <klasör> [ders]` (görselli soruların önizlemesi), `node araclar/oyun_test.js <klasör>` (oyunu uçtan uca oynar), `node araclar/icerik_test.js` (28 bin soru üretip denetler), `node araclar/arayuz_test.js <klasör>` (uçtan uca), `node araclar/video_test.js` (video takibi), `node araclar/performans_test.js` (6 aylık veriyle, 6 kat yavaş işlemcide süre ölçümü).
+- İçerik dosyaları: `web/js/ortak.js` (yardımcılar, soru görselleri), `icerik.js` + `mat_ek.js` (Matematik), `fen.js` + `fen1.js`–`fen3.js` (Fen), `tr.js` + `tr1.js`–`tr3.js` (Türkçe), `oyun.js` (Türkçe Diyarı), `en.js` + `en1.js`–`en4.js` (İngilizce), `ingoyun.js` (İngilizce oyunları ve sesli okuma), `videolar.js` (hazır videolar), `birlestir.js` (dersleri birleştirir, yazılı kapsamları).
+- Testler: `node araclar/ders_dogrula.js web/js/<ders dosyaları>` (her üreteci 40 kez çalıştırıp denetler), `node araclar/gorsel_onizleme.js <klasör> [ders]` (görselli soruların önizlemesi), `node araclar/oyun_test.js <klasör>` ve `node araclar/ingoyun_test.js <klasör>` (oyunları uçtan uca oynar), `node araclar/icerik_test.js` (28 bin soru üretip denetler), `node araclar/arayuz_test.js <klasör>` (uçtan uca), `node araclar/video_test.js` (video takibi), `node araclar/performans_test.js` (6 aylık veriyle, 6 kat yavaş işlemcide süre ölçümü).
