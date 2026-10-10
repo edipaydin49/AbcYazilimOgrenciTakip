@@ -130,6 +130,12 @@ label.alan { display: grid; gap: 4px; font-weight: 600; }
 .video-satir:hover { border-color: var(--line); }
 .video-satir img { width: 120px; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 8px; background: var(--line); }
 @media (max-width: 560px) { .video-satir { grid-template-columns: 90px minmax(0, 1fr); } .video-satir img { width: 90px; } }
+/* Adım adım çözüm */
+.secenek-analiz { list-style: none; margin: 8px 0 0; padding: 0; display: grid; gap: 6px; }
+.secenek-analiz li { border-radius: 10px; padding: 8px 10px; background: var(--sheet); border-left: 4px solid var(--line); }
+.secenek-analiz li.iyi { border-left-color: var(--good); } .secenek-analiz li.kotu { border-left-color: var(--bad); }
+.secenek-analiz li.secilen { box-shadow: 0 0 0 2px var(--cobalt) inset; }
+@media (prefers-reduced-motion: no-preference) { .adimlar li.yeni-adim { animation: gel .35s ease-out; } }
 /* Bilgisayardan izleme: geniş ekran */
 body.uzak main { max-width: 1280px; }
 /* Türkçe Diyarı oyunu */
@@ -232,19 +238,26 @@ body.uzak main { max-width: 1280px; }
 <script src="js/ortak.js"></script>
 <script src="js/icerik.js"></script>
 <script src="js/mat_ek.js"></script>
+<script src="js/mat_ek2.js"></script>
 <script src="js/fen.js"></script>
 <script src="js/fen1.js"></script>
 <script src="js/fen2.js"></script>
 <script src="js/fen3.js"></script>
+<script src="js/fen_ek1.js"></script>
+<script src="js/fen_ek2.js"></script>
 <script src="js/tr.js"></script>
 <script src="js/tr1.js"></script>
 <script src="js/tr2.js"></script>
 <script src="js/tr3.js"></script>
+<script src="js/tr_ek1.js"></script>
+<script src="js/tr_ek2.js"></script>
 <script src="js/en.js"></script>
 <script src="js/en1.js"></script>
 <script src="js/en2.js"></script>
 <script src="js/en3.js"></script>
 <script src="js/en4.js"></script>
+<script src="js/en_ek1.js"></script>
+<script src="js/en_ek2.js"></script>
 <script src="js/videolar.js"></script>
 <script src="js/birlestir.js"></script>
 <script src="js/depo.js"></script>

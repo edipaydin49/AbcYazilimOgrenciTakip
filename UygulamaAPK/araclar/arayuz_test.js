@@ -27,7 +27,11 @@ const sunucu = http.createServer((q, r) => { const f = path.join(KOK, decodeURIC
     if (dav === "ipucu") { await tikla("#ipucuB"); await tikla(`[data-s="${idx}"]`); }
     else if (dav === "dogru") await tikla(`[data-s="${idx}"]`);
     else if (dav === "duzelt") { await tikla(`[data-s="${yanlisIdx}"]`); await tikla('[data-kh="islem"]'); await tikla(`[data-s="${idx}"]`); }
-    else if (dav === "cozum") { await tikla(`[data-s="${yanlisIdx}"]`); await tikla("#cozumGor"); await foto("4_cozum"); await tikla("#benzerB"); return; }
+    else if (dav === "cozum") { await tikla(`[data-s="${yanlisIdx}"]`); await tikla("#cozumGor"); await foto("4_cozum");
+      for (let k = 0; k < 12 && await p.isVisible("[data-adim-ileri]"); k++) await tikla("[data-adim-ileri]");
+      if (!(await p.isVisible(".secenek-analiz"))) { await tikla(".cozum details summary"); }
+      if ((await p.$$eval(".secenek-analiz li", l => l.length)) !== 4) hatalar.push("seçenek analizi 4 seçenek göstermiyor");
+      await foto("4b_cozum_acik"); await tikla("#benzerB"); return; }
     else if (dav === "gec") { await tikla("#gecB"); return; }
     else if (dav === "yanlis2") { await tikla(`[data-s="${yanlisIdx}"]`); const ikinci = [0,1,2,3].find(j => j !== idx && j !== yanlisIdx); await tikla(`[data-s="${ikinci}"]`); }
     await tikla("#devamB");
@@ -49,6 +53,15 @@ const sunucu = http.createServer((q, r) => { const f = path.join(KOK, decodeURIC
   await p.goto("http://localhost:8765/index.html#/"); await tikla('[data-test="deneme"]'); await foto("6_deneme");
   for (let i = 0; i < 20; i++) { if (i % 5 !== 4) await tikla(`[data-s="${i % 4}"]`); await tikla("#sonrakiB"); }
   await foto("7_deneme_sonuc");
+  // Deneme merkezi: mini deneme ve karma deneme (net hesabı)
+  await p.goto("http://localhost:8765/index.html#/deneme"); await foto("7b_deneme_merkezi");
+  await tikla('[data-test="mini"][data-ders="fen"]');
+  for (let i = 0; i < 10; i++) { if (i % 4 !== 3) await tikla(`[data-s="${i % 4}"]`); await tikla("#sonrakiB"); }
+  await p.goto("http://localhost:8765/index.html#/deneme"); await tikla('[data-test="karma"]');
+  for (let i = 0; i < 40; i++) { const d = await p.evaluate(() => TEST_DURUMU().soru.q.secenekler.findIndex(x => x.dogru)); if (i % 5 !== 4) await tikla(`[data-s="${i % 3 ? d : (d + 1) % 4}"]`); await tikla("#sonrakiB"); }
+  await foto("7c_karma_sonuc");
+  const karma = await p.evaluate(() => DEPO.liste("test").filter(t => t.tur === "karma").pop());
+  if (!karma || karma.n !== 40 || karma.bos !== 8 || Math.abs(karma.net - (karma.dogru - karma.yanlis / 3)) > 0.01 || Object.keys(karma.dagilim || {}).length !== 4) hatalar.push("karma deneme sonucu hatalı: " + JSON.stringify(karma && { n: karma.n, d: karma.dogru, y: karma.yanlis, b: karma.bos, net: karma.net }));
   // Fen Bilimleri: ders seçimi, konu, anlatım, alıştırma
   await p.goto("http://localhost:8765/index.html#/ders/fen"); await foto("11_fen_ana");
   const fenKonu = await p.evaluate(() => ICERIK.KONULAR.find(k => k.ders === "fen").id);
@@ -89,7 +102,7 @@ const sunucu = http.createServer((q, r) => { const f = path.join(KOK, decodeURIC
   // Veli paneli
   await p.goto("http://localhost:8765/index.html#/veli");
   for (const x of ["1", "2", "3", "4", "Tamam"]) await tikla(`[data-p="${x}"]`);
-  for (const sk of ["ozet", "dersler", "konu/carpan", "konu/" + fenKonu, "kazanim", "soru", "anlatim", "tekrar", "calisma", "yazili", "kayit", "icerik", "ayar"]) {
+  for (const sk of ["ozet", "dersler", "konu/carpan", "konu/" + fenKonu, "kazanim", "soru", "anlatim", "tekrar", "calisma", "yazili", "denemeler", "kayit", "icerik", "ayar"]) {
     await p.goto("http://localhost:8765/index.html#/veli/" + sk); await p.waitForTimeout(150);
     const metin = await p.textContent("main"); if (/NaN|undefined|\[object/.test(metin)) hatalar.push(sk + " sekmesinde NaN/undefined: " + metin.match(/.{0,40}(NaN|undefined|\[object).{0,40}/)[0]);
     await foto("v_" + sk.replace("/", "_"));

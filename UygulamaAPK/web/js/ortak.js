@@ -205,4 +205,9 @@
   window.DERS_LISTESI = DERS_LISTESI;
   window.DERS_EKLE = DERS_EKLE;
   window.KONU_EKLE = KONU_EKLE;
+  /* Var olan bir kazanıma yeni soru üreteçleri ekler (ek soru dosyaları için). */
+  window.SORU_EKLE = function (kazId, ...uretecler) {
+    for (const d of DERS_LISTESI) for (const k of d.konular) if (k.kazanimlar.some(z => z.id === kazId)) { (k.uret[kazId] = k.uret[kazId] || []).push(...uretecler); return; }
+    throw new Error("Kazanım bulunamadı: " + kazId);
+  };
 })();
