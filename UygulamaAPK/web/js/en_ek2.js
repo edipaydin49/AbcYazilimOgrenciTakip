@@ -118,21 +118,28 @@
 
   SORU_EKLE("enfes.like",
     z => {
-      const [fiil, ing] = sec([["dance", "dancing"], ["swim", "swimming"], ["ride", "riding"], ["make", "making"], ["run", "running"], ["sing", "singing"], ["take", "taking"], ["shop", "shopping"]]);
-      const yanlisIng = fiil.endsWith("e") ? fiil + "ing" : (["swim", "run", "shop"].includes(fiil) ? fiil + "ing" : fiil + "ingg");
+      const [fiil, ing, yanlisIng, kuralMetni] = sec([
+        ["dance", "dancing", "danceing", "“dance” -e ile bitiyor; -e düşer, -ing eklenir: dance → dancing."],
+        ["swim", "swimming", "swiming", "“swim” tek heceli ve ünsüz-ünlü-ünsüz ile bitiyor; son harf çiftlenir: swim → swimming."],
+        ["ride", "riding", "rideing", "“ride” -e ile bitiyor; -e düşer, -ing eklenir: ride → riding."],
+        ["make", "making", "makeing", "“make” -e ile bitiyor; -e düşer, -ing eklenir: make → making."],
+        ["run", "running", "runing", "“run” tek heceli ve ünsüz-ünlü-ünsüz ile bitiyor; son harf çiftlenir: run → running."],
+        ["shop", "shopping", "shoping", "“shop” tek heceli ve ünsüz-ünlü-ünsüz ile bitiyor; son harf çiftlenir: shop → shopping."],
+        ["take", "taking", "takeing", "“take” -e ile bitiyor; -e düşer, -ing eklenir: take → taking."],
+        ["skate", "skating", "skateing", "“skate” -e ile bitiyor; -e düşer, -ing eklenir: skate → skating."]]);
       const kisi = sec(["My brother", "Elif", "Our teacher", "My best friend"]);
       const duygu = sec(["loves", "likes", "hates", "enjoys"]);
-      const ek_ = { dance: "at festivals", swim: "in the sea", ride: "a bike", make: "costumes", run: "in the park", sing: "songs", take: "photos", shop: "at the market" }[fiil];
+      const ek_ = { dance: "at festivals", swim: "in the sea", ride: "a bike", make: "costumes", run: "in the park", skate: "on the ice", take: "photos", shop: "at the market" }[fiil];
       return S({ kaz: "enfes.like", duzey: "uygulama", zorluk: 2,
         soru: `Choose the correct form.<br><b>${kisi} ${duygu} ___ ${ek_}.</b> (${fiil})`, dogru: ing,
-        yanlis: [[yanlisIng, "islem", fiil.endsWith("e") ? "Sonu -e ile biten fiillerde -e düşer: make → making." : "Tek heceli, ünsüz-ünlü-ünsüz ile biten fiilde son harf çiftlenir: swim → swimming."],
+        yanlis: [[yanlisIng, "islem", "Yazım hatası var. " + kuralMetni],
           [fiil, "bilgi", `“${duygu}” fiilinden sonra fiil -ing alır; yalın hâl olmaz.`],
           [fiil + "s", "kavrama", "Özneye -s eki zaten ana fiile (" + duygu + ") gelmiş; ikinci fiil -ing alır."]],
         ipucu: "like / love / hate / enjoy'dan sonra fiil hangi eki alır? Yazımına da dikkat et.",
         cozum: ["🔎 Soruyu anlayalım: Parantezdeki fiilin doğru hâlini seçeceğiz.",
           `💡 Hatırlayalım: like, love, hate, enjoy + fiil-ing (I love dancing). want + to + fiil (I want to dance).`,
           `✏️ Cümlede “${duygu}” var → ikinci fiil -ing alacak.`,
-          fiil.endsWith("e") && fiil !== "see" ? `✏️ “${fiil}” -e ile bitiyor; -e düşer, -ing eklenir: ${fiil} → ${ing}.` : (["swim", "run", "shop"].includes(fiil) ? `✏️ “${fiil}” tek heceli ve ünsüz-ünlü-ünsüz ile bitiyor; son harf çiftlenir: ${fiil} → ${ing}.` : `✏️ “${fiil}” fiiline doğrudan -ing eklenir: ${fiil} → ${ing}.`),
+          "✏️ Yazımına bakalım: " + kuralMetni,
           `✅ Sonuç: ${kisi} ${duygu} ${ing} ${ek_}.`,
           "🔁 Kontrol edelim: -ing yazım kuralları: make → making, swim → swimming, sing → singing."],
         kural: "love / like / hate / enjoy + V-ing · want + to + V.", dogruNeden: `“${duygu}” sonrasında fiil -ing alır ve doğru yazımı “${ing}”.` });
