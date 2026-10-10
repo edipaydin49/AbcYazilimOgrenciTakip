@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
 import android.view.View;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebChromeClient;
@@ -14,6 +15,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import java.io.InputStream;
+import java.util.Locale;
 
 /**
  * Uygulamanın tamamı assets/web içindeki sayfalardır. Sayfalar https://appassets.androidplatform.net
@@ -25,6 +27,8 @@ public class MainActivity extends Activity {
     private WebView web;
     private View tamEkran;
     private WebChromeClient.CustomViewCallback tamEkranGeri;
+    private TextToSpeech ses;
+    private volatile boolean sesHazir;
 
     @Override
     protected void onCreate(Bundle b) {
@@ -42,6 +46,25 @@ public class MainActivity extends Activity {
         web.setWebChromeClient(new Krom());
         setContentView(web);
         web.loadUrl("https://" + ALAN + "/index.html");
+        // İngilizce sesli okuma: cihazın metin okuma motoru (önce İngiliz, yoksa Amerikan İngilizcesi)
+        try {
+            ses = new TextToSpeech(this, new TextToSpeech.OnInitListener() {
+                public void onInit(int durum) {
+                    if (durum != TextToSpeech.SUCCESS || ses == null) return;
+                    int r = ses.setLanguage(Locale.UK);
+                    if (r < 0) r = ses.setLanguage(Locale.US);
+                    sesHazir = r >= 0;
+                }
+            });
+        } catch (Exception e) {
+            ses = null;
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        if (ses != null) ses.shutdown();
+        super.onDestroy();
     }
 
     private class Istemci extends WebViewClient {
@@ -59,7 +82,7 @@ public class MainActivity extends Activity {
             }
         }
 
-        @Override
+        // API 24'te eklendi; derlemede kullanılan android.jar 23 olduğu için @Override yazılmaz (cihazda yine geçersiz kılar).
         public boolean shouldOverrideUrlLoading(WebView v, WebResourceRequest r) {
             // Ana pencere uygulama dışına (ör. youtube.com) gidemez; çocuk uygulamanın içinde kalır.
             return r.isForMainFrame() && !ALAN.equals(r.getUrl().getHost());
@@ -100,8 +123,20 @@ public class MainActivity extends Activity {
         }
 
         @JavascriptInterface
+        public boolean sesVar() {
+            return sesHazir;
+        }
+
+        @JavascriptInterface
+        public void konus(String metin, float hiz) {
+            if (!sesHazir || ses == null) return;
+            ses.setSpeechRate(hiz <= 0 ? 0.9f : hiz);
+            ses.speak(metin, TextToSpeech.QUEUE_FLUSH, null, "ogrenme");
+        }
+
+        @JavascriptInterface
         public String surum() {
-            return "1.4";
+            return "1.5";
         }
     }
 

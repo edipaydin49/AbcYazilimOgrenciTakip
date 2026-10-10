@@ -29,6 +29,7 @@ PAKET = "tr.abc.ogrenme"
 UYGULAMA_ADI = "Öğrenme Yolculuğu"
 SURUM_KODU = int(sys.argv[1]) if len(sys.argv) > 1 else 1
 SURUM_ADI = sys.argv[2] if len(sys.argv) > 2 else "1.0"
+ANDROID_JAR = Path("/usr/lib/android-sdk/platforms/android-23/android.jar")
 DX_URL = "https://repo1.maven.org/maven2/com/jakewharton/android/repackaged/dalvik-dx/16.0.1/dalvik-dx-16.0.1.jar"
 
 
@@ -122,6 +123,8 @@ def manifest():
                               A("versionName", SURUM_ADI, T_STR)], [
         ("uses-sdk", [A("minSdkVersion", 24, T_DEC), A("targetSdkVersion", 34, T_DEC)], []),
         ("uses-permission", [A("name", "android.permission.INTERNET", T_STR)], []),
+        # Android 11+: metin okuma (TTS) servisine bağlanabilmek için paket görünürlüğü bildirimi
+        ("queries", [], [("intent", [], [("action", [A("name", "android.intent.action.TTS_SERVICE", T_STR)], [])])]),
         ("application", [A("label", UYGULAMA_ADI, T_STR), A("icon", 0x7F010000, T_REF)], [
             ("activity", [A("name", PAKET + ".MainActivity", T_STR), A("exported", True, T_BOOL),
                           A("configChanges", 0x0DA0, T_HEX)], [  # orientation|screenSize|screenLayout|smallestScreenSize|keyboardHidden
@@ -183,10 +186,16 @@ def main():
     if not dx.exists() or dx.stat().st_size < 100000:
         calistir("curl", "-sSfL", "-o", dx, DX_URL)
 
-    stublar = [str(p) for p in (ANDROID / "stubs").rglob("*.java")]
-    calistir("javac", "--release", "8", "-nowarn", "-d", GECICI / "stub", *stublar)
+    # Ubuntu'nun android-sdk-platform-23 paketi kuruluysa gerçek android.jar'a karşı derlenir; yoksa sahte imzalar kullanılır.
+    if ANDROID_JAR.exists():
+        shutil.copy(ANDROID_JAR, GECICI / "stub" / "android.jar")
+        sinif_yolu = GECICI / "stub" / "android.jar"
+    else:
+        stublar = [str(p) for p in (ANDROID / "stubs").rglob("*.java")]
+        calistir("javac", "--release", "8", "-nowarn", "-d", GECICI / "stub", *stublar)
+        sinif_yolu = GECICI / "stub"
     kaynaklar = [str(p) for p in (ANDROID / "src").rglob("*.java")]
-    calistir("javac", "--release", "8", "-nowarn", "-encoding", "UTF-8", "-cp", GECICI / "stub",
+    calistir("javac", "--release", "8", "-nowarn", "-encoding", "UTF-8", "-cp", sinif_yolu,
              "-d", GECICI / "sinif", *kaynaklar)
     calistir("java", "-cp", dx, "com.android.dx.command.Main", "--dex", "--min-sdk-version=24",
              f"--output={GECICI / 'classes.dex'}", GECICI / "sinif")

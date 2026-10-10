@@ -304,6 +304,11 @@ window.HAZIR_VIDEOLAR = {
    "kaynak": "Tonguç"
   },
   {
+   "vid": "NMjy8wZiWeI",
+   "baslik": "Uzunluk Ölçme Birimleri 📘 5'ten 6'ya Hazırlık Kampı #2025",
+   "kaynak": "Tonguç"
+  },
+  {
    "vid": "HXEaiu2-wfQ",
    "baslik": "6. SINIF UZUNLUK ÖLÇME BİRİMLERİ",
    "kaynak": ""
@@ -317,11 +322,6 @@ window.HAZIR_VIDEOLAR = {
    "vid": "SeOZOpKTIk0",
    "baslik": "Uzunluk ölçülerini birimlerini çevirme dönüştürme ve örnekler",
    "kaynak": ""
-  },
-  {
-   "vid": "NMjy8wZiWeI",
-   "baslik": "Uzunluk Ölçme Birimleri 📘 5'ten 6'ya Hazırlık Kampı #2025",
-   "kaynak": "Tonguç"
   }
  ],
  "arastirma": [
@@ -380,6 +380,11 @@ window.HAZIR_VIDEOLAR = {
  ],
  "f_gunes": [
   {
+   "vid": "wBzkQ5KHqwY",
+   "baslik": "Güneş Sistemi 📗 6. Sınıf Fen #2025",
+   "kaynak": ""
+  },
+  {
    "vid": "1oXCLU4nxSw",
    "baslik": "Güneş Sistemi 📗 6FEN1 #2026",
    "kaynak": ""
@@ -387,11 +392,6 @@ window.HAZIR_VIDEOLAR = {
   {
    "vid": "bKSohZ3FXe4",
    "baslik": "6. Sınıf Fen Bilgisi l Güneş Sistemi - 2025 - 2026",
-   "kaynak": ""
-  },
-  {
-   "vid": "wBzkQ5KHqwY",
-   "baslik": "Güneş Sistemi 📗 6. Sınıf Fen #2025",
    "kaynak": ""
   },
   {
@@ -748,6 +748,12 @@ window.HAZIR_VIDEOLAR = {
    "kaynak": ""
   },
   {
+   "vid": "vKKCNItro5s",
+   "baslik": "Sürdürülebilir Yaşam ve Geri Dönüşüm 5. Sınıf Fen Bilimleri #2025",
+   "kaynak": "",
+   "not": "5. sınıf düzeyi (temel tekrar)"
+  },
+  {
    "vid": "VvRZvIHYW1A",
    "baslik": "5.Sınıf 6.Ünite İNSAN VE ÇEVRE-(2.Kısım İnsan ve Çevre İlişkisi) Fen Bilimleri",
    "kaynak": "",
@@ -756,12 +762,6 @@ window.HAZIR_VIDEOLAR = {
   {
    "vid": "ba53GdhuT2k",
    "baslik": "5. Sınıf Fen Bilimleri - İnsan ve Çevre İlişkisi",
-   "kaynak": "",
-   "not": "5. sınıf düzeyi (temel tekrar)"
-  },
-  {
-   "vid": "vKKCNItro5s",
-   "baslik": "Sürdürülebilir Yaşam ve Geri Dönüşüm 5. Sınıf Fen Bilimleri #2025",
    "kaynak": "",
    "not": "5. sınıf düzeyi (temel tekrar)"
   }
@@ -846,6 +846,11 @@ window.HAZIR_VIDEOLAR = {
  ],
  "tr_kasik": [
   {
+   "vid": "U-VmoHV5RBw",
+   "baslik": "Deyimler ve Atasözleri 6. Sınıf Türkçe #2025",
+   "kaynak": "Tonguç"
+  },
+  {
    "vid": "Mse9D9_eKRY",
    "baslik": "Deyimler ve Atasözleri 6TURK5 #2026",
    "kaynak": "Tonguç"
@@ -859,11 +864,6 @@ window.HAZIR_VIDEOLAR = {
    "vid": "TMNfo8dlyhM",
    "baslik": "6.Sınıf 1. Tema 50.Sayfa Türk Dil Kurumu Sunar (Kaşık) Dinleme Metni (MEB Yayınları)",
    "kaynak": ""
-  },
-  {
-   "vid": "U-VmoHV5RBw",
-   "baslik": "Deyimler ve Atasözleri 6. Sınıf Türkçe #2025",
-   "kaynak": "Tonguç"
   },
   {
    "vid": "eeT_RPyIaDA",
@@ -1188,11 +1188,6 @@ window.HAZIR_VIDEOLAR = {
    "kaynak": ""
   },
   {
-   "vid": "WefBB5DJLyM",
-   "baslik": "Türkçe 6. Sınıf 2. Dönem 1. Yazılı Ortak Sınav",
-   "kaynak": ""
-  },
-  {
    "vid": "EucJ6qctmRs",
    "baslik": "6.Sınıf Türkçe Genel Tekrar 2025 Bursluluk Kampı",
    "kaynak": ""
@@ -1200,6 +1195,515 @@ window.HAZIR_VIDEOLAR = {
   {
    "vid": "u5xME0Sr4SQ",
    "baslik": "6.Sınıf Türkçe 2.Dönem 2.Yazılıya Hazırlık #2025",
+   "kaynak": ""
+  },
+  {
+   "vid": "WefBB5DJLyM",
+   "baslik": "Türkçe 6. Sınıf 2. Dönem 1. Yazılı Ortak Sınav",
+   "kaynak": ""
+  }
+ ],
+ "en_roles": [
+  {
+   "vid": "2KIVc5anW6A",
+   "baslik": "6.SINIF İNGİLİZCE 1.ÜNİTE KONU ANLATIMI 2025",
+   "kaynak": ""
+  },
+  {
+   "vid": "YhEPU4_3Gac",
+   "baslik": "School Life 6ING1 #2027",
+   "kaynak": "Tonguç Akademi"
+  },
+  {
+   "vid": "r275xTZphhc",
+   "baslik": "6. SINIF İNGİLİZCE DERSİ 1. TEMA SCHOOL LIFE (ÖNEMLİ KELİMELER) (OKUNUŞLARI) (TEST)",
+   "kaynak": ""
+  },
+  {
+   "vid": "1h1MlFByOh8",
+   "baslik": "Imperatives Konu Anlatımı",
+   "kaynak": ""
+  },
+  {
+   "vid": "2joNMBefimA",
+   "baslik": "A, An, The Konu Anlatımı - Sıfırdan İngilizce Ders 6",
+   "kaynak": ""
+  }
+ ],
+ "en_routines": [
+  {
+   "vid": "jzqyqZEPu10",
+   "baslik": "Life - How Often / Adverbs of Frequency -1",
+   "kaynak": "Hocalara Geldik"
+  },
+  {
+   "vid": "j-Ffcb60IAI",
+   "baslik": "6. Sınıf İngilizce - The Simple Present Tense",
+   "kaynak": ""
+  },
+  {
+   "vid": "Oqm-FxdkeZg",
+   "baslik": "Adverbs of Frequency - İngilizce'de Sıklık Zarfları - Always, Never, Sometimes",
+   "kaynak": ""
+  },
+  {
+   "vid": "zLay5IwRoEU",
+   "baslik": "İngilizce Sıklık Zarfları - Adverbs of Frequency",
+   "kaynak": ""
+  }
+ ],
+ "en_national": [
+  {
+   "vid": "MNxlPBiLz8Y",
+   "baslik": "Happy 23rd of April National Sovereignty and Children's Day!",
+   "kaynak": ""
+  },
+  {
+   "vid": "TIwPqjfMZWg",
+   "baslik": "23 April National Sovereignty and Children's Day",
+   "kaynak": ""
+  },
+  {
+   "vid": "gSnraCrTSjA",
+   "baslik": "October 29th: Turkish Republic Day",
+   "kaynak": ""
+  },
+  {
+   "vid": "9hji1OLdRrw",
+   "baslik": "29th October, Republic Day of Turkey",
+   "kaynak": ""
+  },
+  {
+   "vid": "_FtS34pf-FQ",
+   "baslik": "CELEBRATIONS: 7. Sınıf İngilizce 6. Ünite Konu Anlatımı ve Kelimeleri",
+   "kaynak": "",
+   "not": "7. sınıf videosu (konu benzer)"
+  }
+ ],
+ "en_daily": [
+  {
+   "vid": "XA8vCo4G3fY",
+   "baslik": "6. SINIF İNGİLİZCE DERSİ 1. ÜNİTE LIFE - Describing Daily Routines [KONU ANLATIMI]",
+   "kaynak": ""
+  },
+  {
+   "vid": "FlPYm4uITdU",
+   "baslik": "6. Sınıf İngilizce 1. ÜNİTE Konu Anlatımı - DAILY ROUTINES (Günlük Rutin İşler)",
+   "kaynak": ""
+  },
+  {
+   "vid": "VAYfSTlcP1Y",
+   "baslik": "6. Sınıf İngilizce - 1. Ünite - Daily Routines",
+   "kaynak": ""
+  },
+  {
+   "vid": "1yjig666eNo",
+   "baslik": "PRESENT CONTINUOUS TENSE KONU ANLATIMI 6.SINIF",
+   "kaynak": ""
+  },
+  {
+   "vid": "a6E20Z1w1qM",
+   "baslik": "PRESENT CONTINUOUS TENSE 6. Sınıf 3. Ünite ve 9. Ünite",
+   "kaynak": ""
+  }
+ ],
+ "en_learning": [
+  {
+   "vid": "qR6jvEfv54w",
+   "baslik": "6. Sınıf İngilizce 1. Ünite",
+   "kaynak": ""
+  },
+  {
+   "vid": "RgDrnIUfSg8",
+   "baslik": "QUESTION TAGS KONU ANLATIMI",
+   "kaynak": ""
+  },
+  {
+   "vid": "6jChKFhCSUo",
+   "baslik": "Question Tags (Değil mi? Soruları)",
+   "kaynak": ""
+  },
+  {
+   "vid": "jCpG2F81rSM",
+   "baslik": "Question Tags Konu Anlatımı #71",
+   "kaynak": ""
+  }
+ ],
+ "en_numbers": [
+  {
+   "vid": "kSujNgzfrUM",
+   "baslik": "İngilizce 100'den 1000'e Kadar Sayılar (NUMBERS)",
+   "kaynak": ""
+  },
+  {
+   "vid": "yUx-6Ud3cjc",
+   "baslik": "100'den 1000'e kadar 100'er 100'er Sayılar",
+   "kaynak": ""
+  },
+  {
+   "vid": "4TzgLXioDis",
+   "baslik": "8 dk'da English Ordinal Numbers (İngilizce Sıra Numaraları)",
+   "kaynak": "Tonguç Akademi"
+  },
+  {
+   "vid": "DwpcSUOnbIc",
+   "baslik": "Ingilizce Sıra Sayıları - ORDINAL NUMBERS",
+   "kaynak": ""
+  },
+  {
+   "vid": "l8tyuMxElTA",
+   "baslik": "101 To 500 Numbers in words in English",
+   "kaynak": ""
+  }
+ ],
+ "en_appearance": [
+  {
+   "vid": "DL52wyabE8c",
+   "baslik": "DESCRIBING PEOPLE (Kişilik ve Fiziksel Özellikleriyle İnsanları Tasvir Etme)",
+   "kaynak": ""
+  },
+  {
+   "vid": "0_RUWbeqUBM",
+   "baslik": "Have got, Has got Konu Anlatımı Videosu #16",
+   "kaynak": "Kiraz Dil"
+  },
+  {
+   "vid": "jQXFRaZhjcw",
+   "baslik": "Have got / Has got Konu Anlatımı",
+   "kaynak": ""
+  },
+  {
+   "vid": "lwkNbuzzU1E",
+   "baslik": "Describing People",
+   "kaynak": ""
+  },
+  {
+   "vid": "kBHxXRsV8CU",
+   "baslik": "7. Sınıf İngilizce - Describing People's Appearance and Personality",
+   "kaynak": "",
+   "not": "7. sınıf videosu (konu benzer)"
+  }
+ ],
+ "en_personality": [
+  {
+   "vid": "wwOqa4ZIpRM",
+   "baslik": "İngilizce Kişisel Özellikler Konu Anlatımı",
+   "kaynak": ""
+  },
+  {
+   "vid": "pElTUfZiVm0",
+   "baslik": "7 İNGİLİZCE Appearance and Personality",
+   "kaynak": ""
+  },
+  {
+   "vid": "SXCXRXp1yLA",
+   "baslik": "6. SINIF İNGİLİZCE DERSİ 3. ÜNİTE DOWNTOWN - Making Comparison (Karşılaştırma Yapma) (Konu Anlatımı)",
+   "kaynak": ""
+  },
+  {
+   "vid": "f2On3a-Cmd8",
+   "baslik": "Comparative Superlative Türkçe Konu Anlatımı: Örnekler ve Kullanımları",
+   "kaynak": ""
+  },
+  {
+   "vid": "7hGDUOngPS8",
+   "baslik": "Superlative Adjectives Konu Anlatımı",
+   "kaynak": ""
+  }
+ ],
+ "en_jobs": [
+  {
+   "vid": "HUxiG1l1oTY",
+   "baslik": "Occupations 6. Sınıf İngilizce #2025",
+   "kaynak": "Tonguç Akademi"
+  },
+  {
+   "vid": "KAmJBHCISsk",
+   "baslik": "6. Sınıf İngilizce 6. Ünite Occupations | Ünite Kelimeleri ve Özeti +PDF",
+   "kaynak": ""
+  },
+  {
+   "vid": "E3PBfP55zes",
+   "baslik": "6. Sınıf İngilizce 6. Ünite (Occupations / Meslekler) Konu Anlatımı",
+   "kaynak": ""
+  },
+  {
+   "vid": "s1y-_O5xonI",
+   "baslik": "Reflexive Pronouns Konu Anlatımı #64",
+   "kaynak": ""
+  },
+  {
+   "vid": "_Wfwyhk9gCg",
+   "baslik": "Sıfırdan İngilizce Öğreniyorum: Reflexive Pronouns Konu Anlatımı",
+   "kaynak": ""
+  }
+ ],
+ "en_homes": [
+  {
+   "vid": "48vTvapi8YI",
+   "baslik": "Type of Houses, Kids English Vocabulary, Learn with Adi",
+   "kaynak": "Adi Connection"
+  },
+  {
+   "vid": "49W9l_zvhYs",
+   "baslik": "Different Houses Around The World for kids",
+   "kaynak": ""
+  },
+  {
+   "vid": "5SP-1P2FwiQ",
+   "baslik": "Do You Know Types of Houses? Talking Flashcards",
+   "kaynak": ""
+  },
+  {
+   "vid": "4HqXrSaYh9Y",
+   "baslik": "Kids Vocabulary - House - Parts of the House",
+   "kaynak": ""
+  },
+  {
+   "vid": "pN8m9YckGSI",
+   "baslik": "Rooms of a house",
+   "kaynak": ""
+  }
+ ],
+ "en_festivals": [
+  {
+   "vid": "taXf6CQyGMU",
+   "baslik": "6. Sınıf İngilizce - Past Form of \"to be\" (Was-Were)",
+   "kaynak": ""
+  },
+  {
+   "vid": "oTD9QBhLRZQ",
+   "baslik": "15 DAKİKADA WAS WERE KONU ANLATIMI",
+   "kaynak": ""
+  },
+  {
+   "vid": "oekhycQ4lgI",
+   "baslik": "6.SINIF İNGİLİZCE 7.ÜNİTE HOLIDAYS",
+   "kaynak": ""
+  },
+  {
+   "vid": "CEbSnB2jbh4",
+   "baslik": "İngilizcede \"-ed & -ing adjectives\" Sıfatlar",
+   "kaynak": ""
+  },
+  {
+   "vid": "ml6Q3KVxGnk",
+   "baslik": "-ed & -ing Sıfatları #66",
+   "kaynak": ""
+  }
+ ],
+ "en_city": [
+  {
+   "vid": "ER2K2Awwumg",
+   "baslik": "6.Sınıf İngilizce 3.Ünite DOWNTOWN Konu Anlatımı ve Kelimeleri",
+   "kaynak": ""
+  },
+  {
+   "vid": "szpikEN2X2I",
+   "baslik": "İngilizce 6. Sınıf 3. Ünite Downtown - Konu Anlatımı (Yeni MEB kitabı uyumlu)",
+   "kaynak": ""
+  },
+  {
+   "vid": "dn8YqwklHp4",
+   "baslik": "6. Sınıf İngilizce 3. Ünite DOWNTOWN Ünite Kelimeleri, Quiz ve Konu Özeti + PDF",
+   "kaynak": ""
+  },
+  {
+   "vid": "0-ZfT8xznPM",
+   "baslik": "İngilizce Yer Edatları Konu Anlatımı (In, On, Near, Under, Above, Between...) Prepositions Of Place",
+   "kaynak": ""
+  },
+  {
+   "vid": "hGzkD6J-nCI",
+   "baslik": "6. SINIF İNGİLİZCE DERSİ 3. ÜNİTE DOWNTOWN - PRESENT CONTINUOUS TENSE [Şimdiki Zaman] KONU ANLATIMI",
+   "kaynak": ""
+  }
+ ],
+ "en_transport": [
+  {
+   "vid": "f7U4UW2BAvE",
+   "baslik": "İngilizce Ulaşım Araçları - Taşıtlar (Transportation)",
+   "kaynak": ""
+  },
+  {
+   "vid": "IprVEIfezF8",
+   "baslik": "İngilizce ulaşım araçları - Transportation",
+   "kaynak": ""
+  },
+  {
+   "vid": "Saol-ivDAoE",
+   "baslik": "Is it BY Foot or ON Foot?",
+   "kaynak": ""
+  },
+  {
+   "vid": "KWBUUAQT8a0",
+   "baslik": "\"Transport Song\" - Rockin' English (Vocabulary)",
+   "kaynak": "Rockin' English"
+  },
+  {
+   "vid": "DMtJEMG8Vpg",
+   "baslik": "Transportation Song - Vehicle Song - Cars, Boats, Trains, Planes - Kids English Learning",
+   "kaynak": ""
+  }
+ ],
+ "en_countries": [
+  {
+   "vid": "O4REprdqo8k",
+   "baslik": "Countries and Nationalities Konu Anlatımı - Ders 10",
+   "kaynak": ""
+  },
+  {
+   "vid": "EkxpyfyDzZ4",
+   "baslik": "İngilizce Ülkeler ve Milletler. Ülkelerin İsimleri, Okunuşu",
+   "kaynak": ""
+  },
+  {
+   "vid": "EgKoVGiuBn8",
+   "baslik": "5. SINIF İNGİLİZCE 1. ÜNİTE HELLO - COUNTRIES - LANGUAGES - NATIONALITIES",
+   "kaynak": "",
+   "not": "5. sınıf düzeyi (temel tekrar)"
+  },
+  {
+   "vid": "m2tG7F191V8",
+   "baslik": "Countries and Nationalities 5. Sınıf 1. Ünite",
+   "kaynak": "",
+   "not": "5. sınıf düzeyi (temel tekrar)"
+  }
+ ],
+ "en_food": [
+  {
+   "vid": "_ypp4A_JIHc",
+   "baslik": "6.SINIF İNGİLİZCE 2.ÜNİTE YUMMY BREAKFAST KELİMELERİ VE KONU ANLATIMI",
+   "kaynak": ""
+  },
+  {
+   "vid": "RNiOV7GNPUQ",
+   "baslik": "YUMMY BREAKFAST: 6. Sınıf İngilizce 2. Ünite Kelimeleri ve Konu Anlatımı | Duygu Şenkayalı #2",
+   "kaynak": "Duygu Şenkayalı"
+  },
+  {
+   "vid": "KZo74C6C4R8",
+   "baslik": "6.Sınıf İngilizce 2.Ünite Yummy Breakfast Konu Anlatımı",
+   "kaynak": ""
+  },
+  {
+   "vid": "yYpZGBzj6r8",
+   "baslik": "6. Sınıf 2. Ünite - Yummy Breakfast / Konu Anlatımı",
+   "kaynak": ""
+  },
+  {
+   "vid": "vtyF7OC0QcQ",
+   "baslik": "6. SINIF İNGİLİZCE 2. ÜNİTE / YUMMY BREAKFAST",
+   "kaynak": ""
+  }
+ ],
+ "en_nature": [
+  {
+   "vid": "WGuga_F5uc0",
+   "baslik": "6. Sınıf İngilizce - The Simple Past Tense (Irregular Verbs)",
+   "kaynak": ""
+  },
+  {
+   "vid": "pVq2CXjlaNc",
+   "baslik": "6. Sınıf İngilizce - the Simple Past Tense (Regular Verbs)",
+   "kaynak": ""
+  },
+  {
+   "vid": "kpUEktfSwyA",
+   "baslik": "6. Sınıf İngilizce 7. Ünite Konu Anlatımı (Simple Past Tense)",
+   "kaynak": ""
+  },
+  {
+   "vid": "q9EX1w6krW4",
+   "baslik": "Irregular Verbs-Düzensiz Fiiller",
+   "kaynak": ""
+  },
+  {
+   "vid": "Tu-FpevVg_w",
+   "baslik": "6. SINIF İNGİLİZCE 8. ÜNİTE KONU ANLATIMI VE KELİMELERİ",
+   "kaynak": ""
+  }
+ ],
+ "en_environment": [
+  {
+   "vid": "wrb0NMaJjeQ",
+   "baslik": "SAVING THE PLANET: 6. Sınıf İngilizce 9. Ünite Kelimeleri ve Konu Anlatımı | Duygu Şenkayalı #9",
+   "kaynak": "Duygu Şenkayalı"
+  },
+  {
+   "vid": "4xHEsRn1w3k",
+   "baslik": "İngilizce 6. Sınıf 9. Ünite Saving The Planet Konu Anlatımı (Yeni MEB kitabı uyumlu)",
+   "kaynak": ""
+  },
+  {
+   "vid": "DIWdxW2vjyI",
+   "baslik": "6. SINIF İNGİLİZCE DERSİ 9. ÜNİTE SAVING THE PLANET - [SHOULD] [SHOULDN'T] (Konu Anlatımı)",
+   "kaynak": ""
+  },
+  {
+   "vid": "qmgbk0KywE8",
+   "baslik": "105- Have to / Has to / Must / Mustn't Konu Anlatımı",
+   "kaynak": ""
+  },
+  {
+   "vid": "o6fSj6cPqvA",
+   "baslik": "Sıfırdan İngilizce Öğreniyorum: Have to, Has to, Must, Mustn't Konu Anlatımı",
+   "kaynak": ""
+  }
+ ],
+ "en_planets": [
+  {
+   "vid": "g2HopF6socw",
+   "baslik": "Planets tonguçCUP 4.Sezon - 7ING10 #2024",
+   "kaynak": "Tonguç Akademi"
+  },
+  {
+   "vid": "PCxjuDePdCI",
+   "baslik": "The Planets of our Solar System Song (featuring The Hoover Jam)",
+   "kaynak": "The Hoover Jam"
+  },
+  {
+   "vid": "W6FidMj27ZM",
+   "baslik": "Planets in Order Song for Kids",
+   "kaynak": ""
+  },
+  {
+   "vid": "kAqUCn48lGk",
+   "baslik": "Planets / Akıcı Konu Anlatımı 7.Sınıf İngilizce #2023",
+   "kaynak": "Tonguç Akademi",
+   "not": "7. sınıf videosu (konu benzer)"
+  },
+  {
+   "vid": "DFBAPgkd6A0",
+   "baslik": "7. Sınıf İngilizce 10. Ünite Planets",
+   "kaynak": "",
+   "not": "7. sınıf videosu (konu benzer)"
+  }
+ ],
+ "en_future": [
+  {
+   "vid": "hbzDsigUZ-A",
+   "baslik": "WEATHER AND EMOTIONS: 6. Sınıf İngilizce 4. Ünite Kelimeleri ve Konu Anlatımı | Duygu Şenkayalı #4",
+   "kaynak": "Duygu Şenkayalı"
+  },
+  {
+   "vid": "f-JhPgTFRg0",
+   "baslik": "İngilizce 6. Sınıf 4. Ünite Weather and Emotions Konu Anlatımı (Yeni MEB kitabı uyumlu)",
+   "kaynak": ""
+  },
+  {
+   "vid": "cnEogc-He-k",
+   "baslik": "6.SINIF İNGİLİZCE 4.ÜNİTE WEATHER AND EMOTIONS KELİMELERİ VE KONU ANLATIMI",
+   "kaynak": ""
+  },
+  {
+   "vid": "uS4fClJEkF4",
+   "baslik": "İngilizcede Future Tense'i Detaylıca Öğren! (Be going to & Will)",
+   "kaynak": ""
+  },
+  {
+   "vid": "_tgeqvunQOc",
+   "baslik": "Will - Be going to Farkı #33",
    "kaynak": ""
   }
  ]
