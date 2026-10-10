@@ -371,4 +371,141 @@
       ],
     },
   });
+
+  /* ============== 4) WEATHER AND LIFE ON EARTH IN THE FUTURE ============== */
+  /* [simge, sıfat, Türkçe, isim, yanlış yazım, cümle (isimle)] */
+  const HAVA = [
+    ["☀️", "sunny", "güneşli", "sun", "suny", "The sun is shining and the sky is blue."],
+    ["🌧️", "rainy", "yağmurlu", "rain", "rainny", "There is a lot of rain today."],
+    ["❄️", "snowy", "karlı", "snow", "snowwy", "There is a lot of snow on the streets."],
+    ["🌬️", "windy", "rüzgârlı", "wind", "windey", "The wind is very strong today."],
+    ["☁️", "cloudy", "bulutlu", "cloud", "cloudly", "There are a lot of grey clouds in the sky."],
+    ["🌫️", "foggy", "sisli", "fog", "fogy", "There is thick fog. We can't see the road."],
+    ["⛈️", "stormy", "fırtınalı", "storm", "stormmy", "There is a big storm with thunder and lightning."],
+  ];
+  /* Hava – giysi eşleştirmesi: [durum, uygun giysiler, uygun olmayanlar] */
+  const GIYSI = [
+    ["☀️ It's sunny and hot.", ["sunglasses", "shorts", "a T-shirt", "a hat"], ["gloves", "a scarf", "a coat", "a raincoat"], "sıcak ve güneşli havada serin giysiler ve güneş gözlüğü gerekir"],
+    ["🌧️ It's rainy.", ["a raincoat", "an umbrella", "boots"], ["sunglasses", "shorts", "sandals", "a swimsuit"], "yağmurlu havada ıslanmamak için yağmurluk, şemsiye ve bot gerekir"],
+    ["❄️ It's snowy and freezing.", ["a coat", "a scarf", "gloves", "boots"], ["shorts", "sandals", "a T-shirt", "a swimsuit"], "karlı ve dondurucu havada kalın giysiler gerekir"],
+  ];
+  const FUT_SOZ = [["sunny", "güneşli"], ["rainy", "yağmurlu"], ["snowy", "karlı"], ["windy", "rüzgârlı"], ["cloudy", "bulutlu"], ["foggy", "sisli"], ["stormy", "fırtınalı"], ["freezing", "dondurucu (çok soğuk)"],
+    ["hot", "sıcak"], ["warm", "ılık"], ["cold", "soğuk"], ["moody", "değişken (hava)"], ["thunder", "gök gürültüsü"], ["lightning", "şimşek"], ["storm", "fırtına"], ["hurricane", "kasırga"],
+    ["coat", "mont / palto"], ["scarf", "atkı"], ["gloves", "eldiven"], ["boots", "bot / çizme"], ["raincoat", "yağmurluk"], ["umbrella", "şemsiye"], ["sunglasses", "güneş gözlüğü"], ["robot", "robot"], ["flying car", "uçan araba"]];
+  const BE = [["I", "am"], ["My dad", "is"], ["She", "is"], ["He", "is"], ["We", "are"], ["They", "are"], ["My friends", "are"], ["You", "are"]];
+  const PLAN = ["visit my grandparents tomorrow", "go to the planetarium next Saturday", "watch the stars tonight", "join a science club next year", "plant a tree this weekend", "buy a new telescope next month"];
+  const PLAN_O = { I: "my", "My dad": "his", She: "her", He: "his", We: "our", They: "their", "My friends": "their", You: "your" };
+  const TAHMIN = ["people will live on Mars", "robots will clean our houses", "cars will fly in the sky", "children will learn with robot teachers", "people will go on holiday to the Moon", "we will use only clean energy"];
+
+  KONU_EKLE("en", {
+    id: "en_future", tema: "en8", ad: "Weather and Life on Earth in the Future", tr: "Hava durumu ve gelecekte yaşam",
+    kazanimlar: [
+      { id: "enfut.weather", ad: "Hava durumu ve aşırı hava olayları" },
+      { id: "enfut.clothes", ad: "Hava durumuna uygun giysiler" },
+      { id: "enfut.goingto", ad: "be going to: planlar ve kanıta dayalı tahminler" },
+      { id: "enfut.will", ad: "will: gelecek tahminleri ve soru eklentileri" },
+    ],
+    sozluk: FUT_SOZ,
+    anlatim: [
+      { baslik: "What's the weather like?",
+        metin: "Havayı sormak için <b>What's the weather like?</b> deriz. Cevap <b>It's + sıfat</b> olur. Hava sıfatlarının çoğu isme <b>-y</b> eklenerek yapılır: sun → <b>sunny</b> (son harf ikilenir), rain → <b>rainy</b>, snow → <b>snowy</b>, wind → <b>windy</b>, cloud → <b>cloudy</b>, fog → <b>foggy</b>, storm → <b>stormy</b>. Sıcaklık için: <b>hot</b> (sıcak), <b>warm</b> (ılık), <b>cold</b> (soğuk), <b>freezing</b> (dondurucu). Hava gün içinde sık sık değişiyorsa <b>moody</b> (değişken) denebilir; aynı anlamda <b>changeable</b> da kullanılır. Aşırı hava olayları: <b>a storm</b> (fırtına), <b>thunder</b> (gök gürültüsü), <b>lightning</b> (şimşek), <b>a hurricane</b> (kasırga).",
+        ornek: "— <b>What's the weather like in Erzurum today?</b><br>— <b>It's snowy and freezing.</b>",
+        durak: { soru: "There is a lot of fog this morning. It's ___.", secenekler: [["foggy", true, "fog + g + y = foggy (sisli)."], ["fogy", false, "Son harf ikilenmeli: foggy."], ["fog", false, "“fog” isimdir; It's + sıfat gerekir."], ["cloudy", false, "cloudy bulutlu demektir; sis için foggy kullanılır."]] } },
+      { baslik: "Hava durumuna göre giyinmek",
+        metin: "Havaya uygun giysiler: Güneşli ve sıcak havada <b>sunglasses</b> (güneş gözlüğü), <b>a hat</b> (şapka), <b>shorts</b> (şort), <b>a T-shirt</b> (tişört). Yağmurlu havada <b>a raincoat</b> (yağmurluk), <b>an umbrella</b> (şemsiye), <b>boots</b> (bot). Karlı ve soğuk havada <b>a coat</b> (mont), <b>a scarf</b> (atkı), <b>gloves</b> (eldiven), <b>boots</b>. Kalıplar: <b>Wear your coat!</b> · <b>Take your umbrella.</b> · <b>Don't forget your gloves!</b>",
+        ornek: "<b>It's rainy today. Take your umbrella and wear your raincoat.</b>",
+        gorsel: G.tablo(["Weather", "Clothes"], [["☀️ sunny / hot", "sunglasses, a hat, shorts, a T-shirt"], ["🌧️ rainy", "a raincoat, an umbrella, boots"], ["❄️ snowy / freezing", "a coat, a scarf, gloves, boots"]]),
+        durak: { soru: "It's freezing outside. What do you need for your hands?", secenekler: [["gloves", true, "Eldiven (gloves) elleri soğuktan korur."], ["a scarf", false, "Atkı boyun içindir."], ["sunglasses", false, "Güneş gözlüğü gözler içindir ve sıcak havada kullanılır."], ["shorts", false, "Şort sıcak havada giyilir."]] } },
+      { baslik: "Gelecek: be going to ve will",
+        metin: "<b>be going to + fiil</b>: önceden yapılmış <b>planlar</b> ve <b>görülen bir kanıta dayalı tahminler</b> için kullanılır. Özneye göre <b>am / is / are going to</b> deriz: <b>I am going to visit my grandma tomorrow.</b> · <b>Look at those black clouds! It is going to rain.</b> <b>will + fiil</b>: geleceğe dair <b>genel tahminler</b> ve düşünceler için kullanılır; her öznede aynıdır, olumsuzu <b>won't</b>: <b>In the future, robots will do our homework.</b> · <b>People won't use petrol cars.</b> Soru eklentileri: <b>It will be sunny, won't it?</b> · <b>You are going to come, aren't you?</b>",
+        ornek: "<b>In 2100, people will live on Mars.</b> — 2100'de insanlar Mars'ta yaşayacak.<br><b>We are going to plant trees next week.</b> — Gelecek hafta ağaç dikeceğiz.",
+        durak: { soru: "Look at the dark clouds! It ___ rain.", secenekler: [["is going to", true, "Kara bulutlar bir kanıttır; kanıta dayalı tahminde be going to kullanılır."], ["are going to", false, "“It” ile “is” kullanılır."], ["will to", false, "will'den sonra “to” gelmez."], ["going to", false, "“going to” önünde be fiili (is) eksik."]] } },
+    ],
+    uret: {
+      "enfut.weather": [
+        kelime("enfut.weather", FUT_SOZ),
+        z => { const k = karistir(HAVA).slice(0, 4), h = k[0];
+          return S({ kaz: "enfut.weather", duzey: "hatirlama", zorluk: 1, soru: `<b>${h[0]} ${h[0]}</b><br>What's the weather like?`, dogru: `It's ${h[1]}.`,
+            yanlis: k.slice(1).map(x => [`It's ${x[1]}.`, "bilgi", `“${x[1]}” ${x[2]} demektir; simgesi ${x[0]}.`]),
+            ipucu: "Simgeye dikkatle bak.", cozum: [`Simge ${h[0]} ${h[2]} havayı gösterir.`, `${h[2]} = ${h[1]}.`, `Cevap: It's ${h[1]}.`], kural: "What's the weather like? → It's + sıfat (sunny, rainy, snowy…)" }); },
+        z => { const h = sec(HAVA), baska = sec(HAVA.filter(x => x !== h));
+          return S({ kaz: "enfut.weather", duzey: "uygulama", zorluk: 2, soru: `Complete: <b>${h[5]} It's ___ today.</b>`, dogru: h[1],
+            yanlis: [[h[3], "kavrama", `“${h[3]}” isimdir; “It's” den sonra sıfat (-y) gerekir.`], [h[4], "dikkat", `Yazım hatası; doğrusu “${h[1]}”.`], [baska[1], "kavrama", `“${baska[1]}” ${baska[2]} demektir; cümle ${h[2]} havayı anlatıyor.`]],
+            ipucu: "İsme -y ekleyerek sıfat yap.", cozum: [`Cümle ${h[3]} (${h[2]}) havayı anlatıyor.`, `İsim + y → sıfat: ${h[3]} → ${h[1]}.`, `Cevap: It's ${h[1]} today.`], kural: "sun → sunny, fog → foggy (son harf ikilenir); rain → rainy, wind → windy" }); },
+        z => { const t = sec([[R(-12, -2), "freezing"], [R(3, 9), "cold"], [R(16, 22), "warm"], [R(30, 40), "hot"]]), digerleri = ["freezing", "cold", "warm", "hot"].filter(x => x !== t[1]);
+          const tr = { freezing: "dondurucu (0 °C altı)", cold: "soğuk", warm: "ılık", hot: "sıcak" };
+          return S({ kaz: "enfut.weather", duzey: "uygulama", zorluk: 1, soru: `🌡️ The temperature is <b>${t[0]} °C</b>. It's ___.`, dogru: t[1],
+            yanlis: digerleri.map(x => [x, "kavrama", `“${x}” ${tr[x]} demektir; ${t[0]} °C için uygun değil.`]),
+            ipucu: "0 °C altı dondurucu, 30 °C üstü sıcaktır.", cozum: ["freezing: 0 °C ve altı · cold: soğuk · warm: ılık · hot: sıcak.", `${t[0]} °C ${tr[t[1]]} bir sıcaklıktır.`, `Cevap: It's ${t[1]}.`], kural: "freezing → cold → warm → hot (soğuktan sıcağa)" }); },
+        z => { const g = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], h = karistir(HAVA).slice(0, 5), i = R(0, 4), sic = g.map(() => R(5, 25));
+          const dig = karistir([0, 1, 2, 3, 4].filter(j => j !== i)).slice(0, 3);
+          return S({ kaz: "enfut.weather", duzey: "transfer", zorluk: 2, soru: `Look at the weather forecast for next week. What will the weather be like on <b>${g[i]}</b>?`,
+            gorsel: G.tablo(["Day", "Weather", "Temperature"], g.map((d, j) => [d, h[j][0] + " " + h[j][1], sic[j] + " °C"])),
+            dogru: `It will be ${h[i][1]}.`, yanlis: dig.map(j => [`It will be ${h[j][1]}.`, "dikkat", `Bu, ${g[j]} gününün havasıdır.`]),
+            ipucu: `Tabloda “${g[i]}” satırını bul.`, cozum: [`Tabloda ${g[i]} satırını bul.`, `${g[i]}: ${h[i][0]} ${h[i][1]}, ${sic[i]} °C.`, `Cevap: It will be ${h[i][1]}.`], kural: "weather forecast = hava tahmini; What will the weather be like? → It will be…" }); },
+        Q("enfut.weather", "aciklama", 2, "It is a very strong storm with very fast winds. It can destroy houses. What is it?", "a hurricane",
+          [["thunder", "kavrama", "Thunder fırtınadaki gök gürültüsüdür (ses)."], ["lightning", "kavrama", "Lightning gökyüzündeki parlak ışıktır (şimşek)."], ["fog", "kavrama", "Fog sistir; evleri yıkmaz."]],
+          "Çok güçlü rüzgârlı fırtına.", ["Tanım: çok hızlı rüzgârları olan, evleri yıkabilen güçlü fırtına.", "Bu hava olayına kasırga denir.", "Cevap: a hurricane."], { kural: "hurricane = kasırga, thunder = gök gürültüsü, lightning = şimşek" }),
+        Q("enfut.weather", "aciklama", 2, "In the morning it was sunny, at noon it was rainy and in the evening it was windy. The weather was ___ today.", "moody",
+          [["freezing", "kavrama", "Freezing çok soğuk demektir; havanın değişmesini anlatmaz."], ["foggy", "kavrama", "Foggy sisli demektir."], ["sunny", "dikkat", "Hava yalnızca sabah güneşliydi; gün boyunca değişti."]],
+          "Hava gün boyunca hep aynı mı kaldı?", ["Hava sabah güneşli, öğlen yağmurlu, akşam rüzgârlı oldu.", "Sık sık değişen hava için “moody” (changeable) denir.", "Cevap: moody."], { kural: "moody / changeable weather = değişken hava" }),
+      ],
+      "enfut.clothes": [
+        z => { const [durum, uygun, olmayan, neden] = sec(GIYSI), d = sec(uygun), y = karistir(olmayan).slice(0, 3);
+          return S({ kaz: "enfut.clothes", duzey: "uygulama", zorluk: 1, soru: `<b>${durum}</b><br>What do you need today?`, dogru: d,
+            yanlis: y.map(x => [x, "kavrama", `“${x}” bu havaya uygun değil; ${neden}.`]),
+            ipucu: "Bu havada üşür müsün, ıslanır mısın, yoksa sıcaktan mı bunalırsın?", cozum: [`Hava: ${durum}`, `Bu havada ${neden}.`, `Uygun olan: ${d}.`], kural: "sunny/hot → sunglasses, hat, shorts · rainy → raincoat, umbrella · snowy/freezing → coat, scarf, gloves" }); },
+        z => { const k = karistir(GIYSI), [durum, uygun] = k[0], esya = karistir(uygun).slice(0, 2);
+          const hava = { "☀️ It's sunny and hot.": "sunny and hot", "🌧️ It's rainy.": "rainy", "❄️ It's snowy and freezing.": "snowy and freezing" };
+          const y = [...k.slice(1).map(x => [`It's ${hava[x[0]]}.`, "kavrama", `${x[0]} Bu havada ${x[1].join(", ")} kullanılır.`]), ["It's foggy.", "kavrama", "Sisli hava için özel bir giysi gerekmez; bu eşyalar başka bir havaya uygundur."]];
+          return S({ kaz: "enfut.clothes", duzey: "aciklama", zorluk: 2, soru: `Mert is wearing <b>${esya[0]}</b> and <b>${esya[1]}</b>. What's the weather like?`, dogru: `It's ${hava[durum]}.`,
+            yanlis: y, ipucu: "Bu giysiler hangi havada kullanılır?", cozum: [`Mert'in giydikleri: ${esya.join(" ve ")}.`, `Bu eşyalar ${durum} havasına uygundur.`, `Cevap: It's ${hava[durum]}.`], kural: "Giysiden havayı tahmin et: umbrella → rainy, gloves → freezing, sunglasses → sunny" }); },
+        Q("enfut.clothes", "transfer", 1, "Complete the dialogue:<br>— Mum, can I go out to play? <br>— Yes, but it's very cold and snowy. ___", "Wear your coat and gloves!",
+          [["Take your sunglasses!", "kavrama", "Güneş gözlüğü sıcak, güneşli havada kullanılır."], ["Wear your shorts!", "kavrama", "Şort karda giyilmez."], ["Don't forget your swimsuit!", "kavrama", "Mayo yüzmek içindir; karlı havaya uygun değil."]],
+          "Soğuk ve karlı havada ne giyilir?", ["Hava çok soğuk ve karlı.", "Soğuk havada mont ve eldiven giyilir.", "Cevap: Wear your coat and gloves!"], { kural: "Wear your … / Take your … / Don't forget your …" }),
+        Q("enfut.clothes", "uygulama", 1, "Which one do we use when it's rainy?", "☂️ an umbrella",
+          [["🕶️ sunglasses", "kavrama", "Güneş gözlüğü güneşli havada kullanılır."], ["🧤 gloves", "kavrama", "Eldiven soğuk havada elleri korur; yağmurdan korumaz."], ["🩳 shorts", "kavrama", "Şort sıcak havada giyilir."]],
+          "Yağmurdan korunmak için ne açarız?", ["Yağmurlu havada ıslanmamak isteriz.", "Şemsiye (umbrella) yağmurdan korur.", "Cevap: an umbrella."], { kural: "umbrella = şemsiye, raincoat = yağmurluk" }),
+        Q("enfut.clothes", "baglanti", 2, "Theme 3'ü hatırla. Read and answer:<br><i>Selin is going to visit Antalya in July. It's going to be sunny and very hot.</i><br>Which bag is the best for Selin?", "sunglasses, shorts, a T-shirt, a hat",
+          [["a coat, a scarf, gloves, boots", "kavrama", "Bunlar soğuk ve karlı hava içindir."], ["a raincoat, an umbrella, boots", "kavrama", "Bunlar yağmurlu hava içindir."], ["a scarf, a T-shirt, gloves, sunglasses", "dikkat", "Atkı ve eldiven sıcak havada gerekmez."]],
+          "Temmuzda Antalya'da hava nasıldır?", ["Metne göre hava güneşli ve çok sıcak olacak.", "Sıcak havada serin giysiler ve güneş gözlüğü gerekir.", "Cevap: sunglasses, shorts, a T-shirt, a hat."], { kural: "Hot weather clothes: sunglasses, shorts, T-shirt, hat" }),
+      ],
+      "enfut.goingto": [
+        z => { const [ozne, be] = sec(BE), plan = sec(PLAN).replace("my ", PLAN_O[ozne] + " "), digerleri = ["am", "is", "are"].filter(x => x !== be);
+          return S({ kaz: "enfut.goingto", duzey: "uygulama", zorluk: 1, soru: `Complete: <b>${ozne} ___ ${plan}.</b>`, dogru: `${be} going to`,
+            yanlis: [...digerleri.map(x => [`${x} going to`, "kavrama", `“${ozne}” ile “${be}” kullanılır; “${x}” bu özneye uymaz.`]), ["will going to", "bilgi", "will ve going to birlikte kullanılmaz."]].slice(0, 3),
+            ipucu: "I → am, he/she/it → is, we/you/they → are", cozum: ["Cümle önceden yapılmış bir planı anlatıyor: be going to.", `Özne “${ozne}” → ${be}.`, `Cevap: ${ozne} ${be} going to ${plan}.`], kural: "I am / he-she-it is / we-you-they are + going to + V1" }); },
+        Q("enfut.goingto", "aciklama", 1, "Look! The boy is running very fast and there is a big stone in front of him. He ___ fall!", "is going to",
+          [["will to", "bilgi", "will'den sonra “to” gelmez."], ["are going to", "kavrama", "“He” ile “is” kullanılır."], ["was", "kavrama", "“was” geçmiş zamandır; şimdi gördüğümüz bir kanıta göre gelecek tahmini yapıyoruz."]],
+          "Gördüğün bir kanıta dayanarak tahmin yapıyorsun.", ["Şu anda bir kanıt görüyoruz (taş ve hızlı koşan çocuk).", "Kanıta dayalı tahminlerde be going to kullanılır.", "He → is going to fall."], { kural: "Kanıta dayalı tahmin: Look! It is going to rain." }),
+        Q("enfut.goingto", "uygulama", 2, "Choose the correct question.", "Are you going to watch the stars tonight?",
+          [["Do you going to watch the stars tonight?", "bilgi", "be going to sorusu “Are/Is/Am” ile başlar."], ["Are you going to watching the stars tonight?", "bilgi", "going to'dan sonra fiil yalın gelir: watch."], ["You are going to watch the stars tonight?", "kavrama", "Soru cümlesinde be fiili özneden önce gelir."]],
+          "Soru: Am/Is/Are + özne + going to + V1?", ["be going to sorusunda “are” başa gelir.", "Sonra özne ve going to + fiilin yalın hâli gelir.", "Cevap: Are you going to watch the stars tonight?"], { kural: "Are you going to…? → Yes, I am. / No, I'm not." }),
+        Q("enfut.goingto", "transfer", 2, "Read Ece's plan and answer.<br><i>Next Saturday I'm going to go to the science museum with my class. We're going to see a planetarium show. After that, we're going to eat lunch in the park.</i><br>What are they going to do <b>after</b> the planetarium show?", "They are going to eat lunch in the park.",
+          [["They are going to go to the science museum.", "dikkat", "Müzeye gitmek gösteriden önce."], ["They are going to see a planetarium show.", "dikkat", "Soru gösteriden sonra ne yapacaklarını soruyor."], ["They ate lunch in the park.", "kavrama", "Plan gelecekle ilgili; geçmiş zaman kullanılmaz."]],
+          "“After that” cümlesini bul.", ["Sorudaki anahtar kelime: after (sonra).", "Metin: After that, we're going to eat lunch in the park.", "Cevap: They are going to eat lunch in the park."], { kural: "be going to = planlanmış gelecek" }),
+        Q("enfut.goingto", "uygulama", 2, "Choose the correct question tag: <b>You are going to visit Ankara, ___?</b>", "aren't you",
+          [["are you", "kavrama", "Cümle olumlu; eklenti olumsuz olmalı."], ["won't you", "kavrama", "Cümlede yardımcı fiil “are”; eklentide de “are” kullanılır."], ["don't you", "kavrama", "be going to cümlesinde eklenti be fiiliyle yapılır."]],
+          "Olumlu cümle → olumsuz eklenti, aynı yardımcı fiil.", ["Yardımcı fiil “are”, özne “you”.", "Olumlu cümleye olumsuz eklenti: aren't.", "Cevap: aren't you?"], { kural: "She is going to…, isn't she? · They aren't going to…, are they?" }),
+      ],
+      "enfut.will": [
+        z => { const t = sec(TAHMIN), yil = sec([2050, 2070, 2080, 2100, 2150]), [ozne, ...kalan] = t.split(" "), geri = kalan.slice(1).join(" ");
+          return S({ kaz: "enfut.will", duzey: "uygulama", zorluk: 1, soru: `Complete the prediction: <b>In ${yil}, ${ozne} ___ ${geri}.</b>`, dogru: "will",
+            yanlis: [["wills", "bilgi", "will hiçbir öznede -s almaz."], ["will to", "bilgi", "will'den sonra “to” gelmez."], [ozne === "people" || ozne === "robots" || ozne === "cars" || ozne === "children" || ozne === "we" ? "were" : "was", "kavrama", "Bu geçmiş zamandır; cümle gelecekle ilgili bir tahmin."]],
+            ipucu: "Gelecekle ilgili genel tahmin: will + V1.", cozum: [`“In ${yil}” gelecekteki bir zamanı gösterir.`, "Geleceğe dair tahminlerde will + fiilin yalın hâli kullanılır.", `Cevap: In ${yil}, ${t}.`], kural: "will + V1 (her öznede aynı). Olumsuzu: won't." }); },
+        Q("enfut.will", "uygulama", 1, "Choose the correct negative sentence.", "People won't use petrol cars in the future.",
+          [["People willn't use petrol cars in the future.", "bilgi", "will not'ın kısaltması “won't”tur."], ["People won't to use petrol cars in the future.", "bilgi", "won't'tan sonra “to” gelmez."], ["People don't will use petrol cars in the future.", "bilgi", "will'in olumsuzu “don't” ile yapılmaz."]],
+          "will not = won't", ["will'in olumsuzu: will not = won't.", "won't'tan sonra fiil yalın gelir.", "Cevap: People won't use petrol cars in the future."], { kural: "will not → won't + V1" }),
+        Q("enfut.will", "uygulama", 2, "Choose the correct question tag: <b>It will be sunny tomorrow, ___?</b>", "won't it",
+          [["will it", "kavrama", "Cümle olumlu; eklenti olumsuz olmalı."], ["isn't it", "kavrama", "Cümlede yardımcı fiil “will”; eklentide “won't” kullanılır."], ["won't they", "dikkat", "Özne “it”; eklentide de “it” olmalı."]],
+          "Olumlu cümle → olumsuz eklenti (won't).", ["Yardımcı fiil “will”, özne “it”.", "Olumlu cümleye olumsuz eklenti: won't.", "Cevap: won't it?"], { kural: "… will …, won't …? · … won't …, will …?" }),
+        Q("enfut.will", "aciklama", 2, "Which sentence is a <b>plan</b>, not a general prediction?", "I'm going to visit my uncle next Sunday.",
+          [["Robots will do our homework in the future.", "kavrama", "Bu, gelecekle ilgili genel bir tahmindir (will)."], ["People will live on Mars one day.", "kavrama", "Bu bir tahmindir; kişisel bir plan değildir."], ["Cars will fly in 2100.", "kavrama", "Bu bir tahmindir; planlanmış bir iş değildir."]],
+          "Plan için be going to, genel tahmin için will.", ["will ile kurulan cümleler genel tahminlerdir.", "Önceden kararlaştırılmış planlar be going to ile anlatılır.", "Plan: I'm going to visit my uncle next Sunday."], { kural: "Plan → be going to · Genel tahmin → will" }),
+        Q("enfut.will", "transfer", 2, "Read the text and answer the question.<br><i>What will life be like in 2100? I think people will live in smart houses. Robots will cook and clean. Children will go to school in flying cars. But I think people won't live on Mars because it will be too expensive.</i><br>According to the writer, which one <b>won't</b> happen?", "People will live on Mars.",
+          [["Robots will cook and clean.", "dikkat", "Yazar robotların yemek yapıp temizlik yapacağını düşünüyor."], ["People will live in smart houses.", "dikkat", "Yazar insanların akıllı evlerde yaşayacağını düşünüyor."], ["Children will go to school in flying cars.", "dikkat", "Yazar çocukların uçan arabalarla okula gideceğini düşünüyor."]],
+          "Metinde “won't” geçen cümleyi bul.", ["Sorudaki anahtar kelime: won't (olmayacak).", "Metin: “people won't live on Mars because it will be too expensive.”", "Olmayacak olan: People will live on Mars."], { kural: "I think … will / won't … = Bence … -ecek / -meyecek." }),
+      ],
+    },
+  });
 })();
