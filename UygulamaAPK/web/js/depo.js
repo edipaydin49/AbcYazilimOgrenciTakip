@@ -7,6 +7,8 @@
 (function () {
   "use strict";
   const DB_AD = "ogrenmeYolculugu", DB_SURUM = 1, AYAR_ANAHTAR = "ogr.ayar";
+  // UZAK_MOD: veli paneli bilgisayardan açıldı (veli.html). Veri tabletten okunur, bu cihazda hiçbir şey kaydedilmez.
+  const UZAK = window.UZAK_MOD === true;
   let db = null;
   const olaylar = new Map();
 
@@ -17,6 +19,7 @@
   if (!ayar.cihaz) ayar.cihaz = "c" + uid();
 
   function ayarKaydet() {
+    if (UZAK) return;
     try { localStorage.setItem(AYAR_ANAHTAR, JSON.stringify(ayar)); } catch (e) {}
     if (db) try { db.transaction("ayar", "readwrite").objectStore("ayar").put({ k: "ayar", v: ayar }); } catch (e) {}
   }
@@ -36,6 +39,7 @@
   }
 
   async function baslat() {
+    if (UZAK) return;
     db = await ac();
     if (!db) return;
     await new Promise(coz => {
@@ -71,7 +75,9 @@
   }
   function planla() { if (!zamanlayici) zamanlayici = setTimeout(bosalt, 300); }
   let onbellek = null;  // tür → zamana göre sıralı liste (her yazmada geçersizleşir)
+  let tableteDegisti = true;  // bilgisayardan izleme açıkken veriyi yeniden gönderme işareti
   function yaz(o) {
+    tableteDegisti = true;
     olaylar.set(o.id, o);
     onbellek = null;
     kuyruk.set(o.id, o);
@@ -116,11 +122,13 @@
     oturum = kaydet("oturum", { bas: Date.now(), son: Date.now(), aktifSn: 0, kesinti: 0 });
   }
   function etkilesim() {
+    if (UZAK) return;
     sonEtkilesim = Date.now(); bostaSayildi = false;
     if (!oturum) oturumBaslat();
   }
   ["pointerdown", "keydown", "touchstart", "scroll"].forEach(e => document.addEventListener(e, etkilesim, { passive: true }));
   document.addEventListener("visibilitychange", () => {
+    if (UZAK) return;
     if (document.hidden) { gizlendi = Date.now(); if (oturum) guncelle(oturum, { son: Date.now() }); clearTimeout(zamanlayici); bosalt(); }
     else if (gizlendi) {
       const sure = Date.now() - gizlendi; gizlendi = null;
@@ -131,7 +139,7 @@
   });
   const ADIM = 15;
   setInterval(() => {
-    if (!oturum || document.hidden) return;
+    if (UZAK || !oturum || document.hidden) return;
     const bosta = Date.now() - sonEtkilesim;
     const videoOynuyor = window.VIDEO_OYNUYOR === true;
     if (bosta < 90 * 1000 || videoOynuyor) guncelle(oturum, { aktifSn: oturum.aktifSn + ADIM, son: Date.now() });
@@ -141,6 +149,7 @@
   /* ---------------- Bulut eşitleme (isteğe bağlı) ---------------- */
   let esitleniyor = false;
   async function gonder() {
+    if (UZAK) return { ok: false, neden: "uzak görünüm" };
     if (!ayar.bulutUrl || esitleniyor || !navigator.onLine) return { ok: false, neden: ayar.bulutUrl ? "çevrimdışı" : "adres yok" };
     const bekleyen = [...olaylar.values()].filter(o => !o.gonderildi && o.cihaz === ayar.cihaz);
     if (!bekleyen.length) return { ok: true, n: 0 };
@@ -169,17 +178,42 @@
       return { ok: true, n: iceAktar(j.olaylar) };
     } catch (e) { return { ok: false, neden: e.message }; }
   }
-  window.addEventListener("online", () => gonder());
+  if (!UZAK) window.addEventListener("online", () => gonder());
   window.addEventListener("pagehide", () => { clearTimeout(zamanlayici); bosalt(); });
-  setInterval(() => gonder(), 2 * 60 * 1000);
+  if (!UZAK) setInterval(() => gonder(), 2 * 60 * 1000);
 
   /* Bütün verinin dışa aktarımı (kopyala-yapıştır ile başka cihaza taşımak için). */
   function disaAktar() {
-    return JSON.stringify({ surum: 1, ogrenci: ayar.ogrenciAdi, olaylar: [...olaylar.values()].map(({ gonderildi, ...o }) => o) });
+    const { pin, bulutUrl, ...a } = ayar;
+    return JSON.stringify({ surum: 1, zaman: Date.now(), ogrenci: ayar.ogrenciAdi, ayar: a, olaylar: [...olaylar.values()].map(({ gonderildi, ...o }) => o) });
+  }
+
+  /* ---------------- Bilgisayardan izleme ---------------- */
+  // Tablet: veriyi Android'deki küçük sunucuya verir (sunucu açıksa, değişiklik oldukça en geç 10 sn'de bir).
+  function tabletVeri() {
+    const { pin, bulutUrl, ...a } = ayar;
+    return JSON.stringify({ surum: 1, zaman: Date.now(), ogrenci: ayar.ogrenciAdi, ayar: a, olaylar: [...olaylar.values()].map(({ gonderildi, ...o }) => o) });
+  }
+  function tabletePaylas(zorla) {
+    if (UZAK || !(window.Android && Android.sunucuAdres && Android.veriGuncelle)) return;
+    if (!zorla && !tableteDegisti) return;
+    if (!Android.sunucuAdres()) return;
+    tableteDegisti = false;
+    try { Android.veriGuncelle(tabletVeri(), String(ayar.pin)); } catch (e) {}
+  }
+  if (!UZAK) setInterval(() => tabletePaylas(false), 10000);
+  // Bilgisayar: tabletten gelen veriyi yalnızca bellekte tutar.
+  let uzakZaman = 0;
+  function uzakYukle(v) {
+    olaylar.clear(); onbellek = null;
+    for (const o of v.olaylar || []) if (o && o.id) olaylar.set(o.id, { ...o, gonderildi: true });
+    ayar = { ...VARSAYILAN, ...(v.ayar || {}), ogrenciAdi: v.ogrenci || (v.ayar || {}).ogrenciAdi || "", kurulum: true };
+    uzakZaman = v.zaman || Date.now();
+    return olaylar.size;
   }
 
   window.DEPO = {
-    baslat, kaydet, guncelle, liste, iceAktar, gonder, cek, disaAktar, ayarKaydet, uid, yazmaBitti,
+    baslat, kaydet, guncelle, liste, iceAktar, gonder, cek, disaAktar, ayarKaydet, uid, yazmaBitti, tabletePaylas, uzakYukle, uzak: UZAK, uzakZaman: () => uzakZaman,
     get ayar() { return ayar; }, set ayar(v) { ayar = v; ayarKaydet(); },
     bekleyenSayisi: () => [...olaylar.values()].filter(o => !o.gonderildi && o.cihaz === ayar.cihaz).length,
     sifirla: async () => { olaylar.clear(); kuyruk.clear(); onbellek = null; if (db) await new Promise(c => { const tx = db.transaction("olaylar", "readwrite"); tx.objectStore("olaylar").clear(); tx.oncomplete = c; }); },

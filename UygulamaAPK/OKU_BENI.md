@@ -1,6 +1,6 @@
 # Öğrenme Yolculuğu (6. Sınıf Matematik, Fen Bilimleri, Türkçe ve İngilizce) — APK
 
-Tablete kurulacak dosya: **`OgrenmeYolculugu.apk`** (sürüm 1.5, Android 7 ve üstü; Samsung Galaxy Tab A9+ / One UI 8.5 / Android 16 ile uyumlu).
+Tablete kurulacak dosya: **`OgrenmeYolculugu.apk`** (sürüm 1.6, Android 7 ve üstü; Samsung Galaxy Tab A9+ / One UI 8.5 / Android 16 ile uyumlu).
 
 ## 1. Tablete kurulum (bir kez)
 
@@ -82,6 +82,22 @@ Panelin üstünden **Tüm dersler / Matematik / Fen Bilimleri** seçilir; bütü
 
 **Yazılı kapsamları hakkında:** Varsayılan konular okulların yaygın yıllık planına göre seçildi. Öğretmenin duyurduğu konular farklıysa Veli paneli → Yazılılar'dan işaretleri değiştirip tarihi girin; öğrencinin ana sayfasında kalan gün sayısı görünür.
 
+## 2b. Veli panelini bilgisayardan izleme (aynı Wi‑Fi ağı)
+
+Tablet ve bilgisayar aynı modeme (Wi‑Fi ağına) bağlıyken veli panelini bilgisayarın tarayıcısında büyük ekranda görebilirsiniz. İnternet ya da kurulum gerekmez; veriler yalnızca ev ağınızda dolaşır.
+
+1. Tablette: **Veli paneli → Ayarlar ve eşitleme → 💻 Bilgisayardan izleme → İzlemeyi başlat.**
+2. Ekranda bir adres çıkar, örneğin **http://192.168.1.34:8080**. Bilgisayarda Chrome ya da Edge'i açın ve bu adresi adres çubuğuna yazın.
+3. Açılan sayfada **veli şifresini** girin → Bağlan. Bütün veli paneli (özet, ders ve konular, konu ayrıntıları, kazanım haritası, soru analizi, yazılılar, soru kayıtları, oyunlar) görünür. Sayfa 15 saniyede bir kendiliğinden yenilenir; sağ üstteki **Yenile** ile hemen yenilenir.
+4. İş bitince tablette **İzlemeyi kapat**.
+
+Bilinmesi gerekenler:
+- İzleme sürerken tablette uygulama **açık** kalmalı (izleme açıkken ekran kendiliğinden kararmaz). Uygulama kapatılırsa ya da tablet uyursa bilgisayardaki sayfa güncellenmez.
+- Bilgisayardan yalnızca **görüntüleme** yapılır; ayarlar, şifre, videolar ve yazılı tarihleri tabletten değiştirilir.
+- Sayfa veli şifresiyle korunur; 5 hatalı denemede 1 dakika kilitlenir. Varsayılan şifre **1234** ise önce değiştirin.
+- Bağlanamazsanız: iki cihazın aynı Wi‑Fi'de olduğunu kontrol edin (misafir ağı ya da modemdeki “istemci yalıtımı / AP isolation” özelliği cihazların birbirini görmesini engeller). Adres her bağlantıda değişebilir; tabletteki adresi kullanın.
+- **İnternetsiz ve ağsız yol:** `VeliPaneli.html` dosyasını bilgisayara kopyalayıp çift tıklayın. Tablette Veli paneli → Ayarlar → “Tüm verileri kopyala/paylaş” ile aldığınız metni sayfadaki kutuya yapıştırın.
+
 ## 3. YouTube videoları (ebeveyn kilidi olan tablette)
 
 - Video **uygulamanın içinde** oynatılır; YouTube uygulaması açılmaz. Video ekranından YouTube'a geçiş engellenmiştir, çocuk uygulamanın dışına çıkamaz.
@@ -127,4 +143,5 @@ Plandaki yaklaşım (tek ders, birkaç konu, önce ölç sonra genişlet) doğru
 - Derleme: `python3 araclar/apk_derle.py <sürüm_kodu> <sürüm_adı>`. Android SDK gerekmez: `dx` (Maven Central), JDK `jarsigner` ve dosya içindeki ikili manifest/kaynak kodlayıcıları kullanılır.
 - **`anahtar/ogrenme.jks` imza anahtarını silmeyin.** Güncellemeler aynı anahtarla imzalanmazsa tablet yeni sürümü kurmaz; eski sürümü silmek gerekir ve veriler kaybolur.
 - İçerik dosyaları: `web/js/ortak.js` (yardımcılar, soru görselleri), `icerik.js` + `mat_ek.js` (Matematik), `fen.js` + `fen1.js`–`fen3.js` (Fen), `tr.js` + `tr1.js`–`tr3.js` (Türkçe), `oyun.js` (Türkçe Diyarı), `en.js` + `en1.js`–`en4.js` (İngilizce), `ingoyun.js` (İngilizce oyunları ve sesli okuma), `videolar.js` (hazır videolar), `birlestir.js` (dersleri birleştirir, yazılı kapsamları).
+- Bilgisayardan izleme: `android/src/tr/abc/ogrenme/YerelSunucu.java` (Android'e bağımsız küçük HTTP sunucusu; yalnızca GET, şifreli `/api/veri`), `web/veli.html` ve `VeliPaneli.html` derlemede `araclar/veli_sayfasi.py` ile üretilir. Test: `node araclar/uzak_test.js <klasör>` (sunucuyu JVM'de çalıştırıp tarayıcıdan bağlanır).
 - Testler: `node araclar/ders_dogrula.js web/js/<ders dosyaları>` (her üreteci 40 kez çalıştırıp denetler), `node araclar/gorsel_onizleme.js <klasör> [ders]` (görselli soruların önizlemesi), `node araclar/oyun_test.js <klasör>` ve `node araclar/ingoyun_test.js <klasör>` (oyunları uçtan uca oynar), `node araclar/icerik_test.js` (28 bin soru üretip denetler), `node araclar/arayuz_test.js <klasör>` (uçtan uca), `node araclar/video_test.js` (video takibi), `node araclar/performans_test.js` (6 aylık veriyle, 6 kat yavaş işlemcide süre ölçümü).

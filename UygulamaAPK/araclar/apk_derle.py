@@ -178,6 +178,7 @@ def simge(yol):
 
 # ---------------------------------------------------------------- derleme
 def main():
+    calistir(sys.executable, KOK / "araclar" / "veli_sayfasi.py")  # bilgisayardan izleme sayfaları (veli.html)
     shutil.rmtree(GECICI, ignore_errors=True)
     (GECICI / "stub").mkdir(parents=True)
     (GECICI / "sinif").mkdir()

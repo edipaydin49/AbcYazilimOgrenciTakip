@@ -30,6 +30,7 @@
     document.querySelectorAll(".perde").forEach(p => p.remove());
     window.scrollTo(0, 0);
     const [yol, a, b] = location.hash.replace(/^#\/?/, "").split("/");
+    if (DEPO.uzak) return uzakYonlendir(yol, a, b);
     $("#ustAd").textContent = DEPO.ayar.ogrenciAdi ? "Öğrenme Yolculuğu · " + DEPO.ayar.ogrenciAdi : "Öğrenme Yolculuğu";
     ustDurum();
     if (!DEPO.ayar.kurulum) return kurulum();
@@ -48,6 +49,60 @@
   }
   window.addEventListener("online", ustDurum); window.addEventListener("offline", ustDurum);
   setInterval(ustDurum, 30000);
+
+  /* ============================ BİLGİSAYARDAN İZLEME (veli.html) ============================ */
+  let uzakPin = null, uzakSaat = null, uzakHazir = false;
+  function uzakYonlendir(yol, a, b) {
+    document.body.classList.add("uzak");
+    $("#evBtn").hidden = true;
+    if (!$("#veliBtn").dataset.uzak) { const eski = $("#veliBtn"), yeni = eski.cloneNode(true); yeni.dataset.uzak = "1"; yeni.textContent = "Yenile"; eski.replaceWith(yeni); yeni.onclick = () => uzakYenile(true); }
+    const zaman = DEPO.uzakZaman();
+    $("#ustAd").textContent = "Veli paneli (bilgisayar)" + (DEPO.ayar.ogrenciAdi ? " · " + DEPO.ayar.ogrenciAdi : "");
+    $("#ustDurum").textContent = uzakHazir ? "tabletten alındı: " + new Date(zaman).toLocaleTimeString("tr-TR", { hour: "2-digit", minute: "2-digit", second: "2-digit" }) : "";
+    if (!uzakHazir) return uzakGiris();
+    veliAcik = true;
+    if (yol !== "veli" || a === "icerik" || a === "ayar") return git("#/veli/ozet");
+    veliPaneli(a || "ozet", b);
+  }
+  async function uzakYenile(elle) {
+    if (!uzakPin) return;
+    try {
+      const r = await fetch("/api/veri?pin=" + encodeURIComponent(uzakPin), { cache: "no-store" });
+      const j = await r.json();
+      if (!r.ok) { if (elle) toast(j.hata || "Veri alınamadı."); if (r.status === 401) { uzakHazir = false; uzakPin = null; yonlendir(); } return; }
+      if (j.zaman !== DEPO.uzakZaman() || elle) { DEPO.uzakYukle(j); yonlendir(); }
+      if (elle) toast("Güncellendi.");
+    } catch (e) { if (elle) toast("Tablete ulaşılamadı. Tablette uygulama açık ve “İzleme” açık olmalı."); }
+  }
+  function uzakGiris() {
+    const canli = /^https?:$/.test(location.protocol);
+    ana.innerHTML = `<section class="kart vurgu" style="max-width:560px;margin:0 auto;width:100%"><h1>Veli paneli · bilgisayar</h1>
+      ${canli ? `<p>Tabletteki <b>Öğrenme Yolculuğu</b> uygulamasının veli şifresini girin.</p>
+        <label class="alan">Veli şifresi<input type="password" id="uPin" inputmode="numeric" autocomplete="off" placeholder="••••"></label>
+        <button class="btn ana" id="uBaglan">Bağlan</button><p class="kucuk-yazi muted" id="uDurum"></p>` : ""}
+      <details ${canli ? "" : "open"}><summary><b>${canli ? "Ya da" : "Tablete bağlı değilsiniz:"} veri metnini yapıştırın</b></summary>
+        <p class="kucuk-yazi">Tablette: Veli paneli › Ayarlar › “Tüm verileri kopyala” ya da “Tüm verileri paylaş”. Metni buraya yapıştırın.</p>
+        <textarea id="uMetin" placeholder='{"surum":1,...}'></textarea><button class="btn" id="uYapistir">Verileri göster</button></details></section>`;
+    const b = $("#uBaglan");
+    if (b) {
+      const dene = async () => {
+        uzakPin = $("#uPin").value.trim(); $("#uDurum").textContent = "Bağlanılıyor…";
+        try {
+          const r = await fetch("/api/veri?pin=" + encodeURIComponent(uzakPin), { cache: "no-store" });
+          const j = await r.json();
+          if (!r.ok) { $("#uDurum").textContent = j.hata || "Bağlanılamadı."; uzakPin = null; return; }
+          DEPO.uzakYukle(j); uzakHazir = true;
+          clearInterval(uzakSaat); uzakSaat = setInterval(() => uzakYenile(false), 15000);
+          git("#/veli/ozet");
+        } catch (e) { $("#uDurum").textContent = "Tablete ulaşılamadı. Tablette uygulamanın açık olduğundan emin olun."; uzakPin = null; }
+      };
+      b.onclick = dene; $("#uPin").onkeydown = e => { if (e.key === "Enter") dene(); }; $("#uPin").focus();
+    }
+    $("#uYapistir").onclick = () => {
+      try { const j = JSON.parse($("#uMetin").value); if (!Array.isArray(j.olaylar)) throw 0; DEPO.uzakYukle(j); uzakHazir = true; git("#/veli/ozet"); }
+      catch (e) { toast("Metin okunamadı. Tamamını yapıştırdığınızdan emin olun."); }
+    };
+  }
 
   /* ============================ KURULUM ============================ */
   function kurulum() {
@@ -712,7 +767,7 @@
     const ust = `<section class="kart vurgu"><div class="satir ara"><h1>Veli paneli · ${kacis(DEPO.ayar.ogrenciAdi)}</h1>
       <span class="satir">${[[7, "Son 7 gün"], [30, "Son 30 gün"], [0, "Tümü"]].map(([g, a]) => `<button class="sekme ${aralik === g ? "aktif" : ""}" data-aralik="${g}">${a}</button>`).join("")}</span></div>
       <div class="ders-sec">${[[null, "Tüm dersler"], ...DERSLER.map(d => [d.id, d.simge + " " + d.ad])].map(([id, a]) => `<button class="sekme ${veliDers === id ? "aktif" : ""}" data-vders="${id || ""}">${a}</button>`).join("")}</div>
-      <nav class="sekmeler">${SEKMELER.map(([k, a]) => `<a class="sekme ${k === sekme || (sekme === "konu" && k === "dersler") ? "aktif" : ""}" href="#/veli/${k}">${a}</a>`).join("")}</nav>
+      <nav class="sekmeler">${SEKMELER.filter(([k]) => !DEPO.uzak || (k !== "icerik" && k !== "ayar")).map(([k, a]) => `<a class="sekme ${k === sekme || (sekme === "konu" && k === "dersler") ? "aktif" : ""}" href="#/veli/${k}">${a}</a>`).join("")}</nav>
       <p class="kucuk-yazi muted">Güven düzeyi: her değerin yanında kaç soruya dayandığı yazar. 5'ten az soru = düşük güven, 15 ve üzeri = yüksek güven.</p></section>`;
     const icerik = { ozet: veliOzet, dersler: veliDersler, konu: veliKonuDetay, kazanim: veliKazanim, soru: veliSoru, anlatim: veliAnlatim, tekrar: veliTekrar, calisma: veliCalisma, yazili: veliYazili, kayit: veliKayit, icerik: veliVideolar, ayar: veliAyar }[sekme] || veliOzet;
     ana.innerHTML = ust + icerik(h, param);
@@ -945,7 +1000,7 @@
           <div style="display:grid;gap:10px;margin-top:10px" data-yaz="${d.id}.${y.id}">
             <label class="alan">Sınav tarihi<input type="date" class="yTarih" value="${yaziliTarih(d.id, y.id)}"></label>
             <div style="display:grid;gap:6px">${d.temaListesi.map(t => `<span class="kucuk-yazi muted">${t.kisa} · ${t.ad}</span>${t.konular.map(k => `<label class="satir"><input type="checkbox" class="yKonu" value="${k}" ${kap.has(k) ? "checked" : ""}> ${KONU[k].ad} ${kap.has(k) ? durumEtiket(ortUstalik(hd, k)) : ""}</label>`).join("")}`).join("")}</div>
-            <div class="satir"><button class="btn ana kucuk yKaydet">Kaydet</button><button class="btn kucuk yVarsayilan">Varsayılana dön</button></div>
+            ${DEPO.uzak ? '<p class="kucuk-yazi muted">Bilgisayardan yalnızca görüntülenir; tarih ve konuları tablette değiştirin.</p>' : '<div class="satir"><button class="btn ana kucuk yKaydet">Kaydet</button><button class="btn kucuk yVarsayilan">Varsayılana dön</button></div>'}
             ${pr.length ? `<div class="tablo"><table><thead><tr><th>Prova</th><th class="sayi">Doğru</th><th class="sayi">Süre</th></tr></thead><tbody>${pr.slice(-6).reverse().map(p => `<tr><td>${tarih(p.t)}</td><td class="sayi">${p.dogru} / ${p.n}</td><td class="sayi">${sn(p.sure)}</td></tr>`).join("")}</tbody></table></div>` : '<p class="muted kucuk-yazi">Henüz yazılı provası yapılmadı.</p>'}
           </div></details>`; }).join("")}</section>`; }).join("") +
       `<p class="kucuk-yazi muted">Varsayılan kapsamlar okulların yaygın yıllık planına göre hazırlanmıştır. Öğretmenin duyurduğu konulara göre işaretleri değiştirebilirsiniz.</p>`;
@@ -992,6 +1047,12 @@
         <label class="alan">Veli paneli şifresi (yalnızca rakam)<input type="password" id="aPin" inputmode="numeric" value="${kacis(a.pin)}"></label>
         <label class="satir"><input type="checkbox" id="aOyunAcik" ${a.oyunHepsiAcik ? "checked" : ""}> Türkçe Diyarı oyununda bütün adaları ve görevleri aç (sınıfta ileriki temalara geçildiyse)</label>
         <button class="btn ana" id="aKaydet">Kaydet</button></section>
+      <section class="kart"><h2>💻 Bilgisayardan izleme (aynı Wi‑Fi ağı)</h2>
+        <p>Tablet ve bilgisayar aynı modeme bağlıyken veli panelini bilgisayarın tarayıcısından (Chrome, Edge…) görebilirsiniz. İnternet gerekmez; veriler yalnızca ev ağınızda dolaşır.</p>
+        ${window.Android && Android.sunucuBaslat ? (u => u ? `<div class="geri iyi"><b>Açık.</b> Bilgisayarın tarayıcısının adres çubuğuna şunu yazın:<p style="font-size:1.6rem;font-weight:800;letter-spacing:.5px;user-select:all">${kacis(u)}</p><p class="kucuk-yazi">Açılan sayfada veli şifresini girin. İzleme sürerken bu uygulama tablette açık kalmalı (ekran kendiliğinden kapanmaz). Veriler 10 saniyede bir yenilenir.</p></div>
+          <div class="satir"><button class="btn tehlike" id="aSunucuDurdur">İzlemeyi kapat</button></div>`
+          : `<div class="satir"><button class="btn ana" id="aSunucuBaslat">İzlemeyi başlat</button></div><p class="kucuk-yazi muted">Güvenlik: sayfa yalnızca veli şifresiyle açılır. Varsayılan şifre 1234 ise önce değiştirin.</p>`)(Android.sunucuAdres ? Android.sunucuAdres() : "")
+          : '<p class="muted">Bu özellik tablete kurulu uygulamada çalışır.</p>'}</section>
       <section class="kart"><h2>İnternet gelince otomatik gönderme (bulut)</h2>
         <p>Uygulama internet yokken bütün verileri tablette saklar. Aşağıya bir bulut adresi girilirse, internet geldiğinde biriken veriler otomatik gönderilir ve başka bir cihazdan (örneğin velinin telefonundaki aynı uygulamadan) <b>“Buluttan verileri al”</b> ile görülebilir.</p>
         <label class="alan">Bulut adresi (Google Apps Script web uygulaması)<input type="url" id="aUrl" value="${kacis(a.bulutUrl)}" placeholder="https://script.google.com/macros/s/.../exec"></label>
@@ -1035,6 +1096,7 @@ function doGet(e) {
       ana.querySelectorAll("[data-vders-ac]").forEach(b => b.onclick = () => { veliDers = b.dataset.vdersAc; git("#/veli/dersler"); });
     },
     yazili() {
+      if (DEPO.uzak) { ana.querySelectorAll("[data-yaz] input").forEach(x => { x.disabled = true; }); return; }
       ana.querySelectorAll("[data-yaz]").forEach(kutu => {
         const anahtar = kutu.dataset.yaz;
         kutu.querySelector(".yKaydet").onclick = () => {
@@ -1089,6 +1151,8 @@ function doGet(e) {
       $("#aGonder").onclick = async () => { toast("Gönderiliyor…"); const r = await DEPO.gonder(); toast(r.ok ? r.n + " kayıt gönderildi." : "Gönderilemedi: " + r.neden); veliPaneli("ayar"); };
       $("#aCek").onclick = async () => { toast("Alınıyor…"); const r = await DEPO.cek(); toast(r.ok ? r.n + " yeni kayıt alındı." : "Alınamadı: " + r.neden); };
       $("#aKodKopyala").onclick = () => kopyala(APPS_SCRIPT);
+      const sb = $("#aSunucuBaslat"); if (sb) sb.onclick = () => { const u = Android.sunucuBaslat(); if (!u) return toast("Sunucu başlatılamadı. Tableti yeniden başlatıp deneyin."); DEPO.tabletePaylas(true); if (/^http:\/\/:/.test(u)) toast("Tablet bir Wi‑Fi ağına bağlı görünmüyor."); veliPaneli("ayar"); };
+      const sd = $("#aSunucuDurdur"); if (sd) sd.onclick = () => { Android.sunucuDurdur(); veliPaneli("ayar"); };
       $("#aDisa").onclick = () => kopyala(DEPO.disaAktar());
       $("#aDisaPaylas").onclick = () => paylas("Öğrenme Yolculuğu verileri", DEPO.disaAktar());
       $("#aIceAl").onclick = () => { try { const j = JSON.parse($("#aIce").value); toast(DEPO.iceAktar(j.olaylar) + " kayıt içe aktarıldı."); } catch (e) { toast("Metin okunamadı. Tamamını yapıştırdığınızdan emin olun."); } };

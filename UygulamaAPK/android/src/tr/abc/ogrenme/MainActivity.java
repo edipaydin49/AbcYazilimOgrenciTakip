@@ -29,6 +29,7 @@ public class MainActivity extends Activity {
     private WebChromeClient.CustomViewCallback tamEkranGeri;
     private TextToSpeech ses;
     private volatile boolean sesHazir;
+    private YerelSunucu sunucu;
 
     @Override
     protected void onCreate(Bundle b) {
@@ -63,6 +64,7 @@ public class MainActivity extends Activity {
 
     @Override
     protected void onDestroy() {
+        if (sunucu != null) sunucu.durdur();
         if (ses != null) ses.shutdown();
         super.onDestroy();
     }
@@ -134,10 +136,49 @@ public class MainActivity extends Activity {
             ses.speak(metin, TextToSpeech.QUEUE_FLUSH, null, "ogrenme");
         }
 
+        /* Bilgisayardan izleme: aynı Wi-Fi ağındaki tarayıcıya veli panelini sunar. Adresi döndürür (ör. http://192.168.1.34:8080). */
+        @JavascriptInterface
+        public String sunucuBaslat() {
+            if (sunucu == null) sunucu = new YerelSunucu(new YerelSunucu.Kaynak() {
+                public InputStream ac(String yol) throws Exception { return getAssets().open(yol); }
+            });
+            int port = sunucu.baslat();
+            if (port < 0) return "";
+            ekranAcik(true);
+            return "http://" + YerelSunucu.ipAdresi() + ":" + port;
+        }
+
+        @JavascriptInterface
+        public void sunucuDurdur() {
+            if (sunucu != null) sunucu.durdur();
+            ekranAcik(false);
+        }
+
+        @JavascriptInterface
+        public String sunucuAdres() {
+            if (sunucu == null || !sunucu.calisiyor()) return "";
+            return "http://" + YerelSunucu.ipAdresi() + ":" + sunucu.port();
+        }
+
+        @JavascriptInterface
+        public void veriGuncelle(String json, String pin) {
+            if (sunucu != null) sunucu.veriGuncelle(json, pin);
+        }
+
         @JavascriptInterface
         public String surum() {
-            return "1.5";
+            return "1.6";
         }
+    }
+
+    /** Sunucu açıkken ekran kapanmasın (uygulama arka plana düşerse bağlantı kesilebilir). */
+    private void ekranAcik(final boolean acik) {
+        runOnUiThread(new Runnable() {
+            public void run() {
+                if (acik) getWindow().addFlags(128);   // WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON
+                else getWindow().clearFlags(128);
+            }
+        });
     }
 
     private static String tur(String yol) {
