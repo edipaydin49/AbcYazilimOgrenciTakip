@@ -43,6 +43,14 @@ p { margin: 0; }
 .btn.kucuk { min-height: 38px; padding: 6px 12px; font-size: .92rem; }
 .btn.tehlike { border-color: var(--bad); color: var(--bad); }
 .btn:disabled { opacity: .45; cursor: not-allowed; }
+details.akordiyon { border: 1px solid var(--line); border-radius: 12px; background: var(--sheet); margin: 6px 0; }
+details.akordiyon > summary { cursor: pointer; padding: 10px 12px; min-height: 44px; display: flex; flex-wrap: wrap; align-items: center; gap: 6px; list-style: none; }
+details.akordiyon > summary::-webkit-details-marker { display: none; }
+details.akordiyon > summary::before { content: "▸"; color: var(--cobalt); font-weight: 700; width: 1em; transition: transform .15s; }
+details.akordiyon[open] > summary::before { transform: rotate(90deg); }
+details.akordiyon.ders > summary { font-size: 1.08rem; background: var(--paper); border-radius: 12px; }
+.akordiyon-ic { padding: 0 10px 10px 18px; display: grid; gap: 4px; }
+details.akordiyon.konu { background: var(--paper); }
 .btn:focus-visible, .sec:focus-visible, .konu-satir:focus-visible { outline: 3px solid var(--sun); outline-offset: 2px; }
 .muted { color: var(--muted); }
 .kucuk-yazi { font-size: .88rem; }

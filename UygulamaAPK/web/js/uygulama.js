@@ -1073,13 +1073,38 @@
         <p class="kucuk-yazi muted">Net = doğru − yanlış ÷ 3. Karma deneme dört dersten 10'ar sorudur; ders bazında netler sonuç ekranında ve soru analizinde görünür.</p></section>`;
   }
 
+  /* Soru kayıtları: Ders > Konu başlığı (tema) > Konu > sorular — müfredat sırasıyla açılır kapanır liste */
+  const kayitAcik = new Set();
+  function kayitOzet(l) {
+    const c = l.filter(s => !s.terk), d = c.filter(s => s.ilkDogru).length;
+    const yardimsiz = c.filter(s => s.ilkDogru && !s.ipucu && !s.cozumGoruldu).length;
+    return `<span class="etiket">${l.length} soru</span> <span class="etiket ${c.length ? (d / c.length >= .7 ? "iyi" : d / c.length < .5 ? "kotu" : "") : ""}">ilk deneme ${c.length ? yuzde(d / c.length) : "—"}</span>`
+      + (c.length ? ` <span class="kucuk-yazi muted">yardımsız ${yuzde(yardimsiz / c.length)} · son ${tarih(l[l.length - 1].t)}</span>` : "");
+  }
+  const kayitSatir = s => `<tr><td>${tarih(s.t)}</td><td><span class="kucuk-yazi muted">${dersAd(ANALIZ.dersi(s))} · ${KONU[s.konu] ? KONU[s.konu].ad : ""}</span><br>${KAZANIM[s.kaz] ? KAZANIM[s.kaz].ad : kacis(s.kaz || "")}</td><td>${(DUZEY_AD[s.duzey] || "").split(" ")[0]}</td><td class="sayi">${s.zorluk || ""}</td><td class="sayi">${sn(s.ilkSure)}</td>
+    <td>${s.terk ? "geçti" : s.ilkDogru ? "✓" : "✗"}</td><td>${s.terk ? "" : s.sonDogru ? "✓" : "✗"}</td><td>${[s.ipucu ? "ipucu" : "", s.cozumGoruldu ? "çözüm" : "", s.kontrol ? "benzer soru" : ""].filter(Boolean).join(", ")}</td>
+    <td>${s.ilkHata ? HATA_AD[s.ilkHata] || s.ilkHata : ""}${s.kendiHata ? " / beyan: " + (HATA_AD[s.kendiHata] || s.kendiHata) : ""}</td><td>${TEST_AD[s.mod] || kacis(s.mod || "")}</td></tr>`;
+  const kayitTablo = l => `<div class="tablo"><table><thead><tr><th>Zaman</th><th>Ders / konu / kazanım</th><th>Düzey</th><th class="sayi">Zorluk</th><th class="sayi">Süre</th><th>İlk</th><th>Son</th><th>Yardım</th><th>Hata türü</th><th>Test</th></tr></thead><tbody>
+    ${l.slice(-200).reverse().map(kayitSatir).join("")}</tbody></table></div>${l.length > 200 ? `<p class="kucuk-yazi muted">En yeni 200 soru gösteriliyor (toplam ${l.length}).</p>` : ""}`;
+  const kayitKutu = (anahtar, baslik, ic, sinif = "") => `<details class="akordiyon ${sinif}" data-kayit="${anahtar}" ${kayitAcik.has(anahtar) ? "open" : ""}><summary>${baslik}</summary><div class="akordiyon-ic">${ic}</div></details>`;
   function veliKayit(h) {
-    const son = h.sorular.slice(-150).reverse();
-    return `<section class="kart"><h2>Son ${son.length} soru</h2><div class="tablo"><table><thead><tr><th>Zaman</th><th>Ders / konu / kazanım</th><th>Düzey</th><th class="sayi">Zorluk</th><th class="sayi">Süre</th><th>İlk</th><th>Son</th><th>Yardım</th><th>Hata türü</th><th>Test</th></tr></thead><tbody>
-      ${son.map(s => `<tr><td>${tarih(s.t)}</td><td><span class="kucuk-yazi muted">${dersAd(ANALIZ.dersi(s))} · ${KONU[s.konu] ? KONU[s.konu].ad : ""}</span><br>${KAZANIM[s.kaz] ? KAZANIM[s.kaz].ad : s.kaz}</td><td>${(DUZEY_AD[s.duzey] || "").split(" ")[0]}</td><td class="sayi">${s.zorluk}</td><td class="sayi">${sn(s.ilkSure)}</td>
-        <td>${s.terk ? "geçti" : s.ilkDogru ? "✓" : "✗"}</td><td>${s.terk ? "" : s.sonDogru ? "✓" : "✗"}</td><td>${[s.ipucu ? "ipucu" : "", s.cozumGoruldu ? "çözüm" : "", s.kontrol ? "benzer soru" : ""].filter(Boolean).join(", ")}</td>
-        <td>${s.ilkHata ? HATA_AD[s.ilkHata] : ""}${s.kendiHata ? " / beyan: " + HATA_AD[s.kendiHata] : ""}</td><td>${TEST_AD[s.mod] || s.mod}</td></tr>`).join("") || '<tr><td colspan="10" class="muted">Henüz kayıt yok.</td></tr>'}
-      </tbody></table></div></section>`;
+    const grup = {};
+    for (const s of h.sorular) (grup[s.konu] = grup[s.konu] || []).push(s);
+    const konuKutu = k => grup[k.id] ? kayitKutu("k:" + k.id, `<b>${k.ad}</b> ${kayitOzet(grup[k.id])}`, kayitTablo(grup[k.id]), "konu") : "";
+    const dersler = DERSLER.filter(d => !veliDers || d.id === veliDers).map(d => {
+      const temalar = d.temaListesi.map(t => {
+        const konular = t.konular.map(id => KONU[id]).filter(k => grup[k.id]);
+        if (!konular.length) return "";
+        return kayitKutu("t:" + t.id, `<b>${t.ad}</b> ${kayitOzet(konular.flatMap(k => grup[k.id]).sort((a, b) => a.t - b.t))}`, konular.map(konuKutu).join(""), "tema");
+      }).join("");
+      const l = KONULAR.filter(k => k.ders === d.id && grup[k.id]).flatMap(k => grup[k.id]).sort((a, b) => a.t - b.t);
+      return l.length ? kayitKutu("d:" + d.id, `<b>${d.simge} ${d.ad}</b> ${kayitOzet(l)}`, temalar, "ders") : "";
+    }).join("");
+    const bilinmeyen = h.sorular.filter(s => !KONU[s.konu]);
+    return `<section class="kart"><div class="satir ara"><h2>Soru kayıtları (${h.sorular.length})</h2><span class="satir"><button class="btn kucuk" data-kayit-hepsi="1">Tümünü aç</button><button class="btn kucuk" data-kayit-hepsi="0">Tümünü kapat</button></span></div>
+      <p class="kucuk-yazi muted">Ders › konu başlığı › konu sırasıyla. Bir başlığa dokunun; konunun altında her soru zamanı, kazanımı, düzeyi, zorluğu, süresi, ilk ve son cevabı, aldığı yardım ve hata türüyle listelenir. “Yardımsız” = ipucu ve çözüm görmeden ilk denemede doğru.</p>
+      ${dersler || '<p class="muted">Bu aralıkta henüz kayıt yok.</p>'}
+      ${bilinmeyen.length ? kayitKutu("diger", `<b>Diğer (eski kayıtlar)</b> ${kayitOzet(bilinmeyen)}`, kayitTablo(bilinmeyen)) : ""}</section>`;
   }
 
   function veliVideolar() {
@@ -1158,6 +1183,13 @@ function doGet(e) {
 }`;
 
   const VELI_BAGLA = {
+    kayit() {
+      ana.querySelectorAll("details[data-kayit]").forEach(d => d.addEventListener("toggle", () => { d.open ? kayitAcik.add(d.dataset.kayit) : kayitAcik.delete(d.dataset.kayit); }));
+      ana.querySelectorAll("[data-kayit-hepsi]").forEach(b => b.onclick = () => {
+        const ac = b.dataset.kayitHepsi === "1";
+        ana.querySelectorAll("details[data-kayit]").forEach(d => { d.open = ac; ac ? kayitAcik.add(d.dataset.kayit) : kayitAcik.delete(d.dataset.kayit); });
+      });
+    },
     ozet() {
       $("#raporPaylas").onclick = () => paylas("Haftalık rapor", raporMetni()); $("#raporKopyala").onclick = () => kopyala(raporMetni());
       ana.querySelectorAll("[data-vders-ac]").forEach(b => b.onclick = () => { veliDers = b.dataset.vdersAc; git("#/veli/dersler"); });

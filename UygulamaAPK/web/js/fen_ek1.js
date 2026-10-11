@@ -359,4 +359,130 @@
       { gorsel: G.tablo(["Özellik", "K", "L"], [["Ay'ın evresi", "Dolunay", "Yeni ay"], ["Gözlendiği zaman", "Gece", "Gündüz"], ["Görüldüğü alan", "Geniş", "Dar"], ["Süresi", "Saatlerce sürebilir", "Tam evresi birkaç dakika"]]),
         kural: "Ay tutulması: dolunay–gece–geniş alan. Güneş tutulması: yeni ay–gündüz–dar alan.", dogruNeden: "Dolunayda ve gece olan K Ay tutulması; yeni ayda ve gündüz olan L Güneş tutulmasıdır." }),
   );
+
+  /* ============================ ÜNİTE 2: BİLEŞKE KUVVET ============================ */
+
+  SORU_EKLE("fbil.kuvvet",
+    z => {
+      const f1 = sec([2, 4, 5]), x1 = sec([1, 2, 3]), kat = R(2, 4), f2 = f1 * kat, x2 = x1 * kat;
+      return S({
+        kaz: "fbil.kuvvet", duzey: "uygulama", zorluk: 2,
+        soru: `Bir dinamometreye <b>${f1} N</b>'luk bir cisim asıldığında yayı <b>${x1} cm</b> uzuyor. Aynı dinamometreye <b>${f2} N</b>'luk bir cisim asılırsa yay kaç cm uzar? (Yay, ölçüm sınırı içinde kullanılıyor.)`,
+        dogru: x2 + " cm",
+        yanlis: [[(x1 + f2 - f1) + " cm", "strateji", "Kuvvet farkını uzamaya doğrudan eklemişsin. Uzama, kuvvetle aynı oranda artar; fark değil kat önemlidir."],
+          [f2 + " cm", "kavrama", "Kuvvetin değerini uzama olarak yazmışsın. Newton ile santimetre farklı şeylerdir; önce kuvvetin kaç katına çıktığını bul."],
+          [(x2 + x1) + " cm", "islem", "Bir kat fazla saymışsın. Kuvvet " + kat + " katına çıktığında uzama da tam " + kat + " katına çıkar."]],
+        ipucu: "Yeni kuvvet, ilk kuvvetin kaç katı? Yayın uzaması da o kadar kat artar.",
+        cozum: ["🔎 Soruyu anlayalım: " + f1 + " N için uzama " + x1 + " cm. " + f2 + " N için uzamayı bulacağız.",
+          "💡 Hatırlayalım: Dinamometrenin içindeki yay, ölçüm sınırı içinde, uygulanan kuvvetle aynı oranda uzar. Kuvvet 2 katına çıkarsa uzama da 2 katına çıkar.",
+          `✏️ Kuvvet kaç katına çıktı? ${f2} ÷ ${f1} = ${kat}.`,
+          `✏️ Uzama da ${kat} katına çıkar: ${x1} cm × ${kat} = ${x2} cm.`,
+          `✅ Sonuç: Yay ${x2} cm uzar.`,
+          `🔁 Kontrol edelim: ${x2} ÷ ${x1} = ${kat} ve ${f2} ÷ ${f1} = ${kat}. Kuvvet de uzama da aynı oranda arttı; tutuyor!`],
+        kural: "Dinamometrede yayın uzaması uygulanan kuvvetle doğru orantılıdır (ölçüm sınırı içinde).",
+        dogruNeden: `Kuvvet ${kat} katına çıktığı için uzama da ${kat} katına çıkar: ${x1} × ${kat} = ${x2} cm.`,
+      });
+    },
+    z => {
+      const sapma = R(1, 3), gercek = R(4, 12), okunan = gercek + sapma;
+      return S({
+        kaz: "fbil.kuvvet", duzey: "transfer", zorluk: 3,
+        soru: `Elif, dinamometresine hiçbir şey asmadan baktığında ibrenin <b>${sapma} N</b>'u gösterdiğini fark ediyor ama düzeltmeden ölçüme başlıyor. Bir oyuncağı astığında dinamometre <b>${okunan} N</b> gösteriyor. Oyuncağın ağırlığı gerçekte kaç N'dur?`,
+        dogru: gercek + " N",
+        yanlis: [[okunan + " N", "dikkat", "İbre ölçümden önce sıfırda değildi. Okunan değerin içinde baştaki " + sapma + " N'luk hata da var."],
+          [(okunan + sapma) + " N", "islem", "Hatalı başlangıç değerini çıkarmak yerine eklemişsin. İbre fazladan " + sapma + " N gösteriyordu, bu yüzden çıkarmalısın."],
+          [sapma + " N", "kavrama", "Bu, boşken gösterilen hatalı değerdir; oyuncağın ağırlığı değil."]],
+        ipucu: "İbre en baştan kaç N fazla gösteriyordu?",
+        cozum: ["🔎 Soruyu anlayalım: Dinamometre boşken " + sapma + " N gösteriyor; oyuncak asılınca " + okunan + " N gösteriyor. Gerçek ağırlığı bulacağız.",
+          "💡 Hatırlayalım: Doğru ölçüm için dinamometrenin ibresi, hiçbir şey asılı değilken sıfırı göstermelidir. Buna “sıfır ayarı” denir.",
+          `✏️ İbre en baştan ${sapma} N fazla gösteriyor. Oyuncak asılınca da bu fazlalık okunan değerin içinde kalır.`,
+          `✏️ Fazlalığı çıkaralım: ${okunan} N − ${sapma} N = ${gercek} N.`,
+          `✅ Sonuç: Oyuncağın gerçek ağırlığı ${gercek} N'dur.`,
+          "🔁 Kontrol edelim: " + gercek + " + " + sapma + " = " + okunan + ". Bir dahaki sefere ölçüme başlamadan önce ibrenin sıfırda olup olmadığına bak!"],
+        kural: "Ölçümden önce dinamometrenin ibresi sıfıra ayarlanmalıdır.",
+        dogruNeden: `İbre baştan ${sapma} N fazla gösterdiği için gerçek değer ${okunan} − ${sapma} = ${gercek} N'dur.`,
+      });
+    },
+    Q("fbil.kuvvet", "aciklama", 1,
+      "Şekilde bir kutuya uygulanan kuvvet bir okla gösterilmiştir. Kuvveti okla göstermemizin nedeni aşağıdakilerden hangisidir?",
+      "Okun uzunluğu kuvvetin büyüklüğünü, ucunun baktığı taraf ise yönünü gösterir.",
+      [["Ok, kutunun ne kadar ağır olduğunu gösterir.", "kavrama", "Ok, kutuya uygulanan kuvveti gösterir; kutunun kendi ağırlığını değil."],
+       ["Ok yalnızca kuvvetin yönünü gösterir; büyüklüğü ok ile gösterilemez.", "bilgi", "Okun uzunluğu da önemlidir: Uzun ok büyük kuvveti, kısa ok küçük kuvveti gösterir."],
+       ["Ok, kutunun ne kadar süre itildiğini gösterir.", "kavrama", "Okun uzunluğu süreyi değil, kuvvetin büyüklüğünü anlatır."]],
+      "Bir kuvveti tam anlatmak için hangi iki bilgiye ihtiyaç vardır?",
+      ["🔎 Soruyu anlayalım: Kuvveti neden ok ile çizdiğimizi soruyor.",
+       "💡 Hatırlayalım: Kuvvetin hem büyüklüğü (kaç newton) hem de yönü (sağa, sola, yukarı, aşağı) vardır.",
+       "✏️ Okun ucu kuvvetin hangi yöne uygulandığını gösterir. Şekilde ok sağa bakıyor, yani kutu sağa itiliyor.",
+       "✏️ Okun boyu kuvvetin büyüklüğünü gösterir. Kuvvet artarsa ok daha uzun çizilir.",
+       "✅ Sonuç: Ok, kuvvetin hem büyüklüğünü hem de yönünü tek bir çizimde gösterir.",
+       "🔁 Kontrol edelim: Yalnızca “8 N” dersek kutunun hangi yöne gideceğini bilemeyiz. Ok bu eksikliği giderir."],
+      { gorsel: G.kuvvet({ sag: [8], cisim: "kutu" }),
+        kural: "Kuvvet okla gösterilir: okun yönü kuvvetin yönü, okun uzunluğu kuvvetin büyüklüğüdür.", dogruNeden: "Kuvvetin hem büyüklüğü hem yönü olduğundan ikisini birden gösteren ok kullanılır." }),
+  );
+
+  SORU_EKLE("fbil.bileske",
+    z => {
+      const a = R(10, 25), b = R(8, 20), c = R(5, Math.min(15, a + b - 3));
+      const once = a + b - c;
+      return S({
+        kaz: "fbil.bileske", duzey: "transfer", zorluk: 3,
+        soru: `Ali bir kutuyu sağa doğru <b>${a} N</b>, Ayşe sağa doğru <b>${b} N</b> kuvvetle itiyor. Can ise aynı kutuyu sola doğru <b>${c} N</b> kuvvetle çekiyor. Can kutuyu bırakırsa kutuya etki eden bileşke kuvvet kaç N <b>artar</b>?`,
+        gorsel: G.kuvvet({ sag: [a, b], sol: [c], cisim: "kutu" }),
+        dogru: c + " N",
+        yanlis: [[(a + b) + " N", "dikkat", "Bu, Can bıraktıktan sonraki bileşke kuvvetin kendisidir. Soru bileşkenin ne kadar arttığını soruyor."],
+          [once + " N", "dikkat", "Bu, Can kutuyu bırakmadan önceki bileşke kuvvettir; artış miktarı değildir."],
+          [(2 * c) + " N", "islem", "Can'ın kuvvetini iki kez saymışsın. Can bırakınca bileşkeden yalnızca onun kuvveti kadar azaltan etki kalkar."]],
+        ipucu: "Bileşkeyi önce Can varken, sonra Can yokken bul ve ikisini karşılaştır.",
+        cozum: ["🔎 Soruyu anlayalım: İki kişi sağa itiyor, bir kişi sola çekiyor. Sola çeken bırakınca bileşkedeki artışı bulacağız.",
+          "💡 Hatırlayalım: Aynı yöndeki kuvvetler toplanır. Zıt yöndeki kuvvetlerde büyükten küçük çıkarılır; bileşke büyük olanın yönündedir.",
+          `✏️ Önce: sağa ${a} + ${b} = ${a + b} N, sola ${c} N. Bileşke = ${a + b} − ${c} = ${once} N (sağa).`,
+          `✏️ Sonra: Can bıraktı, yalnızca sağa ${a + b} N kaldı. Bileşke = ${a + b} N (sağa).`,
+          `✏️ Artış: ${a + b} − ${once} = ${c} N.`,
+          `✅ Sonuç: Bileşke kuvvet ${c} N artar.`,
+          "🔁 Kontrol edelim: Ters yöndeki kuvvet kalkınca bileşke tam o kuvvet kadar büyür. Yani hesap yapmadan da " + c + " N diyebilirdik!"],
+        kural: "Zıt yönlü bir kuvvet kaldırılırsa bileşke, o kuvvetin büyüklüğü kadar artar.",
+        dogruNeden: `Önce bileşke ${once} N, Can bırakınca ${a + b} N olur; fark ${c} N'dur.`,
+      });
+    },
+    z => {
+      const s = R(12, 30), bil = R(2, s - 4), f = s - bil;
+      return S({
+        kaz: "fbil.bileske", duzey: "uygulama", zorluk: 2,
+        soru: `Bir cisme sağa doğru <b>${s} N</b> ve sola doğru büyüklüğü bilinmeyen bir <b>F</b> kuvveti etki ediyor. Cisme etki eden bileşke kuvvet <b>sağa doğru ${bil} N</b> olduğuna göre F kaç N'dur?`,
+        dogru: f + " N",
+        yanlis: [[(s + bil) + " N", "islem", "Bileşkeyi büyük kuvvete eklemişsin. Bileşke sağa olduğuna göre F, " + s + " N'dan küçük olmalı."],
+          [bil + " N", "kavrama", "Bileşke ile F'yi karıştırmışsın. Bileşke, iki kuvvetin birlikte yaptığı etkidir."],
+          [s + " N", "kavrama", "F, " + s + " N olsaydı kuvvetler dengelenir ve bileşke 0 N olurdu."]],
+        ipucu: "Zıt yönlü kuvvetlerde bileşke = büyük − küçük. Hangi kuvvet büyük?",
+        cozum: ["🔎 Soruyu anlayalım: Sağa " + s + " N, sola F var. Bileşke sağa " + bil + " N. F'yi bulacağız.",
+          "💡 Hatırlayalım: Zıt yönlü iki kuvvetin bileşkesi = büyük kuvvet − küçük kuvvet; yönü büyük kuvvetin yönüdür.",
+          `✏️ Bileşke sağa olduğuna göre sağdaki ${s} N daha büyüktür.`,
+          `✏️ ${s} − F = ${bil} → F = ${s} − ${bil} = ${f} N.`,
+          `✅ Sonuç: F = ${f} N'dur.`,
+          `🔁 Kontrol edelim: ${s} − ${f} = ${bil} N, yönü sağa. Soruda verilenle aynı!`],
+        kural: "Zıt yönlü iki kuvvette: bileşke = büyük − küçük, yönü büyüğün yönü.",
+        dogruNeden: `${s} − ${f} = ${bil} olduğundan F = ${f} N'dur.`,
+      });
+    },
+    z => {
+      const a = R(3, 12), b = R(a + 1, 18);
+      return S({
+        kaz: "fbil.bileske", duzey: "baglanti", zorluk: 3,
+        soru: `Büyüklükleri <b>${a} N</b> ve <b>${b} N</b> olan iki kuvvet aynı doğrultuda bir cisme etki ediyor. Kuvvetlerin yönleri değiştirilerek bileşkenin <b>en büyük</b> ve <b>en küçük</b> değeri bulunuyor. Bu değerler hangisidir?`,
+        dogru: `En büyük ${a + b} N, en küçük ${b - a} N`,
+        yanlis: [[`En büyük ${a + b} N, en küçük 0 N`, "kavrama", "Büyüklükleri farklı iki kuvvet birbirini tam dengeleyemez; bu yüzden bileşke 0 N olamaz."],
+          [`En büyük ${b} N, en küçük ${a} N`, "kavrama", "Kuvvetleri tek tek yazmışsın. Bileşke, iki kuvvetin birlikte etkisidir; toplanır ya da çıkarılır."],
+          [`En büyük ${b - a} N, en küçük ${a + b} N`, "dikkat", "Değerleri ters yazmışsın. Aynı yönde toplanınca en büyük, zıt yönde çıkarılınca en küçük olur."]],
+        ipucu: "Kuvvetler aynı yöndeyken ve zıt yöndeyken bileşkeyi ayrı ayrı hesapla.",
+        cozum: ["🔎 Soruyu anlayalım: İki kuvvetin yönlerini değiştirerek bileşkenin alabileceği en büyük ve en küçük değeri arıyoruz.",
+          "💡 Hatırlayalım: Aynı yöndeki kuvvetler toplanır; zıt yöndeki kuvvetlerde büyükten küçük çıkarılır.",
+          `✏️ Aynı yönde: ${a} + ${b} = ${a + b} N. Bu en büyük değerdir.`,
+          `✏️ Zıt yönde: ${b} − ${a} = ${b - a} N. Bu en küçük değerdir.`,
+          `✅ Sonuç: En büyük ${a + b} N, en küçük ${b - a} N.`,
+          "🔁 Kontrol edelim: Matematikteki tam sayılarla düşün: (+" + b + ") + (+" + a + ") = " + (a + b) + ", (+" + b + ") + (−" + a + ") = " + (b - a) + ". Aynı sonuç!"],
+        kural: "Aynı doğrultudaki iki kuvvetin bileşkesi en çok toplamları, en az farkları kadardır.",
+        dogruNeden: `Aynı yönde ${a + b} N (en büyük), zıt yönde ${b - a} N (en küçük) bileşke oluşur.`,
+      });
+    },
+  );
 })();

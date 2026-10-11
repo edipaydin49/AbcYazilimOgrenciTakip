@@ -109,6 +109,13 @@ const sunucu = http.createServer((q, r) => { const f = path.join(KOK, decodeURIC
     if (sk === "ozet") { await tikla('[data-aralik="0"]'); await tikla('[data-aralik="30"]'); await tikla('[data-vders="fen"]'); await foto("v_ozet_fen"); await tikla('[data-vders=""]'); }
     if (sk === "yazili") { await p.click("details >> nth=0"); await p.fill('[data-yaz="mat.d1y1"] .yTarih', "2026-11-05"); await tikla('[data-yaz="mat.d1y1"] .yKaydet');
       const y = await p.evaluate(() => DEPO.ayar.yazililar["mat.d1y1"]); if (!y || y.tarih !== "2026-11-05") hatalar.push("yazılı tarihi kaydedilmedi"); }
+    if (sk === "kayit") { await tikla('[data-aralik="0"]');
+      if (!(await p.$('details[data-kayit="d:mat"]'))) hatalar.push("soru kayıtlarında Matematik başlığı yok");
+      await tikla('details[data-kayit="d:mat"] > summary'); await tikla('details[data-kayit="d:mat"] details.tema > summary >> nth=0'); await tikla('details[data-kayit="d:mat"] details.konu > summary >> nth=0');
+      if (!(await p.isVisible('details.konu[open] table'))) hatalar.push("konu açılınca soru tablosu görünmüyor");
+      await foto("v_kayit_akordiyon"); await tikla('[data-kayit-hepsi="1"]');
+      const kapali = await p.$$eval("details[data-kayit]", l => l.filter(d => !d.open).length); if (kapali) hatalar.push("tümünü aç çalışmadı");
+      await tikla('[data-kayit-hepsi="0"]'); }
   }
   // Video ekleme
   await p.goto("http://localhost:8765/index.html#/veli/icerik");

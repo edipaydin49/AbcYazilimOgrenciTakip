@@ -401,5 +401,131 @@
       { kural: "recite a poem = şiir okumak; perform folk dances = halk oyunları oynamak.", dogruNeden: "Soru törende yapılanları soruyor; bu seçenek iki etkinlik söylüyor." }),
   );
 
+  /* =========================================================================
+   * THEME 2 — DAILY AND STUDY ROUTINES
+   * ========================================================================= */
+  const EYLEM = [
+    ["read", "reads", "reading", "a book", "kitap okumak"],
+    ["play", "plays", "playing", "chess", "satranç oynamak"],
+    ["watch", "watches", "watching", "a cartoon", "çizgi film izlemek"],
+    ["draw", "draws", "drawing", "a picture", "resim çizmek"],
+    ["write", "writes", "writing", "an email", "e-posta yazmak"],
+    ["do", "does", "doing", "homework", "ödev yapmak"],
+  ];
+  SORU_EKLE("endly.cont",
+    z => {
+      const e = sec(EYLEM), simdi = z % 2 === 0;
+      const kisi = sec(["Ayşe", "Emre", "My cousin", "Our teacher"]);
+      const zaman = simdi ? sec(["now", "at the moment", "right now"]) : sec(["every evening", "on Saturdays", "after school"]);
+      const dogru = simdi ? `is ${e[2]}` : e[1];
+      const yanlis = simdi
+        ? [[e[1], "kavrama", `“${e[1]}” geniş zamandır; “${zaman}” ise şu anda olan bir eylemi gösterir.`], [`are ${e[2]}`, "dikkat", `Özne tekil (${kisi}); “are” değil “is” kullanılır.`], [`is ${e[0]}`, "bilgi", "Şimdiki zamanda fiile -ing eklenir: is + fiil-ing."]]
+        : [[`is ${e[2]}`, "kavrama", `“${zaman}” bir alışkanlığı anlatır; şimdiki zaman değil geniş zaman kullanılır.`], [e[0], "dikkat", `Özne üçüncü tekil kişi (${kisi}); fiile -s/-es eklenmeli.`], [`are ${e[2]}`, "bilgi", "Hem zaman yanlış hem de tekil özneyle “are” kullanılmaz."]];
+      return S({
+        kaz: "endly.cont", duzey: "uygulama", zorluk: 2,
+        soru: `Choose the correct option.<br>${kisi} ___ ${e[3]} ${zaman}.`,
+        dogru, yanlis,
+        ipucu: `Cümledeki zaman ifadesine bak: “${zaman}”.`,
+        cozum: C(`Boşluğa “${e[0]}” (${e[4]}) fiilinin doğru hâlini yazacağız.`, "now / at the moment / right now → şimdiki zaman (am/is/are + fiil-ing). every evening / on Saturdays / after school → geniş zaman (fiil / fiil-s).",
+          `Zaman ifadesi: “${zaman}”. Bu ${simdi ? "şu anda olan bir eylemi" : "tekrar eden bir alışkanlığı"} gösterir.`, `Özne “${kisi}” üçüncü tekil kişidir; bu yüzden ${simdi ? "“is + " + e[2] + "”" : "fiile -s/-es ekleriz: " + e[1]}.`,
+          `Cevap: ${kisi} ${dogru} ${e[3]} ${zaman}.`, "Önce zaman ifadesini, sonra özneyi kontrol et; ikisi de doğru yardımcı fiili ve eki seçmeni sağlar."),
+        kural: "Alışkanlık → simple present; şu anda olan → present continuous.",
+        dogruNeden: `“${zaman}” ${simdi ? "şu an olan eylemi gösterir, tekil özneyle “is + -ing” kullanılır" : "alışkanlık bildirir, üçüncü tekil kişide fiil -s/-es alır"}.`,
+      });
+    },
+    Q("endly.cont", "transfer", 2, "Read the message.<br><i>Hi Mum! I'm at Zeynep's house. We ___ for the English exam now. We usually study together on Thursdays.</i><br>Which option completes the message?", "are studying",
+      [["study", "kavrama", "“study” geniş zamandır; mesajda “now” var, yani eylem şu anda oluyor."], ["is studying", "dikkat", "Özne “We”; çoğul özneyle “is” değil “are” kullanılır."], ["studies", "bilgi", "-s eki yalnızca he / she / it ile geniş zamanda kullanılır."]],
+      "Boşluklu cümledeki “now” kelimesine dikkat et.",
+      C("Mesajdaki boşluğa “study” fiilinin doğru hâlini koyacağız.", "Şu anda olan eylem: am / is / are + fiil-ing. Alışkanlık: geniş zaman.",
+        "Boşluklu cümlede “now” var; eylem şu anda oluyor.", "Özne “We” olduğu için “are” seçeriz: are studying.", "Cevap: are studying.", "Sonraki cümle “usually” içerdiği için geniş zamanda (study); iki cümlenin farkına dikkat et."),
+      { kural: "We / You / They + are + fiil-ing.", dogruNeden: "“now” şu anı gösterir ve özne “We” olduğu için “are studying” doğrudur." }),
+    Q("endly.cont", "aciklama", 2, "Which sentence talks about a <b>daily routine</b>?", "Kerem gets up at seven o'clock every day.",
+      [["Kerem is getting dressed now.", "kavrama", "“now” şu an olan bir eylemi anlatır; günlük rutin değildir."], ["Kerem is having breakfast at the moment.", "kavrama", "“at the moment” şu anı anlatır; rutin için geniş zaman kullanılır."], ["Look! Kerem is running to the bus stop.", "kavrama", "“Look!” şu anda gördüğümüz bir eylemi gösterir."]],
+      "Rutin = her gün tekrar eden iş. Hangi zaman kullanılır?",
+      C("Günlük rutini anlatan cümleyi seçeceğiz.", "Rutinler geniş zamanla anlatılır ve every day, usually, always gibi ifadelerle gelir.",
+        "Üç seçenekte “is + fiil-ing” var: now, at the moment, Look! → şu an.", "Yalnızca bir cümlede geniş zaman (gets up) ve “every day” var.", "Cevap: Kerem gets up at seven o'clock every day.", "Cümlede tekrar bildiren bir ifade arıyorsan every day, on Mondays, usually gibi kelimelere bak."),
+      { kural: "Routine → simple present + every day / usually.", dogruNeden: "Cümle geniş zamanda ve “every day” ile her gün tekrar eden bir işi anlatıyor." }),
+  );
+
+  /* How often…? */
+  const SIKLIK = [
+    ["every day", "her gün", 7], ["three times a week", "haftada üç kez", 3], ["twice a week", "haftada iki kez", 2], ["once a week", "haftada bir kez", 1], ["never", "hiçbir zaman", 0],
+  ];
+  const GUN_KISA = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+  SORU_EKLE("endly.howoften",
+    z => {
+      const s = sec(SIKLIK), etk = sec([["swims", "swim", "yüzmek"], ["plays the guitar", "play the guitar", "gitar çalmak"], ["rides a bike", "ride a bike", "bisiklete binmek"], ["goes to the library", "go to the library", "kütüphaneye gitmek"]]);
+      const kisi = sec(["Can", "Ece", "Burak", "Nil"]);
+      const gunler = karistir(GUN_KISA.slice()).slice(0, s[2]);
+      const satir = GUN_KISA.map(g => gunler.includes(g) ? "✔" : "—");
+      const d = SIKLIK.filter(x => x !== s);
+      const yaz = x => x[2] === 0 ? `${kisi} never ${etk[0]}.` : `${kisi} ${etk[0]} ${x[0]}.`;
+      return S({
+        kaz: "endly.howoften", duzey: "uygulama", zorluk: 2,
+        soru: `Look at ${kisi}'s weekly chart. <b>How often does ${kisi} ${etk[1]}?</b>`,
+        gorsel: G.tablo(["", ...GUN_KISA], [[etk[1], ...satir]]),
+        dogru: yaz(s),
+        yanlis: karistir(d).slice(0, 3).map(x => [yaz(x), "dikkat", `Tabloda ${s[2]} tane işaret var; “${x[0]}” ise ${x[1]} demektir.`]),
+        ipucu: "Tablodaki ✔ işaretlerini say.",
+        cozum: C(`${kisi}'in haftada kaç kez ${etk[2]} eylemini yaptığı soruluyor.`, "once a week = haftada 1, twice a week = haftada 2, three times a week = haftada 3, every day = her gün (7), never = hiç.",
+          `Tablodaki ✔ işaretlerini sayalım: ${s[2]} tane.`, `${s[2]} kez = “${s[0]}” (${s[1]}).`, `Cevap: ${yaz(s)}`, "Saydıktan sonra sayıyı kalıpla eşleştir: 1 → once, 2 → twice, 3 ve üstü → … times."),
+        kural: "How often…? → once / twice / three times a week, every day, never.",
+        dogruNeden: `Tabloda ${s[2]} işaret var; bu “${s[0]}” demektir.`,
+      });
+    },
+    Q("endly.howoften", "aciklama", 1, "Choose the correct question for the answer.<br>— ___<br>— Twice a month.", "How often do you visit your grandparents?",
+      [["When do you visit your grandparents?", "kavrama", "“When” zaman sorar; cevabı “on Sundays” ya da “at the weekend” gibi olur."], ["Where do you visit your grandparents?", "kavrama", "“Where” yer sorar; “Twice a month” bir yer değildir."], ["How many grandparents have you got?", "kavrama", "“How many” sayı sorar; cevap “four” gibi olmalıydı."]],
+      "“Twice a month” neyi anlatır: yer, zaman mı, sıklık mı?",
+      C("Cevabı “Twice a month” olan soruyu bulacağız.", "twice a month = ayda iki kez. Sıklık sormak için “How often…?” kullanılır.",
+        "Cevap bir sıklık bildiriyor.", "Seçeneklerden yalnızca biri “How often” ile başlıyor.", "Cevap: How often do you visit your grandparents?", "Soru kelimesi ile cevap türünü eşleştir: How often → sıklık, When → zaman, Where → yer."),
+      { kural: "How often…? sorusunun cevabı: once / twice / three times a week / a month.", dogruNeden: "“Twice a month” bir sıklıktır ve sıklık “How often” ile sorulur." }),
+    Q("endly.howoften", "transfer", 2, "Read Melis's plan.<br><i>I have piano lessons on Mondays and Thursdays. I go swimming on Saturdays. I tidy my room every day.</i><br>How often does Melis have piano lessons?", "Twice a week.",
+      [["Once a week.", "dikkat", "Melis haftada bir kez yüzmeye gidiyor; piyano dersi iki gün var."], ["Every day.", "dikkat", "Her gün yaptığı iş odasını toplamak; piyano değil."], ["Three times a week.", "islem", "Piyano dersi yalnızca Monday ve Thursday günleri, yani iki gün."]],
+      "Piyano dersinin hangi günlerde olduğunu say.",
+      C("Melis'in piyano dersine haftada kaç kez gittiği soruluyor.", "once = 1 kez, twice = 2 kez, three times = 3 kez.",
+        "Metinde piyano dersi: on Mondays and Thursdays.", "Pazartesi + perşembe = 2 gün → twice a week.", "Cevap: Twice a week.", "Metinde her etkinliği ayrı ayrı işaretle; soruda sorulan etkinliği karıştırma."),
+      { kural: "2 kez = twice (two times değil).", dogruNeden: "Piyano dersi pazartesi ve perşembe, yani haftada iki kez (twice a week)." }),
+  );
+
+  /* Question tags (geniş zaman ve şimdiki zaman) */
+  const TAG_C = [
+    ["Your brother plays football", "doesn't he?", ["isn't he?", "don't he?", "does he?"], "geniş zaman, olumlu, özne he"],
+    ["Elif likes maths", "doesn't she?", ["isn't she?", "does she?", "didn't she?"], "geniş zaman, olumlu, özne she"],
+    ["They live in Izmir", "don't they?", ["doesn't they?", "aren't they?", "do they?"], "geniş zaman, olumlu, özne they"],
+    ["You are reading a comic", "aren't you?", ["don't you?", "are you?", "isn't you?"], "şimdiki zaman, olumlu, özne you"],
+    ["Mert is doing his homework", "isn't he?", ["doesn't he?", "is he?", "aren't he?"], "şimdiki zaman, olumlu, özne he"],
+    ["The girls aren't sleeping", "are they?", ["aren't they?", "do they?", "is she?"], "şimdiki zaman, olumsuz, özne they"],
+    ["Ali doesn't eat fish", "does he?", ["doesn't he?", "is he?", "do he?"], "geniş zaman, olumsuz, özne he"],
+  ];
+  SORU_EKLE("endly.tags",
+    z => {
+      const t = sec(TAG_C);
+      const neden = { "isn't": "“isn't” bu cümleye uymuyor: “is” yalnızca he / she / it ile şimdiki zamanda kullanılır; zamanı ve özneyi kontrol et.", "don't": "Özneye dikkat et; yardımcı fiil özneyle uyumlu olmalı.", "doesn't": "Özneye dikkat et; yardımcı fiil özneyle uyumlu olmalı.", "aren't": "Olumsuz cümleye olumlu tag gelir; ayrıca “are” yalnızca you / we / they ile şimdiki zamanda kullanılır.", "does": "Olumlu cümleye olumsuz, olumsuz cümleye olumlu tag gelir.", "do": "Olumlu cümleye olumsuz, olumsuz cümleye olumlu tag gelir.", "are": "Olumlu cümleye olumsuz, olumsuz cümleye olumlu tag gelir.", "is": "Olumlu cümleye olumsuz, olumsuz cümleye olumlu tag gelir.", "didn't": "“did” geçmiş zamandır; cümle geniş zamanda." };
+      return S({
+        kaz: "endly.tags", duzey: "uygulama", zorluk: 2,
+        soru: `Choose the correct question tag.<br>${t[0]}, ___`,
+        dogru: t[1],
+        yanlis: t[2].map(x => [x, x.startsWith("is") && t[3].startsWith("geniş") ? "kavrama" : "dikkat", neden[x.split(" ")[0]] || "Yardımcı fiil, özne ve olumlu/olumsuz uyumunu kontrol et."]),
+        ipucu: "Cümlenin zamanını, öznesini ve olumlu/olumsuz olduğunu bul.",
+        cozum: C(`“${t[0]}” cümlesine uygun soru eki (question tag) bulacağız.`, "Kural: olumlu cümle → olumsuz tag; olumsuz cümle → olumlu tag. Geniş zamanda do/does, şimdiki zamanda am/is/are kullanılır. Tag'de özne zamiri olur.",
+          `Cümlenin özellikleri: ${t[3]}.`, `Buna göre tag: ${t[1]}`, `Cevap: ${t[0]}, ${t[1]}`, "Tag'i söyle: yardımcı fiil + zamir. Zamir cümlenin öznesini anlatmalı (Elif → she, the girls → they)."),
+        kural: "Olumlu → olumsuz tag; olumsuz → olumlu tag (doesn't he? / are they?).",
+        dogruNeden: `Cümle ${t[3]} olduğu için tag “${t[1]}” olur.`,
+      });
+    },
+    Q("endly.tags", "transfer", 2, "Complete the dialogue.<br>— Your sister is studying in her room, ___<br>— Yes, she is. She has got an exam tomorrow.", "isn't she?",
+      [["doesn't she?", "kavrama", "Cümle şimdiki zamanda (is studying); tag'de “does” değil “is” kullanılır."], ["is she?", "dikkat", "Cümle olumlu; tag olumsuz olmalı."], ["isn't he?", "dikkat", "“Your sister” bir kızdır; zamir “she” olmalı."]],
+      "Cevaptaki “Yes, she is.” sana yardımcı fiili gösteriyor.",
+      C("Şimdiki zamanda olumlu bir cümleye tag ekleyeceğiz.", "Şimdiki zaman: is → tag'de isn't. Olumlu cümle → olumsuz tag.",
+        "Yardımcı fiil “is”, cümle olumlu → isn't.", "Özne “your sister” → she.", "Cevap: isn't she?", "Cevaptaki kısa yanıt “Yes, she is.” da tag'in “isn't she?” olduğunu doğrular."),
+      { kural: "is + fiil-ing cümlesi → isn't + zamir?", dogruNeden: "Cümle olumlu şimdiki zamanda ve özne “she”; bu yüzden “isn't she?” olur." }),
+    Q("endly.tags", "aciklama", 3, "Which sentence has the <b>correct</b> question tag?", "We don't go to school on Sundays, do we?",
+      [["Hasan usually walks to school, isn't he?", "kavrama", "Geniş zamanda tag “doesn't he?” olur; “is” kullanılmaz."], ["You are listening to me, are you?", "dikkat", "Olumlu cümleye olumsuz tag gelir: aren't you?"], ["Your parents work in a bank, doesn't they?", "dikkat", "“they” ile “do” kullanılır: don't they?"]],
+      "Her cümlede zaman, özne ve olumlu/olumsuz uyumunu kontrol et.",
+      C("Doğru soru eki kullanılan cümleyi bulacağız.", "Geniş zaman → do/does; şimdiki zaman → am/is/are. Olumlu ↔ olumsuz.",
+        "1. cümle: walks (geniş zaman) → doesn't he? olmalı. 2. cümle: olumlu → aren't you? olmalı. 3. cümle: they → don't they? olmalı.", "“We don't go… , do we?” → olumsuz cümle, olumlu tag, özne we. Doğru!", "Cevap: We don't go to school on Sundays, do we?", "Elemeyle çalış: her cümlede üç şeyi kontrol et ve yanlış olanları çiz."),
+      { kural: "Olumsuz cümle + olumlu tag: We don't…, do we?", dogruNeden: "Cümle olumsuz geniş zamanda ve öznesi “we”; tag “do we?” olarak doğru kurulmuş." }),
+  );
+
   /*SON*/
 })();
