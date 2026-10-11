@@ -350,7 +350,7 @@
     // Benzersiz izlenen saniyeler bu cihazda video bazında birikir (tamamlama oranı için).
     const izAnahtar = "izlenen:" + v.vid;
     let izlenen = new Set(); try { izlenen = new Set(JSON.parse(localStorage.getItem(izAnahtar) || "[]")); } catch (e) {}
-    const kayit = DEPO.kaydet("video", { konu: id, ders: k.ders, vid: v.vid, toplam: 0, izlenen: izlenen.size, oynatilan: 0, geriSarma: 0, ileriSarma: 0, duraklatma: 0, bolumAcma: {}, bitti: false });
+    const kayit = DEPO.kaydet("video", { konu: id, ders: k.ders, vid: v.vid, baslik: v.baslik || "", toplam: 0, izlenen: izlenen.size, oynatilan: 0, geriSarma: 0, ileriSarma: 0, duraklatma: 0, bolumAcma: {}, bitti: false });
     let onceki = null, aktifBolum = -1, durakta = false, sistemDuraklatti = false, zamanlayici = null, kaydetSayac = 0;
     const cevaplananDurak = new Set();
     const kaydetVideo = () => { try { localStorage.setItem(izAnahtar, JSON.stringify([...izlenen])); } catch (e) {} DEPO.guncelle(kayit, { izlenen: izlenen.size }); };
@@ -831,7 +831,7 @@
     ciz();
   }
 
-  const SEKMELER = [["ozet", "Özet"], ["dersler", "Ders ve konular"], ["kazanim", "Kazanım haritası"], ["soru", "Soru analizi"], ["anlatim", "Anlatım ve video"], ["tekrar", "Aralıklı tekrar"], ["calisma", "Çalışma alışkanlığı"], ["yazili", "Yazılılar"], ["denemeler", "Denemeler"], ["kayit", "Soru kayıtları"], ["icerik", "Videolar"], ["ayar", "Ayarlar ve eşitleme"]];
+  const SEKMELER = [["ozet", "Özet"], ["dersler", "Ders ve konular"], ["kazanim", "Kazanım haritası"], ["soru", "Soru analizi"], ["anlatim", "Anlatım ve video"], ["tekrar", "Aralıklı tekrar"], ["calisma", "Çalışma alışkanlığı"], ["yazili", "Yazılılar"], ["denemeler", "Denemeler"], ["gunluk", "Günlük / haftalık"], ["kayit", "Soru kayıtları"], ["icerik", "Videolar"], ["ayar", "Ayarlar ve eşitleme"]];
   let aralik = 7, veliDers = null;
   const dersKonulari = () => KONULAR.filter(k => !veliDers || k.ders === veliDers);
   const dersTemalari = () => TEMALAR.filter(t => !veliDers || t.ders === veliDers);
@@ -842,7 +842,7 @@
       <div class="ders-sec">${[[null, "Tüm dersler"], ...DERSLER.map(d => [d.id, d.simge + " " + d.ad])].map(([id, a]) => `<button class="sekme ${veliDers === id ? "aktif" : ""}" data-vders="${id || ""}">${a}</button>`).join("")}</div>
       <nav class="sekmeler">${SEKMELER.filter(([k]) => !DEPO.uzak || (k !== "icerik" && k !== "ayar")).map(([k, a]) => `<a class="sekme ${k === sekme || (sekme === "konu" && k === "dersler") ? "aktif" : ""}" href="#/veli/${k}">${a}</a>`).join("")}</nav>
       <p class="kucuk-yazi muted">Güven düzeyi: her değerin yanında kaç soruya dayandığı yazar. 5'ten az soru = düşük güven, 15 ve üzeri = yüksek güven.</p></section>`;
-    const icerik = { ozet: veliOzet, dersler: veliDersler, konu: veliKonuDetay, kazanim: veliKazanim, soru: veliSoru, anlatim: veliAnlatim, tekrar: veliTekrar, calisma: veliCalisma, yazili: veliYazili, denemeler: veliDenemeler, kayit: veliKayit, icerik: veliVideolar, ayar: veliAyar }[sekme] || veliOzet;
+    const icerik = { ozet: veliOzet, dersler: veliDersler, konu: veliKonuDetay, kazanim: veliKazanim, soru: veliSoru, anlatim: veliAnlatim, tekrar: veliTekrar, calisma: veliCalisma, yazili: veliYazili, denemeler: veliDenemeler, gunluk: veliGunluk, kayit: veliKayit, icerik: veliVideolar, ayar: veliAyar }[sekme] || veliOzet;
     ana.innerHTML = ust + icerik(h, param);
     ana.querySelectorAll("[data-aralik]").forEach(b => b.onclick = () => { aralik = +b.dataset.aralik; veliPaneli(sekme, param); });
     ana.querySelectorAll("[data-vders]").forEach(b => b.onclick = () => { veliDers = b.dataset.vders || null; veliPaneli(sekme === "konu" ? "dersler" : sekme); });
@@ -1119,6 +1119,107 @@
         <p class="kucuk-yazi muted">Net = doğru − yanlış ÷ 3. Karma deneme dört dersten 10'ar sorudur; ders bazında netler sonuç ekranında ve soru analizinde görünür.</p></section>`;
   }
 
+
+  /* ---------------- Günlük / haftalık etkinlik ----------------
+   * Bir gün ya da hafta içinde: hangi dersten, hangi ünite/konudan, hangi testte hangi soruları çözdü, hangi videoları izledi.
+   * Sayılar şişirilmez: aynı soru (aynı soru anahtarı) dönem içinde bir kez sayılır, daha önce çözülmüş soru “tekrar” olarak ayrı gösterilir;
+   * aynı video dönem içinde bir kez sayılır (izleme süresi toplanır, kaç kez açıldığı ayrıca yazılır); 10 saniyeden az oynatılan video “izlendi” sayılmaz. */
+  let gunlukMod = "gun", gunlukKaydir = 0;
+  const VIDEO_ESIK_SN = 10;
+  function donemSinir() {
+    const bugun = new Date(); bugun.setHours(0, 0, 0, 0);
+    if (gunlukMod === "gun") { const bas = new Date(bugun); bas.setDate(bas.getDate() + gunlukKaydir); const son = new Date(bas); son.setDate(son.getDate() + 1); return { bas: +bas, son: +son, ad: bas.toLocaleDateString("tr-TR", { weekday: "long", day: "numeric", month: "long", year: "numeric" }) }; }
+    const bas = new Date(bugun); bas.setDate(bas.getDate() - ((bas.getDay() + 6) % 7) + 7 * gunlukKaydir); const son = new Date(bas); son.setDate(son.getDate() + 7);
+    const bitis = new Date(son - 1);
+    return { bas: +bas, son: +son, ad: bas.toLocaleDateString("tr-TR", { day: "numeric", month: "long" }) + " – " + bitis.toLocaleDateString("tr-TR", { day: "numeric", month: "long", year: "numeric" }) + " haftası" };
+  }
+  function videoBaslik(v) {
+    if (v.baslik) return v.baslik;
+    const vv = DEPO.ayar.videolar[v.konu]; if (vv && vv.vid === v.vid) return vv.baslik || "Velinin eklediği video";
+    const h = (window.HAZIR_VIDEOLAR && HAZIR_VIDEOLAR[v.konu] || []).find(x => x.vid === v.vid);
+    return h ? h.baslik : "Video " + v.vid;
+  }
+  function etkinlik(bas, son) {
+    const ic = o => o.t >= bas && o.t < son && (!veliDers || ANALIZ.dersi(o) === veliDers);
+    const tumSoru = DEPO.liste("soru");
+    const anahtar = s => s.sk || (s.soruNesnesi ? (s.kaz || "") + ":" + String(s.soruNesnesi.soru || "").replace(/<[^>]+>/g, "").slice(0, 80) : s.id);
+    const oncedenGorulen = new Set(tumSoru.filter(s => s.t < bas).map(anahtar));
+    const donemde = new Set(), sorular = [];
+    for (const s of tumSoru.filter(ic)) {
+      const a = anahtar(s);
+      const tekrar = oncedenGorulen.has(a) || donemde.has(a);
+      donemde.add(a);
+      sorular.push({ ...s, tekrar, ilkKez: !tekrar });
+    }
+    const yeni = sorular.filter(s => s.ilkKez && !s.terk);
+    const videolar = {};
+    for (const v of DEPO.liste("video").filter(ic)) {
+      const x = videolar[v.vid] = videolar[v.vid] || { vid: v.vid, konu: v.konu, ders: v.ders || ANALIZ.dersi(v), baslik: videoBaslik(v), acilis: 0, izlemeSn: 0, bitti: false, ilk: v.t, son: v.t };
+      x.acilis++; x.izlemeSn += v.oynatilan || 0; x.bitti = x.bitti || v.bitti; x.son = Math.max(x.son, v.t);
+      x.oncedenIzlendi = x.oncedenIzlendi || DEPO.liste("video").some(o => o.vid === v.vid && o.t < bas && (o.oynatilan || 0) >= VIDEO_ESIK_SN);
+    }
+    const izlenen = Object.values(videolar).filter(v => v.izlemeSn >= VIDEO_ESIK_SN).sort((a, b) => a.ilk - b.ilk);
+    const testler = DEPO.liste("test").filter(ic);
+    const dakika = DEPO.liste("oturum").filter(o => o.t >= bas && o.t < son).reduce((a, o) => a + o.aktifSn, 0) / 60;
+    const anlatim = DEPO.liste("anlatim").filter(ic);
+    const oyun = DEPO.liste("oyun").filter(ic);
+    return { sorular, yeni, izlenen, testler, dakika, anlatim, oyun };
+  }
+  function veliGunluk() {
+    const d = donemSinir(), e = etkinlik(d.bas, d.son);
+    const tekrarSoru = e.sorular.filter(s => s.tekrar && !s.terk).length;
+    const yeniDogru = e.yeni.filter(s => s.ilkDogru).length;
+    const izSn = e.izlenen.reduce((a, v) => a + v.izlemeSn, 0);
+    const tekrarIzleme = e.izlenen.filter(v => v.acilis > 1 || v.oncedenIzlendi).length;
+    const nav = `<section class="kart"><div class="satir ara"><span class="satir">${[["gun", "Günlük"], ["hafta", "Haftalık"]].map(([m, a]) => `<button class="sekme ${gunlukMod === m ? "aktif" : ""}" data-gmod="${m}">${a}</button>`).join("")}</span>
+      <span class="satir"><button class="btn kucuk" data-gkay="-1" aria-label="Önceki">◀</button><b>${d.ad}</b><button class="btn kucuk" data-gkay="1" ${gunlukKaydir >= 0 ? "disabled" : ""} aria-label="Sonraki">▶</button>${gunlukKaydir ? '<button class="btn kucuk" data-gkay="0">Bugün</button>' : ""}</span></div>
+      <p class="kucuk-yazi muted">Aynı soru bu dönemde bir kez sayılır; daha önce çözülmüş sorular “tekrar” olarak ayrı yazılır. Aynı video bir kez sayılır, izleme süresi toplanır; 10 saniyeden kısa açılışlar sayılmaz.${veliDers ? " Yalnızca " + dersAd(veliDers) + " gösteriliyor." : ""}</p></section>`;
+    const metrikler = `<section class="izgara dar">
+      ${metrik(dk(e.dakika), "aktif çalışma", "bütün dersler")}
+      ${metrik(e.yeni.length, "yeni çözülen soru", tekrarSoru ? "+ " + tekrarSoru + " tekrar çözülen soru (sayılmadı)" : "tekrar yok")}
+      ${metrik(yuzde(e.yeni.length ? yeniDogru / e.yeni.length : null), "yeni sorularda ilk deneme", e.yeni.length + " soru")}
+      ${metrik(e.testler.length, "tamamlanan test", e.testler.filter(t => ["deneme", "mini", "karma", "yazili", "tgs", "pdfDeneme"].includes(t.tur)).length + " deneme/sınav")}
+      ${metrik(e.izlenen.length, "izlenen farklı video", tekrarIzleme ? tekrarIzleme + " video tekrar izlendi" : "")}
+      ${metrik(dk(izSn / 60), "video izleme süresi", "")}
+    </section>`;
+    // Günlere göre (haftalık)
+    let gunTablo = "";
+    if (gunlukMod === "hafta") {
+      const satir = [];
+      for (let i = 0; i < 7; i++) {
+        const b = d.bas + i * 864e5, s = b + 864e5, g = etkinlik(b, s);
+        satir.push(`<tr><td>${new Date(b).toLocaleDateString("tr-TR", { weekday: "short", day: "numeric", month: "short" })}</td><td class="sayi">${dk(g.dakika)}</td><td class="sayi">${g.yeni.length}</td><td class="sayi">${g.sorular.filter(x => x.tekrar && !x.terk).length}</td><td class="sayi">${yuzde(g.yeni.length ? g.yeni.filter(x => x.ilkDogru).length / g.yeni.length : null)}</td><td class="sayi">${g.testler.length}</td><td class="sayi">${g.izlenen.length}</td></tr>`);
+      }
+      gunTablo = `<section class="kart"><h2>Günlere göre</h2><div class="tablo"><table><thead><tr><th>Gün</th><th class="sayi">Çalışma</th><th class="sayi">Yeni soru</th><th class="sayi">Tekrar soru</th><th class="sayi">İlk deneme</th><th class="sayi">Test</th><th class="sayi">Video</th></tr></thead><tbody>${satir.join("")}</tbody></table></div></section>`;
+    }
+    // Ders › ünite › konu özeti
+    const grup = {};
+    const ekle = (ders, tema, konu, f) => { const g = grup[ders] = grup[ders] || {}; const t = g[tema] = g[tema] || {}; const k = t[konu] = t[konu] || { yeni: 0, dogru: 0, tekrar: 0, video: 0, izSn: 0 }; f(k); };
+    e.sorular.filter(s => !s.terk && KONU[s.konu]).forEach(s => ekle(KONU[s.konu].ders, KONU[s.konu].tema, s.konu, k => { if (s.ilkKez) { k.yeni++; if (s.ilkDogru) k.dogru++; } else k.tekrar++; }));
+    e.izlenen.filter(v => KONU[v.konu]).forEach(v => ekle(KONU[v.konu].ders, KONU[v.konu].tema, v.konu, k => { k.video++; k.izSn += v.izlemeSn; }));
+    const konuOzet = DERSLER.filter(dd => grup[dd.id]).map(dd => `<h3>${dd.simge} ${dd.ad}</h3>${dd.temaListesi.filter(t => grup[dd.id][t.id]).map(t => `<p class="kucuk-yazi muted" style="margin:6px 0 2px">${t.kisa} · ${t.ad}</p>
+      ${t.konular.filter(kid => grup[dd.id][t.id][kid]).map(kid => { const k = grup[dd.id][t.id][kid]; return `<div class="satir ara"><span>${KONU[kid].ad}</span><span class="kucuk-yazi">${k.yeni ? k.yeni + " yeni soru (" + k.dogru + " doğru)" : ""}${k.tekrar ? " · " + k.tekrar + " tekrar" : ""}${k.video ? " · " + k.video + " video, " + dk(k.izSn / 60) : ""}</span></div>`; }).join("")}`).join("")}`).join("");
+    // Testler ve sorular
+    const testSoru = {};
+    e.sorular.forEach(s => { (testSoru[s.testId || "yok"] = testSoru[s.testId || "yok"] || []).push(s); });
+    const testAdi = t => (t.tur === "yazili" || t.tur === "tgs") && t.yazili ? (TEST_AD[t.tur] || t.tur) + " · " + ((YAZILILAR.find(y => y.id === t.yazili) || {}).ad || "") : t.tur === "pdfDeneme" ? "PDF deneme · " + kacis(t.baslik || "") : (TEST_AD[t.tur] || kacis(t.tur || ""));
+    const yer = t => [t.ders && DERS[t.ders] ? DERS[t.ders].simge + " " + DERS[t.ders].ad : t.ders === "karma" ? "4 ders" : "", t.tema && TEMA[t.tema] ? TEMA[t.tema].kisa : "", t.konu && KONU[t.konu] ? KONU[t.konu].ad : ""].filter(Boolean).join(" › ");
+    const soruSatir = s => `<tr><td>${new Date(s.t).toLocaleTimeString("tr-TR", { hour: "2-digit", minute: "2-digit" })}</td><td>${KAZANIM[s.kaz] ? KAZANIM[s.kaz].ad : kacis(s.kaz || "")}</td><td>${s.terk ? "geçti" : s.ilkDogru ? "✓" : "✗"}</td><td class="sayi">${sn(s.ilkSure)}</td><td>${s.tekrar ? '<span class="etiket orta">tekrar</span>' : '<span class="etiket iyi">yeni</span>'}</td></tr>`;
+    const testKutu = (baslik, l) => kayitKutu("g:" + baslik.anahtar, baslik.html, `<div class="tablo"><table><thead><tr><th>Saat</th><th>Kazanım</th><th>Sonuç</th><th class="sayi">Süre</th><th></th></tr></thead><tbody>${l.map(soruSatir).join("")}</tbody></table></div>`, "konu");
+    const testListe = e.testler.slice().reverse().map(t => {
+      const l = testSoru[t.testId] || [];
+      const net = t.net != null ? ` · net ${t.net}` : "";
+      return testKutu({ anahtar: t.testId, html: `<span><b>${tarih(t.t)}</b> · ${testAdi(t)}<br><span class="kucuk-yazi muted">${yer(t)}</span></span> <span class="etiket">${t.dogru}/${t.n} doğru${t.yanlis != null ? " · " + t.yanlis + " yanlış" : ""}${t.bos ? " · " + t.bos + " boş" : ""}${net}</span>${l.filter(x => x.tekrar).length ? ` <span class="etiket orta">${l.filter(x => x.tekrar).length} tekrar soru</span>` : ""}` }, l);
+    }).join("");
+    const testsiz = Object.entries(testSoru).filter(([id]) => !e.testler.some(t => t.testId === id)).flatMap(([, l]) => l);
+    const videoListe = e.izlenen.map(v => `<tr><td>${tarih(v.ilk)}</td><td><span class="kucuk-yazi muted">${dersAd(v.ders)} · ${KONU[v.konu] ? KONU[v.konu].ad : ""}</span><br>${kacis(v.baslik)}</td><td class="sayi">${dk(v.izlemeSn / 60)}</td><td class="sayi">${v.acilis}</td><td>${v.bitti ? "✓ bitti" : ""}${v.oncedenIzlendi ? ' <span class="etiket orta">daha önce de izlendi</span>' : ""}</td></tr>`).join("");
+    return nav + metrikler + gunTablo
+      + `<section class="kart"><h2>Ders › ünite › konu</h2>${konuOzet || '<p class="muted">Bu dönemde çalışma yok.</p>'}</section>`
+      + `<section class="kart"><h2>Testler ve çözülen sorular (${e.testler.length} test)</h2><p class="kucuk-yazi muted">Teste dokunun: o testte çözülen her soru, kazanımı, sonucu ve yeni mi tekrar mı olduğu görünür.</p>${testListe || '<p class="muted">Test yok.</p>'}
+        ${testsiz.length ? testKutu({ anahtar: "devam", html: `<b>Yarım kalan testlerdeki sorular</b> <span class="etiket">${testsiz.length} soru</span>` }, testsiz) : ""}</section>`
+      + `<section class="kart"><h2>İzlenen videolar (${e.izlenen.length})</h2><div class="tablo"><table><thead><tr><th>İlk izleme</th><th>Video</th><th class="sayi">Süre</th><th class="sayi">Açılış</th><th></th></tr></thead><tbody>${videoListe || '<tr><td colspan="5" class="muted">Video izlenmedi.</td></tr>'}</tbody></table></div></section>`
+      + (e.anlatim.length || e.oyun.length ? `<section class="kart"><h2>Konu anlatımı ve oyunlar</h2>${e.anlatim.map(a => `<div class="satir ara"><span>📖 ${KONU[a.konu] ? KONU[a.konu].ad : ""}</span><span class="kucuk-yazi">${a.bitti ? "bitti" : a.okunan + " / " + a.toplam + " bölüm"}</span></div>`).join("")}${e.oyun.map(o => `<div class="satir ara"><span>🎮 ${dersAd(o.ders)} · ${KONU[o.konu] ? KONU[o.konu].ad : o.oyun || ""}</span><span class="kucuk-yazi">${o.dogru}/${o.n} · ${o.puan || 0} puan</span></div>`).join("")}</section>` : "");
+  }
   /* Soru kayıtları: Ders > Konu başlığı (tema) > Konu > sorular — müfredat sırasıyla açılır kapanır liste */
   const kayitAcik = new Set();
   function kayitOzet(l) {
@@ -1233,6 +1334,11 @@ function doGet(e) {
 }`;
 
   const VELI_BAGLA = {
+    gunluk() {
+      ana.querySelectorAll("[data-gmod]").forEach(b => b.onclick = () => { gunlukMod = b.dataset.gmod; gunlukKaydir = 0; veliPaneli("gunluk"); });
+      ana.querySelectorAll("[data-gkay]").forEach(b => b.onclick = () => { const v = +b.dataset.gkay; gunlukKaydir = v === 0 ? 0 : Math.min(0, gunlukKaydir + v); veliPaneli("gunluk"); });
+      VELI_BAGLA.kayit();
+    },
     kayit() {
       ana.querySelectorAll("details[data-kayit]").forEach(d => d.addEventListener("toggle", () => { d.open ? kayitAcik.add(d.dataset.kayit) : kayitAcik.delete(d.dataset.kayit); }));
       ana.querySelectorAll("[data-kayit-hepsi]").forEach(b => b.onclick = () => {

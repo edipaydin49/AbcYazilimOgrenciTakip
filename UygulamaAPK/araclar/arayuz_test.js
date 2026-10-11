@@ -108,13 +108,22 @@ const sunucu = http.createServer((q, r) => { const f = path.join(KOK, decodeURIC
   // Veli paneli
   await p.goto("http://localhost:8765/index.html#/veli");
   for (const x of ["1", "2", "3", "4", "Tamam"]) await tikla(`[data-p="${x}"]`);
-  for (const sk of ["ozet", "dersler", "konu/carpan", "konu/" + fenKonu, "kazanim", "soru", "anlatim", "tekrar", "calisma", "yazili", "denemeler", "kayit", "icerik", "ayar"]) {
+  for (const sk of ["ozet", "dersler", "konu/carpan", "konu/" + fenKonu, "kazanim", "soru", "anlatim", "tekrar", "calisma", "yazili", "denemeler", "gunluk", "kayit", "icerik", "ayar"]) {
     await p.goto("http://localhost:8765/index.html#/veli/" + sk); await p.waitForTimeout(150);
     const metin = await p.textContent("main"); if (/NaN|undefined|\[object/.test(metin)) hatalar.push(sk + " sekmesinde NaN/undefined: " + metin.match(/.{0,40}(NaN|undefined|\[object).{0,40}/)[0]);
     await foto("v_" + sk.replace("/", "_"));
     if (sk === "ozet") { await tikla('[data-aralik="0"]'); await tikla('[data-aralik="30"]'); await tikla('[data-vders="fen"]'); await foto("v_ozet_fen"); await tikla('[data-vders=""]'); }
     if (sk === "yazili") { await p.click("details >> nth=0"); await p.fill('[data-yaz="mat.d1y1"] .yTarih', "2026-11-05"); await tikla('[data-yaz="mat.d1y1"] .yKaydet');
       const y = await p.evaluate(() => DEPO.ayar.yazililar["mat.d1y1"]); if (!y || y.tarih !== "2026-11-05") hatalar.push("yazılı tarihi kaydedilmedi"); }
+    if (sk === "gunluk") {
+      const yeniSay = async () => +(await p.$eval(".metrik:nth-child(2) b", x => x.textContent));
+      const once = await yeniSay();
+      await p.evaluate(() => { const s = DEPO.liste("soru").filter(x => x.sk).pop(); const { id, ...r } = s; DEPO.kaydet("soru", { ...r }); });
+      await p.goto("http://localhost:8765/index.html#/veli/kayit"); await p.goto("http://localhost:8765/index.html#/veli/gunluk"); await p.waitForTimeout(150);
+      if (await yeniSay() !== once) hatalar.push("tekrar çözülen soru yeni soru sayısını artırdı");
+      await tikla('[data-gmod="hafta"]'); await foto("v_gunluk_hafta"); await tikla('[data-gkay="-1"]'); await tikla('[data-gkay="0"]'); await tikla('[data-gmod="gun"]');
+      await tikla("details[data-kayit] > summary >> nth=0"); await foto("v_gunluk_test");
+      const m = await p.textContent("main"); if (/NaN|undefined/.test(m)) hatalar.push("günlük sekmesinde NaN/undefined"); }
     if (sk === "ayar") {
       const yedek = await p.evaluate(() => { const j = JSON.parse(DEPO.disaAktar()); j.olaylar = j.olaylar.slice(0, 5).map((o, i) => ({ ...o, id: "yedektest" + i })); return JSON.stringify(j); });
       const yol = require("path").join(CIKTI, "yedek_test.json"); require("fs").writeFileSync(yol, yedek);
