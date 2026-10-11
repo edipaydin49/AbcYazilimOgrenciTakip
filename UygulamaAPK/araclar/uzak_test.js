@@ -25,11 +25,20 @@ const sunucu = http.createServer((q, r) => { const u = decodeURIComponent(q.url.
   const java = spawn("java", ["-cp", GECICI, "SunucuDeneme", KOK, path.join(GECICI, "veri.json"), "4826"]);
   const port = await new Promise(c => java.stdout.on("data", d => { const m = String(d).match(/PORT (\d+)/); if (m) c(+m[1]); }));
   const taban = "http://localhost:" + port;
-  const al = async (u) => { const r = await fetch(taban + u, { redirect: "manual" }); return { kod: r.status, govde: await r.text(), yer: r.headers.get("location") }; };
+  const al = async (u, pin) => { const r = await fetch(taban + u, { redirect: "manual", headers: pin ? { "X-Pin": pin } : {} }); return { kod: r.status, govde: await r.text(), yer: r.headers.get("location") }; };
   let r = await al("/"); if (r.kod !== 302 || r.yer !== "/veli.html") hatalar.push("kök yönlendirmesi yok");
   r = await al("/api/veri"); if (r.kod !== 401) hatalar.push("şifresiz veri verildi: " + r.kod);
   r = await al("/../araclar/apk_derle.py"); if (r.kod === 200) hatalar.push("dizin dışına çıkılabildi");
   r = await al("/%2e%2e/OKU_BENI.md"); if (r.kod === 200) hatalar.push("kodlanmış .. ile dizin dışına çıkılabildi");
+  r = await al("/api/veri?pin=4826"); if (r.kod !== 401) hatalar.push("şifre adres satırından kabul edildi: " + r.kod);
+  r = await al("/api/veri", "4826"); if (r.kod !== 200) hatalar.push("başlıktaki doğru şifre kabul edilmedi: " + r.kod);
+  r = await al("/" + "a".repeat(5000)); if (r.kod !== 400) hatalar.push("çok uzun istek reddedilmedi: " + r.kod);
+  { // Aynı anda çok bağlantı: sunucu sınırı aşanları kapatır ama çökmez
+    const net = require("net"); const soketler = [];
+    for (let i = 0; i < 20; i++) { const s = net.connect(port, "127.0.0.1"); s.on("error", () => {}); soketler.push(s); }
+    await new Promise(c => setTimeout(c, 300)); soketler.forEach(s => s.destroy()); await new Promise(c => setTimeout(c, 300));
+    r = await al("/js/depo.js"); if (r.kod !== 200) hatalar.push("çok bağlantıdan sonra sunucu yanıt vermiyor: " + r.kod);
+  }
   r = await al("/js/depo.js"); if (r.kod !== 200) hatalar.push("statik dosya sunulmadı");
   // 3) “Bilgisayar” tarayıcısı
   const p = await b.newPage({ viewport: { width: 1366, height: 900 } });
@@ -47,8 +56,8 @@ const sunucu = http.createServer((q, r) => { const u = decodeURIComponent(q.url.
   const yerel = await p.evaluate(() => { try { return localStorage.length; } catch (e) { return 0; } });
   if (yerel > 1) hatalar.push("bilgisayarda veri kaydedildi: localStorage " + yerel);
   // 4) Kilitlenme: 5 yanlış deneme → 429
-  for (let i = 0; i < 5; i++) await al("/api/veri?pin=0000");
-  r = await al("/api/veri?pin=4826"); if (r.kod !== 429) hatalar.push("5 yanlış denemeden sonra kilitlenmedi: " + r.kod);
+  for (let i = 0; i < 5; i++) await al("/api/veri", "0000");
+  r = await al("/api/veri", "4826"); if (r.kod !== 429) hatalar.push("5 yanlış denemeden sonra kilitlenmedi: " + r.kod);
   java.kill(); await b.close(); sunucu.close();
   console.log("HATALAR:", hatalar.length ? hatalar : "yok");
 })();

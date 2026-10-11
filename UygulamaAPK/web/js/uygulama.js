@@ -67,7 +67,7 @@
   async function uzakYenile(elle) {
     if (!uzakPin) return;
     try {
-      const r = await fetch("/api/veri?pin=" + encodeURIComponent(uzakPin), { cache: "no-store" });
+      const r = await fetch("/api/veri", { cache: "no-store", headers: { "X-Pin": encodeURIComponent(uzakPin) } });
       const j = await r.json();
       if (!r.ok) { if (elle) toast(j.hata || "Veri alınamadı."); if (r.status === 401) { uzakHazir = false; uzakPin = null; yonlendir(); } return; }
       if (j.zaman !== DEPO.uzakZaman() || elle) { DEPO.uzakYukle(j); yonlendir(); }
@@ -88,7 +88,7 @@
       const dene = async () => {
         uzakPin = $("#uPin").value.trim(); $("#uDurum").textContent = "Bağlanılıyor…";
         try {
-          const r = await fetch("/api/veri?pin=" + encodeURIComponent(uzakPin), { cache: "no-store" });
+          const r = await fetch("/api/veri", { cache: "no-store", headers: { "X-Pin": encodeURIComponent(uzakPin) } });
           const j = await r.json();
           if (!r.ok) { $("#uDurum").textContent = j.hata || "Bağlanılamadı."; uzakPin = null; return; }
           DEPO.uzakYukle(j); uzakHazir = true;
@@ -1203,6 +1203,10 @@
           <li>Verilen <b>/exec</b> ile biten adresi kopyalayıp buraya yapıştırın. Aynı adresi velinin telefonundaki uygulamaya da girin.</li></ol>
           <textarea readonly id="aKod">${kacis(APPS_SCRIPT)}</textarea><button class="btn kucuk" id="aKodKopyala">Kodu kopyala</button>
           <p class="kucuk-yazi muted">Güvenlik: adresi bilen herkes verileri görebilir; adresi kimseyle paylaşmayın.</p></details></section>
+      <section class="kart"><h2>💾 Yedekleme</h2><p>Yedek dosyası tabletin <b>İndirilenler › OgrenmeYolculugu</b> klasörüne yazılır; uygulama silinse bile kalır. Uygulama her gün kendiliğinden de yedek alır (son 3 gün) ve sürüm güncellendiğinde ayrıca bir yedek oluşturur.</p>
+        <p class="kucuk-yazi muted">${DEPO.ayar.sonYedek ? "Son yedek: " + tarih(DEPO.ayar.sonYedek.t) + " · " + kacis(DEPO.ayar.sonYedek.yer) : "Henüz yedek alınmadı."}</p>
+        <div class="satir"><button class="btn ana" id="aYedek">Şimdi yedekle</button><label class="btn" for="aYedekDosya">Yedekten geri yükle</label><input type="file" id="aYedekDosya" accept=".json,application/json,text/plain" hidden></div>
+        <p class="kucuk-yazi muted">Geri yükleme mevcut kayıtları silmez; yedekteki kayıtları ekler (aynı kayıt iki kez eklenmez). Şifre ve bulut adresi yedekte bulunmaz.</p></section>
       <section class="kart"><h2>İnternetsiz taşıma (kopyala-yapıştır)</h2><p>Bütün verileri metin olarak kopyalayıp başka bir cihazdaki uygulamaya yapıştırabilirsiniz.</p>
         <div class="satir"><button class="btn" id="aDisa">Tüm verileri kopyala</button><button class="btn" id="aDisaPaylas">Tüm verileri paylaş</button></div>
         <label class="alan">Başka cihazdan gelen veriyi buraya yapıştırın<textarea id="aIce" placeholder='{"surum":1,...}'></textarea></label><button class="btn" id="aIceAl">İçe aktar</button></section>
@@ -1298,6 +1302,14 @@ function doGet(e) {
       $("#aKodKopyala").onclick = () => kopyala(APPS_SCRIPT);
       const sb = $("#aSunucuBaslat"); if (sb) sb.onclick = () => { const u = Android.sunucuBaslat(); if (!u) return toast("Sunucu başlatılamadı. Tableti yeniden başlatıp deneyin."); DEPO.tabletePaylas(true); if (/^http:\/\/:/.test(u)) toast("Tablet bir Wi‑Fi ağına bağlı görünmüyor."); veliPaneli("ayar"); };
       const sd = $("#aSunucuDurdur"); if (sd) sd.onclick = () => { Android.sunucuDurdur(); veliPaneli("ayar"); };
+      $("#aYedek").onclick = () => { const r = yedekAl("yedek_" + new Date().toISOString().slice(0, 10) + ".json"); toast(r ? "Yedeklendi: " + r : "Yedek alınamadı."); if (r) veliPaneli("ayar"); };
+      $("#aYedekDosya").onchange = e => {
+        const f = e.target.files && e.target.files[0]; if (!f) return;
+        const r = new FileReader();
+        r.onload = () => { try { const n = DEPO.geriYukle(JSON.parse(r.result)); toast(n + " kayıt geri yüklendi."); veliPaneli("ayar"); } catch (x) { toast(x.message && /yedeği/.test(x.message) ? x.message : "Dosya okunamadı; doğru yedek dosyasını seçtiğinizden emin olun."); } };
+        r.onerror = () => toast("Dosya okunamadı.");
+        r.readAsText(f);
+      };
       $("#aDisa").onclick = () => kopyala(DEPO.disaAktar());
       $("#aDisaPaylas").onclick = () => paylas("Öğrenme Yolculuğu verileri", DEPO.disaAktar());
       $("#aIceAl").onclick = () => { try { const j = JSON.parse($("#aIce").value); toast(DEPO.iceAktar(j.olaylar) + " kayıt içe aktarıldı."); } catch (e) { toast("Metin okunamadı. Tamamını yapıştırdığınızdan emin olun."); } };
@@ -1311,5 +1323,25 @@ function doGet(e) {
   window.TEST_DURUMU = () => durum.test;  // otomatik testler için salt okunur erişim
 
   /* ============================ BAŞLAT ============================ */
-  DEPO.baslat().then(() => { yonlendir(); DEPO.gonder(); });
+  /* Yedek dosyası yazar: tablette İndirilenler/OgrenmeYolculugu, tarayıcıda indirme. Dosyanın yerini döndürür. */
+  function yedekAl(ad) {
+    const json = DEPO.disaAktar();
+    let yer = "";
+    try {
+      if (window.Android && Android.yedekKaydet) yer = Android.yedekKaydet(json, ad);
+      else { const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([json], { type: "application/json" })); a.download = ad; a.click(); setTimeout(() => URL.revokeObjectURL(a.href), 5000); yer = "İndirilenler/" + ad; }
+    } catch (e) { yer = ""; }
+    if (yer) { DEPO.ayar.sonYedek = { t: Date.now(), yer }; DEPO.ayarKaydet(); }
+    return yer;
+  }
+  /* Otomatik yedek (yalnızca tablette): günde bir (3 dosya dönüşümlü) ve sürüm değiştiğinde. */
+  function otomatikYedek() {
+    if (DEPO.uzak || !(window.Android && Android.yedekKaydet) || !DEPO.liste().length) return;
+    const surum = Android.surum ? Android.surum() : "";
+    if (surum && DEPO.ayar.sonSurum && DEPO.ayar.sonSurum !== surum) yedekAl("yedek_surum_" + DEPO.ayar.sonSurum + "_sonrasi_" + surum + ".json");
+    if (surum && DEPO.ayar.sonSurum !== surum) { DEPO.ayar.sonSurum = surum; DEPO.ayarKaydet(); }
+    const gun = ANALIZ.bugunNo();
+    if (DEPO.ayar.sonOtoYedekGun !== gun) { if (yedekAl("otomatik_yedek_" + (gun % 3 + 1) + ".json")) { DEPO.ayar.sonOtoYedekGun = gun; DEPO.ayarKaydet(); } }
+  }
+  DEPO.baslat().then(() => { yonlendir(); DEPO.gonder(); setTimeout(otomatikYedek, 3000); });
 })();

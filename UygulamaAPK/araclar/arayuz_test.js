@@ -115,6 +115,16 @@ const sunucu = http.createServer((q, r) => { const f = path.join(KOK, decodeURIC
     if (sk === "ozet") { await tikla('[data-aralik="0"]'); await tikla('[data-aralik="30"]'); await tikla('[data-vders="fen"]'); await foto("v_ozet_fen"); await tikla('[data-vders=""]'); }
     if (sk === "yazili") { await p.click("details >> nth=0"); await p.fill('[data-yaz="mat.d1y1"] .yTarih', "2026-11-05"); await tikla('[data-yaz="mat.d1y1"] .yKaydet');
       const y = await p.evaluate(() => DEPO.ayar.yazililar["mat.d1y1"]); if (!y || y.tarih !== "2026-11-05") hatalar.push("yazılı tarihi kaydedilmedi"); }
+    if (sk === "ayar") {
+      const yedek = await p.evaluate(() => { const j = JSON.parse(DEPO.disaAktar()); j.olaylar = j.olaylar.slice(0, 5).map((o, i) => ({ ...o, id: "yedektest" + i })); return JSON.stringify(j); });
+      const yol = require("path").join(CIKTI, "yedek_test.json"); require("fs").writeFileSync(yol, yedek);
+      const once = await p.evaluate(() => DEPO.liste().length);
+      await p.setInputFiles("#aYedekDosya", yol); await p.waitForTimeout(400);
+      const sonra = await p.evaluate(() => DEPO.liste().length); if (sonra !== once + 5) hatalar.push("yedekten geri yükleme çalışmadı: " + once + " → " + sonra);
+      await p.setInputFiles("#aYedekDosya", yol); await p.waitForTimeout(400);
+      if (await p.evaluate(() => DEPO.liste().length) !== sonra) hatalar.push("aynı yedek iki kez eklendi");
+      if (!(await p.evaluate(() => DEPO.ayar.pin))) hatalar.push("geri yükleme şifreyi sildi");
+      await foto("v_ayar_yedek"); }
     if (sk === "kayit") { await tikla('[data-aralik="0"]');
       if (!(await p.$('details[data-kayit="d:mat"]'))) hatalar.push("soru kayıtlarında Matematik başlığı yok");
       await tikla('details[data-kayit="d:mat"] > summary'); await tikla('details[data-kayit="d:mat"] details.tema > summary >> nth=0'); await tikla('details[data-kayit="d:mat"] details.konu > summary >> nth=0');

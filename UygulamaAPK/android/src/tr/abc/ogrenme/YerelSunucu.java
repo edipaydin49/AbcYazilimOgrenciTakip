@@ -1,9 +1,7 @@
 package tr.abc.ogrenme;
 
-import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.Inet4Address;
 import java.net.InetAddress;
@@ -12,10 +10,14 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.URLDecoder;
 import java.util.Collections;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * Aynı Wi-Fi ağındaki bilgisayardan veli panelini görmek için küçük HTTP sunucusu.
  * Yalnızca GET: uygulamanın sayfaları (assets/web) ve şifreyle korunan /api/veri (öğrenci kayıtları).
+ * Şifre adres satırında değil "X-Pin" başlığında gelir (tarayıcı geçmişine ve kayıtlara düşmez).
+ * Sınırlar: aynı anda en çok 8 bağlantı, istek satırı 2 KB, başlıklar 8 KB, 10 sn zaman aşımı;
+ * 5 hatalı şifreden sonra 1 dakika kilit. Not: bağlantı şifrelenmemiş HTTP'dir; yalnızca güvendiğiniz ev ağında kullanın.
  * Android'e bağımlı değildir; dosyalar Kaynak arayüzüyle okunur (bilgisayarda da test edilebilir).
  */
 public class YerelSunucu {
@@ -29,6 +31,8 @@ public class YerelSunucu {
     private volatile String pin;
     private int hataliDeneme = 0;
     private long kilitBitis = 0;
+    private final AtomicInteger acikBaglanti = new AtomicInteger();
+    static final int EN_COK_BAGLANTI = 8, SATIR_SINIRI = 2048, BASLIK_SINIRI = 8192;
 
     public YerelSunucu(Kaynak kaynak) {
         this.kaynak = kaynak;
@@ -46,6 +50,7 @@ public class YerelSunucu {
                 while (!ss.isClosed()) {
                     try {
                         final Socket s = ss.accept();
+                        if (acikBaglanti.incrementAndGet() > EN_COK_BAGLANTI) { acikBaglanti.decrementAndGet(); try { s.close(); } catch (Exception x) { } continue; }
                         Thread i = new Thread(new Runnable() { public void run() { istek(s); } });
                         i.setDaemon(true);
                         i.start();
@@ -92,15 +97,42 @@ public class YerelSunucu {
         return yedek;
     }
 
+    /* Sınırlı satır okuma: CRLF'e kadar en çok "sinir" bayt; aşılırsa null. */
+    static String satirOku(InputStream in, int sinir) throws Exception {
+        ByteArrayOutputStream b = new ByteArrayOutputStream();
+        int c;
+        while ((c = in.read()) >= 0) {
+            if (c == '\n') break;
+            if (c != '\r') b.write(c);
+            if (b.size() > sinir) return null;
+        }
+        if (c < 0 && b.size() == 0) return null;
+        return b.toString("UTF-8");
+    }
+
     private void istek(Socket s) {
         try {
-            s.setSoTimeout(15000);
-            BufferedReader r = new BufferedReader(new InputStreamReader(s.getInputStream(), "UTF-8"));
-            String ilk = r.readLine();
-            String satir;
-            while ((satir = r.readLine()) != null && !satir.isEmpty()) { /* başlıklar okunup geçilir */ }
+            istekIsle(s);
+        } finally {
+            acikBaglanti.decrementAndGet();
+        }
+    }
+
+    private void istekIsle(Socket s) {
+        try {
+            s.setSoTimeout(10000);
+            InputStream in = new java.io.BufferedInputStream(s.getInputStream());
             OutputStream o = s.getOutputStream();
-            if (ilk == null) { s.close(); return; }
+            String ilk = satirOku(in, SATIR_SINIRI);
+            if (ilk == null) { yanit(o, 400, "text/plain; charset=utf-8", "İstek çok uzun".getBytes("UTF-8"), null); s.close(); return; }
+            String satir, gelenPin = null;
+            int toplam = 0;
+            while ((satir = satirOku(in, SATIR_SINIRI)) != null && !satir.isEmpty()) {
+                toplam += satir.length();
+                if (toplam > BASLIK_SINIRI) { yanit(o, 400, "text/plain; charset=utf-8", "Başlıklar çok uzun".getBytes("UTF-8"), null); s.close(); return; }
+                int iki = satir.indexOf(':');
+                if (iki > 0 && satir.substring(0, iki).trim().equalsIgnoreCase("X-Pin")) gelenPin = URLDecoder.decode(satir.substring(iki + 1).trim(), "UTF-8");
+            }
             String[] p = ilk.split(" ");
             if (p.length < 2 || !p[0].equals("GET")) { yanit(o, 405, "text/plain; charset=utf-8", "Yalnızca GET".getBytes("UTF-8"), null); s.close(); return; }
             String hedef = p[1], yol = hedef, sorgu = "";
@@ -108,11 +140,11 @@ public class YerelSunucu {
             if (q >= 0) { yol = hedef.substring(0, q); sorgu = hedef.substring(q + 1); }
             yol = URLDecoder.decode(yol, "UTF-8");
             if (yol.equals("/")) { yanit(o, 302, "text/plain", new byte[0], "Location: /veli.html\r\n"); }
-            else if (yol.equals("/api/veri")) apiVeri(o, parametre(sorgu, "pin"));
+            else if (yol.equals("/api/veri")) apiVeri(o, gelenPin);
             else if (yol.contains("..") || yol.contains("\\") || !yol.startsWith("/")) yanit(o, 400, "text/plain; charset=utf-8", "Geçersiz yol".getBytes("UTF-8"), null);
             else {
                 byte[] b;
-                try (InputStream in = kaynak.ac("web" + yol)) { b = oku(in); } catch (Exception e) { b = null; }
+                try (InputStream dosya = kaynak.ac("web" + yol)) { b = oku(dosya); } catch (Exception e) { b = null; }
                 if (b == null) yanit(o, 404, "text/plain; charset=utf-8", "Bulunamadı".getBytes("UTF-8"), null);
                 else yanit(o, 200, tur(yol), b, "Cache-Control: no-cache\r\n");
             }
@@ -146,16 +178,6 @@ public class YerelSunucu {
             + "X-Content-Type-Options: nosniff\r\n" + (ek == null ? "" : ek) + "\r\n";
         o.write(bas.getBytes("UTF-8"));
         o.write(govde);
-    }
-
-    private static String parametre(String sorgu, String ad) {
-        try {
-            for (String p : sorgu.split("&")) {
-                int e = p.indexOf('=');
-                if (e > 0 && p.substring(0, e).equals(ad)) return URLDecoder.decode(p.substring(e + 1), "UTF-8");
-            }
-        } catch (Exception e) { }
-        return null;
     }
 
     private static byte[] oku(InputStream in) throws Exception {

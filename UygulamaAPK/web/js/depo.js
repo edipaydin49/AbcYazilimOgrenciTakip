@@ -185,7 +185,18 @@
   /* Bütün verinin dışa aktarımı (kopyala-yapıştır ile başka cihaza taşımak için). */
   function disaAktar() {
     const { pin, bulutUrl, ...a } = ayar;
-    return JSON.stringify({ surum: 1, zaman: Date.now(), ogrenci: ayar.ogrenciAdi, ayar: a, olaylar: [...olaylar.values()].map(({ gonderildi, ...o }) => o) });
+    return JSON.stringify({ surum: 1, sema: 2, uygulama: "OgrenmeYolculugu", zaman: Date.now(), ogrenci: ayar.ogrenciAdi, ayar: a, olaylar: [...olaylar.values()].map(({ gonderildi, ...o }) => o) });
+  }
+  /* Yedekten geri yükleme: kayıtlar birleştirilir (aynı kayıt iki kez eklenmez); ayarlar şifre, bulut adresi ve cihaz kimliği dışında geri gelir. */
+  function geriYukle(j, ayarlarDa = true) {
+    if (!j || !Array.isArray(j.olaylar)) throw new Error("Bu dosya bir Öğrenme Yolculuğu yedeği değil.");
+    const n = iceAktar(j.olaylar);
+    if (ayarlarDa && j.ayar && typeof j.ayar === "object") {
+      const { pin, bulutUrl, cihaz, kurulum, ...a } = j.ayar;
+      ayar = { ...ayar, ...a }; if (!ayar.ogrenciAdi && j.ogrenci) ayar.ogrenciAdi = j.ogrenci;
+      ayarKaydet();
+    }
+    return n;
   }
 
   /* ---------------- Bilgisayardan izleme ---------------- */
@@ -213,7 +224,7 @@
   }
 
   window.DEPO = {
-    baslat, kaydet, guncelle, liste, iceAktar, gonder, cek, disaAktar, ayarKaydet, uid, yazmaBitti, tabletePaylas, uzakYukle, uzak: UZAK, uzakZaman: () => uzakZaman,
+    baslat, kaydet, guncelle, liste, iceAktar, geriYukle, gonder, cek, disaAktar, ayarKaydet, uid, yazmaBitti, tabletePaylas, uzakYukle, uzak: UZAK, uzakZaman: () => uzakZaman,
     get ayar() { return ayar; }, set ayar(v) { ayar = v; ayarKaydet(); },
     bekleyenSayisi: () => [...olaylar.values()].filter(o => !o.gonderildi && o.cihaz === ayar.cihaz).length,
     sifirla: async () => { olaylar.clear(); kuyruk.clear(); onbellek = null; if (db) await new Promise(c => { const tx = db.transaction("olaylar", "readwrite"); tx.objectStore("olaylar").clear(); tx.oncomplete = c; }); },

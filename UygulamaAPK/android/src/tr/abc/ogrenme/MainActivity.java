@@ -1,12 +1,17 @@
 package tr.abc.ogrenme;
 
 import android.app.Activity;
+import android.content.ContentResolver;
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.view.View;
 import android.webkit.JavascriptInterface;
+import android.webkit.ValueCallback;
 import android.webkit.WebChromeClient;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebResourceResponse;
@@ -14,7 +19,10 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.Locale;
 
 /**
@@ -30,6 +38,9 @@ public class MainActivity extends Activity {
     private TextToSpeech ses;
     private volatile boolean sesHazir;
     private YerelSunucu sunucu;
+    private boolean sunucuDuraklatildi;
+    private ValueCallback<Uri[]> dosyaGeri;
+    private static final int DOSYA_SEC = 41;
 
     @Override
     protected void onCreate(Bundle b) {
@@ -62,6 +73,32 @@ public class MainActivity extends Activity {
         }
     }
 
+    /* Uygulama arka plana geçince izleme sunucusu kapanır (ağda gereksiz açık kalmasın); öne gelince yeniden açılır. */
+    @Override
+    protected void onStop() {
+        if (sunucu != null && sunucu.calisiyor()) { sunucu.durdur(); sunucuDuraklatildi = true; }
+        super.onStop();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if (sunucuDuraklatildi && sunucu != null) { sunucuDuraklatildi = false; sunucu.baslat(); }
+    }
+
+    /* Yedekten geri yükleme: sayfadaki <input type="file"> için Android dosya seçicisi */
+    @Override
+    protected void onActivityResult(int istek, int sonuc, Intent veri) {
+        if (istek == DOSYA_SEC && dosyaGeri != null) {
+            Uri[] secilen = null;
+            if (sonuc == RESULT_OK && veri != null && veri.getData() != null) secilen = new Uri[] { veri.getData() };
+            dosyaGeri.onReceiveValue(secilen);
+            dosyaGeri = null;
+            return;
+        }
+        super.onActivityResult(istek, sonuc, veri);
+    }
+
     @Override
     protected void onDestroy() {
         if (sunucu != null) sunucu.durdur();
@@ -92,6 +129,23 @@ public class MainActivity extends Activity {
     }
 
     private class Krom extends WebChromeClient {
+        @Override
+        public boolean onShowFileChooser(WebView v, ValueCallback<Uri[]> geri, FileChooserParams p) {
+            if (dosyaGeri != null) dosyaGeri.onReceiveValue(null);
+            dosyaGeri = geri;
+            Intent i = new Intent(Intent.ACTION_OPEN_DOCUMENT);
+            i.addCategory(Intent.CATEGORY_OPENABLE);
+            i.setType("*/*");
+            i.putExtra(Intent.EXTRA_MIME_TYPES, new String[] { "application/json", "text/plain", "application/octet-stream" });
+            try {
+                startActivityForResult(i, DOSYA_SEC);
+            } catch (Exception e) {
+                dosyaGeri = null;
+                return false;
+            }
+            return true;
+        }
+
         @Override
         public void onShowCustomView(View v, CustomViewCallback c) {
             tamEkran = v;
@@ -167,7 +221,47 @@ public class MainActivity extends Activity {
 
         @JavascriptInterface
         public String surum() {
-            return "1.6";
+            return "1.7";
+        }
+
+        /* Yedek: veriyi tabletin İndirilenler/OgrenmeYolculugu klasörüne yazar (uygulama silinse de kalır).
+         * Aynı adlı dosya bu uygulamaya aitse üzerine yazılır. Başarılıysa dosyanın yerini, değilse "" döndürür. */
+        @JavascriptInterface
+        public String yedekKaydet(String json, String ad) {
+            if (ad == null || !ad.matches("[A-Za-z0-9_.-]{1,80}")) return "";
+            try {
+                byte[] b = json.getBytes("UTF-8");
+                if (Build.VERSION.SDK_INT >= 29) {
+                    ContentResolver cr = getContentResolver();
+                    Uri koleksiyon = Uri.parse("content://media/external/downloads");
+                    Uri hedef = null;
+                    Cursor c = cr.query(koleksiyon, new String[] { "_id" }, "_display_name=? AND relative_path=?", new String[] { ad, "Download/OgrenmeYolculugu/" }, null);
+                    if (c != null) {
+                        if (c.moveToFirst()) hedef = Uri.withAppendedPath(koleksiyon, String.valueOf(c.getLong(0)));
+                        c.close();
+                    }
+                    if (hedef == null) {
+                        ContentValues d = new ContentValues();
+                        d.put("_display_name", ad);
+                        d.put("mime_type", "application/json");
+                        d.put("relative_path", "Download/OgrenmeYolculugu");
+                        hedef = cr.insert(koleksiyon, d);
+                    }
+                    if (hedef == null) return "";
+                    OutputStream o = cr.openOutputStream(hedef, "wt");
+                    o.write(b);
+                    o.close();
+                    return "İndirilenler/OgrenmeYolculugu/" + ad;
+                }
+                File k = new File(getExternalFilesDir(null), "yedek");
+                k.mkdirs();
+                FileOutputStream o = new FileOutputStream(new File(k, ad));
+                o.write(b);
+                o.close();
+                return k.getAbsolutePath() + "/" + ad;
+            } catch (Exception e) {
+                return "";
+            }
         }
     }
 

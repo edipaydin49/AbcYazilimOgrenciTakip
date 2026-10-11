@@ -746,5 +746,452 @@
       { kural: "Sayfa → cardinal (page 214); kat/tarih/sıra → ordinal.", dogruNeden: "two hundred (200) and fourteen (14) = 214." }),
   );
 
+  /* =========================================================================
+   * THEME 3 — BODY PARTS, APPEARANCE AND CLOTHES
+   * ========================================================================= */
+  const VUCUT = [
+    ["eyes", "We see with our", "gözlerimizle görürüz"], ["ears", "We hear with our", "kulaklarımızla duyarız"], ["nose", "We smell with our", "burnumuzla koklarız"],
+    ["teeth", "We brush our ___ every morning and evening.", "dişlerimizi fırçalarız"], ["feet", "We wear shoes on our", "ayakkabıyı ayağımıza giyeriz"], ["hands", "We wear gloves on our", "eldiveni elimize takarız"],
+  ];
+  SORU_EKLE("enapp.body",
+    z => {
+      const v = sec(VUCUT), d = karistir(VUCUT.filter(x => x !== v)).slice(0, 3);
+      const cumle = v[1].includes("___") ? v[1] : v[1] + " ___.";
+      return S({
+        kaz: "enapp.body", duzey: "hatirlama", zorluk: 1,
+        soru: `Complete the sentence.<br>${cumle}`,
+        dogru: v[0],
+        yanlis: d.map(x => [x[0], "bilgi", `“${x[0]}” ile ilgili doğru cümle: ${x[2]}.`]),
+        ipucu: "Cümledeki fiili (see, hear, smell, wear…) Türkçeye çevir.",
+        cozum: C("Cümleye uygun vücut bölümünü bulacağız.", "eyes göz, ears kulak, nose burun, teeth dişler, feet ayaklar, hands eller.",
+          `Cümlenin anlamını düşün: ${v[2]}.`, `Bu vücut bölümü İngilizcede: ${v[0]}.`, `Cevap: ${cumle.replace("___", v[0])}`, "Düzensiz çoğullara dikkat: tooth → teeth, foot → feet."),
+        kural: "Düzensiz çoğullar: tooth → teeth, foot → feet.",
+        dogruNeden: `${v[2]}; İngilizcesi “${v[0]}”.`,
+      });
+    },
+    Q("enapp.body", "uygulama", 2, "Read the text.<br><i>My grandfather is tall and slim. He has got short white hair and a moustache. He wears glasses.</i><br>Which one is <b>true</b> about the grandfather?", "He has got a moustache.",
+      [["He is short and fat.", "dikkat", "Metinde “tall and slim” (uzun ve zayıf) yazıyor."], ["He has got long black hair.", "dikkat", "Metinde saçının “short white” (kısa ve beyaz) olduğu söyleniyor."], ["He has got a beard.", "kavrama", "beard sakaldır; metinde moustache (bıyık) geçiyor."]],
+      "moustache = bıyık, beard = sakal",
+      C("Metne göre büyükbabayla ilgili doğru bilgiyi bulacağız.", "Görünüş sıfatları: tall/short (uzun/kısa boylu), slim/fat (zayıf/şişman). moustache bıyık, beard sakal, glasses gözlük.",
+        "Metin: tall, slim, short white hair, a moustache, glasses.", "Seçeneklerden yalnızca “He has got a moustache.” metinle aynı.", "Cevap: He has got a moustache.", "Her seçeneği metindeki kelimelerle karşılaştır; zıt anlamlılara (tall/short) dikkat et."),
+      { kural: "tall ↔ short, slim ↔ fat, long ↔ short hair.", dogruNeden: "Metinde “He has got … a moustache.” yazıyor." }),
+    Q("enapp.body", "aciklama", 2, "Which word is the <b>odd one out</b>?", "curly",
+      [["elbow", "kavrama", "elbow (dirsek) bir vücut bölümüdür; diğerleriyle aynı gruptadır."], ["knee", "kavrama", "knee (diz) bir vücut bölümüdür."], ["shoulder", "kavrama", "shoulder (omuz) bir vücut bölümüdür."]],
+      "Üç kelime vücut bölümü; biri değil.",
+      C("Grubun dışında kalan kelimeyi bulacağız.", "elbow dirsek, knee diz, shoulder omuz → vücut bölümleri. curly kıvırcık → saçı anlatan sıfat.",
+        "Kelimeleri anlamlarına göre gruplayalım.", "Üçü vücut bölümü, “curly” bir sıfat.", "Cevap: curly.", "Odd one out sorularında kelimelerin türüne (isim/sıfat) ve konusuna bak."),
+      { kural: "curly / straight / wavy hair → saç sıfatları.", dogruNeden: "curly bir sıfattır; diğerleri vücut bölümüdür." }),
+  );
+
+  const HAVE_K = [["My sister", "has got"], ["Tom", "has got"], ["The twins", "have got"], ["I", "have got"], ["Our cat", "has got"], ["You", "have got"]];
+  SORU_EKLE("enapp.havegot",
+    z => {
+      const k = sec(HAVE_K), ozellik = k[0] === "Our cat" ? sec(["green eyes", "a long tail", "white fur"]) : sec(["brown eyes", "curly hair", "freckles", "a round face"]);
+      const yanlisV = k[1] === "has got" ? "have got" : "has got";
+      return S({
+        kaz: "enapp.havegot", duzey: "uygulama", zorluk: 1,
+        soru: `Choose the correct option.<br>${k[0]} ___ ${ozellik}.`,
+        dogru: k[1],
+        yanlis: [[yanlisV, "dikkat", k[1] === "has got" ? `“${k[0]}” üçüncü tekil kişidir (he / she / it); “has got” kullanılır.` : `“${k[0]}” ile “have got” kullanılır; “has got” yalnızca he / she / it içindir.`], [k[1] === "has got" ? "is got" : "are got", "bilgi", "Sahiplik bildirirken “be” değil “have / has got” kullanılır."], [k[1] === "has got" ? "haven't got" : "hasn't got", "dikkat", "Hem özneye uymuyor hem de cümle olumsuz oluyor."]],
+        ipucu: "Özne he / she / it mi, yoksa I / you / we / they mi?",
+        cozum: C("Dış görünüşü anlatan cümleye “have got” ya da “has got” seçeceğiz.", "I / you / we / they → have got; he / she / it → has got.",
+          `Özne: ${k[0]}.`, `Bu özne ${k[1] === "has got" ? "he / she / it grubunda" : "I / you / we / they grubunda"} → ${k[1]}.`, `Cevap: ${k[0]} ${k[1]} ${ozellik}.`, "Özneyi bir zamirle değiştir (My sister → she, The twins → they); sonra kuralı uygula."),
+        kural: "He / She / It has got; I / You / We / They have got.",
+        dogruNeden: `“${k[0]}” ile “${k[1]}” kullanılır.`,
+      });
+    },
+    Q("enapp.havegot", "transfer", 2, "Complete the dialogue.<br>— ___ your brother got blue eyes?<br>— No, he hasn't. He's got green eyes.", "Has",
+      [["Have", "dikkat", "“your brother” = he; he ile “Has” kullanılır."], ["Is", "bilgi", "“got” ile soru “Have / Has” ile kurulur; “Is” kullanılmaz."], ["Does", "bilgi", "“have got” kalıbında soru “Has he got…?” biçiminde kurulur."]],
+      "Cevaptaki kısa yanıt sana yardım ediyor: No, he hasn't.",
+      C("“have got” ile soru cümlesi kuracağız.", "Soru: Have / Has + özne + got…? Kısa cevap: Yes, he has. / No, he hasn't.",
+        "Özne: your brother → he.", "he → Has: Has your brother got blue eyes?", "Cevap: Has.", "Kısa cevaptaki “hasn't” sorunun “Has” ile başladığını doğrular."),
+      { kural: "Has he / she got…? — Yes, he has. / No, she hasn't.", dogruNeden: "Özne “your brother” (he) olduğu için soru “Has” ile başlar." }),
+    Q("enapp.havegot", "uygulama", 2, "Look at the table. <b>Which sentence is true?</b>", "Selim hasn't got glasses.",
+      [["Selim has got long hair.", "dikkat", "Tabloda Selim'in saçı “short”."], ["Merve and Selim have got blue eyes.", "dikkat", "Merve'nin gözleri mavi ama Selim'inki kahverengi."], ["Merve hasn't got long hair.", "dikkat", "Tabloda Merve'nin saçı “long”."]],
+      "Her cümleyi tablodaki satırla karşılaştır.",
+      C("Tabloya göre doğru cümleyi bulacağız.", "has got = var, hasn't got = yok. Two people → have got.",
+        "Selim: short hair, brown eyes, glasses: no.", "Merve: long hair, blue eyes, glasses: yes. → “Selim hasn't got glasses.” doğru.", "Cevap: Selim hasn't got glasses.", "Olumsuz cümlelerde “no” bilgisini ara."),
+      { gorsel: G.tablo(["", "Hair", "Eyes", "Glasses"], [["Merve", "long", "blue", "yes"], ["Selim", "short", "brown", "no"]]),
+        kural: "hasn't got = has not got (yok).", dogruNeden: "Tabloda Selim'in gözlüğü yok (no)." }),
+  );
+
+  const HAVA_GIY = [
+    ["It's snowy and cold.", "a coat, a scarf and boots", "Karlı ve soğuk havada kalın giyiniriz."],
+    ["It's hot and sunny.", "a T-shirt, shorts and a cap", "Sıcak ve güneşli havada ince giyiniriz."],
+    ["It's rainy.", "a raincoat and wellies", "Yağmurlu havada yağmurluk ve lastik çizme giyeriz."],
+  ];
+  SORU_EKLE("enapp.clothes",
+    z => {
+      const h = sec(HAVA_GIY), d = HAVA_GIY.filter(x => x !== h);
+      return S({
+        kaz: "enapp.clothes", duzey: "uygulama", zorluk: 1,
+        soru: `Look at the weather: <b>${h[0]}</b><br>What do you wear?`,
+        dogru: `I wear ${h[1]}.`,
+        yanlis: [...d.map(x => [`I wear ${x[1]}.`, "kavrama", `Bu kıyafetler “${x[0]}” havası için uygundur.`]), ["I wear a swimsuit and a scarf.", "kavrama", "Mayo ve atkı aynı havaya uygun değildir."]],
+        ipucu: "Havayı Türkçeye çevir ve ona uygun kıyafetleri düşün.",
+        cozum: C("Hava durumuna uygun kıyafetleri seçeceğiz.", "coat palto, scarf atkı, boots bot, T-shirt tişört, shorts şort, cap şapka, raincoat yağmurluk, wellies lastik çizme.",
+          `Hava: ${h[0]}`, h[2], `Cevap: I wear ${h[1]}.`, "Kıyafetleri tek tek düşün: hepsi aynı havaya uygun olmalı."),
+        kural: "cold → coat, scarf; hot → T-shirt, shorts; rainy → raincoat, umbrella.",
+        dogruNeden: h[2],
+      });
+    },
+    Q("enapp.clothes", "transfer", 2, "Read the message.<br><i>Hi Deniz! Tomorrow we are going to the mountains. It's very cold there. Don't forget your ___ and gloves!</i>", "woolly hat",
+      [["sandals", "kavrama", "Sandalet sıcak havada giyilir; soğuk dağda uygun değildir."], ["shorts", "kavrama", "Şort yaz kıyafetidir."], ["sunglasses", "kavrama", "Güneş gözlüğü soğuktan korumaz; eldivenle birlikte sıcak tutan bir şey gerekiyor."]],
+      "Soğuk hava ve eldiven (gloves) → başı ne korur?",
+      C("Soğuk dağ havası için gereken kıyafeti bulacağız.", "Soğuk hava kıyafetleri: coat, scarf, gloves, woolly hat (yün bere), boots.",
+        "Mesajda “very cold” ve “gloves” var.", "Eldivenle birlikte soğuktan koruyan kıyafet: woolly hat.", "Cevap: woolly hat.", "Seçenekleri “sıcak hava / soğuk hava” diye iki gruba ayır."),
+      { kural: "woolly hat = yün bere; gloves = eldiven.", dogruNeden: "Soğuk havada başımızı yün bereyle (woolly hat) koruruz." }),
+    Q("enapp.clothes", "aciklama", 2, "Which word does <b>NOT</b> belong to the group: <i>trainers, boots, slippers, jumper</i>?", "jumper",
+      [["trainers", "kavrama", "trainers (spor ayakkabı) ayağa giyilir; gruptandır."], ["boots", "kavrama", "boots (bot) ayağa giyilir."], ["slippers", "kavrama", "slippers (terlik) ayağa giyilir."]],
+      "Hangileri ayağa giyilir?",
+      C("Gruba uymayan kıyafeti bulacağız.", "trainers spor ayakkabı, boots bot, slippers terlik, jumper kazak.",
+        "İlk üçü ayağa giyilir.", "jumper üst bedene giyilir.", "Cevap: jumper.", "Kıyafetleri vücut bölümüne göre grupla: baş, üst beden, bacak, ayak."),
+      { kural: "Ayak: trainers, boots, slippers, sandals. Üst beden: jumper, shirt, jacket.", dogruNeden: "jumper (kazak) ayağa değil üst bedene giyilir." }),
+  );
+
+  const SAHIP = [["my", "mine"], ["your", "yours"], ["his", "his"], ["her", "hers"], ["our", "ours"], ["their", "theirs"]];
+  SORU_EKLE("enapp.whose",
+    z => {
+      const s = sec(SAHIP.filter(x => x[0] !== x[1])), esya = sec(["umbrella", "scarf", "jacket", "cap"]);
+      const d = SAHIP.filter(x => x !== s && x[1] !== s[1]);
+      return S({
+        kaz: "enapp.whose", duzey: "uygulama", zorluk: 2,
+        soru: `Complete the sentence.<br>This is ${s[0]} ${esya}. It's ___.`,
+        dogru: s[1],
+        yanlis: [[s[0], "kavrama", `“${s[0]}” bir isimden önce kullanılır; yalnız başına “${s[1]}” gelir.`], ...karistir(d).slice(0, 2).map(x => [x[1], "dikkat", `“${x[1]}” = ${x[0]} + isim; sahip değişmiş olur.`])],
+        ipucu: "Cümlenin sonunda isim yok; iyelik zamiri gerekiyor.",
+        cozum: C(`“${s[0]} ${esya}” ifadesini tek kelimeyle söyleyeceğiz.`, "İyelik zamirleri: mine, yours, his, hers, ours, theirs. Bunlardan sonra isim gelmez.",
+          `${s[0]} ${esya} = “${s[0]}” + isim.`, `İsimsiz hâli: ${s[1]}.`, `Cevap: It's ${s[1]}.`, "Cümlenin sonunda isim yoksa iyelik zamiri (mine, yours…) kullan."),
+        kural: "my book → mine; her bag → hers; their car → theirs.",
+        dogruNeden: `${s[0]} ${esya} = ${s[1]}.`,
+      });
+    },
+    Q("enapp.whose", "transfer", 2, "Complete the dialogue.<br>— ___ is this red bike?<br>— It's Emir's. He rides it to school.", "Whose",
+      [["Who", "kavrama", "“Who” kişi sorar; “bu kimin?” sorusunda “Whose” kullanılır."], ["Where", "kavrama", "“Where” yer sorar; cevapta yer yok."], ["Which", "kavrama", "“Which” seçim sorar; cevap sahipliği bildiriyor."]],
+      "Cevapta “Emir's” var: sahiplik.",
+      C("Sahipliği soran soru kelimesini bulacağız.", "Whose…? = Kimin…? Cevap: It's Emir's / It's mine.",
+        "Cevap “It's Emir's.” → sahibi söylüyor.", "Sahiplik “Whose” ile sorulur.", "Cevap: Whose.", "Who's (who is) ile Whose karıştırılmasın: Whose bike? = Kimin bisikleti?"),
+      { kural: "Whose is this? — It's Ayşe's.", dogruNeden: "Cevap bisikletin sahibini söylediği için soru “Whose” ile başlar." }),
+    Q("enapp.whose", "uygulama", 2, "Look at the picture labels. <b>Whose are the trainers?</b>", "They're Kerem's.",
+      [["They're Nisa's.", "dikkat", "Nisa'nın eşyası şapka (cap)."], ["It's Kerem's.", "dikkat", "trainers çoğuldur; “They're” kullanılır."], ["They're Kerem.", "bilgi", "Sahipliği göstermek için isme 's eklenir: Kerem's."]],
+      "trainers çoğul bir kelime; sahibi tabloda.",
+      C("Spor ayakkabıların kime ait olduğunu bulacağız.", "Sahiplik: isim + 's (Kerem's). Çoğul eşyalar için “They're”, tekil için “It's”.",
+        "Tabloda trainers → Kerem.", "trainers çoğul → They're Kerem's.", "Cevap: They're Kerem's.", "Üç şeye bak: doğru kişi, 's eki ve tekil/çoğul uyumu."),
+      { gorsel: G.tablo(["Item", "Owner"], [["cap", "Nisa"], ["trainers", "Kerem"], ["scarf", "Ada"]]),
+        kural: "Whose are…? — They're + isim's.", dogruNeden: "Tabloda trainers Kerem'in; çoğul olduğu için “They're Kerem's.”" }),
+  );
+
+  /* =========================================================================
+   * THEME 3 — PERSONALITY AND CHARACTER
+   * ========================================================================= */
+  const KISILIK = [
+    ["generous", "She always shares her lunch with her friends.", "cömert"], ["hard-working", "He studies for hours and never gives up.", "çalışkan"], ["honest", "She never tells lies.", "dürüst"],
+    ["funny", "He tells jokes and makes us laugh.", "komik"], ["shy", "She doesn't talk much with new people.", "utangaç"], ["helpful", "He always helps his classmates.", "yardımsever"], ["lazy", "He sleeps all day and never does his homework.", "tembel"],
+  ];
+  SORU_EKLE("enper.adj",
+    z => {
+      const k = sec(KISILIK), d = karistir(KISILIK.filter(x => x !== k)).slice(0, 3);
+      return S({
+        kaz: "enper.adj", duzey: "aciklama", zorluk: 1,
+        soru: `Read: <i>“${k[1]}”</i><br>What is this person like?`,
+        dogru: k[0],
+        yanlis: d.map(x => [x[0], "bilgi", `“${x[0]}” = ${x[2]}; cümle bunu anlatmıyor.`]),
+        ipucu: "Cümlede kişinin ne yaptığını düşün; bu davranış hangi özelliği gösterir?",
+        cozum: C("Davranışı anlatılan kişinin karakterini bulacağız.", "What is he / she like? = Nasıl biridir? (karakter sorar).",
+          `Cümle: ${k[1]}`, `Bu davranış ${k[2]} birini anlatır.`, `Cevap: ${k[0]}.`, "Davranış ile sıfatı birbirine bağla: paylaşan → generous, yalan söylemeyen → honest."),
+        kural: "What is she like? → She is kind / honest / funny.",
+        dogruNeden: `Bu davranış ${k[2]} (${k[0]}) bir kişiyi anlatır.`,
+      });
+    },
+    Q("enper.adj", "aciklama", 2, "Which word is the <b>opposite</b> of “hard-working”?", "lazy",
+      [["clever", "kavrama", "clever (zeki) çalışkanın zıttı değildir."], ["generous", "bilgi", "generous (cömert) farklı bir özelliktir."], ["friendly", "bilgi", "friendly (arkadaş canlısı) çalışkanlıkla ilgili değildir."]],
+      "Çalışkanın zıttı nedir?",
+      C("“hard-working” kelimesinin zıt anlamlısını bulacağız.", "hard-working = çalışkan. Zıttı: lazy = tembel.",
+        "Seçenekleri çevirelim: clever zeki, generous cömert, friendly arkadaş canlısı, lazy tembel.", "Çalışkanın zıttı tembeldir.", "Cevap: lazy.", "Zıt anlam çiftleri: honest ↔ dishonest, shy ↔ outgoing, generous ↔ mean."),
+      { kural: "hard-working ↔ lazy.", dogruNeden: "lazy (tembel), hard-working (çalışkan) kelimesinin zıttıdır." }),
+    Q("enper.adj", "transfer", 2, "Read the text.<br><i>My best friend is Duru. She is very kind. She always smiles and says hello to everyone. She has got a lot of friends because she loves meeting new people.</i><br>Which word describes Duru <b>best</b>?", "friendly",
+      [["shy", "kavrama", "Utangaç biri yeni insanlarla tanışmaktan çekinir; Duru bunu seviyor."], ["rude", "kavrama", "rude (kaba) biri herkese selam vermez; Duru çok nazik."], ["lazy", "bilgi", "Metinde tembellikle ilgili bir bilgi yok."]],
+      "Herkese selam veren ve yeni insanlarla tanışmayı seven biri nasıldır?",
+      C("Metne göre Duru'yu en iyi anlatan sıfatı seçeceğiz.", "friendly = arkadaş canlısı, shy = utangaç, rude = kaba, lazy = tembel.",
+        "Metinde: smiles, says hello to everyone, a lot of friends, loves meeting new people.", "Bunların hepsi arkadaş canlısı birini anlatır.", "Cevap: friendly.", "Metindeki ipuçlarını topla ve hepsine uyan sıfatı seç."),
+      { kural: "friendly ↔ unfriendly; shy ↔ outgoing.", dogruNeden: "Herkese selam verip yeni insanlarla tanışmayı seven Duru arkadaş canlısıdır." }),
+  );
+
+  SORU_EKLE("enper.compare",
+    z => {
+      const a = sec(["Kemal", "Asya", "Yusuf"]), b = sec(["Leyla", "Okan", "Gizem"]);
+      const ha = R(130, 160), hb = ha - R(3, 15);
+      return S({
+        kaz: "enper.compare", duzey: "uygulama", zorluk: 2,
+        soru: `Look at the table. Choose the correct sentence.`,
+        gorsel: G.tablo(["Name", "Height"], [[a, ha + " cm"], [b, hb + " cm"]]),
+        dogru: `${a} is taller than ${b}.`,
+        yanlis: [[`${b} is taller than ${a}.`, "dikkat", `${b} ${hb} cm, ${a} ${ha} cm; ${b} daha kısadır.`], [`${a} is more tall than ${b}.`, "bilgi", "Tek heceli sıfatlar -er alır: taller (more tall değil)."], [`${a} is shorter than ${b}.`, "dikkat", `${a} daha uzundur; “shorter” yanlış.`]],
+        ipucu: "Boyları karşılaştır: hangisi daha büyük?",
+        cozum: C("Tablodaki boylara göre doğru karşılaştırma cümlesini seçeceğiz.", "Tek heceli sıfat + er + than: tall → taller than.",
+          `${a}: ${ha} cm, ${b}: ${hb} cm.`, `${ha} > ${hb} → ${a} daha uzun (fark ${ha - hb} cm).`, `Cevap: ${a} is taller than ${b}.`, `Ters yönden de söyleyebiliriz: ${b} is shorter than ${a}.`),
+        kural: "tall → taller than; more yalnızca uzun sıfatlarla: more generous.",
+        dogruNeden: `${ha} cm > ${hb} cm, yani ${a} ${b}'den daha uzun.`,
+      });
+    },
+    Q("enper.compare", "uygulama", 2, "Choose the correct option.<br>My mother is ___ than my father. She always helps people in need.", "more generous",
+      [["generouser", "bilgi", "Uzun (üç heceli) sıfatlar -er almaz; “more” ile karşılaştırılır."], ["more generouser", "bilgi", "“more” ile “-er” birlikte kullanılmaz."], ["the most generous", "kavrama", "Cümlede “than” var; iki kişi karşılaştırılıyor, en üstünlük değil."]],
+      "generous kaç heceli? Cümlede “than” var.",
+      C("generous sıfatının karşılaştırma hâlini seçeceğiz.", "Kısa sıfat + er (kind → kinder); uzun sıfat → more + sıfat (generous → more generous).",
+        "generous = gen-er-ous, üç hece → uzun sıfat.", "“than” var → more generous than.", "Cevap: more generous.", "-er ve “more” aynı anda kullanılmaz; birini seç."),
+      { kural: "Uzun sıfat: more + sıfat + than.", dogruNeden: "generous uzun bir sıfattır; karşılaştırması “more generous” olur." }),
+    Q("enper.compare", "aciklama", 3, "Which sentence is <b>correct</b>?", "Ahmet is better at football than his brother.",
+      [["Ahmet is gooder at football than his brother.", "bilgi", "good düzensizdir: good → better."], ["Ahmet is more good at football than his brother.", "bilgi", "good düzensiz bir sıfattır; “more good” denmez."], ["Ahmet is better at football that his brother.", "dikkat", "Karşılaştırmada “that” değil “than” kullanılır."]],
+      "good düzensiz bir sıfattır.",
+      C("Doğru karşılaştırma cümlesini bulacağız.", "Düzensiz sıfatlar: good → better, bad → worse. Karşılaştırmada “than” kullanılır.",
+        "gooder ve more good yanlış; doğrusu better.", "“that” değil “than” olmalı.", "Cevap: Ahmet is better at football than his brother.", "Düzensiz sıfatları ezberle: good–better–the best, bad–worse–the worst."),
+      { kural: "good → better → the best; bad → worse → the worst.", dogruNeden: "good'un karşılaştırma hâli “better”dır ve “than” ile kullanılır." }),
+  );
+
+  SORU_EKLE("enper.super",
+    z => {
+      const adlar = karistir(["Efe", "Mina", "Taylan", "Sude"]).slice(0, 3);
+      const yas = karistir([10, 11, 12]);
+      const en = adlar[yas.indexOf(12)], kucuk = adlar[yas.indexOf(10)];
+      return S({
+        kaz: "enper.super", duzey: "uygulama", zorluk: 2,
+        soru: "Look at the table. Choose the correct sentence.",
+        gorsel: G.tablo(["Name", "Age"], adlar.map((a, i) => [a, String(yas[i])])),
+        dogru: `${en} is the oldest.`,
+        yanlis: [[`${kucuk} is the oldest.`, "dikkat", `${kucuk} 10 yaşında; en küçük odur.`], [`${en} is the most old.`, "bilgi", "Tek heceli sıfatlar -est alır: the oldest."], [`${en} is the youngest.`, "dikkat", `${en} 12 yaşında; en küçük değil en büyüktür.`]],
+        ipucu: "En büyük yaşı bul.",
+        cozum: C("Tabloya göre en üstünlük cümlesini seçeceğiz.", "Tek heceli sıfat: the + sıfat + est (old → the oldest, young → the youngest).",
+          `Yaşlar: ${adlar.map((a, i) => a + " " + yas[i]).join(", ")}.`, `En büyük yaş 12 → ${en}.`, `Cevap: ${en} is the oldest.`, `Ters yönden: ${kucuk} is the youngest. Bu da tabloya uyuyor.`),
+        kural: "the + sıfat + est: the oldest, the tallest.",
+        dogruNeden: `${en} 12 yaşında; grubun en büyüğü.`,
+      });
+    },
+    Q("enper.super", "uygulama", 2, "Choose the correct option.<br>Mrs Demir is ___ teacher in our school. Everybody loves her.", "the most patient",
+      [["the patientest", "bilgi", "patient iki heceli ve -ent ile bitiyor; “the most patient” denir."], ["more patient", "kavrama", "Bu karşılaştırmadır; okuldaki tüm öğretmenler içinde “en” diyoruz."], ["most patient", "dikkat", "En üstünlükte “the” unutulmamalı: the most patient."]],
+      "Okuldaki bütün öğretmenler içinde “en” sabırlı olanı anlatıyoruz.",
+      C("patient sıfatının en üstünlük hâlini seçeceğiz.", "Uzun sıfat: the most + sıfat (the most patient). Kısa sıfat: the + sıfat + est.",
+        "Cümlede “in our school” var → bir grup içinde en.", "patient uzun sıfat → the most patient.", "Cevap: the most patient.", "En üstünlükte “the” her zaman başta olur."),
+      { kural: "the most + uzun sıfat: the most honest, the most generous.", dogruNeden: "Okuldaki tüm öğretmenler içinde “en” sabırlıyı anlatmak için “the most patient” kullanılır." }),
+    Q("enper.super", "transfer", 3, "Read the text.<br><i>In my family, my grandma is the oldest person. My uncle Ali is the funniest. He always tells jokes. My cousin Ece is the youngest. She is only two.</i><br>Which one is <b>true</b>?", "Uncle Ali makes everybody laugh.",
+      [["Ece is older than grandma.", "dikkat", "Ece ailenin en küçüğü (the youngest), büyükanne ise en büyüğü."], ["Grandma is the funniest person.", "dikkat", "En komik kişi Ali amca."], ["Ece is the oldest in the family.", "dikkat", "Ece sadece iki yaşında; en küçük odur."]],
+      "the funniest = en komik. En komik kişi ne yapar?",
+      C("Metne göre doğru bilgiyi bulacağız.", "the oldest en yaşlı, the funniest en komik, the youngest en genç.",
+        "Metin: grandma → the oldest, Ali → the funniest, Ece → the youngest.", "En komik olan Ali amca herkesi güldürür (makes everybody laugh).", "Cevap: Uncle Ali makes everybody laugh.", "funny → funnier → the funniest: -y ile biten sıfatlarda y → i olur."),
+      { kural: "funny → the funniest (y → i + est).", dogruNeden: "Ali amca ailenin en komik kişisi ve hep fıkra anlatıyor." }),
+  );
+
+  SORU_EKLE("enper.tag",
+    Q("enper.tag", "uygulama", 2, "Choose the correct question tag.<br>Your teacher is very kind, ___", "isn't she?",
+      [["is she?", "dikkat", "Olumlu cümleye olumsuz tag gelir."], ["doesn't she?", "kavrama", "Cümlede “is” var; tag'de de “is” kullanılır."], ["aren't you?", "dikkat", "Özne “your teacher”; tag'de “you” değil “she / he” olur."]],
+      "Cümledeki fiil “is”; cümle olumlu.",
+      C("Karakter anlatan cümleye soru eki ekleyeceğiz.", "be fiilli olumlu cümle → isn't / aren't + zamir. Olumsuz cümle → is / are + zamir.",
+        "Fiil: is (olumlu) → isn't.", "Özne: your teacher → she (ya da he).", "Cevap: isn't she?", "Seçeneklerde yalnızca “isn't she?” hem olumsuz hem de özneye uygun."),
+      { kural: "She is kind, isn't she?", dogruNeden: "Cümle olumlu ve fiil “is”; tag “isn't she?” olur." }),
+    Q("enper.tag", "transfer", 2, "Complete the dialogue.<br>— Mert isn't lazy, ___<br>— No, he isn't. He's very hard-working.", "is he?",
+      [["isn't he?", "dikkat", "Cümle olumsuz (isn't); tag olumlu olmalı."], ["does he?", "kavrama", "Cümlede “is” var; tag'de “does” kullanılmaz."], ["is she?", "dikkat", "Mert bir erkek adı; zamir “he” olmalı."]],
+      "Olumsuz cümle → olumlu tag.",
+      C("Olumsuz cümleye soru eki ekleyeceğiz.", "Olumsuz cümle + olumlu tag: He isn't…, is he?",
+        "Fiil: isn't (olumsuz) → tag: is.", "Özne: Mert → he.", "Cevap: is he?", "Cevaptaki “No, he isn't.” de “is he?” sorusuna uyar."),
+      { kural: "He isn't lazy, is he?", dogruNeden: "Cümle olumsuz olduğu için tag olumlu: is he?" }),
+    Q("enper.tag", "aciklama", 3, "Which sentence has the <b>wrong</b> question tag?", "Your friends are honest, isn't they?",
+      [["Selin is very shy, isn't she?", "dikkat", "Bu tag doğru: olumlu is → isn't she?"], ["You aren't rude, are you?", "dikkat", "Bu tag doğru: olumsuz → olumlu are you?"], ["Kaan works hard, doesn't he?", "dikkat", "Bu tag doğru: geniş zaman, he → doesn't he?"]],
+      "Öznesi çoğul olan cümleye bak.",
+      C("Soru eki yanlış olan cümleyi bulacağız.", "is ↔ isn't (he / she / it), are ↔ aren't (you / we / they), works → doesn't he?",
+        "“Your friends” çoğul → they → tag “aren't they?” olmalı.", "Diğer üç cümlenin tag'leri kurala uygun.", "Cevap: Your friends are honest, isn't they?", "“WRONG” soran sorularda her seçeneği doğrula; kurala uymayanı seç."),
+      { kural: "They are…, aren't they?", dogruNeden: "Özne çoğul (they) ve fiil “are”; doğru tag “aren't they?” olmalıydı." }),
+  );
+
+  /* =========================================================================
+   * THEME 4 — FAMILY MEMBERS' JOBS AND WORKPLACES
+   * ========================================================================= */
+  const MESLEK = [
+    ["a vet", "an animal clinic", "looks after sick animals", "veteriner hasta hayvanlara bakar"],
+    ["a pilot", "a plane", "flies planes", "pilot uçak uçurur"],
+    ["a chef", "a restaurant", "cooks delicious meals", "şef lokantada yemek pişirir"],
+    ["a farmer", "a farm", "grows vegetables and feeds animals", "çiftçi sebze yetiştirir, hayvanları besler"],
+    ["a mechanic", "a garage", "repairs cars", "tamirci garajda araba onarır"],
+    ["a dentist", "a dental clinic", "checks people's teeth", "diş hekimi dişleri kontrol eder"],
+    ["a firefighter", "a fire station", "puts out fires", "itfaiyeci yangın söndürür"],
+  ];
+  SORU_EKLE("enjob.jobs",
+    z => {
+      const m = sec(MESLEK), d = karistir(MESLEK.filter(x => x !== m)).slice(0, 3), kisi = sec([["My aunt", "She"], ["My father", "He"], ["My cousin", "She"], ["My uncle", "He"]]);
+      return S({
+        kaz: "enjob.jobs", duzey: "aciklama", zorluk: 1,
+        soru: `Read: <i>${kisi[0]} works at ${m[1]}. ${kisi[1]} ${m[2]}.</i><br>What is ${kisi[0].toLowerCase()}'s job?`,
+        dogru: `${kisi[1]} is ${m[0]}.`,
+        yanlis: d.map(x => [`${kisi[1]} is ${x[0]}.`, "bilgi", `${x[3]}; iş yeri: ${x[1]}.`]),
+        ipucu: "İş yerini ve yaptığı işi birlikte düşün.",
+        cozum: C("İş yeri ve iş tanımından mesleği bulacağız.", "Meslek + iş yeri: vet → animal clinic, pilot → plane, chef → restaurant, farmer → farm, mechanic → garage, dentist → dental clinic, firefighter → fire station.",
+          `İş yeri: ${m[1]}; yaptığı iş: ${m[2]}.`, `Bu tanım: ${m[3]}.`, `Cevap: ${kisi[1]} is ${m[0]}.`, "Mesleklerden önce “a / an” kullanmayı unutma: She is a vet. He is an engineer."),
+        kural: "What does he / she do? — He / She is a + meslek.",
+        dogruNeden: `${m[3]}.`,
+      });
+    },
+    Q("enjob.jobs", "transfer", 2, "Read the text.<br><i>My mother is a nurse. She works at a hospital. She works at night, so she sleeps in the morning. She loves her job because she helps people.</i><br>Which one is <b>NOT</b> true?", "She works at a school.",
+      [["She is a nurse.", "dikkat", "Metinde “My mother is a nurse.” yazıyor; bu doğru."], ["She sleeps in the morning.", "dikkat", "Gece çalıştığı için sabah uyuyor; bu doğru."], ["She helps people.", "dikkat", "Metinde insanlara yardım ettiği yazıyor."]],
+      "NOT: metinde olmayanı bul.",
+      C("Metne göre yanlış olan bilgiyi bulacağız.", "NOT soruları: metinde yazanları ele, kalanı seç.",
+        "Metinde: nurse, hospital, works at night, sleeps in the morning, helps people.", "İş yeri “a hospital”; okul (school) değil.", "Cevap: She works at a school.", "Seçenekleri metinde tek tek işaretle; işaretleyemediğin cevaptır."),
+      { kural: "nurse → hospital; teacher → school.", dogruNeden: "Metne göre anne hastanede çalışıyor; okulda değil." }),
+    Q("enjob.jobs", "uygulama", 2, "Choose the correct option.<br>My brother is ___ engineer. He designs bridges.", "an",
+      [["a", "bilgi", "engineer sesli harfle (e) başlıyor; “an” kullanılır."], ["the", "kavrama", "Mesleği ilk kez söylerken belirsiz tanımlık (a / an) kullanırız."], ["—", "bilgi", "İngilizcede meslekten önce “a / an” gerekir: He is an engineer."]],
+      "engineer hangi sesle başlıyor?",
+      C("Meslekten önce gelen tanımlığı seçeceğiz.", "Ünsüz sesten önce a (a doctor), ünlü sesten önce an (an engineer, an architect).",
+        "engineer → “e” ünlü sesiyle başlıyor.", "Ünlü sesten önce → an.", "Cevap: an.", "Kelimeyi sesli söyle; ilk ses a, e, i, o, u sesi ise “an” kullan."),
+      { kural: "a doctor, an engineer, an architect, a pilot.", dogruNeden: "engineer ünlü sesle başladığı için “an engineer” denir." }),
+  );
+
+  SORU_EKLE("enjob.future",
+    z => {
+      const plan = sec([["visit my grandparents", "visiting my grandparents"], ["play tennis", "playing tennis"], ["have a picnic", "having a picnic"], ["meet my friends", "meeting my friends"]]);
+      const gun = sec(["tomorrow", "next Saturday", "this evening", "on Sunday"]);
+      return S({
+        kaz: "enjob.future", duzey: "uygulama", zorluk: 2,
+        soru: `Look at my diary: <b>${gun} – ${plan[0]}</b><br>Choose the correct sentence about my plan.`,
+        dogru: `I am ${plan[1]} ${gun}.`,
+        yanlis: [[`I ${plan[1]} ${gun}.`, "bilgi", "“am” yardımcı fiili unutulmuş: I am + fiil-ing."], [`I am ${plan[0]} ${gun}.`, "bilgi", "am / is / are'den sonra fiil -ing almalı."], [`I is ${plan[1]} ${gun}.`, "dikkat", "“I” ile “is” değil “am” kullanılır."]],
+        ipucu: "Kesin gelecek planlarını şimdiki zamanla anlatırız.",
+        cozum: C(`Ajandadaki “${plan[0]}” planını anlatan doğru cümleyi seçeceğiz.`, "Kesinleşmiş gelecek planları present continuous ile anlatılır: I am meeting Ali tomorrow.",
+          "Özne: I → am.", `Fiil: ${plan[0]} → ${plan[1]}.`, `Cevap: I am ${plan[1]} ${gun}.`, `Zaman ifadesi (${gun}) cümlenin gelecekle ilgili olduğunu gösterir.`),
+        kural: "Plan: am / is / are + fiil-ing + gelecek zaman ifadesi.",
+        dogruNeden: `Kesin bir plan olduğu için “I am ${plan[1]} ${gun}.” doğrudur.`,
+      });
+    },
+    Q("enjob.future", "transfer", 3, "Read the timetable.<br><i>Train to Ankara — leaves at 9.15, arrives at 13.40</i><br>Choose the correct sentence.", "The train leaves at quarter past nine.",
+      [["The train is leaving at quarter to nine.", "dikkat", "Tarifede 9.15 yazıyor; quarter to nine 8.45 demektir."], ["The train leave at quarter past nine.", "dikkat", "Özne “the train” (it) olduğu için fiil -s alır: leaves."], ["The train arrives at quarter past nine.", "dikkat", "9.15 kalkış (leaves) saatidir; varış 13.40."]],
+      "Tarifeli olaylar geniş zamanla anlatılır. 9.15 = quarter past nine.",
+      C("Tren tarifesine göre doğru cümleyi seçeceğiz.", "Tarife ve programlar (train, film, lesson) simple present ile anlatılır: The bus leaves at 8. quarter past = çeyrek geçe, quarter to = çeyrek kala.",
+        "Kalkış: 9.15 → quarter past nine.", "Özne the train → leaves.", "Cevap: The train leaves at quarter past nine.", "Saati, fiili (leaves / arrives) ve -s ekini ayrı ayrı kontrol et."),
+      { kural: "Tarife: The film starts at 7. / The train leaves at 9.15.", dogruNeden: "Tarifeli olaylar geniş zamanla anlatılır ve kalkış saati 9.15'tir." }),
+    Q("enjob.future", "aciklama", 2, "Complete the dialogue.<br>— What are you doing this weekend?<br>— ___", "I'm helping my dad at his shop.",
+      [["I help my dad at his shop every day.", "kavrama", "Bu bir alışkanlıktır; soru bu haftasonunun planını soruyor."], ["Yes, I am.", "kavrama", "“What” sorusu evet/hayır ile cevaplanmaz."], ["I'm helped my dad at his shop.", "bilgi", "Şimdiki zamanda fiil -ing alır: I'm helping."]],
+      "Soru “What are you doing…?” ile soruluyor; cevap da aynı zamanla verilir.",
+      C("Hafta sonu planını soran soruya cevap seçeceğiz.", "Gelecek plan sorusu: What are you doing this weekend? Cevap: I'm + fiil-ing.",
+        "Soru present continuous ile plan soruyor.", "Uygun cevap: I'm helping my dad at his shop.", "Cevap: I'm helping my dad at his shop.", "Soru hangi zamandaysa cevabı da genellikle aynı zamanda ver."),
+      { kural: "What are you doing tomorrow? — I'm visiting my aunt.", dogruNeden: "Cevap, sorudaki gibi present continuous ile bir plan anlatıyor." }),
+  );
+
+  SORU_EKLE("enjob.when",
+    Q("enjob.when", "uygulama", 2, "Choose the correct option.<br>___ my mother is cooking dinner, my father is setting the table.", "While",
+      [["When", "kavrama", "İki uzun eylem aynı anda sürüyorsa (is cooking, is setting) “while” daha uygundur."], ["Because", "kavrama", "because neden bildirir; cümlede neden-sonuç yok."], ["But", "bilgi", "but zıtlık bildirir ve cümle başında böyle kullanılmaz."]],
+      "İki eylem aynı anda mı oluyor?",
+      C("Aynı anda olan iki eylemi bağlayan kelimeyi seçeceğiz.", "while = -iken (aynı anda süren iki eylem), when = -dığında (bir eylem olunca diğeri).",
+        "Anne yemek pişiriyor (is cooking), baba sofrayı kuruyor (is setting).", "İki eylem aynı anda sürüyor → while.", "Cevap: While.", "Cümlede iki tane “-ing” eylem varsa “while” ile bağlamayı düşün."),
+      { kural: "While + süren eylem: While I am studying, my sister is reading.", dogruNeden: "İki eylem aynı anda sürüyor; bunu “while” bağlar." }),
+    Q("enjob.when", "transfer", 2, "Read the text.<br><i>My uncle is a postman. When he arrives at work, he puts the letters in his bag. When the bag is ready, he rides his bike to the village.</i><br>What does he do <b>after</b> his bag is ready?", "He rides his bike to the village.",
+      [["He arrives at work.", "dikkat", "İşe varmak ilk eylemdir; çanta hazır olmadan önce olur."], ["He puts the letters in his bag.", "dikkat", "Mektupları çantaya koyması çanta hazır olmadan önceki adımdır."], ["He reads the letters.", "bilgi", "Metinde mektupları okuduğu yazmıyor."]],
+      "“When the bag is ready, …” cümlesine bak.",
+      C("Çanta hazır olduktan sonra postacının ne yaptığını bulacağız.", "When + eylem 1, eylem 2 → eylem 1 olunca eylem 2 olur.",
+        "Metinde: When the bag is ready, he rides his bike to the village.", "Yani çanta hazır olunca bisikletiyle köye gider.", "Cevap: He rides his bike to the village.", "Rutin anlatan metinlerde olayları sıraya diz: varış → mektupları koyma → köye gitme."),
+      { kural: "When + eylem 1, eylem 2 (biri olunca diğeri).", dogruNeden: "Metinde “When the bag is ready, he rides his bike to the village.” yazıyor." }),
+    Q("enjob.when", "aciklama", 2, "Match the parts.<br><i>When my sister gets home from work, …</i>", "she takes off her shoes and has a rest.",
+      [["she is going to work in the morning.", "kavrama", "Eve geldiğinde işe gitmez; cümle anlamca uyumsuz."], ["she took off her shoes.", "bilgi", "Rutin geniş zamanla anlatılır; “took” geçmiş zamandır."], ["while she takes off her shoes.", "bilgi", "Cümle zaten “When” ile başlıyor; ikinci kısma “while” eklenmez."]],
+      "Eve gelince ne yapılır? Zaman da geniş zaman olmalı.",
+      C("When ile başlayan rutin cümlesini tamamlayacağız.", "When ile kurulan rutin cümlelerinde iki kısım da geniş zamandadır.",
+        "Birinci kısım: gets home from work (geniş zaman).", "Eve gelince yapılan mantıklı iş: ayakkabıları çıkarıp dinlenmek → takes off her shoes and has a rest.", "Cevap: she takes off her shoes and has a rest.", "Anlam ve zaman uyumunu birlikte kontrol et."),
+      { kural: "When she gets home, she has a rest. (iki kısım da geniş zaman)", dogruNeden: "Anlamca uygun ve iki kısım da geniş zamanda." }),
+  );
+
+  /* =========================================================================
+   * THEME 4 — FAMILY HOMES AND HOUSES
+   * ========================================================================= */
+  const ODA = [
+    ["kitchen", "We cook meals in the", "mutfakta yemek pişiririz"], ["bathroom", "We have a shower in the", "banyoda duş alırız"], ["bedroom", "We sleep in the", "yatak odasında uyuruz"],
+    ["living room", "We watch TV with our family in the", "oturma odasında ailemizle televizyon izleriz"], ["garage", "We park the car in the", "arabayı garaja park ederiz"], ["garden", "We grow flowers in the", "bahçede çiçek yetiştiririz"],
+  ];
+  SORU_EKLE("enhom.types",
+    z => {
+      const o = sec(ODA), d = karistir(ODA.filter(x => x !== o)).slice(0, 3);
+      return S({
+        kaz: "enhom.types", duzey: "hatirlama", zorluk: 1,
+        soru: `Complete the sentence.<br>${o[1]} ___.`,
+        dogru: o[0],
+        yanlis: d.map(x => [x[0], "bilgi", `${x[2]}; bu cümleye uymuyor.`]),
+        ipucu: "Cümledeki eylemin evin hangi bölümünde yapıldığını düşün.",
+        cozum: C("Eylemin yapıldığı evin bölümünü bulacağız.", "kitchen mutfak, bathroom banyo, bedroom yatak odası, living room oturma odası, garage garaj, garden bahçe.",
+          `Cümlenin anlamı: ${o[2]}.`, `Bu bölüm İngilizcede: ${o[0]}.`, `Cevap: ${o[1]} ${o[0]}.`, "Eylem + yer eşleştir: cook → kitchen, sleep → bedroom, shower → bathroom."),
+        kural: "Evin bölümleri: kitchen, bathroom, bedroom, living room, garage, garden.",
+        dogruNeden: `${o[2]}.`,
+      });
+    },
+    Q("enhom.types", "transfer", 2, "Read the advert.<br><i>FOR SALE: A flat on the fifth floor. It has got two bedrooms, a big balcony and a lift. Address: 25 Lale Street, Izmir.</i><br>Which one is <b>true</b>?", "There is a lift in the building.",
+      [["It is a cottage with a garden.", "kavrama", "İlanda “flat” (apartman dairesi) yazıyor; bahçeli kır evi değil."], ["It has got three bedrooms.", "dikkat", "İlanda iki yatak odası (two bedrooms) yazıyor."], ["It is on the fourth floor.", "dikkat", "Daire beşinci katta (fifth floor)."]],
+      "İlandaki her bilgiyi seçeneklerle karşılaştır.",
+      C("Ev ilanına göre doğru bilgiyi bulacağız.", "flat apartman dairesi, cottage kır evi, lift asansör, balcony balkon.",
+        "İlan: flat, fifth floor, two bedrooms, big balcony, lift.", "Seçeneklerden yalnızca asansör bilgisi ilanla aynı.", "Cevap: There is a lift in the building.", "Sayılara (two, fifth) ve konut türüne (flat, cottage) dikkat et."),
+      { kural: "Konut türleri: flat, detached house, cottage, villa, terraced house.", dogruNeden: "İlanda dairenin bulunduğu binada asansör (a lift) olduğu yazıyor." }),
+    Q("enhom.types", "aciklama", 2, "What is the correct order for an address in English?", "25 Lale Street, Izmir",
+      [["Izmir, Lale Street 25", "bilgi", "İngilizce adreste önce numara, sonra sokak, en son şehir yazılır."], ["Lale Street Izmir 25", "bilgi", "Numara sokak adından önce gelir."], ["Street Lale 25, Izmir", "dikkat", "Sokak adı önce, “Street” kelimesi sonra gelir: Lale Street."]],
+      "Küçükten büyüğe: numara → sokak → şehir.",
+      C("İngilizce adres yazım sırasını bulacağız.", "İngilizce adres: numara + sokak adı + Street/Road, şehir.",
+        "Numara: 25 → başa.", "Sokak: Lale Street → ortaya; şehir: Izmir → sona.", "Cevap: 25 Lale Street, Izmir.", "Adresleri küçükten büyüğe yaz: ev numarası, sokak, şehir, ülke."),
+      { kural: "Adres: 10 Park Road, London.", dogruNeden: "İngilizce adreste sıra numara, sokak, şehir şeklindedir." }),
+  );
+
+  SORU_EKLE("enhom.which",
+    z => {
+      const ev = karistir([["A", 2, "a garden"], ["B", 3, "a balcony"], ["C", 4, "a garage"]]);
+      const hedef = sec(ev);
+      return S({
+        kaz: "enhom.which", duzey: "uygulama", zorluk: 2,
+        soru: `Look at the table. — <b>Which house has got ${hedef[1]} bedrooms and ${hedef[2]}?</b>`,
+        gorsel: G.tablo(["House", "Bedrooms", "Extra"], ev.map(e => ["House " + e[0], String(e[1]), e[2]])),
+        dogru: `House ${hedef[0]}`,
+        yanlis: ev.filter(e => e !== hedef).map(e => [`House ${e[0]}`, "dikkat", `House ${e[0]}: ${e[1]} bedrooms, ${e[2]}.`]).concat([["All of them", "kavrama", "Which sorusu seçenekler arasından birini sorar; tabloda yalnızca bir ev uyuyor."]]),
+        ipucu: "Tabloda iki bilgiyi birlikte ara: yatak odası sayısı ve ekstra.",
+        cozum: C("İki özelliği birlikte taşıyan evi bulacağız.", "Which…? = Hangisi…? (sınırlı seçenekler arasından seçim sorar).",
+          `Aranan: ${hedef[1]} bedrooms ve ${hedef[2]}.`, `Tabloda bu bilgiler House ${hedef[0]} satırında.`, `Cevap: House ${hedef[0]}.`, "İki koşullu sorularda her iki koşulu da aynı satırda kontrol et."),
+        kural: "Which house…? — House A / The one with a garden.",
+        dogruNeden: `House ${hedef[0]} ${hedef[1]} yatak odalı ve ${hedef[2]} sahibi.`,
+      });
+    },
+    Q("enhom.which", "aciklama", 2, "Choose the correct question.<br>— ___<br>— The blue one. It's next to the park.", "Which house is yours?",
+      [["Who is your house?", "bilgi", "“Who” kişi sorar; ev bir kişi değildir."], ["Whose house is blue?", "kavrama", "Bu soru evin sahibini sorar; cevap “The blue one” değil, “It's Ali's” gibi olurdu."], ["How many houses are there?", "kavrama", "Bu soru sayı sorar; cevapta sayı yok."]],
+      "“The blue one.” bir seçimdir.",
+      C("Cevabı “The blue one.” olan soruyu bulacağız.", "Which…? seçenekler arasından seçim sorar; cevap genellikle “the … one” olur.",
+        "Cevap: The blue one (mavi olan) → seçim.", "Seçim soran soru: Which house is yours?", "Cevap: Which house is yours?", "the … one cevabı gördüğünde “Which” düşün."),
+      { kural: "Which one? — The big one / The red one.", dogruNeden: "Cevap evlerden birini seçiyor; seçim “Which” ile sorulur." }),
+    Q("enhom.which", "transfer", 3, "Read the text.<br><i>There are two houses on my street. The yellow house is big and it has got a swimming pool. The white house is small but it has got a lovely garden. My grandparents live in the house with the garden.</i><br>Which house do the grandparents live in?", "The white one.",
+      [["The yellow one.", "dikkat", "Sarı evde havuz var; büyükanne ve büyükbaba bahçeli evde oturuyor."], ["The big one.", "dikkat", "Büyük olan sarı ev; bahçeli ev küçük."], ["The one with a swimming pool.", "dikkat", "Havuzlu ev sarı ev; bahçeli ev beyaz."]],
+      "the house with the garden = bahçeli ev. Bahçe hangi evde?",
+      C("Büyükanne ve büyükbabanın oturduğu evi bulacağız.", "the house with the garden = bahçeli ev.",
+        "Metinde bahçeli ev: The white house is small but it has got a lovely garden.", "Yani bahçeli ev beyaz ve küçük.", "Cevap: The white one.", "Ev tarifinde özellikleri (renk, büyüklük, bahçe/havuz) bir tabloya dökersen karıştırmazsın."),
+      { kural: "the one with a garden = bahçeli olan.", dogruNeden: "Bahçesi olan ev beyaz evdir ve büyükanne-büyükbaba orada oturuyor." }),
+  );
+
+  const DONUS = [["I", "myself"], ["You", "yourself"], ["He", "himself"], ["She", "herself"], ["We", "ourselves"], ["They", "themselves"]];
+  SORU_EKLE("enhom.reflex",
+    z => {
+      const k = sec(DONUS), is = sec([["paint", "paints", "the walls"], ["clean", "cleans", "the windows"], ["build", "builds", "the bookshelf"], ["repair", "repairs", "the door"]]);
+      const fiil = ["He", "She"].includes(k[0]) ? is[1] : is[0];
+      const d = karistir(DONUS.filter(x => x !== k)).slice(0, 2);
+      const nesne = { I: "me", You: "you", He: "him", She: "her", We: "us", They: "them" }[k[0]];
+      return S({
+        kaz: "enhom.reflex", duzey: "uygulama", zorluk: 2,
+        soru: `Choose the correct word.<br>${k[0]} ${fiil} ${is[2]} ___. Nobody helps.`,
+        dogru: k[1],
+        yanlis: [...d.map(x => [x[1], "dikkat", `“${x[1]}” ${x[0]} öznesiyle kullanılır; burada özne “${k[0]}”.`]), [nesne, "kavrama", `“${nesne}” nesne zamiridir; işi öznenin kendisinin yaptığını dönüşlü zamir anlatır.`]],
+        ipucu: "Özne işi kendi kendine yapıyor; özneye uygun -self / -selves kelimesini seç.",
+        cozum: C("Özneye uygun dönüşlü zamiri bulacağız.", "I → myself, you → yourself, he → himself, she → herself, we → ourselves, they → themselves. by + dönüşlü zamir / cümle sonunda dönüşlü zamir = kendi kendine.",
+          `Özne: ${k[0]}.`, `${k[0]} → ${k[1]}.`, `Cevap: ${k[0]} ${fiil} ${is[2]} ${k[1]}.`, "Tekil öznede -self, çoğul öznede -selves kullanılır."),
+        kural: "Tekil → -self (herself); çoğul → -selves (ourselves).",
+        dogruNeden: `“${k[0]}” öznesinin dönüşlü zamiri “${k[1]}”.`,
+      });
+    },
+    Q("enhom.reflex", "transfer", 2, "Complete the dialogue.<br>— Who decorated your bedroom? It's beautiful!<br>— Nobody helped me. I decorated it ___.", "myself",
+      [["me", "kavrama", "“me” nesne zamiridir; işi kendi başına yaptığını “myself” anlatır."], ["yourself", "dikkat", "Özne “I”; “yourself” karşıdaki kişi içindir."], ["itself", "dikkat", "“itself” eşya ve hayvanlar içindir; özne “I”."]],
+      "Nobody helped me → kendi kendime.",
+      C("“Kendi kendime” anlamını veren kelimeyi bulacağız.", "I → myself. Dönüşlü zamir işi öznenin kendisinin yaptığını gösterir.",
+        "Özne: I.", "I → myself: I decorated it myself.", "Cevap: myself.", "“Nobody helped me.” cümlesi işin tek başına yapıldığını doğruluyor."),
+      { kural: "I did it myself. = Kendim yaptım.", dogruNeden: "Özne “I” olduğu için dönüşlü zamir “myself”tir." }),
+    Q("enhom.reflex", "aciklama", 3, "Which sentence is <b>correct</b>?", "The children made the cake themselves.",
+      [["The children made the cake themself.", "bilgi", "Çoğul özneyle -selves kullanılır: themselves."], ["The children made the cake theirselves.", "bilgi", "“theirselves” diye bir kelime yoktur; doğrusu themselves."], ["The children made the cake himself.", "dikkat", "“The children” çoğuldur; “himself” tek bir erkek içindir."]],
+      "The children = they.",
+      C("Dönüşlü zamiri doğru kullanılmış cümleyi bulacağız.", "they → themselves (them + selves).",
+        "Özne: The children → they.", "they → themselves; themself ve theirselves yanlış yazımdır.", "Cevap: The children made the cake themselves.", "Çoğul özneler -selves alır: ourselves, yourselves, themselves."),
+      { kural: "they → themselves; he → himself (hisself değil).", dogruNeden: "Çoğul özne “the children” (they) için dönüşlü zamir “themselves”tir." }),
+  );
+
   /*SON*/
 })();
