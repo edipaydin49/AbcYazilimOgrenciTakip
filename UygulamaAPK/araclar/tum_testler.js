@@ -3,8 +3,8 @@
 const { spawnSync } = require("child_process"), path = require("path"), os = require("os"), fs = require("fs");
 const KOK = path.join(__dirname, ".."), CIKTI = process.argv[2] || fs.mkdtempSync(path.join(os.tmpdir(), "ogr-test-"));
 const dersler = {
-  mat: ["icerik", "mat_ek", "mat_ek2"], fen: ["fen", "fen1", "fen2", "fen3", "fen_ek1", "fen_ek2"],
-  tr: ["tr", "tr1", "tr2", "tr3", "tr_ek1", "tr_ek2"], en: ["en", "en1", "en2", "en3", "en4", "en_ek1", "en_ek2"],
+  mat: ["icerik", "mat_ek", "mat_ek2", "mat_tgs"], fen: ["fen", "fen1", "fen2", "fen3", "fen_ek1", "fen_ek2", "fen_tgs"],
+  tr: ["tr", "tr1", "tr2", "tr3", "tr_ek1", "tr_ek2", "tr_tgs"], en: ["en", "en1", "en2", "en3", "en4", "en_ek1", "en_ek2", "en_tgs"],
 };
 const testler = [
   ...Object.entries(dersler).map(([d, l]) => ({ ad: "İçerik denetimi · " + d, arg: ["araclar/ders_dogrula.js", ...l.filter(f => fs.existsSync(path.join(KOK, "web/js", f + ".js"))).map(f => "web/js/" + f + ".js")], tamam: /SORUN: yok/ })),
