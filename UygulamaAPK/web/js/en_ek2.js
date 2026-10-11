@@ -3,6 +3,16 @@
   "use strict";
   const { R, sec, karistir, od, ek, S, Q, G } = OGR;
 
+  /* Basit yol haritası: Main Street (yukarı doğru), sağa 1st ve 2nd Street; ⭐ başlangıç. */
+  const bina = (x, y, ad) => `<rect class="g-b g-cizgi" x="${x}" y="${y}" width="60" height="38" rx="4"/>` + G.yazi(x + 30, y + 25, ad, { b: 1 });
+  const HARITA = G.svg(430, 300,
+    `<rect class="g-yumusak" x="150" y="10" width="40" height="285"/>` +
+    `<rect class="g-yumusak" x="190" y="170" width="235" height="36"/><rect class="g-yumusak" x="190" y="62" width="235" height="36"/>` +
+    G.yazi(170, 140, "Main", { k: 1 }) + G.yazi(170, 156, "St.", { k: 1 }) + G.yazi(390, 193, "1st St.", { k: 1 }) + G.yazi(390, 85, "2nd St.", { k: 1 }) +
+    bina(240, 126, "B") + bina(240, 214, "A") + bina(240, 18, "D") + bina(70, 150, "C") +
+    `<text x="170" y="286" font-size="22" text-anchor="middle">⭐</text>` + G.ok(170, 262, 170, 228),
+    "yol haritası: ana cadde ve sağa ayrılan iki sokak");
+
   /* ===================== THEME 5: FESTIVALS ===================== */
   SORU_EKLE("enfes.vocab",
     Q("enfes.vocab", "transfer", 2, "Read the poster and answer the question.<br><i>🎪 KITE FESTIVAL — Saturday, 10 a.m.–5 p.m., Seaside Park. Bring your own kite or make one in our workshop! There is a kite competition at 3 p.m. The winner gets a prize. Entry is free.</i><br>What can visitors do at the workshop?", "They can make a kite.",
@@ -228,15 +238,15 @@
         kural: "between A and B: A ile B arasında · next to: hemen yanında.", dogruNeden: "Sokaktaki sıraya göre konum bu şekilde." });
     },
     Q("encty.prep", "transfer", 2, "Read and find the place.<br><i>My favourite shop is in Park Street. It is opposite the school and next to the cinema. It sells toys and games.</i><br>Look at the map. Which shop is it?", "Shop B",
-      [["Shop A", "dikkat", "A dükkânı okulun karşısında ama sinemanın yanında değil, eczanenin yanında."], ["Shop C", "dikkat", "C dükkânı sinemanın yanında ama okulun karşısında değil, parkın karşısında."], ["Shop D", "dikkat", "D dükkânı ne okulun karşısında ne de sinemanın yanında."]],
+      [["Shop A", "dikkat", "A dükkânının karşısında okul değil kafe var; sinemanın yanında da değil."], ["Shop C", "dikkat", "C dükkânı sinemanın yanında ama karşısında okul değil park var."], ["Shop D", "dikkat", "D dükkânının karşısında hastane var ve sinemanın yanında değil."]],
       "İki ipucunu birlikte kullan: opposite the school + next to the cinema.",
       ["🔎 Soruyu anlayalım: Metindeki iki ipucuyla haritadaki dükkânı bulacağız.",
        "💡 Hatırlayalım: opposite = (caddenin) karşısında, next to = yanında.",
-       "✏️ 1. ipucu: Okulun karşısında olan dükkânlar: A ve B (okul caddenin öbür tarafında, A ile B'nin karşısında).",
-       "✏️ 2. ipucu: Sinemanın yanında olanlar: B ve C. İki ipucunu da sağlayan tek dükkân: B.",
+       "✏️ 1. ipucu: Sinemanın yanında olan dükkânlar: B ve C.",
+       "✏️ 2. ipucu: B'nin karşısında okul, C'nin karşısında park var. Okulun karşısında olan tek aday: B.",
        "✅ Sonuç: Shop B.",
        "🔁 Kontrol edelim: B'nin karşısında okul, yanında sinema var. İki koşul da tamam."],
-      { gorsel: G.tablo(["North side", "", "", "", ""], [["💊 Pharmacy", "Shop A", "Shop B", "🎬 Cinema", "Shop C"], ["⬅️ — — —", "— PARK STREET —", "— — —", "— — —", "— — ➡️"], ["🏡 House", "🏫 School", "🏫 School", "☕ Café", "🌳 Park"]]).replace("Shop D", "Shop D") + "<p><i>Shop D is in Lale Street, behind the park.</i></p>",
+      { gorsel: G.tablo(["", "1", "2", "3", "4", "5"], [["North side", "Shop A", "Shop B", "🎬 Cinema", "Shop C", "Shop D"], ["", "— — —", "— PARK", "STREET —", "— — —", "— — —"], ["South side", "☕ Café", "🏫 School", "🏦 Bank", "🌳 Park", "🏥 Hospital"]]),
         kural: "İki koşullu konum sorularında her koşulu sağlayanları ayrı ayrı yaz, ortak olanı seç.", dogruNeden: "Okulun karşısında ve sinemanın yanında olan tek dükkân B." }),
     Q("encty.prep", "uygulama", 1, "Look at the picture: 🌳🐱🌳<br>The cat is ___ the two trees.", "between",
       [["behind", "kavrama", "behind = arkasında; kedi ağaçların arkasında değil, ortasında."], ["next to", "kavrama", "next to tek bir şeyin yanını anlatır; iki şeyin ortası için between kullanılır."], ["opposite", "kavrama", "opposite = karşısında; kedi ağaçların karşısında değil."]],
@@ -262,7 +272,7 @@
        "🔁 Kontrol edelim: “You're welcome” = Rica ederim; tarif eden kişi teşekküre böyle cevap verir."],
       { kural: "Is there…? → Yes, there is / No, there isn't. Sonra tarif: Go straight… Turn left…", dogruNeden: "Doğru kısa cevap ve uygun yol tarifi içeren tek seçenek bu." }),
     Q("encty.dir", "uygulama", 2, "You are at the ⭐. Follow the directions:<br><b>Go straight. Take the first turning on the right. The cinema is on your left.</b><br>Look at the map. Which building is the cinema?", "B",
-      [["A", "dikkat", "A, ilk sağdan girince sağ tarafta kalıyor; tarifte “on your left” diyor."], ["C", "dikkat", "C, sola dönünce karşına çıkar; tarif sağa dönmeyi söylüyor."], ["D", "dikkat", "D, ikinci sapakta; tarif birinci sapağı (first turning) söylüyor."]],
+      [["A", "dikkat", "A, ilk sağdan girince sağ tarafta kalıyor; tarifte “on your left” diyor."], ["C", "dikkat", "C, ana caddenin sol tarafında; tarif sağa dönmeyi söylüyor."], ["D", "dikkat", "D, ikinci sapakta; tarif birinci sapağı (first turning) söylüyor."]],
       "Adım adım ilerle: önce düz, sonra ilk sağ, sonra sol tarafına bak.",
       ["🔎 Soruyu anlayalım: Yıldızdan başlayıp tarifi uygulayarak sinemayı bulacağız.",
        "💡 Hatırlayalım: go straight = düz git, the first turning on the right = sağdaki ilk sapak, on your left = solunda.",
@@ -270,7 +280,7 @@
        "✏️ Bu sokakta solumuzda B, sağımızda A var. Tarif “on your left” diyor.",
        "✅ Sonuç: Sinema B binasıdır.",
        "🔁 Kontrol edelim: Sağa döndükten sonra yönler de döner; kendini sokağın içinde yürüyormuş gibi düşün."],
-      { gorsel: G.tablo(["", "1st Street ➡️", "2nd Street ➡️"], [["Left side of the street", "B", "D"], ["Right side of the street", "A", "E"], ["Main Street ⬆️ (⭐ start)", "turn right here", "turn right here"], ["Left of Main Street", "C", "F"]]),
+      { gorsel: HARITA,
         kural: "Dönüşten sonra sağ/sol, yürüdüğün yöne göre belirlenir.", dogruNeden: "İlk sağ sapaktan girince solda kalan bina B'dir." }),
     Q("encty.dir", "aciklama", 1, "What does <b>“Go past the park”</b> mean?", "Parkın önünden geçip yürümeye devam et.",
       [["Parkın içine gir.", "kavrama", "İçine girmek “go into the park” demektir."], ["Parktan geri dön.", "kavrama", "Geri dönmek “go back” demektir."], ["Parkta dur ve bekle.", "kavrama", "Durmak “stop” demektir; “go past” geçip gitmektir."]],
