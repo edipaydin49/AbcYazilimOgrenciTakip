@@ -9,7 +9,7 @@ Her maddenin yanında durumu yazar:
 - 🟡 **kısmen var**
 - ⏳ **planlandı**
 
-## 1. Bugünkü durum (sürüm 1.7)
+## 1. Durum (sürüm 1.7)
 
 | Alan | Durum |
 |---|---|
@@ -21,6 +21,17 @@ Her maddenin yanında durumu yazar:
 | Oyunlar | Türkçe Diyarı (3 ada, 79 görev). İngilizce: Downtown, Roller Coaster, Breakfast Chef, Wardrobe. |
 | Takip | Veli paneli: “Bugün ne yapmalıyız?”, akordiyon soru kayıtları ve konu ayrıntısı. Bilgisayardan izleme (aynı Wi‑Fi) ve isteğe bağlı bulut eşitleme. |
 | Veri güvenliği | İndirilenler klasörüne yedek: elle, otomatik günlük ve sürüm güncellemesinde. Yedekten geri yükleme. |
+
+## 1b. Sürüm 1.8'de eklenenler
+
+| Alan | Durum |
+|---|---|
+| Günlük / haftalık etkinlik | ✅ Veli panelinde gün ve hafta seçilerek ders › ünite › konu, testler (soru soru), izlenen videolar. Tekrar çözülen sorular ve tekrar izlenen videolar sayıyı artırmaz; 10 saniyeden kısa video açılışları sayılmaz. |
+| TGS tarzı denemeler | ✅ 1. Dönem 1./2. TGS, 2. Dönem 1./2. TGS: 55 soru (Türkçe 15, Matematik 15, Fen 15, İngilizce 10), 75 dakika, birikimli kapsam, ders ders net. |
+| TGS tarzı sorular | ✅ Bütün kazanımlara yeni nesil sorular eklendi: paragraf, tablo, grafik, öncüllü (I–II–III), "hangisi söylenemez" ve günlük hayat soruları. |
+| Soru kalitesi | ✅ Eski sorular gözden geçirildi. Bilgi hatası ya da yanıltıcı açıklama içerenler düzeltildi, doğru cevapla çakışan çeldiriciler değiştirildi, kısa çözümler 5–7 adıma genişletildi. |
+| PDF denemeler | ✅ Soru kitapçığı ve cevap anahtarı PDF'i tablete yüklenir. Sınıf, kitapçık türü, süre, dersler, soru sayıları, sorunun sayfası ve cevaplar otomatik okunur. Öğrenci optik formla süreli çözer; ders ders net hesaplanır ve kitapçıkta inceleme yapılabilir. Taranmış PDF'lerde cevaplar elle girilir. |
+| ⏳ Sonraki adım | PDF denemesinde her soruya ders konusu/kazanım etiketi verip yanlışları uygulamadaki konu anlatımına bağlamak; taranmış PDF'ler için cevap anahtarını fotoğraftan okumak. |
 
 ## 2. Öncelik sırası (öneri belgesiyle uyumlu)
 
