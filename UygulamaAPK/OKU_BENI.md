@@ -1,6 +1,32 @@
 # Öğrenme Yolculuğu (6. Sınıf Matematik, Fen Bilimleri, Türkçe ve İngilizce) — APK
 
-Tablete kurulacak dosya: **`OgrenmeYolculugu.apk`** (sürüm 1.7, Android 7 ve üstü; Samsung Galaxy Tab A9+ / One UI 8.5 / Android 16 ile uyumlu).
+Tablete kurulacak dosya: **`OgrenmeYolculugu.apk`** (sürüm 1.8, Android 7 ve üstü; Samsung Galaxy Tab A9+ / One UI 8.5 / Android 16 ile uyumlu).
+
+## Sürüm 1.8'de yeni
+
+- **📅 Günlük / haftalık etkinlik ekranı** (Veli paneli → Günlük / haftalık): seçilen gün ya da haftada öğrencinin yaptıkları.
+  - Hangi ders › ünite › konudan kaç soru çözdü, hangi testleri yaptı. Teste dokununca o testteki her soru, kazanımı ve sonucu görünür.
+  - Hangi videoları ne kadar izledi.
+  - **Sayılar şişirilmez:**
+    - Aynı soru dönem içinde bir kez sayılır; daha önce çözülmüş sorular “tekrar” olarak ayrı yazılır.
+    - Aynı video bir kez sayılır, izleme süresi toplanır.
+    - 10 saniyeden kısa video açılışları sayılmaz.
+  - ◀ ▶ düğmeleriyle önceki günlere ve haftalara gidilir.
+- **🇹🇷 TGS (Türkiye Geneli Sınav) tarzı denemeler:**
+  - Dört deneme var: 1. Dönem 1. TGS, 1. Dönem 2. TGS, 2. Dönem 1. TGS ve 2. Dönem 2. TGS.
+  - Her deneme Türkçe 15, Matematik 15, Fen 15 ve İngilizce 10 olmak üzere 55 soru ve 75 dakikadır.
+  - Kapsam o döneme kadar işlenen yazılı konularıdır.
+  - Sonuçta ders ders doğru, yanlış, boş ve net verilir.
+  - Denemelere yazılı sayfalarından, ana sayfadan ve Deneme merkezinden ulaşılır.
+- **📄 PDF denemelerim** (Deneme merkezi → PDF denemelerim): elinizdeki deneme sınavını tablette çözmek için.
+  1. **Yeni PDF deneme ekle** → soru kitapçığı PDF'ini seçin. Uygulama sınıfı, kitapçık türünü, sınav süresini, dersleri, soru sayılarını ve her sorunun hangi sayfada olduğunu kendisi bulur.
+  2. **Cevap anahtarı PDF'ini seçin.** Birden çok sınıfın anahtarı aynı dosyadaysa doğru sınıf ve kitapçık türü otomatik seçilir. Bulunan cevaplar kutularda gösterilir; kontrol edip gerekirse düzeltin.
+  3. **Kaydet.** Öğrenci kitapçığı tablette sayfa sayfa okur ve sağdaki ya da alttaki **optik formda** cevaplarını işaretler. Bir soru numarasına dokununca o sorunun sayfası açılır. Süre işler; uygulamadan çıkınca süre durur, yarıda bırakılan deneme kaldığı yerden devam eder.
+  4. **Sınavı bitir** → ders ders doğru, yanlış, boş ve net (3 yanlış 1 doğruyu götürür) hesaplanır. Ardından yanlış ve boş soruların listesi gösterilir; **Kitapçıkta incele** ile doğru cevaplar optik formda yeşil, yanlışlar kırmızı görünür.
+  - Sonuçlar Deneme merkezinde, Veli paneli → Denemeler'de ve günlük ekranda yer alır.
+  - PDF dosyası yalnızca tablette saklanır, hiçbir yere gönderilmez.
+  - Taranmış (fotoğraf) PDF'lerde yazı okunamaz; o zaman dersleri ve cevapları elle girebilirsiniz (ör. `ACBDA…`).
+- **Soru kalitesi:** Mevcut sorular gözden geçirildi. Yanlış ya da tartışmalı sorular düzeltildi, çeldiriciler ve kısa çözümler adım adım anlatımla zenginleştirildi. Her derse TGS tarzı (paragraf, tablo, grafik, öncüllü, yeni nesil) yeni sorular eklendi.
 
 ## Sürüm 1.7'de yeni
 
@@ -162,7 +188,7 @@ Plandaki yaklaşım (tek ders, birkaç konu, önce ölç sonra genişlet) doğru
 - Uygulama bir Android kabuğu (`android/`) ile `web/` klasöründeki sayfalardan oluşur. Sayfalar `https://appassets.androidplatform.net` adresinden sunulur; YouTube gömme ve kalıcı veri bu sayede çalışır.
 - Derleme: `python3 araclar/apk_derle.py <sürüm_kodu> <sürüm_adı>`. Android SDK gerekmez: `dx` (Maven Central), JDK `jarsigner` ve dosya içindeki ikili manifest/kaynak kodlayıcıları kullanılır.
 - **`anahtar/ogrenme.jks` imza anahtarını silmeyin.** Güncellemeler aynı anahtarla imzalanmazsa tablet yeni sürümü kurmaz; eski sürümü silmek gerekir ve veriler kaybolur.
-- İçerik dosyaları: `web/js/ortak.js` (yardımcılar, soru görselleri), `icerik.js` + `mat_ek.js` + `mat_ek2.js` (Matematik), `fen.js` + `fen1.js`–`fen3.js` + `fen_ek1/2.js` (Fen), `tr.js` + `tr1.js`–`tr3.js` + `tr_ek1/2.js` (Türkçe), `oyun.js` (Türkçe Diyarı), `en.js` + `en1.js`–`en4.js` + `en_ek1/2.js` (İngilizce), `ingoyun.js` (İngilizce oyunları ve sesli okuma), `videolar.js` (hazır videolar), `birlestir.js` (dersleri birleştirir, yazılı kapsamları).
+- İçerik dosyaları: `web/js/ortak.js` (yardımcılar, soru görselleri), `icerik.js` + `mat_ek.js` + `mat_ek2.js` (Matematik), `fen.js` + `fen1.js`–`fen3.js` + `fen_ek1/2.js` (Fen), `tr.js` + `tr1.js`–`tr3.js` + `tr_ek1/2.js` (Türkçe), `oyun.js` (Türkçe Diyarı), `en.js` + `en1.js`–`en4.js` + `en_ek1/2.js` (İngilizce), `*_tgs.js` (TGS tarzı sorular), `pdfayristir.js` + `pdfdeneme.js` (PDF denemeler; `lib/pdfjs` Mozilla pdf.js, Apache 2.0), `ingoyun.js` (İngilizce oyunları ve sesli okuma), `videolar.js` (hazır videolar), `birlestir.js` (dersleri birleştirir, yazılı kapsamları).
 - Bilgisayardan izleme: `android/src/tr/abc/ogrenme/YerelSunucu.java` (Android'e bağımsız küçük HTTP sunucusu; yalnızca GET, şifreli `/api/veri`), `web/veli.html` ve `VeliPaneli.html` derlemede `araclar/veli_sayfasi.py` ile üretilir. Test: `node araclar/uzak_test.js <klasör>` (sunucuyu JVM'de çalıştırıp tarayıcıdan bağlanır).
 - **Sürüm kapısı:** `node araclar/tum_testler.js` bütün testleri sırayla çalıştırır; biri başarısızsa APK derlemeyin.
 - Testler: `node araclar/ders_dogrula.js web/js/<ders dosyaları>` (her üreteci 40 kez çalıştırıp denetler), `node araclar/gorsel_onizleme.js <klasör> [ders]` (görselli soruların önizlemesi), `node araclar/oyun_test.js <klasör>` ve `node araclar/ingoyun_test.js <klasör>` (oyunları uçtan uca oynar), `node araclar/icerik_test.js` (28 bin soru üretip denetler), `node araclar/arayuz_test.js <klasör>` (uçtan uca), `node araclar/video_test.js` (video takibi), `node araclar/performans_test.js` (6 aylık veriyle, 6 kat yavaş işlemcide süre ölçümü).

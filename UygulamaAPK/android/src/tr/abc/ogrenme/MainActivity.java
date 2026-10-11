@@ -221,7 +221,7 @@ public class MainActivity extends Activity {
 
         @JavascriptInterface
         public String surum() {
-            return "1.7";
+            return "1.8";
         }
 
         /* Yedek: veriyi tabletin İndirilenler/OgrenmeYolculugu klasörüne yazar (uygulama silinse de kalır).
