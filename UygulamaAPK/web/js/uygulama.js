@@ -16,7 +16,8 @@
   function toast(m) { const t = document.createElement("div"); t.className = "toast"; t.textContent = m; document.body.appendChild(t); setTimeout(() => t.remove(), 2600); }
   function git(h) { if (location.hash === h) yonlendir(); else location.hash = h; }
   const temaAd = id => TEMA[id] ? TEMA[id].ad : "";
-  const dersAd = id => DERS[id] ? DERS[id].ad : "";
+  const DIGER_DERS = { SOS: "Sosyal Bilgiler", "DİN": "Din Kültürü", "İNK": "İnkılap Tarihi" };
+  const dersAd = id => DERS[id] ? DERS[id].ad : DIGER_DERS[id] || "";
 
   let veliAcik = false;
   let durum = {}; // ekranlar arası geçici durum (aktif test, sonuç...)
@@ -27,6 +28,7 @@
   /* ============================ YÖNLENDİRME ============================ */
   function yonlendir() {
     if (window.VIDEO_KAPAT) { window.VIDEO_KAPAT(); window.VIDEO_KAPAT = null; }
+    if (window.PDFDENEME) PDFDENEME.kapat();
     document.querySelectorAll(".perde").forEach(p => p.remove());
     window.scrollTo(0, 0);
     const [yol, a, b] = location.hash.replace(/^#\/?/, "").split("/");
@@ -38,7 +40,7 @@
     veliAcik = false;
     if (yol === "ders") { dersSec(a); return anaSayfa(); }
     ({ "": anaSayfa, konu: () => konuSayfasi(a), anlatim: () => anlatim(a), video: () => videoSayfasi(a, +b || 0), test: testEkrani,
-      sonuc: sonucEkrani, gelisim: gelisimSayfasi, hatalar: hataDefteri, yazili: () => yaziliSayfasi(a, b), deneme: denemeMerkezi, oyun: () => { dersSec("tr"); OYUN.ac(a, b); }, ing: () => { dersSec("en"); INGOYUN.ac(a, b); } }[yol] || anaSayfa)();
+      sonuc: sonucEkrani, gelisim: gelisimSayfasi, hatalar: hataDefteri, yazili: () => yaziliSayfasi(a, b), deneme: denemeMerkezi, pdf: () => PDFDENEME.ac(a, b), oyun: () => { dersSec("tr"); OYUN.ac(a, b); }, ing: () => { dersSec("en"); INGOYUN.ac(a, b); } }[yol] || anaSayfa)();
   }
   window.addEventListener("hashchange", yonlendir);
   $("#evBtn").addEventListener("click", () => git("#/"));
@@ -799,6 +801,7 @@
         <p>Sınav modunda çözersin: süre işler, soruların arasında gidip gelebilirsin, cevaplar sınav bitince gösterilir. Sonuçta <b>doğru, yanlış, boş ve net</b> hesaplanır (3 yanlış 1 doğruyu götürür) ve her sorunun adım adım çözümünü görebilirsin. Sorular her denemede yeniden seçilir; deneme sayısının sınırı yoktur.</p></section>
       <section class="kart sari"><h2>🧩 Karma deneme (4 ders · 40 soru · 60 dakika)</h2><p>Matematik, Fen Bilimleri, Türkçe ve İngilizceden 10'ar soru — gerçek sınav provası.</p><div><button class="btn ana" data-test="karma">Karma denemeye başla</button></div></section>
       ${tgsKart()}
+      <section class="kart"><div class="satir ara"><div><h2>📄 PDF denemelerim</h2><p class="kucuk-yazi muted">Elindeki deneme kitapçığının PDF'ini ve cevap anahtarını yükle; tablette optik formla, süre tutarak çöz.</p></div><a class="btn ana" href="#/pdf">Aç</a></div></section>
       <section class="izgara">${DERSLER.map(d => { const dl = denemeListesi(d.id).filter(t => !cokDersli(t.tur) && t.tur !== "pdfDeneme"), son = dl[dl.length - 1];
         return `<div class="kart"><h2>${d.simge} ${d.ad}</h2><p class="kucuk-yazi muted">${dl.length} deneme çözüldü${son ? " · son net " + String(son.net != null ? son.net : son.dogru).replace(".", ",") + " / " + son.n : ""}</p>
           <div class="satir"><button class="btn ana kucuk" data-test="mini" data-ders="${d.id}">Mini deneme (10 soru · 15 dk)</button><button class="btn kucuk" data-test="deneme" data-ders="${d.id}">Ders denemesi (20 soru · 30 dk)</button></div></div>`; }).join("")}</section>
