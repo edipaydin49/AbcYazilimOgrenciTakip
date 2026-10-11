@@ -6,6 +6,9 @@
 """
 from __future__ import annotations
 
+import os
+from pathlib import Path
+
 import numpy as np
 
 from .core import BALL, GOALKEEPER, PLAYER, REFEREE, Detections
@@ -18,10 +21,39 @@ _NAME_MAP = {
 }
 
 
+def model_dir() -> Path:
+    """Taşınabilir paketteki `modeller/` klasörü (FUTBOL_MODELLER ortam değişkeniyle değiştirilebilir)."""
+    if os.environ.get("FUTBOL_MODELLER"):
+        return Path(os.environ["FUTBOL_MODELLER"])
+    here = Path(__file__).resolve()
+    # Taşınabilir paket: <kök>/app/futbol_analiz -> <kök>/modeller ; geliştirme: FutbolAnaliz/modeller
+    return next((p / "modeller" for p in (here.parents[2], here.parents[1]) if (p / "modeller").is_dir()),
+                here.parents[1] / "modeller")
+
+
+def default_models() -> tuple[str, str | None]:
+    """(oyuncu/top modeli, saha modeli). Önce modeller/futbol.pt ve modeller/saha.pt aranır."""
+    d = model_dir()
+    try:
+        import torch
+
+        gpu = torch.cuda.is_available()
+    except ImportError:
+        gpu = False
+    order = ("futbol.pt", "yolo11m.pt", "yolo11s.pt") if gpu else ("futbol.pt", "yolo11s.pt", "yolo11m.pt")  # CPU: hızlı model
+    player = next((str(d / n) for n in order if (d / n).exists()), order[1])
+    pitch = str(d / "saha.pt") if (d / "saha.pt").exists() else None
+    return player, pitch
+
+
 class YoloDetector:
-    def __init__(self, weights: str = "yolo11m.pt", conf: float = 0.3, imgsz: int = 1280, device: str | None = None):
+    def __init__(self, weights: str = "yolo11m.pt", conf: float = 0.3, imgsz: int | None = None, device: str | None = None):
         from ultralytics import YOLO
 
+        if imgsz is None:  # GPU yoksa daha küçük giriş -> CPU'da makul hız
+            import torch
+
+            imgsz = 1280 if torch.cuda.is_available() else 960
         self.model = YOLO(weights)
         self.conf, self.imgsz, self.device = conf, imgsz, device
         names = self.model.names

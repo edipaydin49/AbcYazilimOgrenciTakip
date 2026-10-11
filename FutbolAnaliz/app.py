@@ -11,7 +11,7 @@ import cv2
 import pandas as pd
 import streamlit as st
 
-from futbol_analiz.detection import PitchKeypointDetector, YoloDetector
+from futbol_analiz.detection import PitchKeypointDetector, YoloDetector, default_models
 from futbol_analiz.pipeline import MatchAnalyzer
 from futbol_analiz.pitch import load_calibration
 from futbol_analiz.report import figures, write_report
@@ -21,9 +21,11 @@ st.set_page_config(page_title="Futbol Analiz", layout="wide")
 st.title("⚽ Futbol Maç Analizi")
 
 with st.sidebar:
-    mode = st.radio("Kaynak", ["Video yükle", "Ekran (canlı yayın)", "Kamera", "RTSP / HTTP adresi"])
-    model = st.text_input("Oyuncu/top modeli", "yolo11m.pt")
-    pitch_model = st.text_input("Saha anahtar noktası modeli (opsiyonel)", "")
+    mode = st.radio("Kaynak", ["Video yükle", "Bilgisayardaki video (dosya yolu)", "Ekran (canlı yayın)", "Kamera",
+                               "RTSP / HTTP adresi"])
+    player_default, pitch_default = default_models()
+    model = st.text_input("Oyuncu/top modeli", player_default)
+    pitch_model = st.text_input("Saha anahtar noktası modeli (opsiyonel)", pitch_default or "")
     calib = st.file_uploader("Elle kalibrasyon JSON (opsiyonel)", type=["json"])
     stride = st.slider("Her n. kareyi işle", 1, 10, 2)
     max_frames = st.number_input("En fazla kare (0 = sınırsız)", 0, 500000, 0)
@@ -31,15 +33,24 @@ with st.sidebar:
                             help="Süre dolunca analiz durur ve rapor hazırlanır")
     device = st.text_input("Cihaz (boş = otomatik)", "")
 
-source = None
+source, monitor = None, 1
 if mode == "Video yükle":
     up = st.file_uploader("Maç videosu", type=["mp4", "avi", "mov", "mkv"])
     if up:
         tmp = Path(tempfile.mkdtemp()) / up.name
         tmp.write_bytes(up.getbuffer())
         source = str(tmp)
+elif mode == "Bilgisayardaki video (dosya yolu)":
+    path_in = st.text_input("Video dosyasının tam yolu (büyük dosyalar için)", "").strip().strip('"')
+    if path_in:
+        if Path(path_in).is_file():
+            source = path_in
+        else:
+            st.error("Dosya bulunamadı")
 elif mode == "Ekran (canlı yayın)":
     source = "screen"
+    monitor = st.number_input("Monitör numarası", 1, 4, 1,
+                              help="Maç yayınını bir monitörde açın; tek monitörde bu tarayıcı penceresini küçültün")
 elif mode == "Kamera":
     source = str(st.number_input("Kamera indeksi", 0, 10, 0))
 else:
@@ -51,12 +62,14 @@ if source and st.button("Analizi başlat", type="primary"):
     if calib:
         (out / "kalib.json").write_bytes(calib.getbuffer())
         calib_obj = load_calibration(out / "kalib.json")
-    frames, fps = open_source(source, stride=stride, max_frames=max_frames or None)
+    frames, fps = open_source(source, stride=stride, max_frames=max_frames or None,
+                              monitor=int(monitor) if source == "screen" else 1)
+    live_source = mode in ("Ekran (canlı yayın)", "Kamera", "RTSP / HTTP adresi")
     with st.spinner("Modeller yükleniyor..."):
         analyzer = MatchAnalyzer(
             YoloDetector(model, device=device or None), fps,
             pitch_detector=PitchKeypointDetector(pitch_model, device=device or None) if pitch_model else None,
-            calibration=calib_obj, csv_path=out / "takip.csv")
+            calibration=calib_obj, csv_path=out / "takip.csv", realtime=live_source)
     col_v, col_s = st.columns([3, 1])
     view, live = col_v.empty(), col_s.empty()
     t0 = time.time()

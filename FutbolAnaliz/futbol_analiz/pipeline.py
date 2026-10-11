@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import csv
+import time
 from pathlib import Path
 from typing import Iterator
 
@@ -30,7 +31,8 @@ class MatchAnalyzer:
     """
 
     def __init__(self, detector, fps: float, pitch_detector=None, calibration: ViewTransformer | None = None,
-                 team_warmup: int = 60, csv_path: str | Path | None = None):
+                 team_warmup: int = 60, csv_path: str | Path | None = None, realtime: bool = False):
+        """realtime=True: canlı kaynaklarda zaman gerçek saatten alınır (işlem yavaşsa hızlar yine doğru çıkar)."""
         self.detector, self.pitch_detector, self.calibration = detector, pitch_detector, calibration
         self.fps = fps
         self.tracker = Tracker()
@@ -42,6 +44,7 @@ class MatchAnalyzer:
         self.positions: dict[int, list] = {}
         self.ball_positions: list = []
         self.frame_idx = 0
+        self.realtime, self._t0, self._t = realtime, None, 0.0
         self._transformer: ViewTransformer | None = calibration
         self._mpp: float | None = None  # metre / piksel (kalibrasyonsuz mod)
         self._last_ball = (None, 0)
@@ -72,7 +75,13 @@ class MatchAnalyzer:
 
     # ---- ana adım ----
     def process(self, frame: np.ndarray) -> FrameResult:
-        t = self.frame_idx / self.fps
+        if self.realtime:
+            now = time.monotonic()
+            self._t0 = self._t0 or now
+            t = now - self._t0
+        else:
+            t = self.frame_idx / self.fps
+        self._t = t
         h, w = frame.shape[:2]
         det: Detections = self.tracker.update(self.detector.detect(frame))
         people = det[det.class_id != BALL]
@@ -200,7 +209,7 @@ class MatchAnalyzer:
                 "pas_agi": pass_network(ev, avg_pos, k),
             }
         return {
-            "sure_s": round(self.frame_idx / self.fps, 1),
+            "sure_s": round(self._t, 1),
             "kare": self.frame_idx,
             "kalibre": self._transformer is not None,
             "takimlar": teams,

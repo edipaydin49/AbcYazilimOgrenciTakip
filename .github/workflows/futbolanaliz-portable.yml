@@ -1,0 +1,61 @@
+name: FutbolAnaliz Windows tasinabilir paket
+
+on:
+  push:
+    paths:
+      - "FutbolAnaliz/**"
+      - ".github/workflows/futbolanaliz-portable.yml"
+  workflow_dispatch:
+    inputs:
+      torch:
+        description: "PyTorch surumu (cpu = her bilgisayar, cu126/cu128 = NVIDIA GPU)"
+        type: choice
+        options: [cpu, cu126, cu128]
+        default: cpu
+      release:
+        description: "Zip'i GitHub Releases'e de yukle"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+jobs:
+  windows-portable:
+    runs-on: windows-latest
+    timeout-minutes: 90
+    env:
+      TORCH: ${{ github.event.inputs.torch || 'cpu' }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Tasinabilir paketi olustur ve test et
+        shell: pwsh
+        run: ./FutbolAnaliz/portable/build_portable.ps1 -Torch $env:TORCH -Test -Out "$env:GITHUB_WORKSPACE\dist"
+
+      - name: Baslaticilari dene (BAT)
+        shell: cmd
+        run: |
+          cd dist\FutbolAnaliz_Portable_%TORCH%
+          call _ortam.bat || exit /b 1
+          "%PY%" -m futbol_analiz --help || exit /b 1
+          echo q | call SISTEM_KONTROL.bat
+
+      - name: Zip'i yukle (Actions artifact)
+        uses: actions/upload-artifact@v4
+        with:
+          name: FutbolAnaliz_Portable_${{ env.TORCH }}
+          path: dist/FutbolAnaliz_Portable_${{ env.TORCH }}.zip
+          compression-level: 0
+          retention-days: 30
+
+      - name: GitHub Releases'e yukle
+        if: github.event.inputs.release == 'true'
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          $tag = "futbolanaliz-portable-$env:GITHUB_RUN_NUMBER-$env:TORCH"
+          gh release create $tag "dist/FutbolAnaliz_Portable_$env:TORCH.zip" --target $env:GITHUB_SHA --prerelease `
+            --title "FutbolAnaliz Tasinabilir ($env:TORCH) #$env:GITHUB_RUN_NUMBER" `
+            --notes "Zip'i cikarin, BASLAT.bat'a cift tiklayin. Kurulum gerekmez."

@@ -1,0 +1,52 @@
+FUTBOL ANALIZ - TASINABILIR SURUM
+==================================
+
+KURULUM YOK. Zip dosyasini istediginiz yere (masaustu, USB bellek) cikarin ve
+BASLAT.bat dosyasina cift tiklayin. Bilgisayara hicbir sey kurulmaz; her sey bu
+klasorun icindedir. Silmek icin klasoru silmeniz yeterli.
+
+Not: Zip'i cikarmadan (zip'in icinden) calistirmayin. Klasor yolunda Turkce
+karakter olmamasi onerilir (ornek: C:\FutbolAnaliz).
+
+BASLATICILAR
+------------
+BASLAT.bat          Menu: asagidakilerin hepsine buradan ulasilir.
+WEB_ARAYUZ.bat      Tarayicida arayuz acar: video yukleme / dosya yolu, canli ekran,
+                    kamera, RTSP. Analiz canli izlenir, sonunda rapor ve indirmeler.
+VIDEO_ANALIZ.bat    Video dosyasini (mp4, avi, mkv, mov) bu dosyanin UZERINE SURUKLEYIP
+                    BIRAKIN. Analiz penceresi acilir (q = bitir), bitince rapor acilir.
+CANLI_EKRAN.bat     Ekranda acik olan mac yayinini (tarayici, TV uygulamasi) canli
+                    analiz eder. Iki monitor varsa yayini birinde acin, numarasini yazin.
+                    Ctrl+C ile ya da sectiginiz sure dolunca durur, rapor acilir.
+CANLI_YAYIN.bat     Webcam ya da rtsp:// / http:// kamera yayini.
+SISTEM_KONTROL.bat  GPU, modeller ve hiz testi.
+
+SONUCLAR
+--------
+sonuclar\<video adi>\  icinde:
+  rapor.html   takim karsilastirmasi, dizilis, isi haritalari, pas aglari, olay haritasi,
+               oyuncu profilleri (cift tiklayin, tarayicida acilir)
+  analiz.mp4   uzerine cizim yapilmis video (oyuncular, top, radar, sahiplik)
+  rapor.json   tum veriler
+  takip.csv    her kare, her oyuncu icin konum ve hiz
+
+MODELLER (modeller\ klasoru)
+---------------------------
+yolo11s.pt / yolo11m.pt  Genel modeller (paketle gelir). GPU yoksa hizli olan yolo11s kullanilir.
+futbol.pt   (ONERILEN) Futbola ozel oyuncu/kaleci/hakem/top modeli. Bu isimle buraya
+            koyarsaniz otomatik kullanilir.
+saha.pt     (ONERILEN) 32 noktali saha anahtar noktasi modeli. Varsa mesafe, hiz,
+            dizilis ve radar gercek metre cinsinden hesaplanir; yoksa yaklasiktir.
+Bu iki modelin nasil egitilecegi README.md dosyasinda anlatilir.
+
+HIZ
+---
+NVIDIA ekran karti varsa GPU surumunu kullanin (cok daha hizli). CPU surumunde canli
+analiz saniyede birkac kare isler; kayitli videolarda sorun yoktur, sadece daha uzun surer.
+SISTEM_KONTROL.bat bilgisayarinizdaki hizi gosterir.
+
+SORUN GIDERME
+-------------
+- "Windows bilgisayarinizi korudu" uyarisi: "Ek bilgi" > "Yine de calistir".
+- Web arayuzu acilmazsa tarayicida http://localhost:8501 adresine gidin.
+- Antivirus python.exe'yi engellerse bu klasoru istisnalara ekleyin.

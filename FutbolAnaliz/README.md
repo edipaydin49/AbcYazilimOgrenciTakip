@@ -33,7 +33,24 @@ tek, sade bir hatta birleştirildi (~1.700 satır).
 
 ![Örnek rapor](docs/ornek_rapor.png)
 
-## Kurulum
+## Windows: Tak-çalıştır (taşınabilir) sürüm
+
+Kurulum gerekmez; Python dahil her şey tek klasörde gelir (USB bellekten de çalışır).
+
+1. GitHub'da **Actions → "FutbolAnaliz Windows tasinabilir paket"** → son başarılı çalıştırma →
+   `FutbolAnaliz_Portable_cpu` dosyasını indirin (GPU sürümü için "Run workflow" ile `cu126` seçin).
+   İsterseniz kendi bilgisayarınızda da oluşturabilirsiniz: `portable\portable_olustur.bat`.
+2. Zip'i çıkarın, **`BASLAT.bat`**'a çift tıklayın.
+   - `WEB_ARAYUZ.bat` – tarayıcıda arayüz
+   - `VIDEO_ANALIZ.bat` – videoyu üstüne sürükleyip bırakın
+   - `CANLI_EKRAN.bat` – ekrandaki maç yayınını canlı analiz
+   - `CANLI_YAYIN.bat` – kamera / RTSP
+   - `SISTEM_KONTROL.bat` – GPU, model ve hız testi
+3. Futbol modelinizi `modeller\futbol.pt`, saha modelinizi `modeller\saha.pt` olarak koyarsanız otomatik kullanılır.
+
+Ayrıntılar: [portable/OKUBENI.txt](portable/OKUBENI.txt)
+
+## Kurulum (geliştirici)
 
 ```bash
 cd FutbolAnaliz
@@ -117,7 +134,9 @@ futbol_analiz/
   annotate.py     video üzerine çizim
   pipeline.py     hepsini birleştiren MatchAnalyzer
   report.py       HTML + JSON rapor
+  kontrol.py      sistem kontrolü (GPU, modeller, hız)
 app.py            Streamlit arayüzü
+portable/         Windows taşınabilir paket: build_portable.ps1, başlatıcı .bat dosyaları
 tests/            birim testleri + sentetik maçla uçtan uca test
 ```
 

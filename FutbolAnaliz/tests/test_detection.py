@@ -41,6 +41,15 @@ def test_coco_modeli_eslenir_ve_tek_top_kalir(monkeypatch):
     monkeypatch.setitem(sys.modules, "ultralytics", fake)
     from futbol_analiz.detection import YoloDetector
 
-    det = YoloDetector("x.pt").detect(np.zeros((10, 10, 3), np.uint8))
+    det = YoloDetector("x.pt", imgsz=640).detect(np.zeros((10, 10, 3), np.uint8))
     assert sorted(det.class_id.tolist()) == [BALL, PLAYER]  # araba atıldı, en güvenilir top kaldı
     assert det.confidence[det.class_id == BALL][0] == np.float32(0.8)
+
+
+def test_varsayilan_modeller_klasorden_bulunur(tmp_path, monkeypatch):
+    from futbol_analiz.detection import default_models
+
+    monkeypatch.setenv("FUTBOL_MODELLER", str(tmp_path))
+    (tmp_path / "futbol.pt").write_bytes(b"")
+    (tmp_path / "saha.pt").write_bytes(b"")
+    assert default_models() == (str(tmp_path / "futbol.pt"), str(tmp_path / "saha.pt"))

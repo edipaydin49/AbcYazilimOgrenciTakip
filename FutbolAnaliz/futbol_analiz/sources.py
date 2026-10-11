@@ -9,7 +9,7 @@ import numpy as np
 
 
 def open_source(source: str | int, stride: int = 1, max_frames: int | None = None,
-                screen_region: tuple[int, int, int, int] | None = None) -> tuple[Iterator[np.ndarray], float]:
+                screen_region: tuple[int, int, int, int] | None = None, monitor: int = 1) -> tuple[Iterator[np.ndarray], float]:
     """(kare üreteci, fps) döndürür.
 
     source: dosya yolu, "0" gibi kamera indeksi, "rtsp://..." / "http://..." adresi
@@ -17,7 +17,7 @@ def open_source(source: str | int, stride: int = 1, max_frames: int | None = Non
     stride: her n. kareyi işle (canlı modda gecikmeyi azaltır).
     """
     if str(source) == "screen":
-        return _screen_frames(screen_region, stride, max_frames), 25.0 / stride
+        return _screen_frames(screen_region, stride, max_frames, monitor), 25.0 / stride
 
     src = int(source) if str(source).isdigit() else str(source)
     cap = cv2.VideoCapture(src)
@@ -46,13 +46,13 @@ def open_source(source: str | int, stride: int = 1, max_frames: int | None = Non
     return gen(), fps / stride
 
 
-def _screen_frames(region, stride, max_frames):
+def _screen_frames(region, stride, max_frames, monitor=1):
     try:
         import mss
     except ImportError as e:  # pragma: no cover
         raise ImportError("Ekran yakalama için: pip install mss") from e
     with mss.mss() as sct:
-        mon = sct.monitors[1]
+        mon = sct.monitors[min(monitor, len(sct.monitors) - 1)]
         if region:
             mon = {"left": region[0], "top": region[1], "width": region[2], "height": region[3]}
         produced, period = 0, stride / 25.0

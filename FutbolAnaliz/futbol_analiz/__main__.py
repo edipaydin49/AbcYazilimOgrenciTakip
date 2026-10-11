@@ -25,14 +25,15 @@ def build(args, fps):
     calib = load_calibration(args.kalibrasyon) if args.kalibrasyon else None
     out = Path(args.cikti)
     out.mkdir(parents=True, exist_ok=True)
-    return MatchAnalyzer(det, fps, pitch_detector=pitch, calibration=calib, csv_path=out / "takip.csv"), out
+    return MatchAnalyzer(det, fps, pitch_detector=pitch, calibration=calib, csv_path=out / "takip.csv",
+                         realtime=args.komut == "canli"), out
 
 
 def run(args):
     from .report import write_report
     from .sources import open_source
 
-    frames, fps = open_source(args.kaynak, stride=args.adim, max_frames=args.max_kare)
+    frames, fps = open_source(args.kaynak, stride=args.adim, max_frames=args.max_kare, monitor=args.ekran)
     analyzer, out = build(args, fps)
     t0, n = time.time(), 0
     try:
@@ -42,6 +43,8 @@ def run(args):
                 pct = analyzer.possession.possession_pct()
                 print(f"\rkare {n}  {n / (time.time() - t0):.1f} kare/sn  sahiplik A %{pct[0]:.0f} B %{pct[1]:.0f}  "
                       f"dizilis A {analyzer.tactics.current_formation(0)} B {analyzer.tactics.current_formation(1)}", end="", flush=True)
+            if args.sure and time.time() - t0 > args.sure:
+                break
     except KeyboardInterrupt:
         print("\nDurduruldu, rapor hazırlanıyor...")
     finally:
@@ -84,18 +87,24 @@ def main(argv=None):
     p = argparse.ArgumentParser(prog="futbol_analiz", description="Futbol maçı video analizi")
     sub = p.add_subparsers(dest="komut", required=True)
 
+    from .detection import default_models
+
+    player_default, pitch_default = default_models()
+
     def common(sp):
-        sp.add_argument("--model", default="yolo11m.pt", help="oyuncu/top YOLO ağırlığı (futbol modeli önerilir)")
-        sp.add_argument("--saha-model", help="saha anahtar noktası YOLO-pose ağırlığı (32 nokta)")
+        sp.add_argument("--model", default=player_default, help="oyuncu/top YOLO ağırlığı (futbol modeli önerilir)")
+        sp.add_argument("--saha-model", default=pitch_default, help="saha anahtar noktası YOLO-pose ağırlığı (32 nokta)")
         sp.add_argument("--kalibrasyon", help="elle kalibrasyon JSON dosyası")
         sp.add_argument("--cikti", default="sonuc", help="çıktı klasörü")
         sp.add_argument("--adim", type=int, default=1, help="her n. kareyi işle")
         sp.add_argument("--max-kare", type=int)
         sp.add_argument("--conf", type=float, default=0.3)
-        sp.add_argument("--imgsz", type=int, default=1280)
+        sp.add_argument("--imgsz", type=int, help="model giriş boyutu (varsayılan: GPU 1280, CPU 960)")
         sp.add_argument("--device", help="cuda:0 / cpu / mps")
         sp.add_argument("--goster", action="store_true", help="pencerede canlı göster (q: çık)")
         sp.add_argument("--video-yok", action="store_true", help="işaretli video kaydetme")
+        sp.add_argument("--sure", type=float, help="en fazla bu kadar saniye analiz et (canlı mod için)")
+        sp.add_argument("--ekran", type=int, default=1, help="ekran yakalamada monitör numarası (1, 2, ...)")
 
     a = sub.add_parser("analiz", help="video dosyasını analiz et")
     a.add_argument("kaynak")
