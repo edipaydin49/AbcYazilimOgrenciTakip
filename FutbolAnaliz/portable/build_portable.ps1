@@ -90,6 +90,7 @@ $env:PYTHONNOUSERSITE = "1"
 $env:FUTBOL_MODELLER = "$Root\modeller"
 $env:YOLO_CONFIG_DIR = "$Root\ayarlar\ultralytics"
 $env:MPLCONFIGDIR = "$Root\ayarlar\matplotlib"
+New-Item -ItemType Directory -Force -Path $env:YOLO_CONFIG_DIR, $env:MPLCONFIGDIR | Out-Null
 Run $Py @("-m", "futbol_analiz.kontrol")
 Run $Py @("-c", "import streamlit, futbol_analiz.report, futbol_analiz.pipeline; print('import ok')")
 
@@ -108,7 +109,7 @@ if ($Test) {
 
 Step "Temizlik"
 Get-ChildItem $Root -Recurse -Directory -Filter "__pycache__" | Remove-Item -Recurse -Force
-Remove-Item "$Root\ayarlar\*" -Recurse -Force -ErrorAction SilentlyContinue
+Remove-Item "$Root\ayarlar\*", "$Root\Ultralytics" -Recurse -Force -ErrorAction SilentlyContinue
 # pip'in Scripts\*.exe baslaticilari mutlak yol icerir, tasinabilir degil; hepsi "python -m" ile cagriliyor
 Remove-Item "$PyDir\Scripts" -Recurse -Force -ErrorAction SilentlyContinue
 

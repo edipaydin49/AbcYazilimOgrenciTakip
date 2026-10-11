@@ -48,7 +48,7 @@ def main():
     try:
         import mss
 
-        with mss.mss() as s:
+        with (getattr(mss, "MSS", None) or mss.mss)() as s:
             print(f"Monitorler   : {len(s.monitors) - 1} adet " + ", ".join(f"{i}: {m['width']}x{m['height']}" for i, m in enumerate(s.monitors[1:], 1)))
     except Exception as e:
         print(f"Monitorler   : okunamadi ({e})")

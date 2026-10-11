@@ -51,7 +51,7 @@ def _screen_frames(region, stride, max_frames, monitor=1):
         import mss
     except ImportError as e:  # pragma: no cover
         raise ImportError("Ekran yakalama için: pip install mss") from e
-    with mss.mss() as sct:
+    with (getattr(mss, "MSS", None) or mss.mss)() as sct:
         mon = sct.monitors[min(monitor, len(sct.monitors) - 1)]
         if region:
             mon = {"left": region[0], "top": region[1], "width": region[2], "height": region[3]}
