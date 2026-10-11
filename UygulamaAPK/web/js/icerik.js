@@ -65,7 +65,7 @@
       ],
       "carpan.say": [
         z => { const n = sec(CARPANLI); const d = bolenler(n).length;
-          return S({ kaz: "carpan.say", duzey: "uygulama", zorluk: 2, soru: `${n} sayısının kaç tane çarpanı vardır?`, dogru: d,
+          return S({ kaz: "carpan.say", duzey: "uygulama", zorluk: 2, soru: `${n} sayısının kaç tane çarpanı vardır?`, dogru: d, dogruNeden: `${n} sayısını kalansız bölen sayılar ${bolenler(n).join(", ")}; bunlar ${d} tanedir.`,
             yanlis: [[d - 2, "dikkat", "1'i ve sayının kendisini de saymalısın."], [Math.ceil(d / 2), "kavrama", "Bu, çarpan çiftlerinin sayısıdır; her çiftte iki çarpan vardır."], [d + 1, "islem", "Kareli sayılarda ortadaki çarpan yalnızca bir kez sayılır."]],
             ipucu: "Çarpan çiftlerini 1'den başlayarak yaz.", cozum: [`🔎 Soruyu anlayalım: ${n} sayısını kalansız bölen kaç sayı olduğunu bulacağız.`,
               "💡 Hatırlayalım: Hiçbir çarpanı kaçırmamak için 1'den başlayarak çarpan çiftlerini yazarız.",
@@ -74,7 +74,7 @@
               `✅ Sonuç: ${n} sayısının ${d} çarpanı vardır.`,
               `🔁 Kontrol edelim: 1'i ve ${n}${ek(n, "i")} saydık. ${Number.isInteger(Math.sqrt(n)) ? Math.sqrt(n) + " × " + Math.sqrt(n) + " çiftindeki " + Math.sqrt(n) + " yalnızca bir kez sayıldı." : "Her çift 2 çarpan verdi: " + bolenler(n).filter(x => x * x <= n).length + " × 2 = " + d + "."}`] }); },
         z => { const n = sec([24, 30, 36, 40, 48, 60]); const d = bolenler(n).length - 2;
-          return S({ kaz: "carpan.say", duzey: "transfer", zorluk: 3, soru: `${n} öğrenci, her grupta eşit sayıda öğrenci olacak ve kimse açıkta kalmayacak şekilde gruplara ayrılacak. Her grupta en az 2 öğrenci ve en az 2 grup olacaksa kaç farklı gruplama yapılabilir?`, dogru: d,
+          return S({ kaz: "carpan.say", duzey: "transfer", zorluk: 3, soru: `${n} öğrenci, her grupta eşit sayıda öğrenci olacak ve kimse açıkta kalmayacak şekilde gruplara ayrılacak. Her grupta en az 2 öğrenci ve en az 2 grup olacaksa kaç farklı gruplama yapılabilir?`, dogru: d, dogruNeden: `Grup büyüklüğü ${n}${ek(n, "in")} 1 ve ${n} dışındaki çarpanlarından biri olabilir: ${bolenler(n).filter(x => x > 1 && x < n).join(", ")}; yani ${d} seçenek.`,
             yanlis: [[d + 2, "dikkat", "“En az 2 öğrenci ve en az 2 grup” koşulu 1 ve sayının kendisini dışarıda bırakır."], [Math.ceil((d + 2) / 2), "kavrama", "5'erli grup ile 5 grup farklı gruplamalardır; çiftleri değil çarpanları saymalısın."], [d + 1, "dikkat", "Koşullardan birini atlamışsın."]],
             ipucu: "Grup büyüklüğü, öğrenci sayısının bir çarpanı olmalı. Hangi çarpanlar koşulu sağlamaz?", cozum: [`🔎 Soruyu anlayalım: ${n} öğrenci eşit gruplara ayrılacak; her grupta en az 2 kişi olacak ve en az 2 grup kurulacak.`,
               "💡 Hatırlayalım: Kimse açıkta kalmıyorsa grup büyüklüğü, öğrenci sayısının bir çarpanıdır.",
@@ -85,7 +85,7 @@
       ],
       "carpan.model": [
         z => { const n = sec([12, 16, 18, 20, 24, 30, 36]); const d = Math.ceil(bolenler(n).length / 2);
-          return S({ kaz: "carpan.model", duzey: "transfer", zorluk: 2, soru: `${n} birim karenin tamamı kullanılarak, aralarında boşluk kalmadan kaç farklı dikdörtgen oluşturulabilir? (2×3 ile 3×2 aynı kabul edilir.)`, dogru: d,
+          return S({ kaz: "carpan.model", duzey: "transfer", zorluk: 2, soru: `${n} birim karenin tamamı kullanılarak, aralarında boşluk kalmadan kaç farklı dikdörtgen oluşturulabilir? (2×3 ile 3×2 aynı kabul edilir.)`, dogru: d, dogruNeden: `Her dikdörtgen ${n}${ek(n, "in")} bir çarpan çiftidir; ${n} sayısının ${d} çarpan çifti vardır.`,
             yanlis: [[bolenler(n).length, "kavrama", "Her dikdörtgen bir çarpan çiftidir; çarpan sayısını değil çift sayısını say."], [d - 1, "dikkat", "Kare de bir dikdörtgendir; onu da say."], [d + 2, "islem", "Çarpan çiftlerini yeniden kontrol et."]],
             ipucu: "Her dikdörtgenin kenarları çarpımı " + n + " olan iki sayıdır.", cozum: [`🔎 Soruyu anlayalım: ${n} birim kareyi boşluksuz dizerek kaç farklı dikdörtgen kurabileceğimizi arıyoruz.`,
               `💡 Hatırlayalım: Satır × sütun = ${n} olmalı; yani her dikdörtgen bir çarpan çiftidir.`,
@@ -148,7 +148,7 @@
       ],
       "kat.aralik": [
         z => { const k = R(4, 12), a = R(10, 40), b = a + R(30, 60); let n = 0; for (let x = a + 1; x < b; x++) if (x % k === 0) n++;
-          return S({ kaz: "kat.aralik", duzey: "uygulama", zorluk: 2, soru: `${a} ile ${b} arasında ${k} sayısının kaç katı vardır?`, dogru: n,
+          return S({ kaz: "kat.aralik", duzey: "uygulama", zorluk: 2, soru: `${a} ile ${b} arasında ${k} sayısının kaç katı vardır?`, dogru: n, dogruNeden: `${a} ile ${b} arasındaki ${k} katları tek tek yazıldığında ${n} sayı bulunur; uç sayılar sayılmaz.`,
             yanlis: [[n + 1, "dikkat", "“Arasında” denince uç sayılar dahil edilmez; aralığın dışındaki bir katı saymış olabilirsin."], [Math.floor((b - a) / k) + 1, "strateji", "Farkı bölmek yaklaşık sonuç verir; ilk ve son katı bulup say."], [n - 1, "islem", "İlk ya da son katı unutmuş olabilirsin."]],
             ipucu: "Aralıktaki ilk katı ve son katı bul.", cozum: [`🔎 Soruyu anlayalım: ${a} ile ${b} arasında (uçlar hariç) ${k}${ek(k, "in")} kaç katı olduğunu sayacağız.`,
               `💡 Hatırlayalım: “Arasında” denince ${a} ve ${b} sayılmaz. Önce ilk katı bulur, sonra ${k}${ek(k, "er")} ekleyerek ilerleriz.`,
@@ -157,7 +157,7 @@
               `✅ Sonuç: Bu aralıkta ${k} sayısının ${n} katı vardır.`,
               `🔁 Kontrol edelim: (son kat − ilk kat) ÷ ${k} + 1 = (${Math.ceil(b / k - 1) * k} − ${Math.floor(a / k + 1) * k}) ÷ ${k} + 1 = ${n}. Aynı sonucu bulduk!`] }); },
         z => { const k = R(6, 17), n = Math.floor(99 / k) * k;
-          return S({ kaz: "kat.aralik", duzey: "uygulama", zorluk: 2, soru: `${k} sayısının katı olan en büyük iki basamaklı sayı kaçtır?`, dogru: n,
+          return S({ kaz: "kat.aralik", duzey: "uygulama", zorluk: 2, soru: `${k} sayısının katı olan en büyük iki basamaklı sayı kaçtır?`, dogru: n, dogruNeden: `${n} = ${k} × ${n / k}; bir sonraki kat ${n + k} üç basamaklıdır.`,
             yanlis: [[99, "kavrama", `99, ${k}${ek(k, "in")} katı olmayabilir; kalansız bölünmeli.`], [n - k, "dikkat", "Daha büyük bir iki basamaklı kat var."], [n + k, "dikkat", "Bu sayı üç basamaklı olabilir; kontrol et."]],
             ipucu: `99'u ${k}${ek(k, "e")} böl, kalanı çıkar.`, cozum: [`🔎 Soruyu anlayalım: ${k}${ek(k, "in")} katı olan iki basamaklı sayıların en büyüğünü arıyoruz.`,
               "💡 Hatırlayalım: En büyük iki basamaklı sayı 99'dur. 99'u geçmeyen ve ona en yakın katı bulmalıyız.",
@@ -168,7 +168,7 @@
       ],
       "kat.problem": [
         z => { const k = sec([5, 6, 10, 12, 15, 20]), sure = sec([60, 90, 120]);
-          return S({ kaz: "kat.problem", duzey: "transfer", zorluk: 2, soru: `Bir otobüs saat 08.00'de duraktan kalkıyor ve ${k} dakikada bir yeni otobüs kalkıyor. 08.00 ile ${sure} dakika sonrası arasında (ikisi de dahil) kaç otobüs kalkar?`, dogru: sure / k + 1,
+          return S({ kaz: "kat.problem", duzey: "transfer", zorluk: 2, soru: `Bir otobüs saat 08.00'de duraktan kalkıyor ve ${k} dakikada bir yeni otobüs kalkıyor. 08.00 ile ${sure} dakika sonrası arasında (ikisi de dahil) kaç otobüs kalkar?`, dogru: sure / k + 1, dogruNeden: `Kalkış dakikaları 0, ${k}, ${2 * k}, …, ${sure}; bunlar ${sure / k} + 1 = ${sure / k + 1} tanedir.`,
             yanlis: [[sure / k, "dikkat", "08.00'deki ilk otobüsü saymayı unuttun."], [sure / k + 2, "islem", "Bir fazla saydın; 0, " + k + ", " + 2 * k + " … şeklinde say."], [k, "kavrama", "Kalkış aralığı ile otobüs sayısı farklıdır."]],
             ipucu: `Kalkış zamanları ${k}${ek(k, "in")} katlarıdır: 0, ${k}, ${2 * k}, …`, cozum: [`🔎 Soruyu anlayalım: İlk otobüs 08.00'de kalkıyor, sonra ${k} dakikada bir otobüs var. ${sure} dakikalık sürede (başı ve sonu dahil) kaç otobüs kalkar?`,
               `💡 Hatırlayalım: Kalkış dakikaları ${k}${ek(k, "in")} katlarıdır: 0, ${k}, ${2 * k}, …`,
@@ -176,7 +176,7 @@
               `✏️ 08.00'deki (0. dakika) ilk otobüsü de eklemeliyiz: ${sure / k} + 1.`,
               `✅ Sonuç: Toplam ${sure / k + 1} otobüs kalkar.`,
               `🔁 Kontrol edelim: Küçük bir örnek düşün: 0, ${k} ve ${2 * k}. dakikalarda 3 otobüs kalkar; ${2 * k} ÷ ${k} + 1 = 3. Kural tutuyor.`] }); },
-        z => { const k = sec([4, 6, 9]), a = 40, b = 90; const d = sec([...Array(b - a).keys()].map(x => x + a).filter(x => x % k === 0)); const yan = karistir([...Array(b - a).keys()].map(x => x + a).filter(x => x % k)).slice(0, 3);
+        z => { const k = sec([4, 6, 9]), a = 40, b = 90; const d = sec([...Array(b - a - 1).keys()].map(x => x + a + 1).filter(x => x % k === 0)); const yan = karistir([...Array(b - a - 1).keys()].map(x => x + a + 1).filter(x => x % k)).slice(0, 3);
           return S({ kaz: "kat.problem", duzey: "transfer", zorluk: 2, soru: `Bir kutudaki kalemler ${k}${ek(k, "er")} ${k}${ek(k, "er")} sayıldığında hiç artmıyor. Kalem sayısı 40 ile 90 arasındaysa aşağıdakilerden hangisi kalem sayısı olabilir?`, dogru: d,
             yanlis: yan.map(x => [x, "islem", `${x} ÷ ${k} kalanlıdır; kalem artardı.`]),
             ipucu: `“Hiç artmıyor” demek kalem sayısının ${k}${ek(k, "in")} katı olması demektir.`, cozum: [`🔎 Soruyu anlayalım: Kalemler ${k}${ek(k, "er")} ${k}${ek(k, "er")} sayılınca hiç artmıyor ve sayısı 40 ile 90 arasında. Hangi seçenek olabilir?`,
@@ -216,8 +216,8 @@
       ],
       "bol.rakam": [
         z => { const b = sec([3, 9]); const a = R(1, 9), c = R(0, 9); const uygun = [...Array(10).keys()].filter(x => (a + x + c) % b === 0); const d = Math.max(...uygun); const yan = [...Array(10).keys()].filter(x => !uygun.includes(x));
-          return S({ kaz: "bol.rakam", duzey: "uygulama", zorluk: 2, soru: `${a}A${c} üç basamaklı sayısı ${b} ile kalansız bölünebildiğine göre A yerine yazılabilecek en büyük rakam kaçtır?`, dogru: d,
-            yanlis: [[Math.min(...uygun), "dikkat", "Bu, yazılabilecek en küçük rakamdır; soru en büyüğünü istiyor."], [sec(yan), "islem", "Rakamlar toplamı " + b + "'ün katı olmuyor."], [9 === d ? 8 : 9, "islem", "Rakamlar toplamını yeniden kontrol et."]],
+          return S({ kaz: "bol.rakam", duzey: "uygulama", zorluk: 2, soru: `${a}A${c} üç basamaklı sayısı ${b} ile kalansız bölünebildiğine göre A yerine yazılabilecek en büyük rakam kaçtır?`, dogru: d, dogruNeden: `A = ${d} için rakamlar toplamı ${a + d + c}; bu ${b}${ek(b, "in")} katı ve ${d}${ek(d, "den")} büyük uygun rakam yok.`,
+            yanlis: [[Math.min(...uygun), "dikkat", "Bu, yazılabilecek en küçük rakamdır; soru en büyüğünü istiyor."], [sec(yan), "islem", `Bu rakamla rakamlar toplamı ${b}${ek(b, "in")} katı olmuyor.`], [9 === d ? 8 : 9, "islem", "Rakamlar toplamını yeniden kontrol et."]],
             ipucu: `${a} + A + ${c} toplamı ${b}${ek(b, "in")} katı olmalı.`, cozum: [`🔎 Soruyu anlayalım: ${a}A${c} sayısı ${b} ile kalansız bölünüyor; A yerine gelebilecek en büyük rakamı arıyoruz.`,
               `💡 Hatırlayalım: Bir sayı ${b} ile bölünebiliyorsa rakamları toplamı ${b}${ek(b, "in")} katıdır.`,
               `✏️ Bilinen rakamları toplayalım: ${a} + ${c} = ${a + c}. Rakamlar toplamı ${a + c} + A olacak.`,
@@ -225,7 +225,7 @@
               `✅ Sonuç: Yazılabilecek en büyük rakam ${d}.`,
               `🔁 Kontrol edelim: ${a} + ${d} + ${c} = ${a + d + c}; bu sayı ${b}${ek(b, "in")} katı. Sayı ${a}${d}${c} olur.`] }); },
         z => { const a = R(1, 9), b2 = R(0, 9); const uygun = [0, 2, 4, 6, 8].filter(x => (a + b2 + x) % 3 === 0); if (!uygun.length) return null; const d = uygun.length;
-          return S({ kaz: "bol.rakam", duzey: "transfer", zorluk: 3, soru: `${a}${b2}A üç basamaklı sayısı 6 ile kalansız bölünüyor. A yerine kaç farklı rakam yazılabilir?`, dogru: d,
+          return S({ kaz: "bol.rakam", duzey: "transfer", zorluk: 3, soru: `${a}${b2}A üç basamaklı sayısı 6 ile kalansız bölünüyor. A yerine kaç farklı rakam yazılabilir?`, dogru: d, dogruNeden: `A hem çift olmalı hem de rakamlar toplamını 3'ün katı yapmalı; bu iki koşulu yalnızca ${uygun.join(" ve ")} sağlar.`,
             yanlis: [[[...Array(10).keys()].filter(x => (a + b2 + x) % 3 === 0).length, "kavrama", "6'ya bölünmek için sayının çift olması da gerekir; yalnızca 3 kuralını uyguladın."], [5, "kavrama", "Yalnızca çift olma şartına baktın; 3 kuralı da gerekir."], [d + 1, "islem", "Uygun rakamları yeniden say."]],
             ipucu: "6 ile bölünme = hem 2 ile hem 3 ile bölünme.", cozum: [`🔎 Soruyu anlayalım: ${a}${b2}A sayısı 6 ile kalansız bölünüyor; A yerine kaç farklı rakam yazılabilir?`,
               "💡 Hatırlayalım: 6 ile bölünebilmek için sayı hem 2 ile hem 3 ile bölünebilmelidir.",
@@ -277,7 +277,7 @@
               `✅ Sonuç: ${d} sayısının yalnızca iki çarpanı var (1 ve ${d}); ${d} asaldır.`,
               "🔁 Kontrol edelim: Tek sayı olmak asal olmak demek değildir (9, 15, 21 gibi). Her zaman küçük asal sayılara bölmeyi dene."], dogruNeden: `${d}, 1 ve kendisinden başka hiçbir sayıya kalansız bölünmez.` }); },
         z => { const a = sec([10, 20, 30, 40, 50]), b = a + 20; const n = [...Array(b - a - 1).keys()].map(x => x + a + 1).filter(asalMi).length;
-          return S({ kaz: "asal.tani", duzey: "uygulama", zorluk: 2, soru: `${a} ile ${b} arasında kaç tane asal sayı vardır?`, dogru: n,
+          return S({ kaz: "asal.tani", duzey: "uygulama", zorluk: 2, soru: `${a} ile ${b} arasında kaç tane asal sayı vardır?`, dogru: n, dogruNeden: `Aralıktaki asal sayılar ${[...Array(b - a - 1).keys()].map(x => x + a + 1).filter(asalMi).join(", ")}; toplam ${n} tane.`,
             yanlis: [[n + 1, "kavrama", "Asal olmayan bir tek sayıyı (ör. 21, 27, 33) asal saymış olabilirsin."], [n - 1, "dikkat", "Bir asal sayıyı atlamış olabilirsin."], [10, "kavrama", "Aralıktaki tek sayıların hepsi asal değildir."]],
             ipucu: "Aralıktaki tek sayıları yaz, 3 ve 7'ye bölünenleri ele.", cozum: [`🔎 Soruyu anlayalım: ${a} ile ${b} arasındaki (uçlar hariç) asal sayıları sayacağız.`,
               "💡 Hatırlayalım: 2 dışındaki çift sayılar asal değildir; tek sayıları da 3, 5 ve 7 gibi küçük asal sayılara bölerek denetleriz.",
@@ -290,7 +290,7 @@
         z => { const n = sec([12, 18, 20, 24, 28, 36, 40, 45, 48, 54, 60, 72, 84, 90, 100, 120]); const c = asalCarpan(n); const ps = Object.keys(c).map(Number);
           const y1 = { ...c }; y1[ps[0]] = c[ps[0]] + 1; const y2 = { ...c }; y2[ps[ps.length - 1]] = Math.max(1, c[ps[ps.length - 1]] - 1) === c[ps[ps.length - 1]] ? c[ps[ps.length - 1]] + 1 : c[ps[ps.length - 1]] - 1;
           const bilesik = bolenler(n).filter(x => x > 1 && x < n && !asalMi(x));
-          return S({ kaz: "asal.ayir", duzey: "uygulama", zorluk: 2, soru: `${n} sayısının asal çarpanlarına ayrılmış hâli hangisidir?`, dogru: ustlu(c),
+          return S({ kaz: "asal.ayir", duzey: "uygulama", zorluk: 2, soru: `${n} sayısının asal çarpanlarına ayrılmış hâli hangisidir?`, dogru: ustlu(c), dogruNeden: `Bu ifadedeki bütün tabanlar asaldır ve çarpımları ${n} eder.`,
             yanlis: [[ustlu(y1), "islem", "Bir asal çarpanın kuvvetini fazla saymışsın; çarpımı " + n + " etmiyor."], [ustlu(y2), "islem", "Kuvvetlerden biri hatalı; çarpımı kontrol et."], [bilesik.length ? `${bilesik[0]} · ${n / bilesik[0]}` : ps.join(" · "), "kavrama", "Bu çarpanlardan biri asal değil; asal çarpanlara kadar ayırmalısın."]],
             ipucu: "En küçük asal sayı olan 2'den başlayarak böl.", cozum: [`🔎 Soruyu anlayalım: ${n} sayısını asal sayıların çarpımı olarak yazacağız.`,
               "💡 Hatırlayalım: En küçük asal sayı olan 2'den başlarız; bölüm 1 olana kadar asal sayılara böleriz.",
@@ -299,7 +299,7 @@
               `✅ Sonuç: ${n} = ${ustlu(c)}.`,
               `🔁 Kontrol edelim: Çarpanları çarparsak yine ${n} bulunur. Bir seçenekte asal olmayan sayı (4, 6, 9 gibi) varsa ayırma bitmemiştir.`] }); },
         z => { const n = sec([60, 72, 84, 90, 108, 120, 126, 150, 180]); const c = asalCarpan(n);
-          return S({ kaz: "asal.ayir", duzey: "aciklama", zorluk: 2, soru: `Asal çarpanlarına ayrılmış hâli ${ustlu(c)} olan sayı kaçtır?`, dogru: n,
+          return S({ kaz: "asal.ayir", duzey: "aciklama", zorluk: 2, soru: `Asal çarpanlarına ayrılmış hâli ${ustlu(c)} olan sayı kaçtır?`, dogru: n, dogruNeden: `${Object.entries(c).map(([p, k]) => Math.pow(p, k)).join(" × ")} = ${n}.`,
             yanlis: [[Object.entries(c).reduce((s, [p, k]) => s + p * k, 0), "kavrama", "Üslü ifadeyi çarpma yerine p × k olarak hesapladın."], [n / 2, "islem", "Bir çarpanı eksik hesapladın."], [n * 2, "islem", "Bir çarpanı fazla hesapladın."]],
             ipucu: "Kuvvetleri aç ve hepsini çarp.", cozum: [`🔎 Soruyu anlayalım: Asal çarpanları ${ustlu(c)} olarak verilen sayıyı bulacağız.`,
               "💡 Hatırlayalım: Üs, tabanın kaç kez çarpıldığını gösterir. Örneğin 2³ = 2 · 2 · 2 = 8.",
@@ -318,7 +318,7 @@
             "✅ Sonuç: Asal sayıların tam iki çarpanı vardır ve 2, çift olan tek asal sayıdır.",
             "🔁 Kontrol edelim: “Bütün tek sayılar asaldır” cümlesini 9 ile dene: 9 = 3 × 3. Tek bir karşı örnek cümleyi çürütür."], dogruNeden: "Asal sayının tanımı gereği yalnızca iki çarpanı vardır; 2 de bu tanıma uyan tek çift sayıdır." }),
         z => { const n = sec([30, 42, 66, 70, 78, 105, 110]); const t = Object.keys(asalCarpan(n)).map(Number).reduce((a, b) => a + b, 0);
-          return S({ kaz: "asal.kavram", duzey: "baglanti", zorluk: 3, soru: `${n} sayısının farklı asal çarpanlarının toplamı kaçtır?`, dogru: t,
+          return S({ kaz: "asal.kavram", duzey: "baglanti", zorluk: 3, soru: `${n} sayısının farklı asal çarpanlarının toplamı kaçtır?`, dogru: t, dogruNeden: `${n} sayısının farklı asal çarpanları ${Object.keys(asalCarpan(n)).join(", ")}; toplamları ${t}.`,
             yanlis: [[t + 1, "bilgi", "1'i asal çarpan olarak eklemiş olabilirsin; 1 asal değildir."], [bolenler(n).filter(x => x > 1 && x < n).slice(0, 3).reduce((a, b) => a + b, 0), "kavrama", "Asal olmayan çarpanları da toplamış olabilirsin."], [t - 2, "islem", "Asal çarpanlardan birini atlamış olabilirsin."]],
             ipucu: "Önce asal çarpanlarına ayır, sonra farklı olanları topla.", cozum: [`🔎 Soruyu anlayalım: ${n} sayısını asal çarpanlarına ayırıp farklı asal çarpanları toplayacağız.`,
               "💡 Hatırlayalım: 1 asal değildir; 4, 6, 10 gibi asal olmayan çarpanlar da toplama katılmaz.",
@@ -342,7 +342,7 @@
     uret: {
       "okat.ekok": [
         z => { const [a, b] = sec([[4, 6], [6, 8], [6, 9], [8, 12], [10, 15], [9, 12], [12, 18], [4, 10], [15, 20], [12, 16], [14, 21], [6, 15]]); const e = ekok(a, b);
-          return S({ kaz: "okat.ekok", duzey: "uygulama", zorluk: 1, soru: `${a} ve ${b} sayılarının en küçük ortak katı kaçtır?`, dogru: e,
+          return S({ kaz: "okat.ekok", duzey: "uygulama", zorluk: 1, soru: `${a} ve ${b} sayılarının en küçük ortak katı kaçtır?`, dogru: e, dogruNeden: `${e}, hem ${a}${ek(a, "e")} hem ${b}${ek(b, "e")} kalansız bölünen en küçük sayıdır.`,
             yanlis: [[a * b, "strateji", "Sayıları çarpmak her zaman ortak kat verir ama en küçüğünü vermeyebilir."], [ebob(a, b), "kavrama", "Bu en büyük ortak bölendir; ortak katla karıştırdın."], [e * 2, "dikkat", "Bu bir ortak kattır ama en küçüğü değildir."]],
             ipucu: "Büyük sayının katlarını sırayla yaz; küçük sayıya bölünen ilkini bul.", cozum: [`🔎 Soruyu anlayalım: ${a} ve ${b} sayılarının ikisinin de katı olan en küçük sayıyı (EKOK) arıyoruz.`,
               "💡 Hatırlayalım: Büyük sayının katlarını sırayla yazar, küçük sayıya kalansız bölünen ilkini buluruz.",
@@ -351,7 +351,7 @@
               `✅ Sonuç: EKOK(${a}, ${b}) = ${e}.`,
               `🔁 Kontrol edelim: ${e} ÷ ${a} = ${e / a} ve ${e} ÷ ${b} = ${e / b}; ikisi de kalansız. ${a} × ${b} = ${a * b} de bir ortak kattır ama ${a * b === e ? "bu soruda EKOK'a eşittir" : "en küçüğü değildir"}.`] }); },
         z => { const [a, b] = sec([[4, 6], [6, 8], [3, 5], [4, 10], [6, 9]]); const s = R(1, 30), t = s + R(40, 70); let n = 0; for (let x = s + 1; x < t; x++) if (x % a === 0 && x % b === 0) n++;
-          return S({ kaz: "okat.ekok", duzey: "baglanti", zorluk: 3, soru: `${s} ile ${t} arasında hem ${a} sayısının hem de ${b} sayısının katı olan kaç sayı vardır?`, dogru: n,
+          return S({ kaz: "okat.ekok", duzey: "baglanti", zorluk: 3, soru: `${s} ile ${t} arasında hem ${a} sayısının hem de ${b} sayısının katı olan kaç sayı vardır?`, dogru: n, dogruNeden: `Ortak katlar ${ekok(a, b)}${ek(ekok(a, b), "in")} katlarıdır; aralıkta bunlardan ${n} tane vardır.`,
             yanlis: [[n + 1, "dikkat", "Aralığın dışında kalan bir sayıyı saymış olabilirsin."], [Math.floor((t - s) / (a * b)), "strateji", `Ortak katlar ${ekok(a, b)}${ek(ekok(a, b), "in")} katlarıdır; ${a * b}${ek(a * b, "in")} değil.`], [n + 2, "islem", "Ortak katları tek tek yazarak say."]],
             ipucu: `Ortak katlar, EKOK(${a}, ${b}) = ${ekok(a, b)} sayısının katlarıdır.`, cozum: [`🔎 Soruyu anlayalım: ${s} ile ${t} arasında hem ${a}${ek(a, "in")} hem ${b}${ek(b, "in")} katı olan sayıları sayacağız.`,
               "💡 Hatırlayalım: İki sayının ortak katları, EKOK'larının katlarıdır.",
@@ -362,7 +362,7 @@
       ],
       "okat.problem": [
         z => { const [a, b] = sec([[6, 8], [10, 15], [12, 18], [15, 20], [9, 12], [20, 30]]); const e = ekok(a, b);
-          return S({ kaz: "okat.problem", duzey: "transfer", zorluk: 2, soru: `Bir parkta lambalardan biri ${a} dakikada bir, diğeri ${b} dakikada bir yanıyor. İki lamba birlikte yandıktan en az kaç dakika sonra yine birlikte yanar?`, dogru: e, birim: "",
+          return S({ kaz: "okat.problem", duzey: "transfer", zorluk: 2, soru: `Bir parkta lambalardan biri ${a} dakikada bir, diğeri ${b} dakikada bir yanıyor. İki lamba birlikte yandıktan en az kaç dakika sonra yine birlikte yanar?`, dogru: e, birim: "", dogruNeden: `${e}, ${a} ve ${b} sayılarının en küçük ortak katıdır; lambalar ilk kez ${e}. dakikada yine birlikte yanar.`,
             yanlis: [[a * b === e ? e * 2 : a * b, "strateji", "Çarpım bir ortak kattır ama en az süre değildir."], [ebob(a, b), "kavrama", "“Birlikte tekrar” sorusu ortak kat ister; ortak bölen bulmuşsun."], [a + b, "kavrama", "Süreleri toplamak birlikte yanma anını vermez."]],
             ipucu: "“Birlikte tekrar ne zaman?” sorusu hangi kavramı ister?", cozum: [`🔎 Soruyu anlayalım: ${a} ve ${b} dakikada bir yanan iki lamba birlikte yandıktan sonra ilk kez ne zaman yine birlikte yanar?`,
               "💡 Hatırlayalım: “Birlikte tekrar ne zaman?” sorusu ortak kat, “en az” sözü en küçük ortak kat (EKOK) ister.",
@@ -371,7 +371,7 @@
               `✅ Sonuç: Lambalar en az ${e} dakika sonra yine birlikte yanar.`,
               `🔁 Kontrol edelim: ${e} ÷ ${a} = ${e / a} ve ${e} ÷ ${b} = ${e / b}; ikisi de tam sayı. Daha küçük bir ortak kat yok.`] }); },
         z => { const [a, b] = sec([[3, 4], [4, 5], [4, 6], [5, 6], [3, 5]]); const k = R(1, Math.min(a, b) - 1); const e = ekok(a, b);
-          return S({ kaz: "okat.problem", duzey: "transfer", zorluk: 3, soru: `Bir sınıftaki öğrenciler ${a}${ek(a, "er")}li ve ${b}${ek(b, "er")}li gruplara ayrıldığında her seferinde ${k} öğrenci açıkta kalıyor. Sınıfta ${k} kişiden fazla öğrenci olduğuna göre en az kaç öğrenci vardır?`, dogru: e + k,
+          return S({ kaz: "okat.problem", duzey: "transfer", zorluk: 3, soru: `Bir sınıftaki öğrenciler ${a}${ek(a, "er")}li ve ${b}${ek(b, "er")}li gruplara ayrıldığında her seferinde ${k} öğrenci açıkta kalıyor. Sınıfta ${k} kişiden fazla öğrenci olduğuna göre en az kaç öğrenci vardır?`, dogru: e + k, dogruNeden: `${e + k} − ${k} = ${e} hem ${a}${ek(a, "in")} hem ${b}${ek(b, "in")} katıdır ve bu özellikteki en küçük sayıdır.`,
             yanlis: [[e, "dikkat", `Açıkta kalan ${k} öğrenciyi eklemeyi unuttun.`], [e - k, "kavrama", "Kalan öğrenciler çıkarılmaz, eklenir."], [a * b + k === e + k ? e * 2 + k : a * b + k, "strateji", "En küçük ortak katı kullanmalısın."]],
             ipucu: `Öğrenci sayısının ${k} eksiği hem ${a}${ek(a, "in")} hem ${b}${ek(b, "in")} katı olmalı.`, cozum: [`🔎 Soruyu anlayalım: ${a}${ek(a, "er")}li ve ${b}${ek(b, "er")}li gruplarda hep ${k} öğrenci açıkta kalıyor. Sınıfta en az kaç öğrenci var?`,
               `💡 Hatırlayalım: Açıkta kalanları ayırırsak geri kalanlar iki gruplamaya da tam uyar; yani (öğrenci sayısı − ${k}) bir ortak kattır.`,
@@ -395,8 +395,8 @@
     uret: {
       "obol.ebob": [
         z => { const [a, b] = sec([[12, 18], [16, 24], [18, 30], [20, 30], [24, 36], [30, 45], [28, 42], [36, 48], [40, 60], [32, 48], [45, 60], [54, 72]]); const g = ebob(a, b);
-          return S({ kaz: "obol.ebob", duzey: "uygulama", zorluk: 1, soru: `${a} ve ${b} sayılarının en büyük ortak böleni kaçtır?`, dogru: g,
-            yanlis: [[ekok(a, b), "kavrama", "Bu en küçük ortak kattır; ortak bölenle karıştırdın."], [g / 2 >= 1 && g % 2 === 0 ? g / 2 : g + 1, "dikkat", "Bu bir ortak bölen ama en büyüğü değil."], [b - a, "kavrama", "Farkı almak ortak böleni vermez."]],
+          return S({ kaz: "obol.ebob", duzey: "uygulama", zorluk: 1, soru: `${a} ve ${b} sayılarının en büyük ortak böleni kaçtır?`, dogru: g, dogruNeden: `${g}, hem ${a}${ek(a, "i")} hem ${b}${ek(b, "i")} kalansız bölen en büyük sayıdır.`,
+            yanlis: [[ekok(a, b), "kavrama", "Bu en küçük ortak kattır; ortak bölenle karıştırdın."], [g / 2 >= 1 && g % 2 === 0 ? g / 2 : g + 1, "dikkat", "Bu bir ortak bölen ama en büyüğü değil."], [Math.max(...bolenler(a).filter(x => b % x)), "dikkat", "Bu sayı yalnızca birini bölüyor; ortak bölen iki sayıyı da kalansız bölmeli."]],
             ipucu: "Küçük sayının bölenlerini büyükten küçüğe dene.", cozum: [`🔎 Soruyu anlayalım: ${a} ve ${b} sayılarını kalansız bölen en büyük sayıyı (EBOB) arıyoruz.`,
               "💡 Hatırlayalım: Ortak bölen iki sayıyı da kalansız böler; en büyüğü EBOB'dur ve küçük sayıdan büyük olamaz.",
               `✏️ ${a}${ek(a, "in")} bölenleri: ${bolenler(a).join(", ")}.`,
@@ -406,7 +406,7 @@
       ],
       "obol.problem": [
         z => { const [a, b] = sec([[36, 48], [24, 40], [30, 42], [45, 60], [54, 72], [60, 84]]); const g = ebob(a, b);
-          return S({ kaz: "obol.problem", duzey: "transfer", zorluk: 2, soru: `${a} m ve ${b} m uzunluğundaki iki ip, hiç artmayacak şekilde eşit uzunlukta parçalara ayrılacak. Parçalar mümkün olan en uzun boyda olursa toplam kaç parça elde edilir?`, dogru: (a + b) / g,
+          return S({ kaz: "obol.problem", duzey: "transfer", zorluk: 2, soru: `${a} m ve ${b} m uzunluğundaki iki ip, hiç artmayacak şekilde eşit uzunlukta parçalara ayrılacak. Parçalar mümkün olan en uzun boyda olursa toplam kaç parça elde edilir?`, dogru: (a + b) / g, dogruNeden: `En uzun parça EBOB(${a}, ${b}) = ${g} m; ${a / g} + ${b / g} = ${(a + b) / g} parça çıkar.`,
             yanlis: [[g, "dikkat", "Bu bir parçanın uzunluğudur; soru parça sayısını istiyor."], [(a + b) / (g / 2), "strateji", "Daha kısa parçalar kullandın; en uzun parça EBOB'dur."], [ekok(a, b), "kavrama", "“Eşit parçalara ayırma” ortak bölen ister."]],
             ipucu: "Önce en uzun parça boyunu (EBOB) bul, sonra parça sayısını hesapla.", cozum: [`🔎 Soruyu anlayalım: ${a} m ve ${b} m'lik ipler artmadan, eşit ve en uzun parçalara kesilecek; toplam parça sayısını arıyoruz.`,
               "💡 Hatırlayalım: “Eşit parçalara ayır, en uzun parça” ifadesi en büyük ortak böleni (EBOB) ister.",
@@ -415,7 +415,7 @@
               `✅ Sonuç: Toplam ${a / g} + ${b / g} = ${(a + b) / g} parça elde edilir.`,
               `🔁 Kontrol edelim: ${(a + b) / g} parça × ${g} m = ${a + b} m; iplerin toplamı da ${a} + ${b} = ${a + b} m. Hiç ip artmadı.`] }); },
         z => { const [a, b] = sec([[12, 18], [24, 36], [20, 28], [36, 60], [30, 42]]); const g = ebob(a, b);
-          return S({ kaz: "obol.problem", duzey: "transfer", zorluk: 3, soru: `Boyutları ${a} m ve ${b} m olan dikdörtgen bir bahçe, hiç boşluk kalmadan eş karelere bölünecek. Kareler mümkün olan en büyük boyutta olursa kaç kare oluşur?`, dogru: (a / g) * (b / g),
+          return S({ kaz: "obol.problem", duzey: "transfer", zorluk: 3, soru: `Boyutları ${a} m ve ${b} m olan dikdörtgen bir bahçe, hiç boşluk kalmadan eş karelere bölünecek. Kareler mümkün olan en büyük boyutta olursa kaç kare oluşur?`, dogru: (a / g) * (b / g), dogruNeden: `Kare kenarı EBOB(${a}, ${b}) = ${g} m; ${a / g} × ${b / g} = ${(a / g) * (b / g)} kare sığar.`,
             yanlis: [[g, "dikkat", "Bu karenin kenar uzunluğu; soru kare sayısını istiyor."], [a / g + b / g, "islem", "Kare sayısı için satır ve sütun sayısı çarpılmalı, toplanmamalı."], [(a * b) / 4, "strateji", "En büyük kare EBOB ile bulunur."]],
             ipucu: "Karenin kenarı iki kenarı da tam bölmeli ve en büyük olmalı.", cozum: [`🔎 Soruyu anlayalım: ${a} m × ${b} m'lik bahçe boşluksuz, eş ve en büyük karelere bölünecek; kaç kare oluşacağını arıyoruz.`,
               "💡 Hatırlayalım: Karenin kenarı iki kenarı da tam bölmeli ve en büyük olmalı → EBOB.",
@@ -456,35 +456,70 @@
     ],
     uret: {
       "ol.tahmin": [
-        z => { const n = sec([20, 40, 50, 60, 80, 100]); const k = R(Math.ceil(n / 10), Math.floor(n * 0.6)); const nesne = sec(["Bir zar", "Bir çark", "Bir para"]);
+        z => { const n = sec([20, 40, 50, 60, 80, 100]); const k = R(Math.ceil(n / 10), Math.floor(n * 0.6)); const g = ebob(k, n);
           return S({ kaz: "ol.tahmin", duzey: "uygulama", zorluk: 1, soru: `Bir torbadan bilye çekip geri bırakma deneyi ${n} kez yapıldı ve ${k} kez kırmızı bilye geldi. Kırmızı bilye çekme olasılığının gözleme dayalı tahmini nedir?`, dogru: kesir(k, n),
-            yanlis: [[kesir(n - k, n), "dikkat", "Bu, kırmızı gelmeme olasılığının tahminidir."], [String(k), "kavrama", "Olasılık bir orandır: gerçekleşme sayısı ÷ toplam deneme."], [kesir(k, n - k), "kavrama", "Kırmızıları diğerlerine böldün; toplam deneme sayısına bölmelisin."]],
-            ipucu: "Olasılık tahmini = olayın gerçekleşme sayısı ÷ toplam deneme sayısı.", cozum: [`Gözleme dayalı olasılık = olayın gerçekleşme sayısı ÷ toplam deneme sayısı.`, `Kırmızı ${k} kez geldi, deney ${n} kez yapıldı: ${k}/${n}.`, `Sadeleştir: ${k}/${n} = ${kesir(k, n)}.`] }); },
+            dogruNeden: `Kırmızı ${k} kez geldi, toplam ${n} deneme yapıldı: ${k}/${n} = ${kesir(k, n)}.`,
+            yanlis: [[kesir(n - k, n), "dikkat", "Bu, kırmızı gelmeme olasılığının tahminidir; soru kırmızı gelmesini soruyor."], [String(k), "kavrama", "Bu, kırmızının kaç kez geldiğidir. Olasılık bir orandır: gerçekleşme sayısı ÷ toplam deneme."], [kesir(k, n - k), "kavrama", "Kırmızıları diğer renklere böldün; toplam deneme sayısına bölmelisin."]],
+            ipucu: "Olasılık tahmini = olayın gerçekleşme sayısı ÷ toplam deneme sayısı.", cozum: [`🔎 Soruyu anlayalım: Deney ${n} kez yapılmış ve kırmızı ${k} kez gelmiş. Kırmızı çekme olasılığını tahmin edeceğiz.`,
+              "💡 Hatırlayalım: Gözleme dayalı olasılık = olayın gerçekleşme sayısı ÷ toplam deneme sayısı.",
+              `✏️ Gerçekleşme sayısı ${k}, toplam deneme ${n}. Oranı yazalım: ${k}/${n}.`,
+              g > 1 ? `✏️ Sadeleştirelim: pay ve paydayı ${g}${ek(g, "e")} bölersek ${k}/${n} = ${kesir(k, n)}.` : `✏️ ${k} ile ${n} sayısının 1'den başka ortak böleni yok; kesir zaten en sade hâlinde.`,
+              `✅ Sonuç: Kırmızı bilye çekme olasılığının tahmini ${kesir(k, n)}.`,
+              `🔁 Kontrol edelim: Olasılık 0 ile 1 arasında olmalı; ${kesir(k, n)} bu aralıkta. Kırmızı gelmeme tahmini ${kesir(n - k, n)}; ikisinin toplamı 1 eder.`] }); },
         z => { const k = [R(8, 20), R(8, 20), R(8, 20)]; const t = k[0] + k[1] + k[2]; const renk = ["Kırmızı", "Mavi", "Yeşil"]; const i = R(0, 2);
           return S({ kaz: "ol.tahmin", duzey: "uygulama", zorluk: 2, soru: `Bir torbadan çekilip geri bırakılan bilyelerin renkleri kaydedildi: Kırmızı ${k[0]}, Mavi ${k[1]}, Yeşil ${k[2]} kez. ${renk[i]} bilye çekme olasılığının tahmini nedir?`, dogru: kesir(k[i], t),
-            yanlis: [[kesir(k[i], k[(i + 1) % 3] + k[(i + 2) % 3]), "kavrama", "Toplam deneme sayısına bölmelisin, diğer renklerin toplamına değil."], ["1/3", "kavrama", "Üç renk var diye olasılıklar eşit değildir; gözlem sonuçlarını kullan."], [kesir(k[(i + 1) % 3], t), "dikkat", "Başka bir rengin tahminini hesapladın."]],
-            ipucu: "Önce toplam deneme sayısını bul.", cozum: [`Toplam deneme: ${k.join(" + ")} = ${t}.`, `${renk[i]}: ${k[i]} / ${t} = ${kesir(k[i], t)}.`] }); },
+            dogruNeden: `Toplam ${t} çekilişin ${k[i]} tanesi ${renk[i].toLocaleLowerCase("tr-TR")}: ${k[i]}/${t} = ${kesir(k[i], t)}.`,
+            yanlis: [[kesir(k[i], k[(i + 1) % 3] + k[(i + 2) % 3]), "kavrama", "Diğer renklerin toplamına böldün; toplam deneme sayısına bölmelisin."], ["1/3", "kavrama", "Üç renk var diye olasılıklar eşit olmaz; gözlem sonuçlarını kullanmalısın."], [kesir(k[(i + 1) % 3], t), "dikkat", "Başka bir rengin tahminini hesapladın; soruda hangi rengin sorulduğuna yeniden bak."]],
+            ipucu: "Önce toplam deneme sayısını bul.", cozum: [`🔎 Soruyu anlayalım: Üç rengin kaç kez geldiği verilmiş. ${renk[i]} bilye çekme olasılığını tahmin edeceğiz.`,
+              "💡 Hatırlayalım: Tahmin = istenen rengin gelme sayısı ÷ toplam çekiliş sayısı.",
+              `✏️ Toplam çekiliş: ${k.join(" + ")} = ${t}.`,
+              `✏️ ${renk[i]} ${k[i]} kez gelmiş: ${k[i]}/${t}.`,
+              `✅ Sonuç: Tahmin ${kesir(k[i], t)}.`,
+              `🔁 Kontrol edelim: Üç rengin tahminlerini toplarsak ${k[0]}/${t} + ${k[1]}/${t} + ${k[2]}/${t} = ${t}/${t} = 1 olur. Payda hep toplam deneme sayısıdır.`] }); },
       ],
       "ol.kavram": [
         z => { const o = sec([
-            ["Bir zarı attığımızda 7 gelmesi", "İmkânsız", "Zarda 7 yoktur; olasılığı 0."], ["Bir zarı attığımızda 6'dan küçük ya da 6'ya eşit bir sayı gelmesi", "Kesin", "Zarın her yüzü 6 ya da daha küçüktür; olasılığı 1."],
-            ["Madenî parayı attığımızda yazı gelmesi", "Eşit olasılıklı (1/2)", "Yazı ve tura gelme şansı eşittir."], ["Ocak ayından sonra şubat ayının gelmesi", "Kesin", "Takvimde her zaman öyledir; olasılığı 1."]]);
+            ["Bir zarı attığımızda 7 gelmesi", "İmkânsız", "Zarda 7 yoktur; bu olay hiç gerçekleşmez, olasılığı 0'dır."], ["Bir zarı attığımızda 6'dan küçük ya da 6'ya eşit bir sayı gelmesi", "Kesin", "Zarın her yüzü 6 ya da daha küçüktür; bu olay her atışta gerçekleşir, olasılığı 1'dir."],
+            ["Madenî parayı attığımızda yazı gelmesi", "Eşit olasılıklı (1/2)", "Paranın iki yüzü vardır; yazı ve tura gelme şansı eşittir."], ["Ocak ayından sonra şubat ayının gelmesi", "Kesin", "Takvimde ocaktan sonra her zaman şubat gelir; olasılığı 1'dir."]]);
           return S({ kaz: "ol.kavram", duzey: "hatirlama", zorluk: 1, soru: `“${o[0]}” olayı nasıl bir olaydır?`, dogru: o[1], dogruNeden: o[2],
-            yanlis: [["İmkânsız", "kavrama", "Bu olay gerçekleşebilir."], ["Kesin", "kavrama", "Bu olay her zaman gerçekleşmez."], ["Eşit olasılıklı (1/2)", "kavrama", "Olasılık 1/2 değil."], ["Olasılığı 2'dir", "bilgi", "Olasılık 0 ile 1 arasındadır, 2 olamaz."]].filter(x => x[0] !== o[1]),
-            ipucu: "Olasılık 0 → imkânsız, 1 → kesin.", cozum: ["Önce olayın gerçekleşip gerçekleşemeyeceğini düşün: hiç olamıyorsa imkânsız (0), her zaman oluyorsa kesin (1), şansı yarı yarıya ise eşit olasılıklı (1/2).", o[2], `Bu yüzden olay: ${o[1]}.`] }); },
+            yanlis: [["İmkânsız", "kavrama", "Bu olay gerçekleşebilir; imkânsız olay hiç gerçekleşmeyen olaydır."], ["Kesin", "kavrama", "Bu olay her zaman gerçekleşmez; kesin olay her denemede gerçekleşir."], ["Eşit olasılıklı (1/2)", "kavrama", "Bu olayda iki sonucun şansı yarı yarıya değil."], ["Olasılığı 2'dir", "bilgi", "Olasılık 0 ile 1 arasında bir sayıdır; 2 olamaz."]].filter(x => x[0] !== o[1]),
+            ipucu: "Olasılık 0 → imkânsız, 1 → kesin.", cozum: [`🔎 Soruyu anlayalım: “${o[0]}” olayının imkânsız mı, kesin mi, yoksa eşit olasılıklı mı olduğunu bulacağız.`,
+              "💡 Hatırlayalım: Hiç gerçekleşmeyen olay imkânsızdır (0); her zaman gerçekleşen olay kesindir (1); iki sonucun şansı eşitse olasılık 1/2'dir.",
+              "✏️ Kendimize soralım: Bu olay hiç olmayabilir mi, her zaman mı olur, yoksa yarı yarıya mı?",
+              `✏️ ${o[2]}`,
+              `✅ Sonuç: Bu olay “${o[1]}” bir olaydır.`,
+              "🔁 Kontrol edelim: Olasılık hiçbir zaman 0'dan küçük ya da 1'den büyük olamaz. “Olasılığı 2” gibi bir seçenek her zaman yanlıştır."] }); },
         z => S({ kaz: "ol.kavram", duzey: "aciklama", zorluk: 2, soru: "Gözleme dayalı olasılıkla ilgili hangisi doğrudur?", dogru: "Deneme sayısı arttıkça tahmin teorik olasılığa yaklaşır.",
-          yanlis: [["Deney az yapılırsa tahmin daha doğru olur.", "kavrama", "Az deneme rastlantıya açıktır; tahmin yanıltıcı olabilir."], ["Gözleme dayalı olasılık 1'den büyük olabilir.", "bilgi", "Olasılık her zaman 0 ile 1 arasındadır."], ["Her deneyde aynı sonuç çıkar.", "kavrama", "Deney sonuçları rastlantısaldır; farklı çıkabilir."]],
-          ipucu: "Parayı 10 kez ve 1000 kez attığını düşün.", cozum: ["Çok sayıda deneme, rastlantısal sapmaları dengeler.", "Bu yüzden deneme arttıkça tahmin gerçeğe yaklaşır."] }),
+          dogruNeden: "Çok sayıda denemede rastlantısal sapmalar dengelenir; bu yüzden tahmin teorik olasılığa yaklaşır.",
+          yanlis: [["Deney az yapılırsa tahmin daha doğru olur.", "kavrama", "Az deneme rastlantıya açıktır; tahmin yanıltıcı olabilir."], ["Gözleme dayalı olasılık 1'den büyük olabilir.", "bilgi", "Gerçekleşme sayısı deneme sayısını geçemez; bu yüzden olasılık en fazla 1 olur."], ["Her deneyde aynı sonuç çıkar.", "kavrama", "Deney sonuçları rastlantısaldır; her seferinde farklı çıkabilir."]],
+          ipucu: "Parayı 10 kez ve 1000 kez attığını düşün.", cozum: ["🔎 Soruyu anlayalım: Gözleme dayalı olasılıkla ilgili dört cümleden doğru olanı seçeceğiz.",
+            "💡 Hatırlayalım: Gözleme dayalı olasılık, deney sonuçlarından hesaplanan bir tahmindir ve değeri 0 ile 1 arasındadır.",
+            "✏️ Bir örnek düşünelim: Bir parayı 10 kez atınca 7 yazı gelebilir (7/10). 1000 kez atınca yazı oranı 1/2'ye çok yaklaşır.",
+            "✏️ Diğer cümleleri sınayalım: Az deneme yanıltabilir; gerçekleşme sayısı deneme sayısını geçemeyeceği için olasılık 1'i aşamaz; deney sonuçları her seferinde aynı olmaz.",
+            "✅ Sonuç: “Deneme sayısı arttıkça tahmin teorik olasılığa yaklaşır.” cümlesi doğrudur.",
+            "🔁 Kontrol edelim: Bir tahmine güvenmeden önce “Kaç deneme yapılmış?” diye sor. Deneme çoksa tahmin daha güvenilirdir."] }),
       ],
       "ol.yorum": [
-        z => { const n = sec([20, 40, 50]); const k = R(Math.floor(n / 2), n - 2); const yeni = sec([100, 200, 400]); const tahmin = Math.round(k / n * yeni);
-          return S({ kaz: "ol.yorum", duzey: "transfer", zorluk: 3, soru: `Bir basketbolcu son ${n} serbest atışın ${k}${ek(k, "ini")} sokmuş. Aynı başarıyla ${yeni} atış yaparsa yaklaşık kaç basket atması beklenir?`, dogru: tahmin,
-            yanlis: [[k, "dikkat", "Bu eski atışlardaki basket sayısı; yeni atış sayısına göre ölçeklemelisin."], [yeni - tahmin, "dikkat", "Bu kaçırılması beklenen atış sayısıdır."], [Math.round(yeni / 2), "kavrama", "Olasılık 1/2 değil; gözlenen oranı kullanmalısın."]],
-            ipucu: `Önce olasılık tahmini: ${k}/${n}. Sonra bunu ${yeni} ile çarp.`, cozum: [`Tahmin: ${kesir(k, n)}.`, `${yeni} × ${kesir(k, n)} ≈ ${tahmin}.`] }); },
-        z => { const d = [R(5, 15), R(5, 15), R(5, 15), R(5, 15)]; const ad = ["Kırmızı", "Mavi", "Sarı", "Yeşil"]; const mx = Math.max(...d); if (d.filter(x => x === mx).length > 1) return null; const i = d.indexOf(mx);
-          return S({ kaz: "ol.yorum", duzey: "uygulama", zorluk: 2, soru: `Dört renkli bir çark ${d.reduce((a, b) => a + b, 0)} kez çevrildi: ${ad.map((a, j) => a + " " + d[j]).join(", ")}. Gözlemlere göre bir sonraki çevirişte en olası renk hangisidir?`, dogru: ad[i],
-            yanlis: ad.filter((_, j) => j !== i).map(a => [a, "dikkat", "Bu renk daha az gelmiş; en çok gelen renk en olası tahmindir."]),
-            ipucu: "En çok gözlenen sonuç, en olası tahmindir.", cozum: [`Her rengin kaç kez geldiğine bak: ${ad.map((a, j) => a + " " + d[j]).join(", ")}.`, `Gözleme dayalı tahminde en çok gerçekleşen sonuç en olası kabul edilir.`, `En çok gelen renk ${ad[i]} (${mx} kez).`] }); },
+        z => { const n = sec([20, 40, 50]); const k = R(Math.floor(n / 2), n - 2); const yeni = sec([100, 200, 400].filter(y => y % n === 0)); const kat = yeni / n; const tahmin = k * kat;
+          return S({ kaz: "ol.yorum", duzey: "transfer", zorluk: 3, soru: `Bir basketbolcu son ${n} serbest atışın ${k}${ek(k, "ini")} sokmuş. Aynı başarıyla ${yeni} atış yaparsa kaç basket atması beklenir?`, dogru: tahmin,
+            dogruNeden: `Başarı oranı ${kesir(k, n)}; ${yeni} atışta ${yeni} × ${kesir(k, n)} = ${tahmin} basket beklenir.`,
+            yanlis: [[k, "dikkat", "Bu eski atışlardaki basket sayısı; yeni atış sayısına göre büyütmelisin."], [yeni - tahmin, "dikkat", "Bu, kaçırılması beklenen atış sayısıdır; soru basketleri soruyor."], [yeni / 2, "kavrama", "Başarı oranı 1/2 değil; gözlenen oranı kullanmalısın."]],
+            ipucu: `Önce başarı oranını bul: ${k}/${n}. Sonra bunu ${yeni} atışa uygula.`, cozum: [`🔎 Soruyu anlayalım: Oyuncu ${n} atışın ${k}${ek(k, "ini")} sokmuş. Aynı başarıyla ${yeni} atışta kaç basket beklenir?`,
+              "💡 Hatırlayalım: Beklenen sonuç sayısı ≈ olasılık tahmini × yeni deneme sayısı.",
+              `✏️ Olasılık tahmini: ${k}/${n}${kesir(k, n) !== k + "/" + n ? " = " + kesir(k, n) : ""}.`,
+              `✏️ ${yeni} atış, ${n} atışın ${kat} katıdır. Basket sayısı da ${kat} katına çıkar: ${k} × ${kat} = ${tahmin}.`,
+              `✅ Sonuç: ${tahmin} basket atması beklenir.`,
+              `🔁 Kontrol edelim: ${tahmin}/${yeni} sadeleşince yine ${kesir(k, n)} olur; oran korunmuş. Unutma, bu bir beklentidir; gerçek sonuç biraz farklı çıkabilir.`] }); },
+        z => { const d = [R(5, 15), R(5, 15), R(5, 15), R(5, 15)]; const ad = ["Kırmızı", "Mavi", "Sarı", "Yeşil"]; const mx = Math.max(...d); if (d.filter(x => x === mx).length > 1) return null; const i = d.indexOf(mx); const top = d.reduce((a, b) => a + b, 0);
+          return S({ kaz: "ol.yorum", duzey: "uygulama", zorluk: 2, soru: `Dört renkli bir çark ${top} kez çevrildi: ${ad.map((a, j) => a + " " + d[j]).join(", ")}. Gözlemlere göre bir sonraki çevirişte en olası renk hangisidir?`, dogru: ad[i],
+            dogruNeden: `${ad[i]} en çok (${mx} kez) gelmiştir; tahmini olasılığı ${kesir(mx, top)} ile en büyüktür.`,
+            yanlis: ad.filter((_, j) => j !== i).map(a => [a, "dikkat", `${a} daha az gelmiş; en çok gelen renk en olası tahmindir.`]),
+            ipucu: "En çok gözlenen sonuç, en olası tahmindir.", cozum: [`🔎 Soruyu anlayalım: Çark ${top} kez çevrilmiş. Bir sonraki çevirişte gelme olasılığı en yüksek görünen rengi arıyoruz.`,
+              "💡 Hatırlayalım: Gözleme dayalı olasılıkta en çok gerçekleşen sonucun tahmini olasılığı en büyüktür.",
+              `✏️ Sonuçları karşılaştıralım: ${ad.map((a, j) => a + " " + d[j]).join(", ")}.`,
+              `✏️ En büyük sayı ${mx}; bu ${ad[i]} renge ait. Tahmini olasılığı ${mx}/${top}${kesir(mx, top) !== mx + "/" + top ? " = " + kesir(mx, top) : ""}.`,
+              `✅ Sonuç: En olası renk ${ad[i]}.`,
+              "🔁 Kontrol edelim: Diğer renklerin tahminlerinde payda aynı, pay daha küçük; yani olasılıkları daha düşük. Ama “kesin gelir” diyemeyiz; yalnızca en olası tahmindir."] }); },
       ],
     },
   });

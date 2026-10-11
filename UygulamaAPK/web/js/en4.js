@@ -8,9 +8,12 @@
 
   /* ---------------------------- Ortak üreteçler ---------------------------- */
   /* Sözlükten kelime anlamı sorusu (İngilizce→Türkçe ya da Türkçe→İngilizce). */
+  /* Anlamı çok yakın kelimeler aynı soruda birlikte çıkmaz (ör. rubbish “çöp” – waste “atık”); tartışmalı soru oluşmasın. */
+  const YAKIN = [["rubbish", "waste"], ["pollution", "air pollution", "water pollution"], ["storm", "stormy", "hurricane"], ["cold", "freezing"], ["save", "protect"], ["problem", "danger"], ["rocket", "spaceship"], ["star", "the Sun"], ["camping", "tent", "campfire"]];
+  const yakinMi = (a, b) => YAKIN.some(g => g.includes(a) && g.includes(b));
   function kelime(kaz, liste) {
     return z => {
-      const k = karistir(liste).slice(0, 4), [en, tr] = k[0], diger = k.slice(1);
+      const [en, tr] = sec(liste), diger = karistir(liste.filter(w => w[0] !== en && !yakinMi(en, w[0]))).slice(0, 3);
       if (Math.random() < 0.5)
         return S({ kaz, duzey: "hatirlama", zorluk: 1, soru: `What does “<b>${en}</b>” mean in Turkish?`, dogru: tr,
           yanlis: diger.map(([e, t]) => [t, "bilgi", `“${t}” kelimesinin İngilizcesi “${e}” olur.`]),

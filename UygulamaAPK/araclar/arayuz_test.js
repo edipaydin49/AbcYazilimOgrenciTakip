@@ -62,6 +62,13 @@ const sunucu = http.createServer((q, r) => { const f = path.join(KOK, decodeURIC
   await foto("7c_karma_sonuc");
   const karma = await p.evaluate(() => DEPO.liste("test").filter(t => t.tur === "karma").pop());
   if (!karma || karma.n !== 40 || karma.bos !== 8 || Math.abs(karma.net - (karma.dogru - karma.yanlis / 3)) > 0.01 || Object.keys(karma.dagilim || {}).length !== 4) hatalar.push("karma deneme sonucu hatalı: " + JSON.stringify(karma && { n: karma.n, d: karma.dogru, y: karma.yanlis, b: karma.bos, net: karma.net }));
+  // TGS denemesi (1. dönem 2. TGS): 55 soru, 4 ders, dağılım 15/15/15/10
+  await p.goto("http://localhost:8765/index.html#/deneme"); await tikla('[data-test="tgs"][data-yazili="d1y2"]');
+  const tgsN = await p.evaluate(() => TEST_DURUMU().plan.length); if (tgsN !== 55) hatalar.push("TGS soru sayısı 55 değil: " + tgsN);
+  for (let i = 0; i < tgsN; i++) { const d = await p.evaluate(() => TEST_DURUMU().soru.q.secenekler.findIndex(x => x.dogru)); await tikla(`[data-s="${i % 2 ? d : (d + 1) % 4}"]`); await tikla("#sonrakiB"); }
+  await foto("7d_tgs_sonuc");
+  const tgs = await p.evaluate(() => DEPO.liste("test").filter(t => t.tur === "tgs").pop());
+  if (!tgs || tgs.n !== 55 || !tgs.dagilim || tgs.dagilim.tr.d + tgs.dagilim.tr.y + tgs.dagilim.tr.b !== 15 || tgs.dagilim.en.d + tgs.dagilim.en.y + tgs.dagilim.en.b !== 10) hatalar.push("TGS sonucu hatalı: " + JSON.stringify(tgs && tgs.dagilim));
   // Fen Bilimleri: ders seçimi, konu, anlatım, alıştırma
   await p.goto("http://localhost:8765/index.html#/ders/fen"); await foto("11_fen_ana");
   const fenKonu = await p.evaluate(() => ICERIK.KONULAR.find(k => k.ders === "fen").id);

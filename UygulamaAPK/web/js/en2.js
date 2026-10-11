@@ -8,10 +8,13 @@
 
   /* ---------------------------- Ortak üreteçler ---------------------------- */
   /* Kelime anlamı: İngilizce → Türkçe ya da Türkçe → İngilizce (liste: [[en, tr], ...]). */
+  /* Anlamı çok yakın kelimeler (ör. kind “nazik” – polite “kibar”) aynı soruda birlikte çıkmaz; tartışmalı soru oluşmasın. */
+  const YAKIN = [["kind", "polite", "friendly"], ["calm", "patient"], ["funny", "cheerful"], ["short", "slim"], ["coat", "jacket"], ["hat", "cap"], ["boss", "businessman"], ["apartment", "floor"], ["cottage", "bungalow", "villa", "detached house"]];
+  const yakinMi = (a, b) => YAKIN.some(g => g.includes(a) && g.includes(b));
   function kelimeSor(kaz, liste, kural) {
     return () => {
       const [en, tr] = sec(liste);
-      const diger = karistir(liste.filter(x => x[0] !== en && x[1] !== tr)).slice(0, 3);
+      const diger = karistir(liste.filter(x => x[0] !== en && x[1] !== tr && !yakinMi(en, x[0]))).slice(0, 3);
       if (Math.random() < 0.5) {
         return S({
           kaz, duzey: "hatirlama", zorluk: 1,

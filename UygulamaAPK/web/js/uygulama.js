@@ -170,6 +170,7 @@
         ${vadesi.map(p => `<div class="satir ara"><span>${KONU[p.konu].ad} · <b>${p.gun}. gün</b> tekrarı</span><button class="btn kucuk" data-test="tekrar${p.gun}" data-konu="${p.konu}">Başla</button></div>`).join("")}</section>` : ""}
       <section class="kart"><h2>Yazılılara hazırlık · ${d.ad}</h2><p class="muted kucuk-yazi">Her yazılı için konu tekrarı, videolar, eksik kapatma ve yazılı provası.</p>
         <div class="izgara">${YAZILILAR.map(y => yaziliKart(h, d.id, y)).join("")}</div></section>
+      ${tgsKart()}
       ${d.temaListesi.map(t => `<section class="kart">
         <div class="satir ara"><div><span class="etiket">${t.kisa}</span><h2 style="margin-top:4px">${t.ad}</h2></div></div>
         <div class="satir"><button class="btn kucuk" data-test="hazir" data-tema="${t.id}">Hazır mıyız?</button>
@@ -214,6 +215,7 @@
           <button class="btn ana" data-test="yaziliTekrar" data-ders="${dersId}" data-yazili="${yid}">1. Konu tekrar testi (12)</button>
           <button class="btn" data-test="yaziliEksik" data-ders="${dersId}" data-yazili="${yid}" ${zayif.length ? "" : "disabled"}>2. Eksiklerimi kapat (10)${zayif.length ? "" : " · eksik yok"}</button>
           <button class="btn" data-test="yazili" data-ders="${dersId}" data-yazili="${yid}">3. Yazılı provası (20 soru · 40 dk)</button>
+          <button class="btn" data-test="tgs" data-yazili="${yid}">4. ${TGS_AD[yid]} (4 ders · 55 soru · 75 dk)</button>
         </div></section>
       <section class="kart"><h2>Yazılı konuları</h2><p class="muted kucuk-yazi">Her konunun anlatımına, videolarına ve alıştırmasına buradan ulaşabilirsin.</p>
         ${kapsam.map(k => { const u = ortUstalik(h, k); const vl = konuVideolari(k);
@@ -433,7 +435,7 @@
 
   /* ============================ TEST MOTORU ============================ */
   const TEST_AD = { alistirma: "Alıştırma", konuSonu: "Konu sonu testi", kendi: "Kendi tekrarım", hazir: "Hazır mıyız?", izleme: "İzleme testi", tema: "Tema / ünite değerlendirme", deneme: "Genel deneme sınavı", hata: "Hata defteri tekrarı",
-    yazili: "Yazılı provası", yaziliTekrar: "Yazılı konu tekrarı", yaziliEksik: "Yazılı: eksik kapatma", oyun: "Türkçe Diyarı oyunu", mini: "Mini deneme", karma: "Karma deneme (4 ders)", akilliTekrar: "Akıllı tekrar",
+    yazili: "Yazılı provası", yaziliTekrar: "Yazılı konu tekrarı", yaziliEksik: "Yazılı: eksik kapatma", oyun: "Türkçe Diyarı oyunu", mini: "Mini deneme", karma: "Karma deneme (4 ders)", tgs: "TGS denemesi", akilliTekrar: "Akıllı tekrar",
     tekrar1: "1. gün tekrar testi", tekrar3: "3. gün tekrar testi", tekrar7: "7. gün tekrar testi", tekrar30: "30. gün kalıcılık testi" };
   const KENDI_HATA = [["bilgi", "Konuyu bilmiyordum"], ["kavrama", "Soruyu yanlış anladım"], ["islem", "İşlem hatası yaptım"], ["dikkat", "Dikkatsizlik yaptım"], ["strateji", "Acele ettim / yol bulamadım"]];
 
@@ -450,6 +452,17 @@
   /* Listeyi karıştırıp n elemana tamamlar (liste kısaysa döngüyle). */
   const dagit = (l, n) => { const k = karistir(l); return Array.from({ length: n }, (_, i) => k[i % k.length]); };
 
+  const SINAV_DK = { deneme: 30, yazili: 40, mini: 15, karma: 60, tgs: 75 };
+  /* Türkiye Geneli Sınav (TGS) tarzı deneme: 4 ders, gerçek sınav oranlarında (Türkçe 15, Matematik 15, Fen 15, İngilizce 10 = 55 soru, 75 dk).
+   * Kapsam birikimlidir: 1. dönem 2. TGS, 1. dönemin bütün yazılı konularını; 2. dönem TGS'leri önceki dönemi de kapsar. */
+  const TGS_DAGILIM = { tr: 15, mat: 15, fen: 15, en: 10 };
+  const TGS_AD = { d1y1: "1. Dönem 1. TGS", d1y2: "1. Dönem 2. TGS", d2y1: "2. Dönem 1. TGS", d2y2: "2. Dönem 2. TGS" };
+  function tgsKapsam(dersId, yid) {
+    const i = YAZILILAR.findIndex(y => y.id === yid);
+    const l = YAZILILAR.slice(0, i + 1).flatMap(y => yaziliKapsam(dersId, y.id));
+    return [...new Set(l)];
+  }
+  const cokDersli = tur => tur === "karma" || tur === "tgs";
   function testBaslat(tur, { konu, tema, ders, yazili, kendiIstegi } = {}) {
     let plan = [];   // { kaz, zorluk } ya da { hazir: soru }
     ders = ders || (konu ? KONU[konu].ders : tema ? TEMA[tema].ders : aktifDers);
@@ -462,6 +475,7 @@
     else if (tur === "tema") plan = dagit(temaKazanimlari(tema), 15).map((k, i) => ({ kaz: k, zorluk: i % 3 === 0 ? 3 : 2 }));
     else if (tur === "deneme") plan = dagit(dersKazanimlari(ders), 20).map((k, i) => ({ kaz: k, zorluk: [1, 2, 2, 3][i % 4] }));
     else if (tur === "mini") plan = dagit(dersKazanimlari(ders), 10).map((k, i) => ({ kaz: k, zorluk: [1, 2, 2, 3, 2][i % 5] }));
+    else if (tur === "tgs") { ders = "karma"; plan = DERSLER.flatMap(d => { const kz = konularKazanim(tgsKapsam(d.id, yazili)); return kz.length ? dagit(kz, TGS_DAGILIM[d.id] || 10) : []; }).map((k, i) => ({ kaz: k, zorluk: [2, 1, 3, 2, 3, 2][i % 6] })); }
     else if (tur === "karma") { ders = "karma"; plan = DERSLER.flatMap(d => dagit(dersKazanimlari(d.id), 10).map((k, i) => ({ kaz: k, zorluk: [1, 2, 2, 3, 2][i % 5] }))); }
     else if (tur === "yazili") plan = dagit(konularKazanim(yaziliKapsam(ders, yazili)), 20).map((k, i) => ({ kaz: k, zorluk: [1, 2, 2, 3][i % 4] }));
     else if (tur === "yaziliTekrar") plan = dagit(konularKazanim(yaziliKapsam(ders, yazili)), 12).map((k, i) => ({ kaz: k, zorluk: [1, 2, 2][i % 3] }));
@@ -473,11 +487,11 @@
     else if (tur === "akilliTekrar") plan = ANALIZ.kazanimTekrar(ders).filter(x => x.vadesi).slice(0, 5).flatMap(x => [{ kaz: x.kaz, zorluk: null }, { kaz: x.kaz, zorluk: null }]);
     else if (tur === "hata") { plan = karistir(hataListesi(null)).slice(0, 10).map(o => ({ hazir: o.soruNesnesi, ref: o.id })); DEPO.kaydet("hataDefteri", {}); }
     if (!plan.length || plan.some(p => !p.hazir && p.kaz === undefined)) { toast("Bu test için soru bulunamadı."); return; }
-    const sinav = ["deneme", "yazili", "mini", "karma"].includes(tur);
+    const sinav = ["deneme", "yazili", "mini", "karma", "tgs"].includes(tur);
     durum.test = {
       tur, ders, yazili: yazili || null, konu: konu || null, tema: tema || (konu ? KONU[konu].tema : null), kendiIstegi: !!kendiIstegi || tur === "kendi",
       sinav, testId: DEPO.uid(), plan, i: 0, sonuclar: [], bas: Date.now(), seri: 0, zorlukKaydir: 0,
-      sure: { deneme: 30, yazili: 40, mini: 15, karma: 60 }[tur] ? { deneme: 30, yazili: 40, mini: 15, karma: 60 }[tur] * 60 * 1000 : null, konuKaz,
+      sure: SINAV_DK[tur] ? SINAV_DK[tur] * 60 * 1000 : null, konuKaz,
     };
     durum.test.soru = soruHazirla(durum.test, 0);
     git("#/test");
@@ -670,8 +684,8 @@
     const dogru = asil.filter(r => r.ilkDogru).length;
     const bos = asil.filter(r => r.terk).length, yanlis = asil.length - dogru - bos;
     const dagilim = {};
-    if (t.tur === "karma") asil.forEach(r => { const x = dagilim[r.ders] = dagilim[r.ders] || { d: 0, y: 0, b: 0 }; if (r.terk) x.b++; else if (r.ilkDogru) x.d++; else x.y++; });
-    const test = DEPO.kaydet("test", { testId: t.testId, tur: t.tur, ders: t.ders, yazili: t.yazili, konu: t.konu, tema: t.tema, n: asil.length, dogru, yanlis, bos, net: t.sinav ? Math.round((dogru - yanlis / 3) * 100) / 100 : null, dagilim: t.tur === "karma" ? dagilim : null, sure: Date.now() - t.bas, oz: null, kendiIstegi: t.kendiIstegi });
+    if (cokDersli(t.tur)) asil.forEach(r => { const x = dagilim[r.ders] = dagilim[r.ders] || { d: 0, y: 0, b: 0 }; if (r.terk) x.b++; else if (r.ilkDogru) x.d++; else x.y++; });
+    const test = DEPO.kaydet("test", { testId: t.testId, tur: t.tur, ders: t.ders, yazili: t.yazili, konu: t.konu, tema: t.tema, n: asil.length, dogru, yanlis, bos, net: t.sinav ? Math.round((dogru - yanlis / 3) * 100) / 100 : null, dagilim: cokDersli(t.tur) ? dagilim : null, sure: Date.now() - t.bas, oz: null, kendiIstegi: t.kendiIstegi });
     durum.sonuc = { t, test };
     clearInterval(sinavSaat);
     git("#/sonuc");
@@ -688,7 +702,7 @@
     const hataTurleri = {};
     t.sonuclar.forEach(x => { if (x.ilkHata) hataTurleri[x.ilkHata] = (hataTurleri[x.ilkHata] || 0) + 1; });
     const enCokHata = Object.entries(hataTurleri).sort((a, b) => b[1] - a[1])[0];
-    ana.innerHTML = `<section class="kart vurgu" style="text-align:center"><span class="etiket">${TEST_AD[t.tur]}${t.yazili ? " · " + dersAd(t.ders) : ""}</span>
+    ana.innerHTML = `<section class="kart vurgu" style="text-align:center"><span class="etiket">${t.tur === "tgs" ? TGS_AD[t.yazili] : TEST_AD[t.tur]}${t.yazili && t.tur !== "tgs" ? " · " + dersAd(t.ders) : ""}</span>
       <p style="font-size:3rem;font-weight:800;line-height:1">${test.dogru} / ${test.n}</p><h2>${mesaj}</h2>
       <p class="muted">Süre: ${sn(test.sure)} · İlk denemede doğru: ${yuzde(oranD)}</p>
       ${test.net != null ? `<div class="izgara dar" style="text-align:left">${[["Doğru", test.dogru], ["Yanlış", test.yanlis], ["Boş", test.bos], ["Net", test.net]].map(([a, v]) => `<div class="metrik"><b>${String(v).replace(".", ",")}</b><span>${a}</span></div>`).join("")}</div><p class="kucuk-yazi muted">Net = doğru − yanlış ÷ 3 (3 yanlış 1 doğruyu götürür; boş bırakmak net düşürmez).</p>` : ""}
@@ -760,25 +774,32 @@
   const gunAdi = g => new Date(g * ANALIZ.GUN).toLocaleDateString("tr-TR", { day: "numeric", month: "numeric" });
 
   /* ============================ DENEME MERKEZİ ============================ */
-  const DENEME_TUR = ["deneme", "mini", "karma", "yazili"];
+  const DENEME_TUR = ["deneme", "mini", "karma", "yazili", "tgs", "pdfDeneme"];
   const netOran = t => t.n ? Math.max(0, (t.net != null ? t.net : t.dogru - (t.n - t.dogru) / 3) / t.n) : null;
-  function denemeListesi(ders) { return DEPO.liste("test").filter(t => DENEME_TUR.includes(t.tur) && (!ders || t.ders === ders || (t.tur === "karma" && t.dagilim && t.dagilim[ders]))); }
+  function denemeListesi(ders) { return DEPO.liste("test").filter(t => DENEME_TUR.includes(t.tur) && (!ders || t.ders === ders || (cokDersli(t.tur) && t.dagilim && t.dagilim[ders]))); }
   function denemeTablosu(l) {
     return `<div class="tablo"><table><thead><tr><th>Tarih</th><th>Deneme</th><th>Ders</th><th class="sayi">D</th><th class="sayi">Y</th><th class="sayi">B</th><th class="sayi">Net</th><th class="sayi">Süre</th></tr></thead><tbody>
       ${l.slice().reverse().map(t => { const y = t.yanlis != null ? t.yanlis : t.n - t.dogru, b = t.bos || 0, net = t.net != null ? t.net : Math.round((t.dogru - y / 3) * 100) / 100;
-        return `<tr><td>${tarih(t.t)}</td><td>${TEST_AD[t.tur] || t.tur}${t.yazili ? " · " + YAZILILAR.find(x => x.id === t.yazili).kisa : ""}</td><td>${t.tur === "karma" ? "4 ders" : dersAd(t.ders)}</td><td class="sayi">${t.dogru}</td><td class="sayi">${y}</td><td class="sayi">${b}</td><td class="sayi"><b>${String(net).replace(".", ",")}</b> / ${t.n}</td><td class="sayi">${sn(t.sure)}</td></tr>`; }).join("") || '<tr><td colspan="8" class="muted">Henüz deneme çözülmedi.</td></tr>'}
+        return `<tr><td>${tarih(t.t)}</td><td>${t.tur === "tgs" ? TGS_AD[t.yazili] : t.tur === "pdfDeneme" ? "PDF · " + kacis(t.baslik || "") : (TEST_AD[t.tur] || t.tur) + (t.yazili ? " · " + YAZILILAR.find(x => x.id === t.yazili).kisa : "")}</td><td>${cokDersli(t.tur) ? "4 ders" : t.tur === "pdfDeneme" ? "PDF" : dersAd(t.ders)}</td><td class="sayi">${t.dogru}</td><td class="sayi">${y}</td><td class="sayi">${b}</td><td class="sayi"><b>${String(net).replace(".", ",")}</b> / ${t.n}</td><td class="sayi">${sn(t.sure)}</td></tr>`; }).join("") || '<tr><td colspan="8" class="muted">Henüz deneme çözülmedi.</td></tr>'}
       </tbody></table></div>`;
   }
   function denemeGrafik(l) {
     const son = l.slice(-12);
     return son.length >= 2 ? cizgiGrafik(son.map(t => ({ ad: new Date(t.t).toLocaleDateString("tr-TR", { day: "numeric", month: "numeric" }), v: netOran(t), n: t.n }))) : '<p class="muted">İki deneme çözünce net gelişim grafiği burada oluşur.</p>';
   }
+  function tgsKart() {
+    return `<section class="kart"><h2>🇹🇷 Türkiye Geneli Sınav (TGS) tarzı denemeler</h2>
+      <p class="kucuk-yazi muted">Türkçe 15 · Matematik 15 · Fen Bilimleri 15 · İngilizce 10 = 55 soru, 75 dakika. Kapsam o döneme kadar işlenen yazılı konularıdır (birikimli). Her denemede sorular yeniden seçilir.</p>
+      <div class="izgara dar">${YAZILILAR.map(y => { const l = DEPO.liste("test").filter(t => t.tur === "tgs" && t.yazili === y.id), son = l[l.length - 1];
+        return `<button class="konu-satir" data-test="tgs" data-yazili="${y.id}"><span><b>${TGS_AD[y.id]}</b><br><span class="kucuk-yazi muted">${l.length ? l.length + " kez · son net " + String(son.net).replace(".", ",") + " / " + son.n : "henüz çözülmedi"}</span></span><span class="etiket">Başla</span></button>`; }).join("")}</div></section>`;
+  }
   function denemeMerkezi() {
     const l = denemeListesi(null);
     ana.innerHTML = `<section class="kart vurgu"><h1>📝 Deneme merkezi</h1>
         <p>Sınav modunda çözersin: süre işler, soruların arasında gidip gelebilirsin, cevaplar sınav bitince gösterilir. Sonuçta <b>doğru, yanlış, boş ve net</b> hesaplanır (3 yanlış 1 doğruyu götürür) ve her sorunun adım adım çözümünü görebilirsin. Sorular her denemede yeniden seçilir; deneme sayısının sınırı yoktur.</p></section>
       <section class="kart sari"><h2>🧩 Karma deneme (4 ders · 40 soru · 60 dakika)</h2><p>Matematik, Fen Bilimleri, Türkçe ve İngilizceden 10'ar soru — gerçek sınav provası.</p><div><button class="btn ana" data-test="karma">Karma denemeye başla</button></div></section>
-      <section class="izgara">${DERSLER.map(d => { const dl = denemeListesi(d.id).filter(t => t.tur !== "karma"), son = dl[dl.length - 1];
+      ${tgsKart()}
+      <section class="izgara">${DERSLER.map(d => { const dl = denemeListesi(d.id).filter(t => !cokDersli(t.tur) && t.tur !== "pdfDeneme"), son = dl[dl.length - 1];
         return `<div class="kart"><h2>${d.simge} ${d.ad}</h2><p class="kucuk-yazi muted">${dl.length} deneme çözüldü${son ? " · son net " + String(son.net != null ? son.net : son.dogru).replace(".", ",") + " / " + son.n : ""}</p>
           <div class="satir"><button class="btn ana kucuk" data-test="mini" data-ders="${d.id}">Mini deneme (10 soru · 15 dk)</button><button class="btn kucuk" data-test="deneme" data-ders="${d.id}">Ders denemesi (20 soru · 30 dk)</button></div></div>`; }).join("")}</section>
       <section class="kart"><h2>Net gelişimim (son 12 deneme)</h2><p class="kucuk-yazi muted">Net ÷ soru sayısı olarak gösterilir.</p>${denemeGrafik(l)}</section>

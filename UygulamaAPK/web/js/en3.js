@@ -6,11 +6,14 @@
   "use strict";
   const { R, sec, karistir, S, Q, G } = OGR;
 
-  /* Sözlükten kelime anlamı sorusu (İngilizce→Türkçe ya da Türkçe→İngilizce). */
-  function kelime(kaz, liste) {
+  /* Sözlükten kelime anlamı sorusu (İngilizce→Türkçe ya da Türkçe→İngilizce).
+   * gruplar: anlamları birbirine çok yakın kelimeler (ör. scary – terrifying); aynı soruda birlikte çıkmazlar,
+   * böylece iki seçeneğin de doğru sayılabileceği tartışmalı sorular oluşmaz. */
+  function kelime(kaz, liste, gruplar = []) {
+    const yakin = (a, b) => gruplar.some(g => g.includes(a) && g.includes(b));
     return () => {
       const [en, tr] = sec(liste);
-      const diger = karistir(liste.filter(w => w[0] !== en && w[1] !== tr)).slice(0, 3);
+      const diger = karistir(liste.filter(w => w[0] !== en && w[1] !== tr && !yakin(en, w[0]))).slice(0, 3);
       if (Math.random() < 0.5)
         return S({ kaz, duzey: "hatirlama", zorluk: 1, soru: `What does <b>“${en}”</b> mean in Turkish?`, dogru: tr,
           yanlis: diger.map(w => [w[1], "bilgi", `“${w[1]}” İngilizcede “${w[0]}” demektir.`]),
@@ -70,7 +73,7 @@
     ],
     uret: {
       "enfes.vocab": [
-        kelime("enfes.vocab", FES_SOZ),
+        kelime("enfes.vocab", FES_SOZ, [["exciting", "excited", "thrilling"], ["terrifying", "terrified", "scary", "scared"], ["amazing", "thrilling", "exciting", "interesting"]]),
         Q("enfes.vocab", "aciklama", 1, "The people who watch a concert or a show are the ___.", "audience",
           [["musicians", "kavrama", "Müzisyenler sahnede çalan kişilerdir, izleyenler değil."], ["stage", "bilgi", "“stage” sahne demektir; bir yer adıdır."], ["costumes", "bilgi", "“costumes” kostümler demektir."]],
           "Konseri sahnede değil, koltukta oturarak kimler izler?", ["Cümle “bir konseri ya da gösteriyi izleyen insanlar” diyor.", "İzleyici/seyirci anlamındaki kelime “audience” olur.", "The audience clapped at the end of the concert."],
@@ -218,7 +221,7 @@
         kelime("encty.places", CTY_SOZ),
         () => {
           const [soru, dogru, aciklama] = sec(NEREDE);
-          const diger = karistir(NEREDE.filter(n => n[1] !== dogru)).slice(0, 3);
+          const diger = karistir(NEREDE.filter(n => n[1] !== dogru && !(dogru === "bakery" && n[1] === "kiosk"))).slice(0, 3);
           return S({ kaz: "encty.places", duzey: "aciklama", zorluk: 1, soru, dogru: "at the " + dogru,
             yanlis: diger.map(n => ["at the " + n[1], "bilgi", n[2]]),
             ipucu: "Sorudaki eylemi (buy, borrow, watch, send…) hangi yerde yaparız?",
@@ -276,10 +279,10 @@
           [["between of", "islem", "“between” ile “of” birlikte kullanılmaz; ayrıca iki sokak köşesi için “on the corner of” denir."], ["in front", "islem", "“in front” sonuna “of” almalıdır ve anlamı köşe değildir."], ["opposite of", "islem", "“opposite” ile “of” kullanılmaz; ayrıca anlam köşe değil."]],
           "Cevabın sonunda “It's on the corner.” deniyor.", ["Fırın iki sokağın birleştiği köşededir.", "Köşesinde = on the corner of.", "It's on the corner of Gül Street and Lale Street."],
           { kural: "on the corner of X Street: X Caddesi'nin köşesinde." }),
-        Q("encty.prep", "uygulama", 2, "Choose the correct sentence.", "The cinema is across from the park.",
-          [["The cinema is across of the park.", "islem", "Doğru kalıp “across from” olur."], ["The cinema is between the park.", "kavrama", "“between” iki yer ister: between the park and the bank."], ["The cinema is next the park.", "islem", "Doğru kalıp “next to” olur."]],
-          "Her edat kalıbının doğru yazımını hatırla.", ["Yer edatları kalıp olarak öğrenilir: next to, across from, in front of.", "“between” her zaman iki yerle kullanılır: between A and B.", "Doğru cümle: The cinema is across from the park."],
-          { kural: "across from = opposite: karşısında." }),
+        Q("encty.prep", "uygulama", 2, "Choose the correct sentence.", "The cinema is opposite the park.",
+          [["The cinema is opposite of the park.", "islem", "“opposite” kendinden sonra “of” almaz: opposite the park (Türkçedeki “-nın karşısı” yapısına aldanma)."], ["The cinema is between the park.", "kavrama", "“between” iki yer ister: between the park and the bank."], ["The cinema is next the park.", "islem", "Doğru kalıp “next to” olur."]],
+          "Her edat kalıbının doğru yazımını hatırla.", ["Yer edatları kalıp olarak öğrenilir: next to, opposite, in front of.", "“opposite” doğrudan isimle kullanılır (of almaz); “between” her zaman iki yerle kullanılır: between A and B.", "Doğru cümle: The cinema is opposite the park."],
+          { kural: "opposite the park: parkın karşısında (opposite of değil); next to: yanında." }),
       ],
       "encty.dir": [
         Q("encty.dir", "hatirlama", 1, "⬅️ What does this sign mean?", "Turn left.",
@@ -339,7 +342,7 @@
     ],
     uret: {
       "entrn.vocab": [
-        kelime("entrn.vocab", TRN_SOZ),
+        kelime("entrn.vocab", TRN_SOZ, [["bus stop", "station", "parking"], ["fast", "slow"], ["cheap", "expensive"]]),
         () => {
           const [e, a] = sec(ARAC.filter(x => x[1] !== "car" && x[1] !== "bike"));
           const diger = karistir(ARAC.filter(x => x[1] !== a)).slice(0, 3);
@@ -354,7 +357,7 @@
           "Trene binmeden önce gişeden ne alırız?", ["Toplu taşımaya binmek için para ödeyip bir şey alırız.", "Bu şey bilettir: ticket.", "You buy a ticket before you get on the train."],
           { kural: "ticket: bilet · ticket office: bilet gişesi · passenger: yolcu." }),
         Q("entrn.vocab", "uygulama", 1, "We wait for the bus at the ___.", "bus stop",
-          [["station", "kavrama", "“station” tren ya da metro istasyonudur; otobüs için “bus stop” denir."], ["parking", "bilgi", "“parking” otoparktır; otobüs beklenen yer değildir."], ["airport", "bilgi", "“airport” havalimanıdır."]],
+          [["pier", "kavrama", "“pier” iskeledir; orada otobüsü değil vapuru (ferry) bekleriz."], ["car park", "bilgi", "“car park” otoparktır; arabalar park edilir, otobüs beklenmez."], ["airport", "bilgi", "“airport” havalimanıdır."]],
           "Otobüsü nerede bekleriz?", ["Otobüs belirli yerlerde durur.", "Bu yere otobüs durağı = bus stop denir.", "We wait for the bus at the bus stop."],
           { kural: "bus stop: otobüs durağı · train station: tren istasyonu · airport: havalimanı." }),
         Q("entrn.vocab", "transfer", 2, "Read the text and answer the question.<br><i>My name is Deniz. I live in İzmir. Every morning I take the ferry to the other side of the city. My school is near the pier. On Saturdays I go to my grandmother's house by tram.</i><br>How does Deniz go to school?", "by ferry",
@@ -439,7 +442,11 @@
     ["Spain", "Spanish", "Spanish", "🇪🇸"], ["Japan", "Japanese", "Japanese", "🇯🇵"], ["China", "Chinese", "Chinese", "🇨🇳"], ["Brazil", "Brazilian", "Portuguese", "🇧🇷"],
     ["Russia", "Russian", "Russian", "🇷🇺"], ["Greece", "Greek", "Greek", "🇬🇷"], ["Egypt", "Egyptian", "Arabic", "🇪🇬"], ["the USA", "American", "English", "🇺🇸"],
     ["Mexico", "Mexican", "Spanish", "🇲🇽"], ["England", "English", "English", "🇬🇧"], ["Azerbaijan", "Azerbaijani", "Azerbaijani", "🇦🇿"]];
-  const ISIMLER = [["Kenji", "He"], ["Maria", "She"], ["Pierre", "He"], ["Anna", "She"], ["Lucas", "He"], ["Sofia", "She"], ["Hans", "He"], ["Li", "She"]];
+  /* Her ülkeye o ülkede yaygın birer ad (ör. “Hans is from Egypt” gibi kafa karıştıran eşleşmeler olmasın). */
+  const ISIMLER = { Turkey: [["Elif", "She"], ["Can", "He"]], Germany: [["Hans", "He"], ["Anna", "She"]], France: [["Pierre", "He"], ["Claire", "She"]], Italy: [["Marco", "He"], ["Giulia", "She"]],
+    Spain: [["Pablo", "He"], ["Lucía", "She"]], Japan: [["Kenji", "He"], ["Yuki", "She"]], China: [["Li", "She"], ["Wei", "He"]], Brazil: [["Lucas", "He"], ["Sofia", "She"]],
+    Russia: [["Ivan", "He"], ["Olga", "She"]], Greece: [["Nikos", "He"], ["Eleni", "She"]], Egypt: [["Omar", "He"], ["Amira", "She"]], "the USA": [["Jack", "He"], ["Emily", "She"]],
+    Mexico: [["Carlos", "He"], ["María", "She"]], England: [["Harry", "He"], ["Lucy", "She"]], Azerbaijan: [["Elvin", "He"], ["Leyla", "She"]] };
   // [yalın, geçmiş, yanlış düzenli biçim, bağlam]
   const GECMIS = [["visit", "visited", null, "Last summer we ___ (visit) our friends in Italy."], ["travel", "travelled", null, "My parents ___ (travel) to Japan in 2023."],
     ["go", "went", "goed", "Two years ago, my family ___ (go) to Germany."], ["see", "saw", "seed", "We ___ (see) the Eiffel Tower in Paris last year."],
@@ -478,7 +485,7 @@
     uret: {
       "encou.nat": [
         () => {
-          const [ulke, mil, , bayrak] = sec(ULKE), [isim, zamir] = sec(ISIMLER);
+          const [ulke, mil, , bayrak] = sec(ULKE), [isim, zamir] = sec(ISIMLER[ulke]);
           const diger = karistir(ULKE.filter(u => u[1] !== mil)).slice(0, 2);
           return S({ kaz: "encou.nat", duzey: "uygulama", zorluk: 1, soru: `${bayrak} ${isim} is from ${ulke}. ${zamir} is ___.`, dogru: mil,
             yanlis: [[ulke.replace(/^the /, ""), "kavrama", "Bu ülke adıdır; boşluğa milliyet gelmelidir."], ...diger.map(u => [u[1], "bilgi", `“${u[1]}” ${u[0]} ülkesinin milliyetidir.`])],
@@ -521,9 +528,9 @@
           [["What", "kavrama", "“What is she from?” diye bir soru yoktur; yer için “Where” kullanılır."], ["Who", "bilgi", "“Who” kişi sorar."], ["When", "bilgi", "“When” zaman sorar."]],
           "Cevapta bir ülke (yer) var.", ["Cevap: She's from Egypt.", "Yer soran soru kelimesi “Where”dir.", "Where is she from?"],
           { kural: "Where is he / she from? — He's / She's from …" }),
-        Q("encou.talk", "transfer", 2, "Read the text and answer the question.<br><i>Hello! My name is Lucas. I'm eleven. I'm from Brazil, but now I live in Ankara with my family. I speak Portuguese and a little Turkish. My best friend is Emre. He is Turkish.</i><br>What language does Lucas speak at home with his family?", "Portuguese",
-          [["Brazilian", "kavrama", "“Brazilian” milliyettir; Brezilya'da konuşulan dil Portekizcedir."], ["Spanish", "dikkat", "Metinde İspanyolcadan söz edilmiyor."], ["English", "dikkat", "Metinde Lucas'ın İngilizce konuştuğu söylenmiyor."]],
-          "Metinde “I speak …” cümlesini bul.", ["Lucas Brezilyalıdır ve “I speak Portuguese and a little Turkish” diyor.", "Ailesi de Brezilyalı olduğu için evde Portekizce konuşur; Türkçesi ise biraz.", "Cevap: Portuguese."],
+        Q("encou.talk", "transfer", 2, "Read the text and answer the question.<br><i>Hello! My name is Lucas. I'm eleven. I'm from Brazil, but now I live in Ankara with my family. At home, we speak Portuguese. At school, I speak a little Turkish. My best friend is Emre. He is Turkish.</i><br>What language does Lucas speak at home with his family?", "Portuguese",
+          [["Brazilian", "kavrama", "“Brazilian” milliyettir; Brezilya'da konuşulan dil Portekizcedir."], ["Spanish", "dikkat", "Metinde İspanyolcadan söz edilmiyor."], ["Turkish", "dikkat", "Lucas Türkçeyi okulda ve biraz konuşuyor; evde konuştuğu dil Portekizcedir."]],
+          "Metinde “I speak …” cümlesini bul.", ["Soru Lucas'ın evde (at home) hangi dili konuştuğunu soruyor.", "Metinde “At home, we speak Portuguese.” cümlesi var; Türkçeyi ise okulda biraz konuşuyor.", "Cevap: Portuguese."],
           { kural: "Okuma sorularında cevabı metindeki bilgiye dayandır." }),
         Q("encou.talk", "baglanti", 2, "Look at the table. Which sentence is <b>true</b>?", "Yuki is Japanese and she speaks Japanese.",
           [["Carlos is from Spain.", "dikkat", "Tabloya göre Carlos Meksikalıdır (Mexico)."], ["Amira speaks French.", "dikkat", "Tabloya göre Amira Arapça konuşur."], ["Yuki is from China.", "dikkat", "Tabloya göre Yuki Japonya'dandır."]],
@@ -596,7 +603,8 @@
       "enfod.breakfast": [
         () => {
           const [e, en, tr] = sec(KAHVALTI), diger = karistir(KAHVALTI.filter(k => k[1] !== en)).slice(0, 3);
-          if (Math.random() < 0.5)
+          /* 🍓 (çilek) ve 🍊 (portakal) resimleri “jam” ve “orange juice” için tartışmalı olur; bunlar yalnızca yazılı sorulur. */
+          if (Math.random() < 0.5 && en !== "jam" && en !== "orange juice")
             return S({ kaz: "enfod.breakfast", duzey: "hatirlama", zorluk: 1, soru: `${e} What is this?`, dogru: en,
               yanlis: diger.map(k => [k[1], "bilgi", `“${k[1]}” = ${k[2]} (${k[0]}).`]),
               ipucu: "Resimdeki kahvaltılığın İngilizcesini hatırla.", cozum: [`Resimde ${e} var.`, `Bu, Türkçede “${tr}” demektir.`, `İngilizcesi: ${en}.`],
@@ -659,7 +667,7 @@
             ipucu: "Bu yemeği hangi ülkenin mutfağıyla duyuyoruz?", cozum: [`Yemek: ${yemek}.`, `Bu yemek ${ulke} mutfağına aittir.`, `Cevap: ${ulke}.`],
             kural: "pizza – Italy, sushi – Japan, tacos – Mexico, paella – Spain, croissants – France, baklava – Turkey." });
         },
-        kelime("enfod.world", [["cuisine", "mutfak (yemek kültürü)"], ["ingredient", "malzeme, içerik"], ["recipe", "yemek tarifi"], ["dish", "yemek, tabak"], ["spicy", "acılı, baharatlı"], ["delicious", "lezzetli"], ["nutritious", "besleyici"], ["healthy", "sağlıklı"], ["sweet", "tatlı"], ["salty", "tuzlu"], ["yummy", "nefis, çok lezzetli"], ["favourite", "en sevilen"]]),
+        kelime("enfod.world", [["cuisine", "mutfak (yemek kültürü)"], ["ingredient", "malzeme, içerik"], ["recipe", "yemek tarifi"], ["dish", "yemek, tabak"], ["spicy", "acılı, baharatlı"], ["delicious", "lezzetli"], ["nutritious", "besleyici"], ["healthy", "sağlıklı"], ["sweet", "tatlı"], ["salty", "tuzlu"], ["yummy", "nefis, çok lezzetli"], ["favourite", "en sevilen"]], [["delicious", "yummy"], ["healthy", "nutritious"], ["dish", "cuisine", "recipe"]]),
         Q("enfod.world", "aciklama", 2, "Look at the recipe. Which one is <b>not</b> an ingredient for menemen?", "cheese",
           [["eggs", "dikkat", "Yumurta tarifte malzeme olarak yazıyor."], ["tomatoes", "dikkat", "Domates tarifte malzeme olarak yazıyor."], ["green peppers", "dikkat", "Yeşil biber tarifte malzeme olarak yazıyor."]],
           "Malzeme listesini kontrol et.", ["Tarifteki malzemeler: eggs, tomatoes, green peppers, butter, salt.", "Peynir (cheese) listede yok.", "Cevap: cheese."],
