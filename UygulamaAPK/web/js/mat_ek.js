@@ -92,7 +92,7 @@
     z => { const [a, b] = sec([[12, 18], [16, 24], [18, 24], [20, 30], [24, 36], [30, 45]]); const g = ebob(a, b);
       return S({ kaz: "obol.problem", duzey: "transfer", zorluk: 2, soru: `Kenar uzunlukları ${a} m ve ${b} m olan dikdörtgen bir bahçe, hiç boşluk kalmadan eş ve en büyük karelere bölünecek. Bir karenin kenarı kaç metre olur?`,
         gorsel: G.svg(420, 60 + 180 * a / Math.max(a, b), `<rect class="g-yumusak g-cizgi" x="60" y="20" width="${300 * b / Math.max(a, b)}" height="${180 * a / Math.max(a, b)}" stroke-width="2"/>` + G.yazi(60 + 150 * b / Math.max(a, b), 48 + 180 * a / Math.max(a, b), b + " m") + G.yazi(40, 20 + 90 * a / Math.max(a, b), a + " m", { a: "end" }), "dikdörtgen bahçe"),
-        dogru: g, yanlis: [[ekok(a, b), "kavrama", "Bu en küçük ortak kattır; parçalara bölmede ortak bölen kullanılır."], [g / 2 >= 1 && g % 2 === 0 ? g / 2 : g + 1, "strateji", "Bu da ortak bölen olabilir ama en büyüğü değil."], [b - a, "bilgi", "Kenarların farkı kareyi vermez."]],
+        dogru: g, yanlis: [[ekok(a, b), "kavrama", "Bu en küçük ortak kattır; parçalara bölmede ortak bölen kullanılır."], [Math.max(...bolenler(g).filter(x => x < g)), "strateji", "Bu da bir ortak bölendir ama en büyüğü değil; daha büyük kareler de iki kenarı tam böler."], [b - a, "bilgi", "Kenarların farkı kareyi vermez."]],
         ipucu: "Karenin kenarı iki kenarı da tam bölmeli ve en büyük olmalı.", cozum: [`Karenin kenarı hem ${a}${ek(a, "i")} hem ${b}${ek(b, "i")} kalansız bölmeli → ortak bölen.`, `${a}${ek(a, "in")} bölenleri: ${bolenler(a).join(", ")}. ${b}${ek(b, "in")} bölenleri: ${bolenler(b).join(", ")}.`, `Ortak bölenlerin en büyüğü ${g}: kare ${g} m × ${g} m olur.`] }); },
   );
   /* ---------------- Tema 2 ---------------- */

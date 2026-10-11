@@ -6,6 +6,27 @@
   "use strict";
   const { R, sec, karistir, S, Q, G } = OGR;
 
+  /* Parametreli (S ile kurulan) soruların kısa çözümlerini 🔎 💡 ✏️ ✅ 🔁 biçiminde 5–7 adıma genişletir:
+   * soruyu anlama, hatırlanacak bilgi, çeldiricilerin tek tek elenmesi, sonuç ve son çeldiriciyle kontrol. */
+  function zengin(o) {
+    if (!o || !Array.isArray(o.cozum) || o.cozum.length >= 5) return o;
+    const nokta = t => /[.!?…:)”"]$/.test(String(t).trim()) ? String(t).trim() : String(t).trim() + ".";
+    const goruldu = new Set([String(o.dogru)]), y = [];
+    for (const w of o.yanlis || []) { const m = String(w[0]); if (!m || m === "NaN" || m === "undefined" || m === "null" || goruldu.has(m)) continue; goruldu.add(m); y.push(w); if (y.length === 3) break; }
+    const s = o.cozum, n = s.length, out = ["🔎 Soruyu anlayalım: " + String(s[0]).replace(/^Soru:\s*/, "")];
+    if (n >= 3) { out.push("💡 Hatırlayalım: " + s[1]); for (let i = 2; i <= n - 2; i++) out.push("✏️ " + s[i]); }
+    else out.push("💡 Hatırlayalım: " + (o.kural || s[0]));
+    const sonIcerir = String(s[n - 1]).toLocaleLowerCase("tr").includes(String(o.dogru).toLocaleLowerCase("tr").replace(/[.!?]$/, ""));
+    if (!sonIcerir) out.push("✏️ " + s[n - 1]);
+    y.slice(0, -1).forEach((w, i) => out.push((i === 0 ? "✏️ Seçenekleri tek tek inceleyelim: " : "✏️ ") + "“" + w[0] + "” → " + nokta(w[2])));
+    out.push("✅ Sonuç: " + (sonIcerir ? String(s[n - 1]) : "Doğru cevap “" + o.dogru + "”.").replace(/^(Doğru cevap|Doğru cümle|Doğru seçenek|Doğru sıra|Doğru|Cevap)\s*:\s*/, ""));
+    if (y.length) { const w = y[y.length - 1]; out.push("🔁 Kontrol edelim: Son seçenek “" + w[0] + "” de aradığımız cevap değil: " + nokta(w[2]) + " Geriye yalnızca “" + o.dogru + "” kalıyor."); }
+    else out.push("🔁 Kontrol edelim: " + (o.kural || "Cevabı soruya yerleştirip yeniden oku."));
+    o.cozum = out;
+    if (!o.dogruNeden) o.dogruNeden = n >= 3 ? nokta(s[n - 2]) : nokta(o.kural || s[0]);
+    return o;
+  }
+
   /* ---------------------------- Ortak üreteçler ---------------------------- */
   /* Sözlükten kelime anlamı sorusu (İngilizce→Türkçe ya da Türkçe→İngilizce). */
   /* Anlamı çok yakın kelimeler aynı soruda birlikte çıkmaz (ör. rubbish “çöp” – waste “atık”); tartışmalı soru oluşmasın. */
@@ -15,16 +36,16 @@
     return z => {
       const [en, tr] = sec(liste), diger = karistir(liste.filter(w => w[0] !== en && !yakinMi(en, w[0]))).slice(0, 3);
       if (Math.random() < 0.5)
-        return S({ kaz, duzey: "hatirlama", zorluk: 1, soru: `What does “<b>${en}</b>” mean in Turkish?`, dogru: tr,
+        return S(zengin({ kaz, duzey: "hatirlama", zorluk: 1, soru: `What does “<b>${en}</b>” mean in Turkish?`, dogru: tr,
           yanlis: diger.map(([e, t]) => [t, "bilgi", `“${t}” kelimesinin İngilizcesi “${e}” olur.`]),
           ipucu: `“${en}” kelimesini konunun örnek cümlelerinde hatırlamaya çalış.`,
           cozum: [`Soruda “${en}” kelimesinin Türkçe anlamı soruluyor.`, `Diğer seçenekler: ${diger.map(([e, t]) => `${t} = ${e}`).join(", ")}.`, `Doğru cevap: ${en} = ${tr}.`],
-          kural: `${en} = ${tr}` });
-      return S({ kaz, duzey: "hatirlama", zorluk: 1, soru: `Which word means “<b>${tr}</b>” in English?`, dogru: en,
+          kural: `${en} = ${tr}` }));
+      return S(zengin({ kaz, duzey: "hatirlama", zorluk: 1, soru: `Which word means “<b>${tr}</b>” in English?`, dogru: en,
         yanlis: diger.map(([e, t]) => [e, "bilgi", `“${e}” kelimesi “${t}” demektir.`]),
         ipucu: "Seçeneklerdeki kelimelerin Türkçe anlamlarını tek tek düşün.",
         cozum: [`Soruda “${tr}” kelimesinin İngilizcesi soruluyor.`, `Diğer seçenekler: ${diger.map(([e, t]) => `${e} = ${t}`).join(", ")}.`, `Doğru cevap: ${tr} = ${en}.`],
-        kural: `${en} = ${tr}` });
+        kural: `${en} = ${tr}` }));
     };
   }
 
@@ -81,68 +102,152 @@
         z => { const [b, p, ing, s3, yanlisReg, cumle] = sec(FIILLER);
           const yanlis = [[b, "kavrama", `Cümlede geçmiş zaman ifadesi var; yalın hâl “${b}” değil, geçmiş hâl gerekir.`], [ing, "bilgi", `“${ing}” tek başına geçmişi anlatmaz; simple past için fiilin 2. hâli kullanılır.`], [s3, "kavrama", `“${s3}” geniş zamandır; cümle geçmişte olmuş bir olayı anlatıyor.`]];
           if (yanlisReg) yanlis.unshift([yanlisReg, "bilgi", `“${b}” düzensiz bir fiildir; -ed almaz, geçmiş hâli “${p}” olur.`]);
-          return S({ kaz: "ennat2.past", duzey: "uygulama", zorluk: yanlisReg ? 2 : 1, soru: `Choose the correct answer:<br><b>${cumle}</b>`, dogru: p, yanlis: yanlis.slice(0, 3),
+          return S(zengin({ kaz: "ennat2.past", duzey: "uygulama", zorluk: yanlisReg ? 2 : 1, soru: `Choose the correct answer:<br><b>${cumle}</b>`, dogru: p, yanlis: yanlis.slice(0, 3),
             ipucu: "Cümledeki zaman ifadesine bak: yesterday, last…, …ago geçmiş zamandır.",
             cozum: ["Cümlede geçmiş zaman ifadesi (yesterday / last … / … ago) var.", "Geçmişte olup biten olaylar simple past ile anlatılır.", yanlisReg ? `“${b}” düzensiz fiildir: ${b} → ${p}.` : `“${b}” düzenli fiildir: ${b} → ${p}.`],
-            kural: yanlisReg ? `Düzensiz fiil: ${b} → ${p}` : "Düzenli fiiller: fiil + -ed (hike → hiked, stop → stopped)." }); },
+            kural: yanlisReg ? `Düzensiz fiil: ${b} → ${p}` : "Düzenli fiiller: fiil + -ed (hike → hiked, stop → stopped)." })); },
         z => { const duz = karistir(FIILLER.filter(f => f[4])), [b, p, , , yr] = duz[0];
-          return S({ kaz: "ennat2.past", duzey: "hatirlama", zorluk: 1, soru: `What is the simple past form of “<b>${b}</b>”?`, dogru: p,
+          return S(zengin({ kaz: "ennat2.past", duzey: "hatirlama", zorluk: 1, soru: `What is the simple past form of “<b>${b}</b>”?`, dogru: p,
             yanlis: [[yr, "bilgi", `“${b}” düzensiz fiildir; -ed eklenmez.`], [duz[1][1], "dikkat", `“${duz[1][1]}”, “${duz[1][0]}” fiilinin geçmiş hâlidir.`], [duz[2][1], "dikkat", `“${duz[2][1]}”, “${duz[2][0]}” fiilinin geçmiş hâlidir.`]],
-            ipucu: "Bu fiil düzensizdir; -ed ile yapılmaz.", cozum: [`“${b}” fiili düzensiz (irregular) fiillerdendir.`, "Düzensiz fiillerin geçmiş hâlleri ezberlenir.", `${b} → ${p}`], kural: "Düzensiz fiillerin geçmiş hâlleri ezberlenir: go–went, see–saw, swim–swam…" }); },
+            ipucu: "Bu fiil düzensizdir; -ed ile yapılmaz.", cozum: [`“${b}” fiili düzensiz (irregular) fiillerdendir.`, "Düzensiz fiillerin geçmiş hâlleri ezberlenir.", `${b} → ${p}`], kural: "Düzensiz fiillerin geçmiş hâlleri ezberlenir: go–went, see–saw, swim–swam…" })); },
         Q("ennat2.past", "aciklama", 1, "Which verb is <b>regular</b> (takes -ed in the past)?", "climb",
           [["swim", "bilgi", "swim düzensizdir: swam."], ["catch", "bilgi", "catch düzensizdir: caught."], ["sleep", "bilgi", "sleep düzensizdir: slept."]],
-          "Hangi fiilin geçmişi -ed ile yapılır?", ["Fiillerin geçmiş hâllerini düşün: swim → swam, catch → caught, sleep → slept.", "climb → climbed; -ed almıştır.", "Düzenli fiil: climb."], { kural: "Düzenli fiil: -ed alır. Düzensiz fiil: farklı bir biçime dönüşür." }),
+          "Hangi fiilin geçmişi -ed ile yapılır?", [
+           "🔎 Soruyu anlayalım: Fiillerin geçmiş hâllerini düşün: swim → swam, catch → caught, sleep → slept.",
+           "💡 Hatırlayalım: climb → climbed; -ed almıştır.",
+           "✏️ Seçenekleri tek tek inceleyelim: “swim” → swim düzensizdir: swam.",
+           "✏️ “catch” → catch düzensizdir: caught.",
+           "✅ Sonuç: Düzenli fiil: climb.",
+           "🔁 Kontrol edelim: Son seçenek “sleep” de aradığımız cevap değil: sleep düzensizdir: slept. Geriye yalnızca “climb” kalıyor."], { kural: "Düzenli fiil: -ed alır. Düzensiz fiil: farklı bir biçime dönüşür.", dogruNeden: "climb → climbed; -ed almıştır." }),
         Q("ennat2.past", "uygulama", 2, "Choose the correct negative sentence.", "We didn't go sailing yesterday.",
           [["We didn't went sailing yesterday.", "kavrama", "“didn't” sonrasında fiil yalın hâle döner: go."], ["We don't went sailing yesterday.", "kavrama", "Geçmiş zamanın olumsuzu “didn't” ile yapılır."], ["We not went sailing yesterday.", "bilgi", "Olumsuz için yardımcı fiil “didn't” gerekir."]],
-          "Olumsuz geçmiş zaman: didn't + fiilin yalın hâli.", ["Simple past olumsuzu “didn't” ile kurulur.", "“didn't” den sonra fiil yalın hâlde kullanılır: go.", "Doğru cümle: We didn't go sailing yesterday."], { kural: "Olumsuz: Subject + didn't + V1 (I didn't swim)." }),
+          "Olumsuz geçmiş zaman: didn't + fiilin yalın hâli.", [
+           "🔎 Soruyu anlayalım: Simple past olumsuzu “didn't” ile kurulur.",
+           "💡 Hatırlayalım: “didn't” den sonra fiil yalın hâlde kullanılır: go.",
+           "✏️ Seçenekleri tek tek inceleyelim: “We didn't went sailing yesterday.” → “didn't” sonrasında fiil yalın hâle döner: go.",
+           "✏️ “We don't went sailing yesterday.” → Geçmiş zamanın olumsuzu “didn't” ile yapılır.",
+           "✅ Sonuç: We didn't go sailing yesterday.",
+           "🔁 Kontrol edelim: Son seçenek “We not went sailing yesterday.” de aradığımız cevap değil: Olumsuz için yardımcı fiil “didn't” gerekir. Geriye yalnızca “We didn't go sailing yesterday.” kalıyor."], { kural: "Olumsuz: Subject + didn't + V1 (I didn't swim).", dogruNeden: "“didn't” den sonra fiil yalın hâlde kullanılır: go." }),
         Q("ennat2.past", "uygulama", 2, "Read and choose the correct verbs:<br><i>Last summer, my family ___ (1) to the Black Sea. We ___ (2) in a tent near a river.</i>", "went – slept",
           [["go – sleep", "kavrama", "“Last summer” geçmiş zamandır; fiillerin geçmiş hâli gerekir."], ["goed – sleeped", "bilgi", "go ve sleep düzensizdir: went, slept."], ["went – sleeping", "kavrama", "İkinci boşluk da geçmiş zaman olmalı: slept."]],
-          "“Last summer” hangi zamanı gösterir?", ["“Last summer” geçmiş zaman ifadesidir.", "go → went, sleep → slept (ikisi de düzensiz).", "Doğru cevap: went – slept."], { kural: "Paragraf geçmişte geçiyorsa bütün fiiller simple past olur." }),
+          "“Last summer” hangi zamanı gösterir?", [
+           "🔎 Soruyu anlayalım: “Last summer” geçmiş zaman ifadesidir.",
+           "💡 Hatırlayalım: go → went, sleep → slept (ikisi de düzensiz).",
+           "✏️ Seçenekleri tek tek inceleyelim: “go – sleep” → “Last summer” geçmiş zamandır; fiillerin geçmiş hâli gerekir.",
+           "✏️ “goed – sleeped” → go ve sleep düzensizdir: went, slept.",
+           "✅ Sonuç: went – slept.",
+           "🔁 Kontrol edelim: Son seçenek “went – sleeping” de aradığımız cevap değil: İkinci boşluk da geçmiş zaman olmalı: slept. Geriye yalnızca “went – slept” kalıyor."], { kural: "Paragraf geçmişte geçiyorsa bütün fiiller simple past olur.", dogruNeden: "go → went, sleep → slept (ikisi de düzensiz)." }),
         Q("ennat2.past", "baglanti", 2, "Theme 6'dan hatırla: “ate” hangi fiilin geçmiş hâlidir? Choose: <b>We ___ fish by the river last night.</b>", "ate",
           [["eated", "bilgi", "eat düzensizdir; -ed almaz."], ["eat", "kavrama", "“last night” geçmiş zamandır."], ["eats", "kavrama", "“eats” geniş zamandır ve “we” ile kullanılmaz."]],
-          "eat düzenli mi düzensiz mi?", ["“last night” geçmiş zaman ifadesidir.", "eat düzensiz fiildir: eat → ate.", "Cevap: We ate fish by the river last night."], { kural: "eat → ate, drink → drank, have → had" }),
+          "eat düzenli mi düzensiz mi?", [
+           "🔎 Soruyu anlayalım: “last night” geçmiş zaman ifadesidir.",
+           "💡 Hatırlayalım: eat düzensiz fiildir: eat → ate.",
+           "✏️ Seçenekleri tek tek inceleyelim: “eated” → eat düzensizdir; -ed almaz.",
+           "✏️ “eat” → “last night” geçmiş zamandır.",
+           "✅ Sonuç: We ate fish by the river last night.",
+           "🔁 Kontrol edelim: Son seçenek “eats” de aradığımız cevap değil: “eats” geniş zamandır ve “we” ile kullanılmaz. Geriye yalnızca “ate” kalıyor."], { kural: "eat → ate, drink → drank, have → had", dogruNeden: "eat düzensiz fiildir: eat → ate." }),
       ],
       "ennat2.vocab": [
         kelime("ennat2.vocab", NAT_SOZ),
         Q("ennat2.vocab", "aciklama", 1, "You need a board and a snowy mountain for this activity. What is it?", "snowboarding",
           [["sailing", "kavrama", "Sailing için tekne ve su gerekir."], ["hiking", "kavrama", "Hiking için yalnızca yürüyüş ayakkabısı yeterlidir."], ["fishing", "kavrama", "Fishing için olta ve su gerekir."]],
-          "Kar ve tahta (board) birlikte düşün.", ["Etkinlik için bir tahta (board) ve karlı dağ gerekiyor.", "snow + board = snowboarding (kar sörfü).", "Cevap: snowboarding."], { kural: "snowboarding = kar sörfü, sailing = yelkenli gezisi, hiking = doğa yürüyüşü" }),
+          "Kar ve tahta (board) birlikte düşün.", [
+           "🔎 Soruyu anlayalım: Etkinlik için bir tahta (board) ve karlı dağ gerekiyor.",
+           "💡 Hatırlayalım: snow + board = snowboarding (kar sörfü).",
+           "✏️ Seçenekleri tek tek inceleyelim: “sailing” → Sailing için tekne ve su gerekir.",
+           "✏️ “hiking” → Hiking için yalnızca yürüyüş ayakkabısı yeterlidir.",
+           "✅ Sonuç: snowboarding.",
+           "🔁 Kontrol edelim: Son seçenek “fishing” de aradığımız cevap değil: Fishing için olta ve su gerekir. Geriye yalnızca “snowboarding” kalıyor."], { kural: "snowboarding = kar sörfü, sailing = yelkenli gezisi, hiking = doğa yürüyüşü", dogruNeden: "snow + board = snowboarding (kar sörfü)." }),
         Q("ennat2.vocab", "uygulama", 1, "Complete: <b>It's dark in the forest. Can you give me the ___, please?</b>", "torch",
           [["tent", "kavrama", "Çadır karanlıkta görmeyi sağlamaz."], ["map", "kavrama", "Harita yol bulmak içindir; karanlıkta ışık vermez."], ["backpack", "kavrama", "Sırt çantası eşya taşımak içindir."]],
-          "Karanlıkta ne işe yarar?", ["Cümlede ormanın karanlık olduğu söyleniyor.", "Karanlıkta görmek için el feneri (torch) gerekir.", "Cevap: torch."], { kural: "torch (İng.) = flashlight (Amerikan İng.) = el feneri" }),
+          "Karanlıkta ne işe yarar?", [
+           "🔎 Soruyu anlayalım: Cümlede ormanın karanlık olduğu söyleniyor.",
+           "💡 Hatırlayalım: Karanlıkta görmek için el feneri (torch) gerekir.",
+           "✏️ Seçenekleri tek tek inceleyelim: “tent” → Çadır karanlıkta görmeyi sağlamaz.",
+           "✏️ “map” → Harita yol bulmak içindir; karanlıkta ışık vermez.",
+           "✅ Sonuç: torch.",
+           "🔁 Kontrol edelim: Son seçenek “backpack” de aradığımız cevap değil: Sırt çantası eşya taşımak içindir. Geriye yalnızca “torch” kalıyor."], { kural: "torch (İng.) = flashlight (Amerikan İng.) = el feneri", dogruNeden: "Karanlıkta görmek için el feneri (torch) gerekir." }),
         Q("ennat2.vocab", "uygulama", 1, "Which word does <b>not</b> belong to the group?<br><i>lake – river – waterfall – tent</i>", "tent",
           [["lake", "dikkat", "Göl bir doğa/su yeridir; gruba uyar."], ["river", "dikkat", "Nehir bir doğa/su yeridir; gruba uyar."], ["waterfall", "dikkat", "Şelale bir doğa/su yeridir; gruba uyar."]],
-          "Üçü doğadaki su yerleri, biri kamp malzemesi.", ["lake, river ve waterfall doğadaki su kaynaklarıdır.", "tent ise bir kamp malzemesidir.", "Gruba uymayan: tent."], { kural: "Doğa yerleri: lake, river, waterfall, forest, valley. Kamp malzemeleri: tent, torch, map, sleeping bag." }),
+          "Üçü doğadaki su yerleri, biri kamp malzemesi.", [
+           "🔎 Soruyu anlayalım: lake, river ve waterfall doğadaki su kaynaklarıdır.",
+           "💡 Hatırlayalım: tent ise bir kamp malzemesidir.",
+           "✏️ Seçenekleri tek tek inceleyelim: “lake” → Göl bir doğa/su yeridir; gruba uyar.",
+           "✏️ “river” → Nehir bir doğa/su yeridir; gruba uyar.",
+           "✅ Sonuç: Gruba uymayan: tent.",
+           "🔁 Kontrol edelim: Son seçenek “waterfall” de aradığımız cevap değil: Şelale bir doğa/su yeridir; gruba uyar. Geriye yalnızca “tent” kalıyor."], { kural: "Doğa yerleri: lake, river, waterfall, forest, valley. Kamp malzemeleri: tent, torch, map, sleeping bag.", dogruNeden: "tent ise bir kamp malzemesidir." }),
         Q("ennat2.vocab", "uygulama", 2, "Complete with the correct verb: <b>Let's go ___ on the lake. We have a boat!</b>", "sailing",
           [["hiking", "kavrama", "Hiking yürüyüştür; tekne gerekmez."], ["snowboarding", "kavrama", "Snowboarding karda yapılır."], ["climbing", "kavrama", "Climbing dağa ya da kayaya tırmanmaktır."]],
-          "Göl ve tekne ile hangi etkinlik yapılır?", ["Cümlede göl (lake) ve tekne (boat) geçiyor.", "Teknenin suda yelkenle gitmesi sailing'dir.", "Cevap: go sailing."], { kural: "go + V-ing: go sailing, go hiking, go camping, go fishing." }),
+          "Göl ve tekne ile hangi etkinlik yapılır?", [
+           "🔎 Soruyu anlayalım: Cümlede göl (lake) ve tekne (boat) geçiyor.",
+           "💡 Hatırlayalım: Teknenin suda yelkenle gitmesi sailing'dir.",
+           "✏️ Seçenekleri tek tek inceleyelim: “hiking” → Hiking yürüyüştür; tekne gerekmez.",
+           "✏️ “snowboarding” → Snowboarding karda yapılır.",
+           "✅ Sonuç: go sailing.",
+           "🔁 Kontrol edelim: Son seçenek “climbing” de aradığımız cevap değil: Climbing dağa ya da kayaya tırmanmaktır. Geriye yalnızca “sailing” kalıyor."], { kural: "go + V-ing: go sailing, go hiking, go camping, go fishing.", dogruNeden: "Teknenin suda yelkenle gitmesi sailing'dir." }),
         z => { const veri = [["Mon", R(2, 9)], ["Tue", R(2, 9)], ["Wed", R(2, 9)], ["Thu", R(2, 9)], ["Fri", R(2, 9)]];
           const ust = [...veri].sort((a, b) => b[1] - a[1]); if (ust[0][1] === ust[1][1]) return null;
           const ad = { Mon: "Monday", Tue: "Tuesday", Wed: "Wednesday", Thu: "Thursday", Fri: "Friday" }, act = sec(["went hiking", "went fishing", "went sailing"]);
           const dig = veri.filter(v => v[0] !== ust[0][0]).slice(0, 3);
-          return S({ kaz: "ennat2.vocab", duzey: "uygulama", zorluk: 2, soru: `The graph shows how many students ${act} last week. On which day did the most students go?`, gorsel: G.sutun(veri, { baslik: "Students who " + act, birim: "students" }),
+          return S(zengin({ kaz: "ennat2.vocab", duzey: "uygulama", zorluk: 2, soru: `The graph shows how many students ${act} last week. On which day did the most students go?`, gorsel: G.sutun(veri, { baslik: "Students who " + act, birim: "students" }),
             dogru: ad[ust[0][0]], yanlis: dig.map(v => [ad[v[0]], "dikkat", `${ad[v[0]]} günü ${v[1]} öğrenci var; en yüksek sütun bu değil.`]),
-            ipucu: "En uzun sütunu bul.", cozum: ["Grafikte her sütun bir günü gösterir.", `En uzun sütun ${ad[ust[0][0]]} (${ust[0][1]} öğrenci).`, `Cevap: ${ad[ust[0][0]]}.`], kural: "the most = en çok" }); },
+            ipucu: "En uzun sütunu bul.", cozum: ["Grafikte her sütun bir günü gösterir.", `En uzun sütun ${ad[ust[0][0]]} (${ust[0][1]} öğrenci).`, `Cevap: ${ad[ust[0][0]]}.`], kural: "the most = en çok" })); },
       ],
       "ennat2.talk": [
         Q("ennat2.talk", "transfer", 1, "Complete the dialogue:<br>— Did you go camping last weekend?<br>— ___ We stayed at home because it was rainy.", "No, I didn't.",
           [["Yes, I did.", "dikkat", "Kişi evde kaldığını söylüyor; kampa gitmemiş."], ["No, I don't.", "kavrama", "Soru geçmiş zamanda (Did); kısa cevap da “didn't” olmalı."], ["Yes, I was.", "kavrama", "“Did” ile sorulan soruya “did/didn't” ile cevap verilir."]],
-          "İkinci cümlede ne yaptığını söylüyor?", ["Soru “Did you…?” ile soruluyor; kısa cevap “Yes, I did / No, I didn't” olur.", "Kişi evde kaldığını söylüyor, yani kampa gitmedi.", "Cevap: No, I didn't."], { kural: "Did you…? → Yes, I did. / No, I didn't." }),
+          "İkinci cümlede ne yaptığını söylüyor?", [
+           "🔎 Soruyu anlayalım: Soru “Did you…?” ile soruluyor; kısa cevap “Yes, I did / No, I didn't” olur.",
+           "💡 Hatırlayalım: Kişi evde kaldığını söylüyor, yani kampa gitmedi.",
+           "✏️ Seçenekleri tek tek inceleyelim: “Yes, I did.” → Kişi evde kaldığını söylüyor; kampa gitmemiş.",
+           "✏️ “No, I don't.” → Soru geçmiş zamanda (Did); kısa cevap da “didn't” olmalı.",
+           "✅ Sonuç: No, I didn't.",
+           "🔁 Kontrol edelim: Son seçenek “Yes, I was.” de aradığımız cevap değil: “Did” ile sorulan soruya “did/didn't” ile cevap verilir. Geriye yalnızca “No, I didn't.” kalıyor."], { kural: "Did you…? → Yes, I did. / No, I didn't.", dogruNeden: "Kişi evde kaldığını söylüyor, yani kampa gitmedi." }),
         Q("ennat2.talk", "transfer", 1, "Complete the dialogue:<br>— ___ did you go last summer?<br>— We went to Antalya.", "Where",
           [["When", "kavrama", "“When” zaman sorar; cevap bir yer (Antalya)."], ["What", "kavrama", "“What” ne olduğunu sorar; yer için “Where” kullanılır."], ["Who", "kavrama", "“Who” kişi sorar."]],
-          "Cevap bir yer mi, zaman mı?", ["Cevap “Antalya”, yani bir yer.", "Yer sormak için “Where” kullanılır.", "Cevap: Where did you go last summer?"], { kural: "Where = nerede/nereye, When = ne zaman, Who = kim, What = ne" }),
+          "Cevap bir yer mi, zaman mı?", [
+           "🔎 Soruyu anlayalım: Cevap “Antalya”, yani bir yer.",
+           "💡 Hatırlayalım: Yer sormak için “Where” kullanılır.",
+           "✏️ Seçenekleri tek tek inceleyelim: “When” → “When” zaman sorar; cevap bir yer (Antalya).",
+           "✏️ “What” → “What” ne olduğunu sorar; yer için “Where” kullanılır.",
+           "✅ Sonuç: Where did you go last summer?",
+           "🔁 Kontrol edelim: Son seçenek “Who” de aradığımız cevap değil: “Who” kişi sorar. Geriye yalnızca “Where” kalıyor."], { kural: "Where = nerede/nereye, When = ne zaman, Who = kim, What = ne", dogruNeden: "Yer sormak için “Where” kullanılır." }),
         Q("ennat2.talk", "uygulama", 2, "Choose the correct question tag: <b>You climbed the mountain, ___?</b>", "didn't you",
           [["did you", "kavrama", "Cümle olumlu; soru eklentisi olumsuz olmalı."], ["don't you", "kavrama", "Cümle geçmiş zamanda; “didn't” gerekir."], ["weren't you", "bilgi", "Ana fiil “climbed”; yardımcı fiil “did” olur, “were” değil."]],
-          "Olumlu cümle → olumsuz eklenti.", ["Cümle olumlu ve simple past (climbed).", "Simple past yardımcı fiili “did”dir; olumlu cümleye olumsuz eklenti gelir.", "Cevap: didn't you?"], { kural: "Olumlu geçmiş cümle → didn't …? (You went, didn't you?)" }),
+          "Olumlu cümle → olumsuz eklenti.", [
+           "🔎 Soruyu anlayalım: Cümle olumlu ve simple past (climbed).",
+           "💡 Hatırlayalım: Simple past yardımcı fiili “did”dir; olumlu cümleye olumsuz eklenti gelir.",
+           "✏️ Seçenekleri tek tek inceleyelim: “did you” → Cümle olumlu; soru eklentisi olumsuz olmalı.",
+           "✏️ “don't you” → Cümle geçmiş zamanda; “didn't” gerekir.",
+           "✅ Sonuç: didn't you?",
+           "🔁 Kontrol edelim: Son seçenek “weren't you” de aradığımız cevap değil: Ana fiil “climbed”; yardımcı fiil “did” olur, “were” değil. Geriye yalnızca “didn't you” kalıyor."], { kural: "Olumlu geçmiş cümle → didn't …? (You went, didn't you?)", dogruNeden: "Simple past yardımcı fiili “did”dir; olumlu cümleye olumsuz eklenti gelir." }),
         Q("ennat2.talk", "uygulama", 2, "Choose the correct question tag: <b>Mert didn't go fishing, ___?</b>", "did he",
           [["didn't he", "kavrama", "Cümle olumsuz; eklenti olumlu olmalı."], ["does he", "kavrama", "Cümle geçmiş zamanda; “did” gerekir."], ["did she", "dikkat", "Mert erkek ismidir; “he” kullanılır."]],
-          "Olumsuz cümle → olumlu eklenti.", ["Cümle olumsuz (didn't go).", "Olumsuz cümleye olumlu eklenti gelir: did.", "Mert = he; cevap: did he?"], { kural: "Olumsuz geçmiş cümle → did …? (She didn't swim, did she?)" }),
+          "Olumsuz cümle → olumlu eklenti.", [
+           "🔎 Soruyu anlayalım: Cümle olumsuz (didn't go).",
+           "💡 Hatırlayalım: Olumsuz cümleye olumlu eklenti gelir: did.",
+           "✏️ Seçenekleri tek tek inceleyelim: “didn't he” → Cümle olumsuz; eklenti olumlu olmalı.",
+           "✏️ “does he” → Cümle geçmiş zamanda; “did” gerekir.",
+           "✅ Sonuç: Mert = he; cevap: did he?",
+           "🔁 Kontrol edelim: Son seçenek “did she” de aradığımız cevap değil: Mert erkek ismidir; “he” kullanılır. Geriye yalnızca “did he” kalıyor."], { kural: "Olumsuz geçmiş cümle → did …? (She didn't swim, did she?)", dogruNeden: "Olumsuz cümleye olumlu eklenti gelir: did." }),
         Q("ennat2.talk", "transfer", 2, "Read the text and answer the question.<br><i>Hi, I'm Can. Last weekend I went to a national park with my class. We hiked for three hours and saw a big waterfall. In the evening we made a campfire and ate sausages. It was a great adventure!</i><br>What did Can do in the evening?", "He made a campfire.",
           [["He saw a waterfall.", "dikkat", "Şelaleyi gün içinde yürüyüş sırasında gördü."], ["He hiked for three hours.", "dikkat", "Yürüyüş akşam değil, gündüz yapıldı."], ["He went sailing.", "dikkat", "Metinde yelkenli gezisinden söz edilmiyor."]],
-          "“In the evening” ifadesini metinde bul.", ["Metinde “In the evening” cümlesini bul.", "“In the evening we made a campfire and ate sausages.”", "Cevap: He made a campfire."], { kural: "Okuma sorularında sorudaki anahtar ifadeyi (in the evening) metinde ara." }),
+          "“In the evening” ifadesini metinde bul.", [
+           "🔎 Soruyu anlayalım: Metinde “In the evening” cümlesini bul.",
+           "💡 Hatırlayalım: “In the evening we made a campfire and ate sausages.”",
+           "✏️ Seçenekleri tek tek inceleyelim: “He saw a waterfall.” → Şelaleyi gün içinde yürüyüş sırasında gördü.",
+           "✏️ “He hiked for three hours.” → Yürüyüş akşam değil, gündüz yapıldı.",
+           "✅ Sonuç: He made a campfire.",
+           "🔁 Kontrol edelim: Son seçenek “He went sailing.” de aradığımız cevap değil: Metinde yelkenli gezisinden söz edilmiyor. Geriye yalnızca “He made a campfire.” kalıyor."], { kural: "Okuma sorularında sorudaki anahtar ifadeyi (in the evening) metinde ara.", dogruNeden: "“In the evening we made a campfire and ate sausages.”" }),
         Q("ennat2.talk", "transfer", 2, "Which answer is correct?<br>— What did you do in Uludağ?<br>— ___", "I went snowboarding.",
           [["I go snowboarding.", "kavrama", "Soru geçmiş zamanda; cevap da geçmiş olmalı."], ["I am going snowboarding.", "kavrama", "Bu şimdiki zaman / gelecek planıdır."], ["Yes, I did.", "kavrama", "“What” ile başlayan soruya Yes/No ile cevap verilmez."]],
-          "Soru hangi zamanda?", ["Soru “What did you do…?” — geçmiş zaman.", "Cevapta fiilin geçmiş hâli kullanılır: went.", "Cevap: I went snowboarding."], { kural: "What did you do? → I + V2 (I went…, I visited…)" }),
+          "Soru hangi zamanda?", [
+           "🔎 Soruyu anlayalım: Soru “What did you do…?” — geçmiş zaman.",
+           "💡 Hatırlayalım: Cevapta fiilin geçmiş hâli kullanılır: went.",
+           "✏️ Seçenekleri tek tek inceleyelim: “I go snowboarding.” → Soru geçmiş zamanda; cevap da geçmiş olmalı.",
+           "✏️ “I am going snowboarding.” → Bu şimdiki zaman / gelecek planıdır.",
+           "✅ Sonuç: I went snowboarding.",
+           "🔁 Kontrol edelim: Son seçenek “Yes, I did.” de aradığımız cevap değil: “What” ile başlayan soruya Yes/No ile cevap verilmez. Geriye yalnızca “I went snowboarding.” kalıyor."], { kural: "What did you do? → I + V2 (I went…, I visited…)", dogruNeden: "Cevapta fiilin geçmiş hâli kullanılır: went." }),
       ],
     },
   });
@@ -186,67 +291,151 @@
     uret: {
       "enenv.must": [
         z => { const [eylem, iyi] = sec(KURALLAR);
-          return S({ kaz: "enenv.must", duzey: "uygulama", zorluk: 1, soru: `Complete the environment rule:<br><b>You ___ ${eylem}.</b>`, dogru: iyi ? "must" : "mustn't",
+          return S(zengin({ kaz: "enenv.must", duzey: "uygulama", zorluk: 1, soru: `Complete the environment rule:<br><b>You ___ ${eylem}.</b>`, dogru: iyi ? "must" : "mustn't",
             yanlis: [[iyi ? "mustn't" : "must", "kavrama", iyi ? "Bu davranış çevreyi korur; yasak değil, yapılması gereken bir şeydir." : "Bu davranış çevreye zarar verir; yapılmaması gerekir."], [iyi ? "must to" : "mustn't to", "bilgi", "must / mustn't sonrasında “to” kullanılmaz."], [iyi ? "musts" : "don't must", "bilgi", iyi ? "must hiçbir öznede -s almaz." : "must'ın olumsuzu “mustn't” olur; “don't must” yanlıştır."]],
             ipucu: "Bu davranış çevreye yararlı mı, zararlı mı?", cozum: [`Davranış: “${eylem}”.`, iyi ? "Bu davranış çevreyi korur; yapılması gerekir." : "Bu davranış çevreye zarar verir; yasaklanmalıdır.", `Cevap: You ${iyi ? "must" : "mustn't"} ${eylem}.`],
-            kural: "must + V1 = -meli (zorunluluk, kural). mustn't + V1 = -memeli (yasak)." }); },
+            kural: "must + V1 = -meli (zorunluluk, kural). mustn't + V1 = -memeli (yasak)." })); },
         z => { const [ozne, dogru] = sec(OZNE), [eylem] = sec(KURALLAR.filter(k => k[1]));
-          return S({ kaz: "enenv.must", duzey: "uygulama", zorluk: 1, soru: `Choose the correct answer:<br><b>${ozne} ___ ${eylem}.</b>`, dogru,
+          return S(zengin({ kaz: "enenv.must", duzey: "uygulama", zorluk: 1, soru: `Choose the correct answer:<br><b>${ozne} ___ ${eylem}.</b>`, dogru,
             yanlis: [[dogru === "have to" ? "has to" : "have to", "kavrama", dogru === "have to" ? `“${ozne}” ile “have to” kullanılır; “has to” yalnızca he/she/it içindir.` : `“${ozne}” üçüncü tekil şahıstır (he/she/it); “has to” gerekir.`], ["haves to", "bilgi", "Böyle bir biçim yoktur: have to ya da has to."], ["must to", "bilgi", "must'tan sonra “to” gelmez."]],
             ipucu: "Özne he/she/it gibi mi, yoksa I/you/we/they gibi mi?", cozum: [`Özne: ${ozne}.`, dogru === "has to" ? "Bu özne üçüncü tekil şahıstır (he/she/it)." : "Bu özne I / you / we / they grubundadır.", `Cevap: ${ozne} ${dogru} ${eylem}.`],
-            kural: "I/you/we/they + have to; he/she/it + has to (+ V1)." }); },
+            kural: "I/you/we/they + have to; he/she/it + has to (+ V1)." })); },
         Q("enenv.must", "aciklama", 1, "Look at the sign in the park: <b>🚯 NO LITTERING</b>. What does it mean?", "You mustn't throw rubbish here.",
           [["You must throw rubbish here.", "kavrama", "Tabela bir yasağı gösteriyor; “must” zorunluluktur."], ["You have to throw rubbish here.", "kavrama", "“have to” zorunluluk anlatır; tabela ise yasaklıyor."], ["You must pick flowers here.", "dikkat", "Tabela çiçeklerle ilgili değil, çöple ilgili."]],
-          "“NO …” ile başlayan tabelalar yasak bildirir.", ["“NO LITTERING” yere çöp atmanın yasak olduğunu gösterir.", "Yasaklar “mustn't” ile anlatılır.", "Cevap: You mustn't throw rubbish here."], { kural: "Yasak tabelaları (NO …) → You mustn't …" }),
+          "“NO …” ile başlayan tabelalar yasak bildirir.", [
+           "🔎 Soruyu anlayalım: “NO LITTERING” yere çöp atmanın yasak olduğunu gösterir.",
+           "💡 Hatırlayalım: Yasaklar “mustn't” ile anlatılır.",
+           "✏️ Seçenekleri tek tek inceleyelim: “You must throw rubbish here.” → Tabela bir yasağı gösteriyor; “must” zorunluluktur.",
+           "✏️ “You have to throw rubbish here.” → “have to” zorunluluk anlatır; tabela ise yasaklıyor.",
+           "✅ Sonuç: You mustn't throw rubbish here.",
+           "🔁 Kontrol edelim: Son seçenek “You must pick flowers here.” de aradığımız cevap değil: Tabela çiçeklerle ilgili değil, çöple ilgili. Geriye yalnızca “You mustn't throw rubbish here.” kalıyor."], { kural: "Yasak tabelaları (NO …) → You mustn't …", dogruNeden: "Yasaklar “mustn't” ile anlatılır." }),
         Q("enenv.must", "uygulama", 2, "Which sentence is <b>correct</b>?", "We must save energy.",
           [["We must to save energy.", "bilgi", "must'tan sonra “to” gelmez."], ["We musts save energy.", "bilgi", "must -s almaz."], ["We must saving energy.", "bilgi", "must'tan sonra fiilin yalın hâli gelir, -ing değil."]],
-          "must + fiilin yalın hâli.", ["must bir yardımcı fiildir, -s ya da “to” almaz.", "Sonrasında fiil yalın gelir: save.", "Doğru: We must save energy."], { kural: "must + V1 (must go, must save, must recycle)" }),
+          "must + fiilin yalın hâli.", [
+           "🔎 Soruyu anlayalım: must bir yardımcı fiildir, -s ya da “to” almaz.",
+           "💡 Hatırlayalım: Sonrasında fiil yalın gelir: save.",
+           "✏️ Seçenekleri tek tek inceleyelim: “We must to save energy.” → must'tan sonra “to” gelmez.",
+           "✏️ “We musts save energy.” → must -s almaz.",
+           "✅ Sonuç: We must save energy.",
+           "🔁 Kontrol edelim: Son seçenek “We must saving energy.” de aradığımız cevap değil: must'tan sonra fiilin yalın hâli gelir, -ing değil. Geriye yalnızca “We must save energy.” kalıyor."], { kural: "must + V1 (must go, must save, must recycle)", dogruNeden: "Sonrasında fiil yalın gelir: save." }),
         Q("enenv.must", "transfer", 2, "Read the school rules and answer.<br><i>GREEN SCHOOL RULES<br>1. Students must turn off the lights after class.<br>2. Students mustn't waste paper.<br>3. Students have to put plastic bottles in the yellow bin.</i><br>Which one is <b>not</b> allowed?", "wasting paper",
           [["turning off the lights", "dikkat", "Işıkları kapatmak bir zorunluluktur (must), yasak değildir."], ["putting bottles in the yellow bin", "dikkat", "Bu bir zorunluluktur (have to)."], ["recycling plastic", "dikkat", "Plastiği geri dönüştürmek kurallarla teşvik ediliyor."]],
-          "Yasak hangi kelimeyle anlatılır?", ["Yasaklar “mustn't” ile anlatılır.", "Kural 2: Students mustn't waste paper.", "İzin verilmeyen davranış: kâğıt israf etmek (wasting paper)."], { kural: "must / have to = zorunlu; mustn't = yasak (not allowed)." }),
+          "Yasak hangi kelimeyle anlatılır?", [
+           "🔎 Soruyu anlayalım: Yasaklar “mustn't” ile anlatılır.",
+           "💡 Hatırlayalım: Kural 2: Students mustn't waste paper.",
+           "✏️ Seçenekleri tek tek inceleyelim: “turning off the lights” → Işıkları kapatmak bir zorunluluktur (must), yasak değildir.",
+           "✏️ “putting bottles in the yellow bin” → Bu bir zorunluluktur (have to).",
+           "✅ Sonuç: İzin verilmeyen davranış: kâğıt israf etmek (wasting paper).",
+           "🔁 Kontrol edelim: Son seçenek “recycling plastic” de aradığımız cevap değil: Plastiği geri dönüştürmek kurallarla teşvik ediliyor. Geriye yalnızca “wasting paper” kalıyor."], { kural: "must / have to = zorunlu; mustn't = yasak (not allowed).", dogruNeden: "Kural 2: Students mustn't waste paper." }),
         Q("enenv.must", "uygulama", 2, "Choose the correct question tag: <b>We must protect the animals, ___?</b>", "mustn't we",
           [["must we", "kavrama", "Cümle olumlu; soru eklentisi olumsuz olmalı."], ["don't we", "kavrama", "Cümlede yardımcı fiil “must”; eklentide de must kullanılır."], ["mustn't they", "dikkat", "Özne “we”; eklentide de “we” olmalı."]],
-          "Olumlu cümle → olumsuz eklenti, aynı yardımcı fiil.", ["Yardımcı fiil “must”, özne “we”.", "Olumlu cümleye olumsuz eklenti gelir: mustn't.", "Cevap: mustn't we?"], { kural: "We must…, mustn't we? · You mustn't…, must you?" }),
+          "Olumlu cümle → olumsuz eklenti, aynı yardımcı fiil.", [
+           "🔎 Soruyu anlayalım: Yardımcı fiil “must”, özne “we”.",
+           "💡 Hatırlayalım: Olumlu cümleye olumsuz eklenti gelir: mustn't.",
+           "✏️ Seçenekleri tek tek inceleyelim: “must we” → Cümle olumlu; soru eklentisi olumsuz olmalı.",
+           "✏️ “don't we” → Cümlede yardımcı fiil “must”; eklentide de must kullanılır.",
+           "✅ Sonuç: mustn't we?",
+           "🔁 Kontrol edelim: Son seçenek “mustn't they” de aradığımız cevap değil: Özne “we”; eklentide de “we” olmalı. Geriye yalnızca “mustn't we” kalıyor."], { kural: "We must…, mustn't we? · You mustn't…, must you?", dogruNeden: "Olumlu cümleye olumsuz eklenti gelir: mustn't." }),
       ],
       "enenv.vocab": [
         kelime("enenv.vocab", ENV_SOZ),
         Q("enenv.vocab", "aciklama", 1, "People cut down too many trees and forests disappear. What is this problem called?", "deforestation",
           [["global warming", "kavrama", "Küresel ısınma dünyanın sıcaklığının artmasıdır."], ["recycling", "kavrama", "Recycling bir sorun değil, çözümdür."], ["water pollution", "kavrama", "Su kirliliği suların kirlenmesidir."]],
-          "Forest kelimesini hatırla.", ["Tanım: ağaçların kesilmesi ve ormanların yok olması.", "de- + forest + -ation = deforestation.", "Cevap: deforestation."], { kural: "deforestation = ormansızlaşma" }),
+          "Forest kelimesini hatırla.", [
+           "🔎 Soruyu anlayalım: Tanım: ağaçların kesilmesi ve ormanların yok olması.",
+           "💡 Hatırlayalım: de- + forest + -ation = deforestation.",
+           "✏️ Seçenekleri tek tek inceleyelim: “global warming” → Küresel ısınma dünyanın sıcaklığının artmasıdır.",
+           "✏️ “recycling” → Recycling bir sorun değil, çözümdür.",
+           "✅ Sonuç: deforestation.",
+           "🔁 Kontrol edelim: Son seçenek “water pollution” de aradığımız cevap değil: Su kirliliği suların kirlenmesidir. Geriye yalnızca “deforestation” kalıyor."], { kural: "deforestation = ormansızlaşma", dogruNeden: "de- + forest + -ation = deforestation." }),
         Q("enenv.vocab", "aciklama", 1, "The Earth is getting hotter and the ice at the poles is melting. What is this problem?", "global warming",
           [["deforestation", "kavrama", "Ormansızlaşma ağaçların kesilmesidir."], ["air pollution", "kavrama", "Hava kirliliği küresel ısınmaya katkı yapar ama tanım dünyanın ısınmasını anlatıyor."], ["drought", "kavrama", "Kuraklık uzun süre yağmur yağmamasıdır."]],
-          "Hotter = daha sıcak.", ["Dünyanın ısınması ve buzulların erimesi anlatılıyor.", "Bu soruna “global warming” denir.", "Cevap: global warming."], { kural: "global warming = küresel ısınma" }),
+          "Hotter = daha sıcak.", [
+           "🔎 Soruyu anlayalım: Dünyanın ısınması ve buzulların erimesi anlatılıyor.",
+           "💡 Hatırlayalım: Bu soruna “global warming” denir.",
+           "✏️ Seçenekleri tek tek inceleyelim: “deforestation” → Ormansızlaşma ağaçların kesilmesidir.",
+           "✏️ “air pollution” → Hava kirliliği küresel ısınmaya katkı yapar ama tanım dünyanın ısınmasını anlatıyor.",
+           "✅ Sonuç: global warming.",
+           "🔁 Kontrol edelim: Son seçenek “drought” de aradığımız cevap değil: Kuraklık uzun süre yağmur yağmamasıdır. Geriye yalnızca “global warming” kalıyor."], { kural: "global warming = küresel ısınma", dogruNeden: "Bu soruna “global warming” denir." }),
         Q("enenv.vocab", "uygulama", 1, "Complete: <b>Don't throw away the glass bottles. We can ___ them.</b>", "recycle",
           [["pollute", "kavrama", "“pollute” kirletmek demektir; olumsuz bir davranıştır."], ["waste", "kavrama", "“waste” israf etmektir."], ["cut down", "kavrama", "“cut down” ağaç kesmek için kullanılır."]],
-          "Şişeleri atmak yerine ne yapabiliriz?", ["Cümle şişeleri atmamamızı söylüyor.", "Şişeleri geri dönüştürebiliriz: recycle.", "Cevap: We can recycle them."], { kural: "recycle = geri dönüştürmek, reuse = yeniden kullanmak, reduce = azaltmak" }),
+          "Şişeleri atmak yerine ne yapabiliriz?", [
+           "🔎 Soruyu anlayalım: Cümle şişeleri atmamamızı söylüyor.",
+           "💡 Hatırlayalım: Şişeleri geri dönüştürebiliriz: recycle.",
+           "✏️ Seçenekleri tek tek inceleyelim: “pollute” → “pollute” kirletmek demektir; olumsuz bir davranıştır.",
+           "✏️ “waste” → “waste” israf etmektir.",
+           "✅ Sonuç: We can recycle them.",
+           "🔁 Kontrol edelim: Son seçenek “cut down” de aradığımız cevap değil: “cut down” ağaç kesmek için kullanılır. Geriye yalnızca “recycle” kalıyor."], { kural: "recycle = geri dönüştürmek, reuse = yeniden kullanmak, reduce = azaltmak", dogruNeden: "Şişeleri geri dönüştürebiliriz: recycle." }),
         Q("enenv.vocab", "uygulama", 2, "Which word does <b>not</b> belong to the group?<br><i>pollution – deforestation – global warming – recycling</i>", "recycling",
           [["pollution", "dikkat", "Kirlilik bir çevre sorunudur; gruba uyar."], ["deforestation", "dikkat", "Ormansızlaşma bir çevre sorunudur; gruba uyar."], ["global warming", "dikkat", "Küresel ısınma bir çevre sorunudur; gruba uyar."]],
-          "Üçü sorun, biri çözüm.", ["pollution, deforestation, global warming çevre sorunlarıdır.", "recycling ise bir çözümdür.", "Gruba uymayan: recycling."], { kural: "Problems: pollution, deforestation, global warming. Solutions: recycling, planting trees, saving energy." }),
+          "Üçü sorun, biri çözüm.", [
+           "🔎 Soruyu anlayalım: pollution, deforestation, global warming çevre sorunlarıdır.",
+           "💡 Hatırlayalım: recycling ise bir çözümdür.",
+           "✏️ Seçenekleri tek tek inceleyelim: “pollution” → Kirlilik bir çevre sorunudur; gruba uyar.",
+           "✏️ “deforestation” → Ormansızlaşma bir çevre sorunudur; gruba uyar.",
+           "✅ Sonuç: Gruba uymayan: recycling.",
+           "🔁 Kontrol edelim: Son seçenek “global warming” de aradığımız cevap değil: Küresel ısınma bir çevre sorunudur; gruba uyar. Geriye yalnızca “recycling” kalıyor."], { kural: "Problems: pollution, deforestation, global warming. Solutions: recycling, planting trees, saving energy.", dogruNeden: "recycling ise bir çözümdür." }),
         z => { const veri = [["Paper", R(10, 40)], ["Plastic", R(10, 40)], ["Glass", R(10, 40)], ["Metal", R(10, 40)]];
           const s = [...veri].sort((a, b) => a[1] - b[1]); if (s[0][1] === s[1][1]) return null;
-          return S({ kaz: "enenv.vocab", duzey: "uygulama", zorluk: 2, soru: "Our class collected rubbish for recycling. The graph shows the results. Which material did we collect the <b>least</b>?", gorsel: G.sutun(veri, { baslik: "Recycling in our class", birim: "kg" }),
+          return S(zengin({ kaz: "enenv.vocab", duzey: "uygulama", zorluk: 2, soru: "Our class collected rubbish for recycling. The graph shows the results. Which material did we collect the <b>least</b>?", gorsel: G.sutun(veri, { baslik: "Recycling in our class", birim: "kg" }),
             dogru: s[0][0], yanlis: s.slice(1).map(v => [v[0], v === s[3] ? "kavrama" : "dikkat", v === s[3] ? `“least” en az demektir; ${v[0]} (${v[1]} kg) en çok toplanandır.` : `${v[0]} için ${v[1]} kg toplandı; en kısa sütun bu değil.`]),
-            ipucu: "least = en az. En kısa sütunu bul.", cozum: ["“the least” = en az.", `En kısa sütun: ${s[0][0]} (${s[0][1]} kg).`, `Cevap: ${s[0][0]}.`], kural: "the most = en çok, the least = en az" }); },
+            ipucu: "least = en az. En kısa sütunu bul.", cozum: ["“the least” = en az.", `En kısa sütun: ${s[0][0]} (${s[0][1]} kg).`, `Cevap: ${s[0][0]}.`], kural: "the most = en çok, the least = en az" })); },
       ],
       "enenv.solution": [
         Q("enenv.solution", "aciklama", 1, "What is a <b>solution</b> for air pollution?", "using public transport and bikes",
           [["using more cars", "kavrama", "Daha çok araba daha çok egzoz gazı demektir; kirliliği artırır."], ["building more factories", "kavrama", "Fabrikalar hava kirliliğine neden olur."], ["burning rubbish", "kavrama", "Çöp yakmak havayı kirletir."]],
-          "Havayı kirleten şeyleri azaltan seçenek hangisi?", ["Hava kirliliğinin nedenleri: arabalar, fabrikalar, çöp yakmak.", "Toplu taşıma ve bisiklet kullanmak egzoz gazını azaltır.", "Çözüm: using public transport and bikes."], { kural: "Air pollution → use public transport, ride bikes, plant trees." }),
+          "Havayı kirleten şeyleri azaltan seçenek hangisi?", [
+           "🔎 Soruyu anlayalım: Hava kirliliğinin nedenleri: arabalar, fabrikalar, çöp yakmak.",
+           "💡 Hatırlayalım: Toplu taşıma ve bisiklet kullanmak egzoz gazını azaltır.",
+           "✏️ Seçenekleri tek tek inceleyelim: “using more cars” → Daha çok araba daha çok egzoz gazı demektir; kirliliği artırır.",
+           "✏️ “building more factories” → Fabrikalar hava kirliliğine neden olur.",
+           "✅ Sonuç: Çözüm: using public transport and bikes.",
+           "🔁 Kontrol edelim: Son seçenek “burning rubbish” de aradığımız cevap değil: Çöp yakmak havayı kirletir. Geriye yalnızca “using public transport and bikes” kalıyor."], { kural: "Air pollution → use public transport, ride bikes, plant trees.", dogruNeden: "Toplu taşıma ve bisiklet kullanmak egzoz gazını azaltır." }),
         Q("enenv.solution", "aciklama", 2, "Match the problem with its <b>effect</b>: <b>deforestation</b> → ?", "Animals lose their homes.",
           [["The sea gets dirty.", "kavrama", "Denizin kirlenmesi su kirliliğinin sonucudur."], ["We save energy.", "kavrama", "Bu bir sonuç değil, olumlu bir davranıştır."], ["People recycle more.", "kavrama", "Bu bir çözümdür, ormansızlaşmanın sonucu değildir."]],
-          "Ağaçlar kesilince ormandaki hayvanlara ne olur?", ["Deforestation = ağaçların kesilmesi.", "Ormanlar birçok hayvanın evidir.", "Sonuç (effect): Animals lose their homes."], { kural: "effect = sonuç / etki. Problem → effect → solution." }),
+          "Ağaçlar kesilince ormandaki hayvanlara ne olur?", [
+           "🔎 Soruyu anlayalım: Deforestation = ağaçların kesilmesi.",
+           "💡 Hatırlayalım: Ormanlar birçok hayvanın evidir.",
+           "✏️ Seçenekleri tek tek inceleyelim: “The sea gets dirty.” → Denizin kirlenmesi su kirliliğinin sonucudur.",
+           "✏️ “We save energy.” → Bu bir sonuç değil, olumlu bir davranıştır.",
+           "✅ Sonuç: Sonuç (effect): Animals lose their homes.",
+           "🔁 Kontrol edelim: Son seçenek “People recycle more.” de aradığımız cevap değil: Bu bir çözümdür, ormansızlaşmanın sonucu değildir. Geriye yalnızca “Animals lose their homes.” kalıyor."], { kural: "effect = sonuç / etki. Problem → effect → solution.", dogruNeden: "Ormanlar birçok hayvanın evidir." }),
         Q("enenv.solution", "transfer", 1, "Complete the dialogue:<br>— The lights are on, but there is nobody in the classroom.<br>— ___", "We must turn them off. Let's save energy!",
           [["We must turn them on.", "kavrama", "Işıklar zaten açık; boş sınıfta kapatılmalı."], ["We mustn't save energy.", "kavrama", "Enerji tasarrufu iyi bir davranıştır; yasaklanmaz."], ["Yes, please.", "kavrama", "Bu, bir teklif cevabıdır; duruma uygun değil."]],
-          "Boş sınıfta açık ışık neye neden olur?", ["Boş sınıfta ışık açık kalınca enerji israf edilir.", "Çözüm: ışıkları kapatmak (turn off).", "Cevap: We must turn them off. Let's save energy!"], { kural: "turn on = açmak, turn off = kapatmak" }),
+          "Boş sınıfta açık ışık neye neden olur?", [
+           "🔎 Soruyu anlayalım: Boş sınıfta ışık açık kalınca enerji israf edilir.",
+           "💡 Hatırlayalım: Çözüm: ışıkları kapatmak (turn off).",
+           "✏️ Seçenekleri tek tek inceleyelim: “We must turn them on.” → Işıklar zaten açık; boş sınıfta kapatılmalı.",
+           "✏️ “We mustn't save energy.” → Enerji tasarrufu iyi bir davranıştır; yasaklanmaz.",
+           "✅ Sonuç: We must turn them off. Let's save energy!",
+           "🔁 Kontrol edelim: Son seçenek “Yes, please.” de aradığımız cevap değil: Bu, bir teklif cevabıdır; duruma uygun değil. Geriye yalnızca “We must turn them off. Let's save energy!” kalıyor."], { kural: "turn on = açmak, turn off = kapatmak", dogruNeden: "Çözüm: ışıkları kapatmak (turn off)." }),
         Q("enenv.solution", "transfer", 2, "Read the text and answer the question.<br><i>Every year people throw millions of plastic bags into the sea. Sea turtles think the bags are food and eat them. This is very dangerous for them. We must use cloth bags when we go shopping.</i><br>What is the <b>solution</b> in the text?", "using cloth bags",
           [["throwing bags into the sea", "dikkat", "Bu, metindeki sorundur."], ["sea turtles eating bags", "dikkat", "Bu, sorunun sonucudur (effect)."], ["buying more plastic bags", "kavrama", "Daha çok plastik poşet sorunu büyütür."]],
-          "“We must …” ile başlayan cümleyi bul.", ["Sorun: insanlar denize plastik poşet atıyor.", "Sonuç: deniz kaplumbağaları poşetleri yiyor.", "Çözüm (We must…): bez çanta kullanmak — using cloth bags."], { kural: "Metinde problem, effect ve solution cümlelerini ayır." }),
+          "“We must …” ile başlayan cümleyi bul.", [
+           "🔎 Soruyu anlayalım: Sorun: insanlar denize plastik poşet atıyor.",
+           "💡 Hatırlayalım: Sonuç: deniz kaplumbağaları poşetleri yiyor.",
+           "✏️ Seçenekleri tek tek inceleyelim: “throwing bags into the sea” → Bu, metindeki sorundur.",
+           "✏️ “sea turtles eating bags” → Bu, sorunun sonucudur (effect).",
+           "✅ Sonuç: Çözüm (We must…): bez çanta kullanmak — using cloth bags.",
+           "🔁 Kontrol edelim: Son seçenek “buying more plastic bags” de aradığımız cevap değil: Daha çok plastik poşet sorunu büyütür. Geriye yalnızca “using cloth bags” kalıyor."], { kural: "Metinde problem, effect ve solution cümlelerini ayır.", dogruNeden: "Sonuç: deniz kaplumbağaları poşetleri yiyor." }),
         Q("enenv.solution", "uygulama", 2, "Which one is an example of <b>reuse</b>?", "using an old jar as a pencil holder",
           [["throwing the jar into the bin", "kavrama", "Atmak yeniden kullanmak değildir."], ["buying a new jar every day", "kavrama", "Bu tüketimi artırır, yeniden kullanım değildir."], ["breaking the jar", "kavrama", "Kırmak yeniden kullanmak değildir."]],
-          "reuse = bir eşyayı yeniden, başka bir iş için kullanmak.", ["“reuse” yeniden kullanmak demektir.", "Eski bir kavanozu kalemlik yapmak onu yeniden kullanmaktır.", "Cevap: using an old jar as a pencil holder."], { kural: "Reduce (azalt), Reuse (yeniden kullan), Recycle (geri dönüştür)." }),
+          "reuse = bir eşyayı yeniden, başka bir iş için kullanmak.", [
+           "🔎 Soruyu anlayalım: “reuse” yeniden kullanmak demektir.",
+           "💡 Hatırlayalım: Eski bir kavanozu kalemlik yapmak onu yeniden kullanmaktır.",
+           "✏️ Seçenekleri tek tek inceleyelim: “throwing the jar into the bin” → Atmak yeniden kullanmak değildir.",
+           "✏️ “buying a new jar every day” → Bu tüketimi artırır, yeniden kullanım değildir.",
+           "✅ Sonuç: using an old jar as a pencil holder.",
+           "🔁 Kontrol edelim: Son seçenek “breaking the jar” de aradığımız cevap değil: Kırmak yeniden kullanmak değildir. Geriye yalnızca “using an old jar as a pencil holder” kalıyor."], { kural: "Reduce (azalt), Reuse (yeniden kullan), Recycle (geri dönüştür).", dogruNeden: "Eski bir kavanozu kalemlik yapmak onu yeniden kullanmaktır." }),
         Q("enenv.solution", "baglanti", 2, "Theme 5'i hatırla: Şehirler için kullanılan sıfatlardan hangisi <b>air pollution</b> ile ilgilidir? <b>There are a lot of factories and cars. The city is ___.</b>", "polluted",
           [["clean", "kavrama", "Fabrika ve araba çok olan bir şehrin havası temiz olmaz."], ["quiet", "kavrama", "“quiet” sessiz demektir; kirlilikle ilgili değildir."], ["historic", "kavrama", "“historic” tarihî demektir."]],
-          "Fabrika ve araba havayı ne yapar?", ["Fabrikalar ve arabalar havayı kirletir.", "Kirli = polluted.", "Cevap: The city is polluted."], { kural: "pollute (kirletmek) → pollution (kirlilik) → polluted (kirli)" }),
+          "Fabrika ve araba havayı ne yapar?", [
+           "🔎 Soruyu anlayalım: Fabrikalar ve arabalar havayı kirletir.",
+           "💡 Hatırlayalım: Kirli = polluted.",
+           "✏️ Seçenekleri tek tek inceleyelim: “clean” → Fabrika ve araba çok olan bir şehrin havası temiz olmaz.",
+           "✏️ “quiet” → “quiet” sessiz demektir; kirlilikle ilgili değildir.",
+           "✅ Sonuç: The city is polluted.",
+           "🔁 Kontrol edelim: Son seçenek “historic” de aradığımız cevap değil: “historic” tarihî demektir. Geriye yalnızca “polluted” kalıyor."], { kural: "pollute (kirletmek) → pollution (kirlilik) → polluted (kirli)", dogruNeden: "Kirli = polluted." }),
       ],
     },
   });
@@ -256,7 +445,7 @@
   const GEZEGEN = [
     ["Mercury", "Merkür", 1, "It is the closest planet to the Sun and it is the smallest planet.", 5],
     ["Venus", "Venüs", 2, "It is the hottest planet in the solar system.", 8],
-    ["Earth", "Dünya", 3, "It is the only planet with life. It has a lot of water.", 8.5],
+    ["Earth", "Dünya", 3, "It is our home planet. It has a lot of water and life.", 8.5],
     ["Mars", "Mars", 4, "People call it “the Red Planet”.", 6],
     ["Jupiter", "Jüpiter", 5, "It is the biggest planet in the solar system.", 20],
     ["Saturn", "Satürn", 6, "It has big and beautiful rings around it.", 16],
@@ -310,26 +499,56 @@
         kelime("enpla.vocab", PLA_SOZ),
         Q("enpla.vocab", "aciklama", 1, "A person who travels to space is called ___.", "an astronaut",
           [["a pilot", "kavrama", "Pilot uçak kullanır; uzaya giden kişi astronottur."], ["a telescope", "kavrama", "Telescope bir araçtır, kişi değildir."], ["a satellite", "kavrama", "Satellite (uydu) bir gök cismi ya da araçtır."]],
-          "Uzaya giden kişiye ne denir?", ["Tanım: uzaya giden kişi.", "Bu kişiye astronaut denir.", "Cevap: an astronaut (sesli harfle başladığı için “an”)."], { kural: "astronaut = astronot; an + sesli harf sesi" }),
+          "Uzaya giden kişiye ne denir?", [
+           "🔎 Soruyu anlayalım: Tanım: uzaya giden kişi.",
+           "💡 Hatırlayalım: Bu kişiye astronaut denir.",
+           "✏️ Seçenekleri tek tek inceleyelim: “a pilot” → Pilot uçak kullanır; uzaya giden kişi astronottur.",
+           "✏️ “a telescope” → Telescope bir araçtır, kişi değildir.",
+           "✅ Sonuç: an astronaut (sesli harfle başladığı için “an”).",
+           "🔁 Kontrol edelim: Son seçenek “a satellite” de aradığımız cevap değil: Satellite (uydu) bir gök cismi ya da araçtır. Geriye yalnızca “an astronaut” kalıyor."], { kural: "astronaut = astronot; an + sesli harf sesi", dogruNeden: "Bu kişiye astronaut denir." }),
         Q("enpla.vocab", "aciklama", 1, "We use it to look at the stars and planets. What is it?", "a telescope",
           [["a rocket", "kavrama", "Roket uzaya gitmek için kullanılır."], ["a map", "kavrama", "Harita yol bulmak içindir."], ["a crater", "kavrama", "Krater, gök cisimlerinin yüzeyindeki çukurdur."]],
-          "Uzaktaki cisimleri büyütüp gösteren araç.", ["Yıldızlara ve gezegenlere bakmak için bir araç gerekir.", "Bu araç teleskoptur.", "Cevap: a telescope."], { kural: "telescope = teleskop" }),
+          "Uzaktaki cisimleri büyütüp gösteren araç.", [
+           "🔎 Soruyu anlayalım: Yıldızlara ve gezegenlere bakmak için bir araç gerekir.",
+           "💡 Hatırlayalım: Bu araç teleskoptur.",
+           "✏️ Seçenekleri tek tek inceleyelim: “a rocket” → Roket uzaya gitmek için kullanılır.",
+           "✏️ “a map” → Harita yol bulmak içindir.",
+           "✅ Sonuç: a telescope.",
+           "🔁 Kontrol edelim: Son seçenek “a crater” de aradığımız cevap değil: Krater, gök cisimlerinin yüzeyindeki çukurdur. Geriye yalnızca “a telescope” kalıyor."], { kural: "telescope = teleskop", dogruNeden: "Bu araç teleskoptur." }),
         Q("enpla.vocab", "uygulama", 1, "Complete: <b>The Moon goes around the Earth. It is the Earth's ___.</b>", "satellite",
           [["star", "kavrama", "Ay ışık üretmez; yıldız değildir."], ["planet", "kavrama", "Ay bir gezegenin etrafında döner; gezegen değil uydudur."], ["sun", "kavrama", "Güneş bir yıldızdır; Ay değildir."]],
-          "Bir gezegenin etrafında dönen gök cismine ne denir?", ["Ay, Dünya'nın etrafında döner.", "Bir gezegenin etrafında dönen gök cismine uydu (satellite) denir.", "Cevap: satellite."], { kural: "satellite = uydu. The Moon is the Earth's natural satellite." }),
+          "Bir gezegenin etrafında dönen gök cismine ne denir?", [
+           "🔎 Soruyu anlayalım: Ay, Dünya'nın etrafında döner.",
+           "💡 Hatırlayalım: Bir gezegenin etrafında dönen gök cismine uydu (satellite) denir.",
+           "✏️ Seçenekleri tek tek inceleyelim: “star” → Ay ışık üretmez; yıldız değildir.",
+           "✏️ “planet” → Ay bir gezegenin etrafında döner; gezegen değil uydudur.",
+           "✅ Sonuç: satellite.",
+           "🔁 Kontrol edelim: Son seçenek “sun” de aradığımız cevap değil: Güneş bir yıldızdır; Ay değildir. Geriye yalnızca “satellite” kalıyor."], { kural: "satellite = uydu. The Moon is the Earth's natural satellite.", dogruNeden: "Bir gezegenin etrafında dönen gök cismine uydu (satellite) denir." }),
         Q("enpla.vocab", "uygulama", 2, "Which word does <b>not</b> belong to the group?<br><i>Venus – Jupiter – Saturn – the Moon</i>", "the Moon",
           [["Venus", "dikkat", "Venüs bir gezegendir."], ["Jupiter", "dikkat", "Jüpiter bir gezegendir."], ["Saturn", "dikkat", "Satürn bir gezegendir."]],
-          "Üçü gezegen, biri uydu.", ["Venus, Jupiter ve Saturn gezegendir.", "The Moon ise Dünya'nın uydusudur.", "Gruba uymayan: the Moon."], { kural: "Planets: Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune." }),
+          "Üçü gezegen, biri uydu.", [
+           "🔎 Soruyu anlayalım: Venus, Jupiter ve Saturn gezegendir.",
+           "💡 Hatırlayalım: The Moon ise Dünya'nın uydusudur.",
+           "✏️ Seçenekleri tek tek inceleyelim: “Venus” → Venüs bir gezegendir.",
+           "✏️ “Jupiter” → Jüpiter bir gezegendir.",
+           "✅ Sonuç: Gruba uymayan: the Moon.",
+           "🔁 Kontrol edelim: Son seçenek “Saturn” de aradığımız cevap değil: Satürn bir gezegendir. Geriye yalnızca “the Moon” kalıyor."], { kural: "Planets: Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune.", dogruNeden: "The Moon ise Dünya'nın uydusudur." }),
         Q("enpla.vocab", "transfer", 2, "Read and answer.<br><i>Hi! I'm Defne. I want to be an astronaut. I want to fly to space in a rocket and walk on the Moon. I love looking at the stars with my telescope every night.</i><br>What does Defne use every night?", "a telescope",
           [["a rocket", "dikkat", "Defne roketle uzaya gitmek istiyor; her gece kullanmıyor."], ["a spaceship", "dikkat", "Metinde uzay gemisinden söz edilmiyor."], ["a map", "dikkat", "Metinde harita yok."]],
-          "“every night” ifadesini metinde bul.", ["Sorudaki anahtar ifade: every night.", "“I love looking at the stars with my telescope every night.”", "Cevap: a telescope."], { kural: "want to + V1 = -mek istemek (Theme 5'ten hatırla)." }),
+          "“every night” ifadesini metinde bul.", [
+           "🔎 Soruyu anlayalım: Sorudaki anahtar ifade: every night.",
+           "💡 Hatırlayalım: “I love looking at the stars with my telescope every night.”",
+           "✏️ Seçenekleri tek tek inceleyelim: “a rocket” → Defne roketle uzaya gitmek istiyor; her gece kullanmıyor.",
+           "✏️ “a spaceship” → Metinde uzay gemisinden söz edilmiyor.",
+           "✅ Sonuç: a telescope.",
+           "🔁 Kontrol edelim: Son seçenek “a map” de aradığımız cevap değil: Metinde harita yok. Geriye yalnızca “a telescope” kalıyor."], { kural: "want to + V1 = -mek istemek (Theme 5'ten hatırla).", dogruNeden: "“I love looking at the stars with my telescope every night.”" }),
       ],
       "enpla.order": [
         z => { const g = sec(GEZEGEN), n = g[2], dig = karistir(GEZEGEN.filter(x => x !== g)).slice(0, 3);
-          return S({ kaz: "enpla.order", duzey: "uygulama", zorluk: 1, soru: `Look at the picture. Which planet is the <b>${SIRA[n - 1]}</b> planet from the Sun?`, gorsel: gunesSistemi(false),
+          return S(zengin({ kaz: "enpla.order", duzey: "uygulama", zorluk: 1, soru: `Look at the picture. Which planet is the <b>${SIRA[n - 1]}</b> planet from the Sun?`, gorsel: gunesSistemi(false),
             dogru: g[0], yanlis: dig.map(x => [x[0], "bilgi", `${x[0]}, Güneş'ten itibaren ${SIRA[x[2] - 1]} (${x[2]}.) gezegendir.`]),
             ipucu: "Sıra: Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune.", cozum: [`“${SIRA[n - 1]}” = ${n}.`, "Gezegenleri Güneş'ten başlayarak say: Mercury (1), Venus (2), Earth (3), Mars (4), Jupiter (5), Saturn (6), Uranus (7), Neptune (8).", `${n}. gezegen: ${g[0]}.`],
-            kural: "My Very Easy Method Just Speeds Up Naming → Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune" }); },
+            kural: "My Very Easy Method Just Speeds Up Naming → Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune" })); },
         z => { const g = sec(GEZEGEN), n = g[2];
           const yan = [];
           if (n > 1) yan.push([SIRA[n - 2], "bilgi", `${SIRA[n - 2]} = ${n - 1}.; ${GEZEGEN[n - 2][0]} bu sıradadır.`]);
@@ -338,39 +557,81 @@
           const yanlisYazim = { first: "firstth", second: "secondth", third: "threeth", fourth: "fourh", fifth: "fiveth", sixth: "sixt", seventh: "sevent", eighth: "eightth" };
           yan.push([yanlisYazim[SIRA[n - 1]], "dikkat", `Yazım hatası var; doğrusu “${SIRA[n - 1]}”.`]);
           if (n > 2) yan.push([SIRA[n - 3], "bilgi", `${SIRA[n - 3]} = ${n - 2}.; ${GEZEGEN[n - 3][0]} bu sıradadır.`]);
-          return S({ kaz: "enpla.order", duzey: "uygulama", zorluk: 2, soru: `Complete: <b>${g[0]} is the ___ planet from the Sun.</b>`, gorsel: gunesSistemi(true),
+          return S(zengin({ kaz: "enpla.order", duzey: "uygulama", zorluk: 2, soru: `Complete: <b>${g[0]} is the ___ planet from the Sun.</b>`, gorsel: gunesSistemi(true),
             dogru: SIRA[n - 1], yanlis: karistir(yan).slice(0, 3),
             ipucu: "Resimde gezegeni bul ve Güneş'ten başlayarak say.", cozum: [`${g[0]} Güneş'ten itibaren ${n}. sıradadır.`, `${n}. = ${SIRA[n - 1]} (${n}${["st", "nd", "rd"][n - 1] || "th"}).`, `Cevap: ${g[0]} is the ${SIRA[n - 1]} planet from the Sun.`],
-            kural: "1st first, 2nd second, 3rd third, 4th fourth, 5th fifth, 6th sixth, 7th seventh, 8th eighth" }); },
+            kural: "1st first, 2nd second, 3rd third, 4th fourth, 5th fifth, 6th sixth, 7th seventh, 8th eighth" })); },
         Q("enpla.order", "aciklama", 1, "Which is the correct order from the Sun?", "Mercury – Venus – Earth – Mars",
           [["Venus – Mercury – Earth – Mars", "bilgi", "Güneş'e en yakın gezegen Merkür'dür; Venüs ikincidir."], ["Mercury – Earth – Venus – Mars", "bilgi", "Venüs, Dünya'dan önce gelir."], ["Mercury – Venus – Mars – Earth", "bilgi", "Dünya üçüncü, Mars dördüncüdür."]],
-          "İlk dört gezegen: My Very Easy Method…", ["M = Mercury (1), V = Venus (2), E = Earth (3), M = Mars (4).", "Bu sıra Güneş'ten uzaklığa göredir.", "Cevap: Mercury – Venus – Earth – Mars."], { kural: "İç gezegenler: Mercury, Venus, Earth, Mars." }),
+          "İlk dört gezegen: My Very Easy Method…", [
+           "🔎 Soruyu anlayalım: M = Mercury (1), V = Venus (2), E = Earth (3), M = Mars (4).",
+           "💡 Hatırlayalım: Bu sıra Güneş'ten uzaklığa göredir.",
+           "✏️ Seçenekleri tek tek inceleyelim: “Venus – Mercury – Earth – Mars” → Güneş'e en yakın gezegen Merkür'dür; Venüs ikincidir.",
+           "✏️ “Mercury – Earth – Venus – Mars” → Venüs, Dünya'dan önce gelir.",
+           "✅ Sonuç: Mercury – Venus – Earth – Mars.",
+           "🔁 Kontrol edelim: Son seçenek “Mercury – Venus – Mars – Earth” de aradığımız cevap değil: Dünya üçüncü, Mars dördüncüdür. Geriye yalnızca “Mercury – Venus – Earth – Mars” kalıyor."], { kural: "İç gezegenler: Mercury, Venus, Earth, Mars.", dogruNeden: "Bu sıra Güneş'ten uzaklığa göredir." }),
         Q("enpla.order", "uygulama", 2, "Which planet comes <b>between</b> Saturn and Neptune?", "Uranus",
           [["Jupiter", "bilgi", "Jüpiter, Satürn'den önce gelir (5.)."], ["Mars", "bilgi", "Mars dördüncü gezegendir."], ["Earth", "bilgi", "Dünya üçüncü gezegendir."]],
-          "Saturn 6., Neptune 8. ise arada hangisi var?", ["Saturn altıncı, Neptune sekizinci gezegendir.", "Arada yedinci gezegen vardır.", "Yedinci gezegen: Uranus."], { kural: "between = arasında (Theme 5 prepositions of place)." }),
+          "Saturn 6., Neptune 8. ise arada hangisi var?", [
+           "🔎 Soruyu anlayalım: Saturn altıncı, Neptune sekizinci gezegendir.",
+           "💡 Hatırlayalım: Arada yedinci gezegen vardır.",
+           "✏️ Seçenekleri tek tek inceleyelim: “Jupiter” → Jüpiter, Satürn'den önce gelir (5.).",
+           "✏️ “Mars” → Mars dördüncü gezegendir.",
+           "✅ Sonuç: Yedinci gezegen: Uranus.",
+           "🔁 Kontrol edelim: Son seçenek “Earth” de aradığımız cevap değil: Dünya üçüncü gezegendir. Geriye yalnızca “Uranus” kalıyor."], { kural: "between = arasında (Theme 5 prepositions of place).", dogruNeden: "Arada yedinci gezegen vardır." }),
         Q("enpla.order", "baglanti", 1, "How do we write “<b>8th</b>” in words?", "eighth",
           [["eightth", "dikkat", "“eight” zaten “t” ile biter; yalnızca “h” eklenir."], ["eigth", "dikkat", "“g” ve “h” arasında harf eksik değil; doğrusu e-i-g-h-t-h."], ["eight", "kavrama", "“eight” sayma sayısıdır; sıra sayısı “eighth” olur."]],
-          "eight + h", ["8 = eight (sayma sayısı).", "Sıra sayısı yapmak için “eight”in sonuna yalnızca “h” eklenir.", "8th = eighth."], { kural: "Düzensiz yazımlar: first, second, third, fifth, eighth, ninth, twelfth." }),
+          "eight + h", [
+           "🔎 Soruyu anlayalım: 8 = eight (sayma sayısı).",
+           "💡 Hatırlayalım: Sıra sayısı yapmak için “eight”in sonuna yalnızca “h” eklenir.",
+           "✏️ Seçenekleri tek tek inceleyelim: “eightth” → “eight” zaten “t” ile biter; yalnızca “h” eklenir.",
+           "✏️ “eigth” → “g” ve “h” arasında harf eksik değil; doğrusu e-i-g-h-t-h.",
+           "✅ Sonuç: 8th = eighth.",
+           "🔁 Kontrol edelim: Son seçenek “eight” de aradığımız cevap değil: “eight” sayma sayısıdır; sıra sayısı “eighth” olur. Geriye yalnızca “eighth” kalıyor."], { kural: "Düzensiz yazımlar: first, second, third, fifth, eighth, ninth, twelfth.", dogruNeden: "Sıra sayısı yapmak için “eight”in sonuna yalnızca “h” eklenir." }),
       ],
       "enpla.facts": [
         z => { const g = sec(GEZEGEN), dig = karistir(GEZEGEN.filter(x => x !== g)).slice(0, 3);
-          return S({ kaz: "enpla.facts", duzey: "aciklama", zorluk: 1, soru: `Read the clue and find the planet:<br><i>${g[3]}</i>`, dogru: g[0],
+          return S(zengin({ kaz: "enpla.facts", duzey: "aciklama", zorluk: 1, soru: `Read the clue and find the planet:<br><i>${g[3]}</i>`, dogru: g[0],
             yanlis: dig.map(x => [x[0], "bilgi", `${x[0]} için doğru bilgi: ${x[3]}`]),
             ipucu: "Cümledeki anahtar kelimeye bak (closest, hottest, biggest, red, rings, farthest…).", cozum: ["İpucundaki anahtar bilgiyi bul.", `Bu bilgi ${g[0]} (${g[1]}) gezegenine aittir.`, `Cevap: ${g[0]}.`],
-            kural: "Mercury: closest/smallest · Venus: hottest · Earth: life · Mars: Red Planet · Jupiter: biggest · Saturn: rings · Neptune: farthest" }); },
+            kural: "Mercury: closest/smallest · Venus: hottest · Earth: life · Mars: Red Planet · Jupiter: biggest · Saturn: rings · Neptune: farthest" })); },
         Q("enpla.facts", "uygulama", 1, "Choose the correct sentence.", "The Earth goes around the Sun.",
           [["The Sun goes around the Earth.", "bilgi", "Güneş, Dünya'nın etrafında dönmez; Dünya Güneş'in etrafında döner."], ["The Earth go around the Sun.", "kavrama", "“The Earth” üçüncü tekildir; fiil “goes” olmalı."], ["The Earth is go around the Sun.", "kavrama", "Simple present cümlesinde “is” ve yalın fiil birlikte kullanılmaz."]],
-          "Bilimsel gerçekler simple present ile anlatılır.", ["Dünya, Güneş'in etrafında döner (bilimsel gerçek).", "“The Earth” = it; simple present'ta fiil -s/-es alır: goes.", "Cevap: The Earth goes around the Sun."], { kural: "Facts → simple present; he/she/it + V-s (goes, has, spins)." }),
+          "Bilimsel gerçekler simple present ile anlatılır.", [
+           "🔎 Soruyu anlayalım: Dünya, Güneş'in etrafında döner (bilimsel gerçek).",
+           "💡 Hatırlayalım: “The Earth” = it; simple present'ta fiil -s/-es alır: goes.",
+           "✏️ Seçenekleri tek tek inceleyelim: “The Sun goes around the Earth.” → Güneş, Dünya'nın etrafında dönmez; Dünya Güneş'in etrafında döner.",
+           "✏️ “The Earth go around the Sun.” → “The Earth” üçüncü tekildir; fiil “goes” olmalı.",
+           "✅ Sonuç: The Earth goes around the Sun.",
+           "🔁 Kontrol edelim: Son seçenek “The Earth is go around the Sun.” de aradığımız cevap değil: Simple present cümlesinde “is” ve yalın fiil birlikte kullanılmaz. Geriye yalnızca “The Earth goes around the Sun.” kalıyor."], { kural: "Facts → simple present; he/she/it + V-s (goes, has, spins).", dogruNeden: "“The Earth” = it; simple present'ta fiil -s/-es alır: goes." }),
         Q("enpla.facts", "uygulama", 2, "Complete: <b>Mercury is ___ planet in the solar system.</b>", "the smallest",
           [["smaller", "kavrama", "“smaller” karşılaştırmadır (than ile kullanılır); bütün gezegenler içinde en küçük için “the smallest” gerekir."], ["the smaller", "bilgi", "En üstünlük -est ile yapılır: the smallest."], ["the most small", "bilgi", "Kısa sıfatlarda “most” kullanılmaz; -est eklenir."]],
-          "Bütün gezegenler arasında karşılaştırma: en …", ["Cümle tüm gezegenler arasında karşılaştırma yapıyor (in the solar system).", "Kısa sıfatlarda en üstünlük: the + sıfat + -est.", "small → the smallest."], { kural: "the + adj-est (the biggest, the hottest, the smallest)" }),
+          "Bütün gezegenler arasında karşılaştırma: en …", [
+           "🔎 Soruyu anlayalım: Cümle tüm gezegenler arasında karşılaştırma yapıyor (in the solar system).",
+           "💡 Hatırlayalım: Kısa sıfatlarda en üstünlük: the + sıfat + -est.",
+           "✏️ Seçenekleri tek tek inceleyelim: “smaller” → “smaller” karşılaştırmadır (than ile kullanılır); bütün gezegenler içinde en küçük için “the smallest” gerekir.",
+           "✏️ “the smaller” → En üstünlük -est ile yapılır: the smallest.",
+           "✅ Sonuç: small → the smallest.",
+           "🔁 Kontrol edelim: Son seçenek “the most small” de aradığımız cevap değil: Kısa sıfatlarda “most” kullanılmaz; -est eklenir. Geriye yalnızca “the smallest” kalıyor."], { kural: "the + adj-est (the biggest, the hottest, the smallest)", dogruNeden: "Kısa sıfatlarda en üstünlük: the + sıfat + -est." }),
         Q("enpla.facts", "uygulama", 2, "Complete: <b>Jupiter is ___ than the Earth.</b>", "bigger",
           [["biggest", "kavrama", "“than” varsa karşılaştırma (-er) kullanılır."], ["more big", "bilgi", "Kısa sıfatlarda “more” kullanılmaz: bigger."], ["biger", "dikkat", "big kelimesinde son harf ikilenir: bigger."]],
-          "“than” görünce -er kullan.", ["Cümlede “than” var: iki şey karşılaştırılıyor.", "big kısa bir sıfat; son sessiz harf ikilenir ve -er eklenir.", "Cevap: bigger."], { kural: "adj-er + than (bigger than, hotter than)" }),
+          "“than” görünce -er kullan.", [
+           "🔎 Soruyu anlayalım: Cümlede “than” var: iki şey karşılaştırılıyor.",
+           "💡 Hatırlayalım: big kısa bir sıfat; son sessiz harf ikilenir ve -er eklenir.",
+           "✏️ Seçenekleri tek tek inceleyelim: “biggest” → “than” varsa karşılaştırma (-er) kullanılır.",
+           "✏️ “more big” → Kısa sıfatlarda “more” kullanılmaz: bigger.",
+           "✅ Sonuç: bigger.",
+           "🔁 Kontrol edelim: Son seçenek “biger” de aradığımız cevap değil: big kelimesinde son harf ikilenir: bigger. Geriye yalnızca “bigger” kalıyor."], { kural: "adj-er + than (bigger than, hotter than)", dogruNeden: "big kısa bir sıfat; son sessiz harf ikilenir ve -er eklenir." }),
         Q("enpla.facts", "transfer", 2, "Look at the table. Which sentence is <b>true</b>?", "Venus is hotter than Mars.",
           [["Mars is hotter than Venus.", "dikkat", "Tabloya göre Mars -60 °C, Venüs 460 °C; Venüs daha sıcak."], ["Earth is the hottest planet.", "dikkat", "En sıcak gezegen tabloda Venüs'tür."], ["Mercury is colder than Mars.", "dikkat", "Merkür 167 °C, Mars -60 °C; Merkür daha sıcaktır."]],
-          "Tablodaki sıcaklıkları karşılaştır.", ["Tabloyu oku: Mercury 167 °C, Venus 460 °C, Earth 15 °C, Mars -60 °C.", "En yüksek sıcaklık Venüs'tedir; Venus Mars'tan daha sıcaktır.", "Doğru cümle: Venus is hotter than Mars."],
-          { gorsel: G.tablo(["Planet", "Average temperature"], [["Mercury", "167 °C"], ["Venus", "460 °C"], ["Earth", "15 °C"], ["Mars", "-60 °C"]]), kural: "hot → hotter → the hottest; cold → colder → the coldest" }),
+          "Tablodaki sıcaklıkları karşılaştır.", [
+           "🔎 Soruyu anlayalım: Tabloyu oku: Mercury 167 °C, Venus 460 °C, Earth 15 °C, Mars -60 °C.",
+           "💡 Hatırlayalım: En yüksek sıcaklık Venüs'tedir; Venus Mars'tan daha sıcaktır.",
+           "✏️ Seçenekleri tek tek inceleyelim: “Mars is hotter than Venus.” → Tabloya göre Mars -60 °C, Venüs 460 °C; Venüs daha sıcak.",
+           "✏️ “Earth is the hottest planet.” → En sıcak gezegen tabloda Venüs'tür.",
+           "✅ Sonuç: Venus is hotter than Mars.",
+           "🔁 Kontrol edelim: Son seçenek “Mercury is colder than Mars.” de aradığımız cevap değil: Merkür 167 °C, Mars -60 °C; Merkür daha sıcaktır. Geriye yalnızca “Venus is hotter than Mars.” kalıyor."],
+          { gorsel: G.tablo(["Planet", "Average temperature"], [["Mercury", "167 °C"], ["Venus", "460 °C"], ["Earth", "15 °C"], ["Mars", "-60 °C"]]), kural: "hot → hotter → the hottest; cold → colder → the coldest", dogruNeden: "En yüksek sıcaklık Venüs'tedir; Venus Mars'tan daha sıcaktır." }),
       ],
     },
   });
@@ -428,86 +689,167 @@
       "enfut.weather": [
         kelime("enfut.weather", FUT_SOZ),
         z => { const k = karistir(HAVA).slice(0, 4), h = k[0];
-          return S({ kaz: "enfut.weather", duzey: "hatirlama", zorluk: 1, soru: `<b>${h[0]} ${h[0]}</b><br>What's the weather like?`, dogru: `It's ${h[1]}.`,
+          return S(zengin({ kaz: "enfut.weather", duzey: "hatirlama", zorluk: 1, soru: `<b>${h[0]} ${h[0]}</b><br>What's the weather like?`, dogru: `It's ${h[1]}.`,
             yanlis: k.slice(1).map(x => [`It's ${x[1]}.`, "bilgi", `“${x[1]}” ${x[2]} demektir; simgesi ${x[0]}.`]),
-            ipucu: "Simgeye dikkatle bak.", cozum: [`Simge ${h[0]} ${h[2]} havayı gösterir.`, `${h[2]} = ${h[1]}.`, `Cevap: It's ${h[1]}.`], kural: "What's the weather like? → It's + sıfat (sunny, rainy, snowy…)" }); },
+            ipucu: "Simgeye dikkatle bak.", cozum: [`Simge ${h[0]} ${h[2]} havayı gösterir.`, `${h[2]} = ${h[1]}.`, `Cevap: It's ${h[1]}.`], kural: "What's the weather like? → It's + sıfat (sunny, rainy, snowy…)" })); },
         z => { const h = sec(HAVA), baska = sec(HAVA.filter(x => x !== h));
-          return S({ kaz: "enfut.weather", duzey: "uygulama", zorluk: 2, soru: `Complete: <b>${h[5]} It's ___ today.</b>`, dogru: h[1],
+          return S(zengin({ kaz: "enfut.weather", duzey: "uygulama", zorluk: 2, soru: `Complete: <b>${h[5]} It's ___ today.</b>`, dogru: h[1],
             yanlis: [[h[3], "kavrama", `“${h[3]}” isimdir; “It's” den sonra sıfat (-y) gerekir.`], [h[4], "dikkat", `Yazım hatası; doğrusu “${h[1]}”.`], [baska[1], "kavrama", `“${baska[1]}” ${baska[2]} demektir; cümle ${h[2]} havayı anlatıyor.`]],
-            ipucu: "İsme -y ekleyerek sıfat yap.", cozum: [`Cümle ${h[3]} (${h[2]}) havayı anlatıyor.`, `İsim + y → sıfat: ${h[3]} → ${h[1]}.`, `Cevap: It's ${h[1]} today.`], kural: "sun → sunny, fog → foggy (son harf ikilenir); rain → rainy, wind → windy" }); },
-        z => { const t = sec([[R(-12, -2), "freezing"], [R(3, 9), "cold"], [R(16, 22), "warm"], [R(30, 40), "hot"]]), digerleri = ["freezing", "cold", "warm", "hot"].filter(x => x !== t[1]);
-          const tr = { freezing: "dondurucu (0 °C altı)", cold: "soğuk", warm: "ılık", hot: "sıcak" };
-          return S({ kaz: "enfut.weather", duzey: "uygulama", zorluk: 1, soru: `🌡️ The temperature is <b>${t[0]} °C</b>. It's ___.`, dogru: t[1],
+            ipucu: "İsme -y ekleyerek sıfat yap.", cozum: [`Cümle ${h[3]} (${h[2]}) havayı anlatıyor.`, `İsim + y → sıfat: ${h[3]} → ${h[1]}.`, `Cevap: It's ${h[1]} today.`], kural: "sun → sunny, fog → foggy (son harf ikilenir); rain → rainy, wind → windy" })); },
+        z => { /* Komşu sıcaklık sözcükleri (-2 °C için “cold”, 5 °C için “freezing”, 30 °C için “warm”) tartışmalı olabileceğinden çeldiriciler uzak sözcüklerden seçilir. */
+          const t = sec([[R(-12, -3), "freezing"], [R(4, 8), "cold"], [R(18, 23), "warm"], [R(33, 40), "hot"]]);
+          const digerleri = { freezing: ["warm", "hot", "boiling"], cold: ["warm", "hot", "boiling"], warm: ["freezing", "boiling", "snowy"], hot: ["freezing", "cold", "snowy"] }[t[1]];
+          const tr = { freezing: "dondurucu (0 °C altı)", cold: "soğuk", warm: "ılık", hot: "sıcak", boiling: "kavurucu sıcak (kaynar gibi)", snowy: "karlı" };
+          return S(zengin({ kaz: "enfut.weather", duzey: "uygulama", zorluk: 1, soru: `🌡️ The temperature is <b>${t[0]} °C</b>. It's ___.`, dogru: t[1],
             yanlis: digerleri.map(x => [x, "kavrama", `“${x}” ${tr[x]} demektir; ${t[0]} °C için uygun değil.`]),
-            ipucu: "0 °C altı dondurucu, 30 °C üstü sıcaktır.", cozum: ["freezing: 0 °C ve altı · cold: soğuk · warm: ılık · hot: sıcak.", `${t[0]} °C ${tr[t[1]]} bir sıcaklıktır.`, `Cevap: It's ${t[1]}.`], kural: "freezing → cold → warm → hot (soğuktan sıcağa)" }); },
-        z => { const g = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], h = karistir(HAVA).slice(0, 5), i = R(0, 4), sic = g.map(() => R(5, 25));
+            ipucu: "0 °C altı dondurucu, 30 °C üstü sıcaktır.", cozum: ["freezing: 0 °C altı · cold: soğuk · warm: ılık · hot: sıcak · boiling: kavurucu sıcak.", `${t[0]} °C ${tr[t[1]]} bir sıcaklıktır.`, `Cevap: It's ${t[1]}.`], kural: "freezing → cold → warm → hot (soğuktan sıcağa)" })); },
+        z => { const g = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], h = karistir(HAVA).slice(0, 5), i = R(0, 4), sic = h.map(x => ({ sunny: R(22, 30), rainy: R(8, 15), snowy: R(-6, 0), windy: R(10, 18), cloudy: R(12, 20), foggy: R(5, 12), stormy: R(10, 17) })[x[1]]); /* karlı günde 25 °C gibi çelişkiler olmasın */
           const dig = karistir([0, 1, 2, 3, 4].filter(j => j !== i)).slice(0, 3);
-          return S({ kaz: "enfut.weather", duzey: "transfer", zorluk: 2, soru: `Look at the weather forecast for next week. What will the weather be like on <b>${g[i]}</b>?`,
+          return S(zengin({ kaz: "enfut.weather", duzey: "transfer", zorluk: 2, soru: `Look at the weather forecast for next week. What will the weather be like on <b>${g[i]}</b>?`,
             gorsel: G.tablo(["Day", "Weather", "Temperature"], g.map((d, j) => [d, h[j][0] + " " + h[j][1], sic[j] + " °C"])),
             dogru: `It will be ${h[i][1]}.`, yanlis: dig.map(j => [`It will be ${h[j][1]}.`, "dikkat", `Bu, ${g[j]} gününün havasıdır.`]),
-            ipucu: `Tabloda “${g[i]}” satırını bul.`, cozum: [`Tabloda ${g[i]} satırını bul.`, `${g[i]}: ${h[i][0]} ${h[i][1]}, ${sic[i]} °C.`, `Cevap: It will be ${h[i][1]}.`], kural: "weather forecast = hava tahmini; What will the weather be like? → It will be…" }); },
+            ipucu: `Tabloda “${g[i]}” satırını bul.`, cozum: [`Tabloda ${g[i]} satırını bul.`, `${g[i]}: ${h[i][0]} ${h[i][1]}, ${sic[i]} °C.`, `Cevap: It will be ${h[i][1]}.`], kural: "weather forecast = hava tahmini; What will the weather be like? → It will be…" })); },
         Q("enfut.weather", "aciklama", 2, "It is a very strong storm with very fast winds. It can destroy houses. What is it?", "a hurricane",
           [["thunder", "kavrama", "Thunder fırtınadaki gök gürültüsüdür (ses)."], ["lightning", "kavrama", "Lightning gökyüzündeki parlak ışıktır (şimşek)."], ["fog", "kavrama", "Fog sistir; evleri yıkmaz."]],
-          "Çok güçlü rüzgârlı fırtına.", ["Tanım: çok hızlı rüzgârları olan, evleri yıkabilen güçlü fırtına.", "Bu hava olayına kasırga denir.", "Cevap: a hurricane."], { kural: "hurricane = kasırga, thunder = gök gürültüsü, lightning = şimşek" }),
+          "Çok güçlü rüzgârlı fırtına.", [
+           "🔎 Soruyu anlayalım: Tanım: çok hızlı rüzgârları olan, evleri yıkabilen güçlü fırtına.",
+           "💡 Hatırlayalım: Bu hava olayına kasırga denir.",
+           "✏️ Seçenekleri tek tek inceleyelim: “thunder” → Thunder fırtınadaki gök gürültüsüdür (ses).",
+           "✏️ “lightning” → Lightning gökyüzündeki parlak ışıktır (şimşek).",
+           "✅ Sonuç: a hurricane.",
+           "🔁 Kontrol edelim: Son seçenek “fog” de aradığımız cevap değil: Fog sistir; evleri yıkmaz. Geriye yalnızca “a hurricane” kalıyor."], { kural: "hurricane = kasırga, thunder = gök gürültüsü, lightning = şimşek", dogruNeden: "Bu hava olayına kasırga denir." }),
         Q("enfut.weather", "aciklama", 2, "In the morning it was sunny, at noon it was rainy and in the evening it was windy. The weather was ___ today.", "moody",
           [["freezing", "kavrama", "Freezing çok soğuk demektir; havanın değişmesini anlatmaz."], ["foggy", "kavrama", "Foggy sisli demektir."], ["sunny", "dikkat", "Hava yalnızca sabah güneşliydi; gün boyunca değişti."]],
-          "Hava gün boyunca hep aynı mı kaldı?", ["Hava sabah güneşli, öğlen yağmurlu, akşam rüzgârlı oldu.", "Sık sık değişen hava için “moody” (changeable) denir.", "Cevap: moody."], { kural: "moody / changeable weather = değişken hava" }),
+          "Hava gün boyunca hep aynı mı kaldı?", [
+           "🔎 Soruyu anlayalım: Hava sabah güneşli, öğlen yağmurlu, akşam rüzgârlı oldu.",
+           "💡 Hatırlayalım: Sık sık değişen hava için “moody” (changeable) denir.",
+           "✏️ Seçenekleri tek tek inceleyelim: “freezing” → Freezing çok soğuk demektir; havanın değişmesini anlatmaz.",
+           "✏️ “foggy” → Foggy sisli demektir.",
+           "✅ Sonuç: moody.",
+           "🔁 Kontrol edelim: Son seçenek “sunny” de aradığımız cevap değil: Hava yalnızca sabah güneşliydi; gün boyunca değişti. Geriye yalnızca “moody” kalıyor."], { kural: "moody / changeable weather = değişken hava", dogruNeden: "Sık sık değişen hava için “moody” (changeable) denir." }),
       ],
       "enfut.clothes": [
         z => { const [durum, uygun, olmayan, neden] = sec(GIYSI), d = sec(uygun), y = karistir(olmayan).slice(0, 3);
-          return S({ kaz: "enfut.clothes", duzey: "uygulama", zorluk: 1, soru: `<b>${durum}</b><br>What do you need today?`, dogru: d,
+          return S(zengin({ kaz: "enfut.clothes", duzey: "uygulama", zorluk: 1, soru: `<b>${durum}</b><br>What do you need today?`, dogru: d,
             yanlis: y.map(x => [x, "kavrama", `“${x}” bu havaya uygun değil; ${neden}.`]),
-            ipucu: "Bu havada üşür müsün, ıslanır mısın, yoksa sıcaktan mı bunalırsın?", cozum: [`Hava: ${durum}`, `Bu havada ${neden}.`, `Uygun olan: ${d}.`], kural: "sunny/hot → sunglasses, hat, shorts · rainy → raincoat, umbrella · snowy/freezing → coat, scarf, gloves" }); },
+            ipucu: "Bu havada üşür müsün, ıslanır mısın, yoksa sıcaktan mı bunalırsın?", cozum: [`Hava: ${durum}`, `Bu havada ${neden}.`, `Uygun olan: ${d}.`], kural: "sunny/hot → sunglasses, hat, shorts · rainy → raincoat, umbrella · snowy/freezing → coat, scarf, gloves" })); },
         z => { const k = karistir(GIYSI), [durum, uygun] = k[0], esya = karistir(uygun).slice(0, 2);
           const hava = { "☀️ It's sunny and hot.": "sunny and hot", "🌧️ It's rainy.": "rainy", "❄️ It's snowy and freezing.": "snowy and freezing" };
           const y = [...k.slice(1).map(x => [`It's ${hava[x[0]]}.`, "kavrama", `${x[0]} Bu havada ${x[1].join(", ")} kullanılır.`]), ["It's foggy.", "kavrama", "Sisli hava için özel bir giysi gerekmez; bu eşyalar başka bir havaya uygundur."]];
-          return S({ kaz: "enfut.clothes", duzey: "aciklama", zorluk: 2, soru: `Mert is wearing <b>${esya[0]}</b> and <b>${esya[1]}</b>. What's the weather like?`, dogru: `It's ${hava[durum]}.`,
-            yanlis: y, ipucu: "Bu giysiler hangi havada kullanılır?", cozum: [`Mert'in giydikleri: ${esya.join(" ve ")}.`, `Bu eşyalar ${durum} havasına uygundur.`, `Cevap: It's ${hava[durum]}.`], kural: "Giysiden havayı tahmin et: umbrella → rainy, gloves → freezing, sunglasses → sunny" }); },
+          return S(zengin({ kaz: "enfut.clothes", duzey: "aciklama", zorluk: 2, soru: `Mert is going out with <b>${esya[0]}</b> and <b>${esya[1]}</b>. What's the weather like?`, dogru: `It's ${hava[durum]}.`,
+            yanlis: y, ipucu: "Bu giysiler hangi havada kullanılır?", cozum: [`Mert'in yanındaki eşyalar: ${esya.join(" ve ")}.`, `Bu eşyalar ${durum} havasına uygundur.`, `Cevap: It's ${hava[durum]}.`], kural: "Giysiden havayı tahmin et: umbrella → rainy, gloves → freezing, sunglasses → sunny" })); },
         Q("enfut.clothes", "transfer", 1, "Complete the dialogue:<br>— Mum, can I go out to play? <br>— Yes, but it's very cold and snowy. ___", "Wear your coat and gloves!",
           [["Take your sunglasses!", "kavrama", "Güneş gözlüğü sıcak, güneşli havada kullanılır."], ["Wear your shorts!", "kavrama", "Şort karda giyilmez."], ["Don't forget your swimsuit!", "kavrama", "Mayo yüzmek içindir; karlı havaya uygun değil."]],
-          "Soğuk ve karlı havada ne giyilir?", ["Hava çok soğuk ve karlı.", "Soğuk havada mont ve eldiven giyilir.", "Cevap: Wear your coat and gloves!"], { kural: "Wear your … / Take your … / Don't forget your …" }),
+          "Soğuk ve karlı havada ne giyilir?", [
+           "🔎 Soruyu anlayalım: Hava çok soğuk ve karlı.",
+           "💡 Hatırlayalım: Soğuk havada mont ve eldiven giyilir.",
+           "✏️ Seçenekleri tek tek inceleyelim: “Take your sunglasses!” → Güneş gözlüğü sıcak, güneşli havada kullanılır.",
+           "✏️ “Wear your shorts!” → Şort karda giyilmez.",
+           "✅ Sonuç: Wear your coat and gloves!",
+           "🔁 Kontrol edelim: Son seçenek “Don't forget your swimsuit!” de aradığımız cevap değil: Mayo yüzmek içindir; karlı havaya uygun değil. Geriye yalnızca “Wear your coat and gloves!” kalıyor."], { kural: "Wear your … / Take your … / Don't forget your …", dogruNeden: "Soğuk havada mont ve eldiven giyilir." }),
         Q("enfut.clothes", "uygulama", 1, "Which one do we use when it's rainy?", "☂️ an umbrella",
           [["🕶️ sunglasses", "kavrama", "Güneş gözlüğü güneşli havada kullanılır."], ["🧤 gloves", "kavrama", "Eldiven soğuk havada elleri korur; yağmurdan korumaz."], ["🩳 shorts", "kavrama", "Şort sıcak havada giyilir."]],
-          "Yağmurdan korunmak için ne açarız?", ["Yağmurlu havada ıslanmamak isteriz.", "Şemsiye (umbrella) yağmurdan korur.", "Cevap: an umbrella."], { kural: "umbrella = şemsiye, raincoat = yağmurluk" }),
+          "Yağmurdan korunmak için ne açarız?", [
+           "🔎 Soruyu anlayalım: Yağmurlu havada ıslanmamak isteriz.",
+           "💡 Hatırlayalım: Şemsiye (umbrella) yağmurdan korur.",
+           "✏️ Cevap: an umbrella.",
+           "✏️ Seçenekleri tek tek inceleyelim: “🕶️ sunglasses” → Güneş gözlüğü güneşli havada kullanılır.",
+           "✏️ “🧤 gloves” → Eldiven soğuk havada elleri korur; yağmurdan korumaz.",
+           "✅ Sonuç: Doğru cevap “☂️ an umbrella”.",
+           "🔁 Kontrol edelim: Son seçenek “🩳 shorts” de aradığımız cevap değil: Şort sıcak havada giyilir. Geriye yalnızca “☂️ an umbrella” kalıyor."], { kural: "umbrella = şemsiye, raincoat = yağmurluk", dogruNeden: "Şemsiye (umbrella) yağmurdan korur." }),
         Q("enfut.clothes", "baglanti", 2, "Theme 3'ü hatırla. Read and answer:<br><i>Selin is going to visit Antalya in July. It's going to be sunny and very hot.</i><br>Which bag is the best for Selin?", "sunglasses, shorts, a T-shirt, a hat",
           [["a coat, a scarf, gloves, boots", "kavrama", "Bunlar soğuk ve karlı hava içindir."], ["a raincoat, an umbrella, boots", "kavrama", "Bunlar yağmurlu hava içindir."], ["a scarf, a T-shirt, gloves, sunglasses", "dikkat", "Atkı ve eldiven sıcak havada gerekmez."]],
-          "Temmuzda Antalya'da hava nasıldır?", ["Metne göre hava güneşli ve çok sıcak olacak.", "Sıcak havada serin giysiler ve güneş gözlüğü gerekir.", "Cevap: sunglasses, shorts, a T-shirt, a hat."], { kural: "Hot weather clothes: sunglasses, shorts, T-shirt, hat" }),
+          "Temmuzda Antalya'da hava nasıldır?", [
+           "🔎 Soruyu anlayalım: Metne göre hava güneşli ve çok sıcak olacak.",
+           "💡 Hatırlayalım: Sıcak havada serin giysiler ve güneş gözlüğü gerekir.",
+           "✏️ Seçenekleri tek tek inceleyelim: “a coat, a scarf, gloves, boots” → Bunlar soğuk ve karlı hava içindir.",
+           "✏️ “a raincoat, an umbrella, boots” → Bunlar yağmurlu hava içindir.",
+           "✅ Sonuç: sunglasses, shorts, a T-shirt, a hat.",
+           "🔁 Kontrol edelim: Son seçenek “a scarf, a T-shirt, gloves, sunglasses” de aradığımız cevap değil: Atkı ve eldiven sıcak havada gerekmez. Geriye yalnızca “sunglasses, shorts, a T-shirt, a hat” kalıyor."], { kural: "Hot weather clothes: sunglasses, shorts, T-shirt, hat", dogruNeden: "Sıcak havada serin giysiler ve güneş gözlüğü gerekir." }),
       ],
       "enfut.goingto": [
         z => { const [ozne, be] = sec(BE), plan = sec(PLAN).replace("my ", PLAN_O[ozne] + " "), digerleri = ["am", "is", "are"].filter(x => x !== be);
-          return S({ kaz: "enfut.goingto", duzey: "uygulama", zorluk: 1, soru: `Complete: <b>${ozne} ___ ${plan}.</b>`, dogru: `${be} going to`,
+          return S(zengin({ kaz: "enfut.goingto", duzey: "uygulama", zorluk: 1, soru: `Complete: <b>${ozne} ___ ${plan}.</b>`, dogru: `${be} going to`,
             yanlis: [...digerleri.map(x => [`${x} going to`, "kavrama", `“${ozne}” ile “${be}” kullanılır; “${x}” bu özneye uymaz.`]), ["will going to", "bilgi", "will ve going to birlikte kullanılmaz."]].slice(0, 3),
-            ipucu: "I → am, he/she/it → is, we/you/they → are", cozum: ["Cümle önceden yapılmış bir planı anlatıyor: be going to.", `Özne “${ozne}” → ${be}.`, `Cevap: ${ozne} ${be} going to ${plan}.`], kural: "I am / he-she-it is / we-you-they are + going to + V1" }); },
+            ipucu: "I → am, he/she/it → is, we/you/they → are", cozum: ["Cümle önceden yapılmış bir planı anlatıyor: be going to.", `Özne “${ozne}” → ${be}.`, `Cevap: ${ozne} ${be} going to ${plan}.`], kural: "I am / he-she-it is / we-you-they are + going to + V1" })); },
         Q("enfut.goingto", "aciklama", 1, "Look! The boy is running very fast and there is a big stone in front of him. He ___ fall!", "is going to",
           [["will to", "bilgi", "will'den sonra “to” gelmez."], ["are going to", "kavrama", "“He” ile “is” kullanılır."], ["was", "kavrama", "“was” geçmiş zamandır; şimdi gördüğümüz bir kanıta göre gelecek tahmini yapıyoruz."]],
-          "Gördüğün bir kanıta dayanarak tahmin yapıyorsun.", ["Şu anda bir kanıt görüyoruz (taş ve hızlı koşan çocuk).", "Kanıta dayalı tahminlerde be going to kullanılır.", "He → is going to fall."], { kural: "Kanıta dayalı tahmin: Look! It is going to rain." }),
+          "Gördüğün bir kanıta dayanarak tahmin yapıyorsun.", [
+           "🔎 Soruyu anlayalım: Şu anda bir kanıt görüyoruz (taş ve hızlı koşan çocuk).",
+           "💡 Hatırlayalım: Kanıta dayalı tahminlerde be going to kullanılır.",
+           "✏️ Seçenekleri tek tek inceleyelim: “will to” → will'den sonra “to” gelmez.",
+           "✏️ “are going to” → “He” ile “is” kullanılır.",
+           "✅ Sonuç: He → is going to fall.",
+           "🔁 Kontrol edelim: Son seçenek “was” de aradığımız cevap değil: “was” geçmiş zamandır; şimdi gördüğümüz bir kanıta göre gelecek tahmini yapıyoruz. Geriye yalnızca “is going to” kalıyor."], { kural: "Kanıta dayalı tahmin: Look! It is going to rain.", dogruNeden: "Kanıta dayalı tahminlerde be going to kullanılır." }),
         Q("enfut.goingto", "uygulama", 2, "Choose the correct question.", "Are you going to watch the stars tonight?",
           [["Do you going to watch the stars tonight?", "bilgi", "be going to sorusu “Are/Is/Am” ile başlar."], ["Are you going to watching the stars tonight?", "bilgi", "going to'dan sonra fiil yalın gelir: watch."], ["You are going to watch the stars tonight?", "kavrama", "Soru cümlesinde be fiili özneden önce gelir."]],
-          "Soru: Am/Is/Are + özne + going to + V1?", ["be going to sorusunda “are” başa gelir.", "Sonra özne ve going to + fiilin yalın hâli gelir.", "Cevap: Are you going to watch the stars tonight?"], { kural: "Are you going to…? → Yes, I am. / No, I'm not." }),
+          "Soru: Am/Is/Are + özne + going to + V1?", [
+           "🔎 Soruyu anlayalım: be going to sorusunda “are” başa gelir.",
+           "💡 Hatırlayalım: Sonra özne ve going to + fiilin yalın hâli gelir.",
+           "✏️ Seçenekleri tek tek inceleyelim: “Do you going to watch the stars tonight?” → be going to sorusu “Are/Is/Am” ile başlar.",
+           "✏️ “Are you going to watching the stars tonight?” → going to'dan sonra fiil yalın gelir: watch.",
+           "✅ Sonuç: Are you going to watch the stars tonight?",
+           "🔁 Kontrol edelim: Son seçenek “You are going to watch the stars tonight?” de aradığımız cevap değil: Soru cümlesinde be fiili özneden önce gelir. Geriye yalnızca “Are you going to watch the stars tonight?” kalıyor."], { kural: "Are you going to…? → Yes, I am. / No, I'm not.", dogruNeden: "Sonra özne ve going to + fiilin yalın hâli gelir." }),
         Q("enfut.goingto", "transfer", 2, "Read Ece's plan and answer.<br><i>Next Saturday I'm going to go to the science museum with my class. We're going to see a planetarium show. After that, we're going to eat lunch in the park.</i><br>What are they going to do <b>after</b> the planetarium show?", "They are going to eat lunch in the park.",
           [["They are going to go to the science museum.", "dikkat", "Müzeye gitmek gösteriden önce."], ["They are going to see a planetarium show.", "dikkat", "Soru gösteriden sonra ne yapacaklarını soruyor."], ["They ate lunch in the park.", "kavrama", "Plan gelecekle ilgili; geçmiş zaman kullanılmaz."]],
-          "“After that” cümlesini bul.", ["Sorudaki anahtar kelime: after (sonra).", "Metin: After that, we're going to eat lunch in the park.", "Cevap: They are going to eat lunch in the park."], { kural: "be going to = planlanmış gelecek" }),
+          "“After that” cümlesini bul.", [
+           "🔎 Soruyu anlayalım: Sorudaki anahtar kelime: after (sonra).",
+           "💡 Hatırlayalım: Metin: After that, we're going to eat lunch in the park.",
+           "✏️ Seçenekleri tek tek inceleyelim: “They are going to go to the science museum.” → Müzeye gitmek gösteriden önce.",
+           "✏️ “They are going to see a planetarium show.” → Soru gösteriden sonra ne yapacaklarını soruyor.",
+           "✅ Sonuç: They are going to eat lunch in the park.",
+           "🔁 Kontrol edelim: Son seçenek “They ate lunch in the park.” de aradığımız cevap değil: Plan gelecekle ilgili; geçmiş zaman kullanılmaz. Geriye yalnızca “They are going to eat lunch in the park.” kalıyor."], { kural: "be going to = planlanmış gelecek", dogruNeden: "Metin: After that, we're going to eat lunch in the park." }),
         Q("enfut.goingto", "uygulama", 2, "Choose the correct question tag: <b>You are going to visit Ankara, ___?</b>", "aren't you",
           [["are you", "kavrama", "Cümle olumlu; eklenti olumsuz olmalı."], ["won't you", "kavrama", "Cümlede yardımcı fiil “are”; eklentide de “are” kullanılır."], ["don't you", "kavrama", "be going to cümlesinde eklenti be fiiliyle yapılır."]],
-          "Olumlu cümle → olumsuz eklenti, aynı yardımcı fiil.", ["Yardımcı fiil “are”, özne “you”.", "Olumlu cümleye olumsuz eklenti: aren't.", "Cevap: aren't you?"], { kural: "She is going to…, isn't she? · They aren't going to…, are they?" }),
+          "Olumlu cümle → olumsuz eklenti, aynı yardımcı fiil.", [
+           "🔎 Soruyu anlayalım: Yardımcı fiil “are”, özne “you”.",
+           "💡 Hatırlayalım: Olumlu cümleye olumsuz eklenti: aren't.",
+           "✏️ Seçenekleri tek tek inceleyelim: “are you” → Cümle olumlu; eklenti olumsuz olmalı.",
+           "✏️ “won't you” → Cümlede yardımcı fiil “are”; eklentide de “are” kullanılır.",
+           "✅ Sonuç: aren't you?",
+           "🔁 Kontrol edelim: Son seçenek “don't you” de aradığımız cevap değil: be going to cümlesinde eklenti be fiiliyle yapılır. Geriye yalnızca “aren't you” kalıyor."], { kural: "She is going to…, isn't she? · They aren't going to…, are they?", dogruNeden: "Olumlu cümleye olumsuz eklenti: aren't." }),
       ],
       "enfut.will": [
         z => { const t = sec(TAHMIN), yil = sec([2050, 2070, 2080, 2100, 2150]), [ozne, ...kalan] = t.split(" "), geri = kalan.slice(1).join(" ");
-          return S({ kaz: "enfut.will", duzey: "uygulama", zorluk: 1, soru: `Complete the prediction: <b>In ${yil}, ${ozne} ___ ${geri}.</b>`, dogru: "will",
+          return S(zengin({ kaz: "enfut.will", duzey: "uygulama", zorluk: 1, soru: `Complete the prediction: <b>In ${yil}, ${ozne} ___ ${geri}.</b>`, dogru: "will",
             yanlis: [["wills", "bilgi", "will hiçbir öznede -s almaz."], ["will to", "bilgi", "will'den sonra “to” gelmez."], [ozne === "people" || ozne === "robots" || ozne === "cars" || ozne === "children" || ozne === "we" ? "were" : "was", "kavrama", "Bu geçmiş zamandır; cümle gelecekle ilgili bir tahmin."]],
-            ipucu: "Gelecekle ilgili genel tahmin: will + V1.", cozum: [`“In ${yil}” gelecekteki bir zamanı gösterir.`, "Geleceğe dair tahminlerde will + fiilin yalın hâli kullanılır.", `Cevap: In ${yil}, ${t}.`], kural: "will + V1 (her öznede aynı). Olumsuzu: won't." }); },
+            ipucu: "Gelecekle ilgili genel tahmin: will + V1.", cozum: [`“In ${yil}” gelecekteki bir zamanı gösterir.`, "Geleceğe dair tahminlerde will + fiilin yalın hâli kullanılır.", `Cevap: In ${yil}, ${t}.`], kural: "will + V1 (her öznede aynı). Olumsuzu: won't." })); },
         Q("enfut.will", "uygulama", 1, "Choose the correct negative sentence.", "People won't use petrol cars in the future.",
           [["People willn't use petrol cars in the future.", "bilgi", "will not'ın kısaltması “won't”tur."], ["People won't to use petrol cars in the future.", "bilgi", "won't'tan sonra “to” gelmez."], ["People don't will use petrol cars in the future.", "bilgi", "will'in olumsuzu “don't” ile yapılmaz."]],
-          "will not = won't", ["will'in olumsuzu: will not = won't.", "won't'tan sonra fiil yalın gelir.", "Cevap: People won't use petrol cars in the future."], { kural: "will not → won't + V1" }),
+          "will not = won't", [
+           "🔎 Soruyu anlayalım: will'in olumsuzu: will not = won't.",
+           "💡 Hatırlayalım: won't'tan sonra fiil yalın gelir.",
+           "✏️ Seçenekleri tek tek inceleyelim: “People willn't use petrol cars in the future.” → will not'ın kısaltması “won't”tur.",
+           "✏️ “People won't to use petrol cars in the future.” → won't'tan sonra “to” gelmez.",
+           "✅ Sonuç: People won't use petrol cars in the future.",
+           "🔁 Kontrol edelim: Son seçenek “People don't will use petrol cars in the future.” de aradığımız cevap değil: will'in olumsuzu “don't” ile yapılmaz. Geriye yalnızca “People won't use petrol cars in the future.” kalıyor."], { kural: "will not → won't + V1", dogruNeden: "won't'tan sonra fiil yalın gelir." }),
         Q("enfut.will", "uygulama", 2, "Choose the correct question tag: <b>It will be sunny tomorrow, ___?</b>", "won't it",
           [["will it", "kavrama", "Cümle olumlu; eklenti olumsuz olmalı."], ["isn't it", "kavrama", "Cümlede yardımcı fiil “will”; eklentide “won't” kullanılır."], ["won't they", "dikkat", "Özne “it”; eklentide de “it” olmalı."]],
-          "Olumlu cümle → olumsuz eklenti (won't).", ["Yardımcı fiil “will”, özne “it”.", "Olumlu cümleye olumsuz eklenti: won't.", "Cevap: won't it?"], { kural: "… will …, won't …? · … won't …, will …?" }),
+          "Olumlu cümle → olumsuz eklenti (won't).", [
+           "🔎 Soruyu anlayalım: Yardımcı fiil “will”, özne “it”.",
+           "💡 Hatırlayalım: Olumlu cümleye olumsuz eklenti: won't.",
+           "✏️ Seçenekleri tek tek inceleyelim: “will it” → Cümle olumlu; eklenti olumsuz olmalı.",
+           "✏️ “isn't it” → Cümlede yardımcı fiil “will”; eklentide “won't” kullanılır.",
+           "✅ Sonuç: won't it?",
+           "🔁 Kontrol edelim: Son seçenek “won't they” de aradığımız cevap değil: Özne “it”; eklentide de “it” olmalı. Geriye yalnızca “won't it” kalıyor."], { kural: "… will …, won't …? · … won't …, will …?", dogruNeden: "Olumlu cümleye olumsuz eklenti: won't." }),
         Q("enfut.will", "aciklama", 2, "Which sentence is a <b>plan</b>, not a general prediction?", "I'm going to visit my uncle next Sunday.",
           [["Robots will do our homework in the future.", "kavrama", "Bu, gelecekle ilgili genel bir tahmindir (will)."], ["People will live on Mars one day.", "kavrama", "Bu bir tahmindir; kişisel bir plan değildir."], ["Cars will fly in 2100.", "kavrama", "Bu bir tahmindir; planlanmış bir iş değildir."]],
-          "Plan için be going to, genel tahmin için will.", ["will ile kurulan cümleler genel tahminlerdir.", "Önceden kararlaştırılmış planlar be going to ile anlatılır.", "Plan: I'm going to visit my uncle next Sunday."], { kural: "Plan → be going to · Genel tahmin → will" }),
+          "Plan için be going to, genel tahmin için will.", [
+           "🔎 Soruyu anlayalım: will ile kurulan cümleler genel tahminlerdir.",
+           "💡 Hatırlayalım: Önceden kararlaştırılmış planlar be going to ile anlatılır.",
+           "✏️ Seçenekleri tek tek inceleyelim: “Robots will do our homework in the future.” → Bu, gelecekle ilgili genel bir tahmindir (will).",
+           "✏️ “People will live on Mars one day.” → Bu bir tahmindir; kişisel bir plan değildir.",
+           "✅ Sonuç: Plan: I'm going to visit my uncle next Sunday.",
+           "🔁 Kontrol edelim: Son seçenek “Cars will fly in 2100.” de aradığımız cevap değil: Bu bir tahmindir; planlanmış bir iş değildir. Geriye yalnızca “I'm going to visit my uncle next Sunday.” kalıyor."], { kural: "Plan → be going to · Genel tahmin → will", dogruNeden: "Önceden kararlaştırılmış planlar be going to ile anlatılır." }),
         Q("enfut.will", "transfer", 2, "Read the text and answer the question.<br><i>What will life be like in 2100? I think people will live in smart houses. Robots will cook and clean. Children will go to school in flying cars. But I think people won't live on Mars because it will be too expensive.</i><br>According to the writer, which one <b>won't</b> happen?", "People will live on Mars.",
           [["Robots will cook and clean.", "dikkat", "Yazar robotların yemek yapıp temizlik yapacağını düşünüyor."], ["People will live in smart houses.", "dikkat", "Yazar insanların akıllı evlerde yaşayacağını düşünüyor."], ["Children will go to school in flying cars.", "dikkat", "Yazar çocukların uçan arabalarla okula gideceğini düşünüyor."]],
-          "Metinde “won't” geçen cümleyi bul.", ["Sorudaki anahtar kelime: won't (olmayacak).", "Metin: “people won't live on Mars because it will be too expensive.”", "Olmayacak olan: People will live on Mars."], { kural: "I think … will / won't … = Bence … -ecek / -meyecek." }),
+          "Metinde “won't” geçen cümleyi bul.", [
+           "🔎 Soruyu anlayalım: Sorudaki anahtar kelime: won't (olmayacak).",
+           "💡 Hatırlayalım: Metin: “people won't live on Mars because it will be too expensive.”",
+           "✏️ Seçenekleri tek tek inceleyelim: “Robots will cook and clean.” → Yazar robotların yemek yapıp temizlik yapacağını düşünüyor.",
+           "✏️ “People will live in smart houses.” → Yazar insanların akıllı evlerde yaşayacağını düşünüyor.",
+           "✅ Sonuç: Olmayacak olan: People will live on Mars.",
+           "🔁 Kontrol edelim: Son seçenek “Children will go to school in flying cars.” de aradığımız cevap değil: Yazar çocukların uçan arabalarla okula gideceğini düşünüyor. Geriye yalnızca “People will live on Mars.” kalıyor."], { kural: "I think … will / won't … = Bence … -ecek / -meyecek.", dogruNeden: "Metin: “people won't live on Mars because it will be too expensive.”" }),
       ],
     },
   });
