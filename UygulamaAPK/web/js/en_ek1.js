@@ -489,23 +489,22 @@
 
   /* Question tags (geniş zaman ve şimdiki zaman) */
   const TAG_C = [
-    ["Your brother plays football", "doesn't he?", ["isn't he?", "don't he?", "does he?"], "geniş zaman, olumlu, özne he"],
-    ["Elif likes maths", "doesn't she?", ["isn't she?", "does she?", "didn't she?"], "geniş zaman, olumlu, özne she"],
-    ["They live in Izmir", "don't they?", ["doesn't they?", "aren't they?", "do they?"], "geniş zaman, olumlu, özne they"],
-    ["You are reading a comic", "aren't you?", ["don't you?", "are you?", "isn't you?"], "şimdiki zaman, olumlu, özne you"],
-    ["Mert is doing his homework", "isn't he?", ["doesn't he?", "is he?", "aren't he?"], "şimdiki zaman, olumlu, özne he"],
-    ["The girls aren't sleeping", "are they?", ["aren't they?", "do they?", "is she?"], "şimdiki zaman, olumsuz, özne they"],
-    ["Ali doesn't eat fish", "does he?", ["doesn't he?", "is he?", "do he?"], "geniş zaman, olumsuz, özne he"],
+    ["Your brother plays football", "doesn't he?", [["isn't he?", "kavrama", "Cümle geniş zamanda; tag'de am / is / are değil do / does kullanılır."], ["don't he?", "dikkat", "“he” ile “do” değil “does” kullanılır."], ["does he?", "dikkat", "Olumlu cümleye olumsuz tag gelir; burada tag de olumlu kalmış."]], "geniş zaman, olumlu, özne he"],
+    ["Elif likes maths", "doesn't she?", [["isn't she?", "kavrama", "Cümle geniş zamanda; tag'de am / is / are değil do / does kullanılır."], ["does she?", "dikkat", "Olumlu cümleye olumsuz tag gelir; burada tag de olumlu kalmış."], ["didn't she?", "bilgi", "“did” geçmiş zamandır; cümle geniş zamanda."]], "geniş zaman, olumlu, özne she"],
+    ["They live in Izmir", "don't they?", [["doesn't they?", "dikkat", "“they” ile “does” değil “do” kullanılır."], ["aren't they?", "kavrama", "Cümle geniş zamanda; tag'de am / is / are değil do / does kullanılır."], ["do they?", "dikkat", "Olumlu cümleye olumsuz tag gelir; burada tag de olumlu kalmış."]], "geniş zaman, olumlu, özne they"],
+    ["You are reading a comic", "aren't you?", [["don't you?", "kavrama", "Cümle şimdiki zamanda; tag'de do / does değil am / is / are kullanılır."], ["are you?", "dikkat", "Olumlu cümleye olumsuz tag gelir; burada tag de olumlu kalmış."], ["isn't you?", "dikkat", "“you” ile “is” değil “are” kullanılır."]], "şimdiki zaman, olumlu, özne you"],
+    ["Mert is doing his homework", "isn't he?", [["doesn't he?", "kavrama", "Cümle şimdiki zamanda; tag'de do / does değil am / is / are kullanılır."], ["is he?", "dikkat", "Olumlu cümleye olumsuz tag gelir; burada tag de olumlu kalmış."], ["aren't he?", "dikkat", "“he” ile “are” değil “is” kullanılır."]], "şimdiki zaman, olumlu, özne he"],
+    ["The girls aren't sleeping", "are they?", [["aren't they?", "dikkat", "Olumsuz cümleye olumlu tag gelir; burada tag de olumsuz kalmış."], ["do they?", "kavrama", "Cümle şimdiki zamanda; tag'de do / does değil am / is / are kullanılır."], ["is she?", "dikkat", "“The girls” çoğuldur; zamir “they”, yardımcı fiil “are” olmalı."]], "şimdiki zaman, olumsuz, özne they"],
+    ["Ali doesn't eat fish", "does he?", [["doesn't he?", "dikkat", "Olumsuz cümleye olumlu tag gelir; burada tag de olumsuz kalmış."], ["is he?", "kavrama", "Cümle geniş zamanda; tag'de am / is / are değil do / does kullanılır."], ["do he?", "dikkat", "“he” ile “do” değil “does” kullanılır."]], "geniş zaman, olumsuz, özne he"],
   ];
   SORU_EKLE("endly.tags",
     z => {
       const t = sec(TAG_C);
-      const neden = { "isn't": "“isn't” bu cümleye uymuyor: “is” yalnızca he / she / it ile şimdiki zamanda kullanılır; zamanı ve özneyi kontrol et.", "don't": "Özneye dikkat et; yardımcı fiil özneyle uyumlu olmalı.", "doesn't": "Özneye dikkat et; yardımcı fiil özneyle uyumlu olmalı.", "aren't": "Olumsuz cümleye olumlu tag gelir; ayrıca “are” yalnızca you / we / they ile şimdiki zamanda kullanılır.", "does": "Olumlu cümleye olumsuz, olumsuz cümleye olumlu tag gelir.", "do": "Olumlu cümleye olumsuz, olumsuz cümleye olumlu tag gelir.", "are": "Olumlu cümleye olumsuz, olumsuz cümleye olumlu tag gelir.", "is": "Olumlu cümleye olumsuz, olumsuz cümleye olumlu tag gelir.", "didn't": "“did” geçmiş zamandır; cümle geniş zamanda." };
       return S({
         kaz: "endly.tags", duzey: "uygulama", zorluk: 2,
         soru: `Choose the correct question tag.<br>${t[0]}, ___`,
         dogru: t[1],
-        yanlis: t[2].map(x => [x, x.startsWith("is") && t[3].startsWith("geniş") ? "kavrama" : "dikkat", neden[x.split(" ")[0]] || "Yardımcı fiil, özne ve olumlu/olumsuz uyumunu kontrol et."]),
+        yanlis: t[2],
         ipucu: "Cümlenin zamanını, öznesini ve olumlu/olumsuz olduğunu bul.",
         cozum: C(`“${t[0]}” cümlesine uygun soru eki (question tag) bulacağız.`, "Kural: olumlu cümle → olumsuz tag; olumsuz cümle → olumlu tag. Geniş zamanda do/does, şimdiki zamanda am/is/are kullanılır. Tag'de özne zamiri olur.",
           `Cümlenin özellikleri: ${t[3]}.`, `Buna göre tag: ${t[1]}`, `Cevap: ${t[0]}, ${t[1]}`, "Tag'i söyle: yardımcı fiil + zamir. Zamir cümlenin öznesini anlatmalı (Elif → she, the girls → they)."),
@@ -525,6 +524,226 @@
       C("Doğru soru eki kullanılan cümleyi bulacağız.", "Geniş zaman → do/does; şimdiki zaman → am/is/are. Olumlu ↔ olumsuz.",
         "1. cümle: walks (geniş zaman) → doesn't he? olmalı. 2. cümle: olumlu → aren't you? olmalı. 3. cümle: they → don't they? olmalı.", "“We don't go… , do we?” → olumsuz cümle, olumlu tag, özne we. Doğru!", "Cevap: We don't go to school on Sundays, do we?", "Elemeyle çalış: her cümlede üç şeyi kontrol et ve yanlış olanları çiz."),
       { kural: "Olumsuz cümle + olumlu tag: We don't…, do we?", dogruNeden: "Cümle olumsuz geniş zamanda ve öznesi “we”; tag “do we?” olarak doğru kurulmuş." }),
+  );
+
+  /* =========================================================================
+   * THEME 2 — LEARNING ACTIVITIES IN THE CLASSROOM
+   * ========================================================================= */
+  const ETKINLIK = [
+    ["keep a diary", "write about your day in a notebook every evening", "her akşam bir deftere gününü yazmak"],
+    ["role-play", "act out a dialogue with a friend", "bir arkadaşla diyaloğu canlandırmak"],
+    ["sort the words", "put the words into groups", "kelimeleri gruplara ayırmak"],
+    ["make a poster", "draw pictures and write on a big paper", "büyük bir kâğıda resim çizip yazı yazmak"],
+    ["do a quiz", "answer short questions in a game", "bir oyunda kısa soruları cevaplamak"],
+    ["make flashcards", "write words on small cards", "kelimeleri küçük kartlara yazmak"],
+  ];
+  SORU_EKLE("enlrn.activities",
+    z => {
+      const e = sec(ETKINLIK), d = karistir(ETKINLIK.filter(x => x !== e)).slice(0, 3);
+      return S({
+        kaz: "enlrn.activities", duzey: "hatirlama", zorluk: 1,
+        soru: `Our teacher says, “Please <b>${e[1]}</b>.” Which learning activity is this?`,
+        dogru: e[0],
+        yanlis: d.map(x => [x[0], "bilgi", `“${x[0]}” etkinliğinde ${x[2]} gerekir.`]),
+        ipucu: "Öğretmenin tarif ettiği işi Türkçeye çevirip düşün.",
+        cozum: C("Öğretmenin tarif ettiği öğrenme etkinliğinin adını bulacağız.", "Sınıf etkinlikleri: keep a diary (günlük tutmak), role-play (canlandırma), sort (gruplama), make a poster (afiş hazırlamak), do a quiz (kısa sınav/yarışma), make flashcards (kelime kartı hazırlamak).",
+          `Tarif: “${e[1]}” → ${e[2]}.`, `Bu işin adı: ${e[0]}.`, `Cevap: ${e[0]}.`, "Diğer seçenekleri de Türkçeye çevir; hiçbiri bu tarife uymuyorsa doğru yoldasın."),
+        kural: "Sınıf etkinliği kalıpları: keep a diary, do a quiz, make a poster, role-play.",
+        dogruNeden: `“${e[0]}” = ${e[2]}.`,
+      });
+    },
+    Q("enlrn.activities", "transfer", 2, "Read the text.<br><i>I'm Bora. I want to learn new English words. I write each word on a small card and I draw a picture on the back. I look at my cards every day.</i><br>What does Bora do?", "He makes flashcards.",
+      [["He keeps a diary.", "kavrama", "Günlük tutmak gününü anlatmaktır; Bora kelime kartı hazırlıyor."], ["He does a role-play.", "bilgi", "Canlandırma bir arkadaşla diyalog oynamaktır; metinde yok."], ["He makes a poster.", "dikkat", "Bora büyük bir kâğıda değil, küçük kartlara yazıyor."]],
+      "small card + new words = ?",
+      C("Bora'nın kelime öğrenmek için yaptığı etkinliği bulacağız.", "flashcard = bir yüzünde kelime, diğer yüzünde resim/anlam olan küçük kart.",
+        "Metinde: write each word on a small card, draw a picture on the back.", "Bu tarif kelime kartı (flashcard) hazırlamaktır.", "Cevap: He makes flashcards.", "Metindeki anahtar kelimeleri (small card, word) seçeneklerle eşleştir."),
+      { kural: "make flashcards = kelime kartı hazırlamak.", dogruNeden: "Bora kelimeleri küçük kartlara yazıp arkalarına resim çiziyor; bu flashcard hazırlamaktır." }),
+    Q("enlrn.activities", "uygulama", 2, "Look at the table. <b>Which student likes learning with friends by acting?</b>", "Arda",
+      [["Lale", "dikkat", "Lale günlük tutmayı seviyor; bu tek başına yapılan bir etkinliktir."], ["Sena", "dikkat", "Sena kelimeleri gruplamayı seviyor; canlandırma yapmıyor."], ["Kaan", "dikkat", "Kaan kısa sınav (quiz) yapmayı seviyor."]],
+      "acting (canlandırma) hangi etkinlik?",
+      C("Arkadaşlarıyla canlandırma yaparak öğrenmeyi seven öğrenciyi bulacağız.", "act = rol yapmak, canlandırmak → role-play.",
+        "Tabloda “role-play” kelimesini ara.", "role-play, Arda'nın satırında.", "Cevap: Arda.", "Önce soruyu etkinlik adına çevir, sonra tabloda o adı bul."),
+      { gorsel: G.tablo(["Student", "Favourite activity"], [["Lale", "keep a diary"], ["Arda", "role-play"], ["Sena", "sort the words"], ["Kaan", "do a quiz"]]),
+        kural: "role-play = bir arkadaşla canlandırma yapmak.", dogruNeden: "Canlandırma (role-play) Arda'nın en sevdiği etkinliktir." }),
+  );
+
+  /* İyelik sıfatları */
+  const IYELIK = [["I", "my"], ["you", "your"], ["he", "his"], ["she", "her"], ["it", "its"], ["we", "our"], ["they", "their"]];
+  const KISI_IY = [
+    ["Mehmet", "his", "he"], ["Zehra", "her", "she"], ["My parents", "their", "they"], ["The cat", "its", "it"], ["Ali and I", "our", "we"],
+  ];
+  SORU_EKLE("enlrn.possadj",
+    z => {
+      const k = sec(KISI_IY), esya = sec(["schoolbag", "pencil case", "notebook", "bike"]);
+      const nesne = k[0] === "The cat" ? sec(["bowl", "bed"]) : esya;
+      const d = karistir(IYELIK.filter(x => x[1] !== k[1])).slice(0, 3);
+      return S({
+        kaz: "enlrn.possadj", duzey: "uygulama", zorluk: 1,
+        soru: `Choose the correct word.<br>${k[0]} ${k[2] === "they" || k[2] === "we" ? "have" : "has"} got a new ${nesne}. ___ ${nesne} is blue.`,
+        dogru: k[1][0].toUpperCase() + k[1].slice(1),
+        yanlis: d.map(x => [x[1][0].toUpperCase() + x[1].slice(1), "kavrama", `“${x[1]}” ${x[0]} öznesinin iyelik sıfatıdır; burada sahip “${k[0]}” (${k[2]}).`]),
+        ipucu: `Önce “${k[0]}” yerine hangi zamiri kullanacağını düşün.`,
+        cozum: C(`${nesne} kelimesinin sahibini gösteren iyelik sıfatını bulacağız.`, "I → my, you → your, he → his, she → her, it → its, we → our, they → their.",
+          `Sahip: ${k[0]}. Onun zamiri: ${k[2]}.`, `${k[2]} → ${k[1]}.`, `Cevap: ${k[1][0].toUpperCase() + k[1].slice(1)} ${nesne} is blue.`, "İyelik sıfatı her zaman bir isimden önce gelir: my book, their house."),
+        kural: "İyelik sıfatı + isim: his bag, her book, their car.",
+        dogruNeden: `“${k[0]}” = ${k[2]}; onun iyelik sıfatı “${k[1]}”.`,
+      });
+    },
+    Q("enlrn.possadj", "transfer", 2, "Complete the dialogue.<br>— Excuse me, is this ___ dictionary, Mrs Kaya?<br>— Yes, it is. Thank you!", "your",
+      [["her", "kavrama", "Mrs Kaya ile doğrudan konuşuyoruz; karşımızdaki kişiye “your” deriz."], ["my", "kavrama", "“my” konuşanın kendisine ait olanı gösterir; sözlük Mrs Kaya'nın."], ["you", "bilgi", "“you” bir zamirdir; isimden önce iyelik sıfatı “your” gelir."]],
+      "Konuştuğun kişiye ait bir şeyi soruyorsun.",
+      C("Mrs Kaya'ya, sözlüğün onun olup olmadığını soruyoruz.", "Karşımızdaki kişiye ait olan → your. Bir isimden önce zamir (you) değil iyelik sıfatı (your) kullanılır.",
+        "Konuşan öğrenci, dinleyen Mrs Kaya.", "Dinleyen kişiye ait sözlük → your dictionary.", "Cevap: your.", "“her” üçüncü bir kişiden söz ederken kullanılır; yüzüne konuştuğumuz kişi için değil."),
+      { kural: "Konuştuğun kişi → you / your.", dogruNeden: "Doğrudan Mrs Kaya ile konuşuluyor; ona ait olan şey için “your” kullanılır." }),
+    Q("enlrn.possadj", "aciklama", 2, "Which sentence is <b>correct</b>?", "The bird is in its cage.",
+      [["The bird is in it's cage.", "dikkat", "“it's” = it is demektir; iyelik sıfatı kesme işaretsiz “its” yazılır."], ["The children are with his teacher.", "kavrama", "“The children” çoğuldur; iyelik sıfatı “their” olmalı."], ["Ayşe loves him brother.", "bilgi", "“him” nesne zamiridir; Ayşe'nin kardeşi için “her brother” denir."]],
+      "Her cümlede sahibi bul ve iyelik sıfatıyla eşleştir.",
+      C("İyelik sıfatı doğru kullanılmış cümleyi bulacağız.", "he → his, she → her, it → its, they → their. its (iyelik) ile it's (it is) farklıdır.",
+        "Çocuklar (they) → their teacher olmalı. Ayşe (she) → her brother olmalı.", "it's = it is; kafes kuşa ait olduğu için “its cage” doğrudur.", "Cevap: The bird is in its cage.", "Bir kelimede kesme işareti görürsen açılımını dene: it's → it is. Anlam bozuluyorsa “its” yaz."),
+      { kural: "its = onun (hayvan/eşya); it's = it is.", dogruNeden: "Kafes kuşa aittir; “it” için iyelik sıfatı kesme işaretsiz “its” olur." }),
+  );
+
+  /* Hal zarfları */
+  const ZARF_H = [
+    ["careful", "carefully", "dikkatle"], ["quiet", "quietly", "sessizce"], ["slow", "slowly", "yavaşça"], ["quick", "quickly", "hızlıca"], ["loud", "loudly", "yüksek sesle"], ["neat", "neatly", "düzenli bir şekilde"],
+  ];
+  const ZARF_C = [
+    ["Please read the questions ___.", "careful", "carefully"], ["We work ___ in the library.", "quiet", "quietly"], ["The old man walks ___.", "slow", "slowly"], ["Tuna finishes his lunch ___ and goes out.", "quick", "quickly"], ["Nur writes ___ in her notebook.", "neat", "neatly"],
+  ];
+  SORU_EKLE("enlrn.adverb",
+    z => {
+      const c = sec(ZARF_C), a = ZARF_H.find(x => x[0] === c[1]);
+      const baska = sec(ZARF_H.filter(x => x !== a));
+      return S({
+        kaz: "enlrn.adverb", duzey: "uygulama", zorluk: 1,
+        soru: `Choose the correct word.<br>${c[0]}`,
+        dogru: c[2],
+        yanlis: [[c[1], "kavrama", `“${c[1]}” bir sıfattır; fiili (eylemin nasıl yapıldığını) zarf anlatır: ${c[2]}.`], [c[1] + "ly" === c[2] ? c[1] + "ely" : c[1] + "ly", "dikkat", `Yazıma dikkat: doğru biçim “${c[2]}”.`], [baska[1], "kavrama", `“${baska[1]}” = ${baska[2]}; cümlenin anlamına uymuyor.`]],
+        ipucu: "Boşluk bir fiilin nasıl yapıldığını anlatıyor.",
+        cozum: C("Boşluğa fiili niteleyen kelimeyi koyacağız.", "Hal zarfı eylemin nasıl yapıldığını anlatır ve çoğunlukla sıfat + -ly ile yapılır: careful → carefully. Zarf genellikle fiilden (ve nesneden) sonra gelir.",
+          `Sıfat: ${a[0]} → zarf: ${a[1]} (${a[2]}).`, "Zarf, fiilden ya da nesneden sonra cümlenin sonuna yerleşir.", `Cevap: ${c[0].replace("___", c[2])}`, "Kendine sor: “Nasıl?” Cevap -ly ile bitiyorsa zarf seçmişsindir."),
+        kural: "Sıfat + ly = zarf (quiet → quietly).",
+        dogruNeden: `Eylemin nasıl yapıldığını zarf anlatır: ${c[2]}.`,
+      });
+    },
+    Q("enlrn.adverb", "aciklama", 2, "Which sentence has the <b>correct word order</b>?", "She opens the door quietly.",
+      [["She quietly opens the door quietly.", "dikkat", "Zarf iki kez yazılmış; bir cümlede bir kez yeterli."], ["She opens quietly the door.", "bilgi", "Zarf, fiil ile nesnenin arasına girmez; nesneden sonra gelir."], ["Quietly she the door opens.", "bilgi", "İngilizce cümlede sıra özne + fiil + nesne şeklindedir."]],
+      "Özne + fiil + nesne + zarf",
+      C("Sözcük sırası doğru olan cümleyi bulacağız.", "İngilizce cümle sırası: özne + fiil + nesne + hal zarfı.",
+        "Özne: She, fiil: opens, nesne: the door, zarf: quietly.", "Sıraya dizelim: She opens the door quietly.", "Cevap: She opens the door quietly.", "Fiil ile nesneyi ayırma: “opens the door” birlikte kalmalı."),
+      { kural: "Özne + fiil + nesne + zarf: He reads the text carefully.", dogruNeden: "Cümle özne + fiil + nesne + zarf sırasına uyuyor." }),
+    Q("enlrn.adverb", "transfer", 2, "Read the classroom rules.<br><i>1. Listen to your teacher ___.<br>2. Walk ___ in the corridors. Don't run!<br>3. Write ___. Your teacher must read it.</i><br>Which words complete the rules?", "carefully – slowly – neatly",
+      [["careful – slow – neat", "kavrama", "Bunlar sıfattır; eylemleri (listen, walk, write) zarflar anlatır."], ["quickly – loudly – carefully", "kavrama", "Koridorda hızlı yürümek ve yüksek sesle dinlemek kurallara uymaz."], ["loudly – quickly – slowly", "kavrama", "“Don't run!” diyor; hızlı (quickly) yürümek kurala aykırıdır."]],
+      "Her kuralın anlamını düşün; 2. kuralda “Don't run!” var.",
+      C("Sınıf kurallarına uygun zarfları seçeceğiz.", "Zarflar fiilden sonra gelir ve eylemin nasıl yapıldığını anlatır.",
+        "1. Öğretmeni dikkatle dinle → carefully. 2. Koşma, yavaş yürü → slowly.", "3. Öğretmenin okuyabilmesi için düzgün yaz → neatly.", "Cevap: carefully – slowly – neatly.", "Hem dil bilgisine (zarf mı?) hem de anlama (kurala uygun mu?) bakmalısın."),
+      { kural: "listen carefully, walk slowly, write neatly.", dogruNeden: "Üç boşluk da fiili niteliyor ve anlamca sınıf kurallarına uyuyor." }),
+  );
+
+  /* =========================================================================
+   * THEME 2 — NUMBERS 100–500, 1st–50th
+   * ========================================================================= */
+  SORU_EKLE("ennum.cardinal",
+    z => {
+      const n = R(101, 499);
+      const yuz = Math.floor(n / 100), kalan = n % 100;
+      const y1 = kalan === 0 ? kelime(n + 10) : `${BIRLER[yuz]} hundred ${yuzAlti(kalan)}`;
+      const y2 = kalan < 10 && kalan > 0 ? kelime(n + 9) : kelime(yuz * 100 + (kalan % 10) * 10 + Math.floor(kalan / 10) === n ? n + 1 : yuz * 100 + (kalan % 10) * 10 + Math.floor(kalan / 10));
+      const y3 = kelime(n + 100 > 500 ? n - 100 : n + 100);
+      return S({
+        kaz: "ennum.cardinal", duzey: "hatirlama", zorluk: 2,
+        soru: `How do we say <b>${n}</b> in English?`,
+        dogru: kelime(n),
+        yanlis: [[y1, kalan === 0 ? "dikkat" : "bilgi", kalan === 0 ? "Onlar ve birler basamağına dikkat et." : "İngiliz İngilizcesinde “hundred” ile sonraki sayı arasına “and” eklenir."], [y2, "dikkat", "Onlar ve birler basamağındaki rakamları karıştırmışsın."], [y3, "dikkat", "Yüzler basamağına dikkat et."]],
+        ipucu: "Önce yüzler basamağını, sonra kalan iki basamağı oku.",
+        cozum: C(`${n} sayısını İngilizce yazacağız.`, "Yüzlük sayılar: rakam + hundred. İngiliz İngilizcesinde kalan kısım “and” ile bağlanır: 205 = two hundred and five.",
+          `Yüzler: ${yuz} → ${BIRLER[yuz]} hundred.`, kalan ? `Kalan: ${kalan} → ${yuzAlti(kalan)}.` : "Kalan kısım yok; yalnızca “hundred”.", `Cevap: ${kelime(n)}.`, "Sesli oku ve basamakları rakamla karşılaştır: yüzler, onlar, birler."),
+        kural: "345 = three hundred and forty-five (hundreds yazılmaz).",
+        dogruNeden: `${n} = ${kelime(n)}.`,
+      });
+    },
+    z => {
+      const a = R(1, 4) * 100, b = R(1, 9) * 10, n = a + b;
+      return S({
+        kaz: "ennum.cardinal", duzey: "uygulama", zorluk: 2,
+        soru: `Add the numbers and choose the answer in words.<br><b>${kelime(a)}</b> + <b>${kelime(b)}</b> = ___`,
+        dogru: kelime(n),
+        yanlis: [[kelime(n + 10), "islem", "Toplamada onlar basamağını bir fazla saymışsın."], [kelime(a + b / 10), "islem", `“${kelime(b)}” = ${b}; ${b / 10} değil.`], [kelime(n + 100 > 500 ? n - 100 : n + 100), "islem", "Yüzler basamağına dikkat et."]],
+        ipucu: "Önce kelimeleri rakama çevir, topla, sonra yeniden kelimeye çevir.",
+        cozum: C("İki sayıyı toplayıp sonucu İngilizce yazacağız.", "ten, twenty, thirty, forty, fifty, sixty, seventy, eighty, ninety; one hundred … five hundred.",
+          `${kelime(a)} = ${a}, ${kelime(b)} = ${b}.`, `${a} + ${b} = ${n}.`, `Cevap: ${kelime(n)}.`, `Kontrol: ${n} − ${b} = ${a}; yani ${kelime(a)}. Doğru!`),
+        kural: "Sayıları önce rakama çevir, işlemi yap, sonra kelimeyle yaz.",
+        dogruNeden: `${a} + ${b} = ${n} = ${kelime(n)}.`,
+      });
+    },
+    Q("ennum.cardinal", "transfer", 2, "Read the sign at the bookshop.<br><i>The dictionary costs <b>three hundred and sixty</b> liras.</i><br>How much is the dictionary?", "360 liras",
+      [["316 liras", "bilgi", "316 = three hundred and sixteen; “sixty” 60 demektir."], ["306 liras", "bilgi", "306 = three hundred and six."], ["3060 liras", "kavrama", "“three hundred” 300 demektir; sayılar yan yana yazılmaz, toplanır: 300 + 60."]],
+      "sixteen (16) ile sixty (60) farkına dikkat!",
+      C("Kelimeyle yazılmış fiyatı rakama çevireceğiz.", "-teen ile biten sayılar 13–19 (sixteen = 16), -ty ile bitenler onluk (sixty = 60).",
+        "three hundred = 300.", "and sixty = 60 → 300 + 60 = 360.", "Cevap: 360 liras.", "Okurken -teen ve -ty sonlarına dikkat et; vurgu da farklıdır: sixTEEN, SIXty."),
+      { kural: "-teen = 13–19; -ty = 20, 30, … 90.", dogruNeden: "three hundred (300) and sixty (60) = 360." }),
+  );
+
+  SORU_EKLE("ennum.ordinal",
+    z => {
+      const n = R(11, 50);
+      const yakin = [n + 1, n - 1, n + 10 > 50 ? n - 10 : n + 10].filter(x => x >= 1 && x !== n);
+      return S({
+        kaz: "ennum.ordinal", duzey: "hatirlama", zorluk: 2,
+        soru: `Which word is <b>${siraKisa(n)}</b>?`,
+        dogru: siraKelime(n),
+        yanlis: [[n < 20 || n % 10 === 0 ? yuzAlti(n) : yuzAlti(n - n % 10) + "-" + yuzAlti(n % 10), "kavrama", "Bu bir sayma sayısıdır (cardinal); sıra sayısı istiyoruz."], ...yakin.slice(0, 2).map(x => [siraKelime(x), "dikkat", `Bu ${siraKisa(x)} sıra sayısıdır.`])],
+        ipucu: "Sıra sayısında son sayıyı first, second, third ya da -th biçiminde söyleriz.",
+        cozum: C(`${siraKisa(n)} sıra sayısının yazılışını bulacağız.`, "1st first, 2nd second, 3rd third; diğerleri -th alır. Onlukta -y → -ieth (twenty → twentieth). Bileşik sayılarda yalnızca son kelime sıra sayısı olur: twenty-first.",
+          `${n} = ${yuzAlti(n)}.`, `Sıra sayısı: ${siraKelime(n)}.`, `Cevap: ${siraKelime(n)}.`, `Kısaltmanın son iki harfine bak: ${siraKisa(n)} → “${ekSira(n)}”; kelimenin sonu da buna uymalı.`),
+        kural: "21st twenty-first, 32nd thirty-second, 43rd forty-third, 50th fiftieth.",
+        dogruNeden: `${siraKisa(n)} = ${siraKelime(n)}.`,
+      });
+    },
+    Q("ennum.ordinal", "aciklama", 2, "Which one is <b>written correctly</b>?", "22nd",
+      [["22th", "bilgi", "2 ile biten sayılar (12 hariç) -nd alır: 22nd."], ["12nd", "bilgi", "11, 12 ve 13 istisnadır; -th alır: 12th."], ["3th", "bilgi", "3 -rd alır: 3rd."]],
+      "Son rakama bak: 1 → st, 2 → nd, 3 → rd; 11, 12, 13 → th.",
+      C("Doğru yazılmış sıra sayısı kısaltmasını bulacağız.", "Son rakam 1 → st, 2 → nd, 3 → rd, diğerleri → th. İstisna: 11th, 12th, 13th.",
+        "22 → son rakam 2 → 22nd. Doğru.", "12 istisnadır → 12th; 3 → 3rd; 22th yanlış.", "Cevap: 22nd.", "Kelimeyi söyle: twenty-secoND → nd; twelfTH → th."),
+      { kural: "1st, 2nd, 3rd, 11th, 12th, 13th, 21st, 22nd, 23rd.", dogruNeden: "22 ikiyle bitiyor ve 12 değil; bu yüzden -nd alır." }),
+    Q("ennum.ordinal", "transfer", 2, "Look at the race results. <b>Who is fourth?</b>", "Ozan",
+      [["Defne", "dikkat", "Defne üçüncü (3rd)."], ["Yiğit", "dikkat", "Yiğit beşinci (5th)."], ["Pelin", "dikkat", "Pelin ikinci (2nd)."]],
+      "fourth = 4th",
+      C("Yarışta dördüncü olan kişiyi bulacağız.", "first 1st, second 2nd, third 3rd, fourth 4th, fifth 5th.",
+        "fourth → 4th.", "Tabloda 4th satırında Ozan var.", "Cevap: Ozan.", "Kelimeyi rakama çevirip tabloda ara; four + th = fourth."),
+      { gorsel: G.tablo(["Place", "Name"], [["1st", "Ebru"], ["2nd", "Pelin"], ["3rd", "Defne"], ["4th", "Ozan"], ["5th", "Yiğit"]]),
+        kural: "fourth = 4th, fifth = 5th.", dogruNeden: "Tabloda 4th (fourth) sırasında Ozan yazıyor." }),
+  );
+
+  SORU_EKLE("ennum.use",
+    z => {
+      const kat = R(2, 12), oda = R(1, 9);
+      const isim = sec(["Dr Yıldız", "the dentist", "my uncle", "the English teacher"]);
+      return S({
+        kaz: "ennum.use", duzey: "uygulama", zorluk: 2,
+        soru: `Look at the board in the building. <b>Which floor is ${isim} on?</b>`,
+        gorsel: G.tablo(["Name", "Floor"], karistir([[isim, siraKisa(kat)], ["Kids' Club", siraKisa(kat === 1 ? 2 : 1)], ["Café", "ground"]])),
+        dogru: `on the ${siraKelime(kat)} floor`,
+        yanlis: [[`on the ${yuzAlti(kat)} floor`, "bilgi", "Katlarda sıra sayısı kullanılır: the third floor (the three floor değil)."], [`on the ${siraKelime(kat + 1)} floor`, "dikkat", `Tabloda ${siraKisa(kat + 1)} değil ${siraKisa(kat)} yazıyor.`], [`on the ${siraKelime(kat + oda > 50 ? kat + 2 : kat + oda + 1)} floor`, "dikkat", "Tablodaki kat bilgisini dikkatle oku."]],
+        ipucu: "Kat söylerken sıra sayısı kullanırız.",
+        cozum: C(`${isim} kişisinin hangi katta olduğunu bulacağız.`, "Kat, sayfa değil sıra bildirir: the first floor, the second floor… Katlardan önce “the” ve “on” kullanılır.",
+          `Tabloda ${isim}: ${siraKisa(kat)}.`, `${siraKisa(kat)} = ${siraKelime(kat)}.`, `Cevap: on the ${siraKelime(kat)} floor.`, "“the … floor” arasına her zaman sıra sayısı gelir."),
+        kural: "on the + sıra sayısı + floor.",
+        dogruNeden: `Tabloda ${siraKisa(kat)} yazıyor; bu “the ${siraKelime(kat)} floor” demektir.`,
+      });
+    },
+    Q("ennum.use", "transfer", 2, "Complete the dialogue.<br>— When is your birthday?<br>— It's on ___ (23 April).", "the twenty-third of April",
+      [["the twenty-three of April", "bilgi", "Tarihlerde sıra sayısı kullanılır: twenty-third."], ["the twentieth-third of April", "bilgi", "Bileşik sıra sayılarında yalnızca son kelime değişir: twenty-third."], ["the twenty-thirteen of April", "dikkat", "23 = twenty-three; thirteen 13 demektir."]],
+      "Tarihlerde sıra sayısı kullanılır.",
+      C("23 Nisan tarihini İngilizce söyleyeceğiz.", "İngiliz İngilizcesinde tarih: the + sıra sayısı + of + ay (the first of May).",
+        "23 → twenty-three → sıra sayısı: twenty-third.", "Ay: April → the twenty-third of April.", "Cevap: the twenty-third of April.", "Yazarken 23rd April, söylerken “the twenty-third of April” deriz."),
+      { kural: "Tarih: the 23rd of April = the twenty-third of April.", dogruNeden: "Tarihlerde gün sıra sayısıyla söylenir: 23 → twenty-third." }),
+    Q("ennum.use", "uygulama", 2, "Read the message.<br><i>Open your books at page <b>two hundred and fourteen</b> and do Exercise 3.</i><br>Which page do the students open?", "214",
+      [["240", "bilgi", "240 = two hundred and forty; “fourteen” 14 demektir."], ["204", "bilgi", "204 = two hundred and four."], ["2014", "kavrama", "two hundred = 200; 200 + 14 = 214. Sayılar yan yana yazılmaz."]],
+      "fourteen ile forty farkını düşün.",
+      C("Kelimeyle verilen sayfa numarasını rakama çevireceğiz.", "Sayfa numaraları sayma sayısıyla söylenir: page 214 = page two hundred and fourteen.",
+        "two hundred = 200.", "fourteen = 14 → 200 + 14 = 214.", "Cevap: 214.", "Kontrol: 214'ü sesli oku: two hundred and fourteen. Aynı!"),
+      { kural: "Sayfa → cardinal (page 214); kat/tarih/sıra → ordinal.", dogruNeden: "two hundred (200) and fourteen (14) = 214." }),
   );
 
   /*SON*/

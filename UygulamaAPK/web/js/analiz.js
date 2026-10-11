@@ -230,6 +230,91 @@
     return { tur: "deneme", ders, metin: "Bütün konuları tamamladın. Genel deneme ile kendini sına!" };
   }
 
+
+  /* ---------------- Öğrenme motoru (1.7) ---------------- */
+  const bagimsiz = s => !s.terk && s.ilkDogru && !s.ipucu && !s.cozumGoruldu;
+  const HIZLI_SN = 75;                         // bağımsız ve bu süreden kısa → akıcı
+  const ARALIK = [1, 2, 4, 8, 16, 32];         // kutu → gün
+
+  /* Kazanım bazında uyarlanabilir aralıklı tekrar.
+   * Her gün kazanımın o günkü İLK cevabı değerlendirilir (aynı gün tekrar tekrar çözmek aralığı şişirmez):
+   *  bağımsız + hızlı doğru → aralık uzar; bağımsız ama yavaş → aralık aynı kalır;
+   *  ipucu/çözümle doğru → aralık uzamaz, bir kutu geri; yanlış → baştan (1 gün) ve önce eksik/yanılgı. */
+  function kazanimTekrar(ders = null) {
+    const grup = {};
+    for (const s of DEPO.liste("soru")) { if (s.terk || !s.kaz || !ICERIK.KAZANIM[s.kaz]) continue; if (ders && dersi(s) !== ders) continue; (grup[s.kaz] = grup[s.kaz] || []).push(s); }
+    const sonuc = [];
+    for (const [kaz, l] of Object.entries(grup)) {
+      let kutu = 0, sonGun = null, sonBagimsiz = null, seri = 0, ipucuSay = 0, gunSay = 0;
+      for (const s of l) {
+        const g = gunNo(s.t);
+        if (g === sonGun) continue;
+        sonGun = g; gunSay++;
+        const yardim = s.ipucu || s.cozumGoruldu;
+        if (yardim) ipucuSay++;
+        if (bagimsiz(s)) { sonBagimsiz = s.t; seri++; if ((s.ilkSure || 0) / 1000 <= HIZLI_SN) kutu = Math.min(ARALIK.length - 1, kutu + 1); else kutu = Math.max(kutu, 1); }
+        else if (s.ilkDogru) { seri = 0; kutu = Math.max(0, kutu - 1); }
+        else { seri = 0; kutu = 0; }
+      }
+      const son5 = l.slice(-5).map(s => s.ilkHata).filter(Boolean);
+      const hataSay = {}; son5.forEach(h => { hataSay[h] = (hataSay[h] || 0) + 1; });
+      const tekrarHata = Object.entries(hataSay).find(([, n]) => n >= 2);
+      const sonrakiGun = sonGun + ARALIK[kutu];
+      const k = ICERIK.KAZANIM[kaz];
+      sonuc.push({ kaz, ad: k.ad, konu: k.konu, ders: k.ders, kutu, aralik: ARALIK[kutu], sonGun, sonrakiGun, gecikme: bugunNo() - sonrakiGun,
+        vadesi: bugunNo() >= sonrakiGun, sonBagimsiz, seri, ipucuOrani: oran(ipucuSay, gunSay), tekrarHata: tekrarHata ? tekrarHata[0] : null, n: l.length });
+    }
+    // Önce en çok geciken ve en zayıf kutudakiler
+    return sonuc.sort((a, b) => (b.vadesi - a.vadesi) || (b.gecikme - a.gecikme) || (a.kutu - b.kutu));
+  }
+
+  /* Konu/ders/kazanım için öğrenme profili: ilk deneme, bağımsız çözüm, ipucu sonrası başarı, gecikmeli hatırlama,
+   * transfer, yeni ve daha önce görülmüş sorulardaki başarı, tekrarlanan hata. Her değer kaç soruya dayandığıyla (n) verilir. */
+  function ogrenmeProfili(sorular) {
+    const c = sorular.filter(s => !s.terk);
+    const deger = (l, f) => ({ x: oran(l.filter(f).length, l.length), n: l.length });
+    const ipuclu = c.filter(s => s.ipucu);
+    // Gecikmeli hatırlama: aynı kazanımdan en az 3 gün aradan sonra gelen ilk soru
+    const sonGorulme = {}, gecikmeli = [];
+    for (const s of c) { const g = gunNo(s.t); if (sonGorulme[s.kaz] != null && g - sonGorulme[s.kaz] >= 3) gecikmeli.push(s); if (sonGorulme[s.kaz] !== g) sonGorulme[s.kaz] = g; }
+    const transfer = c.filter(s => s.duzey === "transfer" || s.duzey === "baglanti");
+    const yeni = c.filter(s => s.sk && !s.gorulmus), gorulmus = c.filter(s => s.gorulmus);
+    const hataGun = {};
+    for (const s of c) if (s.ilkHata) { (hataGun[s.ilkHata] = hataGun[s.ilkHata] || new Set()).add(s.testId || gunNo(s.t)); }
+    const tekrarlanan = Object.entries(hataGun).filter(([, v]) => v.size >= 3).map(([h, v]) => ({ hata: h, oturum: v.size })).sort((a, b) => b.oturum - a.oturum);
+    return {
+      ilkDeneme: deger(c, s => s.ilkDogru),
+      bagimsiz: deger(c, bagimsiz),
+      ipucuSonrasi: deger(ipuclu, s => s.sonDogru),
+      yardimli: deger(c.filter(s => s.ipucu || s.cozumGoruldu), s => s.sonDogru),
+      gecikmeli: deger(gecikmeli, s => s.ilkDogru),
+      transfer: deger(transfer, s => s.ilkDogru),
+      yeniSoru: deger(yeni, s => s.ilkDogru),
+      gorulmusSoru: deger(gorulmus, s => s.ilkDogru),
+      tekrarlanan,
+    };
+  }
+
+  /* Veli için eyleme dönük uyarılar ve “Bugün ne yapmalıyız?” önerileri */
+  function uyarilar(ders = null) {
+    const l = [], simdi = Date.now();
+    const son14 = DEPO.liste("soru").filter(s => s.t >= simdi - 14 * GUN && (!ders || dersi(s) === ders));
+    for (const k of ICERIK.KONULAR) {
+      if (ders && k.ders !== ders) continue;
+      const ks = son14.filter(s => s.konu === k.id);
+      if (ks.length < 5) continue;
+      const p = ogrenmeProfili(ks);
+      if (p.tekrarlanan.length) l.push({ tur: "hata", oncelik: 3, konu: k.id, metin: `${k.ad}: aynı hata türü (${(window.HATA_AD && HATA_AD[p.tekrarlanan[0].hata]) || p.tekrarlanan[0].hata}) ${p.tekrarlanan[0].oturum} ayrı testte tekrarlandı.`, oneri: "Konu anlatımına dönüp hata defterindeki soruları birlikte çözün." });
+      if (p.yardimli.n >= 4 && p.bagimsiz.n >= 6 && p.yardimli.x >= 0.75 && p.bagimsiz.x < 0.5) l.push({ tur: "ipucu", oncelik: 2, konu: k.id, metin: `${k.ad}: ipucuyla başarı yüksek (${Math.round(p.yardimli.x * 100)}%), yardımsız başarı düşük (${Math.round(p.bagimsiz.x * 100)}%).`, oneri: "Birkaç soruyu ipucu kullanmadan çözmesini isteyin; zorlanırsa önce kendi sesli düşünsün." });
+      if (p.gorulmusSoru.n >= 5 && p.yeniSoru.n >= 5 && p.gorulmusSoru.x - p.yeniSoru.x >= 0.25) l.push({ tur: "ezber", oncelik: 2, konu: k.id, metin: `${k.ad}: başarı daha çok daha önce görülen sorulara dayanıyor (görülmüş ${Math.round(p.gorulmusSoru.x * 100)}%, yeni ${Math.round(p.yeniSoru.x * 100)}%).`, oneri: "Yeni sorularla alıştırma yapın; cevabı neden seçtiğini anlatmasını isteyin." });
+    }
+    for (const p of tekrarPlani(ders).filter(p => p.vadesi && Date.now() - p.zaman > 3 * GUN)) {
+      if (l.some(x => x.tur === "gecikme" && x.konu === p.konu)) continue;
+      l.push({ tur: "gecikme", oncelik: 1, konu: p.konu, metin: `${ICERIK.KONU[p.konu].ad}: ${p.gun}. gün tekrar testi ${Math.floor((Date.now() - p.zaman) / GUN)} gündür bekliyor.`, oneri: "Bugün 5 dakikalık tekrar testini yapın." });
+    }
+    return l.sort((a, b) => b.oncelik - a.oncelik);
+  }
+
   /* Güçlü ve tekrar edilmesi gereken kazanımlar */
   function gucluZayif(h) {
     const k = Object.entries(h.kazanim).filter(([, x]) => x.cevaplanan >= 3);
@@ -239,5 +324,5 @@
     };
   }
 
-  window.ANALIZ = { hesapla, gunlukSeri, tekrarPlani, onerilenZorluk, oneri, gucluZayif, guven, gunNo, bugunNo, dersi, TEKRAR_GUNLERI, GUN };
+  window.ANALIZ = { kazanimTekrar, ogrenmeProfili, uyarilar, hesapla, gunlukSeri, tekrarPlani, onerilenZorluk, oneri, gucluZayif, guven, gunNo, bugunNo, dersi, TEKRAR_GUNLERI, GUN };
 })();

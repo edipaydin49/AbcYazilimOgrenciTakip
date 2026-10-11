@@ -150,6 +150,7 @@
     const o = ANALIZ.oneri(h, d.id);
     const vadesi = ANALIZ.tekrarPlani(d.id).filter(p => p.vadesi).filter((p, i, a) => a.findIndex(x => x.konu === p.konu) === i);
     const hataSay = hataListesi(d.id).length;
+    const akilli = ANALIZ.kazanimTekrar(d.id).filter(x => x.vadesi);
     const tekil = d.id === "fen" ? "Ünite" : "Tema";
     ana.innerHTML = `
       <section class="kart vurgu">
@@ -163,6 +164,8 @@
         <p>Üç adanın kaybolan yıldızlarını topla! <b>⭐ ${p.yildiz}/${p.toplam}</b> yıldız · <b>🪙 ${p.puan}</b> puan · <b>🏅 ${p.rozet}/3</b> rozet</p><div><a class="btn ana" href="#/oyun">Oyuna gir</a></div></div></section>`; })() : ""}
       ${d.id === "en" && window.INGOYUN ? `<section class="kart sari oyun-giris"><span class="simge">🎮</span><div style="display:grid;gap:8px"><h2>English Games</h2>
         <p>${Object.values(INGOYUN.OYUNLAR).map(o => o.simge + " " + o.ad).join(" · ")}</p><div><a class="btn ana" href="#/ing">Oyunlara gir</a></div></div></section>` : ""}
+      ${akilli.length ? `<section class="kart"><div class="satir ara"><h2>🧠 Akıllı tekrar</h2><button class="btn ana kucuk" data-test="akilliTekrar" data-ders="${d.id}">Başla</button></div>
+        <p class="muted kucuk-yazi">Unutmaya başladığın ${akilli.length} kazanım var. Bugün ${Math.min(5, akilli.length)} tanesinden 2'şer soru: ${akilli.slice(0, 5).map(x => kacis(x.ad)).join(" · ")}</p></section>` : ""}
       ${vadesi.length ? `<section class="kart"><h2>Tekrar zamanı</h2><p class="muted kucuk-yazi">Öğrendiklerini unutmamak için kısa tekrar testleri.</p>
         ${vadesi.map(p => `<div class="satir ara"><span>${KONU[p.konu].ad} · <b>${p.gun}. gün</b> tekrarı</span><button class="btn kucuk" data-test="tekrar${p.gun}" data-konu="${p.konu}">Başla</button></div>`).join("")}</section>` : ""}
       <section class="kart"><h2>Yazılılara hazırlık · ${d.ad}</h2><p class="muted kucuk-yazi">Her yazılı için konu tekrarı, videolar, eksik kapatma ve yazılı provası.</p>
@@ -430,7 +433,7 @@
 
   /* ============================ TEST MOTORU ============================ */
   const TEST_AD = { alistirma: "Alıştırma", konuSonu: "Konu sonu testi", kendi: "Kendi tekrarım", hazir: "Hazır mıyız?", izleme: "İzleme testi", tema: "Tema / ünite değerlendirme", deneme: "Genel deneme sınavı", hata: "Hata defteri tekrarı",
-    yazili: "Yazılı provası", yaziliTekrar: "Yazılı konu tekrarı", yaziliEksik: "Yazılı: eksik kapatma", oyun: "Türkçe Diyarı oyunu", mini: "Mini deneme", karma: "Karma deneme (4 ders)",
+    yazili: "Yazılı provası", yaziliTekrar: "Yazılı konu tekrarı", yaziliEksik: "Yazılı: eksik kapatma", oyun: "Türkçe Diyarı oyunu", mini: "Mini deneme", karma: "Karma deneme (4 ders)", akilliTekrar: "Akıllı tekrar",
     tekrar1: "1. gün tekrar testi", tekrar3: "3. gün tekrar testi", tekrar7: "7. gün tekrar testi", tekrar30: "30. gün kalıcılık testi" };
   const KENDI_HATA = [["bilgi", "Konuyu bilmiyordum"], ["kavrama", "Soruyu yanlış anladım"], ["islem", "İşlem hatası yaptım"], ["dikkat", "Dikkatsizlik yaptım"], ["strateji", "Acele ettim / yol bulamadım"]];
 
@@ -467,6 +470,7 @@
       const l = konularKazanim(yaziliKapsam(ders, yazili)).filter(k => h.kazanim[k] && h.kazanim[k].ustalik != null && h.kazanim[k].ustalik < 0.6);
       plan = dagit(l, 10).map(k => ({ kaz: k, uyarla: true, zorluk: null }));
     }
+    else if (tur === "akilliTekrar") plan = ANALIZ.kazanimTekrar(ders).filter(x => x.vadesi).slice(0, 5).flatMap(x => [{ kaz: x.kaz, zorluk: null }, { kaz: x.kaz, zorluk: null }]);
     else if (tur === "hata") { plan = karistir(hataListesi(null)).slice(0, 10).map(o => ({ hazir: o.soruNesnesi, ref: o.id })); DEPO.kaydet("hataDefteri", {}); }
     if (!plan.length || plan.some(p => !p.hazir && p.kaz === undefined)) { toast("Bu test için soru bulunamadı."); return; }
     const sinav = ["deneme", "yazili", "mini", "karma"].includes(tur);
@@ -494,6 +498,15 @@
     return { q, ref: p.ref || null, kontrol: !!p.kontrolIcin, bas: Date.now(), ilkSure: null, deneme: 0, ilkSecim: null, sonSecim: null, ipucu: false, cozum: false, kendiHata: null, bitti: false, sinavSecim: null };
   }
 
+  /* Soru anahtarı: aynı soru (metin + doğru cevap) her seferinde aynı anahtarı alır; daha önce görülen ve yeni sorular ayrılabilir. */
+  function soruAnahtari(q) {
+    const m = String(q.soru || "").replace(/<[^>]+>/g, "") + "|" + ((q.secenekler || []).find(x => x.dogru) || {}).m;
+    let h = 2166136261;
+    for (let i = 0; i < m.length; i++) { h ^= m.charCodeAt(i); h = Math.imul(h, 16777619); }
+    return (q.kaz || "") + ":" + (h >>> 0).toString(36);
+  }
+  let gorulen = null;
+  const gorulenSorular = () => gorulen || (gorulen = new Set(DEPO.liste("soru").map(x => x.sk || (x.soruNesnesi ? soruAnahtari(x.soruNesnesi) : null)).filter(Boolean)));
   function soruKaydet(t, s, terk) {
     const ilk = s.ilkSecim != null ? s.q.secenekler[s.ilkSecim] : null;
     const son = s.sonSecim != null ? s.q.secenekler[s.sonSecim] : null;
@@ -501,8 +514,10 @@
       ders: s.q.ders || (KONU[s.q.konu] || {}).ders, konu: s.q.konu, tema: s.q.tema, kaz: s.q.kaz, duzey: s.q.duzey, zorluk: s.q.zorluk, mod: t.tur, testId: t.testId,
       ilkDogru: !!(ilk && ilk.dogru), sonDogru: !!(son && son.dogru), deneme: s.deneme, ilkSure: s.ilkSure, toplamSure: Date.now() - s.bas,
       ipucu: s.ipucu, cozumGoruldu: s.cozum, terk: !!terk, ilkHata: ilk && !ilk.dogru ? ilk.hata : null, kendiHata: s.kendiHata, kontrol: s.kontrol, ref: s.ref,
-      soruNesnesi: s.q,
+      soruNesnesi: s.q, sk: soruAnahtari(s.q),
     };
+    kayit.gorulmus = gorulenSorular().has(kayit.sk);
+    gorulenSorular().add(kayit.sk);
     s.kayit = DEPO.kaydet("soru", kayit);
     t.sonuclar.push(kayit);
     // Uyarlanabilir zorluk: art arda 2 yanlış → daha temel, 3 doğru → daha ileri
@@ -849,6 +864,29 @@
   const fark = (a, b, f = x => Math.round(x)) => (a == null || b == null ? "" : (a - b >= 0 ? "▲ " : "▼ ") + f(Math.abs(a - b)) + " önceki haftaya göre");
   const sonCalisma = konuId => { const l = DEPO.liste("soru").filter(s => s.konu === konuId); return l.length ? l[l.length - 1].t : null; };
 
+  /* Öğrenme profili kartı: her değerin yanında kaç soruya dayandığı */
+  function profilKart(sorular, baslik = "Öğrenme profili") {
+    const p = ANALIZ.ogrenmeProfili(sorular);
+    const m = (d, ad, not) => metrik(d.n ? yuzde(d.x) : "—", ad, (d.n ? d.n + " soru · " : "veri yok · ") + not);
+    return `<section class="kart"><h2>${baslik}</h2><p class="kucuk-yazi muted">Gerçek öğrenmeyi ayırmak için: yardımsız (ipucu/çözüm görmeden) başarı, birkaç gün sonra hatırlama ve yeni sorulardaki başarı, ilk denemeden daha güvenilir göstergelerdir.</p>
+      <div class="izgara dar">${m(p.ilkDeneme, "ilk deneme başarısı", "")}${m(p.bagimsiz, "yardımsız çözüm", "ipucu ve çözüm görmeden doğru")}${m(p.yardimli, "yardımla sonunda doğru", "ipucu ya da çözüm sonrası")}
+      ${m(p.gecikmeli, "gecikmeli hatırlama", "3+ gün aradan sonra ilk soru")}${m(p.transfer, "transfer (yeni nesil)", "transfer ve bağlantı düzeyi")}
+      ${m(p.yeniSoru, "ilk kez görülen sorular", "")}${m(p.gorulmusSoru, "daha önce görülmüş sorular", "")}
+      ${metrik(p.tekrarlanan.length ? p.tekrarlanan.map(t => (HATA_AD[t.hata] || t.hata)).join(", ") : "yok", "tekrarlanan hata türü", p.tekrarlanan.length ? "3+ ayrı testte" : "3+ testte tekrarlanan hata yok")}</div></section>`;
+  }
+  /* Veli için ilk bakış: “Bugün ne yapmalıyız?” */
+  function bugunKart() {
+    const akilli = ANALIZ.kazanimTekrar(veliDers).filter(x => x.vadesi);
+    const u = ANALIZ.uyarilar(veliDers);
+    const o = ANALIZ.oneri(null, veliDers);
+    const madde = [];
+    if (akilli.length) madde.push(`<li><b>Akıllı tekrar:</b> ${akilli.length} kazanımın tekrar zamanı geldi (${akilli.slice(0, 3).map(x => kacis(x.ad)).join(", ")}${akilli.length > 3 ? "…" : ""}). Ana sayfadaki “🧠 Akıllı tekrar” ile 10 dakikada yapılır.</li>`);
+    madde.push(`<li><b>Sıradaki adım:</b> ${kacis(o.metin)}</li>`);
+    return `<section class="kart vurgu"><h2>Bugün ne yapmalıyız?</h2><ul style="display:grid;gap:6px;padding-left:20px">${madde.join("")}</ul>
+      ${u.length ? `<h3 style="margin-top:8px">Dikkat edilecekler (son 14 gün)</h3><div style="display:grid;gap:6px">${u.slice(0, 5).map(x => `<div class="geri ${x.oncelik >= 3 ? "kotu" : "bilgi"}"><b>${kacis(x.metin)}</b><p class="kucuk-yazi">👉 ${kacis(x.oneri)} <a href="#/veli/konu/${x.konu}">Konu ayrıntısı</a></p></div>`).join("")}</div>`
+        : `<p class="kucuk-yazi muted">Son 14 günde dikkat gerektiren bir örüntü görülmedi (uyarılar için konuda en az 5 soru gerekir).</p>`}</section>`;
+  }
+
   function veliOzet(h) {
     const hk = haftaKarsilastir(veliDers);
     const gz = ANALIZ.gucluZayif(h);
@@ -861,7 +899,7 @@
         <span><span class="kucuk-yazi muted">${yuzde(hd.genel.ilkDeneme)}</span><span class="bar" style="display:block"><i style="width:${(hd.genel.ilkDeneme || 0) * 100}%"></i></span></span></button>`; }).join("");
     const op = window.OYUN && OYUN.ozet();
     const ingOyun = window.INGOYUN && (!veliDers || veliDers === "en") ? Object.entries(INGOYUN.OYUNLAR).map(([id, o]) => { const l = DEPO.liste("oyun").filter(x => x.ders === "en" && x.oyun === id); return l.length ? `<div class="satir ara"><span>${o.simge} ${o.ad}</span><span class="kucuk-yazi">${l.length} kez · en iyi ${INGOYUN.enIyi(id)} puan · son ${l[l.length - 1].dogru}/${l[l.length - 1].n}</span></div>` : ""; }).join("") : "";
-    return `<section class="kart"><h2>Derslere göre durum</h2><div style="display:grid;gap:8px">${dersKartlari}</div></section>
+    return `${bugunKart()}<section class="kart"><h2>Derslere göre durum</h2><div style="display:grid;gap:8px">${dersKartlari}</div></section>
       ${ingOyun ? `<section class="kart"><h2>🇬🇧 İngilizce oyunları</h2>${ingOyun}</section>` : ""}
       ${op && (!veliDers || veliDers === "tr") ? `<section class="kart"><h2>🎮 Türkçe Diyarı oyunu</h2><div class="izgara dar">${metrik(op.yildiz + " / " + op.toplam, "toplanan yıldız", "")}${metrik(op.puan, "toplam puan", "")}${metrik(op.rozet + " / 3", "kazanılan rozet", op.adalar.filter(a => a.rozet).map(a => a.tema.ada.rozet).join(", "))}${metrik(DEPO.liste("oyun").filter(o => o.ders === "tr").length, "oynanan görev", "")}</div>
         ${op.adalar.map(a => `<div class="satir ara"><span>${a.tema.ada.simge} ${a.tema.ada.ad}</span><span class="kucuk-yazi">${a.gorevler.filter(g => g.yildiz >= OYUN.GECME_YILDIZ).length}/${a.gorevler.length} görev geçildi · ⭐ ${a.yildiz}/${a.toplam}</span></div>`).join("")}</section>` : ""}
@@ -950,6 +988,7 @@
         ${metrik(x.video ? yuzde(x.video.tamamlama) : "—", "video tamamlama", x.video ? x.video.videolar.length + " video izlendi" : "")}
         ${metrik(x.konuSonu ? yuzde(x.konuSonu.ilk) + " → " + yuzde(x.konuSonu.son) : "—", "konu sonu testi (ilk → son)", x.konuSonu ? x.konuSonu.sayi + " kez" : "")}
       </section>
+      ${profilKart(h.sorular, "Öğrenme profili · " + k.ad)}
       <section class="kart"><h2>Kazanımlar</h2><div class="tablo"><table><thead><tr><th>Kazanım</th><th class="sayi">İlk deneme</th><th class="sayi">Son deneme</th><th class="sayi">Ort. süre</th><th class="sayi">Soru</th><th>Güven</th><th>Durum</th></tr></thead><tbody>
         ${k.kazanimlar.map(z => { const y = h.kazanim[z.id]; return `<tr><td>${z.ad}</td><td class="sayi">${yuzde(y.ilkDeneme)}</td><td class="sayi">${yuzde(y.sonDeneme)}</td><td class="sayi">${sn(y.ortSure)}</td><td class="sayi">${y.cevaplanan}</td><td>${y.guven.ad}</td><td>${durumEtiket(y.ustalik)}</td></tr>`; }).join("")}
       </tbody></table></div></section>
@@ -1020,7 +1059,14 @@
   function veliTekrar(h) {
     const plan = ANALIZ.tekrarPlani(veliDers);
     const tb = h.tekrarBasari;
-    return `<section class="kart"><h2>Unutma eğrisi: tekrar testlerindeki başarı</h2>
+    const kt = ANALIZ.kazanimTekrar(veliDers);
+    const ktTablo = `<section class="kart"><h2>Akıllı tekrar kuyruğu (kazanım bazında)</h2>
+      <p class="kucuk-yazi muted">Yardımsız ve hızlı doğru cevap aralığı uzatır (1 → 2 → 4 → 8 → 16 → 32 gün); ipucu ya da çözümle verilen doğru cevap aralığı uzatmaz; yanlış cevap aralığı 1 güne indirir. Aynı gün içindeki ilk cevap sayılır.</p>
+      <div class="tablo"><table><thead><tr><th>Kazanım</th><th class="sayi">Aralık</th><th>Sonraki tekrar</th><th>Son yardımsız doğru</th><th class="sayi">Seri</th><th class="sayi">Yardım oranı</th><th>Tekrarlanan hata</th></tr></thead><tbody>
+      ${kt.slice(0, 60).map(x => `<tr><td><span class="kucuk-yazi muted">${KONU[x.konu].ad}</span><br>${x.ad}</td><td class="sayi">${x.aralik} gün</td><td>${x.vadesi ? `<span class="etiket ${x.gecikme > 3 ? "kotu" : "orta"}">${x.gecikme > 0 ? x.gecikme + " gün gecikti" : "bugün"}</span>` : new Date(x.sonrakiGun * ANALIZ.GUN + new Date().getTimezoneOffset() * 60000).toLocaleDateString("tr-TR")}</td>
+        <td>${x.sonBagimsiz ? tarih(x.sonBagimsiz) : "—"}</td><td class="sayi">${x.seri}</td><td class="sayi">${yuzde(x.ipucuOrani)}</td><td>${x.tekrarHata ? HATA_AD[x.tekrarHata] || x.tekrarHata : ""}</td></tr>`).join("") || '<tr><td colspan="7" class="muted">Soru çözüldükçe kuyruk oluşur.</td></tr>'}
+      </tbody></table></div></section>`;
+    return `${ktTablo}<section class="kart"><h2>Unutma eğrisi: tekrar testlerindeki başarı</h2>
       ${sutunGrafik([[0, "İlk öğrenme"], [1, "1 gün sonra"], [3, "3 gün sonra"], [7, "7 gün sonra"], [30, "30 gün sonra"]].map(([g, a]) => ({ ad: a, v: tb[g].basari == null ? 0 : Math.round(tb[g].basari * 100), yok: tb[g].basari == null })), { ust: 100, etiket: x => "%" + Math.round(x) })}
       <p class="muted kucuk-yazi">${[0, 1, 3, 7, 30].map(g => `${g ? g + ". gün" : "İlk"}: ${tb[g].n} test`).join(" · ")}</p></section>
       <section class="kart"><h2>Konulara göre tekrar planı</h2><div class="tablo"><table><thead><tr><th>Konu</th><th class="sayi">İlk test</th>${ANALIZ.TEKRAR_GUNLERI.map(g => `<th class="sayi">${g}. gün</th>`).join("")}</tr></thead><tbody>

@@ -514,4 +514,213 @@
        "🔁 Kontrol edelim: Diğer seçenekler metinde olmayan bilgiler içeriyor ya da bildiklerimizle çelişiyor. Doğru çıkarım her zaman metinle desteklenir."],
       { kural: "Çıkarım yaparken metindeki ipucuna dayan; metinde olmayan bilgiyi ekleme.", dogruNeden: "Nutuk'un Samsun'a çıkış günüyle başlaması, bu olayın Millî Mücadele'nin başlangıcı olarak görüldüğünü gösterir." }),
   );
+
+  /* ------------------------- Üretmek Gibisi Yok! (2. tema) ------------------------- */
+  const { sec: SEC2, karistir: KAR2, S: S2 } = OGR;
+  const kucuk = t => t.toLocaleLowerCase("tr");
+  const buyuk = t => t.toLocaleUpperCase("tr");
+  /* Bir sözcüğün kaynak sözcüğün harfleriyle (her harf bir kez) yazılıp yazılamayacağını bulur; eksik harfleri döndürür. */
+  const eksikHarf = (kaynak, kelime) => {
+    const torba = {};
+    for (const h of kucuk(kaynak)) torba[h] = (torba[h] || 0) + 1;
+    const eksik = [];
+    for (const h of kucuk(kelime)) { if (torba[h]) torba[h]--; else eksik.push(buyuk(h)); }
+    return eksik;
+  };
+  const HARF_KAYNAK = ["KURTULUŞ", "CUMHURİYET", "ÖZGÜRLÜK", "ÇANAKKALE", "KOCATEPE", "ANADOLU", "SAKARYA", "BAĞIMSIZLIK"];
+  const HARF_HAVUZ = ["kurt", "tuz", "kuş", "ruh", "kutu", "turşu", "koşu", "sulu", "şurup", "uzak", "kural", "tulum",
+    "yurt", "hece", "mercek", "çiçek", "rehber", "yumru", "mutlu", "umut", "cevher", "hikâye", "iyimser",
+    "göz", "kürk", "gölge", "örgü", "ölçü", "körük", "süt", "türkü", "güzel",
+    "kalkan", "akçe", "kale", "kalem", "elma", "kenar", "lale", "çanak", "kaçak",
+    "kepçe", "petek", "tepe", "çocuk", "kapı", "kaçış", "top", "koca",
+    "adalı", "dolu", "doğa", "ana", "nal", "odun", "ulak", "lodos", "dalga", "kova", "dana",
+    "kasa", "yaka", "sayaç", "araba", "kayak", "masa", "yara", "kara", "sarı",
+    "sımsıkı", "kılıç", "bağlam", "mızrak", "kaşık", "bilgi", "kazık", "sağlık", "kalıp", "balık", "kızak", "ılık"];
+
+  SORU_EKLE("truret2.kelime",
+    z => {
+      let kaynak, dogru, yanlislar;
+      for (let d = 0; d < 50; d++) {
+        kaynak = SEC2(HARF_KAYNAK);
+        const yazilir = HARF_HAVUZ.filter(k => k.length >= 3 && eksikHarf(kaynak, k).length === 0);
+        const birEksik = HARF_HAVUZ.filter(k => k.length >= 3 && eksikHarf(kaynak, k).length === 1);
+        if (yazilir.length && birEksik.length >= 3) { dogru = SEC2(yazilir); yanlislar = KAR2(birEksik.slice()).slice(0, 3); break; }
+      }
+      const harfler = kaynak.split("").join(", ");
+      const D = buyuk(dogru);
+      return S2({
+        kaz: "truret2.kelime", duzey: "uygulama", zorluk: z >= 2 ? 2 : 1,
+        soru: `Harf kartlarında <b>${kaynak}</b> sözcüğünün harfleri var: ${harfler}. Her kartı en fazla bir kez kullanabilirsin.<br>Bu kartlarla aşağıdaki sözcüklerden hangisi <b>yazılabilir</b>?`,
+        dogru: D,
+        yanlis: yanlislar.map(k => [buyuk(k), "dikkat", `${buyuk(k)} sözcüğünü yazmak için ${eksikHarf(kaynak, k)[0]} harfi gerekir ama kartlarda bu harf ${kucuk(kaynak).includes(kucuk(eksikHarf(kaynak, k)[0])) ? "yeterli sayıda" : "hiç"} yok.`]),
+        ipucu: "Her seçeneğin harflerini tek tek kartlarla karşılaştır. Kullandığın kartı bir kenara ayır.",
+        cozum: [
+          `🔎 Soruyu anlayalım: ${kaynak} sözcüğünün harfleriyle yazılabilen sözcüğü arıyoruz. Her harf yalnızca bir kez kullanılabilir.`,
+          "💡 Hatırlayalım: Bir sözcüğün yazılabilmesi için onun bütün harflerinin kartlarda, yeterli sayıda bulunması gerekir.",
+          `✏️ Kartları yazalım: ${harfler}.`,
+          `✏️ ${D} sözcüğünün harfleri: ${D.split("").join(", ")}. Hepsi kartlarda var.`,
+          `✏️ Diğer seçeneklerin her birinde kartlarda olmayan bir harf var: ${yanlislar.map(k => buyuk(k) + " (" + eksikHarf(kaynak, k)[0] + ")").join(", ")}.`,
+          `✅ Sonuç: Kartlarla yazılabilen sözcük ${D} olur.`,
+          "🔁 Kontrol edelim: Harfleri işaretleyerek çalış. Bir harf iki kez gerekiyorsa kartlarda da iki tane olmalı."],
+        kural: "Verilen harflerle sözcük üretirken her harfi, kartlarda kaç tane varsa en fazla o kadar kullanabilirsin.",
+        dogruNeden: `${D} sözcüğünün bütün harfleri ${kaynak} kartlarında bulunur.`
+      });
+    },
+    Q("truret2.kelime", "aciklama", 2, "<b>TAVAN</b> sözcüğünün harflerinin <b>hepsi</b> kullanılarak, yalnızca harflerin yerleri değiştirilip bu temanın da konusu olan bir sözcük yazılacak. Bu sözcük hangisidir?", "VATAN",
+      [["VANA", "dikkat", "VANA sözcüğü bu harflerle yazılır ama T harfi artar. Soru bütün harflerin kullanılmasını istiyor."], ["TANE", "dikkat", "TAVAN sözcüğünde E harfi yok. Ayrıca V harfi kullanılmamış."], ["AVANTAJ", "islem", "Bu sözcük için fazladan bir A, bir T ve bir J gerekir. Kartlarda bunlar yok."]],
+      "TAVAN sözcüğünde iki A, bir T, bir V ve bir N var. Bu beş harfle hangi sözcük kurulur?",
+      ["🔎 Soruyu anlayalım: TAVAN sözcüğünün beş harfinin hepsini kullanarak yeni bir sözcük bulacağız.",
+       "💡 Hatırlayalım: Harflerin yerini değiştirerek yeni sözcük üretirken hiçbir harf artmamalı, hiçbir yeni harf eklenmemeli.",
+       "✏️ Harfleri sayalım: T (1), A (2), V (1), N (1). Toplam 5 harf.",
+       "✏️ VATAN sözcüğünü inceleyelim: V (1), A (2), T (1), N (1). Harfler ve sayılar birebir aynı!",
+       "✅ Sonuç: Aranan sözcük VATAN'dır.",
+       "🔁 Kontrol edelim: VANA'da T artıyor, TANE'de E yok, AVANTAJ'da fazladan harfler var. Yalnızca VATAN tam uyuyor."],
+      { kural: "Harflerin yerini değiştirerek sözcük üretirken harflerin sayısı ve türü aynı kalmalıdır.", dogruNeden: "VATAN sözcüğü, TAVAN sözcüğündeki harflerin hepsinin yalnızca yerleri değiştirilerek elde edilir." }),
+    Q("truret2.kelime", "transfer", 3, "Bir kelime oyununda harflerin puanları şöyledir: <b>A = 1, E = 1, L = 1, K = 2, T = 2, M = 3</b>.<br>Elindeki kartlar: K, A, L, E, M, T. Her kartı bir kez kullanabilirsin. Aşağıdaki sözcüklerden hangisi sana <b>en çok puanı</b> kazandırır?", "MAKET",
+      [["KALEM", "islem", "KALEM = 2 + 1 + 1 + 1 + 3 = 8 puandır. Daha yüksek puanlı bir sözcük var."], ["METAL", "islem", "METAL = 3 + 1 + 2 + 1 + 1 = 8 puandır. Daha yüksek puanlı bir sözcük var."], ["KALE", "strateji", "KALE = 2 + 1 + 1 + 1 = 5 puandır. Kısa sözcükler genellikle daha az puan getirir."]],
+      "Her sözcüğün harf puanlarını tek tek topla. Yüksek puanlı harfler (M, K, T) hangi sözcükte birlikte var?",
+      ["🔎 Soruyu anlayalım: Kartlarla yazılabilen dört sözcükten en çok puan getireni bulacağız.",
+       "💡 Hatırlayalım: Sözcüğün puanı, harflerinin puanları toplamıdır.",
+       "✏️ MAKET = M (3) + A (1) + K (2) + E (1) + T (2) = 9 puan.",
+       "✏️ KALEM = 2 + 1 + 1 + 1 + 3 = 8 puan. METAL = 3 + 1 + 2 + 1 + 1 = 8 puan. KALE = 2 + 1 + 1 + 1 = 5 puan.",
+       "✅ Sonuç: En çok puanı MAKET (9 puan) kazandırır.",
+       "🔁 Kontrol edelim: MAKET, en değerli üç harfi (M, K, T) aynı anda içeren tek sözcüktür. Bu yüzden en yüksek puanı alır."],
+      { kural: "Kelime oyunlarında puanı yüksek harfleri bir arada kullanan sözcükleri ara.", dogruNeden: "MAKET sözcüğü 3 + 1 + 2 + 1 + 2 = 9 puan eder; diğerlerinden yüksektir." }),
+  );
+
+  SORU_EKLE("truret2.turetme",
+    Q("truret2.turetme", "uygulama", 2, "“göz” köküne hangi ek getirilirse “görme bozukluğunu düzeltmek ya da gözleri korumak için takılan araç” anlamında bir sözcük türer?", "-lük",
+      [["-cü", "kavrama", "“gözcü” sözcüğü türer; bu da gözetleme yapan, nöbet tutan kişi demektir. Araç değil, kişi anlatır."], ["-ler", "kavrama", "“gözler” sözcüğündeki -ler çoğul ekidir. Bu bir çekim ekidir; yeni anlamlı sözcük türetmez."], ["-süz", "kavrama", "“-süz” eki yokluk anlamı katar. Bir aracın adını türetmez."]],
+      "Kitap koymak için kullanılan eşyaya “kitaplık” diyoruz. Göz için kullanılan araca ne diyoruz?",
+      ["🔎 Soruyu anlayalım: “göz” köküne ek getirerek gözlerle ilgili bir aracın adını türeteceğiz.",
+       "💡 Hatırlayalım: Yapım ekleri sözcüğün anlamını değiştirip yeni bir sözcük türetir. -lık/-lik/-luk/-lük eki çoğu zaman bir araç ya da yer adı türetir (tuzluk, kulaklık).",
+       "✏️ göz + lük = gözlük. Gözlük, görmemize yardım eden ya da gözlerimizi koruyan araçtır.",
+       "✏️ göz + cü = gözcü (kişi); göz + ler = gözler (çoğul); göz + süz = gözsüz (gözü olmayan).",
+       "✅ Sonuç: Getirilmesi gereken ek “-lük”tür.",
+       "🔁 Kontrol edelim: Ekin ünlüsü kökteki son ünlüye uyar: “göz”deki ö yüzünden ek “-lük” biçimini alır."],
+      { kural: "-lık/-lik/-luk/-lük yapım eki çoğu zaman araç ya da yer adı türetir: tuzluk, gözlük.", dogruNeden: "göz + lük = gözlük; bu sözcük gözlere takılan aracı anlatır." }),
+    Q("truret2.turetme", "aciklama", 3, "Aşağıdaki gruplardan hangisinde <b>bütün</b> sözcükler aynı kökten türetilmiştir?", "taşçı, taşlık, taşlı",
+      [["kalemlik, kalemci, kale", "dikkat", "“kale” sözcüğü “kalem” kökünden türemedi; tek başına ayrı bir sözcüktür. Yazılışlarının benzemesi aynı kök oldukları anlamına gelmez."], ["balıkçı, balıklı, bal", "dikkat", "“bal” ile “balık” ayrı sözcüklerdir. “bal”, “balık” sözcüğünün kökü değildir."], ["yolcu, yollu, yoğurt", "dikkat", "“yoğurt” sözcüğü “yol” kökünden gelmez. İlk harflerin benzemesi seni yanıltmasın."]],
+      "Her sözcükten ekleri at. Geriye kalan kökler gruptaki her sözcükte aynı mı ve anlamca ilgili mi?",
+      ["🔎 Soruyu anlayalım: Bütün sözcükleri aynı kökten türemiş grubu bulacağız.",
+       "💡 Hatırlayalım: Kök, sözcüğün parçalanamayan, anlamlı en küçük parçasıdır. Aynı kökten türeyen sözcükler anlamca da o köke bağlıdır.",
+       "✏️ taşçı = taş + çı, taşlık = taş + lık, taşlı = taş + lı. Üçünün kökü de “taş”.",
+       "✏️ Diğer gruplarda birer “tuzak” sözcük var: kale, bal ve yoğurt. Bunlar diğerlerinin kökü değildir; yalnızca yazılışları benzer.",
+       "✅ Sonuç: Bütün sözcükleri aynı kökten türemiş grup “taşçı, taşlık, taşlı”dır.",
+       "🔁 Kontrol edelim: Kökü bulduktan sonra anlam bağına bak: Taşçı taşla uğraşır, taşlık taşı çok olan yerdir, taşlı içinde taş olandır."],
+      { kural: "Aynı kökten türeyen sözcükler hem yazılışça hem anlamca köke bağlıdır; yalnızca harf benzerliği yetmez.", dogruNeden: "taşçı, taşlık ve taşlı sözcüklerinin üçü de “taş” köküne yapım eki getirilerek türetilmiştir." }),
+    Q("truret2.turetme", "transfer", 2, "Odanı düzenlerken kitaplarını dizmek için bir raf aldın. Annen “Bu güzel ……… nereye koyalım?” diye soruyor. Boşluğa “kitap” sözcüğünden türetilen hangi sözcük gelmelidir?", "kitaplığı",
+      [["kitapçıyı", "kavrama", "Kitapçı, kitap satan kişi ya da dükkândır. Odaya konan raf değildir."], ["kitapsızı", "kavrama", "“-sız” eki yokluk anlamı katar. Kitapları dizdiğimiz eşyayı anlatmaz."], ["kitapları", "kavrama", "Bu sözcükte -lar çoğul ekidir, yeni sözcük türetmez. Annen kitapları değil, rafı soruyor."]],
+      "Kitapları koyduğumuz eşyaya ne deriz? “tuzluk” sözcüğünü hatırla.",
+      ["🔎 Soruyu anlayalım: Kitapların dizildiği rafı anlatan türemiş sözcüğü bulacağız.",
+       "💡 Hatırlayalım: -lık/-lik eki bir şeyin konduğu yeri ya da eşyayı anlatan sözcükler türetir: tuzluk, kalemlik, ayakkabılık.",
+       "✏️ kitap + lık = kitaplık. Kitaplık, kitapların dizildiği raf ya da dolaptır.",
+       "✏️ Cümlede “neyi?” sorusuna cevap verdiği için çekim eki de gelir: kitaplık + ı = kitaplığı (k, ğ'ye dönüşür).",
+       "✅ Sonuç: Boşluğa “kitaplığı” gelmelidir.",
+       "🔁 Kontrol edelim: Cümleyi oku: “Bu güzel kitaplığı nereye koyalım?” Anlamlı ve doğru!"],
+      { kural: "-lık/-lik eki, bir şeyin konduğu eşyayı anlatan sözcükler türetir: kitaplık, kalemlik.", dogruNeden: "kitap + lık = kitaplık, kitapların dizildiği raf demektir; cümlede “-ı” ekini alarak “kitaplığı” olur." }),
+  );
+
+  /* =========================== 3. TEMA: Farklı Dünyalar =========================== */
+  /* ------------------------------- Ova Çocuk ------------------------------- */
+  const PAMUK = "<i>Hasat zamanıydı. Zeynep, gün doğarken annesiyle birlikte pamuk tarlasına gitti. Güneş yükseldikçe sıcak artıyordu ama Zeynep, sepetini doldurmadan dinlenmek istemedi. Öğle olunca tarlanın kenarındaki dut ağacının gölgesinde azıklarını yediler. Akşamüstü kamyona yüklenen pamuk çuvallarına bakan Zeynep'in yüzü, yorgunluğuna rağmen gülüyordu.</i>";
+  const SEL = "<i>Bahar yağmurları günlerce sürünce köyün yanındaki dere taştı. Su, tarlalara doğru ilerlemeye başladı. Muhtar herkesi meydana çağırdı. Kadınlar çuvallara kum doldurdu, erkekler çuvalları dere kenarına taşıdı, çocuklar da herkese su ve ekmek dağıttı. Akşama kadar yükselen set, suyun tarlalara girmesini engelledi.</i>";
+  SORU_EKLE("trova.unsur",
+    Q("trova.unsur", "hatirlama", 1, PAMUK + "<br><br>Bu hikâyede olayların geçtiği <b>zaman</b> hangisidir?", "Hasat zamanında, sabahtan akşamüstüne kadar",
+      [["Karlı bir kış gecesinde", "dikkat", "Metinde kar ya da gece yok; tersine güneş ve sıcaktan söz ediliyor."], ["Okulun ilk gününde", "dikkat", "Metinde okuldan hiç söz edilmiyor. Zaman unsurunu metindeki ifadelerden bulmalısın."], ["Yalnızca birkaç dakika içinde", "kavrama", "Olaylar gün doğumundan akşamüstüne kadar sürüyor. Bu, birkaç dakika değil, bir günlük süredir."]],
+      "“Ne zaman?” sorusunu sor. Metindeki “hasat zamanıydı, gün doğarken, öğle, akşamüstü” ifadelerine dikkat et.",
+      ["🔎 Soruyu anlayalım: Hikâyenin zaman unsurunu bulacağız.",
+       "💡 Hatırlayalım: Zaman unsuru, olayların ne zaman geçtiğini anlatır. “Ne zaman?” sorusunun cevabıdır.",
+       "✏️ Metindeki zaman ifadeleri: “Hasat zamanıydı.”, “gün doğarken”, “Öğle olunca”, “Akşamüstü”.",
+       "✏️ Bu ifadeler olayların hasat mevsiminde, bir gün boyunca geçtiğini gösteriyor.",
+       "✅ Sonuç: Olayların zamanı hasat zamanında, sabahtan akşamüstüne kadardır.",
+       "🔁 Kontrol edelim: Zaman unsurunu ararken metinde mevsim, gün, saat ve günün bölümlerini bildiren sözcüklerin altını çiz."],
+      { kural: "Zaman unsuru “Ne zaman?” sorusunun cevabıdır: mevsim, gün, günün bölümleri.", dogruNeden: "Metinde hasat zamanı olduğu, olayların gün doğumundan akşamüstüne kadar sürdüğü anlatılmaktadır." }),
+    Q("trova.unsur", "uygulama", 2, PAMUK + "<br><br>Bu hikâyenin unsurlarıyla ilgili aşağıdaki bilgilerden hangisi <b>yanlıştır</b>?", "Zaman: Karlı bir kış sabahı",
+      [["Yer: Pamuk tarlası", "dikkat", "Bu bilgi doğru. Olaylar pamuk tarlasında geçiyor. Soru yanlış olanı istiyor."], ["Kişiler: Zeynep ve annesi", "dikkat", "Bu bilgi doğru. Hikâyedeki kişiler Zeynep ve annesidir."], ["Olay: Pamuk toplama", "dikkat", "Bu bilgi doğru. Hikâyede Zeynep ile annesinin pamuk toplaması anlatılıyor."]],
+      "Her unsuru metinle karşılaştır. Metinde sıcak bir günden mi, soğuk bir günden mi söz ediliyor?",
+      ["🔎 Soruyu anlayalım: Dört unsur bilgisinden metne uymayanı bulacağız.",
+       "💡 Hatırlayalım: Hikâyenin dört temel unsuru vardır: olay (Ne oldu?), kişiler (Kim?), yer (Nerede?), zaman (Ne zaman?).",
+       "✏️ Yer: Pamuk tarlası, doğru. Kişiler: Zeynep ve annesi, doğru. Olay: Pamuk toplama, doğru.",
+       "✏️ Zaman: Metinde “Güneş yükseldikçe sıcak artıyordu.” yazıyor. Karlı bir kış sabahı bu cümleyle çelişir.",
+       "✅ Sonuç: Yanlış bilgi “Zaman: Karlı bir kış sabahı” seçeneğidir.",
+       "🔁 Kontrol edelim: “Yanlıştır” diye soran sorularda her seçeneği metinle tek tek karşılaştır ve doğru olanların yanına tik koy."],
+      { kural: "Hikâyenin unsurları: olay, kişiler, yer, zaman. Her birini metindeki ifadelerle kanıtla.", dogruNeden: "Metinde güneşin yükseldiği, sıcağın arttığı anlatılır; karlı bir kış sabahı metne uymaz." }),
+    Q("trova.unsur", "transfer", 3, PAMUK + "<br><br>Bu hikâyeyi yeniden yazan Burak, yalnızca bir unsuru değiştirmek istiyor. Aşağıdaki değişikliklerden hangisi hikâyenin yalnızca <b>yer</b> unsurunu değiştirir?", "Pamuk tarlası yerine fındık bahçesi yazmak",
+      [["Zeynep yerine kardeşi Ali'yi yazmak", "kavrama", "Bu değişiklik kişi unsurunu değiştirir; yer aynı kalır."], ["Gün doğumu yerine akşam saatlerini yazmak", "kavrama", "Bu değişiklik zaman unsurunu değiştirir; olay yine tarlada geçer."], ["Pamuk toplamak yerine tarlayı sulamak yazmak", "kavrama", "Bu değişiklik olay unsurunu değiştirir; yer yine pamuk tarlasıdır."]],
+      "Yer unsuru “Nerede?” sorusunun cevabıdır. Hangi değişiklik bu sorunun cevabını değiştirir?",
+      ["🔎 Soruyu anlayalım: Dört değişiklikten yalnızca yer unsurunu değiştireni bulacağız.",
+       "💡 Hatırlayalım: Yer unsuru “Nerede?”, kişi “Kim?”, zaman “Ne zaman?”, olay “Ne oldu?” sorusuna cevap verir.",
+       "✏️ Zeynep yerine Ali: “Kim?” değişir, yani kişi. Gün doğumu yerine akşam: “Ne zaman?” değişir, yani zaman.",
+       "✏️ Pamuk toplamak yerine sulamak: “Ne oldu?” değişir, yani olay. Pamuk tarlası yerine fındık bahçesi: “Nerede?” değişir, yani yer.",
+       "✅ Sonuç: Yalnızca yer unsurunu değiştiren, pamuk tarlası yerine fındık bahçesi yazmaktır.",
+       "🔁 Kontrol edelim: Her değişikliğe dört soruyu (Kim? Nerede? Ne zaman? Ne oldu?) sor; hangisinin cevabı değişiyorsa o unsur değişmiştir."],
+      { kural: "Kim? → kişi, Nerede? → yer, Ne zaman? → zaman, Ne oldu? → olay.", dogruNeden: "Pamuk tarlası yerine fındık bahçesi yazmak, yalnızca “Nerede?” sorusunun cevabını yani yer unsurunu değiştirir." }),
+  );
+
+  SORU_EKLE("trova.anafikir",
+    Q("trova.anafikir", "aciklama", 2, PAMUK + "<br><br>Bu metnin <b>ana fikri</b> aşağıdakilerden hangisidir?", "Emekle elde edilen sonuç, insana yorgunluğunu unutturur.",
+      [["Pamuk çuvallar hâlinde kamyonlara yüklenir.", "kavrama", "Bu, metindeki bir ayrıntıdır. Ana fikir, yazarın okura vermek istediği mesajdır."], ["Öğle yemeği dut ağacının gölgesinde yenir.", "kavrama", "Bu da metindeki bir ayrıntıdır; metnin bütününden çıkan mesaj değildir."], ["Tarlada çalışmak insanı mutsuz eder.", "kavrama", "Metin tam tersini söylüyor: Zeynep yorgun olmasına rağmen gülüyor."]],
+      "Metnin son cümlesine dikkat et: Zeynep yorgun ama yüzü gülüyor. Bu bize ne anlatıyor?",
+      ["🔎 Soruyu anlayalım: Metnin bize vermek istediği asıl mesajı bulacağız.",
+       "💡 Hatırlayalım: Konu metnin neyi anlattığıdır; ana fikir ise metinden çıkardığımız mesajdır. Ana fikir genellikle metnin sonunda belirginleşir.",
+       "✏️ Konu: Zeynep'in annesiyle birlikte pamuk toplaması.",
+       "✏️ Son cümlede Zeynep, emeğinin karşılığı olan çuvallara bakıyor ve yorgunluğuna rağmen gülüyor.",
+       "✅ Sonuç: Ana fikir “Emekle elde edilen sonuç, insana yorgunluğunu unutturur.” cümlesidir.",
+       "🔁 Kontrol edelim: Ana fikir metnin tamamını kapsamalı. Ayrıntı veren cümleler yalnızca bir anı anlatır, bütün metni değil."],
+      { kural: "Ana fikir, metindeki ayrıntılardan değil metnin bütününden çıkan mesajdır.", dogruNeden: "Zeynep'in yorgun olmasına rağmen emeğinin sonucunu görünce gülmesi, emeğin insana mutluluk verdiğini anlatır." }),
+    Q("trova.anafikir", "uygulama", 2, SEL + "<br><br>Bu metnin <b>konusu</b> nedir?", "Köylülerin taşan dereye karşı birlikte set yapması",
+      [["Birlik olunca güçlüklerin aşılabileceği", "kavrama", "Bu cümle metnin ana fikridir. Konu “Ne anlatılıyor?”, ana fikir “Ne öğütleniyor?” sorusunun cevabıdır."], ["Muhtarın köydeki görevleri", "dikkat", "Muhtar metinde yalnızca köylüleri toplar. Metin onun görevlerini anlatmıyor."], ["Çuvallara kum doldurmanın yolları", "kavrama", "Bu, metindeki bir ayrıntıdır. Metin baştan sona daha geniş bir olayı anlatıyor."]],
+      "Metin baştan sona hangi olayı anlatıyor? Konuyu kısa bir “olay” cümlesiyle söyle.",
+      ["🔎 Soruyu anlayalım: Metnin konusunu, yani neyi anlattığını bulacağız.",
+       "💡 Hatırlayalım: Konu “Bu metin neyi anlatıyor?” sorusunun cevabıdır. Ana fikir ise “Bu metin bize ne öğütlüyor?” sorusunun cevabıdır.",
+       "✏️ Metinde sırasıyla şunlar anlatılıyor: Dere taşıyor, muhtar herkesi çağırıyor, herkes görev alıyor, set yapılıyor.",
+       "✏️ Bütün bu olayları kapsayan ifade: köylülerin taşan dereye karşı birlikte set yapması.",
+       "✅ Sonuç: Metnin konusu köylülerin taşan dereye karşı birlikte set yapmasıdır.",
+       "🔁 Kontrol edelim: “Birlik olunca güçlükler aşılır.” bir öğüt bildirir; bu yüzden o, konu değil ana fikirdir."],
+      { kural: "Konu: Metin neyi anlatıyor? Ana fikir: Metin bize ne öğütlüyor?", dogruNeden: "Metin baştan sona köylülerin taşan dereye karşı birlikte set yapmasını anlatır." }),
+    Q("trova.anafikir", "transfer", 3, SEL + "<br><br>Bu metnin ana fikrini en iyi anlatan atasözü hangisidir?", "Bir elin nesi var, iki elin sesi var.",
+      [["Damlaya damlaya göl olur.", "kavrama", "Bu atasözü küçük birikimlerin zamanla büyüdüğünü anlatır. Metinde ise birlikte çalışmanın gücü öne çıkıyor."], ["Ağaç yaş iken eğilir.", "kavrama", "Bu atasözü eğitimin küçük yaşta verilmesi gerektiğini anlatır; metinle ilgisi yoktur."], ["Sakla samanı, gelir zamanı.", "kavrama", "Bu atasözü gereksiz görünen şeylerin bir gün işe yarayabileceğini anlatır; metnin mesajı bu değil."]],
+      "Metinde herkes bir iş yapıyor ve set birlikte yükseliyor. Hangi atasözü birlikte çalışmayı anlatır?",
+      ["🔎 Soruyu anlayalım: Metnin ana fikrine uyan atasözünü seçeceğiz.",
+       "💡 Hatırlayalım: Önce metnin ana fikrini bul, sonra atasözlerinin anlamlarını bu fikirle karşılaştır.",
+       "✏️ Metnin ana fikri: Birlik ve dayanışma içinde olunca güçlükler yenilir. Kadınlar, erkekler, çocuklar birlikte çalışmış.",
+       "✏️ “Bir elin nesi var, iki elin sesi var.” atasözü, insanların bir araya gelince daha güçlü olduğunu anlatır.",
+       "✅ Sonuç: Ana fikri en iyi anlatan atasözü “Bir elin nesi var, iki elin sesi var.” atasözüdür.",
+       "🔁 Kontrol edelim: Diğer atasözleri birikim, eğitim ve tutumluluk hakkındadır. Dayanışmayı anlatan tek seçenek bu."],
+      { kural: "Atasözü seçerken önce metnin ana fikrini bir cümleyle yaz, sonra atasözünün anlamıyla karşılaştır.", dogruNeden: "Metin dayanışmanın gücünü anlatır; bu atasözü de birlikte hareket etmenin gücünü dile getirir." }),
+  );
+
+  SORU_EKLE("trova.karakter",
+    Q("trova.karakter", "uygulama", 2, PAMUK + "<br><br>Zeynep'in “sepetini doldurmadan dinlenmek istemedi” davranışı onun hangi özelliğini gösterir?", "Çalışkan ve kararlı olduğunu",
+      [["Sabırsız olduğunu", "kavrama", "Sabırsız biri işi yarıda bırakır. Zeynep ise sıcağa rağmen işini bitirmeye çalışıyor."], ["Tembel olduğunu", "kavrama", "Tembel biri dinlenmek ister. Zeynep tam tersine dinlenmeyi erteliyor."], ["Bencil olduğunu", "kavrama", "Metinde Zeynep'in yalnızca kendini düşündüğünü gösteren bir davranış yok."]],
+      "Sıcak artarken bile işini bitirmeden dinlenmeyen biri nasıl biridir?",
+      ["🔎 Soruyu anlayalım: Zeynep'in bir davranışından onun karakter özelliğini çıkaracağız.",
+       "💡 Hatırlayalım: Yazarlar kişilerin özelliklerini her zaman açıkça söylemez; davranışlarından bu özellikleri biz çıkarırız.",
+       "✏️ Davranış: Hava gittikçe ısınıyor ama Zeynep sepetini doldurmadan dinlenmiyor.",
+       "✏️ Zorluğa rağmen işini bitirmek isteyen biri çalışkan ve kararlıdır.",
+       "✅ Sonuç: Bu davranış Zeynep'in çalışkan ve kararlı olduğunu gösterir.",
+       "🔁 Kontrol edelim: Çıkardığın özelliği metindeki davranışla destekleyebiliyor musun? “Sıcağa rağmen çalıştı, çünkü kararlı.” Evet!"],
+      { kural: "Kişilerin özelliklerini davranışlarından çıkar ve metinden bir kanıtla destekle.", dogruNeden: "Sıcağa rağmen işini bitirmeden dinlenmemek, çalışkanlık ve kararlılık gösterir." }),
+    Q("trova.karakter", "aciklama", 2, PAMUK + "<br><br>Akşamüstü pamuk çuvallarına bakan Zeynep'in hangi duyguyu yaşadığı söylenebilir?", "Mutluluk ve gurur",
+      [["Öfke", "kavrama", "Öfkeli biri gülmez. Metinde Zeynep'in yüzü gülüyor."], ["Korku", "kavrama", "Metinde Zeynep'i korkutan bir durum yok."], ["Pişmanlık", "kavrama", "Pişmanlık, yapılan bir şeyden üzüntü duymaktır. Zeynep emeğinin sonucunu görüp seviniyor."]],
+      "Son cümlede Zeynep'in yüzünün ne yaptığı yazıyor? O an neye bakıyor?",
+      ["🔎 Soruyu anlayalım: Zeynep'in akşamüstü hissettiği duyguyu bulacağız.",
+       "💡 Hatırlayalım: Duygular bazen açıkça yazılmaz; yüz ifadesi, davranış ve durumdan çıkarılır.",
+       "✏️ İpucu 1: Zeynep'in yüzü gülüyor. Bu sevinç gösterir.",
+       "✏️ İpucu 2: Baktığı şey, bütün gün emek verdiği pamuk çuvalları. Emeğin sonucunu görmek gurur verir.",
+       "✅ Sonuç: Zeynep mutluluk ve gurur duymaktadır.",
+       "🔁 Kontrol edelim: “Yorgunluğuna rağmen” ifadesi önemli: Yorgunluk olumsuz bir durum, ama Zeynep'in duygusu olumlu."],
+      { kural: "Duyguyu bulurken yüz ifadesine, davranışa ve kişinin içinde bulunduğu duruma bak.", dogruNeden: "Zeynep emeğinin sonucuna bakarken gülümsediği için mutluluk ve gurur duyduğu anlaşılır." }),
+    Q("trova.karakter", "transfer", 3, "<i>Kemal, yaşlı komşusu Hatice Teyze'nin bahçesindeki domatesleri toplamasına bütün gün yardım etti. Akşam Hatice Teyze ona harçlık vermek isteyince Kemal gülümseyerek “Komşuluk böyle günler içindir teyzeciğim.” dedi ve harçlığı almadı.</i><br><br>Bu metne göre Kemal'i en iyi anlatan özellik hangisidir?", "Karşılık beklemeden yardım eden biridir.",
+      [["Çıkarını düşünen biridir.", "kavrama", "Çıkarını düşünen biri harçlığı alırdı. Kemal harçlığı reddediyor."], ["Utangaç ve çekingen biridir.", "dikkat", "Kemal gülümseyerek ve rahatça konuşuyor; metinde çekingenlik belirtisi yok."], ["Bahçe işlerinden hoşlanmayan biridir.", "dikkat", "Kemal bütün gün bahçede çalışıyor. Metinde hoşlanmadığını gösteren bir ifade yok."]],
+      "Kemal'in iki davranışına bak: bütün gün yardım etmesi ve harçlığı almaması.",
+      ["🔎 Soruyu anlayalım: Kemal'in davranışlarından onun karakterini çıkaracağız.",
+       "💡 Hatırlayalım: Karakter özellikleri, kişinin davranışları ve sözleriyle ortaya çıkar.",
+       "✏️ Davranış 1: Yaşlı komşusuna bütün gün yardım ediyor. Bu yardımseverlik gösterir.",
+       "✏️ Davranış 2: Harçlığı almıyor ve “Komşuluk böyle günler içindir.” diyor. Bu, karşılık beklemediğini gösterir.",
+       "✅ Sonuç: Kemal karşılık beklemeden yardım eden biridir.",
+       "🔁 Kontrol edelim: Seçtiğin özellik iki davranışı da açıklıyor mu? Evet; yardım etmesi de harçlığı reddetmesi de bu özellikle uyumlu."],
+      { kural: "Karakteri bulurken kişinin hem davranışlarına hem de sözlerine bak.", dogruNeden: "Kemal komşusuna bütün gün yardım edip harçlığı almadığı için karşılık beklemeden yardım eden biridir." }),
+  );
 })();

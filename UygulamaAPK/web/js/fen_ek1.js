@@ -485,4 +485,258 @@
       });
     },
   );
+
+  SORU_EKLE("fbil.denge",
+    z => {
+      const w = sec([6, 8, 10, 12, 15, 20]), [esya, esyaYa, esyaNin] = sec([["kitap", "kitaba", "kitabın"], ["saksı", "saksıya", "saksının"], ["kavanoz", "kavanoza", "kavanozun"], ["kutu", "kutuya", "kutunun"]]);
+      return S({
+        kaz: "fbil.denge", duzey: "uygulama", zorluk: 2,
+        soru: `Ağırlığı <b>${w} N</b> olan bir ${esya} masanın üzerinde hareketsiz duruyor. Şekilde ${esyaNin} ağırlığı gösterilmiştir. Masanın ${esyaYa} uyguladığı kuvvetin büyüklüğü ve yönü nedir?`,
+        gorsel: G.kuvvet({ alt: [w], cisim: esya }),
+        dogru: `${w} N, yukarı doğru`,
+        yanlis: [[`${w} N, aşağı doğru`, "kavrama", "Aşağı doğru olan kuvvet ağırlıktır. Masa ise cismi yukarı doğru iter; yoksa cisim masanın içine batardı."],
+          ["0 N, masa kuvvet uygulamaz", "kavrama", "Masa kuvvet uygulamasaydı cisme yalnızca ağırlık etki eder ve cisim aşağı düşerdi."],
+          [`${2 * w} N, yukarı doğru`, "islem", "Masa ağırlıktan büyük kuvvet uygulasaydı kuvvetler dengelenmez ve cisim yukarı doğru hareket ederdi."]],
+        ipucu: "Cisim hareketsiz duruyorsa ona etki eden kuvvetler için ne söylenir?",
+        cozum: [`🔎 Soruyu anlayalım: ${w} N ağırlığındaki ${esya} masada duruyor. Masanın yukarı doğru uyguladığı kuvveti arıyoruz.`,
+          "💡 Hatırlayalım: Duran bir cisme etki eden kuvvetler dengelenmiştir; yani bileşke kuvvet 0 N'dur.",
+          `✏️ Aşağı doğru ${w} N ağırlık var. Bunu dengelemek için yukarı doğru bir kuvvet gerekir.`,
+          `✏️ Bileşke 0 olmalı: yukarıdaki kuvvet − ${w} = 0 → yukarıdaki kuvvet = ${w} N.`,
+          `✅ Sonuç: Masa ${esyaYa} ${w} N büyüklüğünde, yukarı doğru kuvvet uygular.`,
+          "🔁 Kontrol edelim: Eşit büyüklükte, zıt yönlü iki kuvvet birbirini dengeler; bu yüzden cisim ne aşağı batar ne yukarı kalkar."],
+        kural: "Duran cisme etki eden kuvvetler dengelenmiştir; zıt yönlü kuvvetler eşit büyüklüktedir.",
+        dogruNeden: `Cisim durduğuna göre kuvvetler dengelenmiştir; masa, ${w} N'luk ağırlığa eşit ve zıt yönde kuvvet uygular.`,
+      });
+    },
+    Q("fbil.denge", "aciklama", 2,
+      "Çimenli sahada yere vurulan bir futbol topu bir süre yuvarlandıktan sonra yavaşlayıp duruyor. Topun durmasının nedeni aşağıdakilerden hangisidir?",
+      "Topa hareket yönüne zıt yönde sürtünme kuvveti etki eder; kuvvetler dengelenmemiştir.",
+      [["Ayakla verilen kuvvet zamanla tükendiği için top durur.", "kavrama", "Ayak topa yalnızca vurduğu anda kuvvet uygular; kuvvet topun içinde “depolanmaz”. Topu yavaşlatan şey sürtünmedir."],
+       ["Topa etki eden kuvvetler dengelendiği için top yavaşlar.", "kavrama", "Dengelenmiş kuvvetler hareketli bir cismin süratini değiştirmez. Yavaşlama, dengelenmemiş kuvvet olduğunu gösterir."],
+       ["Yer çekimi topu ileri doğru ittiği için top durur.", "bilgi", "Yer çekimi topu aşağı doğru çeker; ileri doğru itmez ve topu yatay yolda durdurmaz."]],
+      "Topun sürati değişiyorsa kuvvetler dengelenmiş olabilir mi?",
+      ["🔎 Soruyu anlayalım: Yuvarlanan top neden yavaşlayıp duruyor?",
+       "💡 Hatırlayalım: Dengelenmemiş kuvvet, cismin süratini ya da yönünü değiştirir. Dengelenmiş kuvvet ise hareketi değiştirmez.",
+       "✏️ Top yuvarlanırken çimen ve hava, topa hareket yönünün tersine sürtünme kuvveti uygular.",
+       "✏️ Topu ileri iten bir kuvvet artık yoktur. Geriye doğru olan sürtünme dengelenmez ve topu yavaşlatır.",
+       "✅ Sonuç: Top, zıt yöndeki dengelenmemiş sürtünme kuvveti yüzünden yavaşlar ve durur.",
+       "🔁 Kontrol edelim: Aynı top buz gibi kaygan bir yüzeyde çok daha uzağa gider; çünkü sürtünme azdır. Bu, nedenin sürtünme olduğunu doğrular."],
+      { kural: "Hareketli cisim yavaşlıyorsa ona hareket yönüne zıt, dengelenmemiş bir kuvvet etki ediyordur.", dogruNeden: "Sürtünme kuvveti hareket yönünün tersinedir ve dengelenmediği için topu yavaşlatıp durdurur." }),
+    z => {
+      const harf = ["K", "L", "M", "N"], dk = R(0, 3);
+      const sat = harf.map((h, i) => {
+        const a = R(4, 15), b = R(3, 12);
+        let c = a + b; if (i !== dk) c += sec([-1, 1]) * R(2, 6);
+        return [h, `${a} N ve ${b} N`, `${c} N`, a, b, c];
+      });
+      const d = sat[dk];
+      const yanlis = sat.filter((_, i) => i !== dk).map(s => [s[0], s[5] > s[3] + s[4] ? "islem" : "dikkat", `${s[0]} kutusunda sağa ${s[3] + s[4]} N, sola ${s[5]} N kuvvet var. Bileşke ${Math.abs(s[3] + s[4] - s[5])} N olduğu için kutu ${s[5] > s[3] + s[4] ? "sola" : "sağa"} doğru harekete geçer.`]);
+      return S({
+        kaz: "fbil.denge", duzey: "transfer", zorluk: 3,
+        soru: "Başlangıçta duran dört kutuya etki eden kuvvetler tabloda verilmiştir. Hangi kutu <b>durmaya devam eder</b>?",
+        gorsel: G.tablo(["Kutu", "Sağa doğru kuvvetler", "Sola doğru kuvvet"], sat.map(s => s.slice(0, 3))),
+        dogru: d[0], yanlis,
+        ipucu: "Her kutu için sağa doğru kuvvetleri topla ve sola doğru kuvvetle karşılaştır.",
+        cozum: ["🔎 Soruyu anlayalım: Dört duran kutudan hangisine dengelenmiş kuvvet etki ettiğini bulacağız.",
+          "💡 Hatırlayalım: Duran bir cisme etki eden kuvvetler dengelenmişse (bileşke 0 N) cisim durmaya devam eder.",
+          "✏️ Sağdaki kuvvetleri toplayalım: " + sat.map(s => `${s[0]}: ${s[3]} + ${s[4]} = ${s[3] + s[4]} N`).join("; ") + ".",
+          "✏️ Sola doğru kuvvetle karşılaştıralım: " + sat.map(s => `${s[0]}: ${s[3] + s[4]} ve ${s[5]}`).join("; ") + ".",
+          `✅ Sonuç: Yalnızca ${d[0]} kutusunda sağa ve sola doğru kuvvetler eşittir (${d[5]} N). Bu kutu durmaya devam eder.`,
+          "🔁 Kontrol edelim: Diğer kutularda bileşke 0 değildir; onlar büyük kuvvetin yönünde harekete geçer."],
+        kural: "Bileşke kuvvet 0 N ise kuvvetler dengelenmiştir ve duran cisim durmaya devam eder.",
+        dogruNeden: `${d[0]} kutusunda sağa ${d[3]} + ${d[4]} = ${d[5]} N, sola ${d[5]} N kuvvet vardır; kuvvetler dengelenmiştir.`,
+      });
+    },
+  );
+
+  /* ============================ ÜNİTE 2: SABİT SÜRATLİ VE SABİT HIZLI HAREKET ============================ */
+
+  SORU_EKLE("fhiz.surat",
+    z => {
+      const v = sec([1, 2]), dk = R(3, 9), sn = dk * 60, yol = v * sn;
+      return S({
+        kaz: "fhiz.surat", duzey: "uygulama", zorluk: 2,
+        soru: `Zeynep evinden okula kadar olan <b>${yol} m</b>'lik yolu sabit süratle <b>${dk} dakikada</b> yürüyor. Zeynep'in sürati kaç <b>m/s</b>'dir?`,
+        dogru: v + " m/s",
+        yanlis: [[(yol / dk) + " m/s", "dikkat", "Yolu dakikaya bölmüşsün; bu sonuç m/dk olur. m/s bulmak için önce süreyi saniyeye çevirmelisin."],
+          [(v * 60) + " m/s", "islem", "Saniyeye çevirmeyi ters yapmışsın. 1 dakika 60 saniyedir; süre büyür, sürat küçülür."],
+          [(v * 2) + " m/s", "islem", "Bölme işlemini yeniden kontrol et: " + yol + " ÷ " + sn + " = " + v + "."]],
+        ipucu: "Önce dakikayı saniyeye çevir (1 dakika = 60 saniye).",
+        cozum: ["🔎 Soruyu anlayalım: Yol " + yol + " m, süre " + dk + " dakika. Sürati m/s cinsinden bulacağız.",
+          "💡 Hatırlayalım: Sürat = alınan yol ÷ geçen süre. Birim m/s ise yol metre, süre saniye olmalıdır.",
+          `✏️ Süreyi çevirelim: ${dk} dk × 60 = ${sn} s.`,
+          `✏️ Sürati hesaplayalım: ${yol} m ÷ ${sn} s = ${v} m/s.`,
+          `✅ Sonuç: Zeynep'in sürati ${v} m/s'dir.`,
+          `🔁 Kontrol edelim: ${v} m/s ile ${sn} saniyede ${v} × ${sn} = ${yol} m yol alınır. Tutuyor!`],
+        kural: "Sürat = yol ÷ süre. m/s için yol metre, süre saniye olmalıdır.",
+        dogruNeden: `${dk} dakika = ${sn} saniye; ${yol} ÷ ${sn} = ${v} m/s.`,
+      });
+    },
+    z => {
+      const [kmsa, ms] = sec([[72, 20], [90, 25], [108, 30]]), hayvan = sec([["çita", 28], ["at", 18], ["tavşan", 15], ["deve kuşu", 19]]);
+      let hv = hayvan[1]; if (hv === ms) hv += 2;
+      const otoHizli = ms > hv, dogru = otoHizli ? "Otomobil" : hayvan[0][0].toLocaleUpperCase("tr-TR") + hayvan[0].slice(1);
+      const diger = otoHizli ? hayvan[0][0].toLocaleUpperCase("tr-TR") + hayvan[0].slice(1) : "Otomobil";
+      return S({
+        kaz: "fhiz.surat", duzey: "transfer", zorluk: 3,
+        soru: `Bir ${hayvan[0]} yaklaşık <b>${hv} m/s</b> süratle koşabiliyor. Bir otomobil ise <b>${kmsa} km/sa</b> süratle gidiyor. Hangisi daha süratlidir?`,
+        dogru,
+        yanlis: [[diger, "kavrama", `Sayıları birimlerine bakmadan karşılaştırmışsın. ${kmsa} km/sa = ${ms} m/s olduğundan karşılaştırma ${ms} ile ${hv} arasında yapılmalı.`],
+          ["İkisinin sürati eşittir", "islem", `${kmsa} km/sa, ${ms} m/s eder. ${ms} ile ${hv} eşit değildir.`],
+          ["Birimler farklı olduğu için karşılaştırılamaz", "strateji", "Birimler farklıysa birini diğerine çevirip karşılaştırabiliriz; karşılaştırma yapılamaz demek doğru değil."]],
+        ipucu: "km/sa'yi m/s'ye çevirmek için 1000'le çarpıp 3600'e böl (ya da 3,6'ya böl).",
+        cozum: ["🔎 Soruyu anlayalım: Biri m/s, diğeri km/sa olarak verilen iki sürati karşılaştıracağız.",
+          "💡 Hatırlayalım: Farklı birimli süratler karşılaştırılmadan önce aynı birime çevrilir. 1 km = 1000 m, 1 sa = 3600 s.",
+          `✏️ ${kmsa} km/sa = ${kmsa} × 1000 m ÷ 3600 s = ${kmsa * 1000} ÷ 3600 = ${ms} m/s.`,
+          `✏️ Karşılaştıralım: otomobil ${ms} m/s, ${hayvan[0]} ${hv} m/s → ${otoHizli ? ms + " > " + hv : hv + " > " + ms}.`,
+          `✅ Sonuç: ${dogru} daha süratlidir.`,
+          "🔁 Kontrol edelim: Kısa yol: km/sa'yi 3,6'ya bölünce m/s bulunur. " + kmsa + " ÷ 3,6 = " + ms + ". Bir dahaki sefere birimlere bakmadan sayı karşılaştırma!"],
+        kural: "Süratleri karşılaştırmadan önce aynı birime çevir: km/sa ÷ 3,6 = m/s.",
+        dogruNeden: `${kmsa} km/sa = ${ms} m/s olduğundan ${otoHizli ? ms + " m/s > " + hv + " m/s" : hv + " m/s > " + ms + " m/s"}; ${dogru.toLocaleLowerCase("tr-TR")} daha süratlidir.`,
+      });
+    },
+    z => {
+      const [v, d] = sec([[60, 12], [60, 15], [60, 30], [60, 45], [60, 90], [90, 9], [90, 45], [120, 30], [120, 60], [120, 90]]);
+      const dkk = d * 60 / v;
+      return S({
+        kaz: "fhiz.surat", duzey: "transfer", zorluk: 3,
+        soru: `Sabit <b>${v} km/sa</b> süratle giden bir otobüs, iki durak arasındaki <b>${d} km</b>'lik yolu kaç <b>dakikada</b> alır?`,
+        dogru: dkk + " dakika",
+        yanlis: [[od(d / v) + " dakika", "dikkat", `${d} ÷ ${v} = ${od(d / v)} sonucunun birimi saattir, dakika değil. Saati 60 ile çarparak dakikaya çevir.`],
+          [(dkk * 60) + " dakika", "islem", "60 ile iki kez çarpmışsın; bu sayı dakikayı değil saniyeyi gösterir."],
+          Number.isInteger(v / d) ? [(v / d) + " dakika", "strateji", "Sürati yola bölmüşsün. Süre bulmak için yolu sürate bölmek gerekir."] : [(dkk * 2) + " dakika", "islem", "Hesabı yeniden kontrol et; süre = yol ÷ sürat, sonra saati dakikaya çevir."]],
+        ipucu: "Önce süreyi saat olarak bul (yol ÷ sürat), sonra 60 ile çarp.",
+        cozum: ["🔎 Soruyu anlayalım: Sürat " + v + " km/sa, yol " + d + " km. Süreyi dakika cinsinden bulacağız.",
+          "💡 Hatırlayalım: Süre = yol ÷ sürat. 1 saat = 60 dakika.",
+          `✏️ Süre (saat): ${d} ÷ ${v} = ${od(d / v)} saat.`,
+          `✏️ Dakikaya çevirelim: ${od(d / v)} × 60 = ${dkk} dakika.`,
+          `✅ Sonuç: Otobüs bu yolu ${dkk} dakikada alır.`,
+          `🔁 Kontrol edelim: ${v} km/sa, dakikada ${od(v / 60)} km demektir. ${dkk} dakikada ${od(v / 60)} × ${dkk} = ${d} km. Tutuyor!`],
+        kural: "Süre = yol ÷ sürat; saati dakikaya çevirmek için 60 ile çarp.",
+        dogruNeden: `${d} ÷ ${v} = ${od(d / v)} saat = ${dkk} dakika.`,
+      });
+    },
+  );
+
+  SORU_EKLE("fhiz.grafik",
+    z => {
+      const vK = sec([4, 6, 8]), vL = sec([2, 4].filter(v => v < vK)), t = R(2, 5), fark = (vK - vL) * t;
+      return S({
+        kaz: "fhiz.grafik", duzey: "uygulama", zorluk: 3,
+        soru: `K ve L oyuncak arabaları aynı noktadan, aynı anda ve aynı yönde harekete başlıyor. Grafikte arabaların yol–zaman grafikleri verilmiştir. <b>${t}. saniyenin sonunda</b> arabalar arasındaki uzaklık kaç metredir?`,
+        gorsel: yolZaman([{ ad: "K", noktalar: [[0, 0], [5, vK * 5]], sinif: "g-ok-a" }, { ad: "L", noktalar: [[0, 0], [5, vL * 5]], sinif: "g-ok-d" }], { tmax: 5, ymax: 40, tadim: 1, yadim: 4 }),
+        dogru: fark + " m",
+        yanlis: [[(vK * t) + " m", "dikkat", "Bu yalnızca K'nin aldığı yoldur. Aradaki uzaklık için L'nin aldığı yolu da çıkarmalısın."],
+          [((vK + vL) * t) + " m", "kavrama", "Yolları toplamışsın. Arabalar aynı yönde gittiği için aradaki uzaklık yolların farkıdır."],
+          [(vK - vL) + " m", "dikkat", "Bu, 1 saniyede açılan uzaklıktır. Soru " + t + ". saniyenin sonunu soruyor."]],
+        ipucu: `Grafikte ${t}. saniyeye karşılık gelen iki yol değerini oku.`,
+        cozum: [`🔎 Soruyu anlayalım: Aynı yöne giden iki arabanın ${t}. saniyedeki aradaki uzaklığını bulacağız.`,
+          "💡 Hatırlayalım: Yol–zaman grafiğinde bir anın karşısındaki değer, o ana kadar alınan yoldur. Aynı yöne gidenler arasındaki uzaklık = yolların farkı.",
+          `✏️ K'nin sürati: ${vK * 5} m ÷ 5 s = ${vK} m/s → ${t} s'de ${vK} × ${t} = ${vK * t} m.`,
+          `✏️ L'nin sürati: ${vL * 5} m ÷ 5 s = ${vL} m/s → ${t} s'de ${vL} × ${t} = ${vL * t} m.`,
+          `✏️ Aradaki uzaklık: ${vK * t} − ${vL * t} = ${fark} m.`,
+          `✅ Sonuç: Arabalar arasında ${fark} m vardır.`,
+          `🔁 Kontrol edelim: Her saniye aradaki uzaklık ${vK} − ${vL} = ${vK - vL} m artar. ${t} saniyede ${vK - vL} × ${t} = ${fark} m. Aynı sonuç!`],
+        kural: "Aynı noktadan aynı yöne giden iki cisim arasındaki uzaklık, aldıkları yolların farkıdır.",
+        dogruNeden: `${t}. saniyede K ${vK * t} m, L ${vL * t} m yol almıştır; fark ${fark} m'dir.`,
+      });
+    },
+    z => {
+      const [a, b] = karistir([2, 3, 4, 5]).slice(0, 2), dur = R(1, 2), t1 = 2, t2 = t1 + dur, t3 = t2 + 2, y1 = 2 * a, y3 = y1 + 2 * b;
+      const araliklar = [`0–${t1} s`, `${t1}–${t2} s`, `${t2}–${t3} s`], dogru = a > b ? araliklar[0] : araliklar[2], ters = a > b ? araliklar[2] : araliklar[0];
+      return S({
+        kaz: "fhiz.grafik", duzey: "aciklama", zorluk: 2,
+        soru: "Şekilde bir bisikletlinin yol–zaman grafiği verilmiştir. Bisikletlinin sürati hangi zaman aralığında <b>en büyüktür</b>?",
+        gorsel: yolZaman([{ noktalar: [[0, 0], [t1, y1], [t2, y1], [t3, y3]], sinif: "g-ok-a" }], { tmax: 8, ymax: 20, tadim: 1, yadim: 2 }),
+        dogru,
+        yanlis: [[ters, "islem", `Bu aralıkta sürat ${a > b ? b : a} m/s'dir; diğer hareketli aralıktaki ${a > b ? a : b} m/s'den küçüktür.`],
+          [araliklar[1], "kavrama", "Bu aralıkta grafik yatay; yol değişmiyor, yani bisikletli duruyor. Sürati 0'dır."],
+          ["Bütün aralıklarda sürati eşittir", "kavrama", "Grafiğin dikliği aralıklar arasında değişiyor; diklik değişince sürat de değişir."]],
+        ipucu: "Her aralıkta alınan yolu süreye böl. Yatay çizgi ne anlatır?",
+        cozum: ["🔎 Soruyu anlayalım: Üç zaman aralığından hangisinde bisikletlinin daha hızlı yol aldığını bulacağız.",
+          "💡 Hatırlayalım: Yol–zaman grafiğinde çizgi ne kadar dikse sürat o kadar büyüktür. Yatay çizgi durmak demektir.",
+          `✏️ 0–${t1} s: ${y1} m ÷ ${t1} s = ${a} m/s.`,
+          `✏️ ${t1}–${t2} s: yol değişmiyor (${y1} m) → sürat 0, bisikletli duruyor.`,
+          `✏️ ${t2}–${t3} s: (${y3} − ${y1}) m ÷ 2 s = ${2 * b} ÷ 2 = ${b} m/s.`,
+          `✅ Sonuç: Sürat en büyük ${dogru} aralığındadır (${Math.max(a, b)} m/s).`,
+          "🔁 Kontrol edelim: Grafiğe bak; en dik bölüm bu aralıktadır. Hesap ile görüntü aynı şeyi söylüyor."],
+        kural: "Yol–zaman grafiğinde daha dik çizgi daha büyük sürat, yatay çizgi durmak demektir.",
+        dogruNeden: `${dogru} aralığında sürat ${Math.max(a, b)} m/s ile en büyüktür; grafik en dik orada.`,
+      });
+    },
+    Q("fhiz.grafik", "baglanti", 2,
+      "Şekilde K ve L araçlarının yol–zaman grafikleri verilmiştir. K'nin çizgisinin L'ninkinden <b>daha dik</b> olması ne anlama gelir?",
+      "K aynı sürede daha çok yol aldığı için daha süratlidir.",
+      [["K daha uzun süre hareket etmiştir.", "kavrama", "İki çizgi de aynı zaman aralığında çizilmiştir. Diklik süreyi değil, sürati gösterir."],
+       ["K yokuş yukarı, L düz yolda gitmektedir.", "kavrama", "Grafiğin dikliği yolun eğimini göstermez. Grafik yolun şeklini değil, yol ile zaman ilişkisini anlatır."],
+       ["L aynı sürede daha çok yol almıştır.", "dikkat", "Grafikte aynı zamana karşılık K'nin yol değeri daha büyüktür; daha çok yol alan K'dir."]],
+      "Aynı bir zaman değerinde (ör. 4. saniye) iki aracın yol değerlerini karşılaştır.",
+      ["🔎 Soruyu anlayalım: İki grafikten birinin daha dik olmasının ne anlattığını soruyor.",
+       "💡 Hatırlayalım: Sürat = yol ÷ süre. Yol–zaman grafiğinde dikliği sürat belirler.",
+       "✏️ 4. saniyeye bakalım: K 32 m, L 16 m yol almış.",
+       "✏️ Süratler: K için 32 ÷ 4 = 8 m/s, L için 16 ÷ 4 = 4 m/s. K'nin sürati daha büyük.",
+       "✅ Sonuç: Daha dik çizgi, aynı sürede daha çok yol alan, yani daha süratli aracı gösterir.",
+       "🔁 Kontrol edelim: Duran bir aracın çizgisi yatay olurdu (diklik yok, sürat 0). Diklik arttıkça sürat artar."],
+      { gorsel: yolZaman([{ ad: "K", noktalar: [[0, 0], [5, 40]], sinif: "g-ok-a" }, { ad: "L", noktalar: [[0, 0], [5, 20]], sinif: "g-ok-d" }], { tmax: 5, ymax: 40, tadim: 1, yadim: 8 }),
+        kural: "Yol–zaman grafiğinde çizgi ne kadar dikse sürat o kadar büyüktür.", dogruNeden: "Daha dik olan K çizgisi, aynı sürede daha çok yol alındığını yani daha büyük sürati gösterir." }),
+  );
+
+  SORU_EKLE("fhiz.hiz",
+    Q("fhiz.hiz", "aciklama", 2,
+      "Bir asansör önce <b>2 m/s</b> süratle yukarı çıkıyor, ardından yine <b>2 m/s</b> süratle aşağı iniyor. Asansörün hareketiyle ilgili hangisi doğrudur?",
+      "Sürati değişmemiştir ama yönü değiştiği için hızı değişmiştir.",
+      [["Hem sürati hem hızı değişmemiştir.", "kavrama", "Hız, sürat ile yönün birlikte söylenmesidir. Yön yukarıdan aşağıya döndüğü için hız değişmiştir."],
+       ["Sürati değişmiştir ama hızı değişmemiştir.", "kavrama", "Sürat her iki durumda da 2 m/s'dir; değişen yön, dolayısıyla hızdır."],
+       ["Hem sürati hem hızı değişmiştir.", "dikkat", "Sürat değerine dikkat et: İki durumda da 2 m/s. Sürat değişmemiştir."]],
+      "Sürat yalnızca “ne kadar çabuk” sorusunu yanıtlar; hız buna “hangi yöne” bilgisini de ekler.",
+      ["🔎 Soruyu anlayalım: Asansörün sürati ve yönü veriliyor. Sürati ve hızı değişti mi, bunu bulacağız.",
+       "💡 Hatırlayalım: Sürat = birim zamanda alınan yol (yön yok). Hız = sürat + yön.",
+       "✏️ Sürat: Önce 2 m/s, sonra 2 m/s → değişmemiş.",
+       "✏️ Yön: Önce yukarı, sonra aşağı → değişmiş. Yön değişince hız da değişir.",
+       "✅ Sonuç: Asansörün sürati aynı kalmış, hızı değişmiştir.",
+       "🔁 Kontrol edelim: Hızları yazalım: “yukarı 2 m/s” ve “aşağı 2 m/s”. Bu iki ifade aynı değil; demek ki hızlar farklı."],
+      { kural: "Yön değişirse sürat aynı kalsa bile hız değişir.", dogruNeden: "Sürat iki durumda da 2 m/s'dir; yön değiştiği için hız değişmiştir." }),
+    z => {
+      const harf = ["K", "L", "M", "N"], u = R(2, 4), y = sec([1, -1]);
+      const digerU = sec([1, 2, 3, 4, 5].filter(x => x !== u));
+      const oklar = karistir([{ uz: u, yon: y }, { uz: u, yon: y }, { uz: u, yon: -y }, { uz: digerU, yon: y }]);
+      const ciftler = [[0, 1], [0, 2], [0, 3], [1, 2], [1, 3], [2, 3]];
+      const ayni = (i, j) => oklar[i].uz === oklar[j].uz && oklar[i].yon === oklar[j].yon;
+      const dc = ciftler.find(([i, j]) => ayni(i, j));
+      const ad = ([i, j]) => harf[i] + " ve " + harf[j];
+      const yanlis = karistir(ciftler.filter(c => c !== dc)).slice(0, 3).map(([i, j]) => {
+        const esitUz = oklar[i].uz === oklar[j].uz;
+        return [ad([i, j]), esitUz ? "kavrama" : "dikkat", esitUz ? `${harf[i]} ile ${harf[j]}'nin süratleri eşit ama yönleri zıt; bu yüzden hızları farklıdır.` : `${harf[i]} ile ${harf[j]}'nin oklarının uzunlukları farklı, yani süratleri farklıdır; hızları eşit olamaz.`];
+      });
+      return S({
+        kaz: "fhiz.hiz", duzey: "transfer", zorluk: 3,
+        soru: "Şekilde düz bir yolda giden dört aracın hızları oklarla gösterilmiştir (okun uzunluğu sürati, ucu yönü gösterir; her kare aralığı eşit sürati temsil eder). Hangi iki aracın <b>hızları eşittir</b>?",
+        gorsel: hizOklari(oklar.map((o, i) => ({ ad: harf[i], uzunluk: o.uz, yon: o.yon }))),
+        dogru: ad(dc), yanlis,
+        ipucu: "Hızların eşit olması için iki şart var: Ok uzunlukları da yönleri de aynı olmalı.",
+        cozum: ["🔎 Soruyu anlayalım: Dört okun içinden hem uzunluğu hem yönü aynı olan iki oku bulacağız.",
+          "💡 Hatırlayalım: Hız, sürat ve yönün birlikte ifadesidir. İki hızın eşit olması için hem süratler hem yönler aynı olmalıdır.",
+          "✏️ Ok uzunluklarını sayalım: " + oklar.map((o, i) => `${harf[i]}: ${o.uz} birim`).join(", ") + ".",
+          "✏️ Yönlerine bakalım: " + oklar.map((o, i) => `${harf[i]}: ${o.yon > 0 ? "sağa" : "sola"}`).join(", ") + ".",
+          `✅ Sonuç: Uzunluğu da yönü de aynı olan araçlar ${ad(dc)}'dir.`,
+          "🔁 Kontrol edelim: Uzunluğu aynı ama yönü zıt olan ok, eşit sürati ama farklı hızı gösterir. Bu tuzağa düşme!"],
+        kural: "Hızlar eşitse süratler de yönler de aynıdır.",
+        dogruNeden: `${ad(dc)} araçlarının okları aynı uzunlukta ve aynı yöndedir; hem süratleri hem yönleri aynıdır.`,
+      });
+    },
+    Q("fhiz.hiz", "transfer", 3,
+      "Denizde sürüklenen bir botu arayan kurtarma ekibi, botun 1 saat sonra nerede olacağını tahmin etmek istiyor. Ekibin deniz akıntısıyla ilgili hangi bilgiye ihtiyacı vardır?",
+      "Akıntının hızına, yani hem süratine hem de yönüne",
+      [["Yalnızca akıntının süratine", "kavrama", "Sürati bilmek, botun ne kadar yol alacağını söyler ama hangi yöne gideceğini söylemez; bot yanlış yerde aranır."],
+       ["Yalnızca akıntının yönüne", "kavrama", "Yönü bilmek yetmez; ne kadar uzağa gideceğini bulmak için sürat de gerekir."],
+       ["Denizin sıcaklığına", "bilgi", "Sıcaklık, botun nereye sürükleneceğini doğrudan belirlemez. Gerekli olan akıntının sürati ve yönüdür."]],
+      "Botun yerini bulmak için hem “ne kadar uzağa” hem de “hangi tarafa” sorusunu yanıtlamak gerekir.",
+      ["🔎 Soruyu anlayalım: Botun 1 saat sonraki yerini tahmin etmek için gereken bilgiyi arıyoruz.",
+       "💡 Hatırlayalım: Sürat, birim zamanda alınan yolu; hız ise sürat ile yönü birlikte anlatır.",
+       "✏️ Akıntı saatte 3 km sürüklüyorsa bot 1 saatte 3 km uzaklaşır. Bu, “ne kadar uzağa” sorusunun yanıtıdır.",
+       "✏️ Ama 3 km kuzeye mi, güneye mi? Bunu yön bilgisi söyler. İkisi birlikte hızı oluşturur.",
+       "✅ Sonuç: Ekibin akıntının hızına, yani süratine ve yönüne birlikte ihtiyacı vardır.",
+       "🔁 Kontrol edelim: Yalnızca sürat bilinseydi bot, başlangıç noktasından 3 km uzaklıktaki bir çemberin herhangi bir yerinde olabilirdi. Yön, aranacak yeri tek noktaya indirir."],
+      { kural: "Bir şeyin nereye varacağını bulmak için hız (sürat + yön) gerekir.", dogruNeden: "Akıntının sürati botun ne kadar uzağa, yönü ise hangi tarafa gideceğini belirler; ikisi birlikte hızdır." }),
+  );
 })();

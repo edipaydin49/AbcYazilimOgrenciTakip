@@ -188,4 +188,145 @@
        "🔁 Kontrol edelim: Brülör kapatılınca içerideki hava soğur, büzülür, yoğunluğu artar ve balon yavaşça alçalır."],
       { kural: "Isınan gazın yoğunluğu azalır; sıcak hava yükselir.", dogruNeden: "Genleşen sıcak havanın yoğunluğu dışarıdaki soğuk havadan küçük olduğu için balon yükselir." }),
   );
+
+  /* ==================== 2) HÂL DEĞİŞİM NOKTALARI ==================== */
+  SORU_EKLE("fhal.olay",
+    Q("fhal.olay", "uygulama", 2, "Aşağıdaki gruplardan hangisinde yer alan hâl değişimlerinin <b>hepsi</b> ısı alınarak gerçekleşir?", "Erime, buharlaşma, kaynama",
+      [["Donma, yoğuşma, erime", "kavrama", "Donma ve yoğuşmada madde ısı verir; bu grupta yalnızca erime ısı alarak olur."], ["Erime, donma, kaynama", "dikkat", "Donma, erimenin tersidir; ısı verilerek gerçekleşir."], ["Buharlaşma, yoğuşma, donma", "kavrama", "Yoğuşma ve donma ısı vererek olur; yalnızca buharlaşma ısı alır."]],
+      "Tanecikleri hızlandıran, onları daha serbest hâle getiren değişimler ısı alır mı, verir mi?",
+      ["🔎 Soruyu anlayalım: Hâl değişimlerini ısı alanlar ve ısı verenler diye ayıracağız. Hepsi ısı alan grubu bulacağız.",
+       "💡 Hatırlayalım: Katıdan sıvıya, sıvıdan gaza geçişlerde madde ısı alır. Gazdan sıvıya, sıvıdan katıya geçişlerde madde ısı verir.",
+       "✏️ Isı alanlar: erime (katı → sıvı), buharlaşma ve kaynama (sıvı → gaz).",
+       "✏️ Isı verenler: donma (sıvı → katı) ve yoğuşma (gaz → sıvı).",
+       "✅ Sonuç: Hepsi ısı alarak gerçekleşen grup “erime, buharlaşma, kaynama” grubudur.",
+       "🔁 Kontrol edelim: Her ısı alan olayın tersi ısı veren olaydır: erime ↔ donma, buharlaşma ↔ yoğuşma. Bu eşleştirme sonucumuzu doğruluyor."],
+      { kural: "Katı → sıvı → gaz yönünde ısı alınır; ters yönde ısı verilir.", dogruNeden: "Erime, buharlaşma ve kaynamada madde katıdan sıvıya ya da sıvıdan gaza geçer; bu geçişler ısı ister." }),
+    Q("fhal.olay", "aciklama", 2, "Ocakta kaynayan suyun içinde dipten yüzeye doğru büyük <b>kabarcıklar</b> yükselir. Bu kabarcıkların içinde ne vardır?", "Su buharı",
+      [["Hava", "kavrama", "Suda çözünmüş az miktardaki hava ısınmanın başında küçük kabarcıklar yapar; kaynamadaki büyük kabarcıklar su buharıdır."], ["Isı", "kavrama", "Isı bir madde değildir, kabarcığın içini dolduramaz. Kabarcıkta gaz hâline geçmiş su vardır."], ["Boşluk, içinde hiçbir şey yoktur", "bilgi", "Kabarcıklar boş değildir; sıvının içinde gaza dönüşen su buharıyla doludur."]],
+      "Kaynama, sıvının yalnızca yüzeyinde mi yoksa her yerinde mi gaz oluşmasıdır?",
+      ["🔎 Soruyu anlayalım: Kaynayan sudaki büyük kabarcıkların neyle dolu olduğunu soruyoruz.",
+       "💡 Hatırlayalım: Kaynama, sıvının belirli bir sıcaklıkta yalnız yüzeyinde değil, her yerinde gaza dönüşmesidir.",
+       "✏️ Kabın dibindeki su ısıyı alır ve gaz hâline, yani su buharına dönüşür.",
+       "✏️ Bu buhar sıvının içinde kabarcık oluşturur; buhar sudan hafif olduğu için kabarcık yüzeye çıkıp patlar.",
+       "✅ Sonuç: Kabarcıkların içinde su buharı vardır.",
+       "🔁 Kontrol edelim: Ocağı kapatınca kabarcıklar biter; çünkü su artık buhara dönüşecek ısıyı alamaz. Bu da kabarcığın su buharı olduğunu gösterir."],
+      { kural: "Kaynamada sıvının her yerinde gaz oluşur; kabarcıklar o sıvının buharıdır.", dogruNeden: "Dipte ısı alan su buhara dönüşür ve bu buhar kabarcık olarak yükselir." }),
+    Q("fhal.olay", "baglanti", 3, "Bazı çiftçiler çok soğuk kış gecelerinde meyve ve sebze depolarına büyük kaplar içinde <b>su</b> koyar. Kaplardaki su donarken depodaki ürünlerin donma tehlikesi azalır. Bunun nedeni nedir?", "Donan su çevresine ısı verir ve deponun sıcaklığının hızla düşmesini önler.",
+      [["Donan su çevresinden ısı alır ve depoyu soğutur.", "kavrama", "Donma ısı alarak değil, ısı vererek gerçekleşir. Su ısı verdiği için depo ısınır."], ["Su, depodaki havayı nemlendirip ürünleri yalıtır.", "strateji", "Burada asıl etki nem değil, donma sırasında açığa çıkan ısıdır."], ["Su kaplarının buzu, soğuğu kendine çekip yok eder.", "kavrama", "“Soğuk” bir madde değildir, çekilemez. Olayı ısı alışverişiyle açıklamalıyız."]],
+      "Su donarken ısı alır mı, verir mi? Bu ısı nereye gider?",
+      ["🔎 Soruyu anlayalım: Depoya konan suyun donması, ürünleri donmaktan koruyor. Nasıl olduğunu ısı alışverişiyle açıklayacağız.",
+       "💡 Hatırlayalım: Donma, sıvının ısı vererek katı hâle geçmesidir.",
+       "✏️ Gece depo soğudukça kaplardaki su 0 °C'a iner ve donmaya başlar.",
+       "✏️ Donan su çevresine, yani depodaki havaya ve ürünlere ısı verir. Böylece depo bir süre daha 0 °C dolayında kalır, sıcaklık hızla düşmez.",
+       "✅ Sonuç: Donan suyun verdiği ısı deponun çok soğumasını geciktirir.",
+       "🔁 Kontrol edelim: Ters olayı düşün: Buz erirken çevresinden ısı alır ve içeceği soğutur. Donma bunun tersidir; çevreye ısı verir."],
+      { kural: "Donma ve yoğuşmada madde çevresine ısı verir.", dogruNeden: "Su donarken ısı verdiği için deponun sıcaklığı bir süre 0 °C dolayında kalır ve ürünler korunur." }),
+  );
+
+  SORU_EKLE("fhal.nokta",
+    z => {
+      const maddeler = [["etil alkol", -114, 78], ["cıva", -39, 357], ["aseton", -95, 56], ["naftalin", 80, 218], ["saf su", 0, 100]];
+      const [ad, e, k] = sec(maddeler);
+      const tur = sec(["katı", "sıvı", "gaz"]);
+      let T;
+      if (tur === "katı") T = e - sec([10, 20, 30]);
+      else if (tur === "sıvı") T = Math.round((e + k) / 2 / 5) * 5;
+      else T = k + sec([10, 20, 40]);
+      return S({ kaz: "fhal.nokta", duzey: "uygulama", zorluk: 2,
+        soru: `Tabloda ${ad} adlı saf maddenin erime ve kaynama noktaları verilmiştir. Bu madde <b>${T} °C</b> sıcaklıkta hangi hâldedir?`,
+        gorsel: G.tablo(["Madde", "Erime noktası (°C)", "Kaynama noktası (°C)"], [[ad, e, k]]),
+        dogru: tur,
+        yanlis: [["katı", "kavrama", "Madde, sıcaklığı erime noktasının altındaysa katıdır. Burada sıcaklığı erime noktasıyla karşılaştır."], ["sıvı", "kavrama", "Sıvı olması için sıcaklık erime noktası ile kaynama noktası arasında olmalıdır."], ["gaz", "kavrama", "Gaz olması için sıcaklık kaynama noktasından yüksek olmalıdır."], ["katı ve sıvı birlikte", "dikkat", "Katı ve sıvı ancak sıcaklık tam erime noktasındayken birlikte bulunur; burada öyle değil."]].filter(y => y[0] !== tur),
+        ipucu: "Verilen sıcaklığı sayı doğrusunda erime ve kaynama noktalarının yanına yerleştir.",
+        cozum: [`🔎 Soruyu anlayalım: ${ad} için erime noktası ${e} °C, kaynama noktası ${k} °C. ${T} °C'taki hâlini bulacağız.`,
+          "💡 Hatırlayalım: Erime noktasının altında madde katı, erime ile kaynama noktası arasında sıvı, kaynama noktasının üstünde gazdır.",
+          `✏️ Önce erime noktasıyla karşılaştıralım: ${T} °C, ${e} °C'tan ${T < e ? "düşüktür" : "yüksektir"}.`,
+          `✏️ Sonra kaynama noktasıyla karşılaştıralım: ${T} °C, ${k} °C'tan ${T < k ? "düşüktür" : "yüksektir"}.`,
+          `✅ Sonuç: ${T < e ? "Erime noktasının altında olduğu için madde katıdır." : T < k ? "İki noktanın arasında kaldığı için madde sıvıdır." : "Kaynama noktasının üstünde olduğu için madde gazdır."}`,
+          "🔁 Kontrol edelim: Sıcaklıkları bir sayı doğrusuna yerleştir: solda katı bölgesi, ortada sıvı bölgesi, sağda gaz bölgesi. Eksi sayılarda daha küçük olanın daha soğuk olduğunu unutma."],
+        kural: "Erime noktasının altı katı, iki nokta arası sıvı, kaynama noktasının üstü gaz.",
+        dogruNeden: `${T} °C, ${ad} için ${tur} bölgesine düşer.` });
+    },
+    Q("fhal.nokta", "uygulama", 2, "Etiketleri kaybolmuş dört şişedeki saf katı maddelerin erime ve kaynama noktaları ölçülüp tabloya yazılıyor. Hangi iki şişedeki madde <b>aynı madde</b> olabilir?", "K ve M",
+      [["K ve L", "dikkat", "K ile L'nin kaynama noktaları farklıdır; aynı madde olsalardı ikisi de aynı olurdu."], ["L ve N", "dikkat", "L ile N'nin erime noktaları farklıdır; aynı madde olamazlar."], ["M ve N", "kavrama", "Erime noktası benzer görünse bile kaynama noktaları farklıdır; saf aynı maddenin iki değeri de tutmalıdır."]],
+      "Aynı saf maddenin hem erime hem de kaynama noktası aynı olmalıdır.",
+      ["🔎 Soruyu anlayalım: Dört şişedeki maddelerden hangilerinin aynı madde olabileceğini erime ve kaynama noktalarına bakarak bulacağız.",
+       "💡 Hatırlayalım: Erime ve kaynama noktaları saf maddeler için ayırt edicidir. Aynı maddenin bu değerleri miktarı ne olursa olsun aynıdır.",
+       "✏️ Erime noktalarına bakalım: K ve M 80 °C, L 44 °C, N 81 °C. Aday olarak K ile M öne çıkıyor.",
+       "✏️ Kaynama noktalarına bakalım: K ve M 218 °C. İki değer de aynı. N'nin kaynama noktası 252 °C olduğu için K ya da M ile aynı olamaz.",
+       "✅ Sonuç: K ve M aynı madde olabilir.",
+       "🔁 Kontrol edelim: K ile M'nin kütleleri farklı olabilir; bu, erime ve kaynama noktasını değiştirmez. Önemli olan iki noktanın birden tutmasıdır."],
+      { kural: "Aynı saf madde: aynı erime noktası ve aynı kaynama noktası.", dogruNeden: "Yalnızca K ile M'nin hem erime hem kaynama noktaları birbirine eşittir.",
+        gorsel: G.tablo(["Şişe", "Kütle (g)", "Erime noktası (°C)", "Kaynama noktası (°C)"], [["K", 20, 80, 218], ["L", 20, 44, 280], ["M", 50, 80, 218], ["N", 50, 81, 252]]) }),
+    Q("fhal.nokta", "transfer", 3, "Karlı kış günlerinde belediyeler yollara tuz serper. Tuz, buzun üzerindeki suyla karışıp tuzlu su oluşturur. Bu uygulama hangi bilgiye dayanır?", "Tuzlu su saf olmadığı için 0 °C'ta donmaz, daha düşük sıcaklıkta donar.",
+      [["Tuz yolları ısıtarak buzu eritir.", "kavrama", "Tuz ısı üretmez; tuzlu suyun donma noktası düşük olduğu için buz oluşumu zorlaşır."], ["Tuzlu suyun donma noktası 0 °C'tan yüksektir.", "bilgi", "Tam tersi: Tuzlu suyun donma noktası 0 °C'tan düşüktür."], ["Tuz, buzu kumla aynı biçimde kaygan olmaktan çıkarır.", "strateji", "Kum yalnızca tutunmayı artırır. Tuzun etkisi ise donma noktasını düşürmesidir."]],
+      "Saf suyun donma noktası 0 °C'tur. Tuzlu su saf madde midir?",
+      ["🔎 Soruyu anlayalım: Yollara tuz serpilmesinin hangi bilime dayandığını soruyoruz.",
+       "💡 Hatırlayalım: Belirli erime, donma ve kaynama noktası saf maddelere özgüdür. Saf suyun donma noktası 0 °C'tur. İçine başka madde karışınca bu değer değişir.",
+       "✏️ Tuz suyla karışınca tuzlu su oluşur; bu bir karışımdır, saf madde değildir.",
+       "✏️ Tuzlu su 0 °C'ta donmaz; donması için sıcaklığın daha da düşmesi gerekir. Böylece yollarda buz tutması zorlaşır.",
+       "✅ Sonuç: Tuzlu su saf sudan daha düşük sıcaklıkta donar; bu yüzden yollara tuz serpilir.",
+       "🔁 Kontrol edelim: Kışın deniz suyu, göllerdeki tatlı sudan daha zor donar. Bu da aynı bilginin doğada görülen bir örneğidir."],
+      { kural: "Saf maddeye başka madde karışırsa donma ve kaynama noktası değişir.", dogruNeden: "Tuzlu su karışım olduğundan 0 °C'ta donmaz; donma için daha düşük sıcaklık gerekir." }),
+  );
+
+  SORU_EKLE("fhal.grafik",
+    z => {
+      const e = sec([10, 20, 30, 40]), k = sec([70, 80, 90, 110]), T0 = e - 20;
+      const t1 = sec([2, 3]), t2 = t1 + sec([2, 3]), t3 = t2 + sec([3, 4]), t4 = t3 + sec([3, 4]);
+      const noktalar = [[0, T0], [t1, e], [t2, e], [t3, k], [t4, k]];
+      const tur = sec(["erime", "kaynama", "sivi", "karisik"]);
+      const harfAciklama = "K–L: katı ısınıyor · L–M: erime · M–N: sıvı ısınıyor · N–P: kaynama";
+      let soru, dogru, yanlis, son;
+      if (tur === "erime" || tur === "kaynama") {
+        soru = `Grafik, katı hâldeki saf bir maddenin ısıtılmasını göstermektedir. Bu maddenin <b>${tur} noktası</b> kaç °C'tur?`;
+        dogru = (tur === "erime" ? e : k) + " °C";
+        yanlis = [[(tur === "erime" ? k : e) + " °C", "dikkat", tur === "erime" ? "Bu, ikinci düz kısmın sıcaklığıdır; orada madde kaynar." : "Bu, birinci düz kısmın sıcaklığıdır; orada madde erir."], [T0 + " °C", "kavrama", "Bu, maddenin ilk sıcaklığıdır. Hâl değişimi grafiğin düz kısımlarında olur."], [(tur === "erime" ? t2 : t4) + " °C", "dikkat", "Bu değer yatay eksenden okunan dakikadır, sıcaklık değildir."], [Math.round((e + k) / 2) + " °C", "kavrama", "Bu değer iki düz kısmın arasındadır; madde bu sıcaklıkta hâl değiştirmez, yalnızca ısınır."]];
+        son = `${tur === "erime" ? "Birinci" : "İkinci"} düz kısım ${tur === "erime" ? e : k} °C'ta olduğu için ${tur} noktası ${dogru}.`;
+      } else if (tur === "sivi") {
+        soru = "Grafik, katı hâldeki saf bir maddenin ısıtılmasını göstermektedir. Madde hangi aralıkta <b>yalnızca sıvı</b> hâldedir?";
+        dogru = "M–N";
+        yanlis = [["L–M", "kavrama", "L–M aralığında madde erir; katı ve sıvı birlikte bulunur."], ["K–L", "kavrama", "K–L aralığında madde henüz katıdır ve ısınmaktadır."], ["N–P", "kavrama", "N–P aralığında madde kaynar; sıvı ve gaz birlikte bulunur."]];
+        son = "Erime M noktasında biter, kaynama N noktasında başlar; arada madde yalnızca sıvıdır.";
+      } else {
+        soru = "Grafik, katı hâldeki saf bir maddenin ısıtılmasını göstermektedir. Hangi aralıkta madde <b>sıvı ve gaz hâlde birlikte</b> bulunur?";
+        dogru = "N–P";
+        yanlis = [["L–M", "kavrama", "L–M aralığında katı ve sıvı birlikte bulunur; bu erimedir."], ["M–N", "kavrama", "M–N aralığında madde yalnızca sıvıdır ve ısınmaktadır."], ["K–L", "kavrama", "K–L aralığında madde katıdır."]];
+        son = "İkinci düz kısım kaynamadır; kaynarken sıvı ve gaz birlikte bulunur.";
+      }
+      return S({ kaz: "fhal.grafik", duzey: tur === "erime" || tur === "kaynama" ? "uygulama" : "aciklama", zorluk: tur === "erime" ? 1 : 2,
+        soru, gorsel: grafik(noktalar, { ymin: -20, ymax: 120, isaret: [e, k], harf: true }), dogru, yanlis,
+        ipucu: "Grafikte sıcaklığın değişmediği düz kısımlar hâl değişimini gösterir.",
+        cozum: ["🔎 Soruyu anlayalım: Katı bir saf madde ısıtılıyor; grafikte sıcaklığın zamanla nasıl değiştiği görülüyor.",
+          "💡 Hatırlayalım: Saf madde hâl değiştirirken aldığı ısı hâl değişimine harcanır ve sıcaklığı sabit kalır. Grafikte bu, yatay (düz) çizgidir.",
+          `✏️ Birinci düz kısım L–M, ${e} °C'tadır: Burada madde erir. İkinci düz kısım N–P, ${k} °C'tadır: Burada madde kaynar.`,
+          `✏️ Aralıkları sıralayalım: ${harfAciklama}.`,
+          "✅ Sonuç: " + son,
+          "🔁 Kontrol edelim: Eğik kısımlarda madde tek hâldedir ve sıcaklığı artar; düz kısımlarda iki hâl birliktedir. Cevabımız bu kurala uyuyor."],
+        kural: "Grafikteki düz kısımlar hâl değişimidir: ilki erime, ikincisi kaynama.",
+        dogruNeden: son });
+    },
+    Q("fhal.grafik", "aciklama", 3, "Sıvı hâldeki saf bir madde soğutulurken her 2 dakikada bir sıcaklığı ölçülüp tabloya yazılıyor. Tabloya göre bu maddenin <b>erime noktası</b> kaç °C'tur?", "54 °C",
+      [["90 °C", "dikkat", "90 °C ilk ölçülen sıcaklıktır; madde o sırada sıvıdır ve soğumaktadır."], ["30 °C", "dikkat", "30 °C en son ölçülen sıcaklıktır; madde artık katılaşmış ve soğumaya devam etmektedir."], ["Bulunamaz, çünkü madde ısıtılmamıştır.", "kavrama", "Saf maddenin donma noktası erime noktasına eşittir; soğutma tablosundan da bulunabilir."]],
+      "Soğuyan maddenin sıcaklığı hangi dakikalar arasında değişmedi? Donma noktası ile erime noktası arasında nasıl bir ilişki var?",
+      ["🔎 Soruyu anlayalım: Madde ısıtılmıyor, soğutuluyor. Yine de erime noktasını soruyorlar.",
+       "💡 Hatırlayalım: Saf maddenin hâl değiştirirken sıcaklığı sabit kalır. Ayrıca saf bir maddenin donma noktası ile erime noktası aynıdır.",
+       "✏️ Tabloyu okuyalım: 90 → 72 → 54 → 54 → 54 → 30 °C. Sıcaklık 4. ve 8. dakikalar arasında 54 °C'ta sabit kalmış.",
+       "✏️ Soğuyan sıvının sıcaklığının sabit kaldığı yer donmadır. Demek ki donma noktası 54 °C'tur.",
+       "✅ Sonuç: Donma noktası erime noktasına eşit olduğu için erime noktası da 54 °C'tur.",
+       "🔁 Kontrol edelim: Aynı maddeyi 30 °C'tan ısıtsaydık 54 °C'a gelince erimeye başlar ve eriyene kadar sıcaklığı 54 °C'ta kalırdı."],
+      { kural: "Saf maddede donma noktası = erime noktası.", dogruNeden: "Sıcaklık 54 °C'ta sabit kaldığı için madde orada donmuştur; donma noktası erime noktasına eşittir.",
+        gorsel: G.tablo(["Zaman (dk)", "0", "2", "4", "6", "8", "10"], [["Sıcaklık (°C)", 90, 72, 54, 54, 54, 30]]) }),
+    Q("fhal.grafik", "transfer", 3, "Ece, tuzlu suyu ısıtıp sıcaklığını ölçüyor ve grafiği çiziyor. Su kaynamaya başladıktan sonra da sıcaklığın <b>yavaş yavaş artmaya devam ettiğini</b> görüyor. Grafiğe göre hangi yorum doğrudur?", "Tuzlu su saf madde olmadığı için kaynarken sıcaklığı sabit kalmaz.",
+      [["Termometre bozuktur; kaynayan bütün sıvıların sıcaklığı sabittir.", "kavrama", "Kaynarken sıcaklığın sabit kalması saf maddelere özgüdür. Tuzlu su karışımdır."], ["Tuzlu su 100 °C'ta kaynamaya başlamıştır.", "dikkat", "Grafiğe göre kaynama 100 °C'ın üzerinde başlıyor; tuzlu suyun kaynamaya başladığı sıcaklık saf sudan yüksektir."], ["Kaynama hiç başlamamıştır, sıvı yalnızca ısınmaktadır.", "dikkat", "Ece suyun kaynadığını gözlemliyor; artış yalnızca yavaşlamıştır."]],
+      "Saf suyun kaynarken sıcaklığı neden sabit kalır? Tuzlu su saf mıdır?",
+      ["🔎 Soruyu anlayalım: Tuzlu su kaynarken sıcaklığı sabit kalmıyor, yavaşça yükseliyor. Bunu yorumlayacağız.",
+       "💡 Hatırlayalım: Saf maddeler belirli bir sıcaklıkta kaynar ve kaynama boyunca sıcaklıkları değişmez. Karışımlarda böyle sabit bir değer yoktur.",
+       "✏️ Grafikte sıcaklık 100 °C'ın biraz üstüne çıktıktan sonra yatay olmuyor, eğimi azalarak artmaya devam ediyor.",
+       "✏️ Kaynadıkça su buharlaşıp gider, tuz kapta kalır. Karışım gittikçe tuzlanır ve kaynama sıcaklığı yükselir.",
+       "✅ Sonuç: Tuzlu su saf madde olmadığı için kaynarken sıcaklığı sabit kalmaz.",
+       "🔁 Kontrol edelim: Aynı deneyi saf suyla yapsaydık grafik 100 °C'ta düz bir çizgi olurdu. Düz çizgi görürsek saf madde diye düşünebiliriz."],
+      { kural: "Kaynarken sıcaklığın sabit kalması saflığın işaretidir.", dogruNeden: "Karışımların sabit bir kaynama noktası olmadığından tuzlu suyun sıcaklığı kaynarken de artar.",
+        gorsel: grafik([[0, 20], [5, 102], [8, 105], [11, 108]], { ymin: 0, ymax: 120, isaret: [100] }) }),
+  );
 })();
