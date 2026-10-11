@@ -1,6 +1,24 @@
 # Öğrenme Yolculuğu (6. Sınıf Matematik, Fen Bilimleri, Türkçe ve İngilizce) — APK
 
-Tablete kurulacak dosya: **`OgrenmeYolculugu.apk`** (sürüm 1.6, Android 7 ve üstü; Samsung Galaxy Tab A9+ / One UI 8.5 / Android 16 ile uyumlu).
+Tablete kurulacak dosya: **`OgrenmeYolculugu.apk`** (sürüm 1.7, Android 7 ve üstü; Samsung Galaxy Tab A9+ / One UI 8.5 / Android 16 ile uyumlu).
+
+## Sürüm 1.7'de yeni
+
+- **Daha çok soru, tane tane çözüm:** Dört derse yüzlerce yeni soru ve parametreli soru üreteci eklendi. Yeni soruların çözümü 5–7 adımdır: 🔎 soruyu anlayalım → 💡 hatırlayalım → ✏️ adım adım uygulayalım → ✅ sonuç → 🔁 kontrol.
+- **🧠 Akıllı tekrar:** Uygulama her kazanım için bir sonraki tekrar gününü kendisi hesaplar. Yardım almadan ve hızlı verilen doğru cevap aralığı uzatır (1 → 2 → 4 → 8 → 16 → 32 gün). İpucuyla verilen doğru cevap aralığı uzatmaz. Yanlış cevapta kazanım ertesi gün yeniden gelir. Zamanı gelen kazanımlar ana sayfada “🧠 Akıllı tekrar” olarak görünür.
+- **Veli paneli:**
+  - Özet sekmesinin en üstünde **“Bugün ne yapmalıyız?”** kartı ve uyarılar var (ör. “aynı hata 3 testte tekrarlandı”, “ipucuyla yüksek, yardımsız düşük”).
+  - Konu ayrıntısında **öğrenme profili** var: yardımsız çözüm, birkaç gün sonra hatırlama, yeni ve daha önce görülmüş sorulardaki başarı.
+  - **Soru kayıtları** artık **Ders › konu başlığı › konu** sırasıyla açılır kapanır bir liste (akordiyon). Konu açılınca o konudaki bütün sorular tablo olarak görünür.
+- **💾 Yedekleme:**
+  - Veli paneli → Ayarlar → **Şimdi yedekle**. Dosya tabletin **İndirilenler › OgrenmeYolculugu** klasörüne yazılır; uygulama silinse bile kalır.
+  - Uygulama her gün kendiliğinden yedek alır (son 3 gün) ve sürüm güncellendiğinde ayrıca bir yedek oluşturur.
+  - **Yedekten geri yükle** ile bir yedek dosyası seçilir. Kayıtlar eklenir, mevcutlar silinmez, aynı kayıt iki kez eklenmez.
+- **Bilgisayardan izleme daha güvenli:**
+  - Şifre adres satırında gönderilmez.
+  - Aynı anda bağlantı sayısı ve istek boyutu sınırlıdır.
+  - Tablette uygulama arka plana geçince izleme kendiliğinden durur, uygulamaya dönünce yeniden açılır.
+- Ayrıntılı yol haritası ve önerilerin durumu için **GELISTIRME_ANALIZI.md** dosyasına bakın.
 
 ## 1. Tablete kurulum (bir kez)
 
@@ -92,7 +110,8 @@ Tablet ve bilgisayar aynı modeme (Wi‑Fi ağına) bağlıyken veli panelini bi
 4. İş bitince tablette **İzlemeyi kapat**.
 
 Bilinmesi gerekenler:
-- İzleme sürerken tablette uygulama **açık** kalmalı (izleme açıkken ekran kendiliğinden kararmaz). Uygulama kapatılırsa ya da tablet uyursa bilgisayardaki sayfa güncellenmez.
+- İzleme sürerken tablette uygulama **açık ve ekranda** kalmalı (izleme açıkken ekran kendiliğinden kararmaz). Uygulama arka plana alınırsa izleme güvenlik için durur, uygulamaya dönünce yeniden başlar.
+- Bağlantı şifrelenmemiş ev ağı bağlantısıdır (HTTP). Yalnızca kendi ev Wi‑Fi'nizde kullanın; kafe ya da okul gibi ortak ağlarda açmayın.
 - Bilgisayardan yalnızca **görüntüleme** yapılır; ayarlar, şifre, videolar ve yazılı tarihleri tabletten değiştirilir.
 - Sayfa veli şifresiyle korunur; 5 hatalı denemede 1 dakika kilitlenir. Varsayılan şifre **1234** ise önce değiştirin.
 - Bağlanamazsanız: iki cihazın aynı Wi‑Fi'de olduğunu kontrol edin (misafir ağı ya da modemdeki “istemci yalıtımı / AP isolation” özelliği cihazların birbirini görmesini engeller). Adres her bağlantıda değişebilir; tabletteki adresi kullanın.
@@ -113,7 +132,8 @@ Bilinmesi gerekenler:
   - Bundan sonra internet geldiği anda biriken kayıtlar kendiliğinden gönderilir. Bekleyen kayıt sayısı üst çubukta görünür.
   - Aynı uygulamayı **kendi telefonunuza** kurup aynı adresi girerseniz, **“Buluttan verileri al”** ile çocuğun bütün istatistiklerini telefonunuzda görürsünüz.
 - Kurulum yapmadan da: **Veli özeti → Raporu paylaş** (WhatsApp metni) ya da **Ayarlar → Tüm verileri kopyala**, ardından diğer cihazda **İçe aktar**.
-- Uygulama silinirse tablet üzerindeki veriler de silinir; bulut ayarlıysa veriler bulutta kalır.
+- Uygulama silinirse tablet üzerindeki veriler de silinir. Bulut ayarlıysa veriler bulutta kalır.
+- **Yedekler** İndirilenler › OgrenmeYolculugu klasöründe kalır. Uygulamayı yeniden kurduktan sonra Veli paneli → Ayarlar → **Yedekten geri yükle** ile en yeni yedeği seçin. Otomatik yedeklerin adı `otomatik_yedek_1/2/3.json`, elle alınan yedeklerin adı `yedek_YYYY-AA-GG.json` biçimindedir.
 
 ## 5. İsteklerin analizi ve “Ben olsam nasıl başlardım?” planıyla karşılaştırma
 
@@ -142,6 +162,7 @@ Plandaki yaklaşım (tek ders, birkaç konu, önce ölç sonra genişlet) doğru
 - Uygulama bir Android kabuğu (`android/`) ile `web/` klasöründeki sayfalardan oluşur. Sayfalar `https://appassets.androidplatform.net` adresinden sunulur; YouTube gömme ve kalıcı veri bu sayede çalışır.
 - Derleme: `python3 araclar/apk_derle.py <sürüm_kodu> <sürüm_adı>`. Android SDK gerekmez: `dx` (Maven Central), JDK `jarsigner` ve dosya içindeki ikili manifest/kaynak kodlayıcıları kullanılır.
 - **`anahtar/ogrenme.jks` imza anahtarını silmeyin.** Güncellemeler aynı anahtarla imzalanmazsa tablet yeni sürümü kurmaz; eski sürümü silmek gerekir ve veriler kaybolur.
-- İçerik dosyaları: `web/js/ortak.js` (yardımcılar, soru görselleri), `icerik.js` + `mat_ek.js` (Matematik), `fen.js` + `fen1.js`–`fen3.js` (Fen), `tr.js` + `tr1.js`–`tr3.js` (Türkçe), `oyun.js` (Türkçe Diyarı), `en.js` + `en1.js`–`en4.js` (İngilizce), `ingoyun.js` (İngilizce oyunları ve sesli okuma), `videolar.js` (hazır videolar), `birlestir.js` (dersleri birleştirir, yazılı kapsamları).
+- İçerik dosyaları: `web/js/ortak.js` (yardımcılar, soru görselleri), `icerik.js` + `mat_ek.js` + `mat_ek2.js` (Matematik), `fen.js` + `fen1.js`–`fen3.js` + `fen_ek1/2.js` (Fen), `tr.js` + `tr1.js`–`tr3.js` + `tr_ek1/2.js` (Türkçe), `oyun.js` (Türkçe Diyarı), `en.js` + `en1.js`–`en4.js` + `en_ek1/2.js` (İngilizce), `ingoyun.js` (İngilizce oyunları ve sesli okuma), `videolar.js` (hazır videolar), `birlestir.js` (dersleri birleştirir, yazılı kapsamları).
 - Bilgisayardan izleme: `android/src/tr/abc/ogrenme/YerelSunucu.java` (Android'e bağımsız küçük HTTP sunucusu; yalnızca GET, şifreli `/api/veri`), `web/veli.html` ve `VeliPaneli.html` derlemede `araclar/veli_sayfasi.py` ile üretilir. Test: `node araclar/uzak_test.js <klasör>` (sunucuyu JVM'de çalıştırıp tarayıcıdan bağlanır).
+- **Sürüm kapısı:** `node araclar/tum_testler.js` bütün testleri sırayla çalıştırır; biri başarısızsa APK derlemeyin.
 - Testler: `node araclar/ders_dogrula.js web/js/<ders dosyaları>` (her üreteci 40 kez çalıştırıp denetler), `node araclar/gorsel_onizleme.js <klasör> [ders]` (görselli soruların önizlemesi), `node araclar/oyun_test.js <klasör>` ve `node araclar/ingoyun_test.js <klasör>` (oyunları uçtan uca oynar), `node araclar/icerik_test.js` (28 bin soru üretip denetler), `node araclar/arayuz_test.js <klasör>` (uçtan uca), `node araclar/video_test.js` (video takibi), `node araclar/performans_test.js` (6 aylık veriyle, 6 kat yavaş işlemcide süre ölçümü).

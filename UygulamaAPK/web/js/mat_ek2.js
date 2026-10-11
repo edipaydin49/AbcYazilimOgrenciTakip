@@ -70,7 +70,7 @@
           `✏️ Çarpan çiftleri: ${lst(cift)} ve ${k} × ${k}.`,
           `✏️ Çarpanlar: ${lst(b)}.`,
           `✅ Sonuç: ${n} sayısının ${c} çarpanı vardır.`,
-          `🔁 Kontrol edelim: ${cift.length} çift 2'şer çarpan verir: ${cift.length * 2}; ${k} de 1 tane: ${cift.length * 2} + 1 = ${c}. Çarpan sayısı tek çıktı; bu yalnızca kare sayılarda olur.`],
+          `🔁 Kontrol edelim: ${cift.length} çift 2'şer çarpan verir: ${cift.length * 2}; ortadaki ${k} × ${k} çifti ise yalnızca 1 çarpan verir: ${cift.length * 2} + 1 = ${c}. Çarpan sayısı tek çıktı; bu yalnızca kare sayılarda olur.`],
         kural: "Kare sayıların çarpan sayısı tektir; ortadaki çarpan bir kez sayılır.", dogruNeden: `${n}${ek(n, "in")} çarpanları ${lst(b)}; toplam ${c} tane.` }); },
     Q("carpan.say", "baglanti", 2, "Bir doğal sayının <b>tam olarak 2 tane</b> çarpanı varsa bu sayı için aşağıdakilerden hangisi kesinlikle doğrudur?", "Bu sayı asal sayıdır.",
       [["Bu sayı çift sayıdır.", "kavrama", "Yalnızca 2 çifttir; 3, 5, 7 gibi sayıların da 2 çarpanı vardır ve tektir."], ["Bu sayı 1'dir.", "bilgi", "1'in yalnızca 1 çarpanı vardır (kendisi)."], ["Bu sayı bir kare sayıdır.", "kavrama", "Kare sayıların çarpan sayısı tektir; 2 çift sayıdır."]],
@@ -96,7 +96,7 @@
           `🔁 Kontrol edelim: ${a} × ${b} = ${n} birim kare ediyor, model doğru. Çevreyi 2 × (${a} + ${b}) = ${cevre} diye de bulabiliriz.`],
         kural: "Dikdörtgen modelinde kenarlar çarpan çiftidir; alan = kısa × uzun kenar.", dogruNeden: `Uzun kenar ${n} ÷ ${a} = ${b}; çevre 2 × (${a} + ${b}) = ${cevre}.`, gorsel: G.izgara(a, b) }); },
     z => { const n = sec([24, 36, 48, 60, 72]); const cift = bolenler(n).filter(d => d * d <= n).map(d => [d, n / d]);
-      let c, d; do { c = R(3, 9); d = Math.round(n / c); } while (n % c === 0 || c * d === n || d < 2);
+      let c, d; do { c = R(3, 9); d = Math.round(n / c); } while (n % c === 0 || c * d === n || d < 2 || d === c);
       return S({ kaz: "carpan.model", duzey: "aciklama", zorluk: 2, soru: `${n} birim karenin tamamıyla dikdörtgenler kurulacak. Aşağıdaki kenar uzunluklarından hangisiyle <b>kurulamaz</b>?`, dogru: `${c} × ${d}`,
         yanlis: karistir(cift).map(([x, y]) => [`${x} × ${y}`, "kavrama", `${x} × ${y} = ${n}; bu dikdörtgen kurulabilir.`]),
         ipucu: "Kenar uzunluklarını çarp; sonuç birim kare sayısına eşit olmalı.",
@@ -252,19 +252,19 @@
         let a; do { a = 100 * R(1, 9) + sec([10, 14, 18, 22, 26, 30, 34, 38, 42, 46, 50, 54, 58, 62, 66, 70, 74, 78, 82, 86, 90, 94, 98]); } while (a === dogru);
         const b = 2 * R(50, 499) + 1;
         let c; do { c = 100 * R(1, 9) + sec([2, 6]); } while (c === a);
-        y = [[a, "kavrama", `Son rakamı çift diye 4'e bölünür sandın. 4'te son iki basamağa bakılır: ${son2(a)} ÷ 4 kalanlıdır.`], [b, "bilgi", "Tek sayılar 4'e (hatta 2'ye) bölünmez."], [c, "dikkat", `Son iki basamak ${String(son2(c)).padStart(2, "0")}, yani ${son2(c)}; ${son2(c)} ÷ 4 kalanlıdır.`]];
+        y = [[a, "kavrama", `Son rakamı çift diye 4'e bölünür sandın. 4'te son iki basamağa bakılır: ${son2(a)} ÷ 4 kalanlıdır.`], [b, "bilgi", "Tek sayılar 4'e (hatta 2'ye) bölünmez."], [c, "dikkat", `Son iki basamak ${String(son2(c)).padStart(2, "0")}, yani ${son2(c)}; ${son2(c)} ÷ 4 kalanlıdır.`], [dogru + 2, "kavrama", `Son iki basamak ${String(son2(dogru + 2)).padStart(2, "0")}; 4'e bölünmez.`]];
       } else {
         dogru = 9 * R(12, 111);
         let a; do { a = 3 * R(34, 333); } while (a % 9 === 0);
         let b; do { b = 10 * R(10, 99) + 9; } while (b % 9 === 0);
         const c = dogru + sec([1, -1, 3]);
-        y = [[a, "kavrama", `Rakamları toplamı ${rt(a)}; bu 3'ün katı ama 9'un katı değil. 3 kuralını 9 ile karıştırma.`], [b, "kavrama", `Son rakamın 9 olması yetmez; rakamları toplamı ${rt(b)}, 9'un katı değil.`], [c, "islem", `Rakamları toplamı ${rt(c)}; 9'un katı değil.`]];
+        y = [[a, "kavrama", `Rakamları toplamı ${rt(a)}; bu 3'ün katı ama 9'un katı değil. 3 kuralını 9 ile karıştırma.`], [b, "kavrama", `Son rakamın 9 olması yetmez; rakamları toplamı ${rt(b)}, 9'un katı değil.`], [c, "islem", `Rakamları toplamı ${rt(c)}; 9'un katı değil.`], [dogru + 2, "islem", `Rakamları toplamı ${rt(dogru + 2)}; 9'un katı değil.`]];
       }
       const hepsi = [dogru, ...y.map(x => x[0])];
       return S({ kaz: "bol.kural", duzey: "uygulama", zorluk: 2, soru: `Aşağıdaki sayılardan hangisi <b>${d}</b> ile kalansız bölünür?`, dogru, yanlis: y,
         ipucu: d === 4 ? "4 ile bölünebilmede son iki basamağa bak." : "9 ile bölünebilmede rakamların toplamına bak.",
         cozum: [`🔎 Soruyu anlayalım: Dört sayıdan ${d} ile kalansız bölüneni bulacağız. Bölme yapmadan kuralla karar verebiliriz.`,
-          d === 4 ? "💡 Hatırlayalım: Son iki basamağı 00 olan ya da 4'e bölünen bir sayı oluşturan sayılar 4'e kalansız bölünür." : "💡 Hatırlayalım: Rakamlarının toplamı 9'un katı olan sayılar 9'a kalansız bölünür.",
+          d === 4 ? "💡 Hatırlayalım: Bir sayının son iki basamağının oluşturduğu sayı 4'e bölünüyorsa (ya da 00 ise) sayı 4'e kalansız bölünür." : "💡 Hatırlayalım: Rakamlarının toplamı 9'un katı olan sayılar 9'a kalansız bölünür.",
           `✏️ ${hepsi[0]}: ${kuralAcikla(hepsi[0], d)}`,
           `✏️ ${hepsi[1]}: ${kuralAcikla(hepsi[1], d)} ${hepsi[2]}: ${kuralAcikla(hepsi[2], d)}`,
           `✏️ ${hepsi[3]}: ${kuralAcikla(hepsi[3], d)}`,
@@ -280,9 +280,9 @@
           `✏️ ${kuralAcikla(n, 2)} ${kuralAcikla(n, 5)} ${kuralAcikla(n, 10)}`,
           `✏️ ${kuralAcikla(n, 3)} ${kuralAcikla(n, 9)}`,
           `✏️ ${kuralAcikla(n, 4)} ${kuralAcikla(n, 6)}`,
-          `✅ Sonuç: ${c ? `${n} sayısı ${lst(ev)} sayılarına bölünür; toplam ${c} tane.` : `${n} sayısı bu sayıların hiçbirine bölünmez; cevap 0.`}`,
+          `✅ Sonuç: ${c ? `${n} sayısı ${c === 1 ? ev[0] + " sayısına" : lst(ev) + " sayılarına"} bölünür; toplam ${c} tane.` : `${n} sayısı bu sayıların hiçbirine bölünmez; cevap 0.`}`,
           "🔁 Kontrol edelim: Bölünen her sayı için bölmeyi yaparsan kalanın 0 çıktığını görürsün. 6'ya bölünen sayı mutlaka 2'ye ve 3'e de bölünür."],
-        kural: "6 ile bölünebilme = 2 ile ve 3 ile birlikte bölünebilme.", dogruNeden: c ? `${n}; ${lst(ev)} sayılarına kalansız bölünür (${c} tane).` : `${n} bu sayıların hiçbirine kalansız bölünmez.` }); },
+        kural: "6 ile bölünebilme = 2 ile ve 3 ile birlikte bölünebilme.", dogruNeden: c ? `${n}; ${c === 1 ? ev[0] + " sayısına" : lst(ev) + " sayılarına"} kalansız bölünür (${c} tane).` : `${n} bu sayıların hiçbirine kalansız bölünmez.` }); },
     Q("bol.kural", "transfer", 2, "Bir düğünde 234 davetli masalara oturtulacak. Bütün masalar aynı türden olacak ve hiç boş sandalye kalmayacak. Salonda 4, 5, 6 ya da 9 kişilik masalar var. Hangi masa türleri kullanılabilir?", "6 ve 9 kişilik",
       [["4 ve 6 kişilik", "kavrama", "234 çift ama son iki basamağı 34; 34 ÷ 4 kalanlıdır, 4 kişilik masalar kullanılamaz."], ["Yalnızca 9 kişilik", "dikkat", "234 hem çift hem rakamları toplamı 9 olduğundan 6'ya da bölünür."], ["5 ve 9 kişilik", "bilgi", "Son rakam 4; 0 ya da 5 olmadığı için 234, 5'e bölünmez."]],
       "Boş sandalye kalmaması için 234, masa kişi sayısına kalansız bölünmeli.",
@@ -298,7 +298,7 @@
     z => { let x, y, deger; do { x = R(1, 9); y = R(0, 9); deger = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].filter(a => (x + a + y) % 3 === 0); } while (deger.length < 3);
       const t = deger.reduce((a, b) => a + b, 0), mx = Math.max(...deger), mn = Math.min(...deger);
       return S({ kaz: "bol.rakam", duzey: "uygulama", zorluk: 3, soru: `Üç basamaklı <b>${x}A${y}</b> sayısı 3 ile kalansız bölünüyor. A yerine yazılabilecek rakamların <b>toplamı</b> kaçtır?`, dogru: t,
-        yanlis: [[deger.length, "dikkat", "Kaç farklı rakam yazılabileceğini buldun; soru bu rakamların toplamını istiyor."], [mx, "dikkat", "Yalnızca en büyük rakamı yazdın; hepsini toplamalısın."], [t - mx, "islem", `En büyük değer olan ${mx} rakamını unuttun.`], [mn > 0 ? t - mn : t + 3, "islem", mn > 0 ? `${mn} rakamını unuttun.` : `${mx + 3} bir rakam değildir; A en çok 9 olabilir.`]],
+        yanlis: [[deger.length, "dikkat", "Kaç farklı rakam yazılabileceğini buldun; soru bu rakamların toplamını istiyor."], [mx, "dikkat", "Yalnızca en büyük rakamı yazdın; hepsini toplamalısın."], [t - mx, "islem", `En büyük değer olan ${mx} rakamını unuttun.`], [mn > 0 ? t - mn : t + 3, "islem", mn > 0 ? `${mn} rakamını unuttun.` : "A'nın alabileceği değerleri yeniden yaz; listede olmayan bir değer eklemişsin."]],
         ipucu: `${x} + A + ${y} toplamı 3'ün katı olmalı.`,
         cozum: [`🔎 Soruyu anlayalım: ${x}A${y} sayısının 3'e bölünmesi için A'nın alabileceği değerleri bulup toplayacağız.`,
           "💡 Hatırlayalım: Bir sayı, rakamlarının toplamı 3'ün katıysa 3'e kalansız bölünür.",
@@ -352,13 +352,13 @@
       do { b = 9 * (2 * R(6, 55) + 1); } while (b === dogru);
       do { c = 6 * R(17, 166); } while (c % 9 === 0 || c % 4 === 0);
       return S({ kaz: "bol.ayirt", duzey: "uygulama", zorluk: 3, soru: "Aşağıdaki sayılardan hangisi 2 ile ve 9 ile kalansız bölündüğü hâlde <b>4 ile bölünmez</b>?", dogru,
-        yanlis: [[a, "dikkat", `${a} sayısı 2'ye ve 9'a bölünür ama son iki basamağı ${String(son2(a)).padStart(2, "0")} 4'e bölündüğü için 4'e de bölünür.`], [b, "bilgi", `${b} tek sayıdır; 2'ye bölünmez.`], [c, "kavrama", `${c} çifttir ama rakamları toplamı ${rt(c)}, 9'un katı değil.`]],
+        yanlis: [[a, "dikkat", `${a} sayısı 2'ye ve 9'a bölünür ama son iki basamağı (${String(son2(a)).padStart(2, "0")}) 4'e bölündüğü için 4'e de bölünür.`], [b, "bilgi", `${b} tek sayıdır; 2'ye bölünmez.`], [c, "kavrama", `${c} çifttir ama rakamları toplamı ${rt(c)}, 9'un katı değil.`]],
         ipucu: "Üç koşulu sırayla kontrol et: çift mi, rakam toplamı 9'un katı mı, son iki basamak 4'e bölünüyor mu?",
         cozum: ["🔎 Soruyu anlayalım: Aranan sayı 2'ye ve 9'a bölünecek, 4'e bölünmeyecek.",
           "💡 Hatırlayalım: 2 → son rakam çift; 9 → rakamlar toplamı 9'un katı; 4 → son iki basamak 4'e bölünür.",
           `✏️ ${b}: tek sayı, elenir. ${c}: rakamları toplamı ${rt(c)}, 9'un katı değil, elenir.`,
-          `✏️ ${a}: çift, rakamları toplamı ${rt(a)}; ama son iki basamak ${String(son2(a)).padStart(2, "0")} 4'e bölünür, elenir.`,
-          `✏️ ${dogru}: çift, rakamları toplamı ${rt(dogru)} (9'un katı), son iki basamak ${String(son2(dogru)).padStart(2, "0")} 4'e bölünmez.`,
+          `✏️ ${a}: çift, rakamları toplamı ${rt(a)}; ama son iki basamak (${String(son2(a)).padStart(2, "0")}) 4'e bölünür, elenir.`,
+          `✏️ ${dogru}: çift, rakamları toplamı ${rt(dogru)} (9'un katı), son iki basamak (${String(son2(dogru)).padStart(2, "0")}) 4'e bölünmez.`,
           `✅ Sonuç: Aranan sayı ${dogru} olur.`,
           `🔁 Kontrol edelim: ${dogru} ÷ 18 = ${dogru / 18} (2 ve 9'a bölünür), ${dogru} ÷ 4 = ${Math.floor(dogru / 4)}, kalan ${dogru % 4}.`],
         kural: "2'ye bölünen her sayı 4'e bölünmez; 4 için son iki basamağa bakılır.", dogruNeden: `${dogru} çift, rakamları toplamı ${rt(dogru)} ve son iki basamağı 4'e bölünmüyor.` }); },
@@ -398,7 +398,7 @@
       if (tekBil.length) { const x = sec(tekBil); y.unshift([t + x, "kavrama", `${x} asal değildir: ${x} = ${enKucukAsal(x)} × ${x / enKucukAsal(x)}.`]); }
       return S({ kaz: "asal.tani", duzey: "uygulama", zorluk: 2, soru: `${a} ile ${b} arasındaki asal sayıların toplamı kaçtır? (${a} ve ${b} dahil değil)`, dogru: t, yanlis: y,
         ipucu: "Çift sayıları ve 3, 5, 7'ye bölünenleri ele.",
-        cozum: [`🔎 Soruyu anlayalım: ${a + 1} ile ${b - 1} arasındaki asal sayıları bulup toplayacağız.`,
+        cozum: [`🔎 Soruyu anlayalım: ${a + 1}${ek(a + 1, "den")} ${b - 1}${ek(b - 1, "e")} kadar olan sayılardaki asalları bulup toplayacağız.`,
           "💡 Hatırlayalım: 2 dışındaki çift sayılar asal değildir. Tek sayıları 3, 5, 7 gibi asallara bölerek kontrol ederiz.",
           `✏️ Aralıktaki tek sayılar: ${lst([...Array(b - a - 1).keys()].map(i => a + 1 + i).filter(i => i % 2))}.`,
           tekBil.length ? `✏️ Asal olmayanlar: ${tekBil.map(x => `${x} = ${enKucukAsal(x)} × ${x / enKucukAsal(x)}`).join(", ")}.` : "✏️ Bu tek sayıların hiçbiri 3, 5 ya da 7'ye bölünmüyor.",
