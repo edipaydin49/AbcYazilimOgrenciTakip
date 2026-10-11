@@ -3,6 +3,12 @@
   "use strict";
   const { R, sec, karistir, od, ek, S, Q, G } = OGR;
 
+  /* Çözüm kurucu: 🔎 anla → 💡 hatırla → ✏️ adımlar → ✅ sonuç → 🔁 kontrol (5–7 adım) */
+  const C = (anla, hatirla, ...r) => {
+    const kontrol = r.pop(), sonuc = r.pop();
+    return ["🔎 Soruyu anlayalım: " + anla, "💡 Hatırlayalım: " + hatirla].concat(r.map(x => "✏️ " + x), ["✅ Sonuç: " + sonuc, "🔁 Kontrol edelim: " + kontrol]);
+  };
+
   /* ======================= THEME 1 — SCHOOL LIFE ======================= */
   SORU_EKLE("enrol.roles",
     Q("enrol.roles", "transfer", 2, "Read the e-mail.<br><i>To: Students of 6/B<br>From: Mrs Aydın (Deputy Head)<br>Subject: New class roles<br><br>Hello everyone! Here are your new roles for this term. Ece is the class monitor. She collects the homework and takes the register to the office. Bora is the librarian's helper. He puts the books back on the shelves on Wednesdays. Lale and Arda are the plant monitors. They water the plants every Monday. Please help your friends with their jobs!</i><br><b>According to the e-mail, which is NOT true?</b>", "Bora waters the plants every Monday.",

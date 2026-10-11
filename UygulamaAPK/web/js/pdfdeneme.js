@@ -123,7 +123,7 @@
         t.bloklar = A.anahtarCoz(await metinCikar(doc));
         if (!t.bloklar.length) { $("#pAnDurum").textContent = "Bu PDF'te cevap anahtarı bulunamadı; cevapları elle girebilirsiniz."; return; }
         t.eslesme = A.eslestir(t.kit, t.bloklar);
-        dersleriTopla(); onizle(); toast("Cevap anahtarı okundu. Lütfen kontrol edin.");
+        onizle(); toast("Cevap anahtarı okundu. Lütfen kontrol edin.");
       } catch (x) { $("#pAnDurum").textContent = "Açılamadı: " + (x.message || x); }
     };
     if ($("#pBlok")) $("#pBlok").onchange = () => {
