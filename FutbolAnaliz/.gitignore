@@ -1,0 +1,6 @@
+sonuc/
+__pycache__/
+*.pt
+*.mp4
+.pytest_cache/
+kalibrasyon.json
