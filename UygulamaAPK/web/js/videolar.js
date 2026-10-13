@@ -1708,3 +1708,447 @@ window.HAZIR_VIDEOLAR = {
   }
  ]
 };
+
+/* Sosyal Bilgiler ve Din Kültürü videoları (YouTube aramasından derlendi). */
+Object.assign(window.HAZIR_VIDEOLAR, {
+ "s_gruplar": [
+  {
+   "vid": "JU3AQsOaXys",
+   "baslik": "Zaman İçinde Değişen Gruplar ve Roller 6SOS1 #2026",
+   "kaynak": "Tonguç"
+  },
+  {
+   "vid": "3Gs19kQPLFc",
+   "baslik": "Zaman İçinde Değişen Gruplar ve Roller",
+   "kaynak": ""
+  },
+  {
+   "vid": "E8S93PqhdVQ",
+   "baslik": "6. Sınıf Sosyal Bilgiler | Roller",
+   "kaynak": ""
+  }
+ ],
+ "s_kultur": [
+  {
+   "vid": "awhPI6IPAX4",
+   "baslik": "Kültürel Bağlarımızın ve Millî Değerlerimizin Toplumsal Birlikteliğe Etkisi 6SOS2 #2026",
+   "kaynak": "Tonguç"
+  },
+  {
+   "vid": "3OPe7aMY6_E",
+   "baslik": "Kültürel Bağlarımızın Toplumsal Birlikteliğe Etkisi",
+   "kaynak": ""
+  },
+  {
+   "vid": "bTdmQALanLs",
+   "baslik": "Kültürel Bağlar ve Millî Değerler (LGS'ye hazırlık)",
+   "kaynak": ""
+  }
+ ],
+ "s_sorunlar": [
+  {
+   "vid": "Y68vFi17aRQ",
+   "baslik": "Toplumsal Sorunlar ve Çözüm Önerileri 6SOS3 #2026",
+   "kaynak": "Tonguç"
+  },
+  {
+   "vid": "6n972X7JzkI",
+   "baslik": "6. Sınıf Sosyal 1. Dönem 1. Yazılıya Hazırlık",
+   "kaynak": "Tonguç"
+  }
+ ],
+ "s_konum": [
+  {
+   "vid": "63tB3CrPkCM",
+   "baslik": "Ülkemizin, Kıtaların ve Okyanusların Konum Özellikleri 6SOS4 #2026",
+   "kaynak": "Tonguç"
+  },
+  {
+   "vid": "K0pscnIbpW0",
+   "baslik": "Ülkemizin, Kıtaların ve Okyanusların Konum Özellikleri - 2",
+   "kaynak": ""
+  },
+  {
+   "vid": "rsr0cTu9J14",
+   "baslik": "Türkiye'nin Matematik ve Özel Konumu",
+   "kaynak": "Yardımcı Öğretmen"
+  },
+  {
+   "vid": "vyH_qLXoyLY",
+   "baslik": "4 Dakikada Kıtalar ve Okyanuslar",
+   "kaynak": ""
+  }
+ ],
+ "s_cevre": [
+  {
+   "vid": "5rJut2AqFJk",
+   "baslik": "Doğal ve Beşerî Çevre Özellikleri Arasındaki İlişki 6SOS5 #2026",
+   "kaynak": "Tonguç"
+  },
+  {
+   "vid": "Kj0YPUIRIFI",
+   "baslik": "Evimiz Dünya - Doğal ve Beşerî Çevre",
+   "kaynak": ""
+  }
+ ],
+ "s_turkdunyasi": [
+  {
+   "vid": "qfoOygewYnw",
+   "baslik": "Ülkemizin Türk Dünyasıyla Kültürel İş Birlikleri 6SOS6 #2026",
+   "kaynak": "Tonguç"
+  },
+  {
+   "vid": "loQNyU2-MG4",
+   "baslik": "Ülkemizin Türk Dünyasıyla Kültürel İş Birlikleri",
+   "kaynak": ""
+  }
+ ],
+ "s_turkistan": [
+  {
+   "vid": "Ol4fbjYNols",
+   "baslik": "Türkistan'da Kurulan İlk Türk Devletlerinin Medeniyetimize Katkıları 6SOS7 #2026",
+   "kaynak": "Tonguç"
+  },
+  {
+   "vid": "ZdRWH5MGs6I",
+   "baslik": "Boylardan Devlete: İlk Türk Devletleri (Asya Hun, Kök Türk, Uygur)",
+   "kaynak": ""
+  },
+  {
+   "vid": "BnxsUkUygA0",
+   "baslik": "Orta Asya'da Kurulan İlk Türk Devletleri",
+   "kaynak": "Eğitim Tokat TV"
+  }
+ ],
+ "s_islam": [
+  {
+   "vid": "tq5IFgdHau4",
+   "baslik": "VII–XIII. Yüzyıllar Arasında İslam Medeniyetinin İnsanlığın Ortak Mirasına Katkıları 6SOS8 #2026",
+   "kaynak": "Tonguç"
+  },
+  {
+   "vid": "g-CFLYvzu64",
+   "baslik": "Türk-İslam Medeniyetinde Bilim",
+   "kaynak": ""
+  }
+ ],
+ "s_islamiyet": [
+  {
+   "vid": "xp54KfzOwMw",
+   "baslik": "İslamiyet'in Kabulüyle Türklerin Sosyal ve Kültürel Hayatlarında Meydana Gelen Değişimler",
+   "kaynak": ""
+  },
+  {
+   "vid": "gHowOWwrnww",
+   "baslik": "Türklerin İslamiyet'i Kabulü",
+   "kaynak": ""
+  },
+  {
+   "vid": "LKvh9Nz1_JY",
+   "baslik": "Türklerin İslamiyet'i Kabulü ve İlk Türk İslam Devletleri",
+   "kaynak": ""
+  }
+ ],
+ "s_anadolu": [
+  {
+   "vid": "HBBnNYJYeCQ",
+   "baslik": "Anadolu'nun Türkleşmesi",
+   "kaynak": "Tonguç"
+  },
+  {
+   "vid": "q2ClZ8ATPj0",
+   "baslik": "İlk Türk İslam Devletleri",
+   "kaynak": ""
+  },
+  {
+   "vid": "kRKqa-qovVs",
+   "baslik": "İlk Türk İslam Devletleri",
+   "kaynak": ""
+  }
+ ],
+ "d_peygamber": [
+  {
+   "vid": "gwarF8GTALs",
+   "baslik": "Peygamber ve İlahi Kitap İnancı-1 6DIN1 #2026",
+   "kaynak": "Tonguç"
+  },
+  {
+   "vid": "64JyMsP7rZE",
+   "baslik": "Peygamberlerin Özellikleri ve Görevleri",
+   "kaynak": "Ev Akademisi"
+  },
+  {
+   "vid": "-DzOxsEEqiY",
+   "baslik": "Peygamberler ve İlahi Kitap İnancı 6. Sınıf Din",
+   "kaynak": ""
+  }
+ ],
+ "d_vahiy": [
+  {
+   "vid": "gwarF8GTALs",
+   "baslik": "Peygamber ve İlahi Kitap İnancı-1 6DIN1 #2026",
+   "kaynak": "Tonguç"
+  },
+  {
+   "vid": "BbYe-zmpVPQ",
+   "baslik": "6. Sınıf 1. Ünite Peygamberler ve İlahi Kitap İnancı",
+   "kaynak": ""
+  },
+  {
+   "vid": "u7Fk2AwdwzY",
+   "baslik": "Peygamberlerin Sıfatları",
+   "kaynak": ""
+  }
+ ],
+ "d_kitaplar": [
+  {
+   "vid": "OHHBc6QYZiU",
+   "baslik": "İlahi Kitaplar - ders anlatım videosu",
+   "kaynak": "dindersi video"
+  },
+  {
+   "vid": "VILdqDFUx2Q",
+   "baslik": "İlahi Kitaplar ve Peygamberler",
+   "kaynak": "Abdullah Hoca"
+  },
+  {
+   "vid": "gwarF8GTALs",
+   "baslik": "Peygamber ve İlahi Kitap İnancı-1 6DIN1 #2026",
+   "kaynak": "Tonguç"
+  }
+ ],
+ "d_felak": [
+  {
+   "vid": "G-Ta1oopinc",
+   "baslik": "Çocuklar İçin Felak Suresi - tekrarlı okunuş ve anlamı",
+   "kaynak": "dindersi video"
+  },
+  {
+   "vid": "U6b5-V4JKOQ",
+   "baslik": "Felak Suresi Okunuşu ve Anlamı",
+   "kaynak": ""
+  },
+  {
+   "vid": "hq51qunWoZc",
+   "baslik": "Felak Suresi: Anlamı, Okunuşu, Türkçe Meali",
+   "kaynak": ""
+  }
+ ],
+ "d_ramazan": [
+  {
+   "vid": "ujuRSM4D0kI",
+   "baslik": "Ramazan ve Oruç - 1 6DIN3 #2026",
+   "kaynak": "Tonguç"
+  },
+  {
+   "vid": "zzBmE4gx_j8",
+   "baslik": "Ramazan ve Oruç Geniş Özeti (5. sınıf)",
+   "kaynak": ""
+  }
+ ],
+ "d_oruc": [
+  {
+   "vid": "ujuRSM4D0kI",
+   "baslik": "Ramazan ve Oruç - 1 6DIN3 #2026",
+   "kaynak": "Tonguç"
+  },
+  {
+   "vid": "zzBmE4gx_j8",
+   "baslik": "Ramazan ve Oruç Geniş Özeti (5. sınıf)",
+   "kaynak": ""
+  }
+ ],
+ "d_kazanim": [
+  {
+   "vid": "ujuRSM4D0kI",
+   "baslik": "Ramazan ve Oruç - 1 6DIN3 #2026",
+   "kaynak": "Tonguç"
+  }
+ ],
+ "d_iftar": [
+  {
+   "vid": "7jJ3M8VUlO4",
+   "baslik": "Çocuklar İçin Animasyonlu İftar Duası",
+   "kaynak": "dindersi video"
+  },
+  {
+   "vid": "X-eRmSR-DMw",
+   "baslik": "İftar Duası - Çocuklar İçin Talimli",
+   "kaynak": ""
+  },
+  {
+   "vid": "4qXdGXIix98",
+   "baslik": "İftar Duası ve Anlamı",
+   "kaynak": ""
+  }
+ ],
+ "d_dogru": [
+  {
+   "vid": "abI75Aoyjq0",
+   "baslik": "6. Sınıf Din 3. Ünite: Ahlaki Davranışlar ve Kunut Duaları",
+   "kaynak": ""
+  },
+  {
+   "vid": "HfWjvT2yyo8",
+   "baslik": "Ahlaki Davranışlar (7. sınıf)",
+   "kaynak": "Tonguç"
+  }
+ ],
+ "d_merhamet": [
+  {
+   "vid": "abI75Aoyjq0",
+   "baslik": "6. Sınıf Din 3. Ünite: Ahlaki Davranışlar ve Kunut Duaları",
+   "kaynak": ""
+  },
+  {
+   "vid": "h1zuPrXNx8A",
+   "baslik": "Güzel Ahlaki Tutum ve Davranışlar (7. sınıf)",
+   "kaynak": ""
+  }
+ ],
+ "d_adap": [
+  {
+   "vid": "abI75Aoyjq0",
+   "baslik": "6. Sınıf Din 3. Ünite: Ahlaki Davranışlar ve Kunut Duaları",
+   "kaynak": ""
+  },
+  {
+   "vid": "HfWjvT2yyo8",
+   "baslik": "Ahlaki Davranışlar (7. sınıf)",
+   "kaynak": "Tonguç"
+  }
+ ],
+ "d_vatan": [
+  {
+   "vid": "abI75Aoyjq0",
+   "baslik": "6. Sınıf Din 3. Ünite: Ahlaki Davranışlar ve Kunut Duaları",
+   "kaynak": ""
+  }
+ ],
+ "d_kunut": [
+  {
+   "vid": "_AHqmhWDhm4",
+   "baslik": "Kunut Duaları 1 ve 2 Ezberle (Okunuşu ve Anlamı)",
+   "kaynak": ""
+  },
+  {
+   "vid": "ST2fSXHxhLw",
+   "baslik": "Kunut Duaları Okunuşu ve Takibi",
+   "kaynak": ""
+  },
+  {
+   "vid": "76czzcfAyRs",
+   "baslik": "Kunut Duaları 1-2",
+   "kaynak": ""
+  }
+ ],
+ "d_cevre": [
+  {
+   "vid": "Dx9pW1WIupg",
+   "baslik": "Hz. Muhammed'in (sav) Hayatı 6. Sınıf Din",
+   "kaynak": ""
+  },
+  {
+   "vid": "6ABYU2cH0sU",
+   "baslik": "Hz. Muhammed'in (sav) Hayatı 6DIN4",
+   "kaynak": "Tonguç"
+  },
+  {
+   "vid": "Z7pUI9zNdCI",
+   "baslik": "Hz. Muhammed'in Hayatı 1. Bölüm: Doğumu, Gençliği",
+   "kaynak": ""
+  }
+ ],
+ "d_cocukluk": [
+  {
+   "vid": "Z7pUI9zNdCI",
+   "baslik": "Hz. Muhammed'in Hayatı 1. Bölüm: Doğumu, Gençliği",
+   "kaynak": ""
+  },
+  {
+   "vid": "Dx9pW1WIupg",
+   "baslik": "Hz. Muhammed'in (sav) Hayatı 6. Sınıf Din",
+   "kaynak": ""
+  },
+  {
+   "vid": "6ABYU2cH0sU",
+   "baslik": "Hz. Muhammed'in (sav) Hayatı 6DIN4",
+   "kaynak": "Tonguç"
+  }
+ ],
+ "d_genclik": [
+  {
+   "vid": "Z7pUI9zNdCI",
+   "baslik": "Hz. Muhammed'in Hayatı 1. Bölüm: Doğumu, Gençliği",
+   "kaynak": ""
+  },
+  {
+   "vid": "6ABYU2cH0sU",
+   "baslik": "Hz. Muhammed'in (sav) Hayatı 6DIN4",
+   "kaynak": "Tonguç"
+  },
+  {
+   "vid": "Dx9pW1WIupg",
+   "baslik": "Hz. Muhammed'in (sav) Hayatı 6. Sınıf Din",
+   "kaynak": ""
+  }
+ ],
+ "d_fil": [
+  {
+   "vid": "is19LubcuYM",
+   "baslik": "Çocuklar İçin Fil Suresi - tekrarlı okunuş",
+   "kaynak": "dindersi video"
+  },
+  {
+   "vid": "7ahMQcvWqiU",
+   "baslik": "Fil Suresi Okunuşu ve Takibi",
+   "kaynak": ""
+  },
+  {
+   "vid": "buY0PSmkdXM",
+   "baslik": "Çocuklar İçin Fil Suresi",
+   "kaynak": ""
+  }
+ ],
+ "d_gelenek": [
+  {
+   "vid": "dg4nJUY7S5g",
+   "baslik": "Mimarimizdeki Dinî Motifler",
+   "kaynak": ""
+  },
+  {
+   "vid": "AYGNnb9tIqA",
+   "baslik": "Mimarimizde Dinin İzleri (5. sınıf)",
+   "kaynak": "Ev Akademisi"
+  }
+ ],
+ "d_edebiyat": [
+  {
+   "vid": "5DY04S9ukTk",
+   "baslik": "Edebiyatımızda Dinin İzleri",
+   "kaynak": ""
+  },
+  {
+   "vid": "Bvk0Dw4H2mY",
+   "baslik": "Edebiyatımızda Dinin İzleri (5. sınıf)",
+   "kaynak": "Ev Akademisi"
+  }
+ ],
+ "d_musiki": [
+  {
+   "vid": "W4aeHGxDDYs",
+   "baslik": "Musikimizde Dinin İzleri",
+   "kaynak": ""
+  },
+  {
+   "vid": "dwTDx60Xuow",
+   "baslik": "Musikimizde Dinin İzleri (5. sınıf)",
+   "kaynak": "Ev Akademisi"
+  },
+  {
+   "vid": "sJ8l4Er3leE",
+   "baslik": "Musikimizde Dinin İzleri",
+   "kaynak": ""
+  }
+ ]
+});
