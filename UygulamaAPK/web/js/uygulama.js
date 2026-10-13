@@ -29,9 +29,10 @@
   function yonlendir() {
     if (window.VIDEO_KAPAT) { window.VIDEO_KAPAT(); window.VIDEO_KAPAT = null; }
     if (window.PDFDENEME) PDFDENEME.kapat();
+    if (window.TGSD) TGSD.kapat();
     document.querySelectorAll(".perde").forEach(p => p.remove());
     window.scrollTo(0, 0);
-    const [yol, a, b] = location.hash.replace(/^#\/?/, "").split("/");
+    const [yol, a, b, c, d, e] = location.hash.replace(/^#\/?/, "").split("/").map(x => decodeURIComponent(x));
     if (DEPO.uzak) return uzakYonlendir(yol, a, b);
     $("#ustAd").textContent = DEPO.ayar.ogrenciAdi ? "Öğrenme Yolculuğu · " + DEPO.ayar.ogrenciAdi : "Öğrenme Yolculuğu";
     ustDurum();
@@ -40,7 +41,7 @@
     veliAcik = false;
     if (yol === "ders") { dersSec(a); return anaSayfa(); }
     ({ "": anaSayfa, konu: () => konuSayfasi(a), anlatim: () => anlatim(a), video: () => videoSayfasi(a, +b || 0), test: testEkrani,
-      sonuc: sonucEkrani, gelisim: gelisimSayfasi, hatalar: hataDefteri, yazili: () => yaziliSayfasi(a, b), deneme: denemeMerkezi, pdf: () => PDFDENEME.ac(a, b), oyun: () => { dersSec("tr"); OYUN.ac(a, b); }, ing: () => { dersSec("en"); INGOYUN.ac(a, b); } }[yol] || anaSayfa)();
+      sonuc: sonucEkrani, gelisim: gelisimSayfasi, hatalar: hataDefteri, yazili: () => yaziliSayfasi(a, b), deneme: denemeMerkezi, pdf: () => PDFDENEME.ac(a, b), tgsd: () => TGSD.ac(a, b, c, d, e), oyun: () => { dersSec("tr"); OYUN.ac(a, b); }, ing: () => { dersSec("en"); INGOYUN.ac(a, b); } }[yol] || anaSayfa)();
   }
   window.addEventListener("hashchange", yonlendir);
   $("#evBtn").addEventListener("click", () => git("#/"));
@@ -801,6 +802,7 @@
         <p>Sınav modunda çözersin: süre işler, soruların arasında gidip gelebilirsin, cevaplar sınav bitince gösterilir. Sonuçta <b>doğru, yanlış, boş ve net</b> hesaplanır (3 yanlış 1 doğruyu götürür) ve her sorunun adım adım çözümünü görebilirsin. Sorular her denemede yeniden seçilir; deneme sayısının sınırı yoktur.</p></section>
       <section class="kart sari"><h2>🧩 Karma deneme (4 ders · 40 soru · 60 dakika)</h2><p>Matematik, Fen Bilimleri, Türkçe ve İngilizceden 10'ar soru — gerçek sınav provası.</p><div><button class="btn ana" data-test="karma">Karma denemeye başla</button></div></section>
       ${tgsKart()}
+      ${window.TGS_LISTE && TGS_LISTE.length ? `<section class="kart sari"><div class="satir ara"><div><h2>🇹🇷 Ortak yazılı ve TGS hazırlık denemeleri</h2><p class="kucuk-yazi muted">${TGS_LISTE.length} deneme · 6 ders · 75 soru · tahmini puan, konu konu sonuç ve her sorunun adım adım çözümü.</p></div><a class="btn ana" href="#/tgsd">Aç</a></div></section>` : ""}
       <section class="kart"><div class="satir ara"><div><h2>📄 PDF denemelerim</h2><p class="kucuk-yazi muted">Elindeki deneme kitapçığının PDF'ini ve cevap anahtarını yükle; tablette optik formla, süre tutarak çöz.</p></div><a class="btn ana" href="#/pdf">Aç</a></div></section>
       <section class="izgara">${DERSLER.map(d => { const dl = denemeListesi(d.id).filter(t => !cokDersli(t.tur) && t.tur !== "pdfDeneme"), son = dl[dl.length - 1];
         return `<div class="kart"><h2>${d.simge} ${d.ad}</h2><p class="kucuk-yazi muted">${dl.length} deneme çözüldü${son ? " · son net " + String(son.net != null ? son.net : son.dogru).replace(".", ",") + " / " + son.n : ""}</p>
@@ -1307,6 +1309,8 @@
     return `<section class="kart"><h2>Öğrenci ve hedef</h2>
         <label class="alan">Öğrencinin adı<input type="text" id="aAd" value="${kacis(a.ogrenciAdi)}"></label>
         <label class="alan">Günlük çalışma hedefi (dakika)<input type="number" id="aHedef" value="${a.gunlukHedefDk}" min="5" max="240"></label>
+        <label class="alan">Okul başarı puanı (OBP, 0–100 · isteğe bağlı)<input type="number" id="aObp" value="${a.obp || ""}" min="0" max="100" step="0.01" placeholder="ör. 92,45"></label>
+        <p class="kucuk-yazi muted">OBP girilirse TGS/ortak yazılı denemelerinin sonucunda “OBP ile değerlendirme” de gösterilir (%70 sınav puanı + %30 OBP×5, bilgi amaçlı).</p>
         <label class="alan">Veli paneli şifresi (yalnızca rakam)<input type="password" id="aPin" inputmode="numeric" value="${kacis(a.pin)}"></label>
         <label class="satir"><input type="checkbox" id="aOyunAcik" ${a.oyunHepsiAcik ? "checked" : ""}> Türkçe Diyarı oyununda bütün adaları ve görevleri aç (sınıfta ileriki temalara geçildiyse)</label>
         <button class="btn ana" id="aKaydet">Kaydet</button></section>
@@ -1423,7 +1427,7 @@ function doGet(e) {
       $("#aKaydet").onclick = () => {
         const pin = $("#aPin").value.trim();
         if (!/^\d{4,8}$/.test(pin)) return toast("Şifre 4–8 rakam olmalı.");
-        Object.assign(DEPO.ayar, { ogrenciAdi: $("#aAd").value.trim() || DEPO.ayar.ogrenciAdi, gunlukHedefDk: Math.max(5, +$("#aHedef").value || 30), pin, oyunHepsiAcik: $("#aOyunAcik").checked });
+        Object.assign(DEPO.ayar, { ogrenciAdi: $("#aAd").value.trim() || DEPO.ayar.ogrenciAdi, gunlukHedefDk: Math.max(5, +$("#aHedef").value || 30), obp: Math.min(100, Math.max(0, +String($("#aObp").value).replace(",", ".") || 0)) || null, pin, oyunHepsiAcik: $("#aOyunAcik").checked });
         DEPO.ayarKaydet(); toast("Kaydedildi."); yonlendir();
       };
       $("#aUrlKaydet").onclick = () => { const u = $("#aUrl").value.trim(); if (u && !/^https:\/\//.test(u)) return toast("Adres https:// ile başlamalı."); DEPO.ayar.bulutUrl = u; DEPO.ayarKaydet(); toast("Adres kaydedildi."); };

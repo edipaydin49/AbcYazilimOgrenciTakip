@@ -310,5 +310,5 @@
   }
   // Uygulamadan çıkılınca süre durur, dönünce devam eder.
   document.addEventListener("visibilitychange", () => { if (document.hidden) { if (window.PDF_DURAKLAT) window.PDF_DURAKLAT(); } else if (window.PDF_DEVAM) window.PDF_DEVAM(); });
-  window.PDFDENEME = { ac, kapat: () => { clearInterval(sayac); if (window.PDF_DURAKLAT) window.PDF_DURAKLAT(); window.PDF_DURAKLAT = null; window.PDF_DEVAM = null; gor = null; } };
+  window.PDFDENEME = { ac, pdfjsYukle, kapat: () => { clearInterval(sayac); if (window.PDF_DURAKLAT) window.PDF_DURAKLAT(); window.PDF_DURAKLAT = null; window.PDF_DEVAM = null; gor = null; } };
 })();

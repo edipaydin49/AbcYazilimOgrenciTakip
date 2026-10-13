@@ -15,6 +15,7 @@ const testler = [
   { ad: "Videolar", arg: ["araclar/video_test.js"], tamam: /HATALAR: yok|SORUN: yok/ },
   // Örnek PDF'ler telif nedeniyle depoda yok: OGR_PDF_KITAP ve OGR_PDF_ANAHTAR ortam değişkenleriyle verilirse çalışır.
   { ad: "PDF deneme", arg: ["araclar/pdf_test.js", CIKTI, process.env.OGR_PDF_KITAP || "", process.env.OGR_PDF_ANAHTAR || ""].filter(Boolean), tamam: /HATALAR: yok/ },
+  { ad: "Ortak yazılı / TGS denemeleri", arg: ["araclar/tgs_test.js", CIKTI], tamam: /HATALAR: yok/ },
   { ad: "Bilgisayardan izleme (Java sunucu)", arg: ["araclar/uzak_test.js", CIKTI], tamam: /HATALAR: yok/ },
 ];
 let kotu = 0;

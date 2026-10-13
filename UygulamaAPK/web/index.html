@@ -65,6 +65,18 @@ details.akordiyon.konu { background: var(--paper); }
 .optik-harf.dogru { background: var(--good); border-color: var(--good); color: #fff; }
 .optik-harf.yanlis { background: var(--bad); border-color: var(--bad); color: #fff; }
 .optik-harf:disabled { cursor: default; opacity: 1; }
+.optik-harf.buyuk { width: 56px; height: 56px; font-size: 1.2rem; }
+.tgs-soru, .tgs-cozum { display: grid; gap: 6px; justify-items: center; }
+.tgs-kirp { max-width: 100%; height: auto !important; background: #fff; border-radius: 6px; }
+.tgs-secenek { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: center; margin: 10px 0; }
+.tgs-nolar { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+.tgs-no { min-width: 44px; min-height: 40px; padding: 4px 8px; border-radius: 10px; border: 2px solid var(--line); background: var(--sheet); color: var(--ink); font-weight: 700; cursor: pointer; }
+.tgs-no.aktif { border-color: var(--cobalt); box-shadow: 0 0 0 2px var(--cobalt-soft); }
+.tgs-no.dolu { background: var(--cobalt); color: var(--sheet); border-color: var(--cobalt); }
+.tgs-no.dogru { background: var(--good-soft); color: var(--good); border-color: var(--good); }
+.tgs-no.yanlis { background: var(--bad-soft); color: var(--bad); border-color: var(--bad); }
+.tgs-no.bos { color: var(--muted); }
+.tgs-unite { border-top: 1px solid var(--line); padding: 8px 0; }
 .btn:focus-visible, .sec:focus-visible, .konu-satir:focus-visible { outline: 3px solid var(--sun); outline-offset: 2px; }
 .muted { color: var(--muted); }
 .kucuk-yazi { font-size: .88rem; }
@@ -293,5 +305,7 @@ body.uzak main { max-width: 1280px; }
 <script src="js/uygulama.js"></script>
 <script src="js/pdfayristir.js"></script>
 <script src="js/pdfdeneme.js"></script>
+<script src="tgs/liste.js"></script>
+<script src="js/tgsdeneme.js"></script>
 </body>
 </html>
