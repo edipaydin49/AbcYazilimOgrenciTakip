@@ -111,7 +111,8 @@ const sunucu = http.createServer((q, r) => { const f = path.join(KOK, decodeURIC
   const tekrarVar = await p.$('[data-test^="tekrar"]'); if (!tekrarVar) hatalar.push("tekrar zamanı görünmüyor");
   else { await tikla('[data-test^="tekrar"] >> nth=0'); for (let i = 0; i < 6; i++) await soruCoz("dogru"); }
   // Akıllı tekrar: eski tarihli kayıtlarla vadesi gelen kazanım oluşur
-  await p.evaluate(() => { const l = DEPO.liste("soru").slice(0, 3); for (const s of l) { const { id, ...r } = s; DEPO.kaydet("soru", { ...r, ipucu: false, cozumGoruldu: false, terk: false, t: Date.now() - 5 * 86400000 }); } });
+  await p.evaluate(() => { const kullanilan = new Set(DEPO.liste("soru").map(s => s.kaz)); const l = Object.values(ICERIK.KAZANIM).filter(k => k.ders === "mat" && !kullanilan.has(k.id)).slice(0, 3);
+    for (const k of l) DEPO.kaydet("soru", { ders: "mat", konu: k.konu, tema: k.tema, kaz: k.id, duzey: "uygulama", zorluk: 1, mod: "alistirma", ilkDogru: true, sonDogru: true, deneme: 1, ilkSure: 10000, ipucu: false, cozumGoruldu: false, terk: false, t: Date.now() - 5 * 86400000 }); });
   await p.goto("http://localhost:8765/index.html#/ders/mat"); await p.waitForTimeout(150);
   if (!(await p.$('[data-test="akilliTekrar"]'))) hatalar.push("akıllı tekrar düğmesi görünmüyor");
   else { await foto("3c_akilli_tekrar"); await tikla('[data-test="akilliTekrar"]'); const tt = await p.evaluate(() => TEST_DURUMU().tur); if (tt !== "akilliTekrar") hatalar.push("akıllı tekrar testi başlamadı"); await soruCoz("dogru"); }
