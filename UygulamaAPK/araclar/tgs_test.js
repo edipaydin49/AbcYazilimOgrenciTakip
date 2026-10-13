@@ -42,6 +42,11 @@ const sunucu = http.createServer((q, r) => { const u = decodeURIComponent(q.url.
   if (await p.isHidden("#sDogru")) hatalar.push("tam çözümden sonra doğru cevap görünmüyor");
   await p.click("#sYenidenAc"); await p.click('[data-yh="A"]'); await p.waitForTimeout(300);
   const yeniden = await p.evaluate(() => DEPO.liste("soru").filter(s => s.mod === "yenidenCoz").length); if (yeniden !== 1) hatalar.push("yeniden çözüm kaydedilmedi");
+  // Ortak yanlış defteri: TGS yanlışları ve uygulama soruları birlikte
+  await p.goto(T + "#/hatalar"); await p.waitForTimeout(400); await foto("t7_yanlis_defteri");
+  const m = await p.textContent("main"); if (!/Yanlış defterim/.test(m) || !/Ortak Yazılı/.test(m)) hatalar.push("yanlış defterinde TGS soruları yok");
+  await p.click("details[data-kayit] > summary >> nth=0"); await p.click("details[data-kayit] [data-git] >> nth=0"); await p.waitForTimeout(800); await foto("t8_defter_soru");
+  if (!(await p.$(".tgs-kirp, .soru-metin"))) hatalar.push("defterden soru açılmadı");
   await b.close(); sunucu.close();
   console.log("HATALAR:", hatalar.length ? hatalar : "yok");
 })();

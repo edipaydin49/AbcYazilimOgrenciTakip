@@ -33,7 +33,11 @@ const sunucu = http.createServer((q, r) => { const f = path.join(KOK, decodeURIC
       if ((await p.$$eval(".secenek-analiz li", l => l.length)) !== 4) hatalar.push("seçenek analizi 4 seçenek göstermiyor");
       await foto("4b_cozum_acik"); await tikla("#benzerB"); return; }
     else if (dav === "gec") { await tikla("#gecB"); return; }
-    else if (dav === "yanlis2") { await tikla(`[data-s="${yanlisIdx}"]`); const ikinci = [0,1,2,3].find(j => j !== idx && j !== yanlisIdx); await tikla(`[data-s="${ikinci}"]`); }
+    else if (dav === "yanlis2") { await tikla(`[data-s="${yanlisIdx}"]`); if (!(await p.$("#ipucuYardim, #ilkAdimB"))) hatalar.push("yanlıştan sonra ipucu/ilk adım düğmesi yok");
+      const digerleri = [0,1,2,3].filter(j => j !== idx && j !== yanlisIdx);
+      if (await p.$("#ipucuYardim")) await tikla("#ipucuYardim"); await tikla(`[data-s="${digerleri[0]}"]`);
+      if (await p.$("#ilkAdimB")) { await tikla("#ilkAdimB"); if (!(await p.textContent("main")).includes("İlk adım")) hatalar.push("ilk adım gösterilmedi"); }
+      await tikla(`[data-s="${digerleri[1]}"]`); }
     await tikla("#devamB");
   };
   await p.evaluate(() => { window.__T = () => window.__testDurum(); });
