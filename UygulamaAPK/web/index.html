@@ -76,6 +76,10 @@ details.akordiyon.konu { background: var(--paper); }
 .tgs-no.dogru { background: var(--good-soft); color: var(--good); border-color: var(--good); }
 .tgs-no.yanlis { background: var(--bad-soft); color: var(--bad); border-color: var(--bad); }
 .tgs-no.bos { color: var(--muted); }
+.rozetler { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 10px; }
+.rozet { display: grid; gap: 2px; justify-items: center; text-align: center; padding: 10px; border-radius: 12px; background: var(--sun-soft, var(--paper)); border: 1px solid var(--line); }
+.rozet span { font-size: 2rem; } .rozet small { color: var(--muted); font-size: .72rem; } .rozet.kilitli { opacity: .55; filter: grayscale(1); }
+.o-tema { border: 1px solid var(--line); border-radius: 12px; padding: 8px 12px; margin: 8px 0; display: grid; gap: 6px; }
 .tgs-unite { border-top: 1px solid var(--line); padding: 8px 0; }
 .btn:focus-visible, .sec:focus-visible, .konu-satir:focus-visible { outline: 3px solid var(--sun); outline-offset: 2px; }
 .muted { color: var(--muted); }

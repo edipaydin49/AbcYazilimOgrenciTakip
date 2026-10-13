@@ -117,6 +117,12 @@ const sunucu = http.createServer((q, r) => { const f = path.join(KOK, decodeURIC
   if (!(await p.$('[data-test="akilliTekrar"]'))) hatalar.push("akıllı tekrar düğmesi görünmüyor");
   else { await foto("3c_akilli_tekrar"); await tikla('[data-test="akilliTekrar"]'); const tt = await p.evaluate(() => TEST_DURUMU().tur); if (tt !== "akilliTekrar") hatalar.push("akıllı tekrar testi başlamadı"); await soruCoz("dogru"); }
   const skVar = await p.evaluate(() => DEPO.liste("soru").filter(s => s.sk).length); if (!skVar) hatalar.push("soru anahtarı (sk) kaydedilmiyor");
+  // Kendi sınavım: 5 soruluk, kolay, sınav modunda
+  await p.goto("http://localhost:8765/index.html#/olustur/mat"); await p.waitForTimeout(200);
+  await tikla('.oTema >> nth=0'); await p.selectOption("#oN", "5"); await p.selectOption("#oZor", "1"); await p.selectOption("#oMod", "sinav"); await foto("7e_olustur"); await tikla("#oBasla");
+  const oz = await p.evaluate(() => TEST_DURUMU()); if (!oz || oz.tur !== "ozel" || oz.plan.length !== 5 || !oz.sinav) hatalar.push("kendi sınavım başlamadı");
+  else { for (let i = 0; i < 5; i++) { await tikla(`[data-s="0"]`); await tikla("#sonrakiB"); } }
+  await p.goto("http://localhost:8765/index.html#/gelisim"); await p.waitForTimeout(200); if (!/Rozetlerim/.test(await p.textContent("main")) || !/Ünitelere göre/.test(await p.textContent("main"))) hatalar.push("gelişimde rozet/ünite yok"); await foto("7f_gelisim");
   // Veli paneli
   await p.goto("http://localhost:8765/index.html#/veli");
   for (const x of ["1", "2", "3", "4", "Tamam"]) await tikla(`[data-p="${x}"]`);
@@ -133,7 +139,7 @@ const sunucu = http.createServer((q, r) => { const f = path.join(KOK, decodeURIC
       await p.evaluate(() => { const s = DEPO.liste("soru").filter(x => x.sk).pop(); const { id, ...r } = s; DEPO.kaydet("soru", { ...r }); });
       await p.goto("http://localhost:8765/index.html#/veli/kayit"); await p.goto("http://localhost:8765/index.html#/veli/gunluk"); await p.waitForTimeout(150);
       if (await yeniSay() !== once) hatalar.push("tekrar çözülen soru yeni soru sayısını artırdı");
-      await tikla('[data-gmod="hafta"]'); await foto("v_gunluk_hafta"); await tikla('[data-gkay="-1"]'); await tikla('[data-gkay="0"]'); await tikla('[data-gmod="gun"]');
+      await tikla('[data-gmod="hafta"]'); await foto("v_gunluk_hafta"); await tikla('[data-gmod="ay"]'); if (!/Haftalara göre/.test(await p.textContent("main"))) hatalar.push("aylık görünüm yok"); await foto("v_gunluk_ay"); await tikla('[data-gmod="hafta"]'); await tikla('[data-gkay="-1"]'); await tikla('[data-gkay="0"]'); await tikla('[data-gmod="gun"]');
       await tikla("details[data-kayit] > summary >> nth=0"); await foto("v_gunluk_test");
       const m = await p.textContent("main"); if (/NaN|undefined/.test(m)) hatalar.push("günlük sekmesinde NaN/undefined"); }
     if (sk === "ayar") {
