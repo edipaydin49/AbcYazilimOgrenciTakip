@@ -1,6 +1,42 @@
-# Öğrenme Yolculuğu (6. Sınıf Matematik, Fen Bilimleri, Türkçe ve İngilizce) — APK
+# Öğrenme Yolculuğu (6. Sınıf Matematik, Fen Bilimleri, Türkçe, İngilizce, Sosyal Bilgiler ve Din Kültürü) — APK
 
-Tablete kurulacak dosya: **`OgrenmeYolculugu.apk`** (sürüm 1.8, Android 7 ve üstü; Samsung Galaxy Tab A9+ / One UI 8.5 / Android 16 ile uyumlu).
+Tablete kurulacak dosya: **`OgrenmeYolculugu.apk`** (sürüm 1.9, Android 7 ve üstü; Samsung Galaxy Tab A9+ / One UI 8.5 / Android 16 ile uyumlu).
+
+## Sürüm 1.9'da yeni
+
+- **Yeni dersler: Sosyal Bilgiler ve Din Kültürü.**
+  - Kitabın içindekiler sayfasına göre hazırlandı: Sosyal Bilgiler 3 öğrenme alanı ve 10 konu, Din Kültürü 5 ünite ve 20 konu.
+  - Her konuda adım adım konu anlatımı, durak soruları ve çözümlü sorular var.
+  - Her konuya konu anlatım videoları eklendi.
+  - Karma deneme ve TGS denemeleri artık 6 dersten oluşur: TGS 75 soru, 100 dakika.
+- **🇹🇷 Ortak yazılı / TGS hazırlık denemeleri (45 deneme, 3.375 soru):**
+  - Gönderdiğiniz RAR'daki denemeler uygulamaya eklendi: 1. Dönem 1. Yazılı, 1. Dönem 2. Yazılı ve 2. Dönem 1. Yazılı için 15'er deneme. Yerleri: Deneme merkezi → Ortak yazılı ve TGS denemeleri ya da yazılı sayfaları.
+  - Sorular kitapçıktaki görünümüyle, soru soru gösterilir.
+  - Sınav bitince her ders için doğru, yanlış, boş ve net hesaplanır. **Tahmini puan** LGS'deki ders ağırlıklarıyla (Türkçe, Matematik ve Fen 4; Sosyal, Din ve İngilizce 1) 100–500 arasında hesaplanır; resmî bir puan değildir.
+  - Veli paneli → Ayarlar'da **OBP** girilirse “OBP ile değerlendirme” de gösterilir (%70 sınav + %30 OBP×5, bilgi amaçlı).
+  - Sonuçta sorular **konu konu** ve sınavdaki sırayla listelenir. Bir soruya dokununca soru açılır. Sırasıyla **💡 İpucu**, **Sonraki adım** ve **Tam çözüm** gösterilir; soru **yeniden çözülebilir**.
+- **📒 Yanlış defterim (bütün dersler, testler, denemeler ve TGS için ortak):**
+  - Her yanlış ya da boş soru için ders, ünite, konu, sınav adı, tarih ve soru numarası tutulur.
+  - Soruya dokununca sorunun kendisi, seçenekleri, öğrencinin cevabı ve doğru cevap açılır. Konunun videosu ve anlatımı bir dokunuşla açılır.
+  - Aynı soru tekrar yanlış yapılırsa tekrar sayısı görünür. Yeniden çözüldüğünde sonuç kaydedilir; doğru çözülen soru “düzeldi” olur.
+- **İpucu modu:**
+  - Yanlış cevaptan sonra doğru cevap hemen gösterilmez. Önce ipucu, sonra çözümün ilk adımı, en son tam çözüm verilir.
+  - Her soruda 3 deneme hakkı vardır.
+- **Video tam ekran:**
+  - Videonun altındaki **⛶ Tam ekran** düğmesi kullanılır; tablet yatay döner, sistem çubukları gizlenir.
+  - Bölüm soruları videonun üstünde çıkar; cevaplanınca video kaldığı yerden devam eder.
+  - YouTube'un kendi tam ekran düğmesi soruları gizlediği için kapatıldı.
+- **Raporlar ve takip:**
+  - Günlük, haftalık ve **aylık** çalışma raporu.
+  - Ünite bazında başarı çubukları: Veli paneli → Ders ve konular, öğrencide Gelişimim.
+  - **🎯 Haftalık hedefler** (soru, video süresi, deneme, çalışılan gün) ve tamamlanma oranı. Hedefler Veli paneli → Ayarlar'dan belirlenir.
+  - **🏅 Rozetler:** çalışma serisi, soru sayısı, deneme, düzeltilen yanlış, tamamlanan video, hedef avcısı.
+  - **⏱️ Mola uyarısı:** varsayılan 40 dakika aralıksız çalışmada.
+  - İsteğe bağlı günlük süre sınırı.
+  - Veli özetinde “X gündür çalışma yok” uyarısı.
+  - Haftalık raporda “gelecek hafta önerileri”.
+- **🧩 Kendi sınavım:** ders, ünite, konu, zorluk ve soru sayısı seçilerek kişisel test hazırlanır; öğrenme modunda ya da süreli sınav olarak çözülür.
+- Kutulara sığmayan yazılar düzeltildi; bütün sayfalar 3 ekran boyutunda otomatik olarak denetleniyor.
 
 ## Sürüm 1.8'de yeni
 
