@@ -65,6 +65,22 @@ details.akordiyon.konu { background: var(--paper); }
 .optik-harf.dogru { background: var(--good); border-color: var(--good); color: #fff; }
 .optik-harf.yanlis { background: var(--bad); border-color: var(--bad); color: #fff; }
 .optik-harf:disabled { cursor: default; opacity: 1; }
+.optik-harf.buyuk { width: 56px; height: 56px; font-size: 1.2rem; }
+.tgs-soru, .tgs-cozum { display: grid; gap: 6px; justify-items: center; }
+.tgs-kirp { max-width: 100%; height: auto !important; background: #fff; border-radius: 6px; }
+.tgs-secenek { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: center; margin: 10px 0; }
+.tgs-nolar { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+.tgs-no { min-width: 44px; min-height: 40px; padding: 4px 8px; border-radius: 10px; border: 2px solid var(--line); background: var(--sheet); color: var(--ink); font-weight: 700; cursor: pointer; }
+.tgs-no.aktif { border-color: var(--cobalt); box-shadow: 0 0 0 2px var(--cobalt-soft); }
+.tgs-no.dolu { background: var(--cobalt); color: var(--sheet); border-color: var(--cobalt); }
+.tgs-no.dogru { background: var(--good-soft); color: var(--good); border-color: var(--good); }
+.tgs-no.yanlis { background: var(--bad-soft); color: var(--bad); border-color: var(--bad); }
+.tgs-no.bos { color: var(--muted); }
+.rozetler { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 10px; }
+.rozet { display: grid; gap: 2px; justify-items: center; text-align: center; padding: 10px; border-radius: 12px; background: var(--sun-soft, var(--paper)); border: 1px solid var(--line); }
+.rozet span { font-size: 2rem; } .rozet small { color: var(--muted); font-size: .72rem; } .rozet.kilitli { opacity: .55; filter: grayscale(1); }
+.o-tema { border: 1px solid var(--line); border-radius: 12px; padding: 8px 12px; margin: 8px 0; display: grid; gap: 6px; }
+.tgs-unite { border-top: 1px solid var(--line); padding: 8px 0; }
 .btn:focus-visible, .sec:focus-visible, .konu-satir:focus-visible { outline: 3px solid var(--sun); outline-offset: 2px; }
 .muted { color: var(--muted); }
 .kucuk-yazi { font-size: .88rem; }
@@ -76,6 +92,10 @@ details.akordiyon.konu { background: var(--paper); }
 .bar i { display: block; height: 100%; background: var(--cobalt); border-radius: 99px; }
 .konu-satir { display: grid; grid-template-columns: minmax(0, 1fr) 110px; gap: 10px; align-items: center; padding: 10px 12px; border-radius: 12px; background: var(--paper); border: 1px solid transparent; cursor: pointer; text-align: left; width: 100%; }
 .konu-satir:hover { border-color: var(--line); }
+.konu-satir > span { min-width: 0; overflow-wrap: anywhere; }
+.konu-satir.kisa { grid-template-columns: minmax(0, 1fr) auto; }
+.metrik b, .metrik span, .metrik small, .etiket, .sekme, .btn, .geri, td, th, h1, h2, h3 { overflow-wrap: anywhere; }
+.btn, .sekme { white-space: normal; }
 .soru-metin { font-size: 1.15rem; font-weight: 600; }
 .secenekler { display: grid; gap: 10px; }
 .sec { display: flex; gap: 12px; align-items: center; text-align: left; padding: 12px 14px; border-radius: 14px; border: 2px solid var(--line); background: var(--paper); cursor: pointer; min-height: 56px; width: 100%; }
@@ -115,11 +135,17 @@ input[type=text], input[type=url], input[type=number], input[type=password], sel
 textarea { min-height: 90px; font-family: monospace; font-size: .85rem; }
 label.alan { display: grid; gap: 4px; font-weight: 600; }
 .pin { display: grid; grid-template-columns: repeat(3, 72px); gap: 10px; justify-content: center; }
-.pin button { height: 64px; font-size: 1.4rem; border-radius: 14px; border: 1px solid var(--line); background: var(--sheet); cursor: pointer; }
+.pin button { height: 64px; font-size: 1.4rem; color: var(--ink); min-width: 0; border-radius: 14px; border: 1px solid var(--line); background: var(--sheet); cursor: pointer; }
+.pin button:nth-child(10), .pin button:nth-child(12) { font-size: 1rem; }
 .pin-gosterge { text-align: center; font-size: 2rem; letter-spacing: 12px; min-height: 48px; }
 .video-kutu { position: relative; width: 100%; aspect-ratio: 16 / 9; background: #000; border-radius: 14px; overflow: hidden; }
 .video-kutu > div, .video-kutu iframe { position: absolute; inset: 0; width: 100%; height: 100%; }
-.perde { position: fixed; inset: 0; background: rgba(10, 16, 30, .55); display: grid; place-items: center; padding: 16px; z-index: 20; }
+.perde { position: fixed; inset: 0; background: rgba(10, 16, 30, .55); display: grid; place-items: center; padding: 16px; z-index: 80; }
+.video-tam { position: fixed !important; inset: 0; z-index: 60; border-radius: 0; aspect-ratio: auto; width: 100vw; height: 100vh; }
+.video-tam-kapat { display: none; position: absolute; top: 10px; right: 10px; z-index: 2; background: rgba(0,0,0,.6); color: #fff; border: 1px solid rgba(255,255,255,.5); border-radius: 10px; padding: 8px 12px; font-weight: 700; cursor: pointer; }
+.video-tam .video-tam-kapat { display: block; }
+.video-tam > div, .video-tam iframe { height: 100% !important; }
+body.video-tam-acik { overflow: hidden; }
 .perde .kart { width: min(640px, 100%); max-height: 90vh; overflow: auto; }
 .grafik svg { width: 100%; height: auto; display: block; }
 .grafik .eksen { stroke: var(--line); stroke-width: 1; }
@@ -285,6 +311,12 @@ body.uzak main { max-width: 1280px; }
 <script src="js/en_ek1.js"></script>
 <script src="js/en_ek2.js"></script>
 <script src="js/en_tgs.js"></script>
+<script src="js/sos.js"></script>
+<script src="js/sos1.js"></script>
+<script src="js/sos2.js"></script>
+<script src="js/din.js"></script>
+<script src="js/din1.js"></script>
+<script src="js/din2.js"></script>
 <script src="js/videolar.js"></script>
 <script src="js/birlestir.js"></script>
 <script src="js/depo.js"></script>
@@ -294,5 +326,7 @@ body.uzak main { max-width: 1280px; }
 <script src="js/uygulama.js"></script>
 <script src="js/pdfayristir.js"></script>
 <script src="js/pdfdeneme.js"></script>
+<script src="tgs/liste.js"></script>
+<script src="js/tgsdeneme.js"></script>
 </body>
 </html>
