@@ -341,7 +341,8 @@
     const otoBol = !(v.bolumler && v.bolumler.length);
     ana.innerHTML = `<section class="kart vurgu"><div class="satir ara"><h1>${k.ad} · video</h1><a class="btn kucuk" href="#/konu/${id}">Konuya dön</a></div>
       <p class="kucuk-yazi muted">${kacis(v.baslik)}${v.kaynak ? " · " + kacis(v.kaynak) : ""}</p>
-      <div class="video-kutu"><div id="oynatici"></div></div><p id="vDurum" class="kucuk-yazi muted">Video yükleniyor…</p>
+      <div class="video-kutu" id="videoKutu"><div id="oynatici"></div><button class="video-tam-kapat" id="tamKapat" aria-label="Tam ekrandan çık">✕ Küçült</button></div>
+      <div class="satir ara"><p id="vDurum" class="kucuk-yazi muted">Video yükleniyor…</p><button class="btn kucuk" id="tamAc">⛶ Tam ekran</button></div>
       ${liste.length > 1 ? `<div class="satir">${vi > 0 ? `<a class="btn kucuk" href="#/video/${id}/${vi - 1}">← Önceki video</a>` : ""}${vi < liste.length - 1 ? `<a class="btn kucuk" href="#/video/${id}/${vi + 1}">Başka bir anlatım dene →</a>` : ""}<span class="kucuk-yazi muted">${vi + 1} / ${liste.length}</span></div>` : ""}</section>
       <section class="kart"><h2>Bölümler</h2><div id="bolumListe" style="display:grid;gap:8px"></div></section>`;
     const listeCiz = () => {
@@ -350,6 +351,14 @@
     };
     let oyn = null;
     listeCiz();
+    // Tam ekran: YouTube'un kendi tam ekranı bölüm sorularını örttüğü için kendi tam ekranımızı kullanırız;
+    // sorular videonun üstünde açılır, cevaplanınca video kaldığı yerden devam eder.
+    const tamEkran = acik => {
+      $("#videoKutu").classList.toggle("video-tam", acik); document.body.classList.toggle("video-tam-acik", acik);
+      try { if (window.Android && Android.tamEkran) Android.tamEkran(acik); } catch (e) {}
+    };
+    $("#tamAc").onclick = () => tamEkran(true); $("#tamKapat").onclick = () => tamEkran(false);
+    const eskiKapat = () => tamEkran(false);
     if (!navigator.onLine) { $("#vDurum").innerHTML = "Video için internet bağlantısı gerekiyor. <a href='#/anlatim/" + id + "'>Metin anlatıma geç</a>."; return; }
 
     // Benzersiz izlenen saniyeler bu cihazda video bazında birikir (tamamlama oranı için).
@@ -359,7 +368,7 @@
     let onceki = null, aktifBolum = -1, durakta = false, sistemDuraklatti = false, zamanlayici = null, kaydetSayac = 0;
     const cevaplananDurak = new Set();
     const kaydetVideo = () => { try { localStorage.setItem(izAnahtar, JSON.stringify([...izlenen])); } catch (e) {} DEPO.guncelle(kayit, { izlenen: izlenen.size }); };
-    window.VIDEO_KAPAT = () => { clearInterval(zamanlayici); window.VIDEO_OYNUYOR = false; kaydetVideo(); try { oyn && oyn.destroy(); } catch (e) {} };
+    window.VIDEO_KAPAT = () => { clearInterval(zamanlayici); window.VIDEO_OYNUYOR = false; kaydetVideo(); eskiKapat(); try { oyn && oyn.destroy(); } catch (e) {} };
 
     function bolumBul(t) { let b = 0; bolumler.forEach((x, i) => { if (t >= x.sn) b = i; }); return b; }
     function tik() {
@@ -422,7 +431,7 @@
     ytYukle().then(() => {
       oyn = new YT.Player("oynatici", {
         videoId: v.vid, host: "https://www.youtube-nocookie.com",
-        playerVars: { playsinline: 1, rel: 0, modestbranding: 1, origin: location.origin, fs: 1 },
+        playerVars: { playsinline: 1, rel: 0, modestbranding: 1, origin: location.origin, fs: 0 },
         events: {
           onReady: () => { sureOgrenildi(oyn.getDuration()); $("#vDurum").textContent = "Videoyu başlatmak için oynat düğmesine dokun. Her bölümün sonunda kısa bir soru gelecek."; zamanlayici = setInterval(tik, 1000); },
           onStateChange: e => {
@@ -892,8 +901,8 @@
   function tgsKart() {
     return `<section class="kart"><h2>🇹🇷 Türkiye Geneli Sınav (TGS) tarzı denemeler</h2>
       <p class="kucuk-yazi muted">Türkçe 15 · Matematik 15 · Fen Bilimleri 15 · İngilizce 10 = 55 soru, 75 dakika. Kapsam o döneme kadar işlenen yazılı konularıdır (birikimli). Her denemede sorular yeniden seçilir.</p>
-      <div class="izgara dar">${YAZILILAR.map(y => { const l = DEPO.liste("test").filter(t => t.tur === "tgs" && t.yazili === y.id), son = l[l.length - 1];
-        return `<button class="konu-satir" data-test="tgs" data-yazili="${y.id}"><span><b>${TGS_AD[y.id]}</b><br><span class="kucuk-yazi muted">${l.length ? l.length + " kez · son net " + String(son.net).replace(".", ",") + " / " + son.n : "henüz çözülmedi"}</span></span><span class="etiket">Başla</span></button>`; }).join("")}</div></section>`;
+      <div class="izgara">${YAZILILAR.map(y => { const l = DEPO.liste("test").filter(t => t.tur === "tgs" && t.yazili === y.id), son = l[l.length - 1];
+        return `<button class="konu-satir kisa" data-test="tgs" data-yazili="${y.id}"><span><b>${TGS_AD[y.id]}</b><br><span class="kucuk-yazi muted">${l.length ? l.length + " kez · son net " + String(son.net).replace(".", ",") + " / " + son.n : "henüz çözülmedi"}</span></span><span class="etiket">Başla</span></button>`; }).join("")}</div></section>`;
   }
   function denemeMerkezi() {
     const l = denemeListesi(null);

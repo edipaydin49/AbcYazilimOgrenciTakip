@@ -224,6 +224,24 @@ public class MainActivity extends Activity {
             return "1.8";
         }
 
+        /* Video tam ekranı: sistem çubuklarını gizler ve ekranı yatay çevirir (soru katmanı web sayfasında kalır). */
+        @JavascriptInterface
+        public void tamEkran(final boolean acik) {
+            runOnUiThread(new Runnable() {
+                public void run() {
+                    View d = getWindow().getDecorView();
+                    if (acik) {
+                        d.setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+                            | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
+                        setRequestedOrientation(android.content.pm.ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE);
+                    } else {
+                        d.setSystemUiVisibility(0);
+                        setRequestedOrientation(android.content.pm.ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
+                    }
+                }
+            });
+        }
+
         /* Yedek: veriyi tabletin İndirilenler/OgrenmeYolculugu klasörüne yazar (uygulama silinse de kalır).
          * Aynı adlı dosya bu uygulamaya aitse üzerine yazılır. Başarılıysa dosyanın yerini, değilse "" döndürür. */
         @JavascriptInterface

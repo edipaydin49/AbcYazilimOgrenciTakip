@@ -167,6 +167,11 @@ const sunucu = http.createServer((q, r) => { const f = path.join(KOK, decodeURIC
   await p.goto("http://localhost:8765/index.html#/konu/carpan"); await foto("10a_konu_video_liste");
   const vSay = await p.evaluate(() => document.querySelectorAll(".video-satir").length); if (vSay < 4) hatalar.push("konu sayfasında video listesi eksik: " + vSay);
   await p.goto("http://localhost:8765/index.html#/video/carpan/0"); await p.waitForTimeout(1500); await foto("10_video");
+  await tikla("#tamAc"); if (!(await p.$(".video-kutu.video-tam"))) hatalar.push("video tam ekran açılmadı");
+  const ustte = await p.evaluate(() => { const d = document.createElement("div"); d.className = "perde"; d.innerHTML = '<div class="kart" id="denemePerde">soru</div>'; document.body.appendChild(d);
+    const r = document.getElementById("denemePerde").getBoundingClientRect(); const e = document.elementFromPoint(r.x + r.width / 2, r.y + r.height / 2); const ok = !!e.closest("#denemePerde"); d.remove(); return ok; });
+  if (!ustte) hatalar.push("tam ekranda bölüm sorusu videonun üstünde görünmüyor");
+  await foto("10b_video_tam"); await tikla("#tamKapat"); if (await p.$(".video-tam")) hatalar.push("tam ekrandan çıkılamadı");
   // Ayarlar: dışa/içe aktarma
   await p.goto("http://localhost:8765/index.html#/veli/ayar");
   for (const x of ["1", "2", "3", "4", "Tamam"]) await tikla(`[data-p="${x}"]`);

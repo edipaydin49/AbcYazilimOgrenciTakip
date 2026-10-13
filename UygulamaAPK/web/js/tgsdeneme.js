@@ -84,9 +84,9 @@
         <p>Her deneme 6 dersten 75 sorudur: Türkçe 15, Matematik 15, Fen Bilimleri 15, Sosyal Bilgiler 10, Din Kültürü 10, İngilizce 10 (önerilen süre ${SURE_DK} dk). Sınav bitince her dersin neti, <b>tahmini puan</b> ve bütün soruların adım adım çözümü gösterilir.</p>
         <p class="kucuk-yazi muted">Puan, LGS'deki ders ağırlıklarıyla (Türkçe, Matematik ve Fen 4; Sosyal, Din ve İngilizce 1) 100–500 arasında <b>tahmini</b> olarak hesaplanır; resmî bir sonuç değildir.${DEPO.ayar.obp ? ` Okul başarı puanı (OBP): <b>${virgul(DEPO.ayar.obp)}</b>.` : " Okul başarı puanını veli paneli → Ayarlar'dan girebilirsiniz."}</p>
         ${tum.length ? `<p>Çözülen deneme: <b>${tum.length}</b> · son puan <b>${virgul(tum[tum.length - 1].puan)}</b> · en iyi <b>${virgul(Math.max(...tum.map(t => t.puan || 0)))}</b></p>` : ""}</section>
-      ${Object.entries(gruplar).map(([yid, l]) => `<section class="kart"><h2>${YAZILI_AD[yid] || yid} hazırlık denemeleri</h2><div class="izgara dar">
+      ${Object.entries(gruplar).map(([yid, l]) => `<section class="kart"><h2>${YAZILI_AD[yid] || yid} hazırlık denemeleri</h2><div class="izgara">
         ${l.map(d => { const s = sonuclar(d.id), son = s[s.length - 1], taslak = DEPO.ayar.tgsTaslak && DEPO.ayar.tgsTaslak[d.id];
-          return `<button class="konu-satir" data-git="${son && !taslak ? "#/tgsd/sonuc/" + son.testId : "#/tgsd/coz/" + d.id}"><span><b>Deneme ${d.no}</b><br><span class="kucuk-yazi muted">${taslak ? "yarım kaldı · devam et" : son ? `${s.length} kez · net ${virgul(son.net)} · puan ${virgul(son.puan)}` : "75 soru · " + SURE_DK + " dk"}</span></span><span class="etiket ${son ? "iyi" : ""}">${son ? "✓" : "Başla"}</span></button>`; }).join("")}
+          return `<button class="konu-satir kisa" data-git="${son && !taslak ? "#/tgsd/sonuc/" + son.testId : "#/tgsd/coz/" + d.id}"><span><b>Deneme ${d.no}</b><br><span class="kucuk-yazi muted">${taslak ? "yarım kaldı · devam et" : son ? `${s.length} kez · net ${virgul(son.net)} · puan ${virgul(son.puan)}` : "75 soru · " + SURE_DK + " dk"}</span></span><span class="etiket ${son ? "iyi" : ""}">${son ? "✓" : "Başla"}</span></button>`; }).join("")}
       </div></section>`).join("")}`;
     ana.querySelectorAll("[data-git]").forEach(b => b.onclick = () => git(b.dataset.git));
   }
