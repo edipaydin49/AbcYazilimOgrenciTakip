@@ -2163,6 +2163,19 @@ Object.assign(window.HAZIR_VIDEOLAR, {
   ekle("tr_istiklal", [["Fee7G_tzQgQ", "İstiklal Marşı Nasıl Yazıldı? Dinleme Metni - 6. Sınıf"], ["Y75Km7dlt94", "İstiklal Marşı (orkestra eşliğinde)"]]);
   ekle("tr_samsun", [["bNMBAYUfQVA", "Mustafa Kemal Atatürk'ün 19 Mayıs 1919'da Samsun'a Çıkışı"], ["K92I_1vNQb0", "Atatürk'ün Samsun'a Çıkışı"], ["QmCZlK2badY", "Millî Mücadele ruhunu taşıyan gemi: Bandırma"]]);
   ekle("en_transport", [["f7U4UW2BAvE", "İngilizce Ulaşım Araçları - Taşıtlar (Transportation)"], ["IprVEIfezF8", "İngilizce Ulaşım Araçları - Transportation"]]);
+  // Peygamberimizin hayatı (Din Kültürü ek ünite)
+  ekle("d_hz_peygamberlik", [["Z7pUI9zNdCI", "Hz. Muhammed (sav)'in Hayatı 1: Doğumu, Gençliği, Peygamber Oluşu"], ["y6JEyx-H8vs", "Gençlik Yıllarında Peygamberimiz (6. sınıf)"]]);
+  ekle("d_hz_mekke", [["RyZb74HitSo", "Peygamberimize İlk Vahiy Nerede, Nasıl Geldi?"], ["-7KG57mLmVc", "Hz. Muhammed Hira Mağarası'nda Neler Yaşadı? (İlk Vahiy)"], ["npT3VoNeO08", "Hira Mağarası'nda İlk Vahiy"]]);
+  ekle("d_hz_hicret", [["Wihe_nrlBa8", "Peygamberimizin İzinde 14: Mekke'den Medine'ye Hicret"], ["xfAgr5kpH-U", "Mekke'den Medine'ye Hicret"]]);
+  ekle("d_hz_medine", [["NY-fEI9jsN0", "Hz. Muhammed (sav)'in Hayatı 18: Medine'de İlk Faaliyetler"], ["chgEL6HAXww", "Medine Dönemi 1: Hicret ve Sonrası"]]);
+  ekle("d_hz_fetih", [["u0Ii13Qz6UE", "Herkes İçin Siyer 25: Mekke'nin Fethi"], ["b0t9dY3bZZ8", "Tarih Saati: Mekke'nin Fethi"]]);
+  ekle("d_hz_veda", [["KMG7EHI2bAE", "Veda Hutbesi: Peygamberimizin Son Nasihatleri"], ["xDsn0cDtoqw", "Veda Hutbesi"]]);
+  ekle("d_hz_ahlak", [["ctehXyIv87U", "Rehberim Peygamberim (6. sınıf Peygamberimizin Hayatı)"], ["64JyMsP7rZE", "Peygamberlerin Özellikleri ve Görevleri (6. sınıf)", "Ev Akademisi"]]);
+  // Türkçe: noktalama ve konuşma
+  ekle("tr_nokta", [["1sLryRhKRwE", "6. Sınıf Türkçe: Noktalama İşaretleri 1 (Nokta, Virgül)"], ["1-G7_-bsTNo", "Noktalama İşaretleri 1: Nokta ve Virgül"]]);
+  ekle("tr_virgul", [["n7ZtUpekfAM", "Noktalama İşaretleri: Virgül"], ["0zKF2FgiCVo", "Nokta ve Virgül Nerelerde Kullanılır?"]]);
+  ekle("tr_isaretler", [["mouCyQO4lyQ", "Noktalama İşaretleri ( . , ; : … ? ! )"], ["YQjfydPmvTI", "Üç Nokta, Soru İşareti, Ünlem"], ["McAZeTJMhFA", "Üç Nokta, Ünlem ve Tırnak İşareti Nerelerde Kullanılır?"]]);
+  ekle("tr_konusma", [["siTSRg2Q6OM", "Etkili ve Güzel Konuşmanın 10 Temel Kuralı"], ["-cnLLcGxqq4", "Doğru ve Etkili Türkçe Konuşma 1"], ["eG0MhU0HSrQ", "4 Adımda Akıcı Konuşma Çalışmaları"]]);
   // şarkı / çizgi film / flash-card videoları ve aynı videonun tekrarları çıkarılır
   const cocukca = /\bsong\b|şarkı|rafadan|çizgi film|animasyon|talking flashcards|for kids|masal(lar)?\b/i;
   for (const k of Object.keys(V)) { const gor = new Set(); V[k] = V[k].filter(v => !cocukca.test(v.baslik) && !gor.has(v.vid) && gor.add(v.vid)); }
