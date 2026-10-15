@@ -33,7 +33,7 @@ const sunucu = http.createServer((q, r) => { const u = decodeURIComponent(q.url.
     await p.goto("http://localhost:8771/index.html#/pdf/coz/" + pd.id); await p.waitForSelector("#pTuval"); await p.waitForTimeout(2500); await foto("p3_coz");
     // ilk dersin ilk 5 sorusunu doğru, sonraki 3'ü yanlış işaretle, kalanını boş bırak
     const d0 = pd.dersler[0];
-    for (let no = 1; no <= 8; no++) { const dogru = d0.cevap[no]; const h = no <= 5 ? dogru : ["A", "B", "C", "D"].find(x => x !== dogru); await p.click(`.optik-harf[data-no="${no}"][data-h="${h}"]`); }
+    for (let no = 1; no <= 8; no++) { const dogru = d0.cevap[no]; const h = no <= 5 ? dogru : ["A", "B", "C", "D"].find(x => x !== dogru); await p.click(`#pForm .optik-harf[data-no="${no}"][data-h="${h}"]`); }
     await p.click('.optik-no[data-no="3"]'); await p.waitForTimeout(1200); await foto("p4_soru3");
     const sayfa = await p.textContent("#pSayfaNo"); if (d0.sayfa[3] && !sayfa.startsWith(d0.sayfa[3] + " ")) hatalar.push("3. soruya dokununca doğru sayfa açılmadı: " + sayfa);
     await p.click("#pBitir"); await p.waitForTimeout(800); await foto("p5_sonuc");

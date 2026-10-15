@@ -53,7 +53,8 @@ details.akordiyon.ders > summary { font-size: 1.08rem; background: var(--paper);
 details.akordiyon.konu { background: var(--paper); }
 .pdf-duzen { display: grid; gap: 12px; grid-template-columns: 1fr; }
 @media (min-width: 900px) { .pdf-duzen { grid-template-columns: minmax(0, 1fr) 340px; align-items: start; } .pdf-optik { position: sticky; top: 70px; max-height: calc(100vh - 90px); overflow: auto; } }
-@media (max-width: 899px) { .pdf-optik { position: sticky; bottom: 0; z-index: 5; max-height: 38vh; overflow: auto; box-shadow: 0 -6px 18px rgba(0,0,0,.18); } }
+.sayfa-cevap { display: grid; gap: 8px; margin-top: 10px; padding: 10px; border: 1px solid var(--line); border-radius: 12px; background: var(--paper); }
+.sayfa-cevap .optik-satir { flex-wrap: wrap; }
 .pdf-optik .sekmeler { position: sticky; top: -16px; background: var(--sheet); z-index: 1; padding: 6px 0; }
 .pdf-tuval { overflow: auto; background: #fff; border: 1px solid var(--line); border-radius: 10px; min-height: 200px; touch-action: pan-x pan-y pinch-zoom; }
 .pdf-tuval canvas { display: block; margin: 0 auto; }

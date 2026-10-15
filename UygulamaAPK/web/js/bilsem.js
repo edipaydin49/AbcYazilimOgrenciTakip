@@ -31,6 +31,7 @@
   const P = pts => pts.map(p => p[0].toFixed(1) + "," + p[1].toFixed(1)).join(" ");
   const nk = (n, cx, cy, r, a0 = -90) => Array.from({ length: n }, (_, i) => { const a = (a0 + 360 * i / n) * Math.PI / 180; return [cx + r * Math.cos(a), cy + r * Math.sin(a)]; });
   const mod = (a, n) => ((a % n) + n) % n;
+  const buyukHarf = t => t.charAt(0).toLocaleUpperCase("tr-TR") + t.slice(1);
 
   /* Tek şekil: t türü, (cx,cy) merkez, r yarıçap, renk sınıfı, saat yönünde dönme açısı */
   function sekil(t, cx, cy, r, renk = "g-a", aci = 0) {
@@ -77,10 +78,10 @@
     let ic = "", y1 = 8;
     const x0 = (W - (n * (s + ara) - ara)) / 2;
     h.forEach((f, i) => { const x = x0 + i * (s + ara); ic += hucre(x, y1, s, f); if (ustYazi) ic += yazi(x + s / 2, y1 + s + 16, ustYazi[i], { k: 1 }); });
-    let H = y1 + s + (ustYazi ? 26 : 10);
+    let H = n ? y1 + s + (ustYazi ? 26 : 10) : -10;
     if (m) {
       const y2 = H + 18; H = y2 + s + 28;
-      ic += `<line class="g-ince" x1="8" x2="${W - 8}" y1="${y2 - 13}" y2="${y2 - 13}" stroke-dasharray="4 4"/>`;
+      if (n) ic += `<line class="g-ince" x1="8" x2="${W - 8}" y1="${y2 - 13}" y2="${y2 - 13}" stroke-dasharray="4 4"/>`;
       const xb = (W - (m * (s + ara) - ara)) / 2;
       ops.forEach((f, i) => { const x = xb + i * (s + ara); ic += hucre(x, y2, s, f) + yazi(x + s / 2, y2 + s + 19, HARF[i], { b: 1 }); });
     }
@@ -1463,7 +1464,7 @@
           `🔎 Soruyu anlayalım: Bugün ${GUN[i]}; ${n} gün ileri gideceğiz.`,
           "💡 Hatırlayalım: Bir hafta 7 gündür; 7, 14, 21… gün sonra yine aynı gün gelir.",
           `✏️ ${n} ÷ 7 = ${Math.floor(n / 7)}, kalan ${n % 7}. Tam haftalar bizi yine ${GUN[i]} gününe getirir.`,
-          `✏️ ${GUN[i]} gününden ${n % 7} gün ileri sayalım: ${Array.from({ length: n % 7 }, (_, j) => GUN[(i + j + 1) % 7]).join(", ")}.`,
+          `✏️ ${buyukHarf(GUN[i])} gününden ${n % 7} gün ileri sayalım: ${Array.from({ length: n % 7 }, (_, j) => GUN[(i + j + 1) % 7]).join(", ")}.`,
           `✅ Sonuç: ${dg}.`,
           "🔁 Kontrol edelim: Kalan 0 olsaydı cevap yine bugünün adı olurdu. Saymaya bugünden değil, yarından başladığına dikkat et.",
         ],
@@ -1475,7 +1476,7 @@
     z => {
       const a = R(2, 5), b = R(-3, 6), girisler = karistir([2, 3, 4, 5, 6, 7, 8, 9, 10]).slice(0, 4), f = x => a * x + b;
       const yeni = girisler[3], dg = f(yeni), bs = b === 0 ? "" : b > 0 ? " + " + b : " − " + -b;
-      const d1 = girisler[0], d2 = girisler[1];
+      const [d1, d2] = [girisler[0], girisler[1]].sort((x, y) => x - y);
       return S({
         kaz: K3, duzey: "baglanti", zorluk: 3,
         soru: "Bir sayı makinesi kendisine verilen her sayıya aynı işlemleri uyguluyor. Tabloya göre makineye son sayı verilince ne çıkar?",
@@ -1497,6 +1498,567 @@
     },
   ];
   B.push({ id: "sayi", ad: "Sayı örüntüleri ve bulmacalar", simge: "🔢", aciklama: "Sayı dizilerinin kuralını bul, sayı bulmacalarını çöz.", sorular: sayiSorular });
+
+  /* =====================================================================
+   * 4) UZAMSAL DÜŞÜNME
+   * ===================================================================== */
+  const K4 = "bilsem.uzamsal";
+  /* --- küp açınımı: kâğıdın baskılı yüzü bize bakar, kanatlar bizden uzağa katlanır.
+   * Her kareye küpteki dış yüz normali (vektör) atanır; 6 farklı normal varsa açınım küp olur. */
+  const v3 = (a, b, c) => [a, b, c], neg = v => v.map(x => -x), vk = v => v.join(",");
+  const capraz = (a, b) => [a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0]];
+  function katla(hucre) {
+    const anah = h => h[0] + "," + h[1], idx = new Map(hucre.map((h, i) => [anah(h), i]));
+    const sonuc = Array(hucre.length).fill(null);
+    sonuc[0] = { n: v3(0, 0, 1), E: v3(1, 0, 0), N: v3(0, 1, 0) };
+    const kuyruk = [0];
+    while (kuyruk.length) {
+      const i = kuyruk.shift(), [r, c] = hucre[i], { n, E, N } = sonuc[i];
+      const komsu = [[r, c + 1, { n: E, E: neg(n), N }], [r, c - 1, { n: neg(E), E: n, N }], [r - 1, c, { n: N, N: neg(n), E }], [r + 1, c, { n: neg(N), N: n, E }]];
+      for (const [rr, cc, yeni] of komsu) { const j = idx.get(rr + "," + cc); if (j !== undefined && !sonuc[j]) { sonuc[j] = yeni; kuyruk.push(j); } }
+    }
+    return sonuc.map(s => vk(s.n));
+  }
+  const kupMu = hucre => new Set(katla(hucre)).size === 6;
+  const ACILIMLAR = [
+    ...[[0, 0], [0, 1], [0, 2], [0, 3], [1, 1], [1, 2]].map(([a, b]) => [[1, 0], [1, 1], [1, 2], [1, 3], [0, a], [2, b]]),
+    ...[1, 2, 3].map(x => [[0, 0], [0, 1], [1, 1], [1, 2], [1, 3], [2, x]]),
+    [[0, 0], [0, 1], [1, 1], [1, 2], [2, 2], [2, 3]],
+    [[0, 0], [0, 1], [0, 2], [1, 2], [1, 3], [1, 4]],
+  ];
+  /* Hücre listesi dönüşümleri ve normalleştirme */
+  const normal = h => { const mr = Math.min(...h.map(x => x[0])), mc = Math.min(...h.map(x => x[1])); return h.map(([r, c]) => [r - mr, c - mc]); };
+  const donustur = (h, k, ayna) => normal(h.map(([r, c]) => { let p = ayna ? [r, -c] : [r, c]; for (let i = 0; i < k; i++) p = [p[1], -p[0]]; return p; }));
+  const hAnahtar = h => normal(h).map(x => x.join(",")).sort().join(";");
+  /* Rastgele altılı parça (küp açınımı OLMAYAN) */
+  function kupOlmayan() {
+    for (;;) {
+      const h = [[0, 0]], gor = new Set(["0,0"]);
+      while (h.length < 6) { const [r, c] = sec(h), [dr, dc] = sec([[0, 1], [0, -1], [1, 0], [-1, 0]]), k = (r + dr) + "," + (c + dc); if (!gor.has(k)) { gor.add(k); h.push([r + dr, c + dc]); } }
+      const n = normal(h), en = Math.max(...n.map(x => x[1])) + 1, boy = Math.max(...n.map(x => x[0])) + 1;
+      if (en <= 4 && boy <= 4 && !kupMu(n)) return n;
+    }
+  }
+  function acilimCiz(h, cx, cy, alan, { yazilar = null, renk = "g-b" } = {}) {
+    const en = Math.max(...h.map(x => x[1])) + 1, boy = Math.max(...h.map(x => x[0])) + 1, u = Math.min(alan / Math.max(en, boy), 34);
+    const x0 = cx - en * u / 2, y0 = cy - boy * u / 2;
+    return h.map(([r, c], i) => `<rect class="${renk} g-cizgi" stroke-width="1.5" x="${(x0 + c * u).toFixed(1)}" y="${(y0 + r * u).toFixed(1)}" width="${u.toFixed(1)}" height="${u.toFixed(1)}"/>` + (yazilar ? buyukYazi(yazilar[i], x0 + c * u + u / 2, y0 + r * u + u / 2, Math.min(18, u * 0.55)) : "")).join("");
+  }
+  /* --- izometrik küp yapıları: yk[i][j] yükseklik (i: arkadan öne, j: soldan sağa) */
+  function isoYapi(yk, e = 26) {
+    const sat = yk.length, sut = yk[0].length, mx = Math.max(...yk.flat()), cs = e * 0.866;
+    const ox = sat * cs + 10, oy = mx * e + 10;
+    const p = (j, i, z) => `${(ox + (j - i) * cs).toFixed(1)},${(oy + (j + i) * e / 2 - z * e).toFixed(1)}`;
+    const kupler = [];
+    for (let i = 0; i < sat; i++) for (let j = 0; j < sut; j++) for (let z = 0; z < yk[i][j]; z++) kupler.push([i, j, z]);
+    kupler.sort((a, b) => (a[0] + a[1]) - (b[0] + b[1]) || a[2] - b[2]);
+    let ic = "";
+    for (const [i, j, z] of kupler) {
+      ic += `<polygon class="g-yumusak g-cizgi" stroke-width="1.2" points="${p(j, i, z + 1)} ${p(j + 1, i, z + 1)} ${p(j + 1, i + 1, z + 1)} ${p(j, i + 1, z + 1)}"/>`;
+      ic += `<polygon class="g-a g-cizgi" stroke-width="1.2" points="${p(j, i + 1, z)} ${p(j + 1, i + 1, z)} ${p(j + 1, i + 1, z + 1)} ${p(j, i + 1, z + 1)}"/>`;
+      ic += `<polygon class="g-b g-cizgi" stroke-width="1.2" points="${p(j + 1, i, z)} ${p(j + 1, i + 1, z)} ${p(j + 1, i + 1, z + 1)} ${p(j + 1, i, z + 1)}"/>`;
+    }
+    return { ic, W: ox + sut * cs + 10, H: oy + (sat + sut) * e / 2 + 10 };
+  }
+  /* Merdiven biçimli (arkası ve solu yüksek) yükseklik haritası: bütün üst yüzler görünür */
+  function merdivenYk(sat, sut, ust) {
+    for (;;) {
+      const yk = Array.from({ length: sat }, () => Array(sut).fill(0));
+      for (let i = 0; i < sat; i++) for (let j = 0; j < sut; j++) { const s = Math.min(i ? yk[i - 1][j] : ust, j ? yk[i][j - 1] : ust); yk[i][j] = R(i === 0 && j === 0 ? 2 : 0, s); }
+      const t = yk.flat().reduce((a, b) => a + b, 0);
+      if (yk.flat().filter(x => x > 0).length >= sat * sut - 2 && t >= 7) return yk;
+    }
+  }
+  /* Tek küp: sol-ön, sağ-ön ve üst yüzlerde yazı */
+  function tekKup(cx, cy, e, [sol, sag, ust]) {
+    const cs = e * 0.866, p = (x, y) => `${(cx + x).toFixed(1)},${(cy + y).toFixed(1)}`;
+    return `<polygon class="g-yumusak g-cizgi" stroke-width="1.5" points="${p(0, -e)} ${p(cs, -e / 2)} ${p(0, 0)} ${p(-cs, -e / 2)}"/>` +
+      `<polygon class="g-bos g-cizgi" stroke-width="1.5" points="${p(-cs, -e / 2)} ${p(0, 0)} ${p(0, e)} ${p(-cs, e / 2)}"/>` +
+      `<polygon class="g-bos g-cizgi" stroke-width="1.5" points="${p(0, 0)} ${p(cs, -e / 2)} ${p(cs, e / 2)} ${p(0, e)}"/>` +
+      buyukYazi(ust, cx, cy - e / 2, 16) + buyukYazi(sol, cx - cs / 2, cy + e * 0.25, 16) + buyukYazi(sag, cx + cs / 2, cy + e * 0.25, 16);
+  }
+  /* Genel n×n desen dönüşümleri */
+  const rotN = (set, n) => new Set([...set].map(k => { const [r, c] = k.split(",").map(Number); return c + "," + (n - 1 - r); }));
+  const aynaN = (set, n) => new Set([...set].map(k => { const [r, c] = k.split(",").map(Number); return r + "," + (n - 1 - c); }));
+  const tersN = (set, n) => new Set([...set].map(k => { const [r, c] = k.split(",").map(Number); return (n - 1 - r) + "," + c; }));
+  function kiralParca(n, k) {
+    for (;;) {
+      const gor = new Set([R(0, n - 1) + "," + R(0, n - 1)]);
+      while (gor.size < k) { const [r, c] = sec([...gor]).split(",").map(Number), [dr, dc] = sec([[0, 1], [0, -1], [1, 0], [-1, 0]]); if (r + dr >= 0 && r + dr < n && c + dc >= 0 && c + dc < n) gor.add((r + dr) + "," + (c + dc)); }
+      const rots = [gor]; for (let i = 0; i < 3; i++) rots.push(rotN(rots[i], n));
+      const rs = rots.map(anahtar), ms = rots.map(x => anahtar(aynaN(x, n)));
+      if (new Set(rs).size === 4 && !ms.some(m => rs.includes(m))) return gor;
+    }
+  }
+  const desen = (set, n, renk = "g-a") => (cx, cy, s) => izgaraCiz(cx - s * 0.38, cy - s * 0.38, n, s * 0.76 / n, set, renk);
+  /* Katlama–delme: 4×4 kâğıt, delikler "r,c" */
+  function kagit(cx, cy, s, { delik = new Set(), en = 4, boy = 4, x0 = 0, y0 = 0, cizgi = null } = {}) {
+    const u = s * 0.78 / 4, X = cx - en * u / 2, Y = cy - boy * u / 2;
+    let ic = `<rect class="g-b g-cizgi" stroke-width="1.5" x="${X.toFixed(1)}" y="${Y.toFixed(1)}" width="${(en * u).toFixed(1)}" height="${(boy * u).toFixed(1)}"/>`;
+    for (const k of delik) { const [r, c] = k.split(",").map(Number); ic += `<circle class="g-bos g-cizgi" stroke-width="1.2" cx="${(X + (c - x0 + 0.5) * u).toFixed(1)}" cy="${(Y + (r - y0 + 0.5) * u).toFixed(1)}" r="${(u * 0.26).toFixed(1)}"/>`; }
+    if (cizgi === "dikey") ic += `<line class="g-cizgi" stroke-width="1.5" stroke-dasharray="4 3" x1="${cx}" y1="${(Y - 4).toFixed(1)}" x2="${cx}" y2="${(Y + boy * u + 4).toFixed(1)}"/>`;
+    if (cizgi === "yatay") ic += `<line class="g-cizgi" stroke-width="1.5" stroke-dasharray="4 3" x1="${(X - 4).toFixed(1)}" y1="${cy}" x2="${(X + en * u + 4).toFixed(1)}" y2="${cy}"/>`;
+    return ic;
+  }
+  function katlamaSvg(adimlar, ops) { /* adimlar: [{f, yazi}] */
+    const s = 76, ara = 14, W = Math.max(adimlar.length * (s + 40), 4 * (s + ara)) + 20;
+    let ic = "";
+    const x0 = (W - (adimlar.length * (s + 40) - 40)) / 2;
+    adimlar.forEach((a, i) => { const x = x0 + i * (s + 40); ic += hucre(x, 8, s, a.f) + yazi(x + s / 2, s + 26, a.yazi, { k: 1 }); if (i < adimlar.length - 1) ic += G.ok(x + s + 6, 8 + s / 2, x + s + 34, 8 + s / 2); });
+    const y2 = s + 52, xb = (W - (4 * (s + ara) - ara)) / 2;
+    ic += `<line class="g-ince" x1="8" x2="${W - 8}" y1="${y2 - 12}" y2="${y2 - 12}" stroke-dasharray="4 4"/>`;
+    ops.forEach((f, i) => { const x = xb + i * (s + ara); ic += hucre(x, y2, s, f) + yazi(x + s / 2, y2 + s + 19, HARF[i], { b: 1 }); });
+    return svg(W, y2 + s + 28, ic, "kâğıt katlama ve delme");
+  }
+  const kaydir4 = set => new Set([...set].map(k => { const [r, c] = k.split(",").map(Number); return r + "," + (c + 2); }));
+
+  const uzamsalSorular = [
+    /* 1. Açınımda karşılıklı yüz */
+    z => {
+      const h = donustur(sec(ACILIMLAR), R(0, 3), R(0, 1)), sayi = karistir([1, 2, 3, 4, 5, 6]), nv = katla(h);
+      const i = R(0, 5), oi = nv.indexOf(vk(neg(nv[i].split(",").map(Number)))), X = sayi[i], dg = sayi[oi];
+      const komsu = [0, 1, 2, 3, 4, 5].filter(j => j !== i && j !== oi);
+      const netKomsu = komsu.filter(j => Math.abs(h[j][0] - h[i][0]) + Math.abs(h[j][1] - h[i][1]) === 1);
+      const duz = (h[i][0] === h[oi][0] && Math.abs(h[i][1] - h[oi][1]) === 2) || (h[i][1] === h[oi][1] && Math.abs(h[i][0] - h[oi][0]) === 2);
+      return S({
+        kaz: K4, duzey: "uygulama", zorluk: 2,
+        soru: `Görseldeki açınım katlanarak bir küp yapılıyor. Küpte <b>${X}</b> numaralı yüzün tam karşısına hangi sayı gelir?`,
+        gorsel: svg(260, 190, acilimCiz(h, 130, 95, 170, { yazilar: sayi }), "numaralı küp açınımı"),
+        dogru: dg,
+        yanlis: karistir(komsu).map(j => [sayi[j], netKomsu.includes(j) ? "dikkat" : "kavrama", netKomsu.includes(j) ? `${sayi[j]}, açınımda ${X} ile kenar paylaşıyor; kenar paylaşan yüzler küpte yan yana olur, karşılıklı olamaz.` : `${sayi[j]}, küp katlanınca ${X} ile bir kenarda buluşur; yani yan yüzdür, karşı yüz değildir.`]),
+        ipucu: `Önce ${X} ile kenar paylaşan kareleri ele. Kalanlardan hangisi katlanınca ${X}'${ek(X, "e").slice(1)} değmez?`,
+        cozum: [
+          `🔎 Soruyu anlayalım: Açınım katlanınca ${X} numaralı yüzün karşısına gelen yüzü arıyoruz.`,
+          "💡 Hatırlayalım: Küpün her yüzünün 4 komşusu ve 1 karşı yüzü vardır. Açınımda kenar paylaşan kareler küpte de komşudur. Düz bir sırada aralarında tam bir kare bulunan iki kare karşılıklı olur.",
+          `✏️ Açınımda ${X} ile kenar paylaşanlar: ${netKomsu.map(j => sayi[j]).join(", ")}. Bunlar karşı yüz olamaz.`,
+          `✏️ Zihnimizde katlayalım: ${X} numaralı yüzün küpteki 4 komşusu ${komsu.map(j => sayi[j]).join(", ")} olur. Geriye ${dg} kalıyor.${duz ? ` Ayrıca ${X} ile ${dg} aynı sırada, aralarında bir kare var.` : ""}`,
+          `✅ Sonuç: ${X} numaralı yüzün karşısında ${dg} vardır.`,
+          "🔁 Kontrol edelim: Bir kâğıda açınımı çizip kesip katlayarak da deneyebilirsin. Unutma, karşılıklı iki yüz hiçbir zaman aynı anda bir kenarı paylaşmaz.",
+        ],
+        kural: "Açınımda aynı sırada aralarında bir kare olan iki kare küpte karşılıklıdır.",
+        dogruNeden: `Katlanınca ${X} numaralı yüzün dört komşusu ${komsu.map(j => sayi[j]).join(", ")} olur; karşısında kalan yüz ${dg}.`,
+      });
+    },
+    /* 2. Hangisi küp açınımı DEĞİLDİR? */
+    z => {
+      const gecerli = karistir(ACILIMLAR).slice(0, 3).map(h => donustur(h, R(0, 3), R(0, 1))), kotu = kupOlmayan();
+      const C = h => (cx, cy, s) => acilimCiz(h, cx, cy, s * 0.82, { renk: "g-yumusak" });
+      const hs = harfle([{ c: C(kotu) }].concat(gecerli.map(h => ({ c: C(h), hata: "kavrama", neden: "Bu açınım katlanınca altı yüz üst üste binmeden kapalı bir küp oluşturur; yani bir küp açınımıdır." }))));
+      return SG({
+        kaz: K4, duzey: "aciklama", zorluk: 2,
+        soru: "Aşağıdaki altı kareli şekillerden hangisi katlanınca bir küp <b>oluşturmaz</b>?",
+        gorsel: seriSvg([], hs.liste, { s: 104, etiket: "dört açınım adayı" }),
+        dogru: hs.harf, yanlis: hs.yanlis,
+        ipucu: "Her şekilde bir kareyi taban seç; diğerlerini zihninde katla. İki kare aynı yüze geliyor mu?",
+        cozum: [
+          "🔎 Soruyu anlayalım: Dört şeklin üçü küp açınımı, biri değil. Katlanınca küp olmayanı arıyoruz.",
+          "💡 Hatırlayalım: Bir küp açınımında altı kare katlanınca altı farklı yüze gelmelidir. İki kare aynı yüze geliyorsa o şekil küp olmaz. Ayrıca bir sırada 4'ten fazla kare ya da 2×2'lik dolu bir blok varsa küp olmaz.",
+          "✏️ Her şekilde ortadaki uzun sırayı küpün etrafına sardığını düşün; kalan kareler üst ve alt kapak olmalı.",
+          `✏️ ${hs.harf} şeklini katladığımızda iki kare aynı yüze geliyor; küpün bir yüzü ise açık kalıyor.`,
+          `✅ Sonuç: Küp oluşturmayan şekil ${hs.harf}.`,
+          "🔁 Kontrol edelim: Öteki üç şekilde her kare farklı bir yüze denk geliyor. Emin olamazsan kareli kâğıda çizip kes ve katla!",
+        ],
+        kural: "Küp açınımında 2×2'lik kare blok ve 5'li düz sıra olmaz; altı kare altı farklı yüze gitmelidir.",
+        dogruNeden: `${hs.harf} şekli katlanınca iki kare üst üste biner, bir yüz boş kalır.`,
+      });
+    },
+    /* 3. Bir kez katlama ve delme */
+    z => {
+      const tur = sec(["dikey", "yatay"]), n = R(1, 2), del = new Set();
+      while (del.size < n) del.add(tur === "dikey" ? R(0, 3) + "," + R(2, 3) : R(2, 3) + "," + R(0, 3));
+      const yans = k => { const [r, c] = k.split(",").map(Number); return tur === "dikey" ? r + "," + (3 - c) : (3 - r) + "," + c; };
+      const ters = k => { const [r, c] = k.split(",").map(Number); return tur === "dikey" ? (3 - r) + "," + c : r + "," + (3 - c); };
+      const kay = k => { const [r, c] = k.split(",").map(Number); return tur === "dikey" ? r + "," + (c - 2) : (r - 2) + "," + c; };
+      const dg = new Set([...del, ...[...del].map(yans)]);
+      const adaylar = [[del, "dikkat", "Yalnızca açtığın deliği çizmişsin; kâğıt katlıyken iki kat birlikte delinir, bu yüzden delik sayısı iki katına çıkar."],
+        [new Set([...del, ...[...del].map(ters)]), "kavrama", "Delikleri yanlış çizgiye göre yansıtmışsın; katlama çizgisi hangisiyse delikler ona göre ayna görüntüsü olur."],
+        [new Set([...del, ...[...del].map(kay)]), "kavrama", "Delikleri yansıtmak yerine kaydırmışsın; açılan yarıda delikler katlama çizgisine göre ayna görüntüsüdür."],
+        [new Set([...del].map(yans)), "dikkat", "Yalnızca açılan yarıdaki delikleri çizmişsin; ilk deldiğin yerdeki delikler de kâğıtta kalır."]];
+      const gor = new Set([anahtar(dg)]), ops = [{ c: (cx, cy, s) => kagit(cx, cy, s, { delik: dg }) }];
+      adaylar.forEach(([d, h, ne]) => { if (!gor.has(anahtar(d)) && ops.length < 4) { gor.add(anahtar(d)); ops.push({ c: (cx, cy, s) => kagit(cx, cy, s, { delik: d }), hata: h, neden: ne }); } });
+      const hs = harfle(ops), dik = tur === "dikey";
+      return SG({
+        kaz: K4, duzey: "uygulama", zorluk: 2,
+        soru: `Kare bir kâğıt kesikli çizgi boyunca ${dik ? "soldan sağa" : "yukarıdan aşağıya"} katlanıyor, sonra gösterilen yerden delinip yeniden açılıyor. Açılan kâğıt hangisi gibi görünür?`,
+        gorsel: katlamaSvg([{ f: (cx, cy, s) => kagit(cx, cy, s, { cizgi: tur }), yazi: "1. katla" }, { f: (cx, cy, s) => kagit(cx, cy, s, { delik: del, en: dik ? 2 : 4, boy: dik ? 4 : 2, x0: dik ? 2 : 0, y0: dik ? 0 : 2 }), yazi: "2. del" }], hs.liste),
+        dogru: hs.harf, yanlis: hs.yanlis,
+        ipucu: "Katlama çizgisini bir ayna gibi düşün; her deliğin aynadaki görüntüsü de delik olur.",
+        cozum: [
+          `🔎 Soruyu anlayalım: Kâğıt ${dik ? "dikey" : "yatay"} çizgiden ikiye katlanıp ${n} yerden delinmiş. Açınca deliklerin nerede olacağını bulacağız.`,
+          "💡 Hatırlayalım: Katlı kâğıt delinince alttaki kat da delinir. Açtığımızda her deliğin katlama çizgisine göre ayna görüntüsünde bir delik daha olur.",
+          `✏️ Katlı kâğıtta ${n} delik var; açınca ${2 * n} delik olmalı.`,
+          `✏️ Her deliği katlama çizgisine olan uzaklığı kadar öbür tarafa yansıt: çizgiye yakın olan delik öbür tarafta da çizgiye yakın olur.`,
+          `✅ Sonuç: ${hs.harf} seçeneği.`,
+          "🔁 Kontrol edelim: Açılmış kâğıdı kesikli çizgiden yeniden katladığını düşün; delikler üst üste gelmeli.",
+        ],
+        kural: "Katlanıp delinen kâğıtta delikler katlama çizgisine göre simetrik olur.",
+        dogruNeden: `${hs.harf} şeklinde ${2 * n} delik var ve delikler katlama çizgisine göre simetrik.`,
+      });
+    },
+    /* 4. İki kez katlama ve delme */
+    z => {
+      const r0 = R(2, 3), c0 = R(2, 3), del = new Set([r0 + "," + c0]);
+      const dort = (r, c) => new Set([r + "," + c, (3 - r) + "," + c, r + "," + (3 - c), (3 - r) + "," + (3 - c)]);
+      const dg = dort(r0, c0);
+      const ops = [{ c: (cx, cy, s) => kagit(cx, cy, s, { delik: dg }) },
+        { c: (cx, cy, s) => kagit(cx, cy, s, { delik: new Set([r0 + "," + c0, r0 + "," + (3 - c0)]) }), hata: "dikkat", neden: "Yalnızca bir katlamayı açmışsın; kâğıt iki kez katlandığı için 4 kat birlikte delinir." },
+        { c: (cx, cy, s) => kagit(cx, cy, s, { delik: new Set([r0 + "," + c0, (r0 - 2) + "," + c0, r0 + "," + (c0 - 2), (r0 - 2) + "," + (c0 - 2)]) }), hata: "kavrama", neden: "Delik sayısı doğru ama delikler yansıtılmamış, kaydırılmış; katlama çizgilerine göre simetrik olmalılar." },
+        { c: (cx, cy, s) => kagit(cx, cy, s, { delik: del }), hata: "dikkat", neden: "Yalnızca en üst kattaki deliği çizmişsin; alttaki katlar da delinir." }];
+      const hs = harfle(ops);
+      return SG({
+        kaz: K4, duzey: "transfer", zorluk: 3,
+        soru: "Kare bir kâğıt önce soldan sağa, sonra yukarıdan aşağıya katlanıyor. Katlı kâğıt gösterilen yerden delinip açılıyor. Açılan kâğıt hangisi gibi görünür?",
+        gorsel: katlamaSvg([{ f: (cx, cy, s) => kagit(cx, cy, s, { cizgi: "dikey" }), yazi: "1. katla" }, { f: (cx, cy, s) => kagit(cx, cy, s, { en: 2, x0: 2, cizgi: null }) + `<line class="g-cizgi" stroke-width="1.5" stroke-dasharray="4 3" x1="${cx - s * 0.25}" y1="${cy}" x2="${cx + s * 0.25}" y2="${cy}"/>`, yazi: "2. katla" }, { f: (cx, cy, s) => kagit(cx, cy, s, { delik: del, en: 2, boy: 2, x0: 2, y0: 2 }), yazi: "3. del" }], hs.liste),
+        dogru: hs.harf, yanlis: hs.yanlis,
+        ipucu: "Kâğıt kaç kat oldu? Delik her katta açılır.",
+        cozum: [
+          "🔎 Soruyu anlayalım: Kâğıt iki kez katlanınca dörtte birine iniyor ve 4 kat oluyor; sonra tek bir delik açılıyor.",
+          "💡 Hatırlayalım: Her katlama kat sayısını ikiye katlar: 1 → 2 → 4 kat. Delik bütün katlardan geçer.",
+          "✏️ Son katlamayı açalım: delik yatay çizgiye göre yansır → 2 delik.",
+          "✏️ İlk katlamayı açalım: bu iki delik dikey çizgiye göre yansır → 4 delik.",
+          `✅ Sonuç: Kâğıdın dört köşe bölgesinde simetrik 4 delik olan ${hs.harf} seçeneği.`,
+          "🔁 Kontrol edelim: 4 deliğin hem dikey hem yatay orta çizgiye göre simetrik olduğunu kontrol et. Katlamaları ters sırayla açmayı unutma.",
+        ],
+        kural: "n kez ikiye katlanan kâğıtta tek delik, açılınca 2ⁿ delik olur.",
+        dogruNeden: `4 kat birlikte delindiği için açılan kâğıtta iki orta çizgiye göre simetrik 4 delik olur (${hs.harf}).`,
+      });
+    },
+    /* 5. Aynadaki görüntü */
+    z => {
+      const d = kiralParca(4, 5), su = R(0, 1) === 1;
+      const dg = su ? tersN(d, 4) : aynaN(d, 4);
+      const hs = harfle([{ c: desen(dg, 4) },
+        { c: desen(d, 4), hata: "dikkat", neden: "Bu, şeklin kendisi; aynada sağ ile sol (ya da alt ile üst) yer değiştirir." },
+        { c: desen(rotN(rotN(d, 4), 4), 4), hata: "kavrama", neden: "Bu, şeklin 180° döndürülmüş hâli; yansıma ile dönme farklıdır." },
+        { c: desen(su ? aynaN(d, 4) : tersN(d, 4), 4), hata: "kavrama", neden: su ? "Bu, şeklin yandaki bir aynadaki görüntüsü; su yüzeyi alttadır, alt ile üst yer değiştirmeli." : "Bu, şeklin alttaki bir aynadaki (su yüzeyindeki) görüntüsü; ayna sağda olduğundan sağ ile sol yer değiştirmeli." }]);
+      const s = 96, W = 4 * (s + 12) + 20;
+      let ic = hucre(W / 2 - s / 2 - (su ? 0 : 40), 8, s, desen(d, 4));
+      ic += su ? `<line class="g-ok-a" stroke-width="4" x1="${W / 2 - s / 2 - 10}" y1="${s + 18}" x2="${W / 2 + s / 2 + 10}" y2="${s + 18}"/>` + yazi(W / 2 + s / 2 + 22, s + 22, "su", { a: "start", k: 1 })
+        : `<line class="g-ok-a" stroke-width="4" x1="${W / 2 + s / 2 - 25}" y1="4" x2="${W / 2 + s / 2 - 25}" y2="${s + 12}"/>` + yazi(W / 2 + s / 2 - 15, s / 2 + 12, "ayna", { a: "start", k: 1 });
+      const y2 = s + 46, xb = (W - (4 * (s + 12) - 12)) / 2;
+      hs.liste.forEach((f, i) => { const x = xb + i * (s + 12); ic += hucre(x, y2, s, f) + yazi(x + s / 2, y2 + s + 19, HARF[i], { b: 1 }); });
+      return SG({
+        kaz: K4, duzey: "uygulama", zorluk: 2,
+        soru: su ? "Şekil durgun bir suyun hemen üstünde duruyor. Şeklin sudaki yansıması hangisidir?" : "Şeklin sağ yanına bir ayna konuyor. Şeklin aynadaki görüntüsü hangisidir?",
+        gorsel: svg(W, y2 + s + 28, ic, su ? "şekil ve su yüzeyi" : "şekil ve ayna"),
+        dogru: hs.harf, yanlis: hs.yanlis,
+        ipucu: su ? "Sudaki yansımada üst ile alt yer değiştirir, sağ ile sol değişmez." : "Aynada sağ ile sol yer değiştirir, üst ile alt değişmez.",
+        cozum: [
+          `🔎 Soruyu anlayalım: Şeklin ${su ? "sudaki" : "aynadaki"} görüntüsünü arıyoruz.`,
+          su ? "💡 Hatırlayalım: Yatay bir yüzeydeki (su) yansımada şeklin üst kısmı alta, alt kısmı üste geçer; sağ ve sol aynı kalır." : "💡 Hatırlayalım: Dikey bir aynada şeklin sağ kısmı sola, sol kısmı sağa geçer; üst ve alt aynı kalır.",
+          su ? "✏️ Şeklin en üst satırındaki kareler görüntüde en alt satıra, en alttakiler en üste gider." : "✏️ Şeklin en sağ sütunundaki kareler görüntüde en sol sütuna, en soldakiler en sağa gider.",
+          "✏️ Seçenekleri tek tek dene: Döndürülmüş şekil ile yansımış şekil birbirine benzer ama aynı değildir.",
+          `✅ Sonuç: ${hs.harf} seçeneği.`,
+          "🔁 Kontrol edelim: Seçtiğin görüntüyü bir daha yansıtırsan başlangıçtaki şekle dönmelisin.",
+        ],
+        kural: su ? "Su yansıması: üst ↔ alt." : "Ayna görüntüsü: sağ ↔ sol.",
+        dogruNeden: su ? "Sudaki yansımada üst ile alt yer değiştirir; bu da tam olarak bu görüntüyü verir." : "Aynada sağ ile sol yer değiştirir; bu da tam olarak bu görüntüyü verir.",
+      });
+    },
+    /* 6. Hangisi döndürülmüş hâlidir? */
+    z => {
+      const d = kiralParca(4, 5), k = R(1, 3), rots = [d]; for (let i = 0; i < 3; i++) rots.push(rotN(rots[i], 4));
+      const aynalar = karistir([0, 1, 2, 3]).slice(0, 3).map(i => aynaN(rots[i], 4));
+      const hs = harfle([{ c: desen(rots[k], 4, "g-c") }].concat(aynalar.map(m => ({ c: desen(m, 4, "g-c"), hata: "kavrama", neden: "Bu şekil döndürülerek elde edilemez; şeklin ayna görüntüsü (ters yüz edilmiş hâli). Kâğıt üzerinde döndürmekle ters çevirmek farklıdır." }))));
+      const KAD = { 1: "saat yönünde 90°", 2: "180°", 3: "saat yönünün tersine 90°" };
+      return SG({
+        kaz: K4, duzey: "transfer", zorluk: 3,
+        soru: "Üstteki şekil kâğıt üzerinde döndürülüyor (ters çevrilmiyor). Aşağıdakilerden hangisi bu şeklin döndürülmüş hâli olabilir?",
+        gorsel: seriSvg([desen(d, 4, "g-c")], hs.liste, { s: 90, etiket: "şekil ve döndürülmüş adaylar" }),
+        dogru: hs.harf, yanlis: hs.yanlis,
+        ipucu: "Şeklin dikkat çeken bir kısmını (örneğin bir çıkıntıyı) seç ve döndürünce nereye gittiğini izle.",
+        cozum: [
+          "🔎 Soruyu anlayalım: Şekil yalnızca döndürülecek; ters çevirmek (yansıtmak) yok.",
+          "💡 Hatırlayalım: Döndürmede şeklin “saat yönündeki” sırası korunur. Ayna görüntüsünde ise bu sıra tersine döner; bu yüzden ayna görüntüsü döndürülerek elde edilemez.",
+          "✏️ Şekli 90°, 180° ve 270° döndürüp seçeneklerle karşılaştıralım.",
+          `✏️ ${hs.harf} seçeneği, şeklin ${KAD[k]} döndürülmesiyle tam olarak örtüşüyor. Öteki seçenekler ancak şekil ters çevrilirse elde edilir.`,
+          `✅ Sonuç: ${hs.harf} seçeneği.`,
+          "🔁 Kontrol edelim: Kitabını masada çevirmeden döndürdüğünü düşün; yazılar hiç ters dönmez. Ayna görüntüsü ise “ters yazı” gibidir.",
+        ],
+        kural: "Döndürme sırayı korur, yansıma sırayı ters çevirir.",
+        dogruNeden: `${hs.harf} şekli, verilen şeklin ${KAD[k]} döndürülmüş hâlidir.`,
+      });
+    },
+    /* 7. Küp sayma */
+    z => {
+      const yk = merdivenYk(3, 3, 3), top = yk.flat().reduce((a, b) => a + b, 0), { ic, W, H } = isoYapi(yk);
+      const sutun = yk.flat().filter(x => x > 0).length;
+      let gizli = 0;
+      for (let i = 0; i < 3; i++) for (let j = 0; j < 3; j++) for (let zz = 0; zz < yk[i][j]; zz++) { const ust = zz === yk[i][j] - 1, sol = i === 2 || yk[i + 1][j] <= zz, sag = j === 2 || yk[i][j + 1] <= zz; if (!ust && !sol && !sag) gizli++; }
+      return S({
+        kaz: K4, duzey: "uygulama", zorluk: 2,
+        soru: "Eş küplerle yapılmış yapıda boşluk yoktur; her küp ya yerde ya da başka bir küpün üstündedir. Bu yapıda kaç küp vardır?",
+        gorsel: svg(W, H, ic, "küplerden yapı"),
+        dogru: top,
+        yanlis: [[top - gizli, "dikkat", "Yalnızca görünen küpleri saymışsın; önde kalan küplerin arkasındaki ve altındaki küpler görünmez ama oradadır."], [sutun, "kavrama", "Yalnızca üst yüzleri saymışsın; her sütunda üst üste birden çok küp var."], [top + 1, "islem", "Sütunları yeniden say; bir küp fazla bulmuşsun."], [top - 1, "islem", "Sütunları yeniden say; bir küp eksik bulmuşsun."]],
+        ipucu: "Yapıyı yukarıdan görüyormuş gibi düşün: her üst yüzün altında kaç küp var?",
+        cozum: [
+          "🔎 Soruyu anlayalım: Bazı küpler görünmüyor ama yapıda boşluk olmadığını biliyoruz.",
+          "💡 Hatırlayalım: Küp sayarken sütun sütun saymak en güvenli yoldur: her sütunun yüksekliğini bul, sonra topla.",
+          `✏️ Sütun yükseklikleri (arkadan öne, soldan sağa): ${yk.map(s => s.join(" ")).join(" / ")}.`,
+          `✏️ Topla: ${yk.flat().filter(x => x).join(" + ")}.`,
+          `✅ Sonuç: ${top} küp.`,
+          `🔁 Kontrol edelim: Kat kat da sayabilirsin: 1. katta ${yk.flat().filter(x => x >= 1).length}, 2. katta ${yk.flat().filter(x => x >= 2).length}, 3. katta ${yk.flat().filter(x => x >= 3).length} küp → toplam ${top}.`,
+        ],
+        kural: "Küp yapılarını sütun sütun ya da kat kat say; görünmeyenleri unutma.",
+        dogruNeden: `Sütun yükseklikleri toplanınca ${top} küp bulunur.`,
+      });
+    },
+    /* 8. Büyük küpü tamamlamak */
+    z => {
+      const yk = merdivenYk(3, 3, 3); yk[0][0] = 3;
+      const top = yk.flat().reduce((a, b) => a + b, 0), dg = 27 - top, { ic, W, H } = isoYapi(yk);
+      return S({
+        kaz: K4, duzey: "transfer", zorluk: 3,
+        soru: "Görseldeki yapıda boşluk yoktur. Bu yapıya en az kaç küp eklenirse 3 × 3 × 3 boyutunda büyük bir küp elde edilir?",
+        gorsel: svg(W, H, ic, "tamamlanacak küp yapısı"),
+        dogru: dg,
+        yanlis: [[top, "dikkat", "Bu, yapıdaki küp sayısı; soru eklenecek küpleri soruyor."], [dg + 1, "islem", "Yapıdaki küpleri yeniden say."], [dg - 1, "islem", "Yapıdaki küpleri yeniden say."], [9 * 3 - yk.flat().filter(x => x).length, "kavrama", "Yalnızca üst yüzleri saymışsın; yapıdaki bütün küpleri sayıp 27'den çıkarmalısın."]],
+        ipucu: "3 × 3 × 3 küpte kaç küçük küp vardır? Yapıda kaç küp var?",
+        cozum: [
+          "🔎 Soruyu anlayalım: Yapıyı 3 × 3 × 3 küpe tamamlamak için eksik küpleri bulacağız.",
+          "💡 Hatırlayalım: 3 × 3 × 3 küp, 3 kat ve her katta 3 × 3 = 9 küpten oluşur: toplam 27 küp.",
+          `✏️ Yapıdaki küpler (sütun yükseklikleri): ${yk.flat().join(" + ")} = ${top}.`,
+          `✏️ Eksik: 27 − ${top}.`,
+          `✅ Sonuç: ${dg} küp eklenmeli.`,
+          `🔁 Kontrol edelim: Sütun sütun düşün: her sütun 3 olmalı; eksikler ${yk.flat().map(x => 3 - x).join(" + ")} = ${dg}. ✓`,
+        ],
+        kural: "Eksik sayısı = hedef küp sayısı − var olan küp sayısı.",
+        dogruNeden: `27 − ${top} = ${dg} küp eksiktir.`,
+      });
+    },
+    /* 9. Boyalı küp */
+    z => {
+      const n = R(3, 4), tur = sec([3, 2, 1, 0]), say = { 3: 8, 2: 12 * (n - 2), 1: 6 * (n - 2) * (n - 2), 0: Math.pow(n - 2, 3) }, dg = say[tur];
+      const { ic, W, H } = isoYapi(Array.from({ length: n }, () => Array(n).fill(n)), n === 3 ? 26 : 20);
+      const AD = { 3: "üç yüzü", 2: "yalnızca iki yüzü", 1: "yalnızca bir yüzü", 0: "hiçbir yüzü" };
+      const YER = { 3: "köşelerde", 2: "ayrıtların (kenarların) ortasında", 1: "yüzlerin ortasında", 0: "en içte" };
+      return S({
+        kaz: K4, duzey: "transfer", zorluk: 3,
+        soru: `${n * n * n} küçük küpten yapılmış ${n} × ${n} × ${n} büyük küpün dış yüzeyi tamamen boyanıyor. Sonra küçük küpler ayrılıyor. Kaç küçük küpün <b>${AD[tur]}</b> boyalıdır?`,
+        gorsel: svg(W, H, ic, `${n}×${n}×${n} küp`),
+        dogru: dg,
+        yanlis: [0, 1, 2, 3].filter(t => t !== tur).map(t => [say[t], "kavrama", `Bu sayı ${AD[t]} boyalı küplerin sayısı (${YER[t]}); soruda ${AD[tur]} boyalı olanlar soruluyor.`]).concat([[dg + 4, "islem", "Saymayı yeniden yap."]]),
+        ipucu: "Köşe, ayrıt ortası, yüz ortası ve iç küpleri ayrı ayrı düşün.",
+        cozum: [
+          `🔎 Soruyu anlayalım: ${n} × ${n} × ${n} küpün dışı boyanmış; ${AD[tur]} boyalı küçük küpleri sayacağız.`,
+          "💡 Hatırlayalım: Köşedeki küplerin 3 yüzü, ayrıt ortasındakilerin 2 yüzü, yüz ortasındakilerin 1 yüzü boyanır; içtekiler hiç boyanmaz.",
+          `✏️ Köşe: 8 küp. Ayrıtlar: küpün 12 ayrıtının her birinde köşeler dışında ${n - 2} küp → 12 × ${n - 2} = ${say[2]}.`,
+          `✏️ Yüzler: 6 yüzün her birinin ortasında ${n - 2} × ${n - 2} = ${(n - 2) * (n - 2)} küp → ${say[1]}. İç: ${n - 2} × ${n - 2} × ${n - 2} = ${say[0]}.`,
+          `✅ Sonuç: ${AD[tur]} boyalı ${dg} küp vardır.`,
+          `🔁 Kontrol edelim: ${say[3]} + ${say[2]} + ${say[1]} + ${say[0]} = ${n * n * n}. Bütün küpler sayılmış! ✓`,
+        ],
+        kural: "Boyalı küp: köşe 3 yüz, ayrıt ortası 2 yüz, yüz ortası 1 yüz, iç 0 yüz.",
+        dogruNeden: `${AD[tur]} boyalı küpler ${YER[tur]} bulunur; sayıları ${dg}.`,
+      });
+    },
+    /* 10. Zar kulesi */
+    z => {
+      const t = R(1, 6), adet = sec([2, 3]), dg = 7 * adet - t;
+      const { ic, W, H } = isoYapi([[adet]], 34);
+      return S({
+        kaz: K4, duzey: "transfer", zorluk: 3,
+        soru: `Karşılıklı yüzlerindeki sayıların toplamı 7 olan ${adet} oyun zarı üst üste konup masaya yerleştiriliyor. En üstteki zarın üst yüzünde <b>${t}</b> var. Zarların birbirine ve masaya değen (görünmeyen) yatay yüzlerindeki sayıların toplamı kaçtır?`,
+        gorsel: svg(W, H, ic, "üst üste zarlar"),
+        dogru: dg,
+        yanlis: [[7 * adet, "dikkat", "Üstte görünen yüzü de toplama katmışsın; o yüz görünüyor."], [7 * (adet - 1), "dikkat", "En üstteki zarın alt yüzünü saymayı unutmuşsun."], [dg + t, "islem", "Üstteki zarın alt yüzünü yanlış bulmuşsun; alt yüz = 7 − üst yüz."], [7 * adet + t, "kavrama", "Toplamı hesaplarken üst yüzü çıkarmak yerine eklemişsin."]],
+        ipucu: "Her zarın üst ve alt yüzü toplamı 7'dir. Kaç zarın üst ve alt yüzü hesaba giriyor?",
+        cozum: [
+          `🔎 Soruyu anlayalım: ${adet} zarın görünmeyen yatay yüzlerini toplayacağız: en üstteki zarın alt yüzü, diğer zarların hem üst hem alt yüzleri.`,
+          "💡 Hatırlayalım: Bir zarda karşılıklı yüzlerin toplamı 7'dir; yani her zarın üst yüzü + alt yüzü = 7.",
+          `✏️ ${adet} zarın üst ve alt yüzlerinin hepsi birlikte: ${adet} × 7 = ${7 * adet}.`,
+          `✏️ Bunlardan yalnızca en üstteki ${t} görünüyor; onu çıkaralım: ${7 * adet} − ${t}.`,
+          `✅ Sonuç: ${dg}.`,
+          `🔁 Kontrol edelim: En üst zarın alt yüzü 7 − ${t} = ${7 - t}; ${adet === 3 ? "ortadaki ve alttaki zarların" : "alttaki zarın"} üst-alt çiftleri ${adet - 1} × 7 = ${7 * (adet - 1)}; toplam ${7 - t} + ${7 * (adet - 1)} = ${dg}. ✓`,
+        ],
+        kural: "Zarlarda karşılıklı yüzlerin toplamı 7'dir.",
+        dogruNeden: `${adet} zarın üst-alt toplamı ${7 * adet}; görünen ${t} çıkarılınca ${dg} kalır.`,
+      });
+    },
+    /* 11. Aynadaki saat */
+    z => {
+      const h = R(1, 12), m = sec([10, 15, 20, 30, 40, 45, 50]), gercek = h * 60 + m;
+      const yaz = dk => { dk = mod(dk, 720); const hh = Math.floor(dk / 60) || 12, mm = dk % 60; return hh + ":" + String(mm).padStart(2, "0"); };
+      const gorunen = 720 - gercek;
+      const s = 150, ic = `<g transform="translate(${2 * (s / 2 + 10)} 0) scale(-1 1)">${saatCiz(s / 2 + 10, s / 2 + 6, s / 2 - 4, h, m)}</g>`;
+      return S({
+        kaz: K4, duzey: "transfer", zorluk: 3,
+        soru: "Duvardaki akrepli-yelkovanlı saatin <b>aynadaki görüntüsü</b> aşağıda verilmiştir (rakamlar da ters görünüyor). Saat gerçekte kaçı gösteriyor?",
+        gorsel: svg(s + 20, s + 14, ic, "saatin aynadaki görüntüsü"),
+        dogru: yaz(gercek),
+        yanlis: [[yaz(gorunen), "dikkat", "Aynadaki görüntüyü olduğu gibi okumuşsun; aynada sağ ile sol yer değiştirir."], [yaz(gercek + 60), "islem", "Akrebin gösterdiği saati bir fazla okumuşsun; akrep iki sayı arasındaysa küçük olanı okunur."], [yaz(Math.floor(gorunen / 60) * 60 + m), "kavrama", "Dakikayı doğru buldun ama saati aynadaki gibi okudun."], [yaz(gercek - 60), "islem", "Akrebin gösterdiği saati bir eksik okumuşsun."]],
+        ipucu: "Aynadaki saatte 12 ve 6 yerinde kalır, 3 ile 9 yer değiştirir. Saati görüntünün arkasından bakıyormuş gibi oku.",
+        cozum: [
+          "🔎 Soruyu anlayalım: Aynadaki görüntüden gerçek saati bulacağız.",
+          "💡 Hatırlayalım: Ayna sağ ile solu değiştirir. Saat yüzünde 12–6 çizgisi aynada değişmez; sağdaki sayılar sola geçer. Kısa yol: gerçek saat = 12:00 − aynada okunan saat.",
+          `✏️ Görüntüyü olduğu gibi okursak ${yaz(gorunen)} görünüyor.`,
+          `✏️ 12:00 − ${yaz(gorunen)} = ${yaz(gercek)}.`,
+          `✅ Sonuç: Saat gerçekte ${yaz(gercek)}.`,
+          `🔁 Kontrol edelim: Görüntüdeki yelkovan, 12'ye göre ${m} dakikalık yolu ters tarafta gösteriyor; gerçek dakikalar ${m} → ${yaz(gercek)} ile tutarlı. ✓`,
+        ],
+        kural: "Aynadaki analog saat: gerçek saat = 12:00 − görünen saat.",
+        dogruNeden: `12:00 − ${yaz(gorunen)} = ${yaz(gercek)}; ayna sağ ile solu değiştirdiği için gerçek saat budur.`,
+      });
+    },
+    /* 12. Çeyrek tur döndürme */
+    z => {
+      const d = kiralParca(3, 4), yon = sec([1, -1]);
+      const r1 = rotN(d, 3), r3 = rotN(rotN(r1, 3), 3), r2 = rotN(r1, 3), dg = yon > 0 ? r1 : r3, ters = yon > 0 ? r3 : r1;
+      const hs = harfle([{ c: desen(dg, 3, "g-d") },
+        { c: desen(ters, 3, "g-d"), hata: "kavrama", neden: "Şekli ters yöne döndürmüşsün." },
+        { c: desen(r2, 3, "g-d"), hata: "islem", neden: "Bu, yarım tur (180°) dönmüş hâli; soru çeyrek tur istiyor." },
+        { c: desen(aynaN(d, 3), 3, "g-d"), hata: "kavrama", neden: "Bu, şeklin ayna görüntüsü; döndürme değil." }]);
+      const yonAd = yon > 0 ? "saat yönünde" : "saat yönünün tersine";
+      return SG({
+        kaz: K4, duzey: "uygulama", zorluk: 2,
+        soru: `Üstteki kare kart ${yonAd} <b>çeyrek tur (90°)</b> döndürülüyor. Kart hangi görünümü alır?`,
+        gorsel: seriSvg([desen(d, 3, "g-d")], hs.liste, { s: 84 }),
+        dogru: hs.harf, yanlis: hs.yanlis,
+        ipucu: `Kartın üst kenarı ${yon > 0 ? "sağa" : "sola"} gelecek. Üst sıradaki kareler nereye gider?`,
+        cozum: [
+          `🔎 Soruyu anlayalım: Kart ${yonAd} 90° dönecek.`,
+          `💡 Hatırlayalım: ${yonAd} çeyrek turda kartın üst kenarı ${yon > 0 ? "sağ" : "sol"} kenar olur; sol kenar ${yon > 0 ? "üst" : "alt"} kenar olur.`,
+          `✏️ Üst sıradaki kırmızı kareler dönünce ${yon > 0 ? "en sağ sütuna" : "en sol sütuna"} geçer.`,
+          "✏️ Diğer satırları da aynı biçimde taşı ve seçeneklerle karşılaştır.",
+          `✅ Sonuç: ${hs.harf} seçeneği.`,
+          "🔁 Kontrol edelim: Aynı yöne 4 kez çeyrek tur dönen kart başlangıçtaki hâline gelir. Seçtiğin şekli 3 kez daha döndürmeyi zihninde dene.",
+        ],
+        kural: "Saat yönünde 90°: üst → sağ, sağ → alt, alt → sol, sol → üst.",
+        dogruNeden: `Kart ${yonAd} 90° döndürülünce ${hs.harf} görünümünü alır.`,
+      });
+    },
+    /* 13. Önden görünüm */
+    z => {
+      let yk, on, adaylar;
+      for (;;) {
+        yk = [0, 1, 2].map(() => [0, 1, 2].map(() => R(0, 3)));
+        on = [0, 1, 2].map(j => Math.max(yk[0][j], yk[1][j], yk[2][j]));
+        if (on.some(x => x === 0)) continue;
+        adaylar = [[yk[2], "dikkat", "Yalnızca en öndeki sırayı çizmişsin; arkadaki yüksek sütunlar da önden görünür."], [on.slice().reverse(), "kavrama", "Bu, yapının arkadan görünümü; sağ ile sol yer değiştirmiş."], [yk[0], "dikkat", "Yalnızca en arkadaki sırayı çizmişsin."], [[0, 1, 2].map(i => Math.max(...yk[i])).reverse(), "kavrama", "Bu, yapının yandan görünümü."]];
+        const g = new Set([on.join()]), ok = adaylar.filter(([a]) => !g.has(a.join()) && g.add(a.join()) && a.some(x => x > 0));
+        if (ok.length >= 3) { adaylar = ok.slice(0, 3); break; }
+      }
+      const gor = (dz) => (cx, cy, s) => { const u = s * 0.22; let ic = `<line class="g-cizgi" stroke-width="2" x1="${cx - 1.6 * u}" y1="${cy + 1.5 * u}" x2="${cx + 1.6 * u}" y2="${cy + 1.5 * u}"/>`; dz.forEach((v, j) => { for (let k = 0; k < v; k++) ic += `<rect class="g-a g-cizgi" stroke-width="1" x="${(cx + (j - 1.5) * u).toFixed(1)}" y="${(cy + 1.5 * u - (k + 1) * u).toFixed(1)}" width="${u.toFixed(1)}" height="${u.toFixed(1)}"/>`; }); return ic; };
+      const hs = harfle([{ c: gor(on) }].concat(adaylar.map(([a, h, n]) => ({ c: gor(a), hata: h, neden: n }))));
+      let ic = "";
+      for (let i = 0; i < 3; i++) for (let j = 0; j < 3; j++) ic += `<rect class="${yk[i][j] ? "g-yumusak" : "g-bos"} g-cizgi" stroke-width="1.5" x="${130 + j * 40}" y="${10 + i * 40}" width="40" height="40"/>` + (yk[i][j] ? buyukYazi(yk[i][j], 150 + j * 40, 30 + i * 40, 18) : "");
+      ic += yazi(190, 150, "ÖN ▲ (buradan bakıyoruz)", { k: 1 });
+      const s = 84, y2 = 172, xb = (380 - (4 * (s + 12) - 12)) / 2;
+      ic += `<line class="g-ince" x1="8" x2="372" y1="${y2 - 10}" y2="${y2 - 10}" stroke-dasharray="4 4"/>`;
+      hs.liste.forEach((f, i) => { const x = xb + i * (s + 12); ic += hucre(x, y2, s, f) + yazi(x + s / 2, y2 + s + 19, HARF[i], { b: 1 }); });
+      return SG({
+        kaz: K4, duzey: "transfer", zorluk: 3,
+        soru: "Küplerle yapılmış bir yapının üstten görünümü verilmiştir; her karedeki sayı o yerde üst üste kaç küp olduğunu gösterir. Yapıya “ÖN” yazan taraftan bakan biri ne görür?",
+        gorsel: svg(380, y2 + s + 28, ic, "kat haritası ve önden görünüm seçenekleri"),
+        dogru: hs.harf, yanlis: hs.yanlis,
+        ipucu: "Önden bakınca her sütunda yalnızca en yüksek küp kulesi görünür.",
+        cozum: [
+          "🔎 Soruyu anlayalım: Üstten görünüm ve yükseklikler verilmiş; önden görünümü çizeceğiz.",
+          "💡 Hatırlayalım: Önden bakınca aynı sütundaki kuleler arka arkaya dizilir; alçak olanlar yüksek olanın arkasında saklanır. Her sütunda en yüksek değer görünür.",
+          `✏️ Soldan sağa sütunlar: 1. sütun ${yk.map(r => r[0]).join(", ")} → en yüksek ${on[0]}; 2. sütun ${yk.map(r => r[1]).join(", ")} → ${on[1]}; 3. sütun ${yk.map(r => r[2]).join(", ")} → ${on[2]}.`,
+          `✏️ Önden görünüm: soldan sağa ${on.join(", ")} küp yüksekliğinde üç kule.`,
+          `✅ Sonuç: ${hs.harf} seçeneği.`,
+          "🔁 Kontrol edelim: Önden görünümde sağ ve sol, üstten görünümdeki gibidir; arkadan bakınca ise yer değiştirir.",
+        ],
+        kural: "Önden görünüm = her sütundaki en yüksek kule.",
+        dogruNeden: `Her sütunun en yüksek kulesi soldan sağa ${on.join(", ")} olduğundan önden görünüm ${hs.harf}.`,
+      });
+    },
+    /* 14. Simetriği tamamla */
+    z => {
+      let sol, adaylar, dg;
+      for (;;) {
+        sol = new Set(karistir(["0,0", "0,1", "1,0", "1,1", "2,0", "2,1", "3,0", "3,1"]).slice(0, R(3, 5)));
+        dg = birles(sol, aynaN(sol, 4));
+        const kopya = birles(sol, kaydir4(sol)), ters = birles(sol, tersN(aynaN(sol, 4), 4)), yalniz = new Set(sol);
+        adaylar = [[kopya, "kavrama", "Sol yarıyı sağa olduğu gibi kopyalamışsın; simetride şekil eksene göre ters dönmelidir."], [ters, "kavrama", "Sağ yarıyı hem ters çevirip hem baş aşağı yapmışsın; yalnızca sağ–sol yer değişmeli."], [yalniz, "dikkat", "Sağ yarıya hiçbir şey eklememişsin."]];
+        const g = new Set([anahtar(dg)]);
+        if (adaylar.every(([a]) => !g.has(anahtar(a)) && g.add(anahtar(a)))) break;
+      }
+      const C = set => (cx, cy, s) => desen(set, 4, "g-c")(cx, cy, s) + `<line class="g-ok-d" stroke-width="2" stroke-dasharray="4 3" x1="${cx}" y1="${cy - s * 0.45}" x2="${cx}" y2="${cy + s * 0.45}"/>`;
+      const hs = harfle([{ c: C(dg) }].concat(adaylar.map(([a, h, n]) => ({ c: C(a), hata: h, neden: n }))));
+      return SG({
+        kaz: K4, duzey: "uygulama", zorluk: 1,
+        soru: "Şeklin sol yarısı verilmiştir. Kırmızı kesikli çizgi simetri eksenidir. Şekil eksene göre simetrik tamamlanırsa hangisi elde edilir?",
+        gorsel: seriSvg([C(sol)], hs.liste, { s: 90, etiket: "yarım şekil ve simetri ekseni" }),
+        dogru: hs.harf, yanlis: hs.yanlis,
+        ipucu: "Eksene bitişik kareler öbür tarafta da eksene bitişik olmalı.",
+        cozum: [
+          "🔎 Soruyu anlayalım: Sol yarının eksene göre ayna görüntüsünü sağ yarıya çizeceğiz.",
+          "💡 Hatırlayalım: Simetride her nokta eksene ne kadar uzaksa görüntüsü de öbür tarafta o kadar uzak olur.",
+          "✏️ Sol yarıda eksene bitişik (2. sütun) kareler, sağda da eksene bitişik (3. sütun) olur.",
+          "✏️ En soldaki (1. sütun) kareler ise en sağa (4. sütun) gider. Satırlar değişmez.",
+          `✅ Sonuç: ${hs.harf} seçeneği.`,
+          "🔁 Kontrol edelim: Seçtiğin şekli eksen boyunca katladığını düşün; iki yarı tam üst üste gelmeli.",
+        ],
+        kural: "Simetrik tamamlamada uzaklıklar korunur, yön ters döner.",
+        dogruNeden: "Her kare eksene olan uzaklığı korunarak sağ yarıya yansıtılmıştır.",
+      });
+    },
+    /* 15. Açınımdan küp görünümü */
+    z => {
+      const h = donustur(sec(ACILIMLAR), R(0, 3), R(0, 1)), sayi = karistir([1, 2, 3, 4, 5, 6]), nv = katla(h).map(s => s.split(",").map(Number));
+      const yuz = v => sayi[nv.findIndex(x => vk(x) === vk(v))], karsi = v => yuz(neg(v));
+      /* geçerli görünümler: sol × sağ = üst */
+      const gecerli = [];
+      for (const a of nv) for (const b of nv) { const c = capraz(a, b); if (c.some(x => x)) gecerli.push([yuz(a), yuz(b), yuz(c)]); }
+      const dg = sec(gecerli);
+      const kotu = new Map();
+      for (const g of karistir(gecerli)) {
+        const [a, b] = karistir([0, 1, 2]).slice(0, 2), yeni = g.slice(); yeni[b] = sayi[nv.findIndex(x => vk(x) === vk(neg(nv[sayi.indexOf(g[a])])))];
+        const k = yeni.join(); if (!kotu.has(k)) kotu.set(k, [yeni, g[a], yeni[b]]);
+        if (kotu.size === 3) break;
+      }
+      const C = t => (cx, cy, s) => tekKup(cx, cy + 2, s * 0.36, t);
+      const hs = harfle([{ c: C(dg) }].concat([...kotu.values()].map(([t, x, y]) => ({ c: C(t), hata: "kavrama", neden: `Bu küpte ${x} ile ${y} aynı anda görünüyor; oysa açınımda bu iki yüz karşılıklıdır ve birlikte görülemez.` }))));
+      const ciftler = [1, 2, 3, 4, 5, 6].filter(x => x < karsi(nv[sayi.indexOf(x)])).map(x => `${x}–${karsi(nv[sayi.indexOf(x)])}`);
+      let ic = acilimCiz(h, 110, 100, 180, { yazilar: sayi });
+      const s = 84, xb = 230;
+      hs.liste.forEach((f, i) => { const x = xb + (i % 2) * (s + 12), y = 8 + Math.floor(i / 2) * (s + 30); ic += hucre(x, y, s, f) + yazi(x + s / 2, y + s + 18, HARF[i], { b: 1 }); });
+      return SG({
+        kaz: K4, duzey: "transfer", zorluk: 3,
+        soru: "Soldaki açınım katlanarak bir küp yapılıyor. Sağdaki küp görünümlerinden hangisi bu küpe <b>ait olabilir</b>?",
+        gorsel: svg(xb + 2 * (s + 12) + 4, 2 * (s + 30) + 10, ic, "küp açınımı ve küp görünümleri"),
+        dogru: hs.harf, yanlis: hs.yanlis,
+        ipucu: "Önce açınımda karşılıklı gelecek yüz çiftlerini bul. Karşılıklı iki yüz bir küpte aynı anda görünmez.",
+        cozum: [
+          "🔎 Soruyu anlayalım: Dört küp görünümünden yalnızca biri bu açınımdan yapılabilir.",
+          "💡 Hatırlayalım: Bir küpe bir köşesinden bakınca birbirine komşu üç yüz görünür. Karşılıklı iki yüz asla birlikte görünmez.",
+          `✏️ Açınımı zihnimizde katlayalım; karşılıklı yüz çiftleri: ${ciftler.join(", ")}.`,
+          `✏️ Seçenekleri kontrol edelim: ${HARF.filter(x => x !== hs.harf).join(", ")} seçeneklerinde karşılıklı bir çift aynı anda görünüyor; bunlar olamaz.`,
+          `✅ Sonuç: ${hs.harf} seçeneği.`,
+          "🔁 Kontrol edelim: Doğru seçenekteki üç yüz, açınımda katlanınca bir köşede buluşan üç yüzdür. Kâğıttan açınımı kesip katlayarak da görebilirsin.",
+        ],
+        kural: "Küp görünümü sorularında önce karşılıklı yüz çiftlerini bul ve onları eleme aracı olarak kullan.",
+        dogruNeden: `${hs.harf} seçeneğindeki üç yüz katlanınca bir köşede buluşur; hiçbiri birbirinin karşısında değildir.`,
+      });
+    },
+    /* 16. Hangisi küp açınımıdır? */
+    z => {
+      const iyi = donustur(sec(ACILIMLAR), R(0, 3), R(0, 1)), kotuler = [];
+      while (kotuler.length < 3) { const k = kupOlmayan(); if (!kotuler.some(x => hAnahtar(x) === hAnahtar(k))) kotuler.push(k); }
+      const C = h => (cx, cy, s) => acilimCiz(h, cx, cy, s * 0.82, { renk: "g-c" });
+      const hs = harfle([{ c: C(iyi) }].concat(kotuler.map(h => ({ c: C(h), hata: "kavrama", neden: "Bu şekil katlanınca iki kare aynı yüze gelir ve küpün bir yüzü açık kalır; küp oluşmaz." }))));
+      return SG({
+        kaz: K4, duzey: "aciklama", zorluk: 2,
+        soru: "Aşağıdaki altı kareli şekillerden hangisi katlanınca bir küp <b>oluşturur</b>?",
+        gorsel: seriSvg([], hs.liste, { s: 104, etiket: "dört açınım adayı" }),
+        dogru: hs.harf, yanlis: hs.yanlis,
+        ipucu: "Bir kareyi taban seç; dört kenarına gelen kareleri yan yüz, tabanın karşısına geleni kapak olarak düşün.",
+        cozum: [
+          "🔎 Soruyu anlayalım: Dört şekilden yalnızca biri katlanınca küp olur.",
+          "💡 Hatırlayalım: Küp açınımında 2×2'lik dolu kare blok bulunmaz, bir sırada en fazla 4 kare olur ve katlanınca her kare farklı bir yüze gider.",
+          "✏️ Her şekilde önce 2×2 blok ya da 5'li sıra olup olmadığına bak; varsa hemen ele.",
+          `✏️ Kalan şekilleri katla: ${hs.harf} şeklinde altı kare altı farklı yüze gidiyor; ötekilerde iki kare çakışıyor.`,
+          `✅ Sonuç: ${hs.harf} seçeneği.`,
+          "🔁 Kontrol edelim: Bir küp açınımında karşılıklı yüzler hiçbir zaman kenar paylaşmaz. Bulduğun açınımda her karenin tek bir karşı yüzü olduğunu doğrula.",
+        ],
+        kural: "Küpün 11 farklı açınımı vardır; hepsinde 6 kare 6 farklı yüze gider.",
+        dogruNeden: `${hs.harf} şekli katlanınca altı kare altı farklı yüzü oluşturur.`,
+      });
+    },
+  ];
+  B.push({ id: "uzamsal", ad: "Uzamsal düşünme", simge: "🧊", aciklama: "Küp açınımları, katlama-delme, ayna görüntüsü, döndürme ve küp sayma.", sorular: uzamsalSorular });
 
   /* @@DEVAM@@ */
 })();

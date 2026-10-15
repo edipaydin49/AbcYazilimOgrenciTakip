@@ -196,7 +196,8 @@
       <div class="pdf-duzen">
         <section class="kart pdf-gorunum"><div class="satir ara pdf-arac"><span class="satir"><button class="btn kucuk" id="pOnce" aria-label="Önceki sayfa">◀</button><span id="pSayfaNo" class="kucuk-yazi">…</span><button class="btn kucuk" id="pSonra" aria-label="Sonraki sayfa">▶</button></span>
           <span class="satir"><button class="btn kucuk" id="pKucult" aria-label="Küçült">−</button><button class="btn kucuk" id="pBuyut" aria-label="Büyüt">+</button></span></div>
-          <div class="pdf-tuval" id="pTuvalKutu"><canvas id="pTuval"></canvas><p id="pYukDurum" class="muted kucuk-yazi">Kitapçık açılıyor…</p></div></section>
+          <div class="pdf-tuval" id="pTuvalKutu"><canvas id="pTuval"></canvas><p id="pYukDurum" class="muted kucuk-yazi">Kitapçık açılıyor…</p></div>
+          <div class="sayfa-cevap" id="pSayfaCevap" hidden></div></section>
         <section class="kart pdf-optik"><nav class="sekmeler" id="pSekmeler"></nav><div id="pForm"></div>
           <p class="kucuk-yazi muted">${inceleme ? "Yeşil: doğru cevap · kırmızı: senin yanlış cevabın. Numaraya dokununca sorunun sayfası açılır." : "Cevabı işaretlemek için harfe dokun; değiştirmek için başka harfe, silmek için aynı harfe dokun. Numaraya dokununca sorunun sayfası açılır."}</p></section>
       </div>`;
@@ -208,14 +209,28 @@
         return `<div class="optik-satir"><button class="optik-no" data-no="${no}" title="Sayfasını aç">${no}</button>${HARFLER.slice(0, harfSay).map(h => {
           let cls = sec === h ? "secili" : ""; if (inceleme) cls = h === dogru ? "dogru" : sec === h ? "yanlis" : "";
           return `<button class="optik-harf ${cls}" data-h="${h}" data-no="${no}" ${inceleme ? "disabled" : ""} aria-label="${no}. soru ${h}">${h}</button>`; }).join("")}${inceleme ? `<span class="kucuk-yazi">${!sec ? "boş" : sec === dogru ? "✓" : dogru ? "✗" : ""}</span>` : ""}</div>`; }).join("")}</div>`;
+      sayfaCevapCiz();
       ana.querySelectorAll("[data-sek]").forEach(b => b.onclick = () => { aktif = +b.dataset.sek; formCiz(); const s = ilkSayfa(dersler[aktif]); if (s) sayfaGoster(s); });
       ana.querySelectorAll(".optik-no").forEach(b => b.onclick = () => { const s = (dersler[aktif].sayfa || {})[b.dataset.no]; if (s) sayfaGoster(+s); else toast("Bu sorunun sayfası bulunamadı; sayfaları kaydırarak bulabilirsin."); });
-      if (!inceleme) ana.querySelectorAll(".optik-harf").forEach(b => b.onclick = () => {
-        const dd = dersler[aktif], m = durum.cevaplar[dd.anahtar] = durum.cevaplar[dd.anahtar] || {};
-        if (m[b.dataset.no] === b.dataset.h) delete m[b.dataset.no]; else m[b.dataset.no] = b.dataset.h;
-        DEPO.ayarKaydet(); formCiz();
-      });
+      if (!inceleme) $("#pForm").querySelectorAll(".optik-harf").forEach(b => b.onclick = () => harfTik(b));
     };
+    /* Açık sayfadaki soruların cevap satırları sayfanın hemen altında gösterilir (optik formu aramaya gerek kalmaz). */
+    function harfTik(b) {
+      const dd = b.dataset.ders != null ? dersler[+b.dataset.ders] : dersler[aktif], m = durum.cevaplar[dd.anahtar] = durum.cevaplar[dd.anahtar] || {};
+      if (m[b.dataset.no] === b.dataset.h) delete m[b.dataset.no]; else m[b.dataset.no] = b.dataset.h;
+      DEPO.ayarKaydet(); formCiz();
+    }
+    function sayfaCevapCiz() {
+      const k = $("#pSayfaCevap"); if (!k || !gor) return;
+      const satirlar = [];
+      dersler.forEach((d, di) => { const c = durum.cevaplar[d.anahtar] || {}, harfSay = Math.max(4, ...Object.values(d.cevap).map(h => HARFLER.indexOf(h) + 1));
+        Object.entries(d.sayfa || {}).filter(([, s]) => +s === gor.sayfa).map(([no]) => +no).sort((a, b) => a - b).forEach(no => { const sec = c[no], dogru = d.cevap[no];
+          satirlar.push(`<div class="optik-satir"><b style="min-width:110px">${kacis(dersAdi(d))} ${no}.</b>${HARFLER.slice(0, harfSay).map(h => { let cls = sec === h ? "secili" : ""; if (inceleme) cls = h === dogru ? "dogru" : sec === h ? "yanlis" : "";
+            return `<button class="optik-harf buyuk ${cls}" data-h="${h}" data-no="${no}" data-ders="${di}" ${inceleme ? "disabled" : ""} aria-label="${no}. soru ${h}">${h}</button>`; }).join("")}</div>`); }); });
+      k.hidden = !satirlar.length;
+      k.innerHTML = satirlar.length ? `<span class="kucuk-yazi muted">Bu sayfadaki sorular</span>${satirlar.join("")}` : "";
+      if (!inceleme) k.querySelectorAll(".optik-harf").forEach(b => b.onclick = () => harfTik(b));
+    }
     const ilkSayfa = d => { const v = Object.values(d.sayfa || {}); return v.length ? Math.min(...v) : null; };
     formCiz();
     // süre
@@ -234,7 +249,18 @@
       const veri = await dosyaOku(id || sonucTest.pdfId);
       if (!veri) { $("#pYukDurum").textContent = "Kitapçık dosyası bu tablette bulunamadı (silinmiş olabilir). Optik formu yine de kullanabilirsin."; return; }
       const doc = await pdfAc(veri);
-      gor = { doc, sayfa: 1, olcek: 1 };
+      gor = { doc, sayfa: 1, olcek: 1, gizli: new Set() };
+      // Sınav sürerken cevap anahtarı / çözüm sayfaları gösterilmez: son soru sayfasından sonrası ve "cevap anahtarı" yazan sayfalar.
+      if (!inceleme) {
+        const son = Math.max(0, ...dersler.flatMap(d => Object.values(d.sayfa || {}).map(Number)));
+        for (let i = 1; i <= doc.numPages; i++) {
+          if (son && i > son) { gor.gizli.add(i); continue; }
+          if (dersler.some(d => Object.values(d.sayfa || {}).map(Number).includes(i))) continue;
+          try { const tc = await (await doc.getPage(i)).getTextContent(), m = tc.items.map(t => t.str).join(" ").toLocaleLowerCase("tr");
+            const harf = tc.items.filter(t => /^\s*(\d{1,2}\s*[.)-]?\s*)?[a-e]\s*$/i.test(t.str)).length;   // anahtar tablosu: çok sayıda tek harf
+            if (/cevap\s*anahtar/.test(m) && harf >= 8) gor.gizli.add(i); } catch (e) {}
+        }
+      }
       $("#pYukDurum").remove();
       $("#pOnce").onclick = () => sayfaGoster(gor.sayfa - 1); $("#pSonra").onclick = () => sayfaGoster(gor.sayfa + 1);
       $("#pBuyut").onclick = () => { gor.olcek = Math.min(3, gor.olcek + 0.25); sayfaGoster(gor.sayfa); };
@@ -245,12 +271,13 @@
       sayfaGoster(ilkSayfa(dersler[0]) || 1);
     } catch (x) { const e = $("#pYukDurum"); if (e) e.textContent = "Kitapçık açılamadı: " + (x.message || x); }
 
-    function sayfaGoster(n) {
+    function sayfaGoster(n, yon) {
       if (!gor || n < 1 || n > gor.doc.numPages) return;
-      gor.sayfa = n; $("#pSayfaNo").textContent = n + " / " + gor.doc.numPages;
+      if (gor.gizli.has(n)) { const y = yon || (n >= gor.sayfa ? 1 : -1); let m = n; while (m >= 1 && m <= gor.doc.numPages && gor.gizli.has(m)) m += y; if (m < 1 || m > gor.doc.numPages || m === gor.sayfa) { toast("Cevap anahtarı sınav bitince açılır."); return; } n = m; }
+      gor.sayfa = n; $("#pSayfaNo").textContent = n + " / " + (gor.doc.numPages - gor.gizli.size);
       // sayfadaki derse göre optik formun sekmesini değiştir
       const i = dersler.findIndex(d => Object.values(d.sayfa || {}).includes(n));
-      if (i >= 0 && i !== aktif) { aktif = i; formCiz(); }
+      if (i >= 0 && i !== aktif) { aktif = i; formCiz(); } else sayfaCevapCiz();
       gor.doc.getPage(n).then(pg => {
         const kutu = $("#pTuvalKutu"); if (!kutu) return;
         const taban = pg.getViewport({ scale: 1 });

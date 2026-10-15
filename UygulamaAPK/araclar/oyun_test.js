@@ -17,7 +17,7 @@ const sunucu = http.createServer((q, r) => { const u = decodeURIComponent(q.url.
   await p.goto("http://localhost:8767/index.html#/ders/tr"); await foto("0_tr_ana");
   await p.goto("http://localhost:8767/index.html#/oyun"); await foto("1_harita");
   const kilitli = await p.evaluate(() => [...document.querySelectorAll("[data-ada]")].map(x => x.disabled));
-  if (JSON.stringify(kilitli) !== "[false,true,true]") hatalar.push("ada kilitleri yanlış: " + kilitli);
+  if (JSON.stringify(kilitli) !== "[false,true,true,true]") hatalar.push("ada kilitleri yanlış: " + kilitli);
 
   // Bir öğeyi doğru (ya da yanlış) çözer
   async function coz(dogruMu, fotoAd) {
