@@ -24,7 +24,7 @@
   const GEZ = ["Merkür", "Venüs", "Dünya", "Mars", "Jüpiter", "Satürn", "Uranüs", "Neptün"];
   const GEZR = [5, 7, 7, 6, 15, 13, 10, 10], GEZS = ["g-yumusak", "g-b", "g-a", "g-d", "g-b", "g-b", "g-yumusak", "g-a"];
   function gunesSistemi(etiket, { kusak = null } = {}) {
-    const W = 600, H = 210, cy = 105; let ic = `<circle class="g-b g-cizgi" cx="-150" cy="${cy}" r="190" stroke-width="2"/>` + Y(18, cy + 5, "Güneş", { a: "start", b: 1 });
+    const W = 600, H = 210, cy = 105; let ic = `<circle class="g-b g-cizgi" cx="-145" cy="${cy}" r="195" stroke-width="2"/>` + Y(4, cy + 5, "Güneş", { a: "start", k: 1, b: 1 });
     const x = i => 70 + i * 66;
     GEZ.forEach((g, i) => {
       ic += `<path class="g-ince" fill="none" stroke-dasharray="4 4" d="M${x(i)} 10 Q${x(i) + 16} ${cy} ${x(i)} ${H - 10}"/>`;
@@ -161,7 +161,7 @@
       for (let i = 0; i < 4; i++) ic += G.ok(60, 70 + i * 40, 130, 70 + i * 40, "g-ok-a");
       ic += `<circle class="g-ince" cx="300" cy="130" r="100" fill="none" stroke-dasharray="5 5"/>`;
       ic += `<path fill="#333" fill-opacity="0.25" d="M300 100 L540 112 L540 148 L300 160 Z"/>`;
-      ic += `<circle class="g-a g-cizgi" cx="300" cy="130" r="30" stroke-width="2"/>` + Y(300, 135, "Dünya", { k: 1 });
+      ic += `<circle class="g-a g-cizgi" cx="300" cy="130" r="30" stroke-width="2"/><text x="300" y="135" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">Dünya</text>`;
       P.forEach(([x, y], i) => { ic += `<circle class="g-yumusak g-cizgi" cx="${x}" cy="${y}" r="12" stroke-width="2"/>` + Y(x + (i === 2 ? 0 : 0), y + (i === 1 ? -18 : i === 3 ? 30 : -18), N[i], { b: 1 }); });
       const hedef = sor === "ay" ? 2 : 0;
       const ACK = ["Ay, Güneş ile Dünya arasında (yeni ay)", "Ay, Dünya'nın yanında (dördün)", "Ay, Dünya'nın arkasında, Dünya'nın gölgesinde (dolunay)", "Ay, Dünya'nın yanında (dördün)"];
