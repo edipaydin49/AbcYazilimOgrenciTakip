@@ -48,7 +48,7 @@
   function kapat() {
     iptal.abort(); iptal = new AbortController();
     zamanlar.forEach(id => clearTimeout(id)); zamanlar.clear();
-    document.querySelectorAll(".mac-kutlama, .mac-hayalet").forEach(e => e.remove());
+    document.querySelectorAll(".mac-kutlama, .mac-hayalet, .mac-konfeti").forEach(e => e.remove());
     aktifMotor = null; aktifOyun = null;
     document.body.classList.remove("mac-genis");
   }
@@ -219,7 +219,10 @@ body.mac-genis main { max-width: 1240px; }
   .mac-oyun { grid-template-columns: minmax(0, 1.45fr) minmax(320px, 1fr); }
   .mac-oyun > .mac-panel { position: sticky; top: 72px; }
   .mac-soru-duzen { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); }
-  .mac-oyun .mac-soru-duzen, .mac-panel .mac-soru-duzen { grid-template-columns: 1fr; }
+  .mac-oyun .mac-soru-duzen, .mac-panel .mac-soru-duzen, .mac-soru-duzen.tek { grid-template-columns: 1fr; }
+  .mac-soru-duzen.tek .mac-boya { max-width: 640px; }
+  .mac-parca { width: 140px; min-height: 124px; } .mac-parca svg { width: 120px; height: 90px; }
+  .mac-hedef { min-height: 170px; }
   .mac-izgara { max-width: 560px; }
   .mac-harita { max-height: calc(100vh - 120px); width: auto; max-width: 100%; }
   .mac-menu { grid-template-columns: repeat(3, minmax(0, 1fr)); }
@@ -906,12 +909,12 @@ body.mac-genis main { max-width: 1240px; }
   /* ============================ BÖLGELER ============================ */
   const icerikUretecleri = konular => konular.filter(k => KONU[k]).flatMap(k => KONU[k].kazanimlar.map(z => z.id)).filter(id => KAZANIM[id]).map(id => z => soruUret(id, z));
   const BOLGELER = [
-    { id: "sayilar", ad: "Sayılar ve Nicelikler Ormanı", kisa: "Sayılar Ormanı", simge: "🌳", renk: "#2e9b57", konular: ["carpan", "kat", "bolunebilme", "asal", "ortakkat", "ortakbolen", "basamak", "yuvarlama", "kesirbolme", "problem", "uzunluk"] },
-    { id: "cebir", ad: "İşlemlerle Cebirsel Düşünme Kalesi", kisa: "Cebir Kalesi", simge: "🏰", renk: "#8a5cd6", ozel: CEBIR },
-    { id: "sekiller", ad: "Geometrik Şekiller Vadisi", kisa: "Şekiller Vadisi", simge: "🔺", renk: "#e07a1f", ozel: SEKIL },
-    { id: "nicelikler", ad: "Geometrik Nicelikler Dağı", kisa: "Nicelikler Dağı", simge: "⛰️", renk: "#5b7fa6", ozel: NICELIK },
-    { id: "istatistik", ad: "İstatistiksel Araştırma Limanı", kisa: "İstatistik Limanı", simge: "⚓", renk: "#2f6fdb", konular: ["arastirma", "merkezi"] },
-    { id: "olasilik", ad: "Veriden Olasılığa Adası", kisa: "Olasılık Adası", simge: "🏝️", renk: "#d64545", konular: ["olasilik"] },
+    { id: "sayilar", ad: "Sayılar ve Nicelikler Ormanı", kisa: "Sayılar Ormanı", de: "Sayılar Ormanı'nda", simge: "🌳", renk: "#2e9b57", konular: ["carpan", "kat", "bolunebilme", "asal", "ortakkat", "ortakbolen", "basamak", "yuvarlama", "kesirbolme", "problem", "uzunluk"] },
+    { id: "cebir", ad: "İşlemlerle Cebirsel Düşünme Kalesi", kisa: "Cebir Kalesi", de: "Cebir Kalesi'nde", simge: "🏰", renk: "#8a5cd6", ozel: CEBIR },
+    { id: "sekiller", ad: "Geometrik Şekiller Vadisi", kisa: "Şekiller Vadisi", de: "Şekiller Vadisi'nde", simge: "🔺", renk: "#e07a1f", ozel: SEKIL },
+    { id: "nicelikler", ad: "Geometrik Nicelikler Dağı", kisa: "Nicelikler Dağı", de: "Nicelikler Dağı'nda", simge: "⛰️", renk: "#5b7fa6", ozel: NICELIK },
+    { id: "istatistik", ad: "İstatistiksel Araştırma Limanı", kisa: "İstatistik Limanı", de: "İstatistik Limanı'nda", simge: "⚓", renk: "#2f6fdb", konular: ["arastirma", "merkezi"] },
+    { id: "olasilik", ad: "Veriden Olasılığa Adası", kisa: "Olasılık Adası", de: "Olasılık Adası'nda", simge: "🏝️", renk: "#d64545", konular: ["olasilik"] },
   ];
   const BOLGE = Object.fromEntries(BOLGELER.map(b => [b.id, b]));
   BOLGELER.forEach(b => { b.uretecler = b.ozel ? Object.values(b.ozel).map(f => z => f(z)) : icerikUretecleri(b.konular); });
@@ -1072,7 +1075,7 @@ body.mac-genis main { max-width: 1240px; }
       const yardimBtn = !m.bitti && m.yardim < 2 ? `<button class="btn kucuk" data-mac="ipucu">${m.yardim === 0 ? "💡 İpucu" : "🔍 Biraz daha yardım"}</button>` : "";
       const devamHazir = m.bitti && (m.dogru || m.adim >= adimlar.length);
       const metin = e && e.tur === "boya" ? `${e.sekil === "serit" ? "Şeridin" : "Pastanın"} ${kesirHTML(e.p, e.q)} kadarını boya. Parçalara dokunarak boya, sonra <b>Kontrol et</b>.` : Q.soru;
-      kap.innerHTML = `<div class="mac-soru mac-soru-duzen">
+      kap.innerHTML = `<div class="mac-soru mac-soru-duzen${e && e.tur === "boya" ? " tek" : ""}">
         <div class="mac-soru-sol">${o.ustHTML || ""}${m.benzer ? '<span class="etiket orta">Benzer soru</span>' : ""}<p class="soru-metin">${metin}</p>${e && e.tur === "boya" ? boyaHTML() : Q.gorsel ? `<div class="gorsel">${Q.gorsel}</div>` : ""}</div>
         <div class="mac-soru-sag">${e && e.tur === "boya" ? "" : `<div class="secenekler">${Q.secenekler.map((s, j) => { let c = "sec"; const denendi = m.yanlislar.some(y => y.j === j); if (m.bitti && j === dIdx) c += " dogru"; else if (denendi) c += " mac-denendi";
           return `<button class="${c}" data-mac-s="${j}" ${m.bitti || denendi ? "disabled" : ""}><b>${"ABCD"[j]}</b><span>${kacis(s.m)}</span></button>`; }).join("")}</div>`}
@@ -1171,7 +1174,7 @@ body.mac-genis main { max-width: 1240px; }
     BOLGELER.forEach((b, i) => {
       const [x, y] = HARITA_NOKTA[i], acik = bolgeAcik(i), yd = bolgeYildiz(b.id);
       dug += `<g class="dugum" data-bolge="${b.id}" tabindex="0" role="button" aria-label="${b.ad}${acik ? "" : " (kilitli)"}">
-        <circle class="halka" cx="${x}" cy="${y}" r="40" style="fill:${b.renk};fill-opacity:${acik ? 0.9 : 0.3};stroke:var(--sheet);stroke-width:4"/>
+        <circle cx="${x}" cy="${y}" r="40" style="fill:var(--sheet)"/><circle class="halka" cx="${x}" cy="${y}" r="40" style="fill:${b.renk};fill-opacity:${acik ? 0.9 : 0.3};stroke:var(--sheet);stroke-width:4"/>
         <text x="${x}" y="${y + 13}" text-anchor="middle" font-size="36">${acik ? b.simge : "🔒"}</text>
         <rect x="${x - 72}" y="${y + 44}" width="144" height="40" rx="10" style="fill:var(--sheet);stroke:var(--line)"/>
         <text class="g-yazi" x="${x}" y="${y + 61}" text-anchor="middle" font-size="13" font-weight="700">${b.kisa}</text>
@@ -1186,9 +1189,9 @@ body.mac-genis main { max-width: 1240px; }
       <section class="kart">${harSvg}</section>
       <div class="mac" style="align-content:start"><section class="kart vurgu"><div class="satir ara"><h1>🗺️ Macera Haritası</h1>${sayaclarHTML()}</div>
         <p>Bir bölgeye dokun. Her bölgede <b>Öğren</b>, <b>Uygula</b> ve <b>Ustalaş</b> aşamaları var; her aşamadan en çok 3 yıldız kazanırsın. Bir bölgede <b>6 yıldız</b> toplayınca sıradaki bölge açılır.</p></section>
-      <section class="mac-bolgeler">${BOLGELER.map((b, i) => { const acik = bolgeAcik(i); return `<button class="mac-bolge ${acik ? "" : "kilitli"}" style="--renk:${b.renk}" data-bolge="${b.id}" ${acik ? "" : 'aria-disabled="true"'}><span class="simge">${acik ? b.simge : "🔒"}</span><span><b>${b.ad}</b><span class="mac-yildiz">${yildizYaz(bolgeYildiz(b.id), 9)}</span><br><span class="kucuk-yazi muted">${acik ? bolgeYildiz(b.id) + "/9 yıldız" : `${BOLGELER[i - 1].kisa}'nda 6 yıldız topla`}</span></span></button>`; }).join("")}
+      <section class="mac-bolgeler">${BOLGELER.map((b, i) => { const acik = bolgeAcik(i); return `<button class="mac-bolge ${acik ? "" : "kilitli"}" style="--renk:${b.renk}" data-bolge="${b.id}" ${acik ? "" : 'aria-disabled="true"'}><span class="simge">${acik ? b.simge : "🔒"}</span><span><b>${b.ad}</b><span class="mac-yildiz">${yildizYaz(bolgeYildiz(b.id), 9)}</span><br><span class="kucuk-yazi muted">${acik ? bolgeYildiz(b.id) + "/9 yıldız" : `${BOLGELER[i - 1].de} 6 yıldız topla`}</span></span></button>`; }).join("")}
         <button class="mac-bolge" style="--renk:${KESIR_BOLGE.renk}" data-git="#/macera/kesir"><span class="simge">🍕</span><span><b>Kesirler Macerası</b><span class="mac-yildiz">${yildizYaz(bolgeYildiz("kesir"), 9)}</span><br><span class="kucuk-yazi muted">Özel görev · her zaman açık</span></span></button></section></div></div></div>`;
-    ana().querySelectorAll("[data-bolge]").forEach(el => { const ac_ = () => { const i = BOLGE_IDLER.indexOf(el.dataset.bolge); if (!bolgeAcik(i)) return toast(`Bu bölge kilitli. ${BOLGELER[i - 1].kisa}'nda 6 yıldız toplayınca açılacak.`); git("#/macera/bolge/" + el.dataset.bolge); }; el.onclick = ac_; el.onkeydown = e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); ac_(); } }; });
+    ana().querySelectorAll("[data-bolge]").forEach(el => { const ac_ = () => { const i = BOLGE_IDLER.indexOf(el.dataset.bolge); if (!bolgeAcik(i)) return toast(`Bu bölge kilitli. ${BOLGELER[i - 1].de} 6 yıldız toplayınca açılacak.`); git("#/macera/bolge/" + el.dataset.bolge); }; el.onclick = ac_; el.onkeydown = e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); ac_(); } }; });
     bagla();
   }
 
@@ -1455,7 +1458,7 @@ body.mac-genis main { max-width: 1240px; }
       <p class="kucuk-yazi muted">Doğru cevap enerjiyi doldurur; yanlış cevap enerjiyi azaltmaz, yalnızca seriyi sıfırlar.</p></aside>`;
     const secim = () => {
       ana().innerHTML = `<div class="mac">${yolIz([["Mini Oyunlar", "#/macera/oyunlar"], ["Matematik Robotu"]])}<div class="mac-oyun">
-        <section class="kart vurgu"><h1>🤖 Matematik Robotu</h1><p>10 soru çöz. Her doğru cevap ${kacis(m.robotAd)}'ın enerjisini doldurur. Enerji %100 olunca robotun seviye atlar!</p>
+        <section class="kart vurgu"><h1>🤖 Matematik Robotu</h1><p>10 soru çöz. Her doğru cevapla robotun <b>${kacis(m.robotAd)}</b> enerji kazanır. Enerji %100 olunca robotun seviye atlar ve yeni bir parça kazanır!</p>
         <h2>Zorluk seç</h2><div class="mac-zorluk">${[[1, "🌱 Kolay"], [2, "🌿 Orta"], [3, "🌳 Zor"]].map(([z, a]) => `<button class="mac-dugme" data-zorluk="${z}">${a}</button>`).join("")}</div></section>${panel()}</div></div>`;
       ana().querySelectorAll("[data-zorluk]").forEach(b => b.onclick = () => basla(+b.dataset.zorluk));
     };
@@ -1550,7 +1553,7 @@ body.mac-genis main { max-width: 1240px; }
 
   /* ---------- Geometri Atölyesi ---------- */
   const mini = (ic, w = 120, h = 90) => `<svg viewBox="0 0 ${w} ${h}" aria-hidden="true">${ic}</svg>`;
-  function izgaraParca(a, b) { const k = Math.min(100 / a, 76 / b, 16), x0 = (120 - a * k) / 2, y0 = (90 - b * k) / 2; let ic = ""; for (let i = 0; i < b; i++) for (let j = 0; j < a; j++) ic += `<rect class="g-yumusak g-cizgi" x="${f1(x0 + j * k)}" y="${f1(y0 + i * k)}" width="${f1(k)}" height="${f1(k)}" stroke-width="1"/>`; return mini(ic); }
+  function izgaraParca(a, b) { const k = Math.min(104 / a, 80 / b, 20), x0 = (120 - a * k) / 2, y0 = (90 - b * k) / 2; let ic = ""; for (let i = 0; i < b; i++) for (let j = 0; j < a; j++) ic += `<rect class="g-yumusak g-cizgi" x="${f1(x0 + j * k)}" y="${f1(y0 + i * k)}" width="${f1(k)}" height="${f1(k)}" stroke-width="1"/>`; return mini(ic); }
   function ucgenIzgara(t, h, kayma) { const k = 13, x0 = (120 - t * k) / 2, yb = 84; let ic = ""; for (let i = 0; i <= 6; i++) ic += `<line class="g-ince" x1="${f1(x0 - k)}" y1="${yb - i * k}" x2="${f1(x0 + (t + 1) * k)}" y2="${yb - i * k}"/>`; for (let j = -1; j <= t + 1; j++) ic += `<line class="g-ince" x1="${f1(x0 + j * k)}" y1="${yb - 6 * k}" x2="${f1(x0 + j * k)}" y2="${yb}"/>`; ic += `<polygon class="g-b g-cizgi" points="${f1(x0)},${yb} ${f1(x0 + t * k)},${yb} ${f1(x0 + kayma * k)},${yb - h * k}" stroke-width="2" fill-opacity=".85"/>`; return mini(ic); }
   const ucgenMini = (P) => mini(`<polygon class="g-yumusak g-cizgi" points="${P}" stroke-width="3"/>`);
   const aciMini = m => { const x = 30, y = 74, L = 70; return mini(`<line class="g-cizgi" x1="${x}" y1="${y}" x2="${x + L}" y2="${y}" stroke-width="4"/><line class="g-cizgi" x1="${x}" y1="${y}" x2="${f1(x + 60 * Math.cos(rad(m)))}" y2="${f1(y - 60 * Math.sin(rad(m)))}" stroke-width="4"/>` + (m === 90 ? `<path class="g-cizgi" d="M${x + 14} ${y} v-14 h-14" fill="none" stroke-width="2"/>` : `<path class="g-ok-a" d="M${x + 20} ${y} A20 20 0 0 0 ${f1(x + 20 * Math.cos(rad(m)))} ${f1(y - 20 * Math.sin(rad(m)))}" fill="none" stroke-width="3"/>`)); };
@@ -1595,7 +1598,7 @@ body.mac-genis main { max-width: 1240px; }
           <div class="mac-tepsi" aria-label="Şekil tepsisi">${bekleyen.map(parcaHTML).join("") || '<span class="muted">Tepsi boş</span>'}</div></section>
         <aside class="kart mac-panel"><div class="satir ara"><h2>📐 Görev ${O.i + 1}/${ATOLYE.length}</h2><span class="mac-sayaclar"><span>🪙 ${O.puan}</span></span></div>
           <div class="ilerleme">${ATOLYE.map((_, j) => `<i class="${j < O.i ? "d" : j === O.i && tamamMi() ? "d" : ""}"></i>`).join("")}</div>
-          <p class="soru-metin">${g.b}</p>${O.mesaj ? `<div class="mac-mesaj ${O.mesaj.iyi ? "iyi" : "nazik"}">${kacis(O.mesaj.m)}</div>` : `<div class="mac-mesaj bilgi"><b>💡</b> ${kacis(g.ip)}</div>`}
+          <p class="soru-metin">${g.b}</p>${O.mesaj ? `<div class="mac-mesaj ${O.mesaj.iyi ? "iyi" : "nazik"}">${kacis(O.mesaj.m)}</div>` : `<div class="mac-mesaj bilgi"><span><b>💡 İpucu:</b> ${kacis(g.ip)}</span></div>`}
           ${tamamMi() ? `<button class="btn ana" data-mac="sonraki">${O.i === ATOLYE.length - 1 ? "Atölyeyi bitir ▸" : "Sonraki görev ▸"}</button>` : ""}</aside></div></div>`;
       const sonraki = ana().querySelector('[data-mac="sonraki"]'); if (sonraki) sonraki.onclick = O.sonraki;
       ana().querySelectorAll(".mac-hedef").forEach(h => { const t = () => { if (O.secili) O.yerlestir(O.secili, h.dataset.hedef); }; h.onclick = t; h.onkeydown = e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); t(); } }; });
@@ -1708,5 +1711,5 @@ body.mac-genis main { max-width: 1240px; }
 
   window.MACERA = { ac, kapat, durum, testOyna, testKesir };
   /* Geliştirici/test erişimi (numaralandırılmaz) */
-  Object.defineProperty(window.MACERA, "_ic", { value: { CEBIR, SEKIL, NICELIK, KESIR, BOLGELER, KESIR_BOLGE, HAZINE_HARITALAR, ATOLYE, OGREN, gecerli, guvenli, asamaPlani, otomatikCevapla }, enumerable: false });
+  Object.defineProperty(window.MACERA, "_ic", { value: { CEBIR, SEKIL, NICELIK, KESIR, BOLGELER, KESIR_BOLGE, HAZINE_HARITALAR, ATOLYE, OGREN, gecerli, guvenli, asamaPlani, otomatikCevapla, motor: () => aktifMotor, oyun: () => aktifOyun }, enumerable: false });
 })();

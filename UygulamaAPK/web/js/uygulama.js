@@ -468,7 +468,7 @@
 
   /* ============================ TEST MOTORU ============================ */
   const TEST_AD = { alistirma: "Alıştırma", konuSonu: "Konu sonu testi", kendi: "Kendi tekrarım", hazir: "Hazır mıyız?", izleme: "İzleme testi", tema: "Tema / ünite değerlendirme", deneme: "Genel deneme sınavı", hata: "Hata defteri tekrarı",
-    yazili: "Yazılı provası", yaziliTekrar: "Yazılı konu tekrarı", yaziliEksik: "Yazılı: eksik kapatma", oyun: "Türkçe Diyarı oyunu", mini: "Mini deneme", karma: "Karma deneme", tgs: "TGS denemesi", ozel: "Kendi sınavım", tgsPdf: "Ortak yazılı / TGS hazırlık denemesi", akilliTekrar: "Akıllı tekrar", bursluluk: "Bursluluk (İOKBS tarzı) denemesi", yaziliSet: "Yazılı hazırlık seti", bilsem: "BİLSEM tarzı (özgün) çalışma",
+    yazili: "Yazılı provası", yaziliTekrar: "Yazılı konu tekrarı", yaziliEksik: "Yazılı: eksik kapatma", oyun: "Türkçe Diyarı oyunu", mini: "Mini deneme", karma: "Karma deneme", tgs: "TGS denemesi", ozel: "Kendi sınavım", tgsPdf: "Ortak yazılı / TGS hazırlık denemesi", akilliTekrar: "Akıllı tekrar", bursluluk: "Bursluluk (İOKBS tarzı) denemesi", yaziliSet: "Yazılı hazırlık seti", bilsem: "BİLSEM tarzı (özgün) çalışma", macera: "Matematik Macera Akademisi",
     tekrar1: "1. gün tekrar testi", tekrar3: "3. gün tekrar testi", tekrar7: "7. gün tekrar testi", tekrar30: "30. gün kalıcılık testi" };
   const KENDI_HATA = [["bilgi", "Konuyu bilmiyordum"], ["kavrama", "Soruyu yanlış anladım"], ["islem", "İşlem hatası yaptım"], ["dikkat", "Dikkatsizlik yaptım"], ["strateji", "Acele ettim / yol bulamadım"]];
 
