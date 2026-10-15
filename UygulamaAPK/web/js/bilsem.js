@@ -2060,5 +2060,134 @@
   ];
   B.push({ id: "uzamsal", ad: "Uzamsal düşünme", simge: "🧊", aciklama: "Küp açınımları, katlama-delme, ayna görüntüsü, döndürme ve küp sayma.", sorular: uzamsalSorular });
 
+  /* =====================================================================
+   * 5) SÖZEL ANALOJİ VE KAVRAM İLİŞKİLERİ
+   * ===================================================================== */
+  const K5 = "bilsem.sozel";
+  /* Analoji kurucu: [a, b, c, doğru, [[yanlış, hata, neden]×3], ilişki, ipucu, düzey, zorluk] */
+  const analoji = (a, b, c, d, yanlis, iliski, ipucu, duzey = "aciklama", zorluk = 1) => Q(K5, duzey, zorluk,
+    `<b>${a} : ${b}</b> ilişkisine benzer şekilde <b>${c} : ?</b> ilişkisinde soru işareti yerine hangisi gelmelidir?`, d, yanlis, ipucu,
+    [
+      "🔎 Soruyu anlayalım: İlk sözcük çifti arasındaki ilişkiyi bulup aynısını ikinci çifte uygulayacağız.",
+      "💡 Hatırlayalım: Analoji sorularında ilişkiyi tek bir cümleyle söylemek işe yarar: “… … -dır/dir.”",
+      `✏️ İlk çift: ${iliski.replace(/X/g, a).replace(/Y/g, b)}`,
+      `✏️ Aynı cümleyi ikinci çifte uygulayalım: ${iliski.replace(/X/g, c).replace(/Y/g, d)}`,
+      `✅ Sonuç: ${d}.`,
+      "🔁 Kontrol edelim: Kurduğun cümleyi öteki seçeneklerle de dene; yalnızca doğru seçenekte cümle anlamlı ve doğru olur.",
+    ],
+    { kural: "Analojide önce ilişkiyi bir cümleyle söyle, sonra aynı cümleyi ikinci çifte uygula.", dogruNeden: iliski.replace(/X/g, c).replace(/Y/g, d) });
+  /* Gruba uymayan */
+  const uymayan = (liste, d, ortak, farkli, yanNeden, zorluk = 1) => Q(K5, "aciklama", zorluk,
+    `<b>${liste.join(", ")}</b> sözcüklerinden hangisi anlamca ötekilerle aynı gruba girmez?`, d,
+    liste.filter(x => x !== d).map(x => [x, "kavrama", yanNeden]), "Önce sözcüklerin çoğunun ortak özelliğini bul.",
+    [
+      "🔎 Soruyu anlayalım: Dört sözcükten üçü bir grupta toplanıyor; dışarıda kalanı arıyoruz.",
+      "💡 Hatırlayalım: Sınıflandırma yaparken sözcüklerin ne olduğuna, ne işe yaradığına ya da nerede bulunduğuna bakarız.",
+      `✏️ Ortak özellik: ${ortak}`,
+      `✏️ ${d} ise bu gruba girmez: ${farkli}`,
+      `✅ Sonuç: ${d}.`,
+      "🔁 Kontrol edelim: Bulduğun ortak özelliği öteki üç sözcüğün her birinde tek tek dene; hepsine uymalı.",
+    ],
+    { kural: "Gruba uymayanı bulmak için önce grubun ortak özelliğini söyle.", dogruNeden: farkli });
+  /* Venn şemaları */
+  const VENN = {
+    icDis: { ad: "biri ötekinin içinde, üçüncüsü ikisinden de ayrı", c: (cx, cy, s) => [[cx - s * 0.14, cy, s * 0.26], [cx - s * 0.14, cy + s * 0.06, s * 0.1], [cx + s * 0.28, cy, s * 0.13]] },
+    ucKesisen: { ad: "üçü de birbiriyle kesişen", c: (cx, cy, s) => [[cx - s * 0.12, cy - s * 0.08, s * 0.2], [cx + s * 0.12, cy - s * 0.08, s * 0.2], [cx, cy + s * 0.13, s * 0.2]] },
+    kesisimdeKucuk: { ad: "iki kesişen kümenin ortak bölgesinde küçük bir küme", c: (cx, cy, s) => [[cx - s * 0.13, cy, s * 0.24], [cx + s * 0.13, cy, s * 0.24], [cx, cy, s * 0.07]] },
+    icIce: { ad: "üçü iç içe", c: (cx, cy, s) => [[cx, cy, s * 0.38], [cx, cy + s * 0.08, s * 0.25], [cx, cy + s * 0.15, s * 0.12]] },
+    ikiIcerde: { ad: "büyük bir kümenin içinde birbirinden ayrı iki küçük küme", c: (cx, cy, s) => [[cx, cy, s * 0.38], [cx - s * 0.16, cy, s * 0.13], [cx + s * 0.16, cy, s * 0.13]] },
+    ucAyri: { ad: "üçü de birbirinden ayrı", c: (cx, cy, s) => [[cx - s * 0.27, cy, s * 0.12], [cx, cy, s * 0.12], [cx + s * 0.27, cy, s * 0.12]] },
+    birindeKucuk: { ad: "iki kesişen kümeden birinin yalnızca kendine ait bölgesinde küçük bir küme", c: (cx, cy, s) => [[cx - s * 0.12, cy, s * 0.25], [cx + s * 0.14, cy, s * 0.23], [cx - s * 0.25, cy, s * 0.07]] },
+  };
+  const vennCiz = t => (cx, cy, s) => VENN[t].c(cx, cy, s).map(([x, y, r]) => `<circle class="g-cizgi" fill="none" stroke-width="2" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${r.toFixed(1)}"/>`).join("");
+  const venn = (kavramlar, dg, aciklama) => z => {
+    const digerleri = karistir(Object.keys(VENN).filter(t => t !== dg)).slice(0, 3);
+    const hs = harfle([{ c: vennCiz(dg) }].concat(digerleri.map(t => ({ c: vennCiz(t), hata: "kavrama", neden: `Bu şema “${VENN[t].ad}” durumunu gösteriyor; kavramlar arasındaki ilişki böyle değil.` }))));
+    return SG({
+      kaz: K5, duzey: "baglanti", zorluk: 2,
+      soru: `<b>${kavramlar.join(" – ")}</b> kavramları arasındaki ilişkiyi en iyi gösteren şema hangisidir?`,
+      gorsel: seriSvg([], hs.liste, { s: 100, etiket: "küme şemaları" }),
+      dogru: hs.harf, yanlis: hs.yanlis,
+      ipucu: "Her kavram çiftini ayrı ayrı düşün: biri ötekinin içinde mi, ortak öğeleri var mı, yoksa hiç ilgisizler mi?",
+      cozum: [
+        "🔎 Soruyu anlayalım: Üç kavramı kümeler gibi düşünüp aralarındaki ilişkiyi gösteren şemayı arıyoruz.",
+        "💡 Hatırlayalım: Bir kavramın bütün öğeleri ötekine de aitse küçük daire büyük dairenin içine çizilir. Ortak öğeleri varsa daireler kesişir. Hiç ortak öğe yoksa daireler ayrı durur.",
+        `✏️ ${aciklama[0]}`,
+        `✏️ ${aciklama[1]}`,
+        `✅ Sonuç: Doğru şema “${VENN[dg].ad}” durumunu gösteren ${hs.harf} seçeneği.`,
+        "🔁 Kontrol edelim: Her daireye bir örnek yerleştir; örneğin bütün örneklerin şemada doğru bölgeye düştüğünü kontrol et.",
+      ],
+      kural: "İçinde olma → iç içe daire, ortak öğe → kesişen daire, ilgisiz → ayrı daire.",
+      dogruNeden: `${hs.harf} şeması ${VENN[dg].ad} kümeleri gösterir; bu da kavramlar arasındaki ilişkiye uyar.`,
+    });
+  };
+  const ALFABE = "ABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZ", ING = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  const kaydirSoz = (w, k, alf = ALFABE) => [...w].map(h => { const i = alf.indexOf(h); return i < 0 ? h : alf[mod(i + k, alf.length)]; }).join("");
+
+  const sozelSorular = [
+    analoji("kuş", "yuva", "arı", "kovan", [["bal", "kavrama", "Bal arının yaptığı üründür, yaşadığı yer değildir."], ["çiçek", "kavrama", "Arı çiçekten besin toplar ama çiçekte yaşamaz."], ["kanat", "kavrama", "Kanat arının bir parçasıdır, yaşadığı yer değildir."]], "X, Y içinde barınır.", "Kuş yuvada ne yapar?"),
+    analoji("yazar", "roman", "besteci", "şarkı", [["piyano", "kavrama", "Piyano bestecinin kullandığı bir araçtır; yazar–roman ilişkisi ise üreten–ürün ilişkisidir."], ["şarkıcı", "kavrama", "Şarkıcı da bir kişidir; ilişki kişi ile ürettiği eser arasında kurulmalı."], ["konser", "kavrama", "Konser eserin seslendirildiği etkinliktir, bestecinin ürettiği eser değildir."]], "X, Y adlı eseri üretir.", "Yazar romanla ne yapar?"),
+    analoji("cetvel", "uzunluk", "terazi", "kütle", [["sıcaklık", "bilgi", "Sıcaklık termometreyle ölçülür."], ["zaman", "bilgi", "Zaman saatle ölçülür."], ["manav", "kavrama", "Manav terazi kullanan kişidir; ilişki ölçme aracı ile ölçtüğü büyüklük arasında."]], "X ile Y ölçülür.", "Cetvel ne işe yarar?", "baglanti", 2),
+    analoji("inek", "buzağı", "keçi", "oğlak", [["kuzu", "bilgi", "Kuzu koyunun yavrusudur."], ["tay", "bilgi", "Tay atın yavrusudur."], ["teke", "kavrama", "Teke erkek keçidir, yavrusu değildir."]], "Y, X yavrusudur.", "Buzağı ineğin nesidir?", "hatirlama", 2),
+    analoji("makas", "kesmek", "kalem", "yazmak", [["silmek", "kavrama", "Silmek silginin işidir; kalemle yazarız."], ["defter", "kavrama", "Defter bir eşyadır; ilişki araç ile yapılan iş arasında."], ["kâğıt", "kavrama", "Kâğıt kalemin üzerine yazdığı malzemedir, yapılan iş değildir."]], "X, Y için kullanılır.", "Makas ne işe yarar?"),
+    analoji("erime", "donma", "buharlaşma", "yoğuşma", [["kaynama", "kavrama", "Kaynama da sıvıdan gaza geçiştir; buharlaşmanın tersi değildir."], ["süblimleşme", "bilgi", "Süblimleşme katıdan doğrudan gaza geçiştir; buharlaşmanın tersi değildir."], ["erime", "dikkat", "Erime, donmanın tersidir; burada buharlaşmanın tersi soruluyor."]], "X ile Y birbirinin tersi olan hâl değişimleridir.", "Erime ve donmada madde hangi hâller arasında geçiş yapıyor?", "baglanti", 3),
+    analoji("sayfa", "kitap", "tuğla", "duvar", [["çimento", "kavrama", "Çimento duvarda kullanılan bir malzemedir ama sayfa–kitap gibi bütünü oluşturan birim değildir."], ["usta", "kavrama", "Usta duvarı yapan kişidir; ilişki parça–bütün ilişkisidir."], ["kil", "kavrama", "Kil tuğlanın yapıldığı malzemedir; tuğlanın oluşturduğu bütün değil."]], "Pek çok X bir araya gelince bir Y oluşur.", "Kitabı oluşturan nedir?", "aciklama", 2),
+    analoji("cimri", "cömert", "korkak", "cesur", [["ürkek", "kavrama", "Ürkek, korkakla yakın anlamlıdır; ilk çiftte zıt anlam var."], ["yiğitlik", "dikkat", "Yiğitlik bir ad; ilk çiftte iki sıfat var. Anlam yakın olsa da sözcük türü uymuyor."], ["kaçak", "kavrama", "Kaçak, korkağın zıddı değildir."]], "X ile Y zıt anlamlıdır.", "Cimri ile cömert arasındaki anlam ilişkisi nedir?", "aciklama", 2),
+    analoji("fırça", "ressam", "makas", "terzi", [["kumaş", "kavrama", "Kumaş terzinin işlediği malzemedir; fırça–ressam ilişkisi araç–kullanan ilişkisidir."], ["boya", "kavrama", "Boya ressamın malzemesidir; ikinci çiftte makası kullanan meslek sahibi aranıyor."], ["kesmek", "kavrama", "Kesmek makasla yapılan iştir; ilişki aracı kullanan kişiyle kurulmalı."]], "Y işinde en çok X kullanır.", "Fırçayı kim kullanır?"),
+    analoji("tohum", "fide", "yumurta", "tırtıl", [["kelebek", "dikkat", "Kelebek son evredir; tohum–fide ise birbirini izleyen ilk iki evredir."], ["koza", "dikkat", "Koza tırtıldan sonra gelen evredir; bir adım atlamışsın."], ["kuş", "bilgi", "Bu yumurta bir kelebeğe aittir; kuş başka bir canlı."]], "X evresinden hemen sonra Y evresi gelir.", "Tohumdan hemen sonra ne gelir?", "baglanti", 3),
+    uymayan(["elma", "armut", "havuç", "kiraz"], "havuç", "Elma, armut ve kiraz ağaçta yetişen meyvelerdir.", "Havuç bir sebzedir ve toprak altında yetişir.", "Bu sözcük meyve grubundadır; sebze olan başka bir sözcük var."),
+    uymayan(["Ankara", "İzmir", "Ege", "Bursa"], "Ege", "Ankara, İzmir ve Bursa birer ildir (şehirdir).", "Ege bir bölge (ve deniz) adıdır, il değildir.", "Bu bir il adıdır; il olmayan başka bir sözcük var.", 2),
+    uymayan(["termometre", "cetvel", "kronometre", "çekiç"], "çekiç", "Termometre, cetvel ve kronometre ölçme araçlarıdır.", "Çekiç bir ölçme aracı değildir; çivi çakmaya yarar.", "Bu bir ölçme aracıdır; ölçme yapmayan başka bir araç var.", 2),
+    uymayan(["sevinç", "öfke", "korku", "masa"], "masa", "Sevinç, öfke ve korku birer duygudur; elle tutulamaz.", "Masa somut bir varlıktır, duygu değildir.", "Bu bir duygudur; duygu olmayan başka bir sözcük var."),
+    Q(K5, "baglanti", 2, "Aşağıdaki sözcük çiftlerinden hangisinde, ötekilerden farklı bir anlam ilişkisi vardır?", "hızlı – çabuk",
+      [["sıcak – soğuk", "kavrama", "Bu çiftteki sözcükler zıt anlamlıdır; tıpkı öteki iki çift gibi."], ["uzun – kısa", "kavrama", "Bu çiftteki sözcükler zıt anlamlıdır; tıpkı öteki iki çift gibi."], ["ağır – hafif", "kavrama", "Bu çiftteki sözcükler zıt anlamlıdır; tıpkı öteki iki çift gibi."]],
+      "Her çiftin sözcükleri aynı anlama mı, karşıt anlama mı geliyor?",
+      ["🔎 Soruyu anlayalım: Dört sözcük çiftinden üçü aynı ilişkiye sahip; farklı olanı arıyoruz.",
+        "💡 Hatırlayalım: Eş anlamlı sözcükler aynı anlamı, zıt anlamlı sözcükler karşıt anlamları taşır.",
+        "✏️ Sıcak–soğuk, uzun–kısa, ağır–hafif: Hepsi zıt anlamlı.",
+        "✏️ Hızlı–çabuk: İkisi de aynı anlamı taşıyor; eş anlamlı.",
+        "✅ Sonuç: hızlı – çabuk.",
+        "🔁 Kontrol edelim: Bir cümlede hızlı yerine çabuk yazınca anlam bozulmaz; sıcak yerine soğuk yazınca anlam tersine döner."],
+      { kural: "Eş anlam: aynı anlam; zıt anlam: karşıt anlam.", dogruNeden: "Hızlı ve çabuk eş anlamlıdır; öteki çiftler zıt anlamlıdır." }),
+    Q(K5, "aciklama", 2, "<b>mahalle – ilçe – il – ?</b> sıralamasında soru işareti yerine hangisi gelmelidir?", "ülke",
+      [["köy", "kavrama", "Köy, ilden küçük bir yerleşim birimidir; sıralama küçükten büyüğe gidiyor."], ["sokak", "kavrama", "Sokak mahalleden de küçüktür; sıralama büyüyerek ilerliyor."], ["kasaba", "kavrama", "Kasaba ilden küçük bir yerleşim birimidir."]],
+      "Her birim bir öncekini içine alıyor mu?",
+      ["🔎 Soruyu anlayalım: Dört birimlik bir sıralamanın son öğesini bulacağız.",
+        "💡 Hatırlayalım: Yönetim birimleri iç içedir: mahalleler ilçeyi, ilçeler ili, iller ülkeyi oluşturur.",
+        "✏️ Mahalle ilçenin içinde, ilçe ilin içinde. Her öğe bir öncekini kapsıyor.",
+        "✏️ İli içine alan daha büyük birim ülkedir.",
+        "✅ Sonuç: ülke.",
+        "🔁 Kontrol edelim: Sıralamayı tersten oku: ülke ⊃ il ⊃ ilçe ⊃ mahalle. Düzgün bir iç içelik var."],
+      { kural: "Kapsama sıralamalarında her öğe bir öncekini içine alır.", dogruNeden: "İlleri içine alan birim ülkedir; sıralama küçükten büyüğe gidiyor." }),
+    /* Şifre: harf kaydırma */
+    z => {
+      const k = sec([1, 2]), w = sec(["KALEM", "OKUL", "BULUT", "KİTAP", "SABUN", "DENİZ", "GÜNEŞ", "ÇİÇEK", "ORMAN", "ŞEHİR"]), ornek = sec(["ELMA", "ARI", "TOP"].filter(x => x !== w));
+      const dg = kaydirSoz(w, k);
+      return S({
+        kaz: K5, duzey: "transfer", zorluk: 3,
+        soru: `Bir şifrede her harf, Türk alfabesinde kendisinden <b>${k}</b> sonraki harfle yazılıyor. Örneğin <b>${ornek}</b> sözcüğü <b>${kaydirSoz(ornek, k)}</b> olarak yazılıyor. Buna göre <b>${w}</b> sözcüğü nasıl yazılır?<br><span class="kucuk-yazi">Türk alfabesi: ${ALFABE.split("").join(" ")}</span>`,
+        dogru: dg,
+        yanlis: [[kaydirSoz(w, k, ING), "bilgi", "Türk alfabesindeki Ç, Ğ, I, İ, Ö, Ş, Ü harflerini atlamışsın; bu şifre Türk alfabesini kullanıyor."], [kaydirSoz(w, -k), "kavrama", "Harfleri geriye doğru kaydırmışsın; şifre sonraki harfleri kullanıyor."], [kaydirSoz(w, k + 1), "islem", `Harfleri ${k + 1} kaydırmışsın; örnekte kaydırma ${k}.`], [kaydirSoz(w, k).split("").reverse().join(""), "dikkat", "Harfleri doğru kaydırdın ama sırayı ters yazdın."]],
+        ipucu: "Alfabeyi önüne yaz ve her harf için sağa doğru say.",
+        cozum: [
+          `🔎 Soruyu anlayalım: Her harf alfabede ${k} adım ileri kaydırılıyor; ${w} sözcüğünü şifreleyeceğiz.`,
+          "💡 Hatırlayalım: Türk alfabesinde 29 harf vardır; C'den sonra Ç, G'den sonra Ğ, I'dan sonra İ, O'dan sonra Ö, S'den sonra Ş, U'dan sonra Ü gelir.",
+          `✏️ Örneği kontrol edelim: ${[...ornek].map(h => h + "→" + kaydirSoz(h, k)).join(", ")}.`,
+          `✏️ ${w}: ${[...w].map(h => h + "→" + kaydirSoz(h, k)).join(", ")}.`,
+          `✅ Sonuç: ${dg}.`,
+          `🔁 Kontrol edelim: Şifreyi çözmek için her harfi ${k} geri kaydır; ${dg} yeniden ${w} olmalı.`,
+        ],
+        kural: "Şifre sorularında önce örnekle kuralı doğrula, sonra harf harf uygula.",
+        dogruNeden: `Her harf Türk alfabesinde ${k} ileri kaydırılınca ${w} → ${dg} olur.`,
+      });
+    },
+    venn(["meyve", "elma", "havuç"], "icDis", ["Bütün elmalar meyvedir: elma dairesi meyve dairesinin içinde.", "Havuç bir sebzedir; ne meyveyle ne elmayla ortak öğesi var: ayrı bir daire."]),
+    venn(["memeli", "balina", "deniz canlısı"], "kesisimdeKucuk", ["Bazı memeliler denizde yaşar (yunus, fok), bazıları karada; bazı deniz canlıları memeli değildir (balıklar). Memeli ve deniz canlısı daireleri kesişir.", "Balina hem memelidir hem denizde yaşar: balina dairesi iki dairenin ortak bölgesinde."]),
+    venn(["hayvan", "kedi", "köpek"], "ikiIcerde", ["Kediler de köpekler de hayvandır: ikisi de hayvan dairesinin içinde.", "Hiçbir kedi köpek değildir: kedi ve köpek daireleri birbirinden ayrı."]),
+    venn(["kuş", "penguen", "uçabilen canlı"], "birindeKucuk", ["Kuşların çoğu uçar ama uçamayan kuşlar da vardır; uçabilen kuş olmayan canlılar da vardır (yarasa, arı). Kuş ve uçabilen canlı daireleri kesişir.", "Penguen bir kuştur ama uçamaz: penguen dairesi kuş dairesinin içinde, ortak bölgenin dışında."]),
+    venn(["canlı", "bitki", "gül"], "icIce", ["Gül bir bitkidir: gül dairesi bitki dairesinin içinde.", "Bütün bitkiler canlıdır: bitki dairesi de canlı dairesinin içinde. Üç daire iç içe."]),
+  ];
+  B.push({ id: "sozel", ad: "Sözel analoji ve kavramlar", simge: "🔤", aciklama: "Sözcükler arasındaki ilişkiyi bul: analoji, sınıflama, kavram şemaları ve şifreler.", sorular: sozelSorular });
+
   /* @@DEVAM@@ */
 })();
