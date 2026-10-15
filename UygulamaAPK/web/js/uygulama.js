@@ -977,7 +977,7 @@
         <p class="kucuk-yazi muted">Not: BİLSEM tanılaması 1–3. sınıflarda yapılır ve MEB soruları yayımlamaz; 6. sınıf için “çıkmış BİLSEM sorusu” yoktur. Buradaki sorular BİLSEM tarzında, bu uygulama için hazırlanmış özgün sorulardır.</p></section>
       <section class="izgara">${BILSEM.map(b => { const c = s.filter(x => x.kaz === "bilsem." + b.id), d = c.filter(x => x.ilkDogru).length;
         return `<div class="kart"><h2>${b.simge || "🧩"} ${kacis(b.ad)}</h2><p class="kucuk-yazi">${kacis(b.aciklama || "")}</p><p class="kucuk-yazi muted">${b.sorular.length} soru türü${c.length ? ` · ${c.length} çözüldü · ilk denemede doğru ${yuzde(d / c.length)}` : ""}</p>
-          <div><button class="btn ana kucuk" data-test="bilsem" data-tema="${b.id}">Çalış (10 soru)</button></div></div>`; }).join("")}</section>`;
+          <div><button class="btn ana kucuk" data-test="bilsem" data-ders="bilsem" data-tema="${b.id}">Çalış (10 soru)</button></div></div>`; }).join("")}</section>`;
     baglaOrtak();
   }
   function denemeMerkezi() {

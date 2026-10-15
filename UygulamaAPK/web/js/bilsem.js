@@ -2084,7 +2084,7 @@
       "🔎 Soruyu anlayalım: Dört sözcükten üçü bir grupta toplanıyor; dışarıda kalanı arıyoruz.",
       "💡 Hatırlayalım: Sınıflandırma yaparken sözcüklerin ne olduğuna, ne işe yaradığına ya da nerede bulunduğuna bakarız.",
       `✏️ Ortak özellik: ${ortak}`,
-      `✏️ ${d} ise bu gruba girmez: ${farkli}`,
+      `✏️ ${buyukHarf(d)} ise bu gruba girmez: ${farkli}`,
       `✅ Sonuç: ${d}.`,
       "🔁 Kontrol edelim: Bulduğun ortak özelliği öteki üç sözcüğün her birinde tek tek dene; hepsine uymalı.",
     ],
@@ -2165,7 +2165,7 @@
       const dg = kaydirSoz(w, k);
       return S({
         kaz: K5, duzey: "transfer", zorluk: 3,
-        soru: `Bir şifrede her harf, Türk alfabesinde kendisinden <b>${k}</b> sonraki harfle yazılıyor. Örneğin <b>${ornek}</b> sözcüğü <b>${kaydirSoz(ornek, k)}</b> olarak yazılıyor. Buna göre <b>${w}</b> sözcüğü nasıl yazılır?<br><span class="kucuk-yazi">Türk alfabesi: ${ALFABE.split("").join(" ")}</span>`,
+        soru: `Bir şifrede her harf, Türk alfabesinde kendisinden <b>${k}</b> sonraki harfle yazılıyor. Örneğin <b>${ornek}</b> sözcüğü <b>${kaydirSoz(ornek, k)}</b> olarak yazılıyor. Buna göre <b>${w}</b> sözcüğü nasıl yazılır?<br><small>Türk alfabesi: ${ALFABE.split("").join(" ")}</small>`,
         dogru: dg,
         yanlis: [[kaydirSoz(w, k, ING), "bilgi", "Türk alfabesindeki Ç, Ğ, I, İ, Ö, Ş, Ü harflerini atlamışsın; bu şifre Türk alfabesini kullanıyor."], [kaydirSoz(w, -k), "kavrama", "Harfleri geriye doğru kaydırmışsın; şifre sonraki harfleri kullanıyor."], [kaydirSoz(w, k + 1), "islem", `Harfleri ${k + 1} kaydırmışsın; örnekte kaydırma ${k}.`], [kaydirSoz(w, k).split("").reverse().join(""), "dikkat", "Harfleri doğru kaydırdın ama sırayı ters yazdın."]],
         ipucu: "Alfabeyi önüne yaz ve her harf için sağa doğru say.",
@@ -2189,5 +2189,730 @@
   ];
   B.push({ id: "sozel", ad: "Sözel analoji ve kavramlar", simge: "🔤", aciklama: "Sözcükler arasındaki ilişkiyi bul: analoji, sınıflama, kavram şemaları ve şifreler.", sorular: sozelSorular });
 
-  /* @@DEVAM@@ */
+  /* =====================================================================
+   * 6) MANTIK VE AKIL YÜRÜTME
+   * ===================================================================== */
+  const K6 = "bilsem.mantik";
+  const ISIM = [["Ada", "Ada'nın", "Ada'dan"], ["Berk", "Berk'in", "Berk'ten"], ["Can", "Can'ın", "Can'dan"], ["Duru", "Duru'nun", "Duru'dan"], ["Ece", "Ece'nin", "Ece'den"], ["Fırat", "Fırat'ın", "Fırat'tan"], ["Gizem", "Gizem'in", "Gizem'den"], ["Kaan", "Kaan'ın", "Kaan'dan"]];
+  const perm = a => a.length <= 1 ? [a] : a.flatMap((x, i) => perm(a.slice(0, i).concat(a.slice(i + 1))).map(p => [x].concat(p)));
+  const sandalyeSvg = (n, adlar) => { let ic = ""; for (let i = 0; i < n; i++) { const x = 20 + i * 90; ic += `<rect class="g-yumusak g-cizgi" stroke-width="2" x="${x}" y="20" width="60" height="44" rx="6"/><line class="g-cizgi" stroke-width="3" x1="${x + 8}" y1="64" x2="${x + 8}" y2="90"/><line class="g-cizgi" stroke-width="3" x1="${x + 52}" y1="64" x2="${x + 52}" y2="90"/>` + buyukYazi(adlar ? adlar[i] : i + 1, x + 30, 42, adlar ? 14 : 20); } return svg(20 + n * 90, 100, ic, "sıra hâlinde sandalyeler"); };
+  function teraziEgik(sol, sag, solAgir) {
+    const t = solAgir ? -12 : 12, cx = 120, r = t * Math.PI / 180;
+    const lx = cx - 90 * Math.cos(r), ly = 40 - 90 * Math.sin(r), rx = cx + 90 * Math.cos(r), ry = 40 + 90 * Math.sin(r);
+    return `<path class="g-ince g-yumusak" d="M${cx} 40 L${cx - 14} 130 L${cx + 14} 130 Z"/><g transform="rotate(${t} ${cx} 40)"><line class="g-cizgi" stroke-width="4" stroke-linecap="round" x1="${cx - 90}" y1="40" x2="${cx + 90}" y2="40"/><rect class="g-b g-cizgi" stroke-width="1.5" x="${cx - 120}" y="12" width="60" height="28" rx="5"/><rect class="g-c g-cizgi" stroke-width="1.5" x="${cx + 60}" y="12" width="60" height="28" rx="5"/></g>` +
+      `<text class="g-yazi" x="${lx.toFixed(1)}" y="${(ly - 9).toFixed(1)}" text-anchor="middle" font-weight="700">${sol}</text><text class="g-yazi" x="${rx.toFixed(1)}" y="${(ry - 9).toFixed(1)}" text-anchor="middle" font-weight="700">${sag}</text>`;
+  }
+
+
+  const mantikSorular = [
+    /* 1. Boy sıralaması */
+    z => {
+      const kisi = karistir(ISIM).slice(0, 5), sira = karistir([0, 1, 2, 3, 4]); /* sira[0] en uzun */
+      const bilgi = karistir([0, 1, 2, 3].map(i => R(0, 1) ? `${kisi[sira[i]][0]}, ${kisi[sira[i + 1]][2]} uzundur.` : `${kisi[sira[i + 1]][0]}, ${kisi[sira[i]][2]} kısadır.`));
+      const k = R(1, 3), SAD = ["en uzun", "ikinci", "üçüncü", "dördüncü", "en kısa"], dg = kisi[sira[k]][0];
+      return S({
+        kaz: K6, duzey: "uygulama", zorluk: 2,
+        soru: `Beş arkadaşın boyları hakkında şunlar biliniyor:<br>• ${bilgi.join("<br>• ")}<br>Boyca uzundan kısaya sıralandıklarında <b>${SAD[k]} sırada</b> kim vardır?`,
+        dogru: dg,
+        yanlis: [[kisi[sira[k - 1]][0], "islem", "Bu kişi bir sıra önde; sıralamayı uzundan kısaya yeniden yaz."], [kisi[sira[k + 1]][0], "islem", "Bu kişi bir sıra geride; sıralamayı yeniden yaz."], [kisi[sira[4 - k === k ? 0 : 4 - k]][0], "dikkat", "Sıralamayı kısadan uzuna yapmışsın; soru uzundan kısaya soruyor."], [kisi[sira[0]][0], "dikkat", "Bu kişi en uzun olan."]],
+        ipucu: "İfadeleri “… > …” biçiminde yaz ve bir zincir kur.",
+        cozum: [
+          "🔎 Soruyu anlayalım: Dört karşılaştırmadan beş kişinin sıralamasını çıkaracağız.",
+          "💡 Hatırlayalım: “A, B'den uzundur” ile “B, A'dan kısadır” aynı bilgidir. Hepsini aynı yönde yazmak işi kolaylaştırır.",
+          `✏️ Hepsini “uzun > kısa” biçiminde yazalım: ${[0, 1, 2, 3].map(i => `${kisi[sira[i]][0]} > ${kisi[sira[i + 1]][0]}`).join("; ")}.`,
+          `✏️ Zinciri birleştirelim: ${sira.map(i => kisi[i][0]).join(" > ")}.`,
+          `✅ Sonuç: ${SAD[k]} sırada ${dg} var.`,
+          "🔁 Kontrol edelim: Bulduğun sıralamayı her ifadeyle tek tek karşılaştır; hepsi doğru olmalı.",
+        ],
+        kural: "Karşılaştırmaları aynı yönde yazıp zincir kur.",
+        dogruNeden: `Sıralama ${sira.map(i => kisi[i][0]).join(" > ")}; ${SAD[k]} sırada ${dg} var.`,
+      });
+    },
+    /* 2. Sandalyeler */
+    z => {
+      for (;;) {
+        const kisi = karistir(ISIM).slice(0, 4), gizli = karistir([0, 1, 2, 3]), tum = perm([0, 1, 2, 3]);
+        const poz = (p, x) => p.indexOf(x), ad = x => kisi[x][0];
+        const uret = () => { const [x, y] = karistir([0, 1, 2, 3]); const t = R(0, 4); const px = poz(gizli, x), py = poz(gizli, y);
+          if (t === 0 && (px === 0 || px === 3)) return { m: `${ad(x)} en ${px === 0 ? "solda" : "sağda"} oturuyor.`, f: p => poz(p, x) === px };
+          if (t === 1 && px === py + 1) return { m: `${ad(x)}, ${kisi[y][1]} hemen sağında oturuyor.`, f: p => poz(p, x) === poz(p, y) + 1 };
+          if (t === 2 && Math.abs(px - py) > 1) return { m: `${ad(x)} ile ${ad(y)} yan yana oturmuyor.`, f: p => Math.abs(poz(p, x) - poz(p, y)) > 1 };
+          if (t === 3 && px < py) return { m: `${ad(x)}, ${kisi[y][1]} solunda bir yerde oturuyor (yan yana olmaları gerekmez).`, f: p => poz(p, x) < poz(p, y) };
+          if (t === 4 && px !== 1 && px !== 2) return null;
+          if (t === 4) return { m: `${ad(x)} uçlardaki sandalyelerde oturmuyor.`, f: p => poz(p, x) === 1 || poz(p, x) === 2 };
+          return null; };
+        const ip = [];
+        for (let d = 0; d < 40 && ip.length < 5; d++) { const c = uret(); if (c && !ip.some(o => o.m === c.m)) { ip.push(c); if (tum.filter(p => ip.every(o => o.f(p))).length === 1) break; } }
+        if (tum.filter(p => ip.every(o => o.f(p))).length !== 1 || ip.length < 3) continue;
+        const k = R(0, 3), dg = ad(gizli[k]);
+        return S({
+          kaz: K6, duzey: "transfer", zorluk: 3,
+          soru: `${kisi.map(x => x[0]).join(", ")} soldan sağa numaralı dört sandalyeye oturacak. Bilinenler:<br>• ${ip.map(o => o.m).join("<br>• ")}<br><b>${k + 1} numaralı</b> sandalyede kim oturur?`,
+          gorsel: sandalyeSvg(4),
+          dogru: dg,
+          yanlis: gizli.filter((_, i) => i !== k).map(x => [ad(x), "strateji", `${ad(x)} ${k + 1} numaralı sandalyeye oturursa ipuçlarından en az biri bozulur; her ipucunu yeniden dene.`]),
+          ipucu: "Kesin yer bildiren ipucuyla başla, sonra “hemen sağında” gibi ipuçlarıyla ikilileri yerleştir.",
+          cozum: [
+            "🔎 Soruyu anlayalım: Dört kişi dört sandalyeye oturacak; bütün ipuçlarını aynı anda sağlayan tek dizilimi bulacağız.",
+            "💡 Hatırlayalım: Önce kesin bilgi veren ipuçlarını (en solda, hemen sağında gibi) kullan; sonra kalan olasılıkları ele.",
+            "✏️ Olası dizilimleri ipuçlarına göre tek tek ele; bir ipucunu bozan dizilim hemen silinir.",
+            `✏️ Bütün ipuçlarına uyan tek dizilim (soldan sağa): ${gizli.map(ad).join(", ")}.`,
+            `✅ Sonuç: ${k + 1} numaralı sandalyede ${dg} oturur.`,
+            "🔁 Kontrol edelim: Bulduğun dizilimi her ipucuyla karşılaştır: hepsi doğru çıkıyor. Bir dahaki sefere sandalyeleri kâğıda çizip isimleri yazarak dene.",
+          ],
+          kural: "Yerleştirme sorularında kesin ipuçlarıyla başla, sonra eleme yap.",
+          dogruNeden: `Bütün ipuçlarına uyan tek dizilim ${gizli.map(ad).join(", ")}; ${k + 1}. sandalyede ${dg} var.`,
+        });
+      }
+    },
+    /* 3. Doğru söyleyen kim? (vazo) */
+    z => {
+      for (;;) {
+        const kisi = karistir(ISIM).slice(0, 3), kural = sec(["dogru", "yalan"]), ad = i => kisi[i][0];
+        const ifade = [0, 1, 2].map(s => { const t = R(0, 2), x = R(0, 2);
+          if (t === 0) return { m: x === s ? "“Vazoyu ben kırdım.”" : `“Vazoyu ${ad(x)} kırdı.”`, f: c => c === x };
+          if (t === 1) return { m: "“Ben kırmadım.”", f: c => c !== s };
+          const y = sec([0, 1, 2].filter(v => v !== s)); return { m: `“${ad(y)} kırmadı.”`, f: c => c !== y }; });
+        const uyan = [0, 1, 2].filter(c => { const d = ifade.filter(o => o.f(c)).length; return kural === "dogru" ? d === 1 : d === 2; });
+        if (uyan.length !== 1) continue;
+        const dg = ad(uyan[0]), tablo = [0, 1, 2].map(c => `${ad(c)} kırdıysa ${ifade.filter(o => o.f(c)).length} kişi doğru söylüyor`);
+        return S({
+          kaz: K6, duzey: "transfer", zorluk: 3,
+          soru: `Üç arkadaştan biri vazoyu kırmıştır.<br>• ${ad(0)}: ${ifade[0].m}<br>• ${ad(1)}: ${ifade[1].m}<br>• ${ad(2)}: ${ifade[2].m}<br>Bu üç kişiden <b>${kural === "dogru" ? "yalnızca biri doğru" : "yalnızca biri yalan"}</b> söylediğine göre vazoyu kim kırmıştır?`,
+          dogru: dg,
+          yanlis: [0, 1, 2].filter(c => c !== uyan[0]).map(c => [ad(c), "strateji", `${ad(c)} kırdıysa ${ifade.filter(o => o.f(c)).length} kişi doğru söylemiş olur; bu, sorudaki koşula uymuyor.`]).concat([["Bilinemez", "kavrama", "Her olasılığı denersen yalnızca bir kişinin koşula uyduğunu görürsün; yani cevap kesin olarak bulunabilir."]]),
+          ipucu: "Her kişiyi sırayla “kıran o olsun” diye dene ve kaç kişinin doğru söylediğini say.",
+          cozum: [
+            "🔎 Soruyu anlayalım: Üç olasılık var: kıran ya " + `${ad(0)}, ya ${ad(1)} ya da ${ad(2)}.`,
+            `💡 Hatırlayalım: Bu tür sorularda her olasılığı tek tek varsayıp koşulu (${kural === "dogru" ? "tam 1 doğru söyleyen" : "tam 1 yalan söyleyen, yani 2 doğru söyleyen"}) kontrol ederiz.`,
+            `✏️ Deneyelim: ${tablo.join("; ")}.`,
+            `✏️ Koşula yalnızca “${dg} kırdı” olasılığı uyuyor.`,
+            `✅ Sonuç: Vazoyu ${dg} kırmıştır.`,
+            "🔁 Kontrol edelim: Bu varsayımda her ifadenin doğru mu yalan mı olduğunu tekrar yaz; doğru söyleyenlerin sayısı koşula uymalı.",
+          ],
+          kural: "Doğru–yalan sorularında her olasılığı varsay ve say.",
+          dogruNeden: `Yalnızca “${dg} kırdı” varsayımında ${kural === "dogru" ? "tam bir kişi doğru" : "tam bir kişi yalan"} söylemiş olur.`,
+        });
+      }
+    },
+    Q(K6, "transfer", 3, "Bir adada <b>Doğrucular</b> her zaman doğru, <b>Yalancılar</b> her zaman yalan söyler. Adada karşılaştığın Selin şöyle diyor: “Ben ve kardeşim Yalancıyız.” Selin ve kardeşi hangi gruptandır?", "Selin Yalancı, kardeşi Doğrucu",
+      [["İkisi de Yalancı", "strateji", "İkisi de Yalancı olsaydı Selin'in sözü doğru olurdu; ama Yalancı doğru söyleyemez."], ["İkisi de Doğrucu", "kavrama", "Doğrucu olan Selin “Ben Yalancıyım” diyemez; bu bir yalan olurdu."], ["Selin Doğrucu, kardeşi Yalancı", "kavrama", "Selin Doğrucu olsaydı kendisi için “Yalancıyım” demezdi."]],
+      "Selin Doğrucu olsaydı bu cümleyi kurabilir miydi?",
+      ["🔎 Soruyu anlayalım: Selin'in sözüne göre hem kendisinin hem kardeşinin grubunu bulacağız.",
+        "💡 Hatırlayalım: Doğrucunun bütün sözleri doğrudur; Yalancının sözü ise mutlaka yanlıştır. “A ve B” biçimindeki bir söz, ikisinden biri yanlışsa yanlıştır.",
+        "✏️ Selin Doğrucu olamaz; çünkü o zaman “Ben Yalancıyım” demesi yalan olurdu. Demek ki Selin Yalancı.",
+        "✏️ Selin Yalancı olduğundan sözü yanlış olmalı. “Ben ve kardeşim Yalancıyız” sözü, kardeşi de Yalancı olsaydı doğru olurdu. Öyleyse kardeşi Yalancı değil, Doğrucu.",
+        "✅ Sonuç: Selin Yalancı, kardeşi Doğrucu.",
+        "🔁 Kontrol edelim: Bu durumda “ikimiz de Yalancıyız” sözü yanlış (kardeş Doğrucu); Yalancı Selin yanlış bir söz söylemiş olur. ✓"],
+      { kural: "Kendisi için “Yalancıyım” diyen kişi Doğrucu olamaz.", dogruNeden: "Selin Doğrucu olamaz; Yalancı olduğu için sözü yanlış olmalı, bu da kardeşin Doğrucu olmasını gerektirir." }),
+    Q(K6, "baglanti", 2, "“Bütün robotlar pille çalışır. Zıpzıp bir robottur.” Bu iki bilgiye göre hangisi <b>kesinlikle doğrudur</b>?", "Zıpzıp pille çalışır.",
+      [["Pille çalışan her şey robottur.", "kavrama", "Bilgi tersine çevrilemez; pille çalışan oyuncak araba ya da el feneri robot değildir."], ["Zıpzıp konuşabilir.", "bilgi", "Verilen bilgilerde konuşmayla ilgili hiçbir şey yok."], ["Bazı robotlar pille çalışmaz.", "kavrama", "Bu, “bütün robotlar pille çalışır” bilgisiyle çelişir."]],
+      "Zıpzıp, “bütün robotlar” grubunun içinde mi?",
+      ["🔎 Soruyu anlayalım: İki bilgiden kesin olarak çıkan sonucu arıyoruz.",
+        "💡 Hatırlayalım: “Bütün A'lar B'dir” ve “X bir A'dır” ise “X bir B'dir” sonucu kesindir. Ama “Bütün B'ler A'dır” sonucu çıkmaz.",
+        "✏️ Robotlar pille çalışanlar grubunun içinde; Zıpzıp da robotlar grubunun içinde.",
+        "✏️ İç içe daireler gibi düşün: Zıpzıp robot dairesinin, robot dairesi de pille çalışanlar dairesinin içinde.",
+        "✅ Sonuç: Zıpzıp pille çalışır.",
+        "🔁 Kontrol edelim: Öteki seçenekler ya bilgiyi ters çeviriyor ya da verilmeyen bir bilgi ekliyor."],
+      { kural: "“Bütün A'lar B'dir” sözü tersine çevrilemez.", dogruNeden: "Zıpzıp robottur ve bütün robotlar pille çalışır; bu yüzden Zıpzıp da pille çalışır." }),
+    Q(K6, "baglanti", 3, "“Yağmur yağarsa okul gezisi ertelenir.” Ertesi gün okul gezisi <b>ertelenmedi</b>. Buna göre hangisi kesinlikle doğrudur?", "O gün yağmur yağmadı.",
+      [["O gün hava güneşliydi.", "kavrama", "Yağmur yağmaması havanın güneşli olduğunu göstermez; hava bulutlu da olabilir."], ["O gün yağmur yağdı.", "kavrama", "Yağmur yağsaydı gezi ertelenirdi; ama ertelenmedi."], ["Gezi yalnızca yağmurda ertelenir.", "strateji", "Böyle bir bilgi verilmemiş; gezi başka nedenlerle de ertelenebilir."]],
+      "Yağmur yağsaydı ne olurdu? Olan bu mu?",
+      ["🔎 Soruyu anlayalım: Bir “eğer … ise …” kuralı ve bir olay verilmiş; kesin sonucu bulacağız.",
+        "💡 Hatırlayalım: “P olursa Q olur” doğruysa ve Q olmadıysa, P de olmamıştır.",
+        "✏️ Kural: Yağmur → gezi ertelenir.",
+        "✏️ Gezi ertelenmedi. Yağmur yağsaydı ertelenmesi gerekirdi; o hâlde yağmur yağmamış olmalı.",
+        "✅ Sonuç: O gün yağmur yağmadı.",
+        "🔁 Kontrol edelim: Ters düşün: Yağmur yağdı desek kural gereği gezi ertelenirdi; bu da olanla çelişir."],
+      { kural: "“P ise Q” doğruysa ve Q yoksa, P de yoktur.", dogruNeden: "Yağmur yağsaydı gezi ertelenirdi; ertelenmediğine göre yağmur yağmamıştır." }),
+    /* 7. Kimin hangi hayvanı var? */
+    z => {
+      const HAY = ["kedi", "kuş", "balık", "kaplumbağa"];
+      for (;;) {
+        const kisi = karistir(ISIM).slice(0, 4), gizli = karistir([0, 1, 2, 3]), tum = perm([0, 1, 2, 3]), ip = [];
+        for (let d = 0; d < 40 && ip.length < 5; d++) {
+          const x = R(0, 3), h = R(0, 3), dogruMu = gizli[x] === h;
+          if (dogruMu && R(0, 2)) continue;
+          const m = dogruMu ? `${kisi[x][1]} hayvanı ${HAY[h]}.` : `${kisi[x][1]} hayvanı ${HAY[h]} değil.`;
+          if (ip.some(o => o.m === m)) continue;
+          ip.push({ m, f: p => dogruMu ? p[x] === h : p[x] !== h });
+          if (tum.filter(p => ip.every(o => o.f(p))).length === 1) break;
+        }
+        if (tum.filter(p => ip.every(o => o.f(p))).length !== 1 || ip.length < 3) continue;
+        const h = R(0, 3), dg = kisi[gizli.indexOf(h)][0];
+        return S({
+          kaz: K6, duzey: "transfer", zorluk: 3,
+          soru: `${kisi.map(x => x[0]).join(", ")} adlı dört arkadaşın her birinin farklı bir evcil hayvanı var: kedi, kuş, balık ve kaplumbağa.` + `<br>• ${ip.map(o => o.m).join("<br>• ")}<br><b>Kimin hayvanı ${HAY[h]}?</b>`,
+          gorsel: G.tablo(["", ...HAY], kisi.map(k => [k[0], "", "", "", ""])),
+          dogru: dg,
+          yanlis: kisi.filter(k => k[0] !== dg).map(k => [k[0], "strateji", `${k[1]} hayvanı ${HAY[h]} olursa ipuçlarından biri bozulur ya da başka birine hayvan kalmaz.`]),
+          ipucu: "Tabloda her “değil” bilgisi için ilgili kutuya ✗ koy. Bir satırda ya da sütunda tek boş kutu kalırsa orası ✓ olur.",
+          cozum: [
+            "🔎 Soruyu anlayalım: Dört kişi ile dört hayvanı eşleştireceğiz; her hayvan yalnızca bir kişiye ait.",
+            "💡 Hatırlayalım: Eşleştirme tablosunda her satırda ve her sütunda yalnızca bir ✓ olur. “Değil” bilgileri ✗ ile işaretlenir.",
+            "✏️ İpuçlarını tabloya işle: “… değil” → ✗, “… hayvanı …” → ✓ (o satır ve sütunun geri kalanı ✗).",
+            `✏️ Tek boş kalan kutuları ✓ yaparak ilerle. Eşleşme: ${kisi.map((k, i) => `${k[0]} – ${HAY[gizli[i]]}`).join(", ")}.`,
+            `✅ Sonuç: ${buyukHarf(HAY[h])}, ${kisi[gizli.indexOf(h)][1]} hayvanıdır.`,
+            "🔁 Kontrol edelim: Bulduğun eşleşmeyi her ipucuyla karşılaştır; hiçbiri bozulmamalı.",
+          ],
+          kural: "Eşleştirme sorularında tablo kur; ✗ ve ✓ işaretleriyle ele.",
+          dogruNeden: `Bütün ipuçlarına uyan tek eşleşmede ${HAY[h]} ${dg} adlı arkadaşındır.`,
+        });
+      }
+    },
+    /* 8. Teraziler: en ağır / en hafif */
+    z => {
+      const MEY = karistir(["elma", "armut", "ayva", "kavun", "limon", "nar"]).slice(0, 3), sira = karistir([0, 1, 2]); /* sira[0] en ağır */
+      const [a, b, c] = sira.map(i => MEY[i]), sor = sec(["ağır", "hafif"]);
+      const t1 = R(0, 1), t2 = R(0, 1);
+      const ic = `<g transform="translate(0 28)">${teraziEgik(t1 ? a : b, t1 ? b : a, !!t1)}</g><g transform="translate(270 28)">${teraziEgik(t2 ? b : c, t2 ? c : b, !!t2)}</g>`;
+      const dg = sor === "ağır" ? a : c;
+      return S({
+        kaz: K6, duzey: "uygulama", zorluk: 2,
+        soru: `Görseldeki terazilerde ağır olan kefe aşağı iner. Buna göre üç meyveden <b>en ${sor}</b> olanı hangisidir?`,
+        gorsel: svg(510, 166, ic, "eğik iki terazi"),
+        dogru: dg,
+        yanlis: [[b, "kavrama", "Bu meyve bir terazide ağır, öbüründe hafif kalıyor; yani ortanca."], [sor === "ağır" ? c : a, "dikkat", `Bu meyve en ${sor === "ağır" ? "hafif" : "ağır"} olan; soruyu yeniden oku.`], ["Bilinemez", "kavrama", "İki terazi birlikte bütün sıralamayı veriyor; ortak meyve iki teraziyi birbirine bağlıyor."]],
+        ipucu: "İki terazide de bulunan ortak meyveyi bul; o ortanca mı?",
+        cozum: [
+          "🔎 Soruyu anlayalım: İki terazi üç meyveyi karşılaştırıyor; en " + sor + " meyveyi bulacağız.",
+          "💡 Hatırlayalım: Terazide aşağı inen kefe daha ağırdır. “A, B'den ağır ve B, C'den ağır ise A, C'den de ağırdır.”",
+          `✏️ 1. terazi: ${a} > ${b}. 2. terazi: ${b} > ${c}.`,
+          `✏️ Zincir: ${a} > ${b} > ${c}.`,
+          `✅ Sonuç: En ${sor} meyve ${dg}.`,
+          `🔁 Kontrol edelim: ${b} iki terazide de var; birinde ağır, birinde hafif. Bu yüzden ortancadır.`,
+        ],
+        kural: "Ortak öğe, iki karşılaştırmayı tek bir sıralamada birleştirir.",
+        dogruNeden: `${a} > ${b} > ${c} olduğundan en ${sor} meyve ${dg}.`,
+      });
+    },
+    /* 9. Çorap çekmecesi (güvercin yuvası) */
+    z => {
+      const RN = ["kırmızı", "mavi", "beyaz", "siyah"], k = R(2, 4), say = Array.from({ length: k }, () => R(3, 9)), tur = sec(["cift", "iki"]);
+      const metin = say.map((n, i) => `${n} ${RN[i]}`).join(", "), top = say.reduce((x, y) => x + y, 0);
+      const dg = tur === "cift" ? k + 1 : top - say[0] + 2;
+      return S({
+        kaz: K6, duzey: "transfer", zorluk: 3,
+        soru: `Karanlık bir odadaki çekmecede ${metin} çorap var. Bakmadan çorap çekiyorsun. ${tur === "cift" ? "<b>Aynı renkten en az iki çorap</b>" : "<b>En az iki kırmızı çorap</b>"} elde ettiğinden <b>kesinlikle</b> emin olmak için en az kaç çorap çekmelisin?`,
+        dogru: dg,
+        yanlis: tur === "cift" ? [[2, "kavrama", "İki çorap farklı renklerde çıkabilir; şansa değil, en kötü duruma göre düşünmeliyiz."], [k, "islem", `${k} çorap ${k} farklı renkte çıkabilir; bir tane daha gerekir.`], [top, "kavrama", "Bütün çorapları çekmene gerek yok; en kötü durumda bile daha azı yeter."]]
+          : [[2, "kavrama", "İlk iki çorap kırmızı olmayabilir; en kötü durumu düşün."], [top - say[0] + 1, "islem", "Bu kadar çekince en kötü durumda yalnızca 1 kırmızı gelir."], [say[0] + 1, "kavrama", "Kırmızı sayısıyla değil, kırmızı olmayan çorapların sayısıyla ilgilenmelisin."]],
+        ipucu: "En şanssız durumu düşün: Çektiğin çoraplar mümkün olduğunca istemediğin gibi gelirse?",
+        cozum: [
+          "🔎 Soruyu anlayalım: “Kesinlikle emin olmak” için en kötü şansı hesaba katmalıyız.",
+          "💡 Hatırlayalım: Garanti sorularında en kötü durum düşünülür: Çekilen her çorap işimize yaramayacak biçimde gelirse ne olur?",
+          tur === "cift" ? `✏️ En kötü durumda ilk ${k} çorabın hepsi farklı renkte gelir (${RN.slice(0, k).join(", ")}).` : `✏️ En kötü durumda önce kırmızı olmayan ${top - say[0]} çorabın hepsi gelir.`,
+          tur === "cift" ? `✏️ Sonraki (${k + 1}.) çorap hangi renk olursa olsun, elimizdeki bir çorapla eşleşir.` : `✏️ Sonra gelen 2 çorap mecburen kırmızıdır: ${top - say[0]} + 2.`,
+          `✅ Sonuç: En az ${dg} çorap.`,
+          "🔁 Kontrol edelim: Bir eksik çekseydik en kötü durumda istediğimiz olmayabilirdi; bu yüzden " + dg + " en küçük garanti sayısıdır.",
+        ],
+        kural: "“Kesinlikle” sorularında en kötü durumu düşün, sonra 1 ekle.",
+        dogruNeden: tur === "cift" ? `${k} renk olduğu için ${k} çorap farklı gelebilir; ${k + 1}. çorap mutlaka bir eş bulur.` : `Kırmızı olmayan ${top - say[0]} çorabın hepsi gelse bile sonraki 2 çorap kırmızı olur.`,
+      });
+    },
+    /* 10. Yarış sırası */
+    z => {
+      const p = R(5, 9), a = R(2, 4), b = R(1, a - 1), dg = p - a + b;
+      return S({
+        kaz: K6, duzey: "uygulama", zorluk: 2,
+        soru: `Bir koşu yarışında Defne <b>${p}. sırada</b> koşuyor. Önce ${a} koşucuyu geçiyor, sonra ${b} koşucu onu geçiyor. Defne şimdi kaçıncı sırada?`,
+        dogru: dg,
+        yanlis: [[p + a - b, "kavrama", "Geçtiği koşucular onun sırasını küçültür (öne çıkar); sen sıra numarasını artırmışsın."], [p - a, "dikkat", "Defne'yi geçen koşucuları unutmuşsun."], [p - a - b, "kavrama", "Defne'yi geçen koşucular onu geri iter; sıra numarası artar."]],
+        ipucu: "Birini geçmek sıra numarasını 1 azaltır, geçilmek 1 artırır.",
+        cozum: [
+          `🔎 Soruyu anlayalım: Defne ${p}. sırada başlıyor; önce öne çıkıyor sonra geriye düşüyor.`,
+          "💡 Hatırlayalım: Sıra numarası küçüldükçe koşucu öne çıkar. Bir kişiyi geçmek numarayı 1 azaltır.",
+          `✏️ ${a} kişiyi geçince: ${p} − ${a} = ${p - a}. sıra.`,
+          `✏️ ${b} kişi onu geçince: ${p - a} + ${b} = ${dg}. sıra.`,
+          `✅ Sonuç: ${dg}. sırada.`,
+          "🔁 Kontrol edelim: Toplamda " + (a - b) + " kişi kadar öne geçti; " + p + " − " + (a - b) + " = " + dg + ". ✓",
+        ],
+        kural: "Geçmek: sıra − 1; geçilmek: sıra + 1.",
+        dogruNeden: `${p} − ${a} + ${b} = ${dg}.`,
+      });
+    },
+    /* 11. Tokalaşma */
+    z => {
+      const n = R(4, 9), dg = n * (n - 1) / 2;
+      return S({
+        kaz: K6, duzey: "transfer", zorluk: 3,
+        soru: `Bir toplantıya gelen <b>${n} kişinin</b> her biri öteki herkesle yalnızca bir kez tokalaşıyor. Toplam kaç tokalaşma olur?`,
+        gorsel: (() => { let ic = ""; const pts = nk(n, 110, 100, 80); pts.forEach((p, i) => pts.slice(i + 1).forEach(q => { ic += `<line class="g-ince" stroke-width="1.5" x1="${p[0].toFixed(1)}" y1="${p[1].toFixed(1)}" x2="${q[0].toFixed(1)}" y2="${q[1].toFixed(1)}"/>`; })); pts.forEach(p => { ic += `<circle class="g-a g-cizgi" stroke-width="1.5" cx="${p[0].toFixed(1)}" cy="${p[1].toFixed(1)}" r="9"/>`; }); return svg(220, 200, ic, "kişiler ve tokalaşma çizgileri"); })(),
+        dogru: dg,
+        yanlis: [[n * (n - 1), "kavrama", "Her tokalaşmayı iki kez saymışsın; Ali–Ece ile Ece–Ali aynı tokalaşmadır."], [n * n, "kavrama", "Kişi kendisiyle tokalaşmaz ve her tokalaşma iki kişiyi kapsar."], [n - 1, "dikkat", "Bu, yalnızca bir kişinin yaptığı tokalaşma sayısı."]],
+        ipucu: "Her kişi kaç kişiyle tokalaşır? Her tokalaşmada iki kişi vardır.",
+        cozum: [
+          `🔎 Soruyu anlayalım: ${n} kişi var, her ikili bir kez tokalaşıyor; toplam tokalaşmayı sayacağız.`,
+          "💡 Hatırlayalım: Bir tokalaşmada iki kişi vardır. Kişi başına sayınca her tokalaşma iki kez sayılır.",
+          `✏️ Her kişi ${n - 1} kişiyle tokalaşır: ${n} × ${n - 1} = ${n * (n - 1)}.`,
+          `✏️ Her tokalaşma iki kez sayıldığı için ikiye bölüyoruz: ${n * (n - 1)} ÷ 2.`,
+          `✅ Sonuç: ${dg} tokalaşma.`,
+          `🔁 Kontrol edelim: Sırayla say: 1. kişi ${n - 1}, 2. kişi yeni ${n - 2}, … son kişi 0 → ${Array.from({ length: n }, (_, i) => n - 1 - i).join(" + ")} = ${dg}. ✓`,
+        ],
+        kural: "n kişi arasındaki tokalaşma: n × (n − 1) ÷ 2.",
+        dogruNeden: `${n} × ${n - 1} ÷ 2 = ${dg}.`,
+      });
+    },
+    Q(K6, "aciklama", 2, "Defne şöyle diyor: “Annemin annesinin tek kızı, benim neyim olur?”", "annesi",
+      [["teyzesi", "kavrama", "Teyze annenin kız kardeşidir; ama anneannenin tek kızı olduğu için başka kızı yok."], ["anneannesi", "dikkat", "Anneanne, sorudaki “annemin annesi”dir; onun kızı soruluyor."], ["kendisi", "kavrama", "Defne, anneannesinin kızı değil, torunudur."]],
+      "“Annemin annesi” kimdir? Onun tek kızı kim olabilir?",
+      ["🔎 Soruyu anlayalım: Akrabalık zincirini adım adım çözeceğiz.",
+        "💡 Hatırlayalım: Annenin annesine anneanne denir.",
+        "✏️ “Annemin annesi” = Defne'nin anneannesi.",
+        "✏️ Anneannenin kızlarından biri mutlaka Defne'nin annesidir. “Tek kızı” dendiğine göre başka kızı yok.",
+        "✅ Sonuç: Anneannenin tek kızı Defne'nin annesidir.",
+        "🔁 Kontrol edelim: Zinciri tersten kur: Defne'nin annesi → onun annesi (anneanne) → onun tek kızı (Defne'nin annesi). Başa döndük. ✓"],
+      { kural: "Akrabalık sorularını en içteki ifadeden başlayarak adım adım çöz.", dogruNeden: "Anneannenin tek kızı, Defne'nin annesidir." }),
+    /* 13. Dünden önceki gün */
+    z => {
+      const x = R(0, 6), bugun = (x + 2) % 7, dg = GUN[(x + 4) % 7];
+      return S({
+        kaz: K6, duzey: "uygulama", zorluk: 2,
+        soru: `<b>Dünden önceki gün ${GUN[x]}</b> idi. Buna göre <b>yarından sonraki gün</b> hangi gündür?`,
+        dogru: dg,
+        yanlis: [[GUN[(x + 2) % 7], "dikkat", "Bu, bugün; soru yarından sonraki günü soruyor."], [GUN[(x + 3) % 7], "dikkat", "Bu, yarın; bir gün daha ilerlemelisin."], [GUN[(x + 5) % 7], "islem", "Bir gün fazla saymışsın."], [GUN[(x + 6) % 7], "islem", "İki gün fazla saymışsın."]],
+        ipucu: "Önce bugünün hangi gün olduğunu bul.",
+        cozum: [
+          "🔎 Soruyu anlayalım: “Dünden önceki gün” verilmiş; “yarından sonraki gün” soruluyor.",
+          "💡 Hatırlayalım: Dünden önceki gün = bugünden 2 gün önce; yarından sonraki gün = bugünden 2 gün sonra.",
+          `✏️ Bugün: ${GUN[x]} + 2 gün = ${GUN[bugun]}.`,
+          `✏️ Yarından sonraki gün: ${GUN[bugun]} + 2 gün = ${dg}.`,
+          `✅ Sonuç: ${buyukHarf(dg)}.`,
+          `🔁 Kontrol edelim: Dünden önceki günden yarından sonraki güne 4 gün vardır: ${GUN[x]} + 4 gün = ${dg}. ✓`,
+        ],
+        kural: "Gün sorularında önce “bugün”ü bul.",
+        dogruNeden: `Bugün ${GUN[bugun]} olduğundan yarından sonraki gün ${dg}.`,
+      });
+    },
+    /* 14. Kuyruk */
+    z => {
+      const a = R(3, 12), b = R(3, 12), dg = a + b - 1;
+      return S({
+        kaz: K6, duzey: "uygulama", zorluk: 2,
+        soru: `Kantin kuyruğunda Ece <b>baştan ${a}.</b>, <b>sondan ${b}.</b> sırada duruyor. Kuyrukta kaç kişi var?`,
+        gorsel: (() => { let ic = ""; const n = Math.min(dg, 16); for (let i = 0; i < n; i++) ic += `<circle class="${i === a - 1 && dg <= 16 ? "g-d" : "g-yumusak"} g-cizgi" stroke-width="1.5" cx="${20 + i * 30}" cy="30" r="11"/>`; return svg(20 + n * 30, 60, ic + (dg > 16 ? yazi(10 + n * 30, 34, "…", { a: "start" }) : ""), "kuyruktaki çocuklar"); })(),
+        dogru: dg,
+        yanlis: [[a + b, "kavrama", "Ece'yi iki kez saymışsın; hem baştan hem sondan sayarken Ece'nin kendisi sayıldı."], [a + b - 2, "islem", "Ece'yi hiç saymamışsın."], [a + b + 1, "islem", "Bir kişi fazla saymışsın."]],
+        ipucu: "Baştan sayarken de sondan sayarken de Ece'yi saydın mı?",
+        cozum: [
+          "🔎 Soruyu anlayalım: Ece'nin iki yönden sırası verilmiş; kuyruktaki toplam kişiyi bulacağız.",
+          "💡 Hatırlayalım: İki yönden sayınca ortadaki kişi (Ece) iki kez sayılır.",
+          `✏️ Ece'nin önünde ${a - 1} kişi, arkasında ${b - 1} kişi var.`,
+          `✏️ Toplam: ${a - 1} + 1 (Ece) + ${b - 1}.`,
+          `✅ Sonuç: ${dg} kişi.`,
+          `🔁 Kontrol edelim: Kısa yol: ${a} + ${b} − 1 = ${dg}. Ece'yi bir kez çıkardık çünkü iki kez sayılmıştı.`,
+        ],
+        kural: "Baştan a., sondan b. olan kişi varsa kuyrukta a + b − 1 kişi vardır.",
+        dogruNeden: `Ece iki kez sayıldığı için ${a} + ${b} − 1 = ${dg}.`,
+      });
+    },
+    /* 15. Kulüpler */
+    z => {
+      const ikisi = R(2, 6), f = ikisi + R(3, 9), bs = ikisi + R(3, 9), hic = R(1, 5), top = f + bs - ikisi + hic;
+      return S({
+        kaz: K6, duzey: "transfer", zorluk: 3,
+        soru: `${top} kişilik bir sınıfta ${f} öğrenci futbol, ${bs} öğrenci basketbol kulübüne üye. ${hic} öğrenci hiçbir kulübe üye değil. <b>Her iki kulübe</b> de üye olan kaç öğrenci vardır?`,
+        gorsel: svg(260, 150, `<circle class="g-cizgi" fill="none" stroke-width="2" cx="100" cy="85" r="55"/><circle class="g-cizgi" fill="none" stroke-width="2" cx="160" cy="85" r="55"/>` + yazi(28, 16, "Futbol", { k: 1, a: "start" }) + yazi(232, 16, "Basketbol", { k: 1, a: "end" }) + buyukYazi("?", 130, 87, 22), "iki kulüp şeması"),
+        dogru: ikisi,
+        yanlis: [[f + bs - top, "dikkat", "Hiçbir kulübe üye olmayanları çıkarmayı unutmuşsun."], [top - f, "kavrama", "Bu sayı futbol oynamayanların sayısı."], [ikisi + 1, "islem", "Toplama ya da çıkarmayı yeniden yap."], [ikisi + hic, "islem", "Hiçbir kulübe üye olmayanları eklemişsin; çıkarman gerekiyordu."]],
+        ipucu: "Önce en az bir kulübe üye olanların sayısını bul.",
+        cozum: [
+          "🔎 Soruyu anlayalım: İki kulübün ortak üyelerini arıyoruz.",
+          "💡 Hatırlayalım: Futbol + basketbol sayıları toplanınca iki kulübe de üye olanlar iki kez sayılır.",
+          `✏️ En az bir kulübe üye olanlar: ${top} − ${hic} = ${top - hic}.`,
+          `✏️ ${f} + ${bs} = ${f + bs}; bu sayı ${top - hic}'${ek(top - hic, "den").slice(1)} fazla, çünkü ortak üyeler iki kez sayıldı: ${f + bs} − ${top - hic}.`,
+          `✅ Sonuç: ${ikisi} öğrenci iki kulübe de üye.`,
+          `🔁 Kontrol edelim: Yalnız futbol ${f - ikisi}, yalnız basketbol ${bs - ikisi}, ikisi ${ikisi}, hiçbiri ${hic}: toplam ${top}. ✓`,
+        ],
+        kural: "İki kümede: ortak = A + B − (en az birinde olanlar).",
+        dogruNeden: `${f} + ${bs} − ${top - hic} = ${ikisi}.`,
+      });
+    },
+  ];
+  B.push({ id: "mantik", ad: "Mantık ve akıl yürütme", simge: "🧠", aciklama: "Sıralama, yerleştirme, doğru–yalan söyleyenler ve kesin sonuç çıkarma.", sorular: mantikSorular });
+
+  /* =====================================================================
+   * 7) DİKKAT VE GÖRSEL AYIRT ETME
+   * ===================================================================== */
+  const K7 = "bilsem.dikkat";
+  const metinIzgara = (satirlar, { u = 34, boy = 20, vurgu = null } = {}) => {
+    let ic = ""; satirlar.forEach((s, r) => s.forEach((t, c) => { ic += buyukYazi(t, 20 + c * u + u / 2, 14 + r * u + u / 2, boy); }));
+    return svg(40 + satirlar[0].length * u, 28 + satirlar.length * u, ic, vurgu || "sembol tablosu");
+  };
+  const dikkatSorular = [
+    /* 1. Döndürülünce aynı olmayan */
+    z => {
+      const d = kiralParca(4, 5), rots = [d]; for (let i = 0; i < 3; i++) rots.push(rotN(rots[i], 4));
+      const uc = karistir([0, 1, 2, 3]).slice(0, 3), m = aynaN(rots[R(0, 3)], 4);
+      const hs = harfle([{ c: desen(m, 4, "g-d") }].concat(uc.map(i => ({ c: desen(rots[i], 4, "g-d"), hata: "dikkat", neden: "Bu şekil, öteki ikisinin döndürülmüş hâli; yani onlarla aynı şekil." }))));
+      return SG({
+        kaz: K7, duzey: "uygulama", zorluk: 3,
+        soru: "Aşağıdaki şekillerden üçü aynı şeklin farklı yönlere döndürülmüş hâlidir. Hangisi <b>farklıdır</b>?",
+        gorsel: seriSvg([], hs.liste, { s: 92, etiket: "dört şekil" }),
+        dogru: hs.harf, yanlis: hs.yanlis,
+        ipucu: "Şekillerde dikkat çeken bir köşe ya da çıkıntı seç; döndürünce yerinin sırası değişmemeli.",
+        cozum: [
+          "🔎 Soruyu anlayalım: Üç şekil döndürülerek birbirine dönüşebiliyor; biri ise ancak ters çevrilerek (aynada) elde edilebiliyor.",
+          "💡 Hatırlayalım: Döndürme şeklin sağ–sol düzenini korur; ayna görüntüsü ise bozar.",
+          "✏️ Bir şekli seç ve 90°, 180°, 270° döndürerek ötekilerle karşılaştır.",
+          `✏️ ${HARF.filter(x => x !== hs.harf).join(", ")} şekilleri döndürmeyle üst üste geliyor; ${hs.harf} şekli ise hiçbir dönmede örtüşmüyor, çünkü ayna görüntüsü.`,
+          `✅ Sonuç: ${hs.harf}.`,
+          "🔁 Kontrol edelim: Farklı olan şekli aynada yansıtırsan ötekilerden biriyle aynı olur.",
+        ],
+        kural: "Ayna görüntüsü, döndürülmüş şekillerden farklıdır.",
+        dogruNeden: `${hs.harf} şekli ötekilerin ayna görüntüsüdür; döndürülerek elde edilemez.`,
+      });
+    },
+    /* 2. Nokta sayısı farklı olan */
+    z => {
+      const n = R(6, 9), fark = sec([1, -1]);
+      const C = k => { const yer = karistir(Array.from({ length: 16 }, (_, i) => i)).slice(0, k); return (cx, cy, s) => yer.map(i => `<circle class="g-a" cx="${(cx + ((i % 4) - 1.5) * s * 0.2).toFixed(1)}" cy="${(cy + (Math.floor(i / 4) - 1.5) * s * 0.2).toFixed(1)}" r="${(s * 0.06).toFixed(1)}"/>`).join(""); };
+      const hs = harfle([{ c: C(n + fark) }, { c: C(n), hata: "dikkat", neden: `Bu kutuda ${n} nokta var; ötekilerin çoğuyla aynı.` }, { c: C(n), hata: "dikkat", neden: `Bu kutuda ${n} nokta var; ötekilerin çoğuyla aynı.` }, { c: C(n), hata: "dikkat", neden: `Bu kutuda ${n} nokta var; ötekilerin çoğuyla aynı.` }]);
+      return SG({
+        kaz: K7, duzey: "uygulama", zorluk: 1,
+        soru: "Kutulardan üçünde eşit sayıda nokta var. Nokta sayısı <b>farklı</b> olan kutu hangisidir?",
+        gorsel: seriSvg([], hs.liste, { s: 92, etiket: "noktalı kutular" }),
+        dogru: hs.harf, yanlis: hs.yanlis,
+        ipucu: "Noktaları satır satır say; saydıklarını parmağınla işaretle.",
+        cozum: [
+          "🔎 Soruyu anlayalım: Dört kutudaki noktaları sayıp farklı olanı bulacağız.",
+          "💡 Hatırlayalım: Dağınık nesneleri sayarken satır satır ilerlemek ve gruplamak (ikişer, üçer) hata yapmayı önler.",
+          `✏️ ${HARF.filter(x => x !== hs.harf).join(", ")} kutularında ${n}${ek(n, "er")} nokta var.`,
+          `✏️ ${hs.harf} kutusunda ${n + fark} nokta var.`,
+          `✅ Sonuç: ${hs.harf}.`,
+          "🔁 Kontrol edelim: Farklı bulduğun kutuyu bir kez daha, bu kez sütun sütun say. Aynı sonucu bulmalısın.",
+        ],
+        kural: "Sayarken bir düzen izle: satır satır ya da sütun sütun.",
+        dogruNeden: `${hs.harf} kutusunda ${n + fark}, ötekilerde ${n} nokta var.`,
+      });
+    },
+    /* 3. Üçgen sayma */
+    z => {
+      const m = R(2, 4), yatay = R(0, 1) === 1, T = m * (m + 1) / 2, dg = yatay ? 2 * T : T;
+      let ic = `<polygon class="g-yumusak g-cizgi" stroke-width="2" points="130,10 20,170 240,170"/>`;
+      for (let i = 1; i < m; i++) ic += `<line class="g-cizgi" stroke-width="2" x1="130" y1="10" x2="${20 + 220 * i / m}" y2="170"/>`;
+      if (yatay) ic += `<line class="g-cizgi" stroke-width="2" x1="${130 - 110 * 0.55}" y1="${10 + 160 * 0.55}" x2="${130 + 110 * 0.55}" y2="${10 + 160 * 0.55}"/>`;
+      return S({
+        kaz: K7, duzey: "uygulama", zorluk: yatay ? 3 : 2,
+        soru: "Şekilde toplam kaç üçgen vardır? (Küçük üçgenlerin birleşmesiyle oluşan büyük üçgenleri de say.)",
+        gorsel: svg(260, 180, ic, "içinde çizgiler olan üçgen"),
+        dogru: dg,
+        yanlis: [[yatay ? 2 * m : m, "kavrama", "Yalnızca en küçük üçgenleri saymışsın; yan yana duran üçgenler birleşince yeni üçgenler oluşur."], [dg + 1, "islem", "Bir üçgeni iki kez saymış olabilirsin."], [dg - 1, "islem", "Bir üçgeni atlamışsın; en büyük üçgeni saymayı unutma."], [yatay ? T : 2 * T, "dikkat", yatay ? "Yalnızca üst bölgedeki üçgenleri saymışsın." : "Yatay çizgi yok; üçgenleri iki kez saymışsın."]],
+        ipucu: "Tepeden çıkan çizgilerin tabanda ayırdığı parçaları say; yan yana parçaların her birleşimi bir üçgen verir.",
+        cozum: [
+          "🔎 Soruyu anlayalım: Küçük ve büyük bütün üçgenleri sayacağız.",
+          `💡 Hatırlayalım: Tepeden tabana çizilen çizgiler tabanı ${m} parçaya ayırıyor. Her üçgen tabanda yan yana bir veya birkaç parçadan oluşur.`,
+          `✏️ Tek parçalı: ${m}, iki parçalı: ${m - 1}${m >= 3 ? `, üç parçalı: ${m - 2}` : ""}${m >= 4 ? ", dört parçalı: 1" : ""}. Toplam ${Array.from({ length: m }, (_, i) => m - i).join(" + ")} = ${T}.`,
+          yatay ? `✏️ Yatay çizgi tepedeki bölgede aynı düzende ${T} üçgen daha oluşturuyor: ${T} + ${T} = ${dg}.` : "✏️ Şekilde yatay çizgi yok; başka üçgen oluşmuyor.",
+          `✅ Sonuç: ${dg} üçgen.`,
+          "🔁 Kontrol edelim: Sayarken düzenli ilerle (önce en küçükler, sonra ikili birleşimler…). Rastgele saymak hem atlamaya hem tekrar saymaya yol açar.",
+        ],
+        kural: "Tabanı n parçaya ayrılan üçgende 1 + 2 + … + n üçgen vardır.",
+        dogruNeden: `Tabandaki ${m} parçanın yan yana birleşimleri ${T} üçgen verir${yatay ? "; yatay çizgi bu sayıyı ikiye katlar" : ""}: ${dg}.`,
+      });
+    },
+    /* 4. Kare sayma */
+    z => {
+      const n = R(2, 4), dg = Array.from({ length: n }, (_, i) => (i + 1) * (i + 1)).reduce((a, b) => a + b, 0);
+      const ic = izgaraCiz(10, 10, n, 160 / n, new Set(), "g-a");
+      return S({
+        kaz: K7, duzey: "uygulama", zorluk: n === 2 ? 1 : 2,
+        soru: `Şekildeki ${n} × ${n}'lik ızgarada <b>toplam kaç kare</b> vardır? (Farklı boyutlardaki kareleri de say.)`,
+        gorsel: svg(180, 180, ic, `${n}×${n} ızgara`),
+        dogru: dg,
+        yanlis: [[n * n, "kavrama", "Yalnızca en küçük kareleri saymışsın."], [n * n + 1, "dikkat", "En küçük karelere yalnızca en büyük kareyi eklemişsin; aradaki boyutları unutmuşsun."], [dg + n, "islem", "Bazı kareleri iki kez saymışsın."]],
+        ipucu: "Önce 1×1, sonra 2×2, sonra 3×3… boyutundaki kareleri ayrı ayrı say.",
+        cozum: [
+          `🔎 Soruyu anlayalım: ${n} × ${n}'lik ızgaradaki bütün kareleri sayacağız.`,
+          `💡 Hatırlayalım: n × n'lik ızgarada k × k boyutunda (n − k + 1) × (n − k + 1) kare vardır.`,
+          `✏️ ${Array.from({ length: n }, (_, i) => `${i + 1}×${i + 1}: ${(n - i) * (n - i)}`).join("; ")}.`,
+          `✏️ Topla: ${Array.from({ length: n }, (_, i) => (n - i) * (n - i)).join(" + ")}.`,
+          `✅ Sonuç: ${dg} kare.`,
+          "🔁 Kontrol edelim: Sayılar kare sayılardır (1, 4, 9, 16…); toplamın da bu kare sayıların toplamı olduğunu doğrula.",
+        ],
+        kural: "Izgaradaki bütün kareler = 1² + 2² + … + n².",
+        dogruNeden: `Bütün boyutlardaki kareler toplanınca ${dg} bulunur.`,
+      });
+    },
+    /* 5. Dikdörtgen sayma (şerit) */
+    z => {
+      const n = R(3, 6), dg = n * (n + 1) / 2;
+      let ic = ""; for (let i = 0; i < n; i++) ic += `<rect class="g-b g-cizgi" stroke-width="2" x="${10 + i * 50}" y="10" width="50" height="50"/>`;
+      return S({
+        kaz: K7, duzey: "uygulama", zorluk: 2,
+        soru: `Yan yana ${n} kareden oluşan şeritte <b>toplam kaç dikdörtgen</b> vardır? (Kareler de birer dikdörtgendir.)`,
+        gorsel: svg(20 + n * 50, 70, ic, "kare şerit"),
+        dogru: dg,
+        yanlis: [[n, "kavrama", "Yalnızca tek karelik dikdörtgenleri saymışsın."], [n + 1, "dikkat", "Tek karelere yalnızca bütün şeridi eklemişsin; aradaki uzunlukları unutmuşsun."], [dg - 1, "islem", "Bir dikdörtgeni atlamışsın."], [n * n, "kavrama", "Her uzunlukta n dikdörtgen yoktur; uzunluk arttıkça sayı azalır."]],
+        ipucu: "1 karelik, 2 karelik, … dikdörtgenleri ayrı ayrı say.",
+        cozum: [
+          `🔎 Soruyu anlayalım: ${n} karelik şeritteki bütün dikdörtgenleri sayacağız.`,
+          "💡 Hatırlayalım: Kare de bir dikdörtgendir. Uzunluğu k kare olan dikdörtgenlerden şeritte (n − k + 1) tane vardır.",
+          `✏️ ${Array.from({ length: n }, (_, i) => `${i + 1} karelik: ${n - i}`).join("; ")}.`,
+          `✏️ Topla: ${Array.from({ length: n }, (_, i) => n - i).join(" + ")}.`,
+          `✅ Sonuç: ${dg} dikdörtgen.`,
+          `🔁 Kontrol edelim: Kısa yol: ${n} × ${n + 1} ÷ 2 = ${dg}. ✓`,
+        ],
+        kural: "n karelik şeritte 1 + 2 + … + n dikdörtgen vardır.",
+        dogruNeden: `${Array.from({ length: n }, (_, i) => n - i).join(" + ")} = ${dg}.`,
+      });
+    },
+    /* 6. b/d/p/q tablosunda harf sayma */
+    z => {
+      const H = ["b", "d", "p", "q"], hedef = sec(H);
+      let tab, say;
+      do { tab = Array.from({ length: 5 }, () => Array.from({ length: 6 }, () => sec(H))); say = tab.flat().filter(x => x === hedef).length; } while (say < 5 || say > 11);
+      const benzer = { b: "d", d: "b", p: "q", q: "p" }[hedef], sb = tab.flat().filter(x => x === benzer).length;
+      return S({
+        kaz: K7, duzey: "uygulama", zorluk: 2,
+        soru: `Tabloda kaç tane <b>“${hedef}”</b> harfi vardır?`,
+        gorsel: metinIzgara(tab, { boy: 22 }),
+        dogru: say,
+        yanlis: [[say + sb, "dikkat", `“${hedef}” ile “${benzer}” harflerini karıştırmışsın; ikisi birbirinin ayna görüntüsüdür.`], [say + 1, "islem", "Bir harfi iki kez saymışsın."], [say - 1, "islem", "Bir harfi atlamışsın."], [say + 2, "islem", "Fazla saymışsın."]],
+        ipucu: `“${hedef}” harfinin yuvarlak kısmı hangi yanda, çubuğu yukarıda mı aşağıda mı?`,
+        cozum: [
+          `🔎 Soruyu anlayalım: Birbirine çok benzeyen b, d, p, q harfleri arasından yalnızca “${hedef}” harflerini sayacağız.`,
+          `💡 Hatırlayalım: “${hedef}” harfinde yuvarlak kısım ${"bp".includes(hedef) ? "sağda" : "solda"}, çubuk ${"bd".includes(hedef) ? "yukarı" : "aşağı"} doğrudur.`,
+          `✏️ Satır satır sayalım: ${tab.map((s, i) => `${i + 1}. satır ${s.filter(x => x === hedef).length}`).join(", ")}.`,
+          `✏️ Topla: ${tab.map(s => s.filter(x => x === hedef).length).join(" + ")}.`,
+          `✅ Sonuç: ${say}.`,
+          "🔁 Kontrol edelim: Bu kez sütun sütun say; aynı sonucu bulmalısın.",
+        ],
+        kural: "Benzer harfleri ayırt ederken yuvarlağın ve çubuğun yönüne bak.",
+        dogruNeden: `Satırlardaki “${hedef}” sayıları toplanınca ${say} bulunur.`,
+      });
+    },
+    /* 7. İki dizi arasındaki fark sayısı */
+    z => {
+      const a = Array.from({ length: 10 }, () => R(0, 9)), k = R(1, 4), yer = karistir([...Array(10).keys()]).slice(0, k), b = a.slice();
+      yer.forEach(i => { b[i] = (b[i] + R(1, 8)) % 10; });
+      const ic = buyukYazi(a.join(" "), 180, 26, 22) + buyukYazi(b.join(" "), 180, 66, 22);
+      return S({
+        kaz: K7, duzey: "uygulama", zorluk: 2,
+        soru: "Üstteki ve alttaki rakam dizileri karşılaştırılıyor. İki dizi <b>kaç yerde</b> birbirinden farklıdır?",
+        gorsel: svg(360, 90, ic, "iki rakam dizisi"),
+        dogru: k,
+        yanlis: [[k + 1, "islem", "Aynı olan bir rakamı farklı saymışsın."], [k - 1 || k + 2, "dikkat", "Farklı bir rakamı gözden kaçırmışsın."], [k + 2, "islem", "Fazla saymışsın."], [0, "dikkat", "Diziler ilk bakışta aynı görünüyor ama dikkatle bakınca farklar var."]],
+        ipucu: "Rakamları sırayla, üst–alt çiftler hâlinde karşılaştır.",
+        cozum: [
+          "🔎 Soruyu anlayalım: 10 rakamlık iki diziyi aynı sıradaki rakamlarıyla karşılaştıracağız.",
+          "💡 Hatırlayalım: Dikkat sorularında hızdan çok düzen önemlidir: soldan sağa birer birer ilerle.",
+          `✏️ Farklı sıralar: ${yer.slice().sort((x, y) => x - y).map(i => `${i + 1}. (${a[i]}–${b[i]})`).join(", ")}.`,
+          `✏️ Bu sıraları sayalım: ${k} tane.`,
+          `✅ Sonuç: ${k}.`,
+          "🔁 Kontrol edelim: Bu kez sağdan sola karşılaştır; aynı farkları bulmalısın.",
+        ],
+        kural: "Karşılaştırmada her çifti sırayla kontrol et, atlama yapma.",
+        dogruNeden: `${yer.slice().sort((x, y) => x - y).map(i => i + 1).join(", ")}. sıralardaki rakamlar farklı; toplam ${k} fark var.`,
+      });
+    },
+    /* 8. Aynı olan sayı çiftleri */
+    z => {
+      const satir = [], n = 6; let ayni = 0;
+      for (let i = 0; i < n; i++) {
+        const x = String(R(10000, 99999));
+        if (R(0, 1)) { satir.push([x, x]); ayni++; }
+        else { const d = x.split(""), j = R(0, 3); [d[j], d[j + 1]] = [d[j + 1], d[j]]; const y = d.join(""); if (y === x) { satir.push([x, x]); ayni++; } else satir.push([x, y]); }
+      }
+      return S({
+        kaz: K7, duzey: "uygulama", zorluk: 2,
+        soru: "Tablodaki sayı çiftlerinden <b>kaç tanesi</b> birbirinin tamamen aynısıdır?",
+        gorsel: G.tablo(["Sol", "Sağ"], satir),
+        dogru: ayni,
+        yanlis: [[ayni + 1, "dikkat", "Yer değiştirmiş iki rakamı fark etmemişsin."], [ayni + 2, "dikkat", "Yer değiştirmiş rakamları gözden kaçırmışsın."], [Math.max(0, ayni - 1) === ayni ? ayni + 3 : ayni - 1, "islem", "Aynı olan bir çifti farklı saymışsın."], [n - ayni, "kavrama", "Bu, farklı olan çiftlerin sayısı."]],
+        ipucu: "Her çiftte rakamları baştan sona birer birer karşılaştır; yer değiştirmiş komşu rakamlara dikkat et.",
+        cozum: [
+          "🔎 Soruyu anlayalım: Altı sayı çiftinden kaçının tamamen aynı olduğunu bulacağız.",
+          "💡 Hatırlayalım: Beş basamaklı sayılarda en sık yapılan hata, yan yana iki rakamın yer değiştirdiğini fark etmemektir.",
+          `✏️ Aynı olanlar: ${satir.map((s, i) => s[0] === s[1] ? i + 1 + ". satır" : null).filter(Boolean).join(", ") || "yok"}.`,
+          `✏️ Farklı olanlar: ${satir.map((s, i) => s[0] !== s[1] ? `${i + 1}. satır (${s[0]} – ${s[1]})` : null).filter(Boolean).join(", ") || "yok"}.`,
+          `✅ Sonuç: ${ayni}.`,
+          "🔁 Kontrol edelim: Farklı dediğin her çiftte yer değiştiren rakamları gösterebiliyor musun? Gösterebiliyorsan sayımın doğrudur.",
+        ],
+        kural: "Sayıları basamak basamak karşılaştır.",
+        dogruNeden: `Tabloda tamamen aynı olan ${ayni} çift var.`,
+      });
+    },
+    /* 9. Tam iki kez görünen şekil */
+    z => {
+      const tur = karistir(["kare", "daire", "ucgen", "yildiz", "arti", "altigen"]).slice(0, 4), sayilar = [2].concat(karistir([1, 3, 4]));
+      const liste = karistir(tur.flatMap((t, i) => Array(sayilar[i]).fill(t)));
+      const sut = 5, ic = liste.map((t, i) => sekil(t, 30 + (i % sut) * 50, 30 + Math.floor(i / sut) * 50, 16, "g-yumusak")).join("");
+      return S({
+        kaz: K7, duzey: "uygulama", zorluk: 1,
+        soru: "Aşağıdaki şekillerden hangisi tabloda <b>tam iki kez</b> bulunur?",
+        gorsel: svg(20 + sut * 50, 20 + Math.ceil(liste.length / sut) * 50, ic, "karışık şekiller"),
+        dogru: SEKIL_AD[tur[0]],
+        yanlis: tur.slice(1).map((t, i) => [SEKIL_AD[t], "dikkat", `${SEKIL_AD[t]} tabloda ${sayilar[i + 1]} kez var.`.replace(/^./, c => c.toLocaleUpperCase("tr-TR"))]),
+        ipucu: "Her şekil türünü ayrı ayrı say; saydıklarını bir kenara yaz.",
+        cozum: [
+          "🔎 Soruyu anlayalım: Dört tür şekil var; hangisinin tam 2 kez geçtiğini bulacağız.",
+          "💡 Hatırlayalım: Karışık nesneleri sayarken tür tür saymak (önce bütün kareler, sonra bütün daireler…) en güvenli yoldur.",
+          `✏️ Sayımlar: ${tur.map((t, i) => `${SEKIL_AD[t]} ${sayilar[i]}`).join(", ")}.`,
+          `✏️ 2 kez geçen yalnızca ${SEKIL_AD[tur[0]]}.`,
+          `✅ Sonuç: ${SEKIL_AD[tur[0]]}.`,
+          `🔁 Kontrol edelim: Sayımların toplamı ${liste.length} olmalı: ${sayilar.join(" + ")} = ${liste.length}. ✓`,
+        ],
+        kural: "Saydıklarının toplamını toplam nesne sayısıyla karşılaştırarak sağlama yap.",
+        dogruNeden: `${SEKIL_AD[tur[0]]} tabloda tam 2 kez var.`.replace(/^./, c => c.toLocaleUpperCase("tr-TR")),
+      });
+    },
+    /* 10. Hangi parça büyük desende yok? */
+    z => {
+      const RK = ["g-a", "g-b", "g-bos"];
+      for (;;) {
+        const g = Array.from({ length: 4 }, () => Array.from({ length: 4 }, () => sec(RK)));
+        const blok = (r, c) => [g[r][c], g[r][c + 1], g[r + 1][c], g[r + 1][c + 1]];
+        const var_ = new Set(); for (let r = 0; r < 3; r++) for (let c = 0; c < 3; c++) var_.add(blok(r, c).join());
+        const varlar = karistir([...var_]).slice(0, 3); if (varlar.length < 3) continue;
+        let yok; for (let d = 0; d < 50; d++) { const b = [0, 0, 0, 0].map(() => sec(RK)).join(); if (!var_.has(b) && b.split(",").filter(x => x !== "g-bos").length >= 2) { yok = b; break; } }
+        if (!yok) continue;
+        const parca = k => (cx, cy, s) => { const o = {}; k.split(",").forEach((x, i) => { o[Math.floor(i / 2) + "," + (i % 2)] = x; }); return izgaraCiz(cx - s * 0.3, cy - s * 0.3, 2, s * 0.3, o); };
+        const hs = harfle([{ c: parca(yok) }].concat(varlar.map(k => ({ c: parca(k), hata: "dikkat", neden: "Bu parça büyük desende var; desende 2×2'lik pencereyi gezdirerek bulabilirsin." }))));
+        const buyuk = {}; g.forEach((s, r) => s.forEach((x, c) => { buyuk[r + "," + c] = x; }));
+        return SG({
+          kaz: K7, duzey: "uygulama", zorluk: 3,
+          soru: "Aşağıdaki 2×2'lik parçalardan hangisi, büyük desenin içinde (döndürülmeden) <b>bulunmaz</b>?",
+          gorsel: seriSvg([(cx, cy, s) => izgaraCiz(cx - s * 0.4, cy - s * 0.4, 4, s * 0.2, buyuk)], hs.liste, { s: 100, etiket: "büyük desen ve parçalar" }),
+          dogru: hs.harf, yanlis: hs.yanlis,
+          ipucu: "Her parçanın sol üst karesinin rengini desende ara; bulduğun her yerde öteki üç kareyi kontrol et.",
+          cozum: [
+            "🔎 Soruyu anlayalım: 4×4'lük desende dokuz farklı 2×2'lik pencere vardır; seçeneklerden üçü bu pencerelerden birine uyuyor.",
+            "💡 Hatırlayalım: Parça araması yaparken bir “başlangıç karesi” seç, onun desendeki bütün yerlerine bak ve çevresini karşılaştır.",
+            `✏️ ${HARF.filter(x => x !== hs.harf).join(", ")} parçalarının her biri desende en az bir yerde bulunuyor.`,
+            `✏️ ${hs.harf} parçasını dokuz pencerenin hiçbirinde bulamıyoruz.`,
+            `✅ Sonuç: ${hs.harf}.`,
+            "🔁 Kontrol edelim: Pencereyi sol üstten başlayıp sağa, sonra bir alt satıra kaydırarak dokuz pencereyi sırayla kontrol et.",
+          ],
+          kural: "Parça arama: pencereyi düzenli kaydır, hiçbir konumu atlama.",
+          dogruNeden: `${hs.harf} parçası desendeki dokuz 2×2 pencerenin hiçbirine uymuyor.`,
+        });
+      }
+    },
+    /* 11. Örneğin aynısı */
+    z => {
+      const SM = ["daire", "ucgen", "kare", "yildiz", "arti"], RNK = ["g-a", "g-d", "g-c"];
+      const ornek = Array.from({ length: 9 }, () => R(0, 2) ? [sec(SM), sec(RNK)] : null);
+      const degis = () => { const o = ornek.map(x => x && x.slice()), i = R(0, 8); if (o[i]) { if (R(0, 1)) o[i][0] = sec(SM.filter(t => t !== o[i][0])); else o[i][1] = sec(RNK.filter(t => t !== o[i][1])); } else o[i] = [sec(SM), sec(RNK)]; return o; };
+      const C = o => (cx, cy, s) => { const u = s * 0.27; let ic = `<rect class="g-bos g-ince" x="${(cx - 1.5 * u).toFixed(1)}" y="${(cy - 1.5 * u).toFixed(1)}" width="${(3 * u).toFixed(1)}" height="${(3 * u).toFixed(1)}"/>`; o.forEach((x, i) => { if (x) ic += sekil(x[0], cx + ((i % 3) - 1) * u, cy + (Math.floor(i / 3) - 1) * u, u * 0.36, x[1]); }); return ic; };
+      const kopyalarListe = [], gor = new Set([JSON.stringify(ornek)]);
+      while (kopyalarListe.length < 3) { const d = degis(), k = JSON.stringify(d); if (!gor.has(k)) { gor.add(k); kopyalarListe.push(d); } }
+      const hs = harfle([{ c: C(ornek) }].concat(kopyalarListe.map(o => ({ c: C(o), hata: "dikkat", neden: "Bu desende bir şeklin türü, rengi ya da yeri örnekten farklı." }))));
+      return SG({
+        kaz: K7, duzey: "uygulama", zorluk: 2,
+        soru: "Üstteki örnek desenin <b>tıpatıp aynısı</b> hangisidir?",
+        gorsel: seriSvg([C(ornek)], hs.liste, { s: 96, etiket: "örnek desen ve seçenekler" }),
+        dogru: hs.harf, yanlis: hs.yanlis,
+        ipucu: "Örnekteki her kutuyu sırayla seçeneklerle karşılaştır: şekil türü, renk ve yer.",
+        cozum: [
+          "🔎 Soruyu anlayalım: Dört desenden üçünde küçük bir fark var; birinin örnekle tamamen aynı olduğunu bulacağız.",
+          "💡 Hatırlayalım: Benzer görselleri karşılaştırırken bir düzen izle: sol üstten başla, satır satır ilerle; her kutuda şekil, renk ve konuma bak.",
+          "✏️ Her seçenekte 9 kutuyu örnekle tek tek karşılaştır; farkı bulduğun anda o seçeneği ele.",
+          `✏️ ${HARF.filter(x => x !== hs.harf).join(", ")} seçeneklerinin her birinde bir kutu farklı; ${hs.harf} seçeneğinde hiçbir fark yok.`,
+          `✅ Sonuç: ${hs.harf}.`,
+          "🔁 Kontrol edelim: Seçtiğin desende de 9 kutunun hepsini bir kez daha kontrol et; aceleyle atlanan küçük farklar en sık yapılan hatadır.",
+        ],
+        kural: "Karşılaştırma sorularında kutu kutu ve düzenli ilerle.",
+        dogruNeden: `${hs.harf} seçeneğindeki her şekil, örnekteki şekille aynı tür, aynı renk ve aynı yerde.`,
+      });
+    },
+    /* 12. Cümlede harf sayma */
+    z => {
+      const CUMLE = ["Kardeşim bahçede ağaca tırmanan kediyi izledi.", "Annem pazardan taze armut ve kavun aldı.", "Sabah erkenden kalkıp okula yürüyerek gittik.", "Kitaplığımdaki masal kitaplarını yeniden sıraladım.", "Bayramda dedemlere gidip ellerini öptük.", "Akşam yemeğinden sonra hep birlikte satranç oynadık."];
+      const c = sec(CUMLE), h = sec(["a", "e", "k", "r"]), say = [...c.toLocaleLowerCase("tr-TR")].filter(x => x === h).length;
+      return S({
+        kaz: K7, duzey: "uygulama", zorluk: 1,
+        soru: `“${c}”<br>Bu cümlede kaç tane <b>“${h}”</b> harfi vardır? (Büyük ve küçük harfleri birlikte say.)`,
+        dogru: say,
+        yanlis: [[say + 1, "islem", "Bir harfi iki kez saymışsın."], [say - 1, "dikkat", "Bir harfi atlamışsın; özellikle sözcük başlarındaki büyük harflere dikkat et."], [say + 2, "islem", "Benzer görünen başka harfleri de saymışsın."], [say - 2, "dikkat", "İki harfi atlamışsın."]],
+        ipucu: "Cümleyi sözcük sözcük böl ve her sözcükteki harfi say.",
+        cozum: [
+          `🔎 Soruyu anlayalım: Cümledeki bütün “${h}” harflerini sayacağız.`,
+          "💡 Hatırlayalım: Uzun bir metinde sayım yaparken parçalara bölmek hata yapmayı önler.",
+          `✏️ Sözcük sözcük: ${c.replace(/[.,]/g, "").split(" ").map(w => `${w} ${[...w.toLocaleLowerCase("tr-TR")].filter(x => x === h).length}`).join(", ")}.`,
+          `✏️ Topla: ${c.replace(/[.,]/g, "").split(" ").map(w => [...w.toLocaleLowerCase("tr-TR")].filter(x => x === h).length).join(" + ")}.`,
+          `✅ Sonuç: ${say}.`,
+          "🔁 Kontrol edelim: Cümleyi sondan başa doğru bir kez daha tara; aynı sayıyı bulmalısın.",
+        ],
+        kural: "Metinde sayım yaparken sözcük sözcük ilerle.",
+        dogruNeden: `Sözcüklerdeki “${h}” sayıları toplanınca ${say} bulunur.`,
+      });
+    },
+    /* 13. Karışık şekiller arasında sayma */
+    z => {
+      const tur = karistir(["yildiz", "daire", "ucgen", "kare"]), hedef = tur[0], renkH = sec(RENKLER);
+      const nh = R(5, 9), COGUL = { yildiz: "yıldızları", daire: "daireleri", ucgen: "üçgenleri", kare: "kareleri" };
+      const hucreler = karistir([...Array(24).keys()]).slice(0, R(14, 20)), dag = hucreler.map((_, i) => i < nh ? [hedef, renkH] : [sec(tur.slice(1)), sec(RENKLER)]);
+      const benzer = karistir(hucreler.map((h, i) => i)).find(i => dag[i][0] !== hedef);
+      if (benzer !== undefined) dag[benzer] = [hedef, sec(RENKLER.filter(r => r !== renkH))];
+      const dg = dag.filter(d => d[0] === hedef && d[1] === renkH).length, tum = dag.filter(d => d[0] === hedef).length;
+      const ic = hucreler.map((h, i) => sekil(dag[i][0], 26 + (h % 6) * 46 + R(-5, 5), 26 + Math.floor(h / 6) * 46 + R(-5, 5), 14, dag[i][1])).join("");
+      return S({
+        kaz: K7, duzey: "uygulama", zorluk: 2,
+        soru: `Görselde kaç tane <b>${RENK_AD[renkH]} ${SEKIL_AD[hedef]}</b> vardır?`,
+        gorsel: svg(290, 196, ic, "dağınık şekiller"),
+        dogru: dg,
+        yanlis: [[tum, "dikkat", `Bütün ${COGUL[hedef]} saymışsın; yalnızca ${RENK_AD[renkH]} olanlar soruluyor.`], [dg + 1, "islem", "Bir şekli iki kez saymışsın."], [dg - 1, "dikkat", "Bir şekli atlamışsın."], [dg + 2, "islem", "Fazla saymışsın."]],
+        ipucu: "Hem şekle hem renge bak; ikisi birden uymalı.",
+        cozum: [
+          `🔎 Soruyu anlayalım: Yalnızca ${RENK_AD[renkH]} renkli ${SEKIL_AD[hedef]} şekillerini sayacağız.`,
+          "💡 Hatırlayalım: İki koşullu sayımda bir nesnenin sayılması için iki koşulu da sağlaması gerekir.",
+          `✏️ Görselde toplam ${tum} ${SEKIL_AD[hedef]} var.`,
+          `✏️ Bunlardan ${tum - dg} tanesi başka renkte; onları çıkarıyoruz.`,
+          `✅ Sonuç: ${dg}.`,
+          "🔁 Kontrol edelim: Bu kez yalnızca renge bakarak tara, bulduklarından şekli uymayanları ele. Aynı sayıya ulaşmalısın.",
+        ],
+        kural: "İki koşullu sayımda iki özelliği birden kontrol et.",
+        dogruNeden: `Hem ${SEKIL_AD[hedef]} hem ${RENK_AD[renkH]} olan ${dg} şekil var.`,
+      });
+    },
+    /* 14. Dikey simetri ekseni olan harf */
+    z => {
+      const SIM = ["A", "H", "M", "O", "T", "U", "V", "Y", "W", "X"], DEG = ["F", "G", "J", "K", "L", "N", "P", "R", "S", "Z"];
+      const dg = sec(SIM), yan = karistir(DEG).slice(0, 3);
+      return S({
+        kaz: K7, duzey: "aciklama", zorluk: 1,
+        soru: "Aşağıdaki büyük harflerden hangisi, ortasından geçen <b>dikey</b> bir çizgiye göre simetriktir (aynada sağ–sol çevrilince de aynı görünür)?",
+        dogru: dg,
+        yanlis: yan.map(h => [h, "dikkat", `${h} harfinin sağ ve sol yarıları birbirinin aynası değildir; dikey çizgiyle ikiye bölünce yarılar farklı.`]),
+        ipucu: "Harfin ortasına dikey bir çizgi çizdiğini düşün; iki yarı birbirinin ayna görüntüsü mü?",
+        cozum: [
+          "🔎 Soruyu anlayalım: Dikey simetri ekseni olan harfi arıyoruz.",
+          "💡 Hatırlayalım: Bir şekil bir çizgi boyunca katlanınca iki yarısı tam üst üste geliyorsa o çizgi simetri eksenidir.",
+          `✏️ ${dg} harfini ortasından dikey katlayalım: sol ve sağ yarılar üst üste gelir.`,
+          `✏️ ${yan.join(", ")} harflerinde yarılar üst üste gelmez.`,
+          `✅ Sonuç: ${dg}.`,
+          "🔁 Kontrol edelim: Harfi kâğıda büyükçe yazıp aynaya tut; aynada aynı görünüyorsa dikey simetri ekseni vardır.",
+        ],
+        kural: "Simetri ekseni şekli birbirinin aynası olan iki eş parçaya ayırır.",
+        dogruNeden: `${dg} harfinin sol ve sağ yarıları birbirinin ayna görüntüsüdür.`,
+      });
+    },
+    /* 15. 69 ve 96 tablosu */
+    z => {
+      const S4 = ["69", "96", "66", "99"], hedef = sec(["69", "96"]);
+      let tab, say; do { tab = Array.from({ length: 4 }, () => Array.from({ length: 6 }, () => sec(S4))); say = tab.flat().filter(x => x === hedef).length; } while (say < 4 || say > 10);
+      const ters = hedef === "69" ? "96" : "69", st = tab.flat().filter(x => x === ters).length;
+      return S({
+        kaz: K7, duzey: "uygulama", zorluk: 2,
+        soru: `Tabloda kaç tane <b>${hedef}</b> sayısı vardır?`,
+        gorsel: metinIzgara(tab, { u: 46, boy: 20 }),
+        dogru: say,
+        yanlis: [[say + st, "dikkat", `${hedef} ile ${ters} sayılarını birlikte saymışsın.`], [st === say ? say + 3 : st, "dikkat", `Bu, ${ters} sayısının adedi; rakamların sırasına dikkat et.`], [say + 1, "islem", "Bir sayıyı iki kez saymışsın."], [say - 1, "islem", "Bir sayıyı atlamışsın."]],
+        ipucu: `${hedef} sayısında önce ${hedef[0]}, sonra ${hedef[1]} gelir.`,
+        cozum: [
+          `🔎 Soruyu anlayalım: 66, 69, 96 ve 99 karışık yazılmış; yalnızca ${hedef} sayılarını sayacağız.`,
+          `💡 Hatırlayalım: ${hedef} ile ${ters} aynı rakamlardan oluşur ama rakamların sırası farklıdır.`,
+          `✏️ Satır satır: ${tab.map((s, i) => `${i + 1}. satır ${s.filter(x => x === hedef).length}`).join(", ")}.`,
+          `✏️ Topla: ${tab.map(s => s.filter(x => x === hedef).length).join(" + ")}.`,
+          `✅ Sonuç: ${say}.`,
+          "🔁 Kontrol edelim: Sütun sütun yeniden say; aynı sonucu bulmalısın.",
+        ],
+        kural: "Benzer sayılarda basamakların sırasına dikkat et.",
+        dogruNeden: `Tabloda ${say} tane ${hedef} var.`,
+      });
+    },
+  ];
+  B.push({ id: "dikkat", ad: "Dikkat ve görsel ayırt etme", simge: "👁️", aciklama: "Farklı olanı bul, şekil say, benzerleri dikkatle ayırt et.", sorular: dikkatSorular });
+
 })();
