@@ -17,13 +17,13 @@
   function afis(baslik, govde, { alt = "", W = 560, etiket = "afiş" } = {}) {
     const s = govde.split("|"), H = 84 + s.length * 24 + (alt ? 24 : 0);
     let ic = `<rect class="g-yumusak g-cizgi" x="8" y="8" width="${W - 16}" height="${H - 16}" rx="14" stroke-width="2"/>` +
-      `<rect class="g-b" x="9" y="9" width="${W - 18}" height="44" rx="13"/>` + G.yazi(W / 2, 37, baslik, { b: 1 });
+      `<rect class="g-b" fill-opacity="0.5" x="9" y="9" width="${W - 18}" height="44" rx="13"/>` + G.yazi(W / 2, 37, baslik, { b: 1 });
     s.forEach((t, i) => { ic += G.yazi(28, 84 + i * 24, t, { a: "start" }); });
     if (alt) ic += G.yazi(W / 2, H - 20, alt, { k: 1 });
     return G.svg(W, H, ic, etiket);
   }
   // Basit çöp adam (yüz çizilmez)
-  const kisi = (x, y, ad) => `<circle class="g-b g-cizgi" cx="${x}" cy="${y}" r="13" stroke-width="2"/>` +
+  const kisi = (x, y, ad) => `<circle class="g-b g-cizgi" fill-opacity="0.5" cx="${x}" cy="${y}" r="13" stroke-width="2"/>` +
     `<line class="g-cizgi" x1="${x}" y1="${y + 13}" x2="${x}" y2="${y + 44}" stroke-width="3"/><line class="g-cizgi" x1="${x - 16}" y1="${y + 24}" x2="${x + 16}" y2="${y + 24}" stroke-width="3"/>` +
     `<line class="g-cizgi" x1="${x}" y1="${y + 44}" x2="${x - 11}" y2="${y + 64}" stroke-width="3"/><line class="g-cizgi" x1="${x}" y1="${y + 44}" x2="${x + 11}" y2="${y + 64}" stroke-width="3"/>` +
     (ad ? t13(x, y + 82, ad, { b: 1 }) : "");
@@ -56,7 +56,7 @@
     liste.forEach(([harf, metin], i) => {
       const x = 12 + (i % satir) * (w + 12), y = 12 + Math.floor(i / satir) * (h + 12), s = metin.split("|");
       ic += `<rect class="g-yumusak g-cizgi" x="${x}" y="${y}" width="${w}" height="${h}" rx="10" stroke-width="1.5"/>`;
-      if (harf) ic += `<circle class="g-b g-cizgi" cx="${x + 14}" cy="${y + 14}" r="11"/>` + t13(x + 14, y + 19, harf, { b: 1 });
+      if (harf) ic += `<circle class="g-b g-cizgi" fill-opacity="0.5" cx="${x + 14}" cy="${y + 14}" r="11"/>` + t13(x + 14, y + 19, harf, { b: 1 });
       s.forEach((t, j) => { ic += t13(x + w / 2 + (harf ? 10 : 0), y + h / 2 + 5 + (j - (s.length - 1) / 2) * 17, t, { f: 14 }); });
     });
     return G.svg(W, H, ic, etiket);
@@ -107,11 +107,11 @@
   const parcala = (parcalar, etiket) => {
     // parcalar: [[metin, sinif], ...] — kök/ek kutuları ve renk açıklaması
     let x = 20, ic = "";
-    parcalar.forEach(([m, s]) => { const w = 30 + m.length * 13; ic += `<rect class="${s} g-cizgi" x="${x}" y="20" width="${w}" height="52" rx="8" stroke-width="2"/>` + (s === "g-a" || s === "g-c" ? `<text class="g-bos" style="font-size:16px" font-weight="700" x="${x + w / 2}" y="53" text-anchor="middle">${m}</text>` : G.yazi(x + w / 2, 53, m, { b: 1 })); x += w + 8; });
+    parcalar.forEach(([m, s]) => { const w = 30 + m.length * 13; ic += `<rect class="${s} g-cizgi"${s === "g-b" ? ' fill-opacity="0.5"' : ""} x="${x}" y="20" width="${w}" height="52" rx="8" stroke-width="2"/>` + (s === "g-a" || s === "g-c" ? `<text class="g-bos" style="font-size:16px" font-weight="700" x="${x + w / 2}" y="53" text-anchor="middle">${m}</text>` : G.yazi(x + w / 2, 53, m, { b: 1 })); x += w + 8; });
     const W = Math.max(x + 12, 520);
     ic += `<rect class="g-a" x="20" y="92" width="22" height="16" rx="3"/>` + G.yazi(48, 105, "kök", { a: "start", k: 1 }) +
       `<rect class="g-c" x="110" y="92" width="22" height="16" rx="3"/>` + G.yazi(138, 105, "yapım eki", { a: "start", k: 1 }) +
-      `<rect class="g-b" x="240" y="92" width="22" height="16" rx="3"/>` + G.yazi(268, 105, "çekim eki", { a: "start", k: 1 }) +
+      `<rect class="g-b" fill-opacity="0.5" x="240" y="92" width="22" height="16" rx="3"/>` + G.yazi(268, 105, "çekim eki", { a: "start", k: 1 }) +
       `<rect class="g-bos g-cizgi" x="370" y="92" width="22" height="16" rx="3"/>` + G.yazi(398, 105, "boyanmamış", { a: "start", k: 1 });
     return G.svg(W, 118, ic, etiket);
   };
@@ -221,7 +221,7 @@
       { gorsel: G.svg(560, 250,
         `<rect class="g-yumusak g-cizgi" x="8" y="8" width="544" height="120" rx="12" stroke-width="1.5"/>` + G.yazi(24, 34, "🍳 MENEMEN TARİFİ", { a: "start", b: 1 }) +
         t13(24, 60, "1. Biberleri ve domatesleri ________ ile doğra.", { a: "start", f: 15 }) + t13(24, 86, "2. Tereyağını ________ içinde erit.", { a: "start", f: 15 }) + t13(24, 112, "3. Yumurtaları ekleyip ________ ile karıştır.", { a: "start", f: 15 }) +
-        [["K", "🔪"], ["L", "🍳"], ["M", "🥄"], ["N", "🥣"]].map(([h, e], i) => `<rect class="g-bos g-cizgi" x="${30 + i * 132}" y="145" width="110" height="95" rx="10" stroke-width="1.5"/>` + `<circle class="g-b g-cizgi" cx="${46 + i * 132}" cy="160" r="11"/>` + t13(46 + i * 132, 165, h, { b: 1 }) + ikon(85 + i * 132, 215, e, 44)).join(""),
+        [["K", "🔪"], ["L", "🍳"], ["M", "🥄"], ["N", "🥣"]].map(([h, e], i) => `<rect class="g-bos g-cizgi" x="${30 + i * 132}" y="145" width="110" height="95" rx="10" stroke-width="1.5"/>` + `<circle class="g-b g-cizgi" fill-opacity="0.5" cx="${46 + i * 132}" cy="160" r="11"/>` + t13(46 + i * 132, 165, h, { b: 1 }) + ikon(85 + i * 132, 215, e, 44)).join(""),
         "menemen tarifi ve harfli mutfak araçları"),
         kural: "Söz varlığını geliştirmek için nesnenin adını işleviyle birlikte öğren.", dogruNeden: "Tereyağı tavada eritilir; görselde tava L harfiyle gösterilmiştir." }),
   );
@@ -277,7 +277,7 @@
     dallar.forEach(([h, m], i) => {
       const [x, y] = yer[i];
       ic = `<line class="g-cizgi" x1="${cx}" y1="${cy}" x2="${x}" y2="${y}" stroke-width="2"/>` + ic;
-      ic += `<rect class="g-yumusak g-cizgi" x="${x - 120}" y="${y - 24}" width="240" height="48" rx="10" stroke-width="1.5"/>` + `<circle class="g-b g-cizgi" cx="${x - 104}" cy="${y}" r="11"/>` + t13(x - 104, y + 5, h, { b: 1 }) + t13(x + 8, y + 5, m, { f: 14 });
+      ic += `<rect class="g-yumusak g-cizgi" x="${x - 120}" y="${y - 24}" width="240" height="48" rx="10" stroke-width="1.5"/>` + `<circle class="g-b g-cizgi" fill-opacity="0.5" cx="${x - 104}" cy="${y}" r="11"/>` + t13(x - 104, y + 5, h, { b: 1 }) + t13(x + 8, y + 5, m, { f: 14 });
     });
     return G.svg(W, H, ic, etiket);
   }
@@ -303,7 +303,7 @@
       C("Beş harf kartının hepsini birer kez kullanarak yazılabilen sözcüğü bulacağız.", "Bir sözcüğü verilen harflerle yazmak için her harfin kartlarda olması ve hiçbir kartın artmaması gerekir.",
         ["Kartlar: K, A, L, E, M (beş harf). Seçenekler beş harfli olmalı; “elma” dört harfli olduğu için bir kart artar.", "kalem → k ✔, a ✔, l ✔, e ✔, m ✔. Beş kartın hepsi birer kez kullanıldı."],
         "Yazılabilen sözcük <b>kalem</b>dir.", "Aynı kartlarla “kelam” sözcüğü de yazılabilir; ama seçeneklerde yalnızca “kalem” var."),
-      { gorsel: G.svg(420, 90, ["K", "A", "L", "E", "M"].map((h, i) => `<rect class="g-b g-cizgi" x="${20 + i * 78}" y="12" width="66" height="66" rx="10" stroke-width="2"/>` + `<text class="g-yazi" style="font-size:30px" font-weight="700" x="${53 + i * 78}" y="56" text-anchor="middle">${h}</text>`).join(""), "harf kartları: K, A, L, E, M"),
+      { gorsel: G.svg(420, 90, ["K", "A", "L", "E", "M"].map((h, i) => `<rect class="g-b g-cizgi" fill-opacity="0.5" x="${20 + i * 78}" y="12" width="66" height="66" rx="10" stroke-width="2"/>` + `<text class="g-yazi" style="font-size:30px" font-weight="700" x="${53 + i * 78}" y="56" text-anchor="middle">${h}</text>`).join(""), "harf kartları: K, A, L, E, M"),
         kural: "Harf oyunlarında önce harf sayısını, sonra her harfi tek tek kontrol et.", dogruNeden: "“Kalem” sözcüğü K, A, L, E, M kartlarının her birini birer kez kullanır." }),
   );
 
@@ -317,7 +317,7 @@
         ["Görseldeki tabelada “TAZE BALIK” yazıyor ve tezgâhta balıklar var.", "Balık satan kişi: balık + -çı → balıkçı."],
         "Doğru cümle: <b>“Tezgâhın sahibi bir balıkçıdır.”</b>", "Öteki eklerle dene: balıklı (balığı olan), balıksız (balığı olmayan). Bunlar kişinin mesleğini anlatmaz."),
       { gorsel: G.svg(420, 200,
-        `<rect class="g-b g-cizgi" x="60" y="14" width="300" height="44" rx="8" stroke-width="2"/>` + G.yazi(210, 43, "TAZE BALIK", { b: 1 }) +
+        `<rect class="g-b g-cizgi" fill-opacity="0.5" x="60" y="14" width="300" height="44" rx="8" stroke-width="2"/>` + G.yazi(210, 43, "TAZE BALIK", { b: 1 }) +
         `<line class="g-cizgi" x1="80" y1="58" x2="80" y2="100" stroke-width="3"/><line class="g-cizgi" x1="340" y1="58" x2="340" y2="100" stroke-width="3"/>` +
         `<rect class="g-yumusak g-cizgi" x="40" y="100" width="340" height="80" rx="6" stroke-width="2"/>` + ikon(110, 155, "🐟", 40) + ikon(180, 155, "🐠", 40) + ikon(250, 155, "🐟", 40) + ikon(320, 155, "🧊", 36),
         "taze balık satılan pazar tezgâhı"),
@@ -449,7 +449,7 @@
         ["1. kutu: Günlerce yağmur yağdı → bu yüzden → 2. kutu: Yollar çamur oldu.", "Çamurlu yolun sonucu ne olur? Tekerlekleri tahta olan kağnılar çamura saplanır, zor ilerler."],
         "“?” kutusuna <b>“Kağnılar ilerlemekte zorlandı.”</b> gelir.", "Zinciri baştan oku: Yağmur yağdı, bu yüzden yollar çamur oldu, bu yüzden kağnılar zor ilerledi. Mantıklı."),
       { gorsel: G.svg(600, 120,
-        [["Günlerce|yağmur yağdı.", 20], ["Yollar çamur|oldu.", 220], ["?", 420]].map(([m, x]) => `<rect class="${m === "?" ? "g-b" : "g-yumusak"} g-cizgi" x="${x}" y="20" width="160" height="80" rx="10" stroke-width="2"/>` +
+        [["Günlerce|yağmur yağdı.", 20], ["Yollar çamur|oldu.", 220], ["?", 420]].map(([m, x]) => `<rect class="${m === "?" ? "g-b" : "g-yumusak"} g-cizgi" fill-opacity="0.6" x="${x}" y="20" width="160" height="80" rx="10" stroke-width="2"/>` +
           m.split("|").map((s, j, a) => t13(x + 80, 64 + (j - (a.length - 1) / 2) * 18, s, { f: m === "?" ? 30 : 15, b: m === "?" })).join("")).join("") +
         G.ok(182, 60, 216, 60) + G.ok(382, 60, 416, 60), "sebep sonuç zinciri"),
         kural: "Sebep–sonuç zincirinde her halka bir öncekinin sonucudur.", dogruNeden: "Çamurlu yollar, cephane taşıyan kağnıların zor ilerlemesine yol açar." }),
@@ -484,7 +484,7 @@
         ["I. kitap: “Köyümde geçen çocukluk yıllarımı anlattım.” Yazar kendi hayatını ben diliyle anlatıyor → anı.", "II. kitap: “Şairin doğumundan ölümüne kadar hayatını belgelerle anlatıyor.” Başkasının hayatı → biyografi."],
         "Türler: <b>I. anı – II. biyografi</b>.", "Ayırt etme ipucu: Anıda yazar ile anlatılan kişi aynıdır; biyografide farklıdır."),
       { gorsel: G.svg(600, 210, [["I", "Çocukluğumun Köyü", "“Bu kitapta köyümde geçen|çocukluk yıllarımı, yaşadığım|her şeyi anlattım.”", 20], ["II", "Bir Şairin Hayatı", "“Yazar, şairin doğumundan|ölümüne kadar hayatını|belgelerle anlatıyor.”", 310]].map(([n, b, m, x]) =>
-        `<rect class="g-yumusak g-cizgi" x="${x}" y="10" width="270" height="190" rx="10" stroke-width="2"/>` + `<circle class="g-b g-cizgi" cx="${x + 24}" cy="34" r="13"/>` + t13(x + 24, 39, n, { b: 1 }) + t13(x + 150, 40, "📕 " + b, { b: 1, f: 15 }) +
+        `<rect class="g-yumusak g-cizgi" x="${x}" y="10" width="270" height="190" rx="10" stroke-width="2"/>` + `<circle class="g-b g-cizgi" fill-opacity="0.5" cx="${x + 24}" cy="34" r="13"/>` + t13(x + 24, 39, n, { b: 1 }) + t13(x + 150, 40, "📕 " + b, { b: 1, f: 15 }) +
         m.split("|").map((s, j) => t13(x + 135, 92 + j * 22, s, { f: 14 })).join("")).join(""), "iki kitabın arka kapak yazısı"),
         kural: "Anı = yazarın kendi yaşadıkları; biyografi = başkasının hayat hikâyesi.", dogruNeden: "I. kitapta yazar kendi çocukluğunu, II. kitapta ise bir şairin hayatını anlatmaktadır." }),
   );
@@ -557,7 +557,7 @@
         "“?” yerine <b>Bişkek</b> gelir.", "Elenen seçeneklerin her biri görselde başka bir ülkeye ait; yalnızca Bişkek boşta kaldı."),
       { gorsel: G.svg(600, 220,
         [["Azerbaycan", "Bakü", 70, 150], ["Türkmenistan", "Aşkabat", 200, 170], ["Özbekistan", "Taşkent", 330, 120], ["Kazakistan", "Astana", 420, 40], ["Kırgızistan", "?", 510, 140]].map(([u, b, x, y]) =>
-          `<rect class="${b === "?" ? "g-b" : "g-yumusak"} g-cizgi" x="${x - 62}" y="${y - 26}" width="124" height="56" rx="10" stroke-width="1.5"/>` + t13(x, y - 6, u, { b: 1 }) + t13(x, y + 16, "⭐ " + b, { f: b === "?" ? 18 : 13, b: b === "?" })).join("") +
+          `<rect class="${b === "?" ? "g-b" : "g-yumusak"} g-cizgi" fill-opacity="0.6" x="${x - 62}" y="${y - 26}" width="124" height="56" rx="10" stroke-width="1.5"/>` + t13(x, y - 6, u, { b: 1 }) + t13(x, y + 16, "⭐ " + b, { f: b === "?" ? 18 : 13, b: b === "?" })).join("") +
         G.yazi(300, 212, "(Batıdan doğuya şematik yerleşim)", { k: 1 }), "Türk devletleri ve başkentleri"),
         kural: "Kırgızistan–Bişkek, Kazakistan–Astana, Özbekistan–Taşkent, Türkmenistan–Aşkabat, Azerbaycan–Bakü.", dogruNeden: "Görselde “?” Kırgızistan'ın kutusundadır; Kırgızistan'ın başkenti Bişkek'tir." }),
   );

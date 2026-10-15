@@ -12,7 +12,7 @@
   /* ---------- Görsel yardımcıları ---------- */
   const t13 = (x, y, s, o = {}) => `<text class="g-yazi" style="font-size:${o.f || 13}px" x="${x}" y="${y}" text-anchor="${o.a || "middle"}"${o.b ? ' font-weight="700"' : ""}>${s}</text>`;
   const ikon = (x, y, e, b = 34) => `<text x="${x}" y="${y}" font-size="${b}" text-anchor="middle">${e}</text>`;
-  const harfRozet = (x, y, h) => `<circle class="g-b g-cizgi" cx="${x}" cy="${y}" r="12"/>` + t13(x, y + 5, h, { b: 1 });
+  const harfRozet = (x, y, h) => `<circle class="g-b g-cizgi" fill-opacity="0.5" cx="${x}" cy="${y}" r="12"/>` + t13(x, y + 5, h, { b: 1 });
   // Analog saat(ler): [[saat, dakika, etiket], ...]
   function saatler(liste, etiket) {
     const W = liste.length * 170 + 10, H = 200;
@@ -41,7 +41,7 @@
   // Bilgi panosu (başlık + satırlar)
   function pano(baslik, govde, { W = 520, etiket = "notice" } = {}) {
     const s = govde.split("|"), H = 78 + s.length * 26;
-    let ic = `<rect class="g-yumusak g-cizgi" x="8" y="8" width="${W - 16}" height="${H - 16}" rx="12" stroke-width="2"/><rect class="g-b" x="9" y="9" width="${W - 18}" height="42" rx="11"/>` + G.yazi(W / 2, 36, baslik, { b: 1 });
+    let ic = `<rect class="g-yumusak g-cizgi" x="8" y="8" width="${W - 16}" height="${H - 16}" rx="12" stroke-width="2"/><rect class="g-b" fill-opacity="0.5" x="9" y="9" width="${W - 18}" height="42" rx="11"/>` + G.yazi(W / 2, 36, baslik, { b: 1 });
     s.forEach((t, i) => { ic += t13(28, 82 + i * 26, t, { a: "start", f: 15 }); });
     return G.svg(W, H, ic, etiket);
   }
@@ -152,7 +152,7 @@
         ["£345 → 3 yüzler (three hundred), 45 (forty-five).", "Birleştir: three hundred and forty-five pounds."],
         "Cevap: <b>three hundred and forty-five pounds</b>.", "Yazıyı sayıya geri çevir: three hundred (300) + forty-five (45) = 345. Etiketle aynı."),
       { gorsel: G.svg(420, 150, ikon(90, 105, "🚲", 80) +
-        `<path class="g-b g-cizgi" d="M200 40 L380 40 L380 120 L200 120 L175 80 Z" stroke-width="2"/><circle class="g-bos g-cizgi" cx="196" cy="80" r="6"/>` +
+        `<path class="g-b g-cizgi" fill-opacity="0.5" d="M200 40 L380 40 L380 120 L200 120 L175 80 Z" stroke-width="2"/><circle class="g-bos g-cizgi" cx="196" cy="80" r="6"/>` +
         `<text class="g-yazi" style="font-size:38px" font-weight="700" x="295" y="94" text-anchor="middle">£345</text>`, "a bike with a price tag of 345 pounds"),
         kural: "Yüzlerden sonra “and”: 345 = three hundred and forty-five.", dogruNeden: "Etiketteki £345, “three hundred and forty-five pounds” diye okunur." }),
   );
@@ -165,7 +165,7 @@
       const x = 75 + i * 140, y = 70;
       if (k.sac === "uzun") ic += `<rect fill="#8a5a2b" x="${x - 30}" y="${y - 30}" width="60" height="70" rx="22"/>`;
       ic += `<line class="g-cizgi" x1="${x}" y1="${y + 26}" x2="${x}" y2="${y + 40}" stroke-width="3"/><rect class="g-a" x="${x - 30}" y="${y + 38}" width="60" height="60" rx="14"/>`;
-      ic += `<circle class="g-b g-cizgi" cx="${x}" cy="${y}" r="26" stroke-width="2"/>`;
+      ic += `<circle class="g-b g-cizgi" fill-opacity="0.5" cx="${x}" cy="${y}" r="26" stroke-width="2"/>`;
       if (k.sac === "kisa") ic += `<path fill="#8a5a2b" d="M${x - 27} ${y - 2} A27 27 0 0 1 ${x + 27} ${y - 2} L${x + 20} ${y - 12} L${x - 20} ${y - 12} Z"/>`;
       if (k.sac === "uzun") ic += `<path fill="#8a5a2b" d="M${x - 27} ${y - 4} A27 27 0 0 1 ${x + 27} ${y - 4} Z"/>`;
       if (k.gozluk) ic += `<circle class="g-bos g-cizgi" cx="${x - 10}" cy="${y + 4}" r="8" stroke-width="2"/><circle class="g-bos g-cizgi" cx="${x + 10}" cy="${y + 4}" r="8" stroke-width="2"/><line class="g-cizgi" x1="${x - 2}" y1="${y + 4}" x2="${x + 2}" y2="${y + 4}" stroke-width="2"/>`;
@@ -293,7 +293,7 @@
   /* ======================= Places and Directions in the City ======================= */
   const SOKAK = G.svg(600, 250,
     `<rect class="g-c" fill-opacity="0.18" x="0" y="0" width="600" height="250"/><rect class="g-bos g-cizgi" x="0" y="105" width="600" height="44" stroke-width="1.5"/>` + G.yazi(300, 132, "Green Street", { k: 1 }) +
-    [["Bakery", "🥖", 20], ["Bank", "🏦", 165], ["Café", "☕", 310], ["Library", "📚", 455]].map(([a, e, x]) => `<rect class="g-b g-cizgi" x="${x}" y="15" width="125" height="80" rx="6" stroke-width="2"/>` + ikon(x + 62, 55, e, 30) + t13(x + 62, 84, a, { b: 1, f: 14 })).join("") +
+    [["Bakery", "🥖", 20], ["Bank", "🏦", 165], ["Café", "☕", 310], ["Library", "📚", 455]].map(([a, e, x]) => `<rect class="g-b g-cizgi" fill-opacity="0.5" x="${x}" y="15" width="125" height="80" rx="6" stroke-width="2"/>` + ikon(x + 62, 55, e, 30) + t13(x + 62, 84, a, { b: 1, f: 14 })).join("") +
     [["School", "🏫", 20], ["Park", "🌳", 165], ["Museum", "🏛️", 455]].map(([a, e, x]) => `<rect class="g-yumusak g-cizgi" x="${x}" y="160" width="125" height="80" rx="6" stroke-width="2"/>` + ikon(x + 62, 200, e, 30) + t13(x + 62, 229, a, { b: 1, f: 14 })).join(""), "street map");
   SORU_EKLE("encty.prep",
     Q("encty.prep", "uygulama", 2, "Look at the map. <b>Where is the bank?</b>", "It's between the bakery and the café.",
@@ -318,7 +318,7 @@
       { gorsel: G.svg(600, 370,
         `<rect class="g-c" fill-opacity="0.18" x="0" y="0" width="600" height="370"/>` +
         `<rect class="g-bos" x="275" y="5" width="50" height="360"/><rect class="g-bos" x="15" y="80" width="570" height="40"/><rect class="g-bos" x="15" y="215" width="570" height="40"/>` +
-        [["A", 420, 18], ["B", 420, 132], ["C", 90, 18], ["D", 420, 267]].map(([h, x, y]) => `<rect class="g-b g-cizgi" x="${x}" y="${y}" width="100" height="50" rx="6" stroke-width="2"/>` + G.yazi(x + 50, y + 32, h, { b: 1 })).join("") +
+        [["A", 420, 18], ["B", 420, 132], ["C", 90, 18], ["D", 420, 267]].map(([h, x, y]) => `<rect class="g-b g-cizgi" fill-opacity="0.5" x="${x}" y="${y}" width="100" height="50" rx="6" stroke-width="2"/>` + G.yazi(x + 50, y + 32, h, { b: 1 })).join("") +
         `<text x="300" y="350" font-size="30" text-anchor="middle" fill="#d64545">★</text>` + t13(380, 345, "You are here", { b: 1 }) +
         G.ok(560, 360, 560, 315) + t13(560, 305, "N", { b: 1 }), "map with buildings A, B, C, D"),
         kural: "Sağa ya da sola döndükten sonra “on your left / right” yeni yönüne göre söylenir.", dogruNeden: "İkinci sağ sokağa sapınca A binası yolcunun sol tarafında kalır." }),

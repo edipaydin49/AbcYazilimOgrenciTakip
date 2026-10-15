@@ -12,14 +12,14 @@
   /* ---------- Görsel yardımcıları ---------- */
   const t13 = (x, y, s, o = {}) => `<text class="g-yazi" style="font-size:${o.f || 13}px" x="${x}" y="${y}" text-anchor="${o.a || "middle"}"${o.b ? ' font-weight="700"' : ""}>${s}</text>`;
   const ikon = (x, y, e, b = 34) => `<text x="${x}" y="${y}" font-size="${b}" text-anchor="middle">${e}</text>`;
-  const rozet = (x, y, h) => `<circle class="g-b g-cizgi" cx="${x}" cy="${y}" r="12"/>` + t13(x, y + 5, h, { b: 1 });
+  const rozet = (x, y, h) => `<circle class="g-b g-cizgi" fill-opacity="0.5" cx="${x}" cy="${y}" r="12"/>` + t13(x, y + 5, h, { b: 1 });
   // Harfli kartlar: [[harf, "satır|satır"], ...]
   function kartlar(liste, { w = 125, h = 70, satir = 4, etiket = "kartlar" } = {}) {
     const W = Math.min(liste.length, satir) * (w + 12) + 12, H = Math.ceil(liste.length / satir) * (h + 12) + 12;
     let ic = "";
     liste.forEach(([harf, metin], i) => {
       const x = 12 + (i % satir) * (w + 12), y = 12 + Math.floor(i / satir) * (h + 12), s = metin.split("|");
-      ic += `<rect class="${metin === "?" ? "g-b" : "g-yumusak"} g-cizgi" x="${x}" y="${y}" width="${w}" height="${h}" rx="10" stroke-width="1.5"/>`;
+      ic += `<rect class="${metin === "?" ? "g-b" : "g-yumusak"} g-cizgi" fill-opacity="0.6" x="${x}" y="${y}" width="${w}" height="${h}" rx="10" stroke-width="1.5"/>`;
       if (harf) ic += rozet(x + 15, y + 15, harf);
       s.forEach((t, j) => { ic += t13(x + w / 2 + (harf ? 8 : 0), y + h / 2 + 5 + (j - (s.length - 1) / 2) * 17, t, { f: metin === "?" ? 24 : 14, b: metin === "?" }); });
     });
@@ -103,7 +103,7 @@
       { gorsel: G.svg(560, 230,
         [["Dil", 90, 45], ["Din", 470, 45], ["Tarih", 90, 185], ["?", 470, 185]].map(([m, x, y]) => `<line class="g-cizgi" x1="280" y1="115" x2="${x}" y2="${y}" stroke-width="2"/>`).join("") +
         `<circle class="g-a" cx="280" cy="115" r="52"/><text class="g-bos" style="font-size:14px" font-weight="700" x="280" y="111" text-anchor="middle">Toplumsal</text><text class="g-bos" style="font-size:14px" font-weight="700" x="280" y="129" text-anchor="middle">birlik</text>` +
-        [["Dil", 90, 45], ["Din", 470, 45], ["Tarih", 90, 185], ["?", 470, 185]].map(([m, x, y]) => `<rect class="${m === "?" ? "g-b" : "g-yumusak"} g-cizgi" x="${x - 70}" y="${y - 24}" width="140" height="48" rx="10" stroke-width="1.5"/>` + t13(x, y + 6, m, { b: 1, f: m === "?" ? 24 : 16 })).join(""), "kültürel bağlar şeması"),
+        [["Dil", 90, 45], ["Din", 470, 45], ["Tarih", 90, 185], ["?", 470, 185]].map(([m, x, y]) => `<rect class="${m === "?" ? "g-b" : "g-yumusak"} g-cizgi" fill-opacity="0.6" x="${x - 70}" y="${y - 24}" width="140" height="48" rx="10" stroke-width="1.5"/>` + t13(x, y + 6, m, { b: 1, f: m === "?" ? 24 : 16 })).join(""), "kültürel bağlar şeması"),
         kural: "Kültürel bağlar: dil, din, tarih, gelenek ve görenekler.", dogruNeden: "Dil, din ve tarihle birlikte toplumu bir arada tutan dördüncü kültürel bağ gelenek ve göreneklerdir." }),
   );
   SORU_EKLE("skul.deger",
@@ -155,7 +155,7 @@
         "“?” kutusuna <b>trafik sıkışıklığı</b> gelir.", "Zinciri oku: Araç çok, yol dar → trafik sıkışıyor → insanlar zaman kaybediyor, hava kirleniyor."),
       { gorsel: G.svg(600, 210,
         [["Özel araç sayısının|artması", 15, 30], ["Yolların dar|olması", 15, 125]].map(([m, x, y]) => `<rect class="g-yumusak g-cizgi" x="${x}" y="${y}" width="160" height="56" rx="8" stroke-width="1.5"/>` + m.split("|").map((s, j) => t13(x + 80, y + 24 + j * 17, s)).join("")).join("") +
-        `<rect class="g-b g-cizgi" x="225" y="75" width="150" height="60" rx="10" stroke-width="2"/>` + t13(300, 113, "?", { b: 1, f: 26 }) +
+        `<rect class="g-b g-cizgi" fill-opacity="0.5" x="225" y="75" width="150" height="60" rx="10" stroke-width="2"/>` + t13(300, 113, "?", { b: 1, f: 26 }) +
         [["Zaman kaybı", 425, 15], ["Hava kirliliğinin|artması", 425, 80], ["Stres", 425, 155]].map(([m, x, y]) => `<rect class="g-yumusak g-cizgi" x="${x}" y="${y}" width="160" height="${m.includes("|") ? 56 : 40}" rx="8" stroke-width="1.5"/>` + m.split("|").map((s, j) => t13(x + 80, y + 25 + j * 17, s)).join("")).join("") +
         G.ok(177, 58, 222, 95) + G.ok(177, 153, 222, 118) + G.ok(377, 95, 422, 38) + G.ok(377, 105, 422, 108) + G.ok(377, 118, 422, 172) +
         t13(95, 205, "NEDENLER", { b: 1 }) + t13(505, 210, "SONUÇLAR", { b: 1 }), "neden sonuç şeması"),
@@ -238,7 +238,7 @@
         `<rect class="g-yumusak" x="0" y="0" width="620" height="300"/>` +
         [["Kuzey|Amerika", 90, 60, 110, 80], ["Güney|Amerika", 140, 160, 70, 90], ["Avrupa", 300, 50, 70, 45], ["Afrika", 300, 115, 90, 110], ["Asya", 390, 40, 150, 90], ["Okyanusya", 500, 185, 85, 50], ["Antarktika", 160, 270, 300, 24]].map(([a, x, y, w, h]) =>
           `<rect class="g-c g-cizgi" fill-opacity="0.55" x="${x}" y="${y}" width="${w}" height="${h}" rx="14" stroke-width="1.2"/>` + a.split("|").map((s, j, d) => t13(x + w / 2, y + h / 2 + 5 + (j - (d.length - 1) / 2) * 16, s, { b: 1, f: 12 })).join("")).join("") +
-        [["A", 245, 140], ["B", 440, 200], ["C", 40, 170]].map(([h, x, y]) => `<circle class="g-b g-cizgi" cx="${x}" cy="${y}" r="17" stroke-width="2"/>` + G.yazi(x, y + 6, h, { b: 1 })).join("") +
+        [["A", 245, 140], ["B", 440, 200], ["C", 40, 170]].map(([h, x, y]) => `<circle class="g-b g-cizgi" fill-opacity="0.5" cx="${x}" cy="${y}" r="17" stroke-width="2"/>` + G.yazi(x, y + 6, h, { b: 1 })).join("") +
         `<line class="g-cizgi" stroke-dasharray="6 5" x1="0" x2="620" y1="150" y2="150"/>` + t13(612, 145, "Ekvator", { a: "end", f: 11 }), "şematik dünya haritası, okyanuslar A, B, C"),
         kural: "Atlas: Amerika–Avrupa/Afrika arası; Hint: Afrika–Okyanusya arası; Büyük Okyanus: Asya–Amerika arası.", dogruNeden: "A, Amerika kıtaları ile Avrupa ve Afrika arasında yer aldığı için Atlas Okyanusu'dur." }),
   );
@@ -333,7 +333,7 @@
         ["Görselde dağın üst kısmında güneş (yaz) ve “?” var; alt kısımda kar tanesi (kış) ve “kışlak” yazıyor.", "Yazın çıkılan yüksek ve serin otlak → yaylak."],
         "“?” yerine <b>yaylak</b> gelir.", "Bu yaşam biçimi bugün de yayla geleneği olarak bazı bölgelerimizde sürüyor."),
       { gorsel: G.svg(560, 250, `<path class="g-c g-cizgi" fill-opacity="0.45" d="M20 230 L250 40 L310 70 L540 230 Z" stroke-width="2"/>` +
-        `<rect class="g-b g-cizgi" x="210" y="70" width="110" height="44" rx="8" stroke-width="2"/>` + t13(265, 100, "?", { b: 1, f: 24 }) + ikon(355, 70, "☀️", 30) + t13(265, 132, "YAZ", { b: 1 }) +
+        `<rect class="g-b g-cizgi" fill-opacity="0.5" x="210" y="70" width="110" height="44" rx="8" stroke-width="2"/>` + t13(265, 100, "?", { b: 1, f: 24 }) + ikon(355, 70, "☀️", 30) + t13(265, 132, "YAZ", { b: 1 }) +
         `<rect class="g-yumusak g-cizgi" x="60" y="180" width="110" height="40" rx="8" stroke-width="2"/>` + t13(115, 205, "kışlak", { b: 1, f: 15 }) + ikon(200, 210, "❄️", 26) + t13(115, 170, "KIŞ", { b: 1 }) +
         G.ok(150, 175, 215, 118, "g-ok-a") + G.ok(240, 120, 175, 180, "g-ok-d") + ikon(470, 215, "⛺", 30) + ikon(420, 215, "🐑", 26), "yaylak ve kışlak şeması"),
         kural: "Yaz: yaylak (yüksek, serin). Kış: kışlak (alçak, korunaklı).", dogruNeden: "Göçebe Türklerin yazın çıktığı yüksek ve serin otlaklara yaylak denir." }),
