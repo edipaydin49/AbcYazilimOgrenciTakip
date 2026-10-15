@@ -8,6 +8,7 @@ DERS_EKLE({
     { id: "tr1", ad: "Dilimizin Zenginliği", kisa: "1. Tema", sayfa: "s. 10–63", ada: { ad: "Dilimizin Zenginliği Adası", rozet: "Kelime Ustası", simge: "🏝️", rozetSimge: "🏅" } },
     { id: "tr2", ad: "Bağımsızlık Yolu", kisa: "2. Tema", sayfa: "s. 66–113", ada: { ad: "Bağımsızlık Yolu Adası", rozet: "Bağımsızlık Kâşifi", simge: "🏰", rozetSimge: "🎖️" } },
     { id: "tr3", ad: "Farklı Dünyalar", kisa: "3. Tema", sayfa: "s. 116–169", ada: { ad: "Farklı Dünyalar Adası", rozet: "Dünya Kâşifi", simge: "🌍", rozetSimge: "🏆" } },
+    { id: "tr4", ad: "Noktalama ve Konuşma", kisa: "Ek Tema", sayfa: "ek konular", ada: { ad: "Noktalama Adası", rozet: "Noktalama Ustası", simge: "✒️", rozetSimge: "🥇" } },
   ],
   /* Yazılı sınav kapsamları (veli panelinden değiştirilebilir). Kitabın 2. cildi eklenince güncellenecek. */
   yazililar: {

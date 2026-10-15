@@ -42,23 +42,39 @@ function ayristir(S) {
       if (t.y < 50 || t.y > ALT) continue;
       const m = t.s.match(/^(.+?) · (\d+) soru$/);
       if (m && dersBul(m[1])) { ref.push({ tur: "ders", sayfa: i + 1, y: t.y, d: dersBul(m[1]), n: +m[2] }); continue; }
-      const o = t.s.match(/^(\d+)\s*(?:ve|-|–)\s*(\d+)\.\s*soruları/);
+      const o = t.s.match(/^(\d+)(?:\s*,\s*\d+)*\s*(?:ve|-|–)\s*(\d+)\.\s*soruları/);
       if (o && t.x < 52) { ref.push({ tur: "ortak", sayfa: i + 1, y: t.y, a: +o[1], b: +o[2] }); continue; }
       const q = t.s.match(/^(\d{1,2})\.$/);
       if (q && t.x < 52) ref.push({ tur: "soru", sayfa: i + 1, y: t.y, no: +q[1] });
     }
   }
-  const sinir = k => { // k. işaretin bölgesinin sonu: aynı sayfadaki sonraki işaret ya da sayfa altı
-    const r = ref[k], s = ref[k + 1];
-    return s && s.sayfa === r.sayfa ? s.y - 10 : ALT;
+  // Bir işaretin (soru / ortak metin) bölgeleri: aynı sayfada bir sonraki işarete kadar; sonraki işaret başka sayfadaysa
+  // soru sonraki sayfanın üstünde devam ediyor olabilir. Bölge son yazı satırında biter (altta boşluk kalmaz).
+  const yazilar = (sayfa, y1, y2) => S[sayfa - 1].items.filter(t => t.y > Math.max(50, y1) && t.y < Math.min(ALT, y2));
+  const kirp = (sayfa, y1, y2) => { const l = yazilar(sayfa, y1, y2); if (!l.length) return null; return [sayfa, Math.round(Math.min(...l.map(t => t.y)) - 12), Math.round(Math.max(...l.map(t => t.y)) + 7)]; };
+  const bolgeler = k => {
+    const r = ref[k], s = ref[k + 1], l = [];
+    if (s && s.sayfa === r.sayfa) { const b = kirp(r.sayfa, r.y - 1, s.y - 4); if (b) l.push([b[0], Math.round(r.y - 12), b[2]]); return l; }
+    const b = kirp(r.sayfa, r.y - 1, ALT); if (b) l.push([b[0], Math.round(r.y - 12), b[2]]);
+    // Seçenekler (D şıkkı) bu sayfada bittiyse soru devam etmiyor; ortak metinler hiç devam etmez sayılır.
+    if (r.tur !== "soru" || yazilar(r.sayfa, r.y - 1, ALT).some(t => /^D\)/.test(t.s))) return l;
+    // devam: sonraki sayfanın başından, o sayfadaki ilk işarete kadar
+    const sonraki = r.sayfa + 1;
+    if (sonraki <= S.length && sonraki < cozumBas + 1) {
+      const ilk = ref.find(x => x.sayfa === sonraki);
+      const d = kirp(sonraki, 50, ilk ? ilk.y - 4 : ALT);
+      if (d) l.push(d);
+    }
+    return l;
   };
   for (let k = 0; k < ref.length; k++) {
     const r = ref[k];
     if (r.tur === "ders") { ders = { ...r.d, n: r.n, sorular: [] }; sonuc.dersler.push(ders); ortak = null; continue; }
-    if (r.tur === "ortak") { ortak = { a: r.a, b: r.b, bolge: [r.sayfa, Math.round(r.y - 12), Math.round(sinir(k))] }; continue; }
+    if (r.tur === "ortak") { ortak = { a: r.a, b: r.b, bolgeler: bolgeler(k) }; continue; }
     if (!ders) continue;
-    const bolge = [r.sayfa, Math.round(r.y - 12), Math.round(sinir(k))];
-    ders.sorular.push({ no: r.no, bolge, ortak: ortak && r.no >= ortak.a && r.no <= ortak.b ? ortak.bolge : null });
+    const bl = bolgeler(k);
+    const ort = ortak && r.no >= ortak.a && r.no <= ortak.b ? ortak.bolgeler : null;
+    ders.sorular.push({ no: r.no, bolge: bl[0], bolgeler: bl, ortak: ort ? ort[0] : null, ortaklar: ort });
     if (ortak && r.no >= ortak.b) ortak = null;
   }
   // ---------- Çözümler ----------

@@ -8,7 +8,7 @@
   const TEMALAR = [], KONULAR = [];
   for (const d of DERSLER) {
     for (const k of d.konular) { k.ders = d.id; KONULAR.push(k); }
-    for (const t of d.temalar) TEMALAR.push({ ...t, ders: d.id, konular: d.konular.filter(k => k.tema === t.id).map(k => k.id) });
+    for (const t of d.temalar) if (d.konular.some(k => k.tema === t.id)) TEMALAR.push({ ...t, ders: d.id, konular: d.konular.filter(k => k.tema === t.id).map(k => k.id) });
     d.temaListesi = TEMALAR.filter(t => t.ders === d.id);
   }
   const DERS = Object.fromEntries(DERSLER.map(d => [d.id, d]));

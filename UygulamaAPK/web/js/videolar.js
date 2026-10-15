@@ -2152,3 +2152,18 @@ Object.assign(window.HAZIR_VIDEOLAR, {
   }
  ]
 });
+
+/* Çizgi film / şarkı videoları kaldırıldı, yerlerine konu anlatımı videoları eklendi (veli isteği). */
+(function () {
+  const V = window.HAZIR_VIDEOLAR;
+  const cikar = ["3FeYmoRYCuo", "EdsVvEFlXbM", "r9jeeXPZrJs", "hWnN5uypk7E", "Tl1svQEm5Zg", "xh0_fGNJCZI", "g2Xuc9H7cD4",
+    "48vTvapi8YI", "4HqXrSaYh9Y", "DMtJEMG8Vpg", "W6FidMj27ZM", "7jJ3M8VUlO4", "buY0PSmkdXM"];
+  for (const k of Object.keys(V)) V[k] = V[k].filter(v => !cikar.includes(v.vid));
+  const ekle = (k, l) => { V[k] = [...l.map(([vid, baslik, kaynak]) => ({ vid, baslik, kaynak: kaynak || "" })), ...(V[k] || [])]; };
+  ekle("tr_istiklal", [["Fee7G_tzQgQ", "İstiklal Marşı Nasıl Yazıldı? Dinleme Metni - 6. Sınıf"], ["Y75Km7dlt94", "İstiklal Marşı (orkestra eşliğinde)"]]);
+  ekle("tr_samsun", [["bNMBAYUfQVA", "Mustafa Kemal Atatürk'ün 19 Mayıs 1919'da Samsun'a Çıkışı"], ["K92I_1vNQb0", "Atatürk'ün Samsun'a Çıkışı"], ["QmCZlK2badY", "Millî Mücadele ruhunu taşıyan gemi: Bandırma"]]);
+  ekle("en_transport", [["f7U4UW2BAvE", "İngilizce Ulaşım Araçları - Taşıtlar (Transportation)"], ["IprVEIfezF8", "İngilizce Ulaşım Araçları - Transportation"]]);
+  // şarkı / çizgi film / flash-card videoları ve aynı videonun tekrarları çıkarılır
+  const cocukca = /\bsong\b|şarkı|rafadan|çizgi film|animasyon|talking flashcards|for kids|masal(lar)?\b/i;
+  for (const k of Object.keys(V)) { const gor = new Set(); V[k] = V[k].filter(v => !cocukca.test(v.baslik) && !gor.has(v.vid) && gor.add(v.vid)); }
+})();

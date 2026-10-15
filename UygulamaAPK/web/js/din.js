@@ -9,6 +9,7 @@ DERS_EKLE({
     { id: "d3", ad: "Ahlaki Davranışlar", kisa: "3. Ünite" },
     { id: "d4", ad: "Peygamberliğinden Önce Hz. Muhammed", kisa: "4. Ünite" },
     { id: "d5", ad: "Kültürümüzdeki Dinî Motifler", kisa: "5. Ünite" },
+    { id: "d6", ad: "Peygamberimiz Hz. Muhammed'in (sav) Hayatı", kisa: "Ek Ünite" },
   ],
   yazililar: {
     d1y1: ["d_peygamber", "d_vahiy", "d_kitaplar", "d_felak", "d_ramazan"],

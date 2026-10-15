@@ -92,10 +92,8 @@ details.akordiyon.konu { background: var(--paper); }
 .bar i { display: block; height: 100%; background: var(--cobalt); border-radius: 99px; }
 .konu-satir { display: grid; grid-template-columns: minmax(0, 1fr) 110px; gap: 10px; align-items: center; padding: 10px 12px; border-radius: 12px; background: var(--paper); border: 1px solid transparent; cursor: pointer; text-align: left; width: 100%; }
 .konu-satir:hover { border-color: var(--line); }
-.konu-satir > span { min-width: 0; overflow-wrap: anywhere; }
+.konu-satir > span { min-width: 0; overflow-wrap: break-word; }
 .konu-satir.kisa { grid-template-columns: minmax(0, 1fr) auto; }
-.metrik b, .metrik span, .metrik small, .etiket, .sekme, .btn, .geri, td, th, h1, h2, h3 { overflow-wrap: anywhere; }
-.btn, .sekme { white-space: normal; }
 .soru-metin { font-size: 1.15rem; font-weight: 600; }
 .secenekler { display: grid; gap: 10px; }
 .sec { display: flex; gap: 12px; align-items: center; text-align: left; padding: 12px 14px; border-radius: 14px; border: 2px solid var(--line); background: var(--paper); cursor: pointer; min-height: 56px; width: 100%; }

@@ -52,7 +52,8 @@
     const [sayfa, y1, y2] = bolge;
     const doc = await belgeAl(id);
     const pg = await doc.getPage(sayfa);
-    const genis = Math.max(260, kutu.clientWidth || 600);
+    // Kitapçık yazısı uygulama yazısıyla aynı büyüklükte kalsın (geniş ekranda aşırı büyümesin)
+    const genis = Math.min(Math.max(260, kutu.clientWidth || 600), Math.round((X1 - X0) * 1.45));
     const olcek = genis / (X1 - X0), dpr = Math.min(2, window.devicePixelRatio || 1);
     const c = document.createElement("canvas");
     c.width = Math.round((X1 - X0) * olcek * dpr); c.height = Math.round((y2 - y1) * olcek * dpr);
@@ -64,6 +65,11 @@
     return c;
   }
   async function bolgeler(id, liste, kutu) { for (const b of liste) await kirp(id, b, kutu); }
+  /* Soru: varsa ortak metin, sonra sorunun bütün parçaları (soru sayfa sonundan sonraki sayfaya taşabilir) */
+  async function soruCiz(id, q, kutu) {
+    await bolgeler(id, q.ortaklar || (q.ortak ? [q.ortak] : []), kutu);
+    await bolgeler(id, q.bolgeler || [q.bolge], kutu);
+  }
 
   /* ---------------- Sonuç hesapları ---------------- */
   function puanHesapla(dagilim) {
@@ -119,7 +125,7 @@
       ana.querySelectorAll("[data-td]").forEach(b => b.onclick = () => { suredeTut(); d.ders = +b.dataset.td; d.no = 1; DEPO.ayarKaydet(); ciz(); });
       ana.querySelectorAll("[data-tno]").forEach(b => b.onclick = () => { suredeTut(); d.no = +b.dataset.tno; DEPO.ayarKaydet(); ciz(); });
       const kutu = $("#tSoru"); kutu.innerHTML = `<p class="kucuk-yazi muted">${DERS_AD[ders.kod]} · ${q.no}. soru</p>`;
-      try { if (q.ortak) await kirp(id, q.ortak, kutu); await kirp(id, q.bolge, kutu); } catch (e) { kutu.insertAdjacentHTML("beforeend", '<p class="muted">Soru gösterilemedi.</p>'); }
+      try { await soruCiz(id, q, kutu); } catch (e) { kutu.insertAdjacentHTML("beforeend", '<p class="muted">Soru gösterilemedi.</p>'); }
     };
     const ileri = yon => {
       suredeTut();
@@ -218,7 +224,7 @@
         <div id="sCozum" class="tgs-cozum"></div>
         <div class="satir ara"><button class="btn" id="sOnce" ${komsu(i - 1) ? "" : "disabled"}>◀ Önceki soru</button><button class="btn" id="sSonra" ${komsu(i + 1) ? "" : "disabled"}>Sonraki soru ▶</button></div></section>`;
     const kutu = $("#sSoru");
-    try { if (q.ortak) await kirp(id, q.ortak, kutu); await kirp(id, q.bolge, kutu); } catch (e) { kutu.textContent = "Soru gösterilemedi."; }
+    try { await soruCiz(id, q, kutu); } catch (e) { kutu.textContent = "Soru gösterilemedi."; }
     let adim = 0;
     const coz = $("#sCozum");
     const adimGoster = async () => {
