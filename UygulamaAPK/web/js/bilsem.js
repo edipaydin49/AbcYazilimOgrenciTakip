@@ -1041,5 +1041,462 @@
   ];
   B.push({ id: "matris", ad: "Şekil matrisleri", simge: "🧩", aciklama: "3×3 tablodaki kuralı bul, eksik parçayı tamamla.", sorular: matrisSorular });
 
+  /* =====================================================================
+   * 3) SAYI ÖRÜNTÜLERİ VE SAYI BULMACALARI
+   * ===================================================================== */
+  const K3 = "bilsem.sayi";
+  const buyukYazi = (t, cx, cy, boy = 20) => `<text class="g-yazi" x="${cx.toFixed(1)}" y="${(cy + boy * 0.36).toFixed(1)}" text-anchor="middle" font-weight="700" style="font-size:${boy}px">${t}</text>`;
+  const sayiKutulari = (liste, s = 58) => seriSvg(liste.map(v => v === null ? null : (cx, cy) => buyukYazi(v, cx, cy, String(v).length > 3 ? 16 : 20)), null, { s, etiket: "sayı dizisi" });
+  /* Şekilli denklem satırları: her satır [öğe…], öğe: "daire|ucgen|kare|yildiz" ya da metin */
+  const SEMBOL = { daire: "g-d", ucgen: "g-c", kare: "g-b", yildiz: "g-a" };
+  function denklemSvg(satirlar) {
+    const W = 360, h = 46; let ic = "";
+    satirlar.forEach((sat, i) => {
+      let x = 30; const y = 10 + i * h + h / 2;
+      sat.forEach(o => {
+        if (SEMBOL[o]) { ic += sekil(o, x + 12, y, 13, SEMBOL[o]); x += 30; }
+        else { ic += buyukYazi(o, x + 4 + String(o).length * 5, y, 19); x += 14 + String(o).length * 11; }
+      });
+    });
+    return svg(W, satirlar.length * h + 20, ic, "şekilli eşitlikler");
+  }
+  /* Terazi: sol ve sağ kefede öğeler ("kup" | "top" | "bilye") */
+  function teraziCiz(x0, sol, sag) {
+    const ogeCiz = (t, x, y) => t === "kup" ? `<rect class="g-a g-cizgi" stroke-width="1.5" x="${x - 10}" y="${y - 20}" width="20" height="20"/>` : t === "top" ? `<circle class="g-b g-cizgi" stroke-width="1.5" cx="${x}" cy="${y - 10}" r="10"/>` : `<circle class="g-c g-cizgi" stroke-width="1.5" cx="${x}" cy="${y - 6}" r="6"/>`;
+    const kefe = (cx, l) => { let ic = `<line class="g-cizgi" stroke-width="1.5" x1="${cx - 40}" y1="${96}" x2="${cx}" y2="${44}"/><line class="g-cizgi" stroke-width="1.5" x1="${cx + 40}" y1="${96}" x2="${cx}" y2="${44}"/><path class="g-yumusak g-cizgi" stroke-width="2" d="M${cx - 48} 96 L${cx + 48} 96 L${cx + 38} 106 L${cx - 38} 106 Z"/>`; l.forEach((t, i) => { const sira = Math.floor(i / 4), kac = Math.min(4, l.length - sira * 4), j = i % 4; ic += ogeCiz(t, cx + (j - (kac - 1) / 2) * 22, 96 - sira * 22); }); return ic; };
+    return `<path class="g-ince g-yumusak" d="M${x0 + 140} 44 L${x0 + 128} 150 L${x0 + 152} 150 Z"/><line class="g-cizgi" stroke-width="4" stroke-linecap="round" x1="${x0 + 60}" y1="44" x2="${x0 + 220}" y2="44"/><circle class="g-cizgi-uc" cx="${x0 + 140}" cy="44" r="5"/>` + kefe(x0 + 60, sol) + kefe(x0 + 220, sag);
+  }
+  const GUN = ["pazartesi", "salı", "çarşamba", "perşembe", "cuma", "cumartesi", "pazar"];
+
+  const sayiSorular = [
+    /* 1. Sabit artış, eksik terim */
+    z => {
+      const a = R(2, 30), d = R(3, 12) * sec([1, 1, -1]), A = a + (d < 0 ? 7 * -d : 0), t = i => A + d * i, m = R(2, 5);
+      const dizi = [0, 1, 2, 3, 4, 5].map(i => i === m ? null : t(i)), dg = t(m);
+      return S({
+        kaz: K3, duzey: "uygulama", zorluk: 1,
+        soru: "Aşağıdaki sayı dizisinde soru işareti yerine hangi sayı gelmelidir?",
+        gorsel: sayiKutulari(dizi),
+        dogru: dg,
+        yanlis: [[dg + d, "dikkat", "Bu sayı bir sonraki terim; soru işareti daha önceki bir yerde."], [dg - d, "dikkat", "Bu sayı bir önceki terim; soru işaretinin yerini yeniden say."], [dg + 1, "islem", "Artış miktarını uygularken 1 kaydırmışsın."], [dg - 1, "islem", "Artış miktarını uygularken 1 kaydırmışsın."]],
+        ipucu: "Yan yana duran iki sayının farkını bul.",
+        cozum: [
+          "🔎 Soruyu anlayalım: Altı terimli bir dizide bir terim eksik.",
+          "💡 Hatırlayalım: Ardışık terimler arasındaki fark hep aynıysa her adımda aynı sayı eklenir (ya da çıkarılır).",
+          `✏️ Fark: ${t(1)} − ${t(0)} = ${d}. Yani her adımda ${d > 0 ? d + " ekleniyor" : -d + " çıkarılıyor"}.`,
+          `✏️ Soru işaretinden önceki terim ${t(m - 1)}; ${t(m - 1)} ${d > 0 ? "+ " + d : "− " + -d} = ${dg}.`,
+          `✅ Sonuç: ${dg}.`,
+          `🔁 Kontrol edelim: ${dg} ${d > 0 ? "+ " + d : "− " + -d} = ${t(m + 1)}; bu da sonraki terimle tutuyor.`,
+        ],
+        kural: "Eksik terimi bulduktan sonra bir sonraki terimle sağlamasını yap.",
+        dogruNeden: `Dizide her adımda ${Math.abs(d)} ${d > 0 ? "artış" : "azalış"} var; eksik terim ${dg}.`,
+      });
+    },
+    /* 2. Farklar birer artıyor */
+    z => {
+      const a = R(1, 20), d0 = R(2, 5), dizi = [a]; for (let i = 0; i < 4; i++) dizi.push(dizi[i] + d0 + i);
+      const dg = dizi[4] + d0 + 4;
+      return S({
+        kaz: K3, duzey: "uygulama", zorluk: 2,
+        soru: "Aşağıdaki dizide sıradaki sayı hangisidir?",
+        gorsel: sayiKutulari(dizi.concat([null])),
+        dogru: dg,
+        yanlis: [[dizi[4] + d0 + 3, "dikkat", "Son farkı tekrar etmişsin; farklar her adımda 1 büyüyor."], [dizi[4] + d0 + 5, "islem", "Farkı 1 fazla almışsın."], [dizi[4] + d0, "kavrama", "İlk farkı eklemişsin; farklar sabit değil, büyüyor."]],
+        ipucu: "Ardışık sayıların farklarını alt alta yaz; farklarda bir düzen var mı?",
+        cozum: [
+          "🔎 Soruyu anlayalım: Beş terim verilmiş, altıncısını bulacağız.",
+          "💡 Hatırlayalım: Farklar sabit değilse farkların kendi örüntüsüne bakarız.",
+          `✏️ Farklar: ${[0, 1, 2, 3].map(i => dizi[i + 1] - dizi[i]).join(", ")}.`,
+          `✏️ Farklar 1'er artıyor; sıradaki fark ${d0 + 4}.`,
+          `✅ Sonuç: ${dizi[4]} + ${d0 + 4} = ${dg}.`,
+          "🔁 Kontrol edelim: Farklar dizisi düzenli mi? Evet, her biri bir öncekinden 1 fazla.",
+        ],
+        kural: "İki katmanlı örüntü: önce farkları, sonra farkların farkını incele.",
+        dogruNeden: `Farklar ${d0}, ${d0 + 1}, ${d0 + 2}, ${d0 + 3} diye gidiyor; sıradaki fark ${d0 + 4}.`,
+      });
+    },
+    /* 3. Katlanarak artan dizi */
+    z => {
+      const r = sec([2, 2, 3]), a = r === 2 ? R(1, 6) : R(1, 3), dizi = [a]; for (let i = 0; i < 4; i++) dizi.push(dizi[i] * r);
+      const dg = dizi[4] * r, fk = dizi[4] - dizi[3];
+      return S({
+        kaz: K3, duzey: "uygulama", zorluk: 1,
+        soru: "Aşağıdaki dizide sıradaki sayı hangisidir?",
+        gorsel: sayiKutulari(dizi.concat([null])),
+        dogru: dg,
+        yanlis: [[dizi[4] + fk, "kavrama", "Son farkı eklemişsin; bu dizide her terim bir öncekinin katıdır, farklar sabit değil."], [dizi[4] * r + dizi[4], "islem", `Çarpımı yanlış yapmışsın; ${dizi[4]} × ${r} işlemini yeniden yap.`], [dizi[4] + r, "kavrama", `${r} eklemek yerine ${r} ile çarpmalısın.`]],
+        ipucu: "Her sayı bir öncekinin kaç katı?",
+        cozum: [
+          "🔎 Soruyu anlayalım: Sayılar hızla büyüyor; sıradaki sayıyı bulacağız.",
+          "💡 Hatırlayalım: Sayılar hızla büyüyorsa toplamadan çok çarpma kuralı düşünülmelidir.",
+          `✏️ ${dizi[1]} ÷ ${dizi[0]} = ${r}, ${dizi[2]} ÷ ${dizi[1]} = ${r}. Her terim bir öncekinin ${r} katı.`,
+          `✏️ Sıradaki terim: ${dizi[4]} × ${r}.`,
+          `✅ Sonuç: ${dg}.`,
+          `🔁 Kontrol edelim: ${dg} ÷ ${dizi[4]} = ${r}. Kural tutuyor.`,
+        ],
+        kural: "Hızla büyüyen dizilerde oran (kaç katı) kuralını dene.",
+        dogruNeden: `Her terim bir öncekinin ${r} katıdır: ${dizi[4]} × ${r} = ${dg}.`,
+      });
+    },
+    /* 4. İç içe iki dizi */
+    z => {
+      const a = R(1, 9), b = R(30, 50), p = R(2, 5), q = R(2, 4), dizi = [];
+      for (let i = 0; i < 7; i++) dizi.push(i % 2 === 0 ? a + p * (i / 2) : b - q * ((i - 1) / 2));
+      const dg = b - q * 3;
+      return S({
+        kaz: K3, duzey: "aciklama", zorluk: 2,
+        soru: "Bu dizi iç içe geçmiş iki ayrı diziden oluşuyor. Sıradaki sayı hangisidir?",
+        gorsel: sayiKutulari(dizi.concat([null]), 52),
+        dogru: dg,
+        yanlis: [[a + p * 4, "kavrama", "Bu, öbür dizinin sıradaki terimi; sıradaki sayı ikinci, dördüncü, altıncı… terimlerin devamı."], [dizi[6] - q, "kavrama", "Ardışık iki terime bakmışsın; bu dizide terimler birer atlayarak ilerliyor."], [dg - q, "islem", "Bir adım fazla azaltmışsın."], [dg + q, "islem", "Bir adım eksik azaltmışsın."]],
+        ipucu: "Sayıları birer atlayarak oku: 1., 3., 5.… ve 2., 4., 6.…",
+        cozum: [
+          "🔎 Soruyu anlayalım: Yedi terim verilmiş; sekizinci terimi arıyoruz.",
+          "💡 Hatırlayalım: Bazı dizilerde tek sıradaki ve çift sıradaki terimler ayrı kurallara uyar.",
+          `✏️ Tek sıradakiler: ${[0, 2, 4, 6].map(i => dizi[i]).join(", ")} → ${p}${ek(p, "er")} artıyor.`,
+          `✏️ Çift sıradakiler: ${[1, 3, 5].map(i => dizi[i]).join(", ")} → ${q} azalıyor. 8. terim çift sırada.`,
+          `✅ Sonuç: ${dizi[5]} − ${q} = ${dg}.`,
+          "🔁 Kontrol edelim: Sekizinci terim çift sırada; bu yüzden azalan diziye bakmalıydık. Bir dahaki sefere sıranın tek mi çift mi olduğunu ilk iş kontrol et.",
+        ],
+        kural: "Dizi düzensiz görünüyorsa terimleri birer atlayarak incele.",
+        dogruNeden: `Çift sıradaki terimler ${q} azalır: ${dizi[5]} − ${q} = ${dg}.`,
+      });
+    },
+    /* 5. Her terim önceki iki terimin toplamı */
+    z => {
+      const dizi = [R(1, 5), R(1, 6)]; for (let i = 2; i < 6; i++) dizi.push(dizi[i - 1] + dizi[i - 2]);
+      const dg = dizi[5] + dizi[4];
+      return S({
+        kaz: K3, duzey: "aciklama", zorluk: 2,
+        soru: "Aşağıdaki dizide sıradaki sayı hangisidir?",
+        gorsel: sayiKutulari(dizi.concat([null]), 54),
+        dogru: dg,
+        yanlis: [[dizi[5] + (dizi[5] - dizi[4]), "kavrama", "Son farkı eklemişsin; bu dizide her terim önceki iki terimin toplamıdır."], [dizi[5] * 2, "kavrama", "Son terimi ikiyle çarpmışsın; kural çarpma değil, son iki terimi toplamak."], [dg + 1, "islem", "Toplamayı yeniden kontrol et."], [dg - 1, "islem", "Toplamayı yeniden kontrol et."]],
+        ipucu: "Üçüncü terimi ilk iki terimle karşılaştır.",
+        cozum: [
+          "🔎 Soruyu anlayalım: Altı terim verilmiş, yedincisini bulacağız.",
+          "💡 Hatırlayalım: Bazı dizilerde her terim kendinden önceki iki terimin toplamıdır.",
+          `✏️ Deneyelim: ${dizi[0]} + ${dizi[1]} = ${dizi[2]}, ${dizi[1]} + ${dizi[2]} = ${dizi[3]}, ${dizi[2]} + ${dizi[3]} = ${dizi[4]}. Kural tutuyor.`,
+          `✏️ Sıradaki: ${dizi[4]} + ${dizi[5]}.`,
+          `✅ Sonuç: ${dg}.`,
+          `🔁 Kontrol edelim: ${dizi[3]} + ${dizi[4]} = ${dizi[5]} de doğru; kural her yerde geçerli.`,
+        ],
+        kural: "Fark ya da oran kuralı tutmazsa önceki terimleri toplamayı dene.",
+        dogruNeden: `Her terim önceki iki terimin toplamıdır: ${dizi[4]} + ${dizi[5]} = ${dg}.`,
+      });
+    },
+    /* 6. Çarp ve ekle/çıkar */
+    z => {
+      const [m, c] = sec([[2, 1], [2, -1], [3, -1], [2, 2], [3, 1]]), dizi = [R(2, 4)]; for (let i = 0; i < 4; i++) dizi.push(dizi[i] * m + c);
+      const dg = dizi[4] * m + c, cs = c > 0 ? "+ " + c : "− " + -c;
+      return S({
+        kaz: K3, duzey: "uygulama", zorluk: 3,
+        soru: "Aşağıdaki dizide sıradaki sayı hangisidir?",
+        gorsel: sayiKutulari(dizi.concat([null]), 60),
+        dogru: dg,
+        yanlis: [[dizi[4] * m, "dikkat", `Çarpmayı yapmışsın ama ${c > 0 ? "eklemeyi" : "çıkarmayı"} unutmuşsun.`], [dizi[4] + (dizi[4] - dizi[3]), "kavrama", "Son farkı eklemişsin; farklar sabit değil."], [dizi[4] * m - c, "islem", "İşaret hatası yapmışsın; ikinci işlemi ters uygulamışsın."]],
+        ipucu: `Her terimi bir öncekinin ${m} katıyla karşılaştır.`,
+        cozum: [
+          "🔎 Soruyu anlayalım: Beş terim var, altıncıyı bulacağız.",
+          "💡 Hatırlayalım: Bazı dizilerde iki işlem birlikte kullanılır: önce çarp, sonra ekle ya da çıkar.",
+          `✏️ ${dizi[0]} × ${m} = ${dizi[0] * m}; dizide ${dizi[1]} var. Demek ki ${cs} yapılmış.`,
+          `✏️ Deneyelim: ${dizi[1]} × ${m} ${cs} = ${dizi[2]} ✓, ${dizi[3]} × ${m} ${cs} = ${dizi[4]} ✓.`,
+          `✅ Sonuç: ${dizi[4]} × ${m} ${cs} = ${dg}.`,
+          "🔁 Kontrol edelim: Kural bütün terimlerde tuttu. İki işlemli kurallarda işlem sırasına (önce çarpma) dikkat et.",
+        ],
+        kural: "Kural: “× sayı, sonra ± sayı” biçiminde de olabilir.",
+        dogruNeden: `Her terim, öncekinin ${m} katı ${cs}: ${dizi[4]} × ${m} ${cs} = ${dg}.`,
+      });
+    },
+    /* 7. Kare sayılara yakın dizi */
+    z => {
+      const c = sec([-1, 1, 2, 3]), b = R(1, 3), dizi = [0, 1, 2, 3, 4].map(i => (b + i) * (b + i) + c), n = b + 5, dg = n * n + c, cs = c > 0 ? "+ " + c : "− " + -c;
+      return S({
+        kaz: K3, duzey: "baglanti", zorluk: 3,
+        soru: "Aşağıdaki dizide sıradaki sayı hangisidir?",
+        gorsel: sayiKutulari(dizi.concat([null])),
+        dogru: dg,
+        yanlis: [[dizi[4] + (dizi[4] - dizi[3]), "kavrama", "Son farkı tekrar etmişsin; farklar her adımda 2 büyüyor."], [n * n, "dikkat", `Kare sayıyı buldun ama ${c > 0 ? "eklenen" : "çıkarılan"} sayıyı unuttun.`], [(n + 1) * (n + 1) + c, "islem", "Bir sonraki kare sayıya atlamışsın."], [dg + 2, "islem", "Farkı yanlış hesaplamışsın."]],
+        ipucu: "Sayıları 1, 4, 9, 16, 25, 36… kare sayılarıyla karşılaştır.",
+        cozum: [
+          "🔎 Soruyu anlayalım: Dizinin kuralını bulup altıncı terimi yazacağız.",
+          "💡 Hatırlayalım: Kare sayılar bir sayının kendisiyle çarpımıdır: 1, 4, 9, 16, 25, 36, 49, 64…",
+          `✏️ Terimleri kare sayılarla karşılaştıralım: ${[0, 1, 2, 3, 4].map(i => `${dizi[i]} = ${b + i}×${b + i} ${cs}`).join("; ")}.`,
+          `✏️ Sıradaki: ${n}×${n} ${cs}.`,
+          `✅ Sonuç: ${n * n} ${cs} = ${dg}.`,
+          `🔁 Kontrol edelim: Farklara da bakabiliriz: ${[0, 1, 2, 3].map(i => dizi[i + 1] - dizi[i]).join(", ")} → 2'şer artıyor; sıradaki fark ${dg - dizi[4]}. Aynı sonuç!`,
+        ],
+        kural: "Farklar 2'şer artıyorsa kare sayılarla ilgili bir dizi olabilir.",
+        dogruNeden: `Terimler “kare sayı ${cs}” kuralına uyar: ${n}×${n} ${cs} = ${dg}.`,
+      });
+    },
+    /* 8. Sayı piramidi */
+    z => {
+      const tur = sec(["tepe", "eksik"]);
+      const kutu = (x, y, t, vurgu) => `<rect class="${vurgu ? "g-yumusak" : "g-bos"} g-cizgi" stroke-width="1.5" x="${x}" y="${y}" width="64" height="40" rx="5"${vurgu ? ' stroke-dasharray="5 4"' : ""}/>` + (t === "" ? "" : buyukYazi(t, x + 32, y + 20, 18));
+      if (tur === "tepe") {
+        const alt = [R(1, 9), R(1, 9), R(1, 9), R(1, 9)], s2 = [0, 1, 2].map(i => alt[i] + alt[i + 1]), s3 = [s2[0] + s2[1], s2[1] + s2[2]], tepe = s3[0] + s3[1];
+        let ic = ""; const sat = [alt, ["", "", ""], ["", ""], ["?"]];
+        sat.forEach((l, r) => l.forEach((t, i) => { ic += kutu(10 + r * 34 + i * 68, 10 + (3 - r) * 44, t, t === "?"); }));
+        return S({
+          kaz: K3, duzey: "uygulama", zorluk: 2,
+          soru: "Sayı piramidinde her kutu, hemen altındaki iki kutunun toplamıdır. En üstteki kutuya hangi sayı gelir?",
+          gorsel: svg(292, 190, ic, "sayı piramidi"),
+          dogru: tepe,
+          yanlis: [[alt.reduce((a, b) => a + b, 0), "kavrama", "Yalnızca en alttaki sayıları toplamışsın; ortadaki sayılar iki kez, hatta üç kez hesaba girer."], [s3[0], "dikkat", "Bu, tepe değil, bir alt kattaki sol kutu."], [tepe + 2, "islem", "Ara toplamlardan birinde hata var; katları tek tek yeniden hesapla."], [tepe - 1, "islem", "Ara toplamlardan birinde hata var."]],
+          ipucu: "Alttan yukarı doğru kat kat ilerle; her boş kutuya altındaki iki sayının toplamını yaz.",
+          cozum: [
+            "🔎 Soruyu anlayalım: En alt katta 4 sayı var; üstteki katları doldurup tepeye ulaşacağız.",
+            "💡 Hatırlayalım: Piramitte her kutu = altındaki iki kutunun toplamı.",
+            `✏️ 2. kat: ${alt[0]}+${alt[1]} = ${s2[0]}, ${alt[1]}+${alt[2]} = ${s2[1]}, ${alt[2]}+${alt[3]} = ${s2[2]}.`,
+            `✏️ 3. kat: ${s2[0]}+${s2[1]} = ${s3[0]}, ${s2[1]}+${s2[2]} = ${s3[1]}.`,
+            `✅ Sonuç: Tepe = ${s3[0]} + ${s3[1]} = ${tepe}.`,
+            `🔁 Kontrol edelim: Kısa yol: tepe = 1×${alt[0]} + 3×${alt[1]} + 3×${alt[2]} + 1×${alt[3]} = ${tepe}. Ortadaki sayılar 3'er kez sayılıyor!`,
+          ],
+          kural: "Piramitte alttan yukarı kat kat ilerle.",
+          dogruNeden: `Katlar doldurulunca tepedeki sayı ${tepe} çıkar.`,
+        });
+      }
+      const a = R(2, 12), b = R(2, 12), c = R(2, 12), tepe = a + 2 * b + c;
+      let ic = ""; [[a, "?", c], ["", ""], [tepe]].forEach((l, r) => l.forEach((t, i) => { ic += kutu(10 + r * 34 + i * 68, 10 + (2 - r) * 44, t, t === "?"); }));
+      return S({
+        kaz: K3, duzey: "transfer", zorluk: 3,
+        soru: "Sayı piramidinde her kutu, hemen altındaki iki kutunun toplamıdır. En alt sıradaki soru işareti yerine hangi sayı gelir?",
+        gorsel: svg(224, 146, ic, "sayı piramidi"),
+        dogru: b,
+        yanlis: [[tepe - a - c, "kavrama", "Ortadaki sayı tepeye iki kez katılır; bu yüzden kalanı ikiye bölmek gerekir."], [b + 1, "islem", "Sağlama yaparsan tepe 2 fazla çıkar."], [b - 1, "islem", "Sağlama yaparsan tepe 2 eksik çıkar."]],
+        ipucu: "Ortadaki sayı, ortadaki iki kutunun ikisine de katılır.",
+        cozum: [
+          "🔎 Soruyu anlayalım: Tepe ve alt sıradaki iki sayı biliniyor; ortadaki alt sayıyı bulacağız.",
+          "💡 Hatırlayalım: Orta kattaki kutular: sol = sol alt + orta alt, sağ = orta alt + sağ alt. Tepe ikisinin toplamı.",
+          `✏️ Yani tepe = ${a} + 2 × (orta sayı) + ${c}. ${tepe} = ${a + c} + 2 × (orta sayı).`,
+          `✏️ 2 × (orta sayı) = ${tepe} − ${a + c} = ${2 * b}; orta sayı = ${2 * b} ÷ 2.`,
+          `✅ Sonuç: ${b}.`,
+          `🔁 Kontrol edelim: ${a}+${b} = ${a + b}, ${b}+${c} = ${b + c}, ${a + b}+${b + c} = ${tepe}. Tepe tuttu!`,
+        ],
+        kural: "Bilinmeyeni bulunca piramidi yeniden doldurarak sağlama yap.",
+        dogruNeden: `Ortadaki sayı tepeye iki kez katılır: (${tepe} − ${a} − ${c}) ÷ 2 = ${b}.`,
+      });
+    },
+    /* 9. Üçgenlerde gizli işlem */
+    z => {
+      const KUR = [
+        { f: (a, b, c) => a + b + c, ad: "üç sayının toplamı", y: "üst + sol + sağ" },
+        { f: (a, b, c) => a * b + c, ad: "üstteki ile soldakinin çarpımına sağdakini eklemek", y: "üst × sol + sağ" },
+        { f: (a, b, c) => a * b - c, ad: "üstteki ile soldakinin çarpımından sağdakini çıkarmak", y: "üst × sol − sağ" },
+        { f: (a, b, c) => (a + b) * c, ad: "üstteki ile soldakinin toplamını sağdakiyle çarpmak", y: "(üst + sol) × sağ" },
+        { f: (a, b, c) => a * c - b, ad: "üstteki ile sağdakinin çarpımından soldakini çıkarmak", y: "üst × sağ − sol" },
+        { f: (a, b, c) => a * b * c, ad: "üç sayının çarpımı", y: "üst × sol × sağ" },
+      ];
+      let k, orn, so;
+      for (;;) {
+        k = R(1, KUR.length - 1); orn = [0, 1].map(() => [R(2, 6), R(2, 6), R(1, 5)]); so = [R(2, 6), R(2, 6), R(1, 5)];
+        const uyan = KUR.filter(r => orn.every(([a, b, c]) => r.f(a, b, c) === KUR[k].f(a, b, c)));
+        if (uyan.length === 1 && orn.every(o => KUR[k].f(...o) > 0) && KUR[k].f(...so) > 0) break;
+      }
+      const kr = KUR[k], dg = kr.f(...so);
+      const ucg = (x, [a, b, c], orta) => `<polygon class="g-yumusak g-cizgi" stroke-width="2" points="${x + 80},14 ${x + 10},140 ${x + 150},140"/>` + buyukYazi(a, x + 80, 36, 17) + buyukYazi(b, x + 32, 126, 17) + buyukYazi(c, x + 128, 126, 17) + buyukYazi(orta, x + 80, 98, 20);
+      const yanlis = KUR.filter((r, i) => i !== k && r.f(...so) > 0).map(r => [r.f(...so), "kavrama", `Bu sonuç “${r.y}” kuralından çıkıyor; ama bu kural örnek üçgenlerden en az birine uymuyor.`]);
+      return S({
+        kaz: K3, duzey: "baglanti", zorluk: 3,
+        soru: "Her üçgenin ortasındaki sayı, köşelerdeki sayılardan aynı işlem kuralıyla elde ediliyor. Son üçgende soru işareti yerine hangi sayı gelmelidir?",
+        gorsel: svg(500, 152, ucg(5, orn[0], kr.f(...orn[0])) + ucg(170, orn[1], kr.f(...orn[1])) + ucg(335, so, "?"), "köşelerinde sayılar olan üçgenler"),
+        dogru: dg,
+        yanlis: karistir(yanlis).concat([[dg + 1, "islem", "İşlemi yeniden yap."], [dg + 2, "islem", "İşlemi yeniden yap."]]),
+        ipucu: "Önce toplama, sonra çarpma gibi basit kuralları ilk üçgende dene; tutan kuralı ikinci üçgende kontrol et.",
+        cozum: [
+          "🔎 Soruyu anlayalım: İki örnek üçgenden gizli kuralı bulup üçüncü üçgene uygulayacağız.",
+          "💡 Hatırlayalım: Bir kural ancak bütün örneklerde doğru sonuç veriyorsa doğrudur.",
+          `✏️ 1. üçgen: ${orn[0].join(", ")} → ${kr.f(...orn[0])}. “${kr.y}” deneyelim: tutuyor.`,
+          `✏️ 2. üçgen: ${orn[1].join(", ")} → ${kr.f(...orn[1])}. Aynı kural burada da tutuyor. Kural: ${kr.ad}.`,
+          `✅ Sonuç: Son üçgen (üst ${so[0]}, sol ${so[1]}, sağ ${so[2]}) için ${kr.y} = ${dg}.`,
+          "🔁 Kontrol edelim: Başka bir kural (örneğin yalnızca toplama) iki örnek üçgenin ikisine birden uymuyor; bu yüzden bulduğumuz kural tek doğru kural.",
+        ],
+        kural: "Kuralı tek örnekte bulmak yetmez; bütün örneklerde dene.",
+        dogruNeden: `Kural “${kr.y}”; son üçgende bu işlem ${dg} verir.`,
+      });
+    },
+    /* 10. Sihirli kare */
+    z => {
+      let k = [[2, 7, 6], [9, 5, 1], [4, 3, 8]];
+      const don = m => m[0].map((_, c) => m.map(r => r[c]).reverse());
+      for (let i = R(0, 3); i > 0; i--) k = don(k);
+      if (R(0, 1)) k = k.map(r => r.slice().reverse());
+      const ek0 = R(0, 10), kat = sec([1, 1, 2]); k = k.map(r => r.map(v => v * kat + ek0));
+      const top = k[0][0] + k[0][1] + k[0][2];
+      const qr = R(0, 2), qc = R(0, 2), dr = (qr + R(1, 2)) % 3, dc = (qc + R(1, 2)) % 3, tam = [0, 1, 2].find(r => r !== qr && r !== dr);
+      let ic = "";
+      for (let r = 0; r < 3; r++) for (let c = 0; c < 3; c++) {
+        const x = 20 + c * 56, y = 10 + r * 56, soru = r === qr && c === qc, bos = r === dr && c === dc;
+        ic += `<rect class="${soru ? "g-yumusak" : "g-bos"} g-cizgi" stroke-width="1.5" x="${x}" y="${y}" width="56" height="56"/>` + (bos ? "" : buyukYazi(soru ? "?" : k[r][c], x + 28, y + 28, 20));
+      }
+      const dg = k[qr][qc], satirDiger = [0, 1, 2].filter(c => c !== qc).map(c => k[qr][c]);
+      return S({
+        kaz: K3, duzey: "transfer", zorluk: 2,
+        soru: "Bu sihirli karede her satırın, her sütunun ve iki köşegenin toplamı aynıdır. Soru işareti yerine hangi sayı gelmelidir? (Boş kutuyu da sen düşünebilirsin.)",
+        gorsel: svg(208, 188, ic, "3×3 sihirli kare"),
+        dogru: dg,
+        yanlis: [[top - satirDiger[0], "islem", "Sihirli toplamdan yalnızca bir sayıyı çıkarmışsın; satırdaki iki sayıyı da çıkarmalısın."], [dg + kat, "islem", "Toplamaları yeniden kontrol et."], [k[dr][dc], "dikkat", "Bu, boş kutuya gelecek sayı; soru işaretli kutu başka."], [dg - kat, "islem", "Toplamaları yeniden kontrol et."]],
+        ipucu: "Önce bütün sayıları görünen bir satırdan sihirli toplamı bul.",
+        cozum: [
+          "🔎 Soruyu anlayalım: Karede iki kutu eksik; soru işaretli olanı bulacağız.",
+          "💡 Hatırlayalım: Sihirli karede her satır, sütun ve köşegenin toplamı aynıdır (sihirli toplam).",
+          `✏️ ${tam + 1}. satır tamamen görünüyor: ${k[tam].join(" + ")} = ${top}. Sihirli toplam ${top}.`,
+          `✏️ Soru işaretinin satırında öteki sayılar ${satirDiger.join(" ve ")}: ${top} − ${satirDiger[0]} − ${satirDiger[1]}.`,
+          `✅ Sonuç: ${dg}.`,
+          `🔁 Kontrol edelim: Soru işaretinin sütununda da toplam ${top} olmalı: ${[0, 1, 2].map(r => k[r][qc]).join(" + ")} = ${top}.`,
+        ],
+        kural: "Sihirli karede önce eksiksiz bir satır, sütun ya da köşegenden toplamı bul.",
+        dogruNeden: `Sihirli toplam ${top}; satırdaki diğer sayılar çıkarılınca ${dg} kalır.`,
+      });
+    },
+    /* 11. Şekilli eşitlikler */
+    z => {
+      const d = R(2, 9), u = R(2, 9), kr = R(2, 9), hedef = sec(["toplam", "carp"]);
+      const satir = [["daire", "+", "daire", "+", "daire", "=", 3 * d], ["daire", "+", "ucgen", "+", "ucgen", "=", d + 2 * u], ["ucgen", "+", "kare", "=", u + kr]];
+      const soruSat = hedef === "toplam" ? ["daire", "+", "ucgen", "+", "kare", "=", "?"] : ["daire", "×", "kare", "=", "?"];
+      const dg = hedef === "toplam" ? d + u + kr : d * kr;
+      return S({
+        kaz: K3, duzey: "transfer", zorluk: 3,
+        soru: "Aynı şekiller aynı sayıyı gösteriyor. Buna göre son satırdaki soru işareti yerine hangi sayı gelmelidir?",
+        gorsel: denklemSvg(satir.concat([soruSat])),
+        dogru: dg,
+        yanlis: hedef === "toplam" ? [[3 * d + d + 2 * u + u + kr, "kavrama", "Eşitliklerin sonuçlarını toplamışsın; önce her şeklin değerini tek tek bulmalısın."], [d + 2 * u + kr, "dikkat", "Üçgeni iki kez saymışsın; son satırda bir tane üçgen var."], [dg + 1, "islem", "Şekillerden birinin değerini yeniden hesapla."], [dg - 1, "islem", "Şekillerden birinin değerini yeniden hesapla."]]
+          : [[d + kr, "kavrama", "Toplamışsın; son satırda çarpma işareti var."], [d * u, "dikkat", "Kare yerine üçgenin değerini kullanmışsın."], [u * kr, "dikkat", "Daire yerine üçgenin değerini kullanmışsın."], [dg + d, "islem", "Çarpmayı yeniden yap."]],
+        ipucu: "Tek tür şekil içeren satırdan başla.",
+        cozum: [
+          "🔎 Soruyu anlayalım: Her şekil bir sayıyı temsil ediyor; şekillerin değerlerini bulup son satırı hesaplayacağız.",
+          "💡 Hatırlayalım: Bilinmeyeni çok olan sorularda, tek bilinmeyenli satırdan başlamak en kolay yoldur.",
+          `✏️ 1. satır: 3 daire = ${3 * d} → 1 daire = ${3 * d} ÷ 3 = ${d}.`,
+          `✏️ 2. satır: ${d} + 2 üçgen = ${d + 2 * u} → 2 üçgen = ${2 * u} → 1 üçgen = ${u}. 3. satır: ${u} + kare = ${u + kr} → kare = ${kr}.`,
+          `✅ Sonuç: ${hedef === "toplam" ? `${d} + ${u} + ${kr} = ${dg}` : `${d} × ${kr} = ${dg}`}.`,
+          "🔁 Kontrol edelim: Bulduğun değerleri ilk üç satıra koy; hepsi doğru çıkıyorsa cevabın da doğrudur.",
+        ],
+        kural: "Önce tek bilinmeyenli eşitliği çöz, sonra bulduğunu diğerlerinde kullan.",
+        dogruNeden: `Daire ${d}, üçgen ${u}, kare ${kr} olduğundan sonuç ${dg}.`,
+      });
+    },
+    /* 12. Terazi */
+    z => {
+      let t, K, x, y;
+      for (;;) { t = R(2, 4); K = R(2, 6) * (R(0, 1) ? 1 : 2); x = R(2, 3); y = x * K / t; if (Number.isInteger(y) && y >= 1 && y <= 6 && y !== x && K !== t) break; }
+      const n = R(2, 3), dg = n * K;
+      const ic = teraziCiz(0, Array(x).fill("kup"), Array(y).fill("top")) + teraziCiz(300, ["top"], Array(t).fill("bilye"));
+      return S({
+        kaz: K3, duzey: "transfer", zorluk: 3,
+        soru: `Görseldeki iki terazi de dengededir. Buna göre <b>${n} mavi küp</b>, kaç yeşil bilyeyle dengelenir?`,
+        gorsel: svg(580, 160, ic, "dengedeki iki terazi"),
+        dogru: dg,
+        yanlis: [[K, "dikkat", `Bu, yalnızca 1 küpün dengi; soru ${n} küp için soruluyor.`], [n * y, "kavrama", "Küp ile topu eşit saymışsın; küplerin sayısı topların sayısıyla aynı değil."], [n * t, "kavrama", "Bir küpü bir top gibi düşünmüşsün; önce bir küpün kaç top ettiğini bul."], [dg + t, "islem", "Çarpmayı yeniden kontrol et."]],
+        ipucu: "Her şeyi en küçük birime, yeşil bilyeye çevir.",
+        cozum: [
+          `🔎 Soruyu anlayalım: Birinci terazide ${x} küp = ${y} top; ikinci terazide 1 top = ${t} bilye.`,
+          "💡 Hatırlayalım: Dengedeki terazide iki kefedeki kütleler eşittir; eşit olanları birbirinin yerine koyabiliriz.",
+          `✏️ ${y} top = ${y} × ${t} = ${y * t} bilye. Demek ki ${x} küp = ${y * t} bilye.`,
+          `✏️ 1 küp = ${y * t} ÷ ${x} = ${K} bilye.`,
+          `✅ Sonuç: ${n} küp = ${n} × ${K} = ${dg} bilye.`,
+          `🔁 Kontrol edelim: ${x} küp = ${x * K} bilye ve ${y} top = ${y * t} bilye; ikisi eşit, terazi dengede. ✓`,
+        ],
+        kural: "Terazi sorularında her şeyi tek bir birime çevir.",
+        dogruNeden: `1 küp ${K} bilye ettiğinden ${n} küp ${dg} bilyeyle dengelenir.`,
+      });
+    },
+    /* 13. Yaş bulmacası */
+    z => {
+      const kucuk = R(3, 9), t = R(2, 8), buyuk = 2 * kucuk + t;
+      const [[A, Ain], [Bk, Bin]] = sec([[["Elif", "Elif'in"], ["Mert", "Mert'in"]], [["Zeynep", "Zeynep'in"], ["Can", "Can'ın"]], [["Defne", "Defne'nin"], ["Kerem", "Kerem'in"]], [["Ayşe", "Ayşe'nin"], ["Efe", "Efe'nin"]]]);
+      const adlar = [A, Bk];
+      return S({
+        kaz: K3, duzey: "transfer", zorluk: 3,
+        soru: `${A} ${buyuk}, kardeşi ${Bk} ${kucuk} yaşındadır. Kaç yıl sonra ${Ain} yaşı, ${Bin} yaşının tam 2 katı olur?`,
+        dogru: t,
+        yanlis: [[buyuk - kucuk, "kavrama", "Bu, iki kardeşin yaş farkı; yaş farkı hiç değişmez ama oran değişir."], [t + 1, "islem", `Sağlama yap: ${t + 1} yıl sonra yaşlar ${buyuk + t + 1} ve ${kucuk + t + 1} olur; bu 2 kat değil.`], [t + 2, "islem", `Sağlama yap: ${t + 2} yıl sonra yaşlar ${buyuk + t + 2} ve ${kucuk + t + 2} olur; bu 2 kat değil.`], [Math.max(1, t - 1), "islem", "Sağlama yaparak dene; yaşlar 2 kat olmuyor."]],
+        ipucu: "Yaş farkı hiç değişmez. Büyük kardeş küçüğün 2 katı olduğunda fark, küçüğün yaşına eşit olur.",
+        cozum: [
+          `🔎 Soruyu anlayalım: Yaşlar ${buyuk} ve ${kucuk}. Her yıl ikisine de 1 eklenir; 2 kat olduğu yılı arıyoruz.`,
+          "💡 Hatırlayalım: İki kişinin yaş farkı yıllar geçse de değişmez.",
+          `✏️ Yaş farkı: ${buyuk} − ${kucuk} = ${buyuk - kucuk}. Büyük, küçüğün 2 katı olduğunda küçüğün yaşı bu farka eşit olmalı: ${buyuk - kucuk}.`,
+          `✏️ ${adlar[1]} şimdi ${kucuk} yaşında; ${buyuk - kucuk} yaşına gelmesi için ${buyuk - kucuk} − ${kucuk} = ${t} yıl geçmeli.`,
+          `✅ Sonuç: ${t} yıl sonra.`,
+          `🔁 Kontrol edelim: ${t} yıl sonra yaşlar ${buyuk + t} ve ${kucuk + t}; ${kucuk + t} × 2 = ${buyuk + t}. ✓`,
+        ],
+        kural: "Yaş farkı sabittir; “kaç katı” soruları farkı kullanarak çözülür.",
+        dogruNeden: `${t} yıl sonra yaşlar ${buyuk + t} ve ${kucuk + t} olur; ${buyuk + t}, ${kucuk + t}${ek(kucuk + t, "in")} 2 katıdır.`,
+      });
+    },
+    /* 14. Basamak bulmacası */
+    z => {
+      let o, b; do { o = R(2, 9); b = R(0, 8); } while (o - b < 1 || o === b);
+      const dfark = o - b, top = o + b, dg = 10 * o + b;
+      return S({
+        kaz: K3, duzey: "uygulama", zorluk: 2,
+        soru: `İki basamaklı bir sayının rakamları toplamı <b>${top}</b>${ek(top, "dir")}. Onlar basamağındaki rakam, birler basamağındaki rakamdan <b>${dfark}</b> fazladır. Bu sayı kaçtır?`,
+        dogru: dg,
+        yanlis: [b > 0 ? [10 * b + o, "dikkat", "Rakamların yerini karıştırmışsın; büyük rakam onlar basamağında olmalı."] : null,
+          o > 1 && b < 9 ? [10 * (o - 1) + b + 1, "kavrama", "Bu sayının rakamları toplamı tutuyor ama aralarındaki fark tutmuyor."] : null,
+          o < 9 && b > 0 ? [10 * (o + 1) + b - 1, "kavrama", "Bu sayının rakamları toplamı tutuyor ama aralarındaki fark tutmuyor."] : null,
+          o < 9 ? [10 * (o + 1) + b + 1, "kavrama", "Bu sayının rakamları arasındaki fark tutuyor ama toplamı tutmuyor."] : null,
+          b > 0 ? [10 * (o - 1) + b - 1, "kavrama", "Bu sayının rakamları arasındaki fark tutuyor ama toplamı tutmuyor."] : null].filter(Boolean),
+        ipucu: "Toplamı verilen iki rakamı dene; farkı da tutan ikiliyi bul.",
+        cozum: [
+          "🔎 Soruyu anlayalım: İki rakam arıyoruz: onlar ve birler basamağı.",
+          "💡 Hatırlayalım: İki sayının toplamı ve farkı biliniyorsa büyük sayı = (toplam + fark) ÷ 2, küçük sayı = (toplam − fark) ÷ 2.",
+          `✏️ Onlar basamağı: (${top} + ${dfark}) ÷ 2 = ${o}.`,
+          `✏️ Birler basamağı: (${top} − ${dfark}) ÷ 2 = ${b}.`,
+          `✅ Sonuç: Sayı ${dg}.`,
+          `🔁 Kontrol edelim: ${o} + ${b} = ${top} ✓ ve ${o} − ${b} = ${dfark} ✓.`,
+        ],
+        kural: "Toplam ve fark bilinirse: büyük = (toplam + fark) ÷ 2.",
+        dogruNeden: `${o} + ${b} = ${top} ve ${o} − ${b} = ${dfark} olduğundan sayı ${dg}.`,
+      });
+    },
+    /* 15. Takvim: kaç gün sonra hangi gün */
+    z => {
+      const i = R(0, 6), n = R(3, 15) * 7 + R(1, 6), dg = GUN[(i + n) % 7];
+      return S({
+        kaz: K3, duzey: "transfer", zorluk: 2,
+        soru: `Bugün <b>${GUN[i]}</b>. Bugünden <b>${n} gün sonra</b> haftanın hangi günü olur?`,
+        dogru: dg,
+        yanlis: [[GUN[(i + n + 1) % 7], "islem", "Bir gün fazla saymışsın; bugünü saymaya katmamalısın."], [GUN[(i + n + 6) % 7], "islem", "Bir gün eksik saymışsın."], [GUN[(i + Math.floor(n / 7)) % 7], "kavrama", "Hafta sayısını gün gibi eklemişsin; asıl önemli olan kalan gün sayısı."], [GUN[(i + n + 2) % 7], "islem", "Kalanı yeniden hesapla; iki gün fazla saymışsın."], [GUN[(i + n + 5) % 7], "islem", "Kalanı yeniden hesapla; iki gün eksik saymışsın."]],
+        ipucu: "Her 7 günde bir aynı güne dönülür. Gün sayısını 7'ye böl, kalana bak.",
+        cozum: [
+          `🔎 Soruyu anlayalım: Bugün ${GUN[i]}; ${n} gün ileri gideceğiz.`,
+          "💡 Hatırlayalım: Bir hafta 7 gündür; 7, 14, 21… gün sonra yine aynı gün gelir.",
+          `✏️ ${n} ÷ 7 = ${Math.floor(n / 7)}, kalan ${n % 7}. Tam haftalar bizi yine ${GUN[i]} gününe getirir.`,
+          `✏️ ${GUN[i]} gününden ${n % 7} gün ileri sayalım: ${Array.from({ length: n % 7 }, (_, j) => GUN[(i + j + 1) % 7]).join(", ")}.`,
+          `✅ Sonuç: ${dg}.`,
+          "🔁 Kontrol edelim: Kalan 0 olsaydı cevap yine bugünün adı olurdu. Saymaya bugünden değil, yarından başladığına dikkat et.",
+        ],
+        kural: "Takvim sorularında gün sayısının 7'ye bölümünden kalanı kullan.",
+        dogruNeden: `${n} gün = ${Math.floor(n / 7)} hafta + ${n % 7} gün; ${GUN[i]} gününden ${n % 7} gün sonrası ${dg}.`,
+      });
+    },
+    /* 16. Sayı makinesi */
+    z => {
+      const a = R(2, 5), b = R(-3, 6), girisler = karistir([2, 3, 4, 5, 6, 7, 8, 9, 10]).slice(0, 4), f = x => a * x + b;
+      const yeni = girisler[3], dg = f(yeni), bs = b === 0 ? "" : b > 0 ? " + " + b : " − " + -b;
+      const d1 = girisler[0], d2 = girisler[1];
+      return S({
+        kaz: K3, duzey: "baglanti", zorluk: 3,
+        soru: "Bir sayı makinesi kendisine verilen her sayıya aynı işlemleri uyguluyor. Tabloya göre makineye son sayı verilince ne çıkar?",
+        gorsel: G.tablo(["Giren sayı", "Çıkan sayı"], [[d1, f(d1)], [d2, f(d2)], [girisler[2], f(girisler[2])], [yeni, "?"]]),
+        dogru: dg,
+        yanlis: [[yeni + (f(d1) - d1), "kavrama", "İlk satırdaki farkı eklemişsin; ama fark her satırda aynı değil, kural yalnızca toplama değil."], [a * yeni, "dikkat", `Çarpmayı yapmışsın ama ${b === 0 ? "sonucu kontrol etmemişsin" : b > 0 ? "eklemeyi" : "çıkarmayı"}${b === 0 ? "" : " unutmuşsun"}.`], [dg + a, "islem", "Çarpmayı bir fazla yapmışsın."], [dg - a, "islem", "Çarpmayı bir eksik yapmışsın."]],
+        ipucu: "Giren sayı 1 artınca çıkan sayı kaç artıyor? Bu, çarpanı gösterir.",
+        cozum: [
+          "🔎 Soruyu anlayalım: Makine her sayıya aynı kuralı uyguluyor; kuralı tablodan bulacağız.",
+          "💡 Hatırlayalım: Çıkan sayı “giren × a + b” biçimindeyse, giren 1 artınca çıkan a artar.",
+          `✏️ ${d1} → ${f(d1)} ve ${d2} → ${f(d2)}. Giren ${d2 - d1} değişince çıkan ${f(d2) - f(d1)} değişmiş; ${f(d2) - f(d1)} ÷ ${d2 - d1} = ${a}. Çarpan ${a}.`,
+          `✏️ ${d1} × ${a} = ${a * d1}; tabloda ${f(d1)} var → ${b === 0 ? "başka işlem yok" : b > 0 ? b + " eklenmiş" : -b + " çıkarılmış"}. Kural: giren × ${a}${bs}.`,
+          `✅ Sonuç: ${yeni} × ${a}${bs} = ${dg}.`,
+          `🔁 Kontrol edelim: Kuralı üçüncü satırda dene: ${girisler[2]} × ${a}${bs} = ${f(girisler[2])} ✓.`,
+        ],
+        kural: "Girişteki 1 birimlik değişimin çıkışta yarattığı değişim, çarpanı verir.",
+        dogruNeden: `Makinenin kuralı “× ${a}${bs}”; ${yeni} için ${dg} çıkar.`,
+      });
+    },
+  ];
+  B.push({ id: "sayi", ad: "Sayı örüntüleri ve bulmacalar", simge: "🔢", aciklama: "Sayı dizilerinin kuralını bul, sayı bulmacalarını çöz.", sorular: sayiSorular });
+
   /* @@DEVAM@@ */
 })();

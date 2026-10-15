@@ -107,7 +107,7 @@
   const parcala = (parcalar, etiket) => {
     // parcalar: [[metin, sinif], ...] — kök/ek kutuları ve renk açıklaması
     let x = 20, ic = "";
-    parcalar.forEach(([m, s]) => { const w = 30 + m.length * 13; ic += `<rect class="${s} g-cizgi" x="${x}" y="20" width="${w}" height="52" rx="8" stroke-width="2"/>` + G.yazi(x + w / 2, 53, m, { b: 1 }); x += w + 8; });
+    parcalar.forEach(([m, s]) => { const w = 30 + m.length * 13; ic += `<rect class="${s} g-cizgi" x="${x}" y="20" width="${w}" height="52" rx="8" stroke-width="2"/>` + (s === "g-a" || s === "g-c" ? `<text class="g-bos" style="font-size:16px" font-weight="700" x="${x + w / 2}" y="53" text-anchor="middle">${m}</text>` : G.yazi(x + w / 2, 53, m, { b: 1 })); x += w + 8; });
     const W = Math.max(x + 12, 520);
     ic += `<rect class="g-a" x="20" y="92" width="22" height="16" rx="3"/>` + G.yazi(48, 105, "kök", { a: "start", k: 1 }) +
       `<rect class="g-c" x="110" y="92" width="22" height="16" rx="3"/>` + G.yazi(138, 105, "yapım eki", { a: "start", k: 1 }) +

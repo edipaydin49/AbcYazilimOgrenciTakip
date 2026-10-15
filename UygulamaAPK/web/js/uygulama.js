@@ -16,7 +16,7 @@
   function toast(m) { const t = document.createElement("div"); t.className = "toast"; t.textContent = m; document.body.appendChild(t); setTimeout(() => t.remove(), 2600); }
   function git(h) { if (location.hash === h) yonlendir(); else location.hash = h; }
   const temaAd = id => TEMA[id] ? TEMA[id].ad : "";
-  const DIGER_DERS = { SOS: "Sosyal Bilgiler", "DİN": "Din Kültürü", "İNK": "İnkılap Tarihi", sos: "Sosyal Bilgiler", din: "Din Kültürü" };
+  const DIGER_DERS = { bilsem: "BİLSEM tarzı", SOS: "Sosyal Bilgiler", "DİN": "Din Kültürü", "İNK": "İnkılap Tarihi", sos: "Sosyal Bilgiler", din: "Din Kültürü" };
   const dersAd = id => DERS[id] ? DERS[id].ad : DIGER_DERS[id] || "";
 
   let veliAcik = false;
@@ -534,7 +534,7 @@
       plan = tohumlu(no * 7919 + 13, () => Object.entries(BURS_DAGILIM).filter(([d]) => DERS[d]).flatMap(([d, n]) => dagit(dersKazanimlari(d), n).map((k, i) => ({ hazir: soruUret(k, [2, 1, 2, 3, 2][i % 5], true) })))); }
     else if (tur === "yaziliSet") { no = +no || 1;
       plan = tohumlu(metinTohum(ders + yazili + no), () => dagit(konularKazanim(yaziliKapsam(ders, yazili)), 20).map((k, i) => ({ hazir: soruUret(k, [1, 2, 2, 3, 2][i % 5], true) }))); }
-    else if (tur === "bilsem" && window.BILSEM) { ders = "bilsem"; const b = BILSEM.find(x => x.id === tema); plan = b ? karistir(b.sorular).slice(0, 10).map(q => ({ hazir: q })) : []; tema = null; }
+    else if (tur === "bilsem" && window.BILSEM) { ders = "bilsem"; plan = Array.from({ length: 10 }, (_, i) => ({ hazir: bilsemUret("bilsem." + tema, [1, 2, 2, 3][i % 4]) })).filter(x => x.hazir); tema = null; }
     else if (tur === "akilliTekrar") plan = ANALIZ.kazanimTekrar(ders).filter(x => x.vadesi).slice(0, 5).flatMap(x => [{ kaz: x.kaz, zorluk: null }, { kaz: x.kaz, zorluk: null }]);
     else if (tur === "hata") { plan = karistir(hataListesi(null)).slice(0, 10).map(o => ({ hazir: o.soruNesnesi, ref: o.id })); DEPO.kaydet("hataDefteri", {}); }
     if (!plan.length || plan.some(p => !p.hazir && p.kaz === undefined)) { toast("Bu test için soru bulunamadı."); return; }
@@ -548,11 +548,17 @@
     git("#/test");
   }
 
+  /* BİLSEM tarzı soru: bölümün üreteçlerinden biri (kaz = "bilsem.<bölüm>"). */
+  function bilsemUret(kaz, z) {
+    const b = (window.BILSEM || []).find(x => "bilsem." + x.id === kaz); if (!b) return null;
+    const q = sec(b.sorular)(z || 2);
+    return Object.assign(q, { kaz, konu: null, tema: null, ders: "bilsem", bolum: b.ad });
+  }
   function soruHazirla(t, i) {
     const p = t.plan[i];
     let q;
     if (p.hazir) q = JSON.parse(JSON.stringify(p.hazir));
-    else if (p.kontrolIcin) q = soruUret(p.kontrolIcin, p.zorluk);
+    else if (p.kontrolIcin) q = KAZANIM[p.kontrolIcin] ? soruUret(p.kontrolIcin, p.zorluk) : bilsemUret(p.kontrolIcin, p.zorluk);
     else {
       let kaz = p.kaz;
       if (!kaz) kaz = kazanimSec(t.konuKaz, ANALIZ.hesapla({ konu: t.konu }));
@@ -759,7 +765,7 @@
     const { t, test } = r;
     const oranD = test.n ? test.dogru / test.n : 0;
     const kazSonuc = {};
-    t.sonuclar.filter(x => !x.kontrol).forEach(x => { (kazSonuc[x.kaz] = kazSonuc[x.kaz] || { d: 0, n: 0 }); kazSonuc[x.kaz].n++; if (x.ilkDogru) kazSonuc[x.kaz].d++; });
+    t.sonuclar.filter(x => !x.kontrol && KAZANIM[x.kaz]).forEach(x => { (kazSonuc[x.kaz] = kazSonuc[x.kaz] || { d: 0, n: 0 }); kazSonuc[x.kaz].n++; if (x.ilkDogru) kazSonuc[x.kaz].d++; });
     const neresi = t.konu ? "Bu konuda" : "Bu testte";
     const mesaj = oranD >= 0.9 ? `Muhteşem! ${neresi} çok güçlüsün.` : oranD >= 0.7 ? "Çok iyi! Küçük eksikleri tekrar edersen tam olacak." : oranD >= 0.5 ? "İyi gidiyorsun. Zorlandığın kazanımları tekrar edelim." : t.konu ? "Bu konuyu biraz daha çalışmalıyız. Konu anlatımına bir göz atıp alıştırma yapalım." : "Aşağıda “tekrar” yazan kazanımların konularına dönüp anlatımı ve alıştırmaları yapalım.";
     const hataTurleri = {};
@@ -773,10 +779,10 @@
       ${t.tur === "bursluluk" ? burslulukPuanKutusu(test) : ""}</section>
       <section class="kart"><h2>Bu çalışmada kendini nasıl değerlendiriyorsun?</h2>
         <div class="cips">${[[1, "Hiç anlamadım"], [2, "Zorlandım"], [3, "Fena değil"], [4, "İyiydim"], [5, "Çok iyiydim"]].map(([v, a]) => `<button class="cip ${test.oz === v ? "secili" : ""}" data-oz="${v}">${a}</button>`).join("")}</div></section>
-      <section class="kart"><h2>Kazanımlara göre${Object.keys(kazSonuc).length > 12 ? " (en çok zorlandığın 12)" : ""}</h2>${Object.entries(kazSonuc).sort((a, b) => a[1].d / a[1].n - b[1].d / b[1].n).slice(0, 12).map(([k, x]) => `<div class="satir ara"><span>${KAZANIM[k].ad} <span class="kucuk-yazi muted">· ${KONU[KAZANIM[k].konu].ad}</span></span>${durumEtiket(x.d / x.n)}</div>`).join("")}
-        ${enCokHata ? `<div class="geri bilgi"><b>En sık hata türün: ${HATA_AD[enCokHata[0]]}</b><p>${HATA_ONERI[enCokHata[0]]}</p></div>` : ""}</section>
+      ${Object.keys(kazSonuc).length ? "" : "<!--"}<section class="kart"><h2>Kazanımlara göre${Object.keys(kazSonuc).length > 12 ? " (en çok zorlandığın 12)" : ""}</h2>${Object.entries(kazSonuc).sort((a, b) => a[1].d / a[1].n - b[1].d / b[1].n).slice(0, 12).map(([k, x]) => `<div class="satir ara"><span>${KAZANIM[k].ad} <span class="kucuk-yazi muted">· ${KONU[KAZANIM[k].konu].ad}</span></span>${durumEtiket(x.d / x.n)}</div>`).join("")}
+        ${enCokHata ? `<div class="geri bilgi"><b>En sık hata türün: ${HATA_AD[enCokHata[0]]}</b><p>${HATA_ONERI[enCokHata[0]]}</p></div>` : ""}</section>${Object.keys(kazSonuc).length ? "" : "-->"}
       ${t.sinav ? `<section class="kart"><h2>Sınav cevapları ve çözümleri</h2>${t.sinavSorulari.map((s, j) => { const d = s.q.secenekler.findIndex(x => x.dogru); const ok = s.sinavSecim === d;
-        return `<details><summary>${j + 1}. ${ok ? "✓ Doğru" : s.sinavSecim == null ? "— Boş" : "✗ Yanlış"} · ${KAZANIM[s.q.kaz].ad}</summary><p>${s.q.soru}</p>${s.q.gorsel ? `<div class="gorsel">${s.q.gorsel}</div>` : ""}${cozumKutusu(s.q, { secilen: s.sinavSecim })}</details>`; }).join("")}</section>` : ""}
+        return `<details><summary>${j + 1}. ${ok ? "✓ Doğru" : s.sinavSecim == null ? "— Boş" : "✗ Yanlış"} · ${KAZANIM[s.q.kaz] ? KAZANIM[s.q.kaz].ad : kacis(s.q.bolum || "")}</summary><p>${s.q.soru}</p>${s.q.gorsel ? `<div class="gorsel">${s.q.gorsel}</div>` : ""}${cozumKutusu(s.q, { secilen: s.sinavSecim })}</details>`; }).join("")}</section>` : ""}
       <section class="izgara dar">
         ${t.konu ? `<a class="btn" href="#/konu/${t.konu}">Konuya dön</a>` : ""}
         ${t.konu && oranD < 0.7 ? `<a class="btn" href="#/anlatim/${t.konu}">Anlatımı tekrar oku</a>` : ""}
@@ -970,7 +976,7 @@
         <p>Görsel örüntü, matris, sayı bulmacası, uzamsal düşünme, sözel mantık ve dikkat soruları. Her çalışma 10 sorudur; yanlışta önce ipucu gelir, sonra adım adım çözüm.</p>
         <p class="kucuk-yazi muted">Not: BİLSEM tanılaması 1–3. sınıflarda yapılır ve MEB soruları yayımlamaz; 6. sınıf için “çıkmış BİLSEM sorusu” yoktur. Buradaki sorular BİLSEM tarzında, bu uygulama için hazırlanmış özgün sorulardır.</p></section>
       <section class="izgara">${BILSEM.map(b => { const c = s.filter(x => x.kaz === "bilsem." + b.id), d = c.filter(x => x.ilkDogru).length;
-        return `<div class="kart"><h2>${b.simge || "🧩"} ${kacis(b.ad)}</h2><p class="kucuk-yazi">${kacis(b.aciklama || "")}</p><p class="kucuk-yazi muted">${b.sorular.length} soru${c.length ? ` · ${c.length} çözüldü · ilk denemede doğru ${yuzde(d / c.length)}` : ""}</p>
+        return `<div class="kart"><h2>${b.simge || "🧩"} ${kacis(b.ad)}</h2><p class="kucuk-yazi">${kacis(b.aciklama || "")}</p><p class="kucuk-yazi muted">${b.sorular.length} soru türü${c.length ? ` · ${c.length} çözüldü · ilk denemede doğru ${yuzde(d / c.length)}` : ""}</p>
           <div><button class="btn ana kucuk" data-test="bilsem" data-tema="${b.id}">Çalış (10 soru)</button></div></div>`; }).join("")}</section>`;
     baglaOrtak();
   }
