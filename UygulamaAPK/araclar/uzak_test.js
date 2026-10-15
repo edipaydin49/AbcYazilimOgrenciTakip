@@ -46,9 +46,9 @@ const sunucu = http.createServer((q, r) => { const u = decodeURIComponent(q.url.
   await p.goto(taban + "/"); await p.waitForSelector("#uPin"); await p.screenshot({ path: path.join(CIKTI, "uzak_1_giris.png") });
   await p.fill("#uPin", "1111"); await p.click("#uBaglan"); await p.waitForTimeout(400);
   if (!/yanlış/i.test(await p.textContent("#uDurum"))) hatalar.push("yanlış şifre uyarısı yok");
-  await p.fill("#uPin", "4826"); await p.click("#uBaglan"); await p.waitForSelector(".sekmeler"); await p.waitForTimeout(300);
+  await p.fill("#uPin", "4826"); await p.click("#uBaglan"); await p.waitForSelector(".veli-grup"); await p.waitForTimeout(300);
   await p.screenshot({ path: path.join(CIKTI, "uzak_2_ozet.png"), fullPage: false });
-  const sekmeler = await p.$$eval(".sekmeler .sekme", l => l.map(x => x.textContent));
+  const sekmeler = await p.$$eval(".veli-grup a, .sekmeler .sekme", l => l.map(x => x.textContent));
   if (sekmeler.some(x => /Ayarlar|Videolar/.test(x))) hatalar.push("uzakta ayar/video sekmesi görünüyor");
   for (const sk of ["dersler", "kazanim", "soru", "yazili", "kayit"]) { await p.goto(taban + "/veli.html#/veli/" + sk); await p.waitForTimeout(250); const m = await p.textContent("main"); if (/NaN|undefined/.test(m)) hatalar.push(sk + " NaN/undefined"); if (sk === "kayit" && !/Elif|✓|✗/.test(m)) hatalar.push("kayıtlar görünmüyor"); }
   await p.screenshot({ path: path.join(CIKTI, "uzak_3_kayit.png") });

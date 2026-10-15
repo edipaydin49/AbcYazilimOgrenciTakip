@@ -19,7 +19,7 @@
 
   /* Bir kazanımdan, istenen zorluğa en yakın ve yakın zamanda sorulmamış bir soru üretir. */
   const sonSorulan = [];
-  function soruUret(kazId, zorluk) {
+  function soruUret(kazId, zorluk, sabit) {  // sabit: tohumlu (her açılışta aynı) setler için son sorulanlara bakılmaz
     const konu = KONU[KAZANIM[kazId].konu];
     const ureteçler = konu.uret[kazId];
     let enIyi = null, enIyiPuan = Infinity;
@@ -27,11 +27,11 @@
       const s = sec(ureteçler)(zorluk || 2);
       if (!s) continue;
       const anahtar = s.soru + "|" + s.secenekler.map(x => x.m).sort().join("|");
-      const puan = (zorluk ? Math.abs(s.zorluk - zorluk) : 0) + (sonSorulan.includes(anahtar) ? 5 : 0);
+      const puan = (zorluk ? Math.abs(s.zorluk - zorluk) : 0) + (!sabit && sonSorulan.includes(anahtar) ? 5 : 0);
       if (puan < enIyiPuan) { enIyi = s; enIyi._anahtar = anahtar; enIyiPuan = puan; }
       if (puan === 0) break;
     }
-    sonSorulan.push(enIyi._anahtar); if (sonSorulan.length > 80) sonSorulan.shift();
+    if (!sabit) { sonSorulan.push(enIyi._anahtar); if (sonSorulan.length > 80) sonSorulan.shift(); }
     delete enIyi._anahtar;
     enIyi.id = kazId + ":" + Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
     enIyi.konu = konu.id; enIyi.tema = konu.tema; enIyi.ders = konu.ders;

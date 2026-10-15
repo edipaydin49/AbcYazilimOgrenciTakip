@@ -1,6 +1,6 @@
 // İçerik üreteçlerini binlerce kez çalıştırıp tutarlılığı denetler: node araclar/icerik_test.js
 global.window = global;
-for (const f of ["ortak", "icerik", "mat_ek", "mat_ek2", "mat_tgs", "fen", "fen1", "fen2", "fen3", "fen_ek1", "fen_ek2", "fen_tgs", "tr", "tr1", "tr2", "tr3", "tr_ek1", "tr_ek2", "tr_tgs", "en", "en1", "en2", "en3", "en4", "en_ek1", "en_ek2", "en_tgs", "sos", "sos1", "sos2", "din", "din1", "din2", "videolar", "birlestir"]) { try { require("../web/js/" + f + ".js"); } catch (e) { if (e.code !== "MODULE_NOT_FOUND") throw e; console.log("yok:", f); } }
+for (const f of ["ortak", "icerik", "mat_ek", "mat_ek2", "mat_tgs", "fen", "fen1", "fen2", "fen3", "fen_ek1", "fen_ek2", "fen_tgs", "tr", "tr1", "tr2", "tr3", "tr_ek1", "tr_ek2", "tr_tgs", "en", "en1", "en2", "en3", "en4", "en_ek1", "en_ek2", "en_tgs", "tr4", "sos", "sos1", "sos2", "din", "din1", "din2", "din3", "gorsel_mat", "gorsel_fen", "gorsel_tr", "gorsel_en", "gorsel_sos", "gorsel_din", "videolar", "birlestir"]) { try { require("../web/js/" + f + ".js"); } catch (e) { if (e.code !== "MODULE_NOT_FOUND") throw e; console.log("yok:", f); } }
 const { KONULAR, KAZANIM, soruUret } = window.ICERIK;
 let hata = 0, toplam = 0; const sayac = {};
 for (const k of KONULAR) {

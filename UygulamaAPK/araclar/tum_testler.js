@@ -3,9 +3,9 @@
 const { spawnSync } = require("child_process"), path = require("path"), os = require("os"), fs = require("fs");
 const KOK = path.join(__dirname, ".."), CIKTI = process.argv[2] || fs.mkdtempSync(path.join(os.tmpdir(), "ogr-test-"));
 const dersler = {
-  mat: ["icerik", "mat_ek", "mat_ek2", "mat_tgs"], fen: ["fen", "fen1", "fen2", "fen3", "fen_ek1", "fen_ek2", "fen_tgs"],
-  tr: ["tr", "tr1", "tr2", "tr3", "tr_ek1", "tr_ek2", "tr_tgs"], en: ["en", "en1", "en2", "en3", "en4", "en_ek1", "en_ek2", "en_tgs"],
-  sos: ["sos", "sos1", "sos2"], din: ["din", "din1", "din2"],
+  mat: ["icerik", "mat_ek", "mat_ek2", "mat_tgs", "gorsel_mat"], fen: ["fen", "fen1", "fen2", "fen3", "fen_ek1", "fen_ek2", "fen_tgs", "gorsel_fen"],
+  tr: ["tr", "tr1", "tr2", "tr3", "tr4", "tr_ek1", "tr_ek2", "tr_tgs", "gorsel_tr"], en: ["en", "en1", "en2", "en3", "en4", "en_ek1", "en_ek2", "en_tgs", "gorsel_en"],
+  sos: ["sos", "sos1", "sos2", "gorsel_sos"], din: ["din", "din1", "din2", "din3", "gorsel_din"],
 };
 const testler = [
   ...Object.entries(dersler).map(([d, l]) => ({ ad: "İçerik denetimi · " + d, arg: ["araclar/ders_dogrula.js", ...l.filter(f => fs.existsSync(path.join(KOK, "web/js", f + ".js"))).map(f => "web/js/" + f + ".js")], tamam: /SORUN: yok/ })),
@@ -17,6 +17,7 @@ const testler = [
   // Örnek PDF'ler telif nedeniyle depoda yok: OGR_PDF_KITAP ve OGR_PDF_ANAHTAR ortam değişkenleriyle verilirse çalışır.
   { ad: "PDF deneme", arg: ["araclar/pdf_test.js", CIKTI, process.env.OGR_PDF_KITAP || "", process.env.OGR_PDF_ANAHTAR || ""].filter(Boolean), tamam: /HATALAR: yok/ },
   { ad: "Taşma denetimi (3 ekran boyutu)", arg: ["araclar/tasma_test.js"], tamam: /HATALAR: yok/ },
+  { ad: "Bursluluk, yazılı setleri, BİLSEM, Macera Akademisi", arg: ["araclar/ozel_test.js", CIKTI], tamam: /HATALAR: yok/ },
   { ad: "Ortak yazılı / TGS denemeleri", arg: ["araclar/tgs_test.js", CIKTI], tamam: /HATALAR: yok/ },
   { ad: "Bilgisayardan izleme (Java sunucu)", arg: ["araclar/uzak_test.js", CIKTI], tamam: /HATALAR: yok/ },
 ];

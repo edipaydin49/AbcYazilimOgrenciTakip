@@ -170,6 +170,13 @@ body.video-tam-acik { overflow: hidden; }
 .unutma { background: var(--sun-soft); border-left: 4px solid var(--sun); border-radius: 10px; padding: 10px 12px; }
 .ders-sec { display: flex; gap: 8px; flex-wrap: wrap; }
 .ders-sec .sekme { font-size: 1rem; padding: 10px 18px; }
+.veli-grup { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
+.veli-grup a { display: grid; justify-items: center; gap: 2px; padding: 10px 4px; border: 1px solid var(--line); border-radius: 14px; background: var(--sheet); color: var(--ink); text-decoration: none; font-weight: 700; font-size: .9rem; }
+.veli-grup a span { font-size: 1.6rem; line-height: 1.1; }
+.veli-grup a.aktif { background: var(--cobalt); border-color: var(--cobalt); color: var(--sheet); }
+.veli-ders .sekme { font-size: .85rem; padding: 6px 12px; }
+@media (max-width: 600px) { .veli-ders { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 2px; } .veli-ders .sekme { flex: none; } }
+@media (max-width: 480px) { .veli-grup { gap: 4px; } .veli-grup a { font-size: .75rem; padding: 8px 2px; } .veli-grup a span { font-size: 1.3rem; } }
 .yol-iz { font-size: .85rem; color: var(--muted); }
 .yol-iz a { color: var(--cobalt); text-decoration: none; }
 .video-satir { display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 12px; align-items: center; text-align: left; padding: 8px; border-radius: 12px; background: var(--paper); border: 1px solid transparent; cursor: pointer; width: 100%; }

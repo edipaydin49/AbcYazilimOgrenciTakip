@@ -92,10 +92,8 @@ details.akordiyon.konu { background: var(--paper); }
 .bar i { display: block; height: 100%; background: var(--cobalt); border-radius: 99px; }
 .konu-satir { display: grid; grid-template-columns: minmax(0, 1fr) 110px; gap: 10px; align-items: center; padding: 10px 12px; border-radius: 12px; background: var(--paper); border: 1px solid transparent; cursor: pointer; text-align: left; width: 100%; }
 .konu-satir:hover { border-color: var(--line); }
-.konu-satir > span { min-width: 0; overflow-wrap: anywhere; }
+.konu-satir > span { min-width: 0; overflow-wrap: break-word; }
 .konu-satir.kisa { grid-template-columns: minmax(0, 1fr) auto; }
-.metrik b, .metrik span, .metrik small, .etiket, .sekme, .btn, .geri, td, th, h1, h2, h3 { overflow-wrap: anywhere; }
-.btn, .sekme { white-space: normal; }
 .soru-metin { font-size: 1.15rem; font-weight: 600; }
 .secenekler { display: grid; gap: 10px; }
 .sec { display: flex; gap: 12px; align-items: center; text-align: left; padding: 12px 14px; border-radius: 14px; border: 2px solid var(--line); background: var(--paper); cursor: pointer; min-height: 56px; width: 100%; }
@@ -172,6 +170,13 @@ body.video-tam-acik { overflow: hidden; }
 .unutma { background: var(--sun-soft); border-left: 4px solid var(--sun); border-radius: 10px; padding: 10px 12px; }
 .ders-sec { display: flex; gap: 8px; flex-wrap: wrap; }
 .ders-sec .sekme { font-size: 1rem; padding: 10px 18px; }
+.veli-grup { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
+.veli-grup a { display: grid; justify-items: center; gap: 2px; padding: 10px 4px; border: 1px solid var(--line); border-radius: 14px; background: var(--sheet); color: var(--ink); text-decoration: none; font-weight: 700; font-size: .9rem; }
+.veli-grup a span { font-size: 1.6rem; line-height: 1.1; }
+.veli-grup a.aktif { background: var(--cobalt); border-color: var(--cobalt); color: var(--sheet); }
+.veli-ders .sekme { font-size: .85rem; padding: 6px 12px; }
+@media (max-width: 600px) { .veli-ders { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 2px; } .veli-ders .sekme { flex: none; } }
+@media (max-width: 480px) { .veli-grup { gap: 4px; } .veli-grup a { font-size: .75rem; padding: 8px 2px; } .veli-grup a span { font-size: 1.3rem; } }
 .yol-iz { font-size: .85rem; color: var(--muted); }
 .yol-iz a { color: var(--cobalt); text-decoration: none; }
 .video-satir { display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 12px; align-items: center; text-align: left; padding: 8px; border-radius: 12px; background: var(--paper); border: 1px solid transparent; cursor: pointer; width: 100%; }
@@ -11900,6 +11905,7 @@ DERS_EKLE({
     { id: "tr1", ad: "Dilimizin Zenginliği", kisa: "1. Tema", sayfa: "s. 10–63", ada: { ad: "Dilimizin Zenginliği Adası", rozet: "Kelime Ustası", simge: "🏝️", rozetSimge: "🏅" } },
     { id: "tr2", ad: "Bağımsızlık Yolu", kisa: "2. Tema", sayfa: "s. 66–113", ada: { ad: "Bağımsızlık Yolu Adası", rozet: "Bağımsızlık Kâşifi", simge: "🏰", rozetSimge: "🎖️" } },
     { id: "tr3", ad: "Farklı Dünyalar", kisa: "3. Tema", sayfa: "s. 116–169", ada: { ad: "Farklı Dünyalar Adası", rozet: "Dünya Kâşifi", simge: "🌍", rozetSimge: "🏆" } },
+    { id: "tr4", ad: "Noktalama ve Konuşma", kisa: "Ek Tema", sayfa: "ek konular", ada: { ad: "Noktalama Adası", rozet: "Noktalama Ustası", simge: "✒️", rozetSimge: "🥇" } },
   ],
   /* Yazılı sınav kapsamları (veli panelinden değiştirilebilir). Kitabın 2. cildi eklenince güncellenecek. */
   yazililar: {
@@ -28509,6 +28515,7 @@ DERS_EKLE({
     { id: "d3", ad: "Ahlaki Davranışlar", kisa: "3. Ünite" },
     { id: "d4", ad: "Peygamberliğinden Önce Hz. Muhammed", kisa: "4. Ünite" },
     { id: "d5", ad: "Kültürümüzdeki Dinî Motifler", kisa: "5. Ünite" },
+    { id: "d6", ad: "Peygamberimiz Hz. Muhammed'in (sav) Hayatı", kisa: "Ek Ünite" },
   ],
   yazililar: {
     d1y1: ["d_peygamber", "d_vahiy", "d_kitaplar", "d_felak", "d_ramazan"],
@@ -34403,6 +34410,21 @@ Object.assign(window.HAZIR_VIDEOLAR, {
  ]
 });
 
+/* Çizgi film / şarkı videoları kaldırıldı, yerlerine konu anlatımı videoları eklendi (veli isteği). */
+(function () {
+  const V = window.HAZIR_VIDEOLAR;
+  const cikar = ["3FeYmoRYCuo", "EdsVvEFlXbM", "r9jeeXPZrJs", "hWnN5uypk7E", "Tl1svQEm5Zg", "xh0_fGNJCZI", "g2Xuc9H7cD4",
+    "48vTvapi8YI", "4HqXrSaYh9Y", "DMtJEMG8Vpg", "W6FidMj27ZM", "7jJ3M8VUlO4", "buY0PSmkdXM"];
+  for (const k of Object.keys(V)) V[k] = V[k].filter(v => !cikar.includes(v.vid));
+  const ekle = (k, l) => { V[k] = [...l.map(([vid, baslik, kaynak]) => ({ vid, baslik, kaynak: kaynak || "" })), ...(V[k] || [])]; };
+  ekle("tr_istiklal", [["Fee7G_tzQgQ", "İstiklal Marşı Nasıl Yazıldı? Dinleme Metni - 6. Sınıf"], ["Y75Km7dlt94", "İstiklal Marşı (orkestra eşliğinde)"]]);
+  ekle("tr_samsun", [["bNMBAYUfQVA", "Mustafa Kemal Atatürk'ün 19 Mayıs 1919'da Samsun'a Çıkışı"], ["K92I_1vNQb0", "Atatürk'ün Samsun'a Çıkışı"], ["QmCZlK2badY", "Millî Mücadele ruhunu taşıyan gemi: Bandırma"]]);
+  ekle("en_transport", [["f7U4UW2BAvE", "İngilizce Ulaşım Araçları - Taşıtlar (Transportation)"], ["IprVEIfezF8", "İngilizce Ulaşım Araçları - Transportation"]]);
+  // şarkı / çizgi film / flash-card videoları ve aynı videonun tekrarları çıkarılır
+  const cocukca = /\bsong\b|şarkı|rafadan|çizgi film|animasyon|talking flashcards|for kids|masal(lar)?\b/i;
+  for (const k of Object.keys(V)) { const gor = new Set(); V[k] = V[k].filter(v => !cocukca.test(v.baslik) && !gor.has(v.vid) && gor.add(v.vid)); }
+})();
+
 </script>
 <script>
 /* Dersleri birleştirir: bütün derslerin temaları, konuları ve kazanımları tek yerde toplanır;
@@ -34415,7 +34437,7 @@ Object.assign(window.HAZIR_VIDEOLAR, {
   const TEMALAR = [], KONULAR = [];
   for (const d of DERSLER) {
     for (const k of d.konular) { k.ders = d.id; KONULAR.push(k); }
-    for (const t of d.temalar) TEMALAR.push({ ...t, ders: d.id, konular: d.konular.filter(k => k.tema === t.id).map(k => k.id) });
+    for (const t of d.temalar) if (d.konular.some(k => k.tema === t.id)) TEMALAR.push({ ...t, ders: d.id, konular: d.konular.filter(k => k.tema === t.id).map(k => k.id) });
     d.temaListesi = TEMALAR.filter(t => t.ders === d.id);
   }
   const DERS = Object.fromEntries(DERSLER.map(d => [d.id, d]));
@@ -34426,7 +34448,7 @@ Object.assign(window.HAZIR_VIDEOLAR, {
 
   /* Bir kazanımdan, istenen zorluğa en yakın ve yakın zamanda sorulmamış bir soru üretir. */
   const sonSorulan = [];
-  function soruUret(kazId, zorluk) {
+  function soruUret(kazId, zorluk, sabit) {  // sabit: tohumlu (her açılışta aynı) setler için son sorulanlara bakılmaz
     const konu = KONU[KAZANIM[kazId].konu];
     const ureteçler = konu.uret[kazId];
     let enIyi = null, enIyiPuan = Infinity;
@@ -34434,11 +34456,11 @@ Object.assign(window.HAZIR_VIDEOLAR, {
       const s = sec(ureteçler)(zorluk || 2);
       if (!s) continue;
       const anahtar = s.soru + "|" + s.secenekler.map(x => x.m).sort().join("|");
-      const puan = (zorluk ? Math.abs(s.zorluk - zorluk) : 0) + (sonSorulan.includes(anahtar) ? 5 : 0);
+      const puan = (zorluk ? Math.abs(s.zorluk - zorluk) : 0) + (!sabit && sonSorulan.includes(anahtar) ? 5 : 0);
       if (puan < enIyiPuan) { enIyi = s; enIyi._anahtar = anahtar; enIyiPuan = puan; }
       if (puan === 0) break;
     }
-    sonSorulan.push(enIyi._anahtar); if (sonSorulan.length > 80) sonSorulan.shift();
+    if (!sabit) { sonSorulan.push(enIyi._anahtar); if (sonSorulan.length > 80) sonSorulan.shift(); }
     delete enIyi._anahtar;
     enIyi.id = kazId + ":" + Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
     enIyi.konu = konu.id; enIyi.tema = konu.tema; enIyi.ders = konu.ders;
@@ -35764,10 +35786,11 @@ Object.assign(window.HAZIR_VIDEOLAR, {
     if (window.VIDEO_KAPAT) { window.VIDEO_KAPAT(); window.VIDEO_KAPAT = null; }
     if (window.PDFDENEME) PDFDENEME.kapat();
     if (window.TGSD) TGSD.kapat();
+    if (window.MACERA) MACERA.kapat();
     document.querySelectorAll(".perde").forEach(p => p.remove());
     window.scrollTo(0, 0);
     const [yol, a, b, c, d, e] = location.hash.replace(/^#\/?/, "").split("/").map(x => decodeURIComponent(x));
-    if (DEPO.uzak) return uzakYonlendir(yol, a, b);
+    if (DEPO.uzak) return uzakYonlendir(yol, a, b, c, d, e);
     $("#ustAd").textContent = DEPO.ayar.ogrenciAdi ? "Öğrenme Yolculuğu · " + DEPO.ayar.ogrenciAdi : "Öğrenme Yolculuğu";
     ustDurum();
     if (!DEPO.ayar.kurulum) return kurulum();
@@ -35775,7 +35798,7 @@ Object.assign(window.HAZIR_VIDEOLAR, {
     veliAcik = false;
     if (yol === "ders") { dersSec(a); return anaSayfa(); }
     ({ "": anaSayfa, konu: () => konuSayfasi(a), anlatim: () => anlatim(a), video: () => videoSayfasi(a, +b || 0), test: testEkrani,
-      sonuc: sonucEkrani, gelisim: gelisimSayfasi, hatalar: () => hataDefteri(a, b), yanlislar: () => hataDefteri(a, b), yazili: () => yaziliSayfasi(a, b), deneme: denemeMerkezi, olustur: () => { if (a) dersSec(a); olusturSayfasi(); }, pdf: () => PDFDENEME.ac(a, b), tgsd: () => TGSD.ac(a, b, c, d, e), oyun: () => { dersSec("tr"); OYUN.ac(a, b); }, ing: () => { dersSec("en"); INGOYUN.ac(a, b); } }[yol] || anaSayfa)();
+      sonuc: sonucEkrani, gelisim: gelisimSayfasi, hatalar: () => hataDefteri(a, b), yanlislar: () => hataDefteri(a, b), yazili: () => yaziliSayfasi(a, b), deneme: denemeMerkezi, bursluluk: burslulukSayfasi, bilsem: bilsemSayfasi, olustur: () => { if (a) dersSec(a); olusturSayfasi(); }, pdf: () => PDFDENEME.ac(a, b), tgsd: () => TGSD.ac(a, b, c, d, e), oyun: () => { dersSec("tr"); OYUN.ac(a, b); }, macera: () => window.MACERA ? (dersSec("mat"), MACERA.ac(a, b, c)) : anaSayfa(), ing: () => { dersSec("en"); INGOYUN.ac(a, b); } }[yol] || anaSayfa)();
   }
   window.addEventListener("hashchange", yonlendir);
   $("#evBtn").addEventListener("click", () => git("#/"));
@@ -35789,7 +35812,7 @@ Object.assign(window.HAZIR_VIDEOLAR, {
 
   /* ============================ BİLGİSAYARDAN İZLEME (veli.html) ============================ */
   let uzakPin = null, uzakSaat = null, uzakHazir = false;
-  function uzakYonlendir(yol, a, b) {
+  function uzakYonlendir(yol, a, b, c, d, e) {
     document.body.classList.add("uzak");
     $("#evBtn").hidden = true;
     if (!$("#veliBtn").dataset.uzak) { const eski = $("#veliBtn"), yeni = eski.cloneNode(true); yeni.dataset.uzak = "1"; yeni.textContent = "Yenile"; eski.replaceWith(yeni); yeni.onclick = () => uzakYenile(true); }
@@ -35798,6 +35821,7 @@ Object.assign(window.HAZIR_VIDEOLAR, {
     $("#ustDurum").textContent = uzakHazir ? "tabletten alındı: " + new Date(zaman).toLocaleTimeString("tr-TR", { hour: "2-digit", minute: "2-digit", second: "2-digit" }) : "";
     if (!uzakHazir) return uzakGiris();
     veliAcik = true;
+    if (yol === "tgsd" && (a === "sonuc" || a === "soru") && window.TGSD) return TGSD.ac(a, b, c, d, e);   // velinin TGS cevaplarını incelemesi
     if (yol !== "veli" || a === "icerik" || a === "ayar") return git("#/veli/ozet");
     veliPaneli(a || "ozet", b);
   }
@@ -35899,6 +35923,8 @@ Object.assign(window.HAZIR_VIDEOLAR, {
       </section>
       ${d.id === "tr" && window.OYUN ? (() => { const p = OYUN.ozet(); return `<section class="kart sari oyun-giris"><span class="simge">🎮</span><div style="display:grid;gap:8px"><h2>Türkçe Diyarı</h2>
         <p>Üç adanın kaybolan yıldızlarını topla! <b>⭐ ${p.yildiz}/${p.toplam}</b> yıldız · <b>🪙 ${p.puan}</b> puan · <b>🏅 ${p.rozet}/3</b> rozet</p><div><a class="btn ana" href="#/oyun">Oyuna gir</a></div></div></section>`; })() : ""}
+      ${d.id === "mat" && window.MACERA ? (() => { const m = MACERA.durum() || {}; return `<section class="kart sari oyun-giris"><span class="simge">🧭</span><div style="display:grid;gap:8px"><h2>Matematik Macera Akademisi</h2>
+        <p>6 bölgelik macera haritası, Matematik Robotu, Hazine Avı ve Geometri Atölyesi. <b>⭐ ${m.yildiz || 0}</b> yıldız · <b>🏅 ${(m.rozetler || []).length}</b> rozet</p><div><a class="btn ana" href="#/macera">Maceraya gir</a></div></div></section>`; })() : ""}
       ${d.id === "en" && window.INGOYUN ? `<section class="kart sari oyun-giris"><span class="simge">🎮</span><div style="display:grid;gap:8px"><h2>English Games</h2>
         <p>${Object.values(INGOYUN.OYUNLAR).map(o => o.simge + " " + o.ad).join(" · ")}</p><div><a class="btn ana" href="#/ing">Oyunlara gir</a></div></div></section>` : ""}
       ${hedefKart()}
@@ -35922,6 +35948,8 @@ Object.assign(window.HAZIR_VIDEOLAR, {
       <section class="izgara dar">
         <button class="btn ana" data-test="deneme" data-ders="${d.id}">${d.ad} genel deneme (20 soru)</button>
         <a class="btn ana" href="#/deneme">📝 Deneme merkezi</a>
+        <a class="btn" href="#/bursluluk">🎓 Bursluluk denemeleri</a>
+        ${window.BILSEM ? `<a class="btn" href="#/bilsem">🧠 BİLSEM tarzı sorular</a>` : ""}
         <a class="btn" href="#/hatalar">📒 Yanlış defterim (${hataSay})</a>
         <a class="btn" href="#/gelisim">Gelişimim</a>
       </section>`;
@@ -35933,7 +35961,7 @@ Object.assign(window.HAZIR_VIDEOLAR, {
   }
   function baglaOrtak() {
     ana.querySelectorAll("[data-git]").forEach(b => b.onclick = () => git(b.dataset.git));
-    ana.querySelectorAll("[data-test]").forEach(b => b.onclick = () => testBaslat(b.dataset.test, { konu: b.dataset.konu, tema: b.dataset.tema, ders: b.dataset.ders, yazili: b.dataset.yazili, kendiIstegi: b.dataset.kendi === "1" }));
+    ana.querySelectorAll("[data-test]").forEach(b => b.onclick = () => testBaslat(b.dataset.test, { konu: b.dataset.konu, tema: b.dataset.tema, ders: b.dataset.ders, yazili: b.dataset.yazili, no: b.dataset.no, kendiIstegi: b.dataset.kendi === "1" }));
   }
 
   /* ============================ YAZILI HAZIRLIK SAYFASI ============================ */
@@ -35956,6 +35984,9 @@ Object.assign(window.HAZIR_VIDEOLAR, {
           <button class="btn" data-test="tgs" data-yazili="${yid}">4. ${TGS_AD[yid]} (${DERSLER.length} ders · ${DERSLER.reduce((x, dd) => x + (TGS_DAGILIM[dd.id] || 10), 0)} soru · ${SINAV_DK.tgs} dk)</button>
           ${(window.TGS_LISTE || []).some(x => x.yaziliId === yid) ? `<a class="btn" href="#/tgsd">5. Ortak yazılı hazırlık denemeleri (${TGS_LISTE.filter(x => x.yaziliId === yid).length} deneme · 6 ders)</a>` : ""}
         </div></section>
+      <section class="kart"><h2>📑 ${y.ad} soru hazırlık setleri</h2><p class="muted kucuk-yazi">Her set bu yazılının konularından 20 soruluk, 40 dakikalık sabit bir sınavdır: aynı seti tekrar açarsan aynı sorular gelir, böylece ilerlemeni karşılaştırabilirsin.</p>
+        <div class="izgara dar">${Array.from({ length: YSET_SAYI }, (_, i) => i + 1).map(n => { const l = DEPO.liste("test").filter(x => x.tur === "yaziliSet" && x.ders === dersId && x.yazili === yid && x.no === n), s = l[l.length - 1];
+          return `<button class="btn ${s ? "" : "ana"}" data-test="yaziliSet" data-ders="${dersId}" data-yazili="${yid}" data-no="${n}" ${kapsam.length ? "" : "disabled"}>${n}. set${s ? ` · son: ${String(s.net).replace(".", ",")} net` : ""}</button>`; }).join("")}</div></section>
       <section class="kart"><h2>Yazılı konuları</h2><p class="muted kucuk-yazi">Her konunun anlatımına, videolarına ve alıştırmasına buradan ulaşabilirsin.</p>
         ${kapsam.map(k => { const u = ortUstalik(h, k); const vl = konuVideolari(k);
           return `<div class="kart" style="padding:12px;gap:8px"><div class="satir ara"><span><span class="etiket">${TEMA[KONU[k].tema].kisa}</span> <b>${KONU[k].ad}</b></span>${durumEtiket(u)}</div>
@@ -35972,7 +36003,7 @@ Object.assign(window.HAZIR_VIDEOLAR, {
     const l = [];
     const v = DEPO.ayar.videolar[konuId];
     if (v && v.vid) l.push({ vid: v.vid, baslik: v.baslik || "Velinin eklediği video", kaynak: "Veli", bolumler: v.bolumler || [] });
-    const gizli = DEPO.ayar.gizliVideolar || {};
+    const gizli = { ...(DEPO.ayar.gizliVideolar || {}), ...(DEPO.ayar.bozukVideolar || {}) };
     (window.HAZIR_VIDEOLAR && HAZIR_VIDEOLAR[konuId] || []).forEach(x => { if (!gizli[x.vid] && !l.some(y => y.vid === x.vid)) l.push({ ...x, bolumler: [] }); });
     return l;
   }
@@ -36169,6 +36200,16 @@ Object.assign(window.HAZIR_VIDEOLAR, {
         videoId: v.vid, host: "https://www.youtube-nocookie.com",
         playerVars: { playsinline: 1, rel: 0, modestbranding: 1, origin: location.origin, fs: 0 },
         events: {
+          // Video yayından kaldırılmış / gömmeye kapalıysa bir daha önerilmez, sıradaki video açılır.
+          onError: e => {
+            if (![2, 5, 100, 101, 150].includes(e.data)) return;
+            DEPO.ayar.bozukVideolar = DEPO.ayar.bozukVideolar || {};
+            DEPO.ayar.bozukVideolar[v.vid] = { t: Date.now(), kod: e.data, konu: id, baslik: v.baslik || "" }; DEPO.ayarKaydet();
+            const kalan = konuVideolari(id);
+            $("#vDurum").textContent = "Bu video yayından kaldırılmış ya da uygulama içinde oynatılamıyor.";
+            if (kalan.length) { toast("Bu video açılamadı; sıradaki konu anlatımı videosu açılıyor."); setTimeout(() => git("#/video/" + id + "/0"), 900); }
+            else toast("Bu konunun videoları şu an açılamıyor; konu anlatımını kullanabilirsin.");
+          },
           onReady: () => { sureOgrenildi(oyn.getDuration()); $("#vDurum").textContent = "Videoyu başlatmak için oynat düğmesine dokun. Her bölümün sonunda kısa bir soru gelecek."; zamanlayici = setInterval(tik, 1000); },
           onStateChange: e => {
             if (e.data === 2) { if (!sistemDuraklatti && !durakta) DEPO.guncelle(kayit, { duraklatma: kayit.duraklatma + 1 }); sistemDuraklatti = false; window.VIDEO_OYNUYOR = false; }
@@ -36183,7 +36224,7 @@ Object.assign(window.HAZIR_VIDEOLAR, {
 
   /* ============================ TEST MOTORU ============================ */
   const TEST_AD = { alistirma: "Alıştırma", konuSonu: "Konu sonu testi", kendi: "Kendi tekrarım", hazir: "Hazır mıyız?", izleme: "İzleme testi", tema: "Tema / ünite değerlendirme", deneme: "Genel deneme sınavı", hata: "Hata defteri tekrarı",
-    yazili: "Yazılı provası", yaziliTekrar: "Yazılı konu tekrarı", yaziliEksik: "Yazılı: eksik kapatma", oyun: "Türkçe Diyarı oyunu", mini: "Mini deneme", karma: "Karma deneme", tgs: "TGS denemesi", ozel: "Kendi sınavım", tgsPdf: "Ortak yazılı / TGS hazırlık denemesi", akilliTekrar: "Akıllı tekrar",
+    yazili: "Yazılı provası", yaziliTekrar: "Yazılı konu tekrarı", yaziliEksik: "Yazılı: eksik kapatma", oyun: "Türkçe Diyarı oyunu", mini: "Mini deneme", karma: "Karma deneme", tgs: "TGS denemesi", ozel: "Kendi sınavım", tgsPdf: "Ortak yazılı / TGS hazırlık denemesi", akilliTekrar: "Akıllı tekrar", bursluluk: "Bursluluk (İOKBS tarzı) denemesi", yaziliSet: "Yazılı hazırlık seti", bilsem: "BİLSEM tarzı (özgün) çalışma",
     tekrar1: "1. gün tekrar testi", tekrar3: "3. gün tekrar testi", tekrar7: "7. gün tekrar testi", tekrar30: "30. gün kalıcılık testi" };
   const KENDI_HATA = [["bilgi", "Konuyu bilmiyordum"], ["kavrama", "Soruyu yanlış anladım"], ["islem", "İşlem hatası yaptım"], ["dikkat", "Dikkatsizlik yaptım"], ["strateji", "Acele ettim / yol bulamadım"]];
 
@@ -36200,7 +36241,17 @@ Object.assign(window.HAZIR_VIDEOLAR, {
   /* Listeyi karıştırıp n elemana tamamlar (liste kısaysa döngüyle). */
   const dagit = (l, n) => { const k = karistir(l); return Array.from({ length: n }, (_, i) => k[i % k.length]); };
 
-  const SINAV_DK = { deneme: 30, yazili: 40, mini: 15, karma: 60, tgs: 75 };
+  const SINAV_DK = { deneme: 30, yazili: 40, mini: 15, karma: 60, tgs: 75, bursluluk: 100, yaziliSet: 40 };
+  /* Bursluluk (İOKBS) 6. sınıf: Türkçe, Matematik, Fen Bilimleri 20'şer; Sosyal Bilgiler testi 20 (Sosyal Bilgiler + Din Kültürü) = 80 soru, 100 dk. */
+  const BURS_DAGILIM = { tr: 20, mat: 20, fen: 20, sos: 12, din: 8 };
+  const BURS_SAYI = 15, YSET_SAYI = 6;
+  /* Aynı numaralı deneme / set her açılışta aynı soruları versin diye Math.random geçici olarak tohumlu üreteçle değiştirilir. */
+  function tohumlu(tohum, fn) {
+    const eski = Math.random; let a = tohum >>> 0 || 1;
+    Math.random = () => { a = (a + 0x6D2B79F5) >>> 0; let t = Math.imul(a ^ (a >>> 15), 1 | a); t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t; return ((t ^ (t >>> 14)) >>> 0) / 4294967296; };
+    try { return fn(); } finally { Math.random = eski; }
+  }
+  const metinTohum = m => { let h = 2166136261; for (let i = 0; i < m.length; i++) { h ^= m.charCodeAt(i); h = Math.imul(h, 16777619); } return h >>> 0; };
   // Sosyal Bilgiler ve Din Kültürü eklenince TGS gerçek sınav gibi 75 soru / 100 dakika olur.
   setTimeout(() => { if (DERSLER.length >= 6) { SINAV_DK.tgs = 100; SINAV_DK.karma = 80; } }, 0);
   /* Türkiye Geneli Sınav (TGS) tarzı deneme: 4 ders, gerçek sınav oranlarında (Türkçe 15, Matematik 15, Fen 15, İngilizce 10 = 55 soru, 75 dk).
@@ -36212,8 +36263,8 @@ Object.assign(window.HAZIR_VIDEOLAR, {
     const l = YAZILILAR.slice(0, i + 1).flatMap(y => yaziliKapsam(dersId, y.id));
     return [...new Set(l)];
   }
-  const cokDersli = tur => tur === "karma" || tur === "tgs" || tur === "tgsPdf";
-  function testBaslat(tur, { konu, tema, ders, yazili, kendiIstegi, ozel } = {}) {
+  const cokDersli = tur => tur === "karma" || tur === "tgs" || tur === "tgsPdf" || tur === "bursluluk";
+  function testBaslat(tur, { konu, tema, ders, yazili, kendiIstegi, ozel, no } = {}) {
     let plan = [];   // { kaz, zorluk } ya da { hazir: soru }
     ders = ders || (konu ? KONU[konu].ders : tema ? TEMA[tema].ders : aktifDers);
     const konuKaz = konu ? KONU[konu].kazanimlar.map(z => z.id) : [];
@@ -36235,12 +36286,17 @@ Object.assign(window.HAZIR_VIDEOLAR, {
       const l = konularKazanim(yaziliKapsam(ders, yazili)).filter(k => h.kazanim[k] && h.kazanim[k].ustalik != null && h.kazanim[k].ustalik < 0.6);
       plan = dagit(l, 10).map(k => ({ kaz: k, uyarla: true, zorluk: null }));
     }
+    else if (tur === "bursluluk") { ders = "karma"; no = +no || 1;
+      plan = tohumlu(no * 7919 + 13, () => Object.entries(BURS_DAGILIM).filter(([d]) => DERS[d]).flatMap(([d, n]) => dagit(dersKazanimlari(d), n).map((k, i) => ({ hazir: soruUret(k, [2, 1, 2, 3, 2][i % 5], true) })))); }
+    else if (tur === "yaziliSet") { no = +no || 1;
+      plan = tohumlu(metinTohum(ders + yazili + no), () => dagit(konularKazanim(yaziliKapsam(ders, yazili)), 20).map((k, i) => ({ hazir: soruUret(k, [1, 2, 2, 3, 2][i % 5], true) }))); }
+    else if (tur === "bilsem" && window.BILSEM) { ders = "bilsem"; const b = BILSEM.find(x => x.id === tema); plan = b ? karistir(b.sorular).slice(0, 10).map(q => ({ hazir: q })) : []; tema = null; }
     else if (tur === "akilliTekrar") plan = ANALIZ.kazanimTekrar(ders).filter(x => x.vadesi).slice(0, 5).flatMap(x => [{ kaz: x.kaz, zorluk: null }, { kaz: x.kaz, zorluk: null }]);
     else if (tur === "hata") { plan = karistir(hataListesi(null)).slice(0, 10).map(o => ({ hazir: o.soruNesnesi, ref: o.id })); DEPO.kaydet("hataDefteri", {}); }
     if (!plan.length || plan.some(p => !p.hazir && p.kaz === undefined)) { toast("Bu test için soru bulunamadı."); return; }
-    const sinav = ["deneme", "yazili", "mini", "karma", "tgs"].includes(tur) || (tur === "ozel" && ozel.sinav);
+    const sinav = ["deneme", "yazili", "mini", "karma", "tgs", "bursluluk", "yaziliSet"].includes(tur) || (tur === "ozel" && ozel.sinav);
     durum.test = {
-      tur, ders, yazili: yazili || null, konu: konu || null, tema: tema || (konu ? KONU[konu].tema : null), kendiIstegi: !!kendiIstegi || tur === "kendi",
+      tur, ders, yazili: yazili || null, no: no || null, konu: konu || null, tema: tema || (konu ? KONU[konu].tema : null), kendiIstegi: !!kendiIstegi || tur === "kendi",
       sinav, testId: DEPO.uid(), plan, i: 0, sonuclar: [], bas: Date.now(), seri: 0, zorlukKaydir: 0,
       sure: SINAV_DK[tur] ? SINAV_DK[tur] * 60 * 1000 : tur === "ozel" && ozel.sinav ? Math.round(ozel.n * 1.5) * 60 * 1000 : null, kendiIstegi: tur === "ozel" || !!kendiIstegi || tur === "kendi", konuKaz,
     };
@@ -36368,7 +36424,7 @@ Object.assign(window.HAZIR_VIDEOLAR, {
       if (s.cozum || (s.bitti && !sonDogru)) geri += cozumKutusu(q, { secilen: s.sonSecim });
     }
     const kalan = t.sure ? t.sure - (Date.now() - t.bas) : null;
-    const baslikEk = t.konu ? " · " + KONU[t.konu].ad : t.yazili ? " · " + dersAd(t.ders) + " · " + YAZILILAR.find(x => x.id === t.yazili).ad : t.tema ? " · " + TEMA[t.tema].kisa : t.tur === "deneme" || t.tur === "mini" ? " · " + dersAd(t.ders) : "";
+    const baslikEk = (t.no ? " · " + t.no + (t.tur === "bursluluk" ? ". deneme" : ". set") : "") + (t.konu ? " · " + KONU[t.konu].ad : t.yazili ? " · " + dersAd(t.ders) + " · " + YAZILILAR.find(x => x.id === t.yazili).ad : t.tema ? " · " + TEMA[t.tema].kisa : t.tur === "deneme" || t.tur === "mini" ? " · " + dersAd(t.ders) : "");
     ana.innerHTML = `<section class="kart vurgu">
       <div class="satir ara"><span class="etiket">${TEST_AD[t.tur]}${baslikEk}</span>
         <span class="sayac">${t.sinav ? `<span id="kalanSure">${sn(kalan)}</span> · ` : ""}${t.i + 1} / ${toplam}</span></div>
@@ -36448,7 +36504,7 @@ Object.assign(window.HAZIR_VIDEOLAR, {
     const bos = asil.filter(r => r.terk).length, yanlis = asil.length - dogru - bos;
     const dagilim = {};
     if (cokDersli(t.tur)) asil.forEach(r => { const x = dagilim[r.ders] = dagilim[r.ders] || { d: 0, y: 0, b: 0 }; if (r.terk) x.b++; else if (r.ilkDogru) x.d++; else x.y++; });
-    const test = DEPO.kaydet("test", { testId: t.testId, tur: t.tur, ders: t.ders, yazili: t.yazili, konu: t.konu, tema: t.tema, n: asil.length, dogru, yanlis, bos, net: t.sinav ? Math.round((dogru - yanlis / 3) * 100) / 100 : null, dagilim: cokDersli(t.tur) ? dagilim : null, sure: Date.now() - t.bas, oz: null, kendiIstegi: t.kendiIstegi });
+    const test = DEPO.kaydet("test", { testId: t.testId, tur: t.tur, ders: t.ders, yazili: t.yazili, konu: t.konu, tema: t.tema, n: asil.length, dogru, yanlis, bos, no: t.no || null, net: t.sinav ? Math.round((dogru - yanlis / 3) * 100) / 100 : null, dagilim: cokDersli(t.tur) ? dagilim : null, sure: Date.now() - t.bas, oz: null, kendiIstegi: t.kendiIstegi });
     durum.sonuc = { t, test };
     clearInterval(sinavSaat);
     git("#/sonuc");
@@ -36465,11 +36521,12 @@ Object.assign(window.HAZIR_VIDEOLAR, {
     const hataTurleri = {};
     t.sonuclar.forEach(x => { if (x.ilkHata) hataTurleri[x.ilkHata] = (hataTurleri[x.ilkHata] || 0) + 1; });
     const enCokHata = Object.entries(hataTurleri).sort((a, b) => b[1] - a[1])[0];
-    ana.innerHTML = `<section class="kart vurgu" style="text-align:center"><span class="etiket">${t.tur === "tgs" ? TGS_AD[t.yazili] : TEST_AD[t.tur]}${t.yazili && t.tur !== "tgs" ? " · " + dersAd(t.ders) : ""}</span>
+    ana.innerHTML = `<section class="kart vurgu" style="text-align:center"><span class="etiket">${t.tur === "tgs" ? TGS_AD[t.yazili] : TEST_AD[t.tur]}${t.no ? " · " + t.no + "." : ""}${t.yazili && t.tur !== "tgs" ? " · " + dersAd(t.ders) : ""}</span>
       <p style="font-size:3rem;font-weight:800;line-height:1">${test.dogru} / ${test.n}</p><h2>${mesaj}</h2>
       <p class="muted">Süre: ${sn(test.sure)} · İlk denemede doğru: ${yuzde(oranD)}</p>
       ${test.net != null ? `<div class="izgara dar" style="text-align:left">${[["Doğru", test.dogru], ["Yanlış", test.yanlis], ["Boş", test.bos], ["Net", test.net]].map(([a, v]) => `<div class="metrik"><b>${String(v).replace(".", ",")}</b><span>${a}</span></div>`).join("")}</div><p class="kucuk-yazi muted">Net = doğru − yanlış ÷ 3 (3 yanlış 1 doğruyu götürür; boş bırakmak net düşürmez).</p>` : ""}
-      ${test.dagilim ? `<div class="tablo"><table><thead><tr><th>Ders</th><th class="sayi">Doğru</th><th class="sayi">Yanlış</th><th class="sayi">Boş</th><th class="sayi">Net</th></tr></thead><tbody>${Object.entries(test.dagilim).map(([d, x]) => `<tr><td>${dersAd(d)}</td><td class="sayi">${x.d}</td><td class="sayi">${x.y}</td><td class="sayi">${x.b}</td><td class="sayi">${String(Math.round((x.d - x.y / 3) * 100) / 100).replace(".", ",")}</td></tr>`).join("")}</tbody></table></div>` : ""}</section>
+      ${test.dagilim ? `<div class="tablo"><table><thead><tr><th>Ders</th><th class="sayi">Doğru</th><th class="sayi">Yanlış</th><th class="sayi">Boş</th><th class="sayi">Net</th></tr></thead><tbody>${Object.entries(test.dagilim).map(([d, x]) => `<tr><td>${dersAd(d)}</td><td class="sayi">${x.d}</td><td class="sayi">${x.y}</td><td class="sayi">${x.b}</td><td class="sayi">${String(Math.round((x.d - x.y / 3) * 100) / 100).replace(".", ",")}</td></tr>`).join("")}</tbody></table></div>` : ""}
+      ${t.tur === "bursluluk" ? burslulukPuanKutusu(test) : ""}</section>
       <section class="kart"><h2>Bu çalışmada kendini nasıl değerlendiriyorsun?</h2>
         <div class="cips">${[[1, "Hiç anlamadım"], [2, "Zorlandım"], [3, "Fena değil"], [4, "İyiydim"], [5, "Çok iyiydim"]].map(([v, a]) => `<button class="cip ${test.oz === v ? "secili" : ""}" data-oz="${v}">${a}</button>`).join("")}</div></section>
       <section class="kart"><h2>Kazanımlara göre${Object.keys(kazSonuc).length > 12 ? " (en çok zorlandığın 12)" : ""}</h2>${Object.entries(kazSonuc).sort((a, b) => a[1].d / a[1].n - b[1].d / b[1].n).slice(0, 12).map(([k, x]) => `<div class="satir ara"><span>${KAZANIM[k].ad} <span class="kucuk-yazi muted">· ${KONU[KAZANIM[k].konu].ad}</span></span>${durumEtiket(x.d / x.n)}</div>`).join("")}
@@ -36480,7 +36537,7 @@ Object.assign(window.HAZIR_VIDEOLAR, {
         ${t.konu ? `<a class="btn" href="#/konu/${t.konu}">Konuya dön</a>` : ""}
         ${t.konu && oranD < 0.7 ? `<a class="btn" href="#/anlatim/${t.konu}">Anlatımı tekrar oku</a>` : ""}
         ${t.yazili ? `<a class="btn" href="#/yazili/${t.ders}/${t.yazili}">Yazılı sayfasına dön</a>` : ""}
-        ${t.sinav && !t.yazili ? `<a class="btn" href="#/deneme">Deneme merkezi</a>` : ""}
+        ${t.tur === "bursluluk" ? `<a class="btn" href="#/bursluluk">Bursluluk denemeleri</a>` : t.tur === "bilsem" ? `<a class="btn" href="#/bilsem">BİLSEM bölümü</a>` : t.sinav && !t.yazili ? `<a class="btn" href="#/deneme">Deneme merkezi</a>` : ""}
         <a class="btn ana" href="#/">Ana sayfa</a></section>`;
     ana.querySelectorAll("[data-oz]").forEach(b => b.onclick = () => { DEPO.guncelle(test, { oz: +b.dataset.oz }); sonucEkrani(); toast("Teşekkürler!"); });
   }
@@ -36624,7 +36681,7 @@ Object.assign(window.HAZIR_VIDEOLAR, {
   const gunAdi = g => new Date(g * ANALIZ.GUN).toLocaleDateString("tr-TR", { day: "numeric", month: "numeric" });
 
   /* ============================ DENEME MERKEZİ ============================ */
-  const DENEME_TUR = ["deneme", "mini", "karma", "yazili", "tgs", "tgsPdf", "pdfDeneme"];
+  const DENEME_TUR = ["deneme", "mini", "karma", "yazili", "yaziliSet", "tgs", "tgsPdf", "pdfDeneme", "bursluluk"];
   const netOran = t => t.n ? Math.max(0, (t.net != null ? t.net : t.dogru - (t.n - t.dogru) / 3) / t.n) : null;
   function denemeListesi(ders) { return DEPO.liste("test").filter(t => DENEME_TUR.includes(t.tur) && (!ders || t.ders === ders || (cokDersli(t.tur) && t.dagilim && t.dagilim[ders]))); }
   function denemeTablosu(l) {
@@ -36643,6 +36700,36 @@ Object.assign(window.HAZIR_VIDEOLAR, {
       <div class="izgara">${YAZILILAR.map(y => { const l = DEPO.liste("test").filter(t => t.tur === "tgs" && t.yazili === y.id), son = l[l.length - 1];
         return `<button class="konu-satir kisa" data-test="tgs" data-yazili="${y.id}"><span><b>${TGS_AD[y.id]}</b><br><span class="kucuk-yazi muted">${l.length ? l.length + " kez · son net " + String(son.net).replace(".", ",") + " / " + son.n : "henüz çözülmedi"}</span></span><span class="etiket">Başla</span></button>`; }).join("")}</div></section>`;
   }
+  /* ============================ BURSLULUK (İOKBS TARZI) ============================ */
+  /* Puan yaklaşık: MEB standart puan kullanır (ortalama ve sapmaya göre); burada net / 80 × 500 gösterilir, bilgi amaçlıdır. */
+  function burslulukPuanKutusu(test) {
+    const net = test.net || 0, puan = Math.max(0, Math.round(net / 80 * 500 * 100) / 100);
+    return `<div class="geri bilgi" style="text-align:left"><b>Tahmini bursluluk puanı: ${String(puan).replace(".", ",")} / 500</b>
+      <p class="kucuk-yazi">Her testte 3 yanlış 1 doğruyu götürür. Gerçek sınavda puan, bütün öğrencilerin ortalamasına göre (standart puan) hesaplanır; buradaki puan yalnızca fikir vermesi içindir.</p></div>`;
+  }
+  function burslulukSayfasi() {
+    const l = DEPO.liste("test").filter(x => x.tur === "bursluluk");
+    ana.innerHTML = `<section class="kart vurgu"><p class="yol-iz"><a href="#/deneme">Deneme merkezi</a> › Bursluluk</p><h1>🎓 Bursluluk (İOKBS tarzı) denemeleri</h1>
+        <p>6. sınıf bursluluk sınavı biçiminde: <b>80 soru, 100 dakika</b>. Türkçe 20 · Matematik 20 · Fen Bilimleri 20 · Sosyal Bilgiler testi 20 (Sosyal Bilgiler 12 + Din Kültürü 8). 3 yanlış 1 doğruyu götürür.</p>
+        <p class="kucuk-yazi muted">Sorular uygulamanın kendi soru bankasından, sınavın kapsadığı bütün 6. sınıf konularından seçilir. Her deneme sabittir; aynı numarayı açarsan aynı sorular gelir. MEB'in çıkmış soruları telif ve erişim nedeniyle uygulamaya konmadı; elindeki çıkmış soru PDF'ini “PDF denemelerim” bölümünden yükleyip optik formla çözebilirsin.</p></section>
+      <section class="izgara">${Array.from({ length: BURS_SAYI }, (_, i) => i + 1).map(n => { const c = l.filter(x => x.no === n), s = c[c.length - 1];
+        return `<div class="kart"><h2>${n}. Bursluluk denemesi</h2><p class="kucuk-yazi muted">${s ? `${c.length} kez çözüldü · son net <b>${String(s.net).replace(".", ",")}</b> / 80 · ${tarih(s.t)}` : "Henüz çözülmedi"}</p>
+          <div><button class="btn ${s ? "" : "ana"} kucuk" data-test="bursluluk" data-no="${n}">${s ? "Yeniden çöz" : "Başla"}</button></div></div>`; }).join("")}</section>
+      ${l.length ? `<section class="kart"><h2>Bursluluk net gelişimim</h2>${denemeGrafik(l)}</section>` : ""}`;
+    baglaOrtak();
+  }
+  /* ============================ BİLSEM TARZI ============================ */
+  function bilsemSayfasi() {
+    if (!window.BILSEM) return denemeMerkezi();
+    const s = DEPO.liste("soru").filter(x => x.mod === "bilsem");
+    ana.innerHTML = `<section class="kart vurgu"><p class="yol-iz"><a href="#/deneme">Deneme merkezi</a> › BİLSEM</p><h1>🧠 BİLSEM tarzı zekâ soruları</h1>
+        <p>Görsel örüntü, matris, sayı bulmacası, uzamsal düşünme, sözel mantık ve dikkat soruları. Her çalışma 10 sorudur; yanlışta önce ipucu gelir, sonra adım adım çözüm.</p>
+        <p class="kucuk-yazi muted">Not: BİLSEM tanılaması 1–3. sınıflarda yapılır ve MEB soruları yayımlamaz; 6. sınıf için “çıkmış BİLSEM sorusu” yoktur. Buradaki sorular BİLSEM tarzında, bu uygulama için hazırlanmış özgün sorulardır.</p></section>
+      <section class="izgara">${BILSEM.map(b => { const c = s.filter(x => x.kaz === "bilsem." + b.id), d = c.filter(x => x.ilkDogru).length;
+        return `<div class="kart"><h2>${b.simge || "🧩"} ${kacis(b.ad)}</h2><p class="kucuk-yazi">${kacis(b.aciklama || "")}</p><p class="kucuk-yazi muted">${b.sorular.length} soru${c.length ? ` · ${c.length} çözüldü · ilk denemede doğru ${yuzde(d / c.length)}` : ""}</p>
+          <div><button class="btn ana kucuk" data-test="bilsem" data-tema="${b.id}">Çalış (10 soru)</button></div></div>`; }).join("")}</section>`;
+    baglaOrtak();
+  }
   function denemeMerkezi() {
     const l = denemeListesi(null);
     ana.innerHTML = `<section class="kart vurgu"><h1>📝 Deneme merkezi</h1>
@@ -36650,6 +36737,8 @@ Object.assign(window.HAZIR_VIDEOLAR, {
       <section class="kart sari"><h2>🧩 Karma deneme (${DERSLER.length} ders · ${DERSLER.length * 10} soru · ${SINAV_DK.karma} dakika)</h2><p>${DERSLER.map(d => d.ad).join(", ")} derslerinden 10'ar soru — gerçek sınav provası.</p><div><button class="btn ana" data-test="karma">Karma denemeye başla</button></div></section>
       ${tgsKart()}
       ${window.TGS_LISTE && TGS_LISTE.length ? `<section class="kart sari"><div class="satir ara"><div><h2>🇹🇷 Ortak yazılı ve TGS hazırlık denemeleri</h2><p class="kucuk-yazi muted">${TGS_LISTE.length} deneme · 6 ders · 75 soru · tahmini puan, konu konu sonuç ve her sorunun adım adım çözümü.</p></div><a class="btn ana" href="#/tgsd">Aç</a></div></section>` : ""}
+      <section class="kart sari"><div class="satir ara"><div><h2>🎓 Bursluluk (İOKBS tarzı) denemeleri</h2><p class="kucuk-yazi muted">${BURS_SAYI} deneme · 80 soru · 100 dakika · Türkçe, Matematik, Fen, Sosyal Bilgiler (+Din Kültürü) · tahmini puan</p></div><a class="btn ana" href="#/bursluluk">Aç</a></div></section>
+      ${window.BILSEM ? `<section class="kart sari"><div class="satir ara"><div><h2>🧠 BİLSEM tarzı zekâ soruları</h2><p class="kucuk-yazi muted">Şekil örüntüsü, matris, sayı, uzamsal düşünme, sözel mantık, dikkat · ipuçlu çalışma</p></div><a class="btn ana" href="#/bilsem">Aç</a></div></section>` : ""}
       <section class="kart"><div class="satir ara"><div><h2>🧩 Kendi sınavım</h2><p class="kucuk-yazi muted">Ders, ünite, konu, zorluk ve soru sayısını seçerek kişisel test hazırla.</p></div><a class="btn ana" href="#/olustur">Oluştur</a></div></section>
       <section class="kart"><div class="satir ara"><div><h2>📄 PDF denemelerim</h2><p class="kucuk-yazi muted">Elindeki deneme kitapçığının PDF'ini ve cevap anahtarını yükle; tablette optik formla, süre tutarak çöz.</p></div><a class="btn ana" href="#/pdf">Aç</a></div></section>
       <section class="izgara">${DERSLER.map(d => { const dl = denemeListesi(d.id).filter(t => !cokDersli(t.tur) && t.tur !== "pdfDeneme"), son = dl[dl.length - 1];
@@ -36804,16 +36893,24 @@ Object.assign(window.HAZIR_VIDEOLAR, {
   }
 
   const SEKMELER = [["ozet", "Özet"], ["dersler", "Ders ve konular"], ["kazanim", "Kazanım haritası"], ["soru", "Soru analizi"], ["anlatim", "Anlatım ve video"], ["tekrar", "Aralıklı tekrar"], ["calisma", "Çalışma alışkanlığı"], ["yazili", "Yazılılar"], ["denemeler", "Denemeler"], ["gunluk", "Günlük / haftalık"], ["kayit", "Soru kayıtları"], ["icerik", "Videolar"], ["ayar", "Ayarlar ve eşitleme"]];
+  /* Sade veli arayüzü: 5 ana bölüm (büyük simgeli düğmeler), her bölümün alt sekmeleri yalnızca o bölüm açıkken görünür. */
+  const VELI_GRUP = [["ozet", "🏠", "Özet", ["ozet"]], ["gunluk", "📅", "Günlük", ["gunluk", "calisma"]], ["dersler", "📚", "Dersler", ["dersler", "kazanim", "soru", "kayit", "anlatim", "tekrar"]],
+    ["sinav", "📝", "Sınavlar", ["denemeler", "yazili"]], ["ayar", "⚙️", "Ayarlar", ["icerik", "ayar"]]];
   let aralik = 7, veliDers = null;
   const dersKonulari = () => KONULAR.filter(k => !veliDers || k.ders === veliDers);
   const dersTemalari = () => TEMALAR.filter(t => !veliDers || t.ders === veliDers);
   function veliPaneli(sekme, param) {
     const h = ANALIZ.hesapla({ gun: aralik || null, ders: veliDers });
-    const ust = `<section class="kart vurgu"><div class="satir ara"><h1>Veli paneli · ${kacis(DEPO.ayar.ogrenciAdi)}</h1>
-      <span class="satir">${[[7, "Son 7 gün"], [30, "Son 30 gün"], [0, "Tümü"]].map(([g, a]) => `<button class="sekme ${aralik === g ? "aktif" : ""}" data-aralik="${g}">${a}</button>`).join("")}</span></div>
-      <div class="ders-sec">${[[null, "Tüm dersler"], ...DERSLER.map(d => [d.id, d.simge + " " + d.ad])].map(([id, a]) => `<button class="sekme ${veliDers === id ? "aktif" : ""}" data-vders="${id || ""}">${a}</button>`).join("")}</div>
-      <nav class="sekmeler">${SEKMELER.filter(([k]) => !DEPO.uzak || (k !== "icerik" && k !== "ayar")).map(([k, a]) => `<a class="sekme ${k === sekme || (sekme === "konu" && k === "dersler") ? "aktif" : ""}" href="#/veli/${k}">${a}</a>`).join("")}</nav>
-      <p class="kucuk-yazi muted">Güven düzeyi: her değerin yanında kaç soruya dayandığı yazar. 5'ten az soru = düşük güven, 15 ve üzeri = yüksek güven.</p></section>`;
+    const etkin = sekme === "konu" ? "dersler" : sekme;
+    const grup = VELI_GRUP.find(g => g[3].includes(etkin)) || VELI_GRUP[0];
+    const izin = k => !DEPO.uzak || (k !== "icerik" && k !== "ayar");
+    const alt = grup[3].filter(izin);
+    const ust = `<section class="kart vurgu veli-ust"><div class="satir ara"><h1>👪 ${kacis(DEPO.ayar.ogrenciAdi)}</h1>
+      <span class="satir">${[[7, "7 gün"], [30, "30 gün"], [0, "Tümü"]].map(([g, a]) => `<button class="sekme ${aralik === g ? "aktif" : ""}" data-aralik="${g}">${a}</button>`).join("")}</span></div>
+      <nav class="veli-grup">${VELI_GRUP.filter(g => g[3].some(izin)).map(g => `<a class="${g === grup ? "aktif" : ""}" href="#/veli/${g[3].find(izin)}"><span>${g[1]}</span>${g[2]}</a>`).join("")}</nav>
+      ${alt.length > 1 ? `<nav class="sekmeler">${alt.map(k => `<a class="sekme ${k === etkin ? "aktif" : ""}" href="#/veli/${k}">${SEKMELER.find(x => x[0] === k)[1]}</a>`).join("")}</nav>` : ""}
+      ${grup[0] === "ayar" ? "" : `<div class="ders-sec veli-ders">${[[null, "Tüm dersler"], ...DERSLER.map(d => [d.id, d.simge + " " + d.ad])].map(([id, a]) => `<button class="sekme ${veliDers === id ? "aktif" : ""}" data-vders="${id || ""}">${a}</button>`).join("")}</div>`}
+      ${grup[0] === "dersler" ? `<p class="kucuk-yazi muted">Güven düzeyi: değerin yanında kaç soruya dayandığı yazar (5'ten az = düşük, 15+ = yüksek güven).</p>` : ""}</section>`;
     const icerik = { ozet: veliOzet, dersler: veliDersler, konu: veliKonuDetay, kazanim: veliKazanim, soru: veliSoru, anlatim: veliAnlatim, tekrar: veliTekrar, calisma: veliCalisma, yazili: veliYazili, denemeler: veliDenemeler, gunluk: veliGunluk, kayit: veliKayit, icerik: veliVideolar, ayar: veliAyar }[sekme] || veliOzet;
     ana.innerHTML = ust + icerik(h, param);
     ana.querySelectorAll("[data-aralik]").forEach(b => b.onclick = () => { aralik = +b.dataset.aralik; veliPaneli(sekme, param); });
@@ -37094,11 +37191,24 @@ Object.assign(window.HAZIR_VIDEOLAR, {
       `<p class="kucuk-yazi muted">Varsayılan kapsamlar okulların yaygın yıllık planına göre hazırlanmıştır. Öğretmenin duyurduğu konulara göre işaretleri değiştirebilirsiniz.</p>`;
   }
 
+  /* Velinin TGS / ortak yazılı denemelerinde öğrencinin cevaplarını görmesi: ders ders her soru, öğrencinin cevabı ve doğru cevap */
+  function tgsCevapKart() {
+    const l = DEPO.liste("test").filter(t => t.tur === "tgsPdf" && (!aralik || t.t >= Date.now() - aralik * ANALIZ.GUN)).reverse();
+    if (!l.length) return `<section class="kart"><h2>🇹🇷 Ortak yazılı / TGS denemeleri</h2><p class="muted">Bu aralıkta çözülen deneme yok.</p></section>`;
+    const sorular = DEPO.liste("soru").filter(s => s.mod === "tgsPdf");
+    return `<section class="kart"><h2>🇹🇷 Ortak yazılı / TGS denemeleri ve cevaplar</h2><p class="kucuk-yazi muted">Denemeye dokunun: her ders için öğrencinin cevabı ve doğru cevap görünür. Bir soruya dokunursanız soru ve adım adım çözümü açılır.</p>
+      ${l.map(t => { const qs = sorular.filter(s => s.testId === t.testId);
+        const dersler = [...new Set(qs.map(s => s.kaynak.ders))];
+        return kayitKutu("tgsc:" + t.testId, `<span><b>${tarih(t.t)}</b> · ${kacis(t.baslik || "")}</span> <span class="etiket">puan ${String(t.puan).replace(".", ",")} · net ${String(t.net).replace(".", ",")}</span> <span class="kucuk-yazi muted">${t.dogru} D · ${t.yanlis} Y · ${t.bos} B</span>`,
+          dersler.map(dk => { const x = t.dagilim[dk] || {}; return `<div class="tgs-unite"><div class="satir ara"><b>${kacis(x.ad || dersAd(dk))}</b><span class="kucuk-yazi">${x.d} D · ${x.y} Y · ${x.b} B · net ${String(Math.round(((x.d || 0) - (x.y || 0) / 3) * 100) / 100).replace(".", ",")}</span></div>
+            <div class="tgs-nolar">${qs.filter(s => s.kaynak.ders === dk).sort((a, b) => a.kaynak.no - b.kaynak.no).map(s => `<a class="tgs-no ${!s.secim ? "bos" : s.ilkDogru ? "dogru" : "yanlis"}" href="#/tgsd/soru/${t.testId}/${dk}/${s.kaynak.no}" title="${s.kaynak.no}. soru">${s.kaynak.no}: ${s.secim || "—"}${s.ilkDogru ? " ✓" : ` → ${s.dogruCevap}`}</a>`).join("")}</div></div>`; }).join(""), "konu"); }).join("")}</section>`;
+  }
   function veliDenemeler() {
     const l = denemeListesi(veliDers).filter(t => !aralik || t.t >= Date.now() - aralik * ANALIZ.GUN);
     const ort = l.length ? l.reduce((a, t) => a + (netOran(t) || 0), 0) / l.length : null;
     return `<section class="izgara dar">${metrik(l.length, "çözülen deneme", "")}${metrik(yuzde(ort), "ortalama net oranı", "net ÷ soru")}${metrik(l.length ? String(Math.max(...l.map(t => t.net != null ? t.net : t.dogru))).replace(".", ",") : "—", "en yüksek net", "")}${metrik(l.reduce((a, t) => a + (t.bos || 0), 0), "boş bırakılan soru", "")}</section>
       <section class="kart"><h2>Net gelişimi</h2>${denemeGrafik(l)}</section>
+      ${tgsCevapKart()}
       <section class="kart"><h2>Deneme sonuçları</h2>${denemeTablosu(l)}
         <p class="kucuk-yazi muted">Net = doğru − yanlış ÷ 3. Karma deneme her dersten 10'ar sorudur; ders bazında netler sonuç ekranında ve soru analizinde görünür.</p></section>`;
   }
@@ -37181,13 +37291,27 @@ Object.assign(window.HAZIR_VIDEOLAR, {
       }
       gunTablo = `<section class="kart"><h2>${gunlukMod === "ay" ? "Haftalara göre" : "Günlere göre"}</h2><div class="tablo"><table><thead><tr><th>${gunlukMod === "ay" ? "Hafta" : "Gün"}</th><th class="sayi">Çalışma</th><th class="sayi">Yeni soru</th><th class="sayi">Tekrar soru</th><th class="sayi">İlk deneme</th><th class="sayi">Test</th><th class="sayi">Video</th></tr></thead><tbody>${satir.join("")}</tbody></table></div></section>`;
     }
-    // Ders › ünite › konu özeti
-    const grup = {};
-    const ekle = (ders, tema, konu, f) => { const g = grup[ders] = grup[ders] || {}; const t = g[tema] = g[tema] || {}; const k = t[konu] = t[konu] || { yeni: 0, dogru: 0, tekrar: 0, video: 0, izSn: 0 }; f(k); };
-    e.sorular.filter(s => !s.terk && KONU[s.konu]).forEach(s => ekle(KONU[s.konu].ders, KONU[s.konu].tema, s.konu, k => { if (s.ilkKez) { k.yeni++; if (s.ilkDogru) k.dogru++; } else k.tekrar++; }));
-    e.izlenen.filter(v => KONU[v.konu]).forEach(v => ekle(KONU[v.konu].ders, KONU[v.konu].tema, v.konu, k => { k.video++; k.izSn += v.izlemeSn; }));
-    const konuOzet = DERSLER.filter(dd => grup[dd.id]).map(dd => `<h3>${dd.simge} ${dd.ad}</h3>${dd.temaListesi.filter(t => grup[dd.id][t.id]).map(t => `<p class="kucuk-yazi muted" style="margin:6px 0 2px">${t.kisa} · ${t.ad}</p>
-      ${t.konular.filter(kid => grup[dd.id][t.id][kid]).map(kid => { const k = grup[dd.id][t.id][kid]; return `<div class="satir ara"><span>${KONU[kid].ad}</span><span class="kucuk-yazi">${k.yeni ? k.yeni + " yeni soru (" + k.dogru + " doğru)" : ""}${k.tekrar ? " · " + k.tekrar + " tekrar" : ""}${k.video ? " · " + k.video + " video, " + dk(k.izSn / 60) : ""}</span></div>`; }).join("")}`).join("")}`).join("");
+    // Ders › konu: o dönemde çözülen sorular ve izlenen videolar (her konu açılınca liste)
+    const dk2 = {};
+    const yerAl = (dersId, anahtar, ad, sira) => { const d = dk2[dersId] = dk2[dersId] || {}; return d[anahtar] = d[anahtar] || { ad, sira, sorular: [], videolar: [] }; };
+    const konuSira = id => KONULAR.findIndex(k => k.id === id);
+    e.sorular.filter(s => !s.kontrol).forEach(s => {
+      const dersId = ANALIZ.dersi(s);
+      if (KONU[s.konu]) yerAl(dersId, s.konu, KONU[s.konu].ad, konuSira(s.konu)).sorular.push(s);
+      else { const u = s.kazKod && window.TGSD ? TGSD.unite(dersId, s.kazKod) : "Diğer"; yerAl(dersId, "u:" + u, u + (s.mod === "tgsPdf" || s.mod === "yenidenCoz" ? " (deneme soruları)" : ""), 9999).sorular.push(s); }
+    });
+    e.izlenen.forEach(v => { if (KONU[v.konu]) yerAl(KONU[v.konu].ders, v.konu, KONU[v.konu].ad, konuSira(v.konu)).videolar.push(v); });
+    const testAdiKisa = s => s.kaynak && s.kaynak.ad ? s.kaynak.ad + " · " + s.kaynak.no + ". soru" : TEST_AD[s.mod] || s.mod || "";
+    const konuOzet = [...DERSLER.map(d => d.id), ...Object.keys(dk2).filter(x => !DERS[x])].filter(x => dk2[x]).map(dersId => {
+      const konular = Object.entries(dk2[dersId]).sort((a, b) => a[1].sira - b[1].sira);
+      const top = konular.reduce((a, [, k]) => a + k.sorular.length, 0), vid = konular.reduce((a, [, k]) => a + k.videolar.length, 0);
+      return kayitKutu("gd:" + dersId, `<b>${DERS[dersId] ? DERS[dersId].simge + " " : ""}${dersAd(dersId) || dersId}</b> <span class="etiket">${top} soru</span>${vid ? ` <span class="etiket">${vid} video</span>` : ""}`,
+        konular.map(([anahtar, k]) => { const dogru = k.sorular.filter(s => s.ilkDogru).length;
+          return kayitKutu("gk:" + dersId + anahtar, `<b>${kacis(k.ad)}</b> ${k.sorular.length ? `<span class="etiket ${dogru / k.sorular.length >= .7 ? "iyi" : dogru / k.sorular.length < .5 ? "kotu" : ""}">${k.sorular.length} soru · ${dogru} doğru</span>` : ""}${k.videolar.length ? ` <span class="etiket">▶ ${k.videolar.length} video</span>` : ""}`,
+            (k.sorular.length ? `<div class="tablo"><table><thead><tr><th>Zaman</th><th>Soru / kazanım</th><th>Nerede</th><th>Sonuç</th><th></th></tr></thead><tbody>${k.sorular.map(s => `<tr><td>${tarih(s.t)}</td><td>${KAZANIM[s.kaz] ? KAZANIM[s.kaz].ad : s.kazKod ? "kazanım " + kacis(s.kazKod) : ""}</td><td class="kucuk-yazi">${kacis(testAdiKisa(s))}</td>
+              <td>${s.terk ? "boş" : s.ilkDogru ? "✓" : "✗"}${s.secim && s.dogruCevap && !s.ilkDogru ? ` <span class="kucuk-yazi muted">(${kacis(String(s.secim))} → ${kacis(String(s.dogruCevap))})</span>` : ""}</td><td>${s.tekrar ? '<span class="etiket orta">tekrar</span>' : ""}</td></tr>`).join("")}</tbody></table></div>` : "")
+            + (k.videolar.length ? `<div style="display:grid;gap:4px;margin-top:6px">${k.videolar.map(v => `<div class="satir ara"><span>▶ ${kacis(v.baslik)}</span><span class="kucuk-yazi">${dk(v.izlemeSn / 60)} · ${v.acilis} kez${v.bitti ? " · bitti" : ""}</span></div>`).join("")}</div>` : ""), "konu"); }).join(""), "ders");
+    }).join("");
     // Testler ve sorular
     const testSoru = {};
     e.sorular.forEach(s => { (testSoru[s.testId || "yok"] = testSoru[s.testId || "yok"] || []).push(s); });
@@ -37203,7 +37327,7 @@ Object.assign(window.HAZIR_VIDEOLAR, {
     const testsiz = Object.entries(testSoru).filter(([id]) => !e.testler.some(t => t.testId === id)).flatMap(([, l]) => l);
     const videoListe = e.izlenen.map(v => `<tr><td>${tarih(v.ilk)}</td><td><span class="kucuk-yazi muted">${dersAd(v.ders)} · ${KONU[v.konu] ? KONU[v.konu].ad : ""}</span><br>${kacis(v.baslik)}</td><td class="sayi">${dk(v.izlemeSn / 60)}</td><td class="sayi">${v.acilis}</td><td>${v.bitti ? "✓ bitti" : ""}${v.oncedenIzlendi ? ' <span class="etiket orta">daha önce de izlendi</span>' : ""}</td></tr>`).join("");
     return nav + metrikler + gunTablo
-      + `<section class="kart"><h2>Ders › ünite › konu</h2>${konuOzet || '<p class="muted">Bu dönemde çalışma yok.</p>'}</section>`
+      + `<section class="kart"><h2>Ders › konu: çözülen sorular ve izlenen videolar</h2><p class="kucuk-yazi muted">Derse, sonra konuya dokunun: o dönemde çözülen her soru (zaman, kazanım, nerede çözüldüğü, sonucu) ve izlenen videolar listelenir.</p>${konuOzet || '<p class="muted">Bu dönemde çalışma yok.</p>'}</section>`
       + `<section class="kart"><h2>Testler ve çözülen sorular (${e.testler.length} test)</h2><p class="kucuk-yazi muted">Teste dokunun: o testte çözülen her soru, kazanımı, sonucu ve yeni mi tekrar mı olduğu görünür.</p>${testListe || '<p class="muted">Test yok.</p>'}
         ${testsiz.length ? testKutu({ anahtar: "devam", html: `<b>Yarım kalan testlerdeki sorular</b> <span class="etiket">${testsiz.length} soru</span>` }, testsiz) : ""}</section>`
       + `<section class="kart"><h2>İzlenen videolar (${e.izlenen.length})</h2><div class="tablo"><table><thead><tr><th>İlk izleme</th><th>Video</th><th class="sayi">Süre</th><th class="sayi">Açılış</th><th></th></tr></thead><tbody>${videoListe || '<tr><td colspan="5" class="muted">Video izlenmedi.</td></tr>'}</tbody></table></div></section>`
@@ -37247,7 +37371,9 @@ Object.assign(window.HAZIR_VIDEOLAR, {
     const v = DEPO.ayar.videolar, gizli = DEPO.ayar.gizliVideolar || {};
     return `<section class="kart"><h2>Konu anlatım videoları</h2>
       <p>Her konuya farklı kanallardan hazır videolar eklendi. Beğenmediğiniz videoyu <b>gizleyebilir</b>, isterseniz kendi videonuzu ekleyip bölümlere ayırabilirsiniz (her bölüm sonunda öğrenciye kısa soru gelir). Bölüm tanımlanmayan videolar, süresine göre yaklaşık 4 dakikalık parçalara otomatik bölünür.</p>
-      <p class="kucuk-yazi muted">Not: Video kaldırılmışsa ya da sahibi gömülü oynatmayı kapattıysa uygulama bunu söyler ve sıradaki videoyu önerir.</p></section>
+      <p class="kucuk-yazi muted">Not: Video kaldırılmışsa ya da sahibi gömülü oynatmayı kapattıysa uygulama bunu söyler, videoyu listeden çıkarır ve sıradaki videoyu açar.</p></section>
+      ${(b => b.length ? `<section class="kart"><h2>⚠️ Açılamayan videolar (${b.length})</h2><p class="kucuk-yazi muted">Bu videolar YouTube'dan kaldırılmış ya da gömülü oynatması kapatılmış. Öğrenciye artık gösterilmiyor. İnternet sorunundan kaynaklandığını düşünüyorsanız “Tekrar dene”ye basın.</p>
+        <div style="display:grid;gap:8px">${b.map(([vid, x]) => `<div class="satir ara"><span>${kacis(x.baslik || vid)} <span class="kucuk-yazi muted">${KONU[x.konu] ? kacis(KONU[x.konu].ad) + " · " : ""}${x.t ? tarih(x.t) : ""} · hata ${kacis(String(x.kod || ""))}</span></span><button class="btn kucuk" data-bozuk="${kacis(vid)}">Tekrar dene</button></div>`).join("")}</div></section>` : "")(Object.entries(DEPO.ayar.bozukVideolar || {}))}
       ${dersTemalari().map(t => `<section class="kart"><h2>${dersAd(t.ders)} · ${t.kisa} · ${t.ad}</h2>${t.konular.map(k => { const x = v[k] || {}; const hazir = (window.HAZIR_VIDEOLAR && HAZIR_VIDEOLAR[k]) || []; const acik = hazir.filter(h => !gizli[h.vid]).length + (x.vid ? 1 : 0);
         return `<details><summary><b>${KONU[k].ad}</b> <span class="etiket ${acik ? "iyi" : ""}">${acik} video</span></summary>
         <div style="display:grid;gap:8px;margin-top:10px">${hazir.map(h => `<div class="satir ara"><span>${gizli[h.vid] ? "<s>" : ""}${kacis(h.baslik)}${gizli[h.vid] ? "</s>" : ""} <span class="kucuk-yazi muted">${kacis(h.kaynak || "")}${h.not ? " · " + kacis(h.not) : ""}</span></span><button class="btn kucuk" data-gizle="${h.vid}">${gizli[h.vid] ? "Göster" : "Gizle"}</button></div>`).join("")}</div>
@@ -37334,6 +37460,7 @@ function doGet(e) {
 }`;
 
   const VELI_BAGLA = {
+    denemeler() { VELI_BAGLA.kayit(); },
     gunluk() {
       ana.querySelectorAll("[data-gmod]").forEach(b => b.onclick = () => { gunlukMod = b.dataset.gmod; gunlukKaydir = 0; veliPaneli("gunluk"); });
       ana.querySelectorAll("[data-gkay]").forEach(b => b.onclick = () => { const v = +b.dataset.gkay; gunlukKaydir = v === 0 ? 0 : Math.min(0, gunlukKaydir + v); veliPaneli("gunluk"); });
@@ -37364,6 +37491,10 @@ function doGet(e) {
       });
     },
     icerik() {
+      ana.querySelectorAll("[data-bozuk]").forEach(b => b.onclick = () => {
+        delete (DEPO.ayar.bozukVideolar || {})[b.dataset.bozuk]; DEPO.ayarKaydet();
+        b.closest(".satir").remove(); toast("Video yeniden listeye alındı.");
+      });
       ana.querySelectorAll("[data-gizle]").forEach(b => b.onclick = () => {
         const g = DEPO.ayar.gizliVideolar = DEPO.ayar.gizliVideolar || {};
         if (g[b.dataset.gizle]) delete g[b.dataset.gizle]; else g[b.dataset.gizle] = true;
@@ -38013,7 +38144,8 @@ window.TGS_LISTE = [{"id":"d1y1_01","ad":"1. Dönem 1. Ortak Yazılı Hazırlık
     const [sayfa, y1, y2] = bolge;
     const doc = await belgeAl(id);
     const pg = await doc.getPage(sayfa);
-    const genis = Math.max(260, kutu.clientWidth || 600);
+    // Kitapçık yazısı uygulama yazısıyla aynı büyüklükte kalsın (geniş ekranda aşırı büyümesin)
+    const genis = Math.min(Math.max(260, kutu.clientWidth || 600), Math.round((X1 - X0) * 1.45));
     const olcek = genis / (X1 - X0), dpr = Math.min(2, window.devicePixelRatio || 1);
     const c = document.createElement("canvas");
     c.width = Math.round((X1 - X0) * olcek * dpr); c.height = Math.round((y2 - y1) * olcek * dpr);
@@ -38025,6 +38157,11 @@ window.TGS_LISTE = [{"id":"d1y1_01","ad":"1. Dönem 1. Ortak Yazılı Hazırlık
     return c;
   }
   async function bolgeler(id, liste, kutu) { for (const b of liste) await kirp(id, b, kutu); }
+  /* Soru: varsa ortak metin, sonra sorunun bütün parçaları (soru sayfa sonundan sonraki sayfaya taşabilir) */
+  async function soruCiz(id, q, kutu) {
+    await bolgeler(id, q.ortaklar || (q.ortak ? [q.ortak] : []), kutu);
+    await bolgeler(id, q.bolgeler || [q.bolge], kutu);
+  }
 
   /* ---------------- Sonuç hesapları ---------------- */
   function puanHesapla(dagilim) {
@@ -38080,7 +38217,7 @@ window.TGS_LISTE = [{"id":"d1y1_01","ad":"1. Dönem 1. Ortak Yazılı Hazırlık
       ana.querySelectorAll("[data-td]").forEach(b => b.onclick = () => { suredeTut(); d.ders = +b.dataset.td; d.no = 1; DEPO.ayarKaydet(); ciz(); });
       ana.querySelectorAll("[data-tno]").forEach(b => b.onclick = () => { suredeTut(); d.no = +b.dataset.tno; DEPO.ayarKaydet(); ciz(); });
       const kutu = $("#tSoru"); kutu.innerHTML = `<p class="kucuk-yazi muted">${DERS_AD[ders.kod]} · ${q.no}. soru</p>`;
-      try { if (q.ortak) await kirp(id, q.ortak, kutu); await kirp(id, q.bolge, kutu); } catch (e) { kutu.insertAdjacentHTML("beforeend", '<p class="muted">Soru gösterilemedi.</p>'); }
+      try { await soruCiz(id, q, kutu); } catch (e) { kutu.insertAdjacentHTML("beforeend", '<p class="muted">Soru gösterilemedi.</p>'); }
     };
     const ileri = yon => {
       suredeTut();
@@ -38179,7 +38316,7 @@ window.TGS_LISTE = [{"id":"d1y1_01","ad":"1. Dönem 1. Ortak Yazılı Hazırlık
         <div id="sCozum" class="tgs-cozum"></div>
         <div class="satir ara"><button class="btn" id="sOnce" ${komsu(i - 1) ? "" : "disabled"}>◀ Önceki soru</button><button class="btn" id="sSonra" ${komsu(i + 1) ? "" : "disabled"}>Sonraki soru ▶</button></div></section>`;
     const kutu = $("#sSoru");
-    try { if (q.ortak) await kirp(id, q.ortak, kutu); await kirp(id, q.bolge, kutu); } catch (e) { kutu.textContent = "Soru gösterilemedi."; }
+    try { await soruCiz(id, q, kutu); } catch (e) { kutu.textContent = "Soru gösterilemedi."; }
     let adim = 0;
     const coz = $("#sCozum");
     const adimGoster = async () => {
