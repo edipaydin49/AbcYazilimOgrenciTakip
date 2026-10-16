@@ -1,6 +1,40 @@
 # Öğrenme Yolculuğu (6. Sınıf Matematik, Fen Bilimleri, Türkçe, İngilizce, Sosyal Bilgiler ve Din Kültürü) — APK
 
-Tablete kurulacak dosya: **`OgrenmeYolculugu.apk`** (sürüm 1.9, Android 7 ve üstü; Samsung Galaxy Tab A9+ / One UI 8.5 / Android 16 ile uyumlu).
+Tablete kurulacak dosya: **`OgrenmeYolculugu.apk`** (sürüm 2.0, Android 7 ve üstü; Samsung Galaxy Tab A9+ / One UI 8.5 / Android 16 ile uyumlu).
+
+## Sürüm 2.0'da yeni
+
+Kurulum: eski sürümü silmeden bu APK'yı kurun; aynı imza kullanıldığı için veriler korunur.
+
+- **PDF denemeleri:** Sınav sürerken cevap anahtarı ve çözüm sayfaları gösterilmez, cevaplar sınav bitince incelemede açılır. Açık sayfadaki soruların A–B–C–D düğmeleri sayfanın hemen altında çıkar; dikey tablette ekranın altına yapışan optik form kaldırıldı.
+- **Ortak yazılı / TGS denemeleri:**
+  - 3 ve daha fazla soruya ait ortak metinler artık her soruda görünür.
+  - Soru görüntüsü son satırda biter, cevap düğmeleri sorunun hemen altındadır.
+  - Yazı boyutları eski haline getirildi.
+- **Veli paneli sadeleşti:** 5 ana bölüm var: 🏠 Özet, 📅 Günlük, 📚 Dersler, 📝 Sınavlar, ⚙️ Ayarlar.
+  - Çözülen TGS cevapları (öğrencinin cevabı ve doğru cevap) Sınavlar bölümünde soru soru görünür.
+  - Günlük, haftalık ve aylık raporlarda çözülen sorular ve izlenen videolar ders › konu altında listelenir.
+- **Videolar:**
+  - Çizgi film ve şarkı videoları (Rafadan Tayfa vb.) kaldırıldı, yerine konu anlatımı videoları kondu.
+  - YouTube'dan kaldırılmış bir video açılamazsa uygulama onu listeden çıkarır ve sıradakini açar. Veli bu videoları Ayarlar › Videolar'da görür.
+- **🎓 Bursluluk (İOKBS tarzı) denemeleri:** 15 sabit deneme, 80 soru, 100 dakika.
+  - Dağılım: Türkçe 20, Matematik 20, Fen 20, Sosyal Bilgiler testi 20 (12 Sosyal + 8 Din).
+  - 3 yanlış 1 doğruyu götürür; tahmini puan 500 üzerinden, bilgi amaçlıdır.
+  - MEB'in çıkmış soruları uygulamaya konmadı. Elinizdeki çıkmış soru PDF'ini “PDF denemelerim” bölümünden yükleyip çözebilirsiniz.
+- **🧠 BİLSEM tarzı zekâ soruları:** 7 bölümde 115 özgün soru türü: şekil örüntüsü, matris, sayı, uzamsal, sözel, mantık, dikkat. Not: BİLSEM tanılaması 1–3. sınıflarda yapılır ve sorular yayımlanmaz; 6. sınıf için çıkmış BİLSEM sorusu yoktur.
+- **📑 Yazılı soru hazırlık setleri:** Her ders ve her yazılı için (1. Dönem 1. Yazılı … 2. Dönem 2. Yazılı) 6 sabit set var, her biri 20 soru ve 40 dakika.
+- **Yeni konular:**
+  - Din Kültürü: “Peygamberimiz Hz. Muhammed'in (sav) Hayatı”, 7 konu, 126 soru, videolu.
+  - Türkçe: “Noktalama ve Konuşma” (nokta, virgül, diğer işaretler, etkili konuşma); 4 konu, 84 soru, videolu, Türkçe Diyarı'nda yeni ada.
+- **Görselli sorular:** Bütün derslere toplam 218 yeni görselli soru eklendi (grafik, tablo, harita, şekil, deney düzeneği, afiş, saat…).
+- **🧭 Matematik Macera Akademisi** (Matematik ana sayfasında):
+  - 6 bölgelik macera haritası; her bölgede Öğren, Uygula ve Ustalaş aşamaları.
+  - Etkileşimli Kesirler Macerası.
+  - Üç mini oyun: Matematik Robotu, Hazine Avı, Geometri Atölyesi (sürükle-bırak).
+  - Yıldız, rozet, hazine sandığı, avatar ve robot geliştirme, günlük görevler.
+  - Yanlışta önce nazik ipucu gelir, sonra adım adım çözüm ve benzer soru; yanlış sorular ortak yanlış defterine düşer.
+  - Galaxy Tab A9+ yatay ekranına göre iki sütunlu düzen.
+  - Not: Talimatta Flutter önerildi, ama aynı talimatta “çalışan teknoloji varsa değiştirme” deniyor. Uygulama zaten çevrimdışı çalışan bir Android WebView uygulaması; modül bunun içine yazıldı, böylece veriler ve veli paneliyle ortak çalışır.
 
 ## Sürüm 1.9'da yeni
 

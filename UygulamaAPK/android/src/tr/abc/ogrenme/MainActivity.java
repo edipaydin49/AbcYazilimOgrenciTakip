@@ -221,7 +221,7 @@ public class MainActivity extends Activity {
 
         @JavascriptInterface
         public String surum() {
-            return "1.9";
+            return "2.0";
         }
 
         /* Video tam ekranı: sistem çubuklarını gizler ve ekranı yatay çevirir (soru katmanı web sayfasında kalır). */
