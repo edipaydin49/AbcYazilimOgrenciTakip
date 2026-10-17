@@ -1,0 +1,2182 @@
+/* Hazır konu anlatım videoları (YouTube). Arama sonuçlarından derlenmiştir; veli panelinden gizlenebilir ya da yenileri eklenebilir. */
+window.HAZIR_VIDEOLAR = {
+ "carpan": [
+  {
+   "vid": "doe7_S1-CaA",
+   "baslik": "Çarpanlar ve Katlar 📘 6MAT1 #2026",
+   "kaynak": "Tonguç"
+  },
+  {
+   "vid": "OFm5HrBt4-A",
+   "baslik": "6. Sınıf Matematik Çarpanlar ve Katlar",
+   "kaynak": ""
+  },
+  {
+   "vid": "yytx5DWyqvc",
+   "baslik": "Çarpanlar-Katlar Konu Anlatımı 6. Sınıf Matematik (imt hoca)",
+   "kaynak": "İMT Hoca"
+  },
+  {
+   "vid": "RZ-qhlATQD4",
+   "baslik": "10) Çarpanlar ve Katlar Konu Anlatımı",
+   "kaynak": ""
+  },
+  {
+   "vid": "6ZvNMS_ir7k",
+   "baslik": "Doğal Sayılar - Çarpanlar Konu Anlatımı, Soru Çözümü: 6. Sınıf Matematik #4",
+   "kaynak": ""
+  }
+ ],
+ "kat": [
+  {
+   "vid": "xXLEx122j_U",
+   "baslik": "6.Sınıf Matematik DOĞAL SAYILARIN ÇARPANLARI VE KATLARI Konu Anlatımı ve Soru Çözümü/Yeni Müfredat",
+   "kaynak": ""
+  },
+  {
+   "vid": "mKP4Cpfvs28",
+   "baslik": "6. Sınıf Matematik - Doğal Sayıların Çarpanları ve Katları",
+   "kaynak": ""
+  },
+  {
+   "vid": "OBwa0i68KZY",
+   "baslik": "BİR DOĞAL SAYININ ÇARPANLARI VE KATLARI ► 6. SINIF MATEMATİK KONU ANLATIMI VE SORU ÇÖZÜMLERİ",
+   "kaynak": ""
+  },
+  {
+   "vid": "BC_kKNy3nHQ",
+   "baslik": "6. Sınıf Matematik 1. Ünite Bir Doğal Sayının Çarpanları ve Katları",
+   "kaynak": ""
+  },
+  {
+   "vid": "zV1yGjL6dyQ",
+   "baslik": "Doğal Sayıların Çarpanları (Bölenleri) ve Katları - 6.Sınıf Matematik",
+   "kaynak": ""
+  }
+ ],
+ "bolunebilme": [
+  {
+   "vid": "DiDOXqXcvf4",
+   "baslik": "Kalansız Bölünebilme Kuralları Konu Anlatımı 6. Sınıf Matematik (imt hoca)",
+   "kaynak": "İMT Hoca"
+  },
+  {
+   "vid": "JWgzENJsuDo",
+   "baslik": "Bölünebilme Kuralları Konu Anlatımı, Soru Çözümü: 6. Sınıf Matematik #5",
+   "kaynak": ""
+  },
+  {
+   "vid": "bc3XVwltl50",
+   "baslik": "6) BÖLÜNEBİLME KURALLARI KONU ANLATIMI",
+   "kaynak": ""
+  },
+  {
+   "vid": "Nvxz1zjaPr4",
+   "baslik": "KALANSIZ BÖLÜNEBİLME KURALLARI Konu Anlatımı",
+   "kaynak": ""
+  },
+  {
+   "vid": "1rpsOF21a1o",
+   "baslik": "Bölünebilme Kuralları 2 3 4 5 6 9 10 ile Tam Bölünme Kuralları",
+   "kaynak": ""
+  }
+ ],
+ "asal": [
+  {
+   "vid": "oiDaepeuRxA",
+   "baslik": "Asal Sayılar ve Asal Çarpanlar Konu Anlatımı 6. Sınıf Matematik (imt hoca)",
+   "kaynak": "İMT Hoca"
+  },
+  {
+   "vid": "Suq0jmK3zEU",
+   "baslik": "Asal Çarpanlar Konu Anlatımı, Soru Çözümü: 6. Sınıf Matematik #7",
+   "kaynak": ""
+  },
+  {
+   "vid": "SKxRlbGvnsA",
+   "baslik": "11 - Asal Sayılar ve Asal Çarpanlarına Ayırma / 6. Sınıf Matematik",
+   "kaynak": ""
+  },
+  {
+   "vid": "NxdWevRdNcE",
+   "baslik": "ASAL SAYILAR VE ASAL ÇARPANLARA AYIRMA ► 6. SINIF MATEMATİK KONU ANLATIMI VE SORU ÇÖZÜMLERİ",
+   "kaynak": ""
+  },
+  {
+   "vid": "tzokZXsj4cI",
+   "baslik": "ASAL ÇARPANLAR Konu Anlatımı",
+   "kaynak": ""
+  }
+ ],
+ "ortakkat": [
+  {
+   "vid": "jCzSNEeXmjA",
+   "baslik": "Ortak Kat - Ortak Bölen 📘 tonguçCUP 1.Sezon - 6MAT6 #2024",
+   "kaynak": "Tonguç"
+  },
+  {
+   "vid": "2Mj2FPkDh5Q",
+   "baslik": "Ortak Bölenler-Ortak Katlar Konu Anlatımı ve Problemler 6. Sınıf Matematik",
+   "kaynak": ""
+  },
+  {
+   "vid": "lLo09sgnmbk",
+   "baslik": "ORTAK BÖLENLER ve ORTAK KATLAR Konu Anlatımı (EBOB-EKOK)",
+   "kaynak": ""
+  },
+  {
+   "vid": "hoNMobaJOv0",
+   "baslik": "ORTAK BÖLEN ve ORTAK KAT Problemleri Konu Anlatımı",
+   "kaynak": "İMT Hoca"
+  },
+  {
+   "vid": "yfEJMo6t1cw",
+   "baslik": "11) Ortak Kat Ortak Bölen Konu Anlatımı",
+   "kaynak": ""
+  }
+ ],
+ "ortakbolen": [
+  {
+   "vid": "vjdM6mzUdnI",
+   "baslik": "6. Sınıf Matematik: Ortak Kat ve Ortak Bölen (EBOB",
+   "kaynak": ""
+  },
+  {
+   "vid": "e-xJzwDzCRc",
+   "baslik": "6. Sınıf Matematik ''Ekok Ebob'' Problemleri (konu anlatımı)",
+   "kaynak": ""
+  },
+  {
+   "vid": "dwrIijmCeEQ",
+   "baslik": "Ortak Bölen ve Ortak Kat Problemleri",
+   "kaynak": ""
+  },
+  {
+   "vid": "3jKnaykP4n8",
+   "baslik": "13) Ortak Kat Ortak Bölen Problemleri",
+   "kaynak": ""
+  },
+  {
+   "vid": "oZ_kW2l4X3w",
+   "baslik": "6.sınıf ebob ekok (ortak bölenler-ortak katlar) 6th grade math @Bulbulogretmen #matematik #6sınıf",
+   "kaynak": "Bulbulogretmen"
+  }
+ ],
+ "olasilik": [
+  {
+   "vid": "o1A6iJuzJ48",
+   "baslik": "Olasılık 📘 6MAT15 #2026",
+   "kaynak": "Tonguç"
+  },
+  {
+   "vid": "VUTs7fcToDM",
+   "baslik": "6. SINIF MATEMATİK OLASILIK #yenimüfredat 2026",
+   "kaynak": ""
+  },
+  {
+   "vid": "s7aYuuDEGiY",
+   "baslik": "Deneysel Olasılık",
+   "kaynak": "Hocalara Geldik"
+  },
+  {
+   "vid": "M-wddOlNeaE",
+   "baslik": "🎲 6. Sınıf Matematik",
+   "kaynak": ""
+  },
+  {
+   "vid": "NhKCsoc_UPc",
+   "baslik": "OLASILIK",
+   "kaynak": ""
+  }
+ ],
+ "basamak": [
+  {
+   "vid": "7CB4uArvjJE",
+   "baslik": "Ondalık Gösterim 📘 6MAT8 #2026",
+   "kaynak": "Tonguç"
+  },
+  {
+   "vid": "rLjolcA9q_o",
+   "baslik": "2. Ondalık Gösterimde Basamak Değeri ve Çözümleme - 6. Sınıf - Matematik - Sayılar ve Nicelikler (2)",
+   "kaynak": ""
+  },
+  {
+   "vid": "1VmAowOHYHo",
+   "baslik": "ONDALIK GÖSTERİMLERİ ÇÖZÜMLEME Konu Anlatımı",
+   "kaynak": ""
+  },
+  {
+   "vid": "eqpKaxwau_Q",
+   "baslik": "ONDALIK GÖSTERİMLER 6. Sınıf Matematik Konu Anlatımı",
+   "kaynak": ""
+  },
+  {
+   "vid": "9JADrKaPXno",
+   "baslik": "Ondalık Gösterimleri Çözümleme",
+   "kaynak": ""
+  }
+ ],
+ "yuvarlama": [
+  {
+   "vid": "X_GEX5JDA_w",
+   "baslik": "Ondalık Gösterimler (Çözümleme-Yuvarlama)| 6.Sınıf Matematik YENİ NESİL Konu Anlatımı-PDF (imt hoca)",
+   "kaynak": "İMT Hoca"
+  },
+  {
+   "vid": "0KkWlU5VsUg",
+   "baslik": "25 - Ondalık Gösterimleri Yuvarlama / 6. Sınıf Matematik",
+   "kaynak": ""
+  },
+  {
+   "vid": "UcfYLCh942k",
+   "baslik": "Ondalık Gösterimi Verilen Sayıları Yuvarlama Konu Anlatımı, Soru Çözümü: 6. Sınıf Matematik #20",
+   "kaynak": ""
+  },
+  {
+   "vid": "JEoiuNbHQ1g",
+   "baslik": "6. Sınıf Matematik Ondalık Gösterimde Yuvarlama",
+   "kaynak": ""
+  },
+  {
+   "vid": "vgrR63wx4dA",
+   "baslik": "6. SINIF MATEMATİK ONDALIK GÖSTERİMLERİ YUVARLAMA",
+   "kaynak": ""
+  }
+ ],
+ "kesirbolme": [
+  {
+   "vid": "Cp9whfu6YVQ",
+   "baslik": "6. Sınıf Matematik - Kesirlerin Ondalık Gösterimi",
+   "kaynak": ""
+  },
+  {
+   "vid": "U_WCP3u5kso",
+   "baslik": "6.sınıf Kesirlerle bölme işlemi arasındaki ilişki ve devirli ondalık açılım",
+   "kaynak": ""
+  },
+  {
+   "vid": "8ylMi8eND6I",
+   "baslik": "Kesirlerden Ondalık Gösterimlere",
+   "kaynak": ""
+  },
+  {
+   "vid": "CJWn7PEsNkg",
+   "baslik": "Devirli Ondalık Gösterimler Konu Anlatımı",
+   "kaynak": ""
+  },
+  {
+   "vid": "_yYCgC12qBA",
+   "baslik": "Devirli Ondalık Gösterimler 6. Sınıf Matematik",
+   "kaynak": ""
+  }
+ ],
+ "problem": [
+  {
+   "vid": "K4Iwfcs1B8k",
+   "baslik": "ONDALIK GÖSTERİM PROBLEMLERİ 6.Sınıf Matematik Yeni Nesil Konu Anlatımı (İMT Hoca)",
+   "kaynak": "İMT Hoca"
+  },
+  {
+   "vid": "MvkdVPmoGtQ",
+   "baslik": "ONDALIK GÖSTERİMLERLE PROBLEMLER",
+   "kaynak": ""
+  },
+  {
+   "vid": "piSWHsatFZo",
+   "baslik": "25) ONDALIK GÖSTERİM PROBLEMLERİ - 6. Sınıf",
+   "kaynak": ""
+  },
+  {
+   "vid": "tPhS1JTPSs4",
+   "baslik": "Ondalık Gösterim Problemleri / 6 Sınıf Matematik Konu ve Örnekler",
+   "kaynak": ""
+  },
+  {
+   "vid": "wVUryUNB1sA",
+   "baslik": "ONDALIK GÖSTERİMLERLE BÖLME İŞLEMİ Konu Anlatımı",
+   "kaynak": ""
+  }
+ ],
+ "uzunluk": [
+  {
+   "vid": "JvzxbQ53YLE",
+   "baslik": "Uzunluk Ölçme Birimleri - Dönüştürme Teknikleri 📘 6MAT9 #2026",
+   "kaynak": "Tonguç"
+  },
+  {
+   "vid": "NMjy8wZiWeI",
+   "baslik": "Uzunluk Ölçme Birimleri 📘 5'ten 6'ya Hazırlık Kampı #2025",
+   "kaynak": "Tonguç"
+  },
+  {
+   "vid": "HXEaiu2-wfQ",
+   "baslik": "6. SINIF UZUNLUK ÖLÇME BİRİMLERİ",
+   "kaynak": ""
+  },
+  {
+   "vid": "KbIUae1VKeI",
+   "baslik": "UZUNLUK ÖLÇME BİRİMLERİ Konu Anlatımı",
+   "kaynak": ""
+  },
+  {
+   "vid": "SeOZOpKTIk0",
+   "baslik": "Uzunluk ölçülerini birimlerini çevirme dönüştürme ve örnekler",
+   "kaynak": ""
+  }
+ ],
+ "arastirma": [
+  {
+   "vid": "Zldrna_cpys",
+   "baslik": "Veri Toplama ve Değerlendirme 📘 6MAT14 #2025",
+   "kaynak": "Tonguç"
+  },
+  {
+   "vid": "aL69XFMLjzI",
+   "baslik": "Araştırma Sorusu Oluşturma Ve Veri Toplama Konu Anlatımı, Soru Çözümü: 6. Sınıf Matematik #27",
+   "kaynak": ""
+  },
+  {
+   "vid": "cZZLqO8_8yw",
+   "baslik": "Araştırma Soruları Üretme Veri Toplama ve Düzenleme Konu Anlatımı",
+   "kaynak": ""
+  },
+  {
+   "vid": "jfFRbyLDQQQ",
+   "baslik": "Veri Toplama (İkili Sıklık Tablosu ve Sütun Grafiği) 6. Sınıf Matematik",
+   "kaynak": ""
+  },
+  {
+   "vid": "SI4YV0Qyg7o",
+   "baslik": "6.SINIF ARAŞTIRMA SORULARI HAZIRLAMA , İKİ ÇETELE VE SIKLIK TABLOSU VE SÜTUN GRAFİĞİ-- KONU ANLATIMI",
+   "kaynak": ""
+  }
+ ],
+ "merkezi": [
+  {
+   "vid": "ELtwWOrOm4I",
+   "baslik": "Merkezi Eğilim Ölçüleri Veri Toplama Ve Değerlendirm ✏️6.Sınıf Matematik| Yasemen Akademi #2025-2026",
+   "kaynak": "Yasemen Akademi"
+  },
+  {
+   "vid": "R0seRgAr7_w",
+   "baslik": "(6.2.2) 6. Sınıf / Matematik / İstatistiksel Araştırma Süreci / Merkezi Eğilim Ölçüleri",
+   "kaynak": ""
+  },
+  {
+   "vid": "pkcZnHXD69E",
+   "baslik": "Veri Analizi 📘 6. Sınıf Matematik #2024",
+   "kaynak": "Tonguç"
+  },
+  {
+   "vid": "N0ZOgw81TTY",
+   "baslik": "Aritmetik Ortalama Ve Açıklık Konu Anlatımı, Soru Çözümü: 6. Sınıf Matematik #28",
+   "kaynak": ""
+  },
+  {
+   "vid": "rIohPjtzscM",
+   "baslik": "Aritmetik Ortalama-Açıklık (Veri Analizi) 6. Sınıf Matematik",
+   "kaynak": ""
+  }
+ ],
+ "f_gunes": [
+  {
+   "vid": "wBzkQ5KHqwY",
+   "baslik": "Güneş Sistemi 📗 6. Sınıf Fen #2025",
+   "kaynak": ""
+  },
+  {
+   "vid": "1oXCLU4nxSw",
+   "baslik": "Güneş Sistemi 📗 6FEN1 #2026",
+   "kaynak": ""
+  },
+  {
+   "vid": "bKSohZ3FXe4",
+   "baslik": "6. Sınıf Fen Bilgisi l Güneş Sistemi - 2025 - 2026",
+   "kaynak": ""
+  },
+  {
+   "vid": "f01iYT0CHLc",
+   "baslik": "6. Sınıf Fen Bilimleri 1. Ünite Konu Anlatımı: Güneş Sistemi ve Gezegenler (Beceri Temelli Sorular)",
+   "kaynak": ""
+  },
+  {
+   "vid": "OZaKMSnbCTI",
+   "baslik": "Güneş Sistemi 6. Sınıf Fen #2024",
+   "kaynak": ""
+  }
+ ],
+ "f_tutulma": [
+  {
+   "vid": "_z2s1FB23vg",
+   "baslik": "Güneş ve Ay Tutulmaları 📗 6FEN2 #2026",
+   "kaynak": ""
+  },
+  {
+   "vid": "gYp_lVKXaIQ",
+   "baslik": "Güneş ve Ay Tutulması / 6. Sınıf Fen Bilgisi 1. Ünite (Solar and Lunar Eclipse)",
+   "kaynak": ""
+  },
+  {
+   "vid": "xdtr7pnQndo",
+   "baslik": "Güneş Sistemi ve Tutulmalar / 6. Sınıf \"Güncel\"",
+   "kaynak": ""
+  },
+  {
+   "vid": "SYn2cKbSqRU",
+   "baslik": "Güneş ve Ay Tutulmaları",
+   "kaynak": ""
+  },
+  {
+   "vid": "CeGntfa-4Qs",
+   "baslik": "GÜNEŞ TUTULMASI - AY TUTULMASI - 6. SINIF 2020",
+   "kaynak": ""
+  }
+ ],
+ "f_bileske": [
+  {
+   "vid": "hkdz-1Ym7TQ",
+   "baslik": "Bileşke Kuvvet 📗 6FEN3 #2026",
+   "kaynak": ""
+  },
+  {
+   "vid": "aNmE0juMaWE",
+   "baslik": "6. Sınıf Fen Bilimleri - Dengelenmiş ve Dengelenmemiş Kuvvetler #6sınıf #2026",
+   "kaynak": ""
+  },
+  {
+   "vid": "VaQCNFY7Cag",
+   "baslik": "BİLEŞKE KUVVET 6.SINIF FEN BİLİMLERİ/ DENGELENMİŞ KUVVET",
+   "kaynak": ""
+  },
+  {
+   "vid": "HkmTmk37U7E",
+   "baslik": "6. Sınıf Dengelenmiş ve Dengelenmemiş Kuvvetler",
+   "kaynak": ""
+  },
+  {
+   "vid": "4UbcRh9WeMk",
+   "baslik": "6. Sınıf Fen Bilimleri Bileşke Kuvvet Konu Anlatımı Soru Çözümleri",
+   "kaynak": ""
+  }
+ ],
+ "f_hiz": [
+  {
+   "vid": "7Xd4h_UWezw",
+   "baslik": "Sabit Süratli ve Sabit Hızlı Hareket - Konu Özeti 📗 6FEN4 #2026",
+   "kaynak": ""
+  },
+  {
+   "vid": "IePeCx4MB9M",
+   "baslik": "6.Sınıf Fen Bilimleri / SABİT SÜRATLİ HAREKET / Konu anlatımı ve Grafikleri",
+   "kaynak": ""
+  },
+  {
+   "vid": "FSoTYipQxO4",
+   "baslik": "Sabit Süratli Hareket 6. Sınıf Fen #2024",
+   "kaynak": ""
+  },
+  {
+   "vid": "vFQeApWicPc",
+   "baslik": "Sabit Süratli Hareket / 6. Sınıf",
+   "kaynak": ""
+  },
+  {
+   "vid": "RzYZdzZ3f2c",
+   "baslik": "6.SINIF - FEN BİLİMLERİ - SABİT SÜRATLİ HAREKET #konuanlatımı",
+   "kaynak": ""
+  }
+ ],
+ "f_ureme": [
+  {
+   "vid": "h_lVkPfgADI",
+   "baslik": "Eşeyli ve Eşeysiz Üreme 📗 6FEN5 #2026",
+   "kaynak": "Tonguç"
+  },
+  {
+   "vid": "IEw5h9gLn8w",
+   "baslik": "Bitkilerde Üreme Büyüme ve Gelişme 📗 6FEN6 #2026",
+   "kaynak": ""
+  },
+  {
+   "vid": "tuqMfHQaRwg",
+   "baslik": "6. Sınıf Eşeyli Eşeysiz Üreme Konu Anlatımı",
+   "kaynak": ""
+  },
+  {
+   "vid": "9Vot-nyZgeY",
+   "baslik": "Hayvanlarda Üreme, Büyüme ve Gelişme",
+   "kaynak": ""
+  },
+  {
+   "vid": "-kGhkvTCxh4",
+   "baslik": "6.sınıf fen hayvanlarda üreme ,büyüme gelişme ;( başkalaşım en renklisi flaş haberlerle):):))",
+   "kaynak": ""
+  }
+ ],
+ "f_denetleyici": [
+  {
+   "vid": "SHu5uM1tPHY",
+   "baslik": "İç Salgı Bezleri 📗 6FEN10 #2026",
+   "kaynak": ""
+  },
+  {
+   "vid": "uoae3m5ilXw",
+   "baslik": "Denetleyici ve Düzenleyici Sistemler / 6. Sınıf",
+   "kaynak": ""
+  },
+  {
+   "vid": "XATNtNTIQu8",
+   "baslik": "6.Sınıf Denetleyici ve Düzenleyici Sistemler Konu Anlatımı -Vücudumuzdaki Sistemler ve Sağlığı",
+   "kaynak": ""
+  },
+  {
+   "vid": "eZ34_wQ7y9g",
+   "baslik": "DENETLEYİCİ VE DÜZENLEYİCİ SİSTEMLER 6. SINIF FEN",
+   "kaynak": ""
+  },
+  {
+   "vid": "CIOqECv2Tis",
+   "baslik": "6. Sınıf Çocukluktan Ergenliğe Geçiş Konusu",
+   "kaynak": ""
+  }
+ ],
+ "f_yansima": [
+  {
+   "vid": "vDJrNyfOcu0",
+   "baslik": "Işığın Yansıması ve Aynalar 📗 6FEN12 #2026",
+   "kaynak": ""
+  },
+  {
+   "vid": "jTqAALqvsDg",
+   "baslik": "Işığın Yansıması Konu Anlatımı",
+   "kaynak": ""
+  },
+  {
+   "vid": "7dHNicKC_Q4",
+   "baslik": "IŞIĞIN YANSIMASI 6.SINIF TEOG FEN BİLİMLERİ",
+   "kaynak": ""
+  },
+  {
+   "vid": "BwIsqc6Cz44",
+   "baslik": "6.SINIF IŞIĞIN YANSIMASI 1",
+   "kaynak": ""
+  }
+ ],
+ "f_sogurma": [
+  {
+   "vid": "fDWU8Rr-XaA",
+   "baslik": "Işığın Soğurulması ve Renkler 📗 6FEN13 #2026",
+   "kaynak": ""
+  },
+  {
+   "vid": "tbUUYREV6G4",
+   "baslik": "6. Sınıf Fen Bilimleri 4. Ünite",
+   "kaynak": ""
+  },
+  {
+   "vid": "2k-uVuDhW3k",
+   "baslik": "Işığın Soğurulması",
+   "kaynak": ""
+  },
+  {
+   "vid": "f8lrx_ljqqU",
+   "baslik": "Işığın Soğurulması Konu Anlatımı",
+   "kaynak": ""
+  },
+  {
+   "vid": "K8JaqAgNu5M",
+   "baslik": "Işığın Soğurulması",
+   "kaynak": ""
+  }
+ ],
+ "f_genlesme": [
+  {
+   "vid": "Zj1oGklg8Uw",
+   "baslik": "Genleşme ve Büzülme 📗 6FEN14 #2026",
+   "kaynak": ""
+  },
+  {
+   "vid": "58uyIX3L5d0",
+   "baslik": "6.SINIF FEN BİLİMLERİ - GENLEŞME VE BÜZÜLME",
+   "kaynak": ""
+  },
+  {
+   "vid": "eQe7IdCeQP4",
+   "baslik": "5 dk'da Genleşme ve Büzülme",
+   "kaynak": ""
+  },
+  {
+   "vid": "rLUfWlktQjU",
+   "baslik": "Gravzant halkası (Genleşme Büzülme Deneyi)",
+   "kaynak": ""
+  }
+ ],
+ "f_hal": [
+  {
+   "vid": "uClVgF80K_g",
+   "baslik": "Erime ve Kaynama Noktasının Karşılaştırılması",
+   "kaynak": ""
+  },
+  {
+   "vid": "bQHpHPHJf2A",
+   "baslik": "Kaynama Noktası (Bir Soru Bir Çözüm Bir Özet )",
+   "kaynak": ""
+  },
+  {
+   "vid": "Jejn51NgjY8",
+   "baslik": "Maddenin Hal Değişimi 📗 5FEN13 #2026",
+   "kaynak": "Tonguç",
+   "not": "5. sınıf düzeyi (temel tekrar)"
+  },
+  {
+   "vid": "xqb1LFIs84c",
+   "baslik": "5.SINIF FEN BİLİMLERİ ERİME KONU ANLATIMI",
+   "kaynak": "",
+   "not": "5. sınıf düzeyi (temel tekrar)"
+  }
+ ],
+ "f_yogunluk": [
+  {
+   "vid": "je8sijN7t28",
+   "baslik": "Yoğunluk - Konu Özeti 📗 6FEN16 #2026",
+   "kaynak": "Tonguç"
+  },
+  {
+   "vid": "qxpIyUCmams",
+   "baslik": "6.SINIF FEN - Yoğunluk - Konu Anlatımı, Soru Çözümü - 15.Ders",
+   "kaynak": ""
+  },
+  {
+   "vid": "N4fw4ViZzHg",
+   "baslik": "6.SINIF - FEN BİLİMLERİ - YOĞUNLUK #konuanlatımı",
+   "kaynak": ""
+  },
+  {
+   "vid": "6pFlpPzR2C0",
+   "baslik": "Yoğunluk / Bilmen Gereken Tüm Detaylar 6.Sınıf Fen #2023",
+   "kaynak": ""
+  },
+  {
+   "vid": "k5vDlccH7x0",
+   "baslik": "YOĞUNLUK (ÖZKÜTLE) 6.SINIF FEN BİLİMLERİ/ DETAYLI VE SORU",
+   "kaynak": ""
+  }
+ ],
+ "f_iletim": [
+  {
+   "vid": "P66l3xn_VkQ",
+   "baslik": "6. Sınıf İletken Ve Yalıtkan Maddeler - Elektrik İletimi - Deneyli Anlatım",
+   "kaynak": ""
+  },
+  {
+   "vid": "xsQyAAnTFvM",
+   "baslik": "6. Sınıf Fen Bilimleri - İletken ve Yalıtkan Maddeler",
+   "kaynak": ""
+  },
+  {
+   "vid": "9VLPNKY8LVY",
+   "baslik": "6.SINIF - FEN BİLİMLERİ - İLETKEN VE YALITKAN MADDELER #fenbilimleri #6sınıf",
+   "kaynak": ""
+  },
+  {
+   "vid": "wml8O7k706E",
+   "baslik": "6.Sınıf Elektriğin İletimi Ünitesi-İletken ve Yalıtkan Maddeler Konusu ve Deneyi #elektrik #deney",
+   "kaynak": ""
+  },
+  {
+   "vid": "YqoZZ1-wxFQ",
+   "baslik": "6.SINIF 7.ÜNİTE ELEKTRİĞİN İLETİMİ",
+   "kaynak": ""
+  }
+ ],
+ "f_direnc": [
+  {
+   "vid": "blOShq1xt00",
+   "baslik": "6. Sınıf Elektriksel Direnç Ve Direncin Bağlı Olduğu Faktörler - Elektriğin İletimi - Konu Anlatımı",
+   "kaynak": ""
+  },
+  {
+   "vid": "TASl8e78XAg",
+   "baslik": "Elektriksel Direnç ve Bağlı Olduğu Faktörler - 6. Sınıf Fen Bilimleri (100 Güncel Konu Anlatım)",
+   "kaynak": ""
+  },
+  {
+   "vid": "xSvmnrl1wo4",
+   "baslik": "6. Sınıf Fen Bilimleri - Elektriksel Direnç",
+   "kaynak": ""
+  },
+  {
+   "vid": "tWMW56e1ZxU",
+   "baslik": "Elektriğin İletimi - Direnç / 6. Sınıf",
+   "kaynak": ""
+  },
+  {
+   "vid": "LSpIE6mkpXY",
+   "baslik": "DİRENÇ 6. SINIF ( DERS 17)",
+   "kaynak": ""
+  }
+ ],
+ "f_biyocesitlilik": [
+  {
+   "vid": "b4RYjPmozhw",
+   "baslik": "Biyoçeşitlilik 📗 6FEN19 #2026",
+   "kaynak": "Tonguç"
+  },
+  {
+   "vid": "9Jq6M08xaFs",
+   "baslik": "5.SINIF 6.ÜNİTE 'İNSAN VE ÇEVRE'-BİYOÇEŞİTLİLİK KONU ANLATIMI VE ETKİNLİKLER",
+   "kaynak": "",
+   "not": "5. sınıf düzeyi (temel tekrar)"
+  },
+  {
+   "vid": "cNbOmxvN9L4",
+   "baslik": "5.Sınıf 6.Ünite İNSAN VE ÇEVRE-(1.Kısım Biyoçeşitlilik) Fen Bilimleri",
+   "kaynak": "",
+   "not": "5. sınıf düzeyi (temel tekrar)"
+  },
+  {
+   "vid": "hzCm8Ut-ilw",
+   "baslik": "5 FEN / Biyoçeşitlilik",
+   "kaynak": "",
+   "not": "5. sınıf düzeyi (temel tekrar)"
+  }
+ ],
+ "f_cevre": [
+  {
+   "vid": "j0uFgKZhxjY",
+   "baslik": "İnsan ve Çevre İlişkisi",
+   "kaynak": ""
+  },
+  {
+   "vid": "vKKCNItro5s",
+   "baslik": "Sürdürülebilir Yaşam ve Geri Dönüşüm 5. Sınıf Fen Bilimleri #2025",
+   "kaynak": "",
+   "not": "5. sınıf düzeyi (temel tekrar)"
+  },
+  {
+   "vid": "VvRZvIHYW1A",
+   "baslik": "5.Sınıf 6.Ünite İNSAN VE ÇEVRE-(2.Kısım İnsan ve Çevre İlişkisi) Fen Bilimleri",
+   "kaynak": "",
+   "not": "5. sınıf düzeyi (temel tekrar)"
+  },
+  {
+   "vid": "ba53GdhuT2k",
+   "baslik": "5. Sınıf Fen Bilimleri - İnsan ve Çevre İlişkisi",
+   "kaynak": "",
+   "not": "5. sınıf düzeyi (temel tekrar)"
+  }
+ ],
+ "tr_seyyah": [
+  {
+   "vid": "BCUgFS8Pny4",
+   "baslik": "Bir Kelime Seyyahı / Dilimizin Zenginliği / 6. Sınıf MEB Yayınları",
+   "kaynak": ""
+  },
+  {
+   "vid": "1VMPwM1Ys_8",
+   "baslik": "BİR KELİME SEYYAHI-KAŞGARLI MAHMUT",
+   "kaynak": ""
+  },
+  {
+   "vid": "wxsyetGqCUs",
+   "baslik": "6. Sınıf Türkçe - Gerçek Anlam, Mecaz Anlam, Terim Anlam",
+   "kaynak": ""
+  },
+  {
+   "vid": "1nlfX_vfMZY",
+   "baslik": "Sözcükte Anlam 6. Sınıf Türkçe #2024",
+   "kaynak": ""
+  },
+  {
+   "vid": "dy_9J0WCzts",
+   "baslik": "BİR KELİME SEYYAHI Metni Cevapları 6.Sınıf Türkçe Ders Kitabı sayfa 13-23",
+   "kaynak": "",
+   "not": "ders kitabı cevapları"
+  }
+ ],
+ "tr_beylik": [
+  {
+   "vid": "X0HmdGzNu5Q",
+   "baslik": "Kök ve Ekler (Yapım - Çekim Ekleri) - Konu Özeti 6TURK1 #2026",
+   "kaynak": "Tonguç"
+  },
+  {
+   "vid": "zQBDmhoU8L0",
+   "baslik": "6. Sınıf Türkçe - Ekler (Yapım Eki, Çekim Eki)",
+   "kaynak": ""
+  },
+  {
+   "vid": "_zzfykJKveI",
+   "baslik": "6.SINIF - TÜRKÇE - YAPIM VE ÇEKİM EKLERİ KONU ANLATIM",
+   "kaynak": ""
+  },
+  {
+   "vid": "kwuymV00fMM",
+   "baslik": "Türkçe Dersi - Çekim Eki, Yapım Eki, Basit, Türemiş ve Birleşik Kelimeler Konu Anlatımı",
+   "kaynak": ""
+  }
+ ],
+ "tr_turkce": [
+  {
+   "vid": "026iq7oEPOE",
+   "baslik": "6. SINIF TÜRKÇE DERS KİTABI MEB YAYINLARI 1. TEMA TÜRKÜZ, TÜRKÇE KONUŞURUZ",
+   "kaynak": ""
+  },
+  {
+   "vid": "E8WA520XGgs",
+   "baslik": "Yabancı Kelimelere Türkçe Karşılıklar",
+   "kaynak": ""
+  },
+  {
+   "vid": "LHGlufU_Uxs",
+   "baslik": "YAZIM KURALLARI : 6.Sınıf Türkçe Konu Anlatımı",
+   "kaynak": ""
+  },
+  {
+   "vid": "c5OO2mZBMEg",
+   "baslik": "Yazım Kuralları 6. Sınıf Türkçe #2024",
+   "kaynak": ""
+  },
+  {
+   "vid": "A_6IetzwsoE",
+   "baslik": "TÜRKÜZ TÜRKÇE KONUŞURUZ Metni Cevapları 6.Sınıf Türkçe Ders Kitabı sayfa 42-49",
+   "kaynak": "",
+   "not": "ders kitabı cevapları"
+  }
+ ],
+ "tr_kasik": [
+  {
+   "vid": "U-VmoHV5RBw",
+   "baslik": "Deyimler ve Atasözleri 6. Sınıf Türkçe #2025",
+   "kaynak": "Tonguç"
+  },
+  {
+   "vid": "Mse9D9_eKRY",
+   "baslik": "Deyimler ve Atasözleri 6TURK5 #2026",
+   "kaynak": "Tonguç"
+  },
+  {
+   "vid": "Q_dhY3jmeYk",
+   "baslik": "Türk Dil Kurumu Sunar Kaşık 6 Sınıf Türkçe Dersi, Dinleme Metni MEB 1",
+   "kaynak": ""
+  },
+  {
+   "vid": "TMNfo8dlyhM",
+   "baslik": "6.Sınıf 1. Tema 50.Sayfa Türk Dil Kurumu Sunar (Kaşık) Dinleme Metni (MEB Yayınları)",
+   "kaynak": ""
+  },
+  {
+   "vid": "eeT_RPyIaDA",
+   "baslik": "6. Sınıf Türkçe - Deyimler ve Atasözleri",
+   "kaynak": "Hocalara Geldik"
+  }
+ ],
+ "tr_azerbaycan": [
+  {
+   "vid": "lwt-XfVBB2U",
+   "baslik": "Azerbaycan Türkçesi ve Türkiye Türkçesi Arasındaki Farklar",
+   "kaynak": ""
+  },
+  {
+   "vid": "bcZHQvQaI9w",
+   "baslik": "Azerbaycan Türkçesi vs. Türkçe: Anlamları Farklı Olan Ortak Kelimeler",
+   "kaynak": ""
+  },
+  {
+   "vid": "sjAnSoHmob4",
+   "baslik": "AZERBAYCAN VE TÜRKİYE TÜRKÇESİNDEKİ SÖZCÜKLERİ KARŞILAŞTIRDIM",
+   "kaynak": ""
+  },
+  {
+   "vid": "Z94pNCe07xs",
+   "baslik": "Türkiye Türkçesi ve Azerbaycan Türkçesi arasındaki farklılıklar. 1. Ders",
+   "kaynak": ""
+  },
+  {
+   "vid": "hryBcSiTiE0",
+   "baslik": "6. Sınıf Türkçe Ders Kitabı Cevapları 1. Kitap Sayfa 61 Meb Yayınları 2025-2026",
+   "kaynak": "",
+   "not": "ders kitabı cevapları"
+  }
+ ],
+ "tr_uret1": [
+  {
+   "vid": "wasfATTxS4c",
+   "baslik": "6. Sınıf Türkçe 1. Dönem Full Tekrar #2025",
+   "kaynak": ""
+  },
+  {
+   "vid": "HsSvd_C3UEM",
+   "baslik": "6.Sınıf Türkçe 1.Dönem 1.Yazılıya Hazırlık #2025",
+   "kaynak": ""
+  },
+  {
+   "vid": "TPACGo1O23c",
+   "baslik": "YARINKİ ÜLKE GENELİ TÜRKÇE SINAVINA HAZIRLIK 6. SINIF #2025",
+   "kaynak": ""
+  },
+  {
+   "vid": "civWaEJsImE",
+   "baslik": "6. Sınıf Türkçe (MEB Yayınları) 1. Dönem 1. Yazılı Soru Örnekleri Çözümleri",
+   "kaynak": ""
+  }
+ ],
+ "tr_at": [
+  {
+   "vid": "c65NZbdrWII",
+   "baslik": "Cepheye Koşan At / 6. Sınıf MEB Yayınları",
+   "kaynak": ""
+  },
+  {
+   "vid": "efxcPc9G-Mk",
+   "baslik": "6. SINIF TÜRKÇE DERS KİTABI MEB YAYINLARI 2. TEMA CEPHEYE KOŞAN AT",
+   "kaynak": ""
+  },
+  {
+   "vid": "BtWihyL6EbQ",
+   "baslik": "CEPHEYE KOŞAN AT Metni Cevapları 6.Sınıf Türkçe Ders Kitabı sayfa 68-77",
+   "kaynak": "",
+   "not": "ders kitabı cevapları"
+  },
+  {
+   "vid": "vJz1r5aJ_DA",
+   "baslik": "Cepheye Koşan At Metni Etkinlik Cevapları 6. Sınıf Türkçe (1. Kitap)",
+   "kaynak": "",
+   "not": "ders kitabı cevapları"
+  }
+ ],
+ "tr_vatan": [
+  {
+   "vid": "NQIpLFoFbpc",
+   "baslik": "6. SINIF TÜRKÇE DERS KİTABI MEB YAYINLARI 2. TEMA VATAN",
+   "kaynak": ""
+  },
+  {
+   "vid": "XT43iaZQdGY",
+   "baslik": "ŞİİRDE TEMA VE ANA DUYGU KONU ANLATIMI VE ÇÖZÜMLÜ ÖRNEKLER",
+   "kaynak": ""
+  },
+  {
+   "vid": "GF1mV5iTTE0",
+   "baslik": "VATAN Metni Cevapları 6.Sınıf Türkçe Ders Kitabı sayfa 78-89 MEB",
+   "kaynak": "",
+   "not": "ders kitabı cevapları"
+  },
+  {
+   "vid": "A4YSF8qKZUw",
+   "baslik": "6.Sınıf Türkçe Ders Kitabı VATAN ŞİİRİ Sayfa 78-88 Cevaplar",
+   "kaynak": "",
+   "not": "ders kitabı cevapları"
+  }
+ ],
+ "tr_istiklal": [
+  {
+   "vid": "3FeYmoRYCuo",
+   "baslik": "Rafadan Tayfa 123. Bölüm (İstiklal Marşı)",
+   "kaynak": "TRT Çocuk"
+  },
+  {
+   "vid": "EdsVvEFlXbM",
+   "baslik": "Rafadan Tayfa İstiklal Marşı Metni 6.Sınıf Türkçe Ders Kitabı sayfa 90-99",
+   "kaynak": ""
+  },
+  {
+   "vid": "M00xl811g0s",
+   "baslik": "İstiklal Marşı'nın Kabulü",
+   "kaynak": ""
+  },
+  {
+   "vid": "2tO-5ysJ7MM",
+   "baslik": "12 Mart İstiklal Marşının Kabulü ve Mehmet Akif Ersoy'un Hayatı",
+   "kaynak": ""
+  },
+  {
+   "vid": "r9jeeXPZrJs",
+   "baslik": "RAFADAN TAYFA İSTİKLAL MARŞI Metni Cevapları 6.Sınıf Türkçe Ders Kitabı sayfa 90-99",
+   "kaynak": "",
+   "not": "ders kitabı cevapları"
+  }
+ ],
+ "tr_zafer": [
+  {
+   "vid": "hWnN5uypk7E",
+   "baslik": "Rafadan Tayfa 124. Bölüm (Malazgirt Zaferi)",
+   "kaynak": "TRT Çocuk"
+  },
+  {
+   "vid": "Tl1svQEm5Zg",
+   "baslik": "Malazgirt Zaferi - Çizgilerle Tarihten Sayfalar 21. Bölüm",
+   "kaynak": "Diyanet TV"
+  },
+  {
+   "vid": "uIJH3KN3OjM",
+   "baslik": "30 Ağustos Zafer Bayramı - Malazgirt'ten Dumlupınar'a",
+   "kaynak": ""
+  },
+  {
+   "vid": "QcV5Ra3fHZw",
+   "baslik": "Malazgirt Zaferi - 26 Ağustos 1071",
+   "kaynak": ""
+  },
+  {
+   "vid": "fbEI6WF1n_s",
+   "baslik": "Türk milletinin büyük zaferi: 30 Ağustos",
+   "kaynak": ""
+  }
+ ],
+ "tr_samsun": [
+  {
+   "vid": "xh0_fGNJCZI",
+   "baslik": "OMU 19 Mayıs 1919 100. Yıl Animasyon Filmi",
+   "kaynak": "Ondokuz Mayıs Üniversitesi"
+  },
+  {
+   "vid": "8PTXzlqamEw",
+   "baslik": "Mustafa Kemal Paşa 19 Mayıs 1919'da Samsun'a Çıkar ve... - TRT Avaz",
+   "kaynak": "TRT Avaz"
+  },
+  {
+   "vid": "bNMBAYUfQVA",
+   "baslik": "Mustafa Kemal Atatürk'ün 19 Mayıs 1919'da Samsuna Çıkışı",
+   "kaynak": ""
+  },
+  {
+   "vid": "lxTrWiMlO-k",
+   "baslik": "MUSTAFA KEMAL PAŞA'NIN SAMSUN'A ÇIKIŞI Metni Cevapları-5.Sınıf Türkçe Ders Kitabı Sayfa 57-60",
+   "kaynak": "",
+   "not": "ders kitabı cevapları"
+  },
+  {
+   "vid": "H6Uw3p1lEtI",
+   "baslik": "Mustafa Kemal Paşa'nın Samsun'a Çıkışı metni Cevapları 5. Sınıf Türkçe 56-60 arası",
+   "kaynak": "",
+   "not": "ders kitabı cevapları"
+  }
+ ],
+ "tr_uret2": [
+  {
+   "vid": "iSgzvwY78kE",
+   "baslik": "6. SINIF 2. ÜNİTE BAĞIMSIZLIK YOLU",
+   "kaynak": ""
+  },
+  {
+   "vid": "cv8SQ8fw1Xw",
+   "baslik": "6.Sınıf Türkçe 1.Dönem 1.Yazılı (Ortak Yazılı)",
+   "kaynak": ""
+  },
+  {
+   "vid": "tAfqJhV0b_w",
+   "baslik": "ORTAK SINAV 6. Sınıf TÜRKÇE 1.Dönem 1.Yazılı Çıkabilir",
+   "kaynak": ""
+  },
+  {
+   "vid": "VIpX1VebVDo",
+   "baslik": "6. Sınıf Türkçe Ders Kitabı Cevapları 1. Kitap Sayfa 75 Meb Yayınları 2025-2026",
+   "kaynak": "",
+   "not": "ders kitabı cevapları"
+  }
+ ],
+ "tr_ova": [
+  {
+   "vid": "zmnimdAacM0",
+   "baslik": "HİKAYE UNSURLARI (Olay, yer, zaman ve kahramanlar)",
+   "kaynak": ""
+  },
+  {
+   "vid": "DSPm34lnLVY",
+   "baslik": "Parçada Anlam -4 - Hikâye Unsurları",
+   "kaynak": ""
+  },
+  {
+   "vid": "Upu1QonQm2Y",
+   "baslik": "Metin Türleri ve Şiir Bilgisi tonguçCUP 4.Sezon - 6TURK16 #2024",
+   "kaynak": "Tonguç"
+  }
+ ],
+ "tr_ulkeler": [
+  {
+   "vid": "U8AVuH-7JTw",
+   "baslik": "Metin Türleri 6TURK7 #2026",
+   "kaynak": "Tonguç"
+  },
+  {
+   "vid": "RcGIQ9o6n0s",
+   "baslik": "METİN TÜRLERİ : 6.Sınıf Türkçe Konu Anlatımı",
+   "kaynak": ""
+  },
+  {
+   "vid": "Hyd_7-gPibE",
+   "baslik": "6.Sınıf Metin Türleri Konu Anlatımı",
+   "kaynak": ""
+  },
+  {
+   "vid": "5sITLPMhbTg",
+   "baslik": "Bilgilendirici Metin Yazma",
+   "kaynak": ""
+  }
+ ],
+ "tr_okullar": [
+  {
+   "vid": "gMwTjBfB6DU",
+   "baslik": "Dünyanın En Tehlikeli Okul Yolları 1/2",
+   "kaynak": ""
+  },
+  {
+   "vid": "HExwrSyijtU",
+   "baslik": "Dünyanın En Tehlikeli Okul Yolları",
+   "kaynak": ""
+  },
+  {
+   "vid": "MBEMfxH6rII",
+   "baslik": "Zorlu Okul Yolları",
+   "kaynak": ""
+  },
+  {
+   "vid": "qmxhERP1Tc0",
+   "baslik": "Nehir üstünde okul yolculuğu",
+   "kaynak": ""
+  }
+ ],
+ "tr_eskimo": [
+  {
+   "vid": "g2Xuc9H7cD4",
+   "baslik": "Ay Avcısı Eskimolar - Çocuklar için Masallar",
+   "kaynak": ""
+  },
+  {
+   "vid": "0-r-_dJeFPY",
+   "baslik": "Ay Avcısı Eskimolar (İzlanda Masalı) - Beyza Öğretmenim",
+   "kaynak": "Beyza Öğretmenim"
+  },
+  {
+   "vid": "1C1eRgiciuQ",
+   "baslik": "Ay Avcısı Eskimolar",
+   "kaynak": ""
+  },
+  {
+   "vid": "PZTCQzUSLZk",
+   "baslik": "Eskimolar",
+   "kaynak": ""
+  }
+ ],
+ "tr_turkdunyasi": [
+  {
+   "vid": "pmVVHSBeUww",
+   "baslik": "TÜRK DEVLETLERİ TEŞKİLATI - İNFOGRAFİK TANITIM FİLMİ",
+   "kaynak": ""
+  },
+  {
+   "vid": "yZwCbAxKep0",
+   "baslik": "GÜNÜMÜZDE VARLIĞINI SÜRDÜREN TÜRK DEVLETLERİ",
+   "kaynak": ""
+  },
+  {
+   "vid": "v7_Nv2GbEM4",
+   "baslik": "Türk Dünyası Keşif Rotası 1. Bölüm",
+   "kaynak": ""
+  },
+  {
+   "vid": "YpcjO46YYIc",
+   "baslik": "TARİH YAZAN ÇOCUKLAR / DEDE KORKUT",
+   "kaynak": ""
+  }
+ ],
+ "tr_uret3": [
+  {
+   "vid": "1s9I1WzxEWQ",
+   "baslik": "6.Sınıf Türkçe 2.Dönem 1.Yazılıya Hazırlık #2025",
+   "kaynak": ""
+  },
+  {
+   "vid": "EucJ6qctmRs",
+   "baslik": "6.Sınıf Türkçe Genel Tekrar 2025 Bursluluk Kampı",
+   "kaynak": ""
+  },
+  {
+   "vid": "u5xME0Sr4SQ",
+   "baslik": "6.Sınıf Türkçe 2.Dönem 2.Yazılıya Hazırlık #2025",
+   "kaynak": ""
+  },
+  {
+   "vid": "WefBB5DJLyM",
+   "baslik": "Türkçe 6. Sınıf 2. Dönem 1. Yazılı Ortak Sınav",
+   "kaynak": ""
+  }
+ ],
+ "en_roles": [
+  {
+   "vid": "2KIVc5anW6A",
+   "baslik": "6.SINIF İNGİLİZCE 1.ÜNİTE KONU ANLATIMI 2025",
+   "kaynak": ""
+  },
+  {
+   "vid": "YhEPU4_3Gac",
+   "baslik": "School Life 6ING1 #2027",
+   "kaynak": "Tonguç Akademi"
+  },
+  {
+   "vid": "r275xTZphhc",
+   "baslik": "6. SINIF İNGİLİZCE DERSİ 1. TEMA SCHOOL LIFE (ÖNEMLİ KELİMELER) (OKUNUŞLARI) (TEST)",
+   "kaynak": ""
+  },
+  {
+   "vid": "1h1MlFByOh8",
+   "baslik": "Imperatives Konu Anlatımı",
+   "kaynak": ""
+  },
+  {
+   "vid": "2joNMBefimA",
+   "baslik": "A, An, The Konu Anlatımı - Sıfırdan İngilizce Ders 6",
+   "kaynak": ""
+  }
+ ],
+ "en_routines": [
+  {
+   "vid": "jzqyqZEPu10",
+   "baslik": "Life - How Often / Adverbs of Frequency -1",
+   "kaynak": "Hocalara Geldik"
+  },
+  {
+   "vid": "j-Ffcb60IAI",
+   "baslik": "6. Sınıf İngilizce - The Simple Present Tense",
+   "kaynak": ""
+  },
+  {
+   "vid": "Oqm-FxdkeZg",
+   "baslik": "Adverbs of Frequency - İngilizce'de Sıklık Zarfları - Always, Never, Sometimes",
+   "kaynak": ""
+  },
+  {
+   "vid": "zLay5IwRoEU",
+   "baslik": "İngilizce Sıklık Zarfları - Adverbs of Frequency",
+   "kaynak": ""
+  }
+ ],
+ "en_national": [
+  {
+   "vid": "MNxlPBiLz8Y",
+   "baslik": "Happy 23rd of April National Sovereignty and Children's Day!",
+   "kaynak": ""
+  },
+  {
+   "vid": "TIwPqjfMZWg",
+   "baslik": "23 April National Sovereignty and Children's Day",
+   "kaynak": ""
+  },
+  {
+   "vid": "gSnraCrTSjA",
+   "baslik": "October 29th: Turkish Republic Day",
+   "kaynak": ""
+  },
+  {
+   "vid": "9hji1OLdRrw",
+   "baslik": "29th October, Republic Day of Turkey",
+   "kaynak": ""
+  },
+  {
+   "vid": "_FtS34pf-FQ",
+   "baslik": "CELEBRATIONS: 7. Sınıf İngilizce 6. Ünite Konu Anlatımı ve Kelimeleri",
+   "kaynak": "",
+   "not": "7. sınıf videosu (konu benzer)"
+  }
+ ],
+ "en_daily": [
+  {
+   "vid": "XA8vCo4G3fY",
+   "baslik": "6. SINIF İNGİLİZCE DERSİ 1. ÜNİTE LIFE - Describing Daily Routines [KONU ANLATIMI]",
+   "kaynak": ""
+  },
+  {
+   "vid": "FlPYm4uITdU",
+   "baslik": "6. Sınıf İngilizce 1. ÜNİTE Konu Anlatımı - DAILY ROUTINES (Günlük Rutin İşler)",
+   "kaynak": ""
+  },
+  {
+   "vid": "VAYfSTlcP1Y",
+   "baslik": "6. Sınıf İngilizce - 1. Ünite - Daily Routines",
+   "kaynak": ""
+  },
+  {
+   "vid": "1yjig666eNo",
+   "baslik": "PRESENT CONTINUOUS TENSE KONU ANLATIMI 6.SINIF",
+   "kaynak": ""
+  },
+  {
+   "vid": "a6E20Z1w1qM",
+   "baslik": "PRESENT CONTINUOUS TENSE 6. Sınıf 3. Ünite ve 9. Ünite",
+   "kaynak": ""
+  }
+ ],
+ "en_learning": [
+  {
+   "vid": "qR6jvEfv54w",
+   "baslik": "6. Sınıf İngilizce 1. Ünite",
+   "kaynak": ""
+  },
+  {
+   "vid": "RgDrnIUfSg8",
+   "baslik": "QUESTION TAGS KONU ANLATIMI",
+   "kaynak": ""
+  },
+  {
+   "vid": "6jChKFhCSUo",
+   "baslik": "Question Tags (Değil mi? Soruları)",
+   "kaynak": ""
+  },
+  {
+   "vid": "jCpG2F81rSM",
+   "baslik": "Question Tags Konu Anlatımı #71",
+   "kaynak": ""
+  }
+ ],
+ "en_numbers": [
+  {
+   "vid": "kSujNgzfrUM",
+   "baslik": "İngilizce 100'den 1000'e Kadar Sayılar (NUMBERS)",
+   "kaynak": ""
+  },
+  {
+   "vid": "yUx-6Ud3cjc",
+   "baslik": "100'den 1000'e kadar 100'er 100'er Sayılar",
+   "kaynak": ""
+  },
+  {
+   "vid": "4TzgLXioDis",
+   "baslik": "8 dk'da English Ordinal Numbers (İngilizce Sıra Numaraları)",
+   "kaynak": "Tonguç Akademi"
+  },
+  {
+   "vid": "DwpcSUOnbIc",
+   "baslik": "Ingilizce Sıra Sayıları - ORDINAL NUMBERS",
+   "kaynak": ""
+  },
+  {
+   "vid": "l8tyuMxElTA",
+   "baslik": "101 To 500 Numbers in words in English",
+   "kaynak": ""
+  }
+ ],
+ "en_appearance": [
+  {
+   "vid": "DL52wyabE8c",
+   "baslik": "DESCRIBING PEOPLE (Kişilik ve Fiziksel Özellikleriyle İnsanları Tasvir Etme)",
+   "kaynak": ""
+  },
+  {
+   "vid": "0_RUWbeqUBM",
+   "baslik": "Have got, Has got Konu Anlatımı Videosu #16",
+   "kaynak": "Kiraz Dil"
+  },
+  {
+   "vid": "jQXFRaZhjcw",
+   "baslik": "Have got / Has got Konu Anlatımı",
+   "kaynak": ""
+  },
+  {
+   "vid": "lwkNbuzzU1E",
+   "baslik": "Describing People",
+   "kaynak": ""
+  },
+  {
+   "vid": "kBHxXRsV8CU",
+   "baslik": "7. Sınıf İngilizce - Describing People's Appearance and Personality",
+   "kaynak": "",
+   "not": "7. sınıf videosu (konu benzer)"
+  }
+ ],
+ "en_personality": [
+  {
+   "vid": "wwOqa4ZIpRM",
+   "baslik": "İngilizce Kişisel Özellikler Konu Anlatımı",
+   "kaynak": ""
+  },
+  {
+   "vid": "pElTUfZiVm0",
+   "baslik": "7 İNGİLİZCE Appearance and Personality",
+   "kaynak": ""
+  },
+  {
+   "vid": "SXCXRXp1yLA",
+   "baslik": "6. SINIF İNGİLİZCE DERSİ 3. ÜNİTE DOWNTOWN - Making Comparison (Karşılaştırma Yapma) (Konu Anlatımı)",
+   "kaynak": ""
+  },
+  {
+   "vid": "f2On3a-Cmd8",
+   "baslik": "Comparative Superlative Türkçe Konu Anlatımı: Örnekler ve Kullanımları",
+   "kaynak": ""
+  },
+  {
+   "vid": "7hGDUOngPS8",
+   "baslik": "Superlative Adjectives Konu Anlatımı",
+   "kaynak": ""
+  }
+ ],
+ "en_jobs": [
+  {
+   "vid": "HUxiG1l1oTY",
+   "baslik": "Occupations 6. Sınıf İngilizce #2025",
+   "kaynak": "Tonguç Akademi"
+  },
+  {
+   "vid": "KAmJBHCISsk",
+   "baslik": "6. Sınıf İngilizce 6. Ünite Occupations | Ünite Kelimeleri ve Özeti +PDF",
+   "kaynak": ""
+  },
+  {
+   "vid": "E3PBfP55zes",
+   "baslik": "6. Sınıf İngilizce 6. Ünite (Occupations / Meslekler) Konu Anlatımı",
+   "kaynak": ""
+  },
+  {
+   "vid": "s1y-_O5xonI",
+   "baslik": "Reflexive Pronouns Konu Anlatımı #64",
+   "kaynak": ""
+  },
+  {
+   "vid": "_Wfwyhk9gCg",
+   "baslik": "Sıfırdan İngilizce Öğreniyorum: Reflexive Pronouns Konu Anlatımı",
+   "kaynak": ""
+  }
+ ],
+ "en_homes": [
+  {
+   "vid": "48vTvapi8YI",
+   "baslik": "Type of Houses, Kids English Vocabulary, Learn with Adi",
+   "kaynak": "Adi Connection"
+  },
+  {
+   "vid": "49W9l_zvhYs",
+   "baslik": "Different Houses Around The World for kids",
+   "kaynak": ""
+  },
+  {
+   "vid": "5SP-1P2FwiQ",
+   "baslik": "Do You Know Types of Houses? Talking Flashcards",
+   "kaynak": ""
+  },
+  {
+   "vid": "4HqXrSaYh9Y",
+   "baslik": "Kids Vocabulary - House - Parts of the House",
+   "kaynak": ""
+  },
+  {
+   "vid": "pN8m9YckGSI",
+   "baslik": "Rooms of a house",
+   "kaynak": ""
+  }
+ ],
+ "en_festivals": [
+  {
+   "vid": "taXf6CQyGMU",
+   "baslik": "6. Sınıf İngilizce - Past Form of \"to be\" (Was-Were)",
+   "kaynak": ""
+  },
+  {
+   "vid": "oTD9QBhLRZQ",
+   "baslik": "15 DAKİKADA WAS WERE KONU ANLATIMI",
+   "kaynak": ""
+  },
+  {
+   "vid": "oekhycQ4lgI",
+   "baslik": "6.SINIF İNGİLİZCE 7.ÜNİTE HOLIDAYS",
+   "kaynak": ""
+  },
+  {
+   "vid": "CEbSnB2jbh4",
+   "baslik": "İngilizcede \"-ed & -ing adjectives\" Sıfatlar",
+   "kaynak": ""
+  },
+  {
+   "vid": "ml6Q3KVxGnk",
+   "baslik": "-ed & -ing Sıfatları #66",
+   "kaynak": ""
+  }
+ ],
+ "en_city": [
+  {
+   "vid": "ER2K2Awwumg",
+   "baslik": "6.Sınıf İngilizce 3.Ünite DOWNTOWN Konu Anlatımı ve Kelimeleri",
+   "kaynak": ""
+  },
+  {
+   "vid": "szpikEN2X2I",
+   "baslik": "İngilizce 6. Sınıf 3. Ünite Downtown - Konu Anlatımı (Yeni MEB kitabı uyumlu)",
+   "kaynak": ""
+  },
+  {
+   "vid": "dn8YqwklHp4",
+   "baslik": "6. Sınıf İngilizce 3. Ünite DOWNTOWN Ünite Kelimeleri, Quiz ve Konu Özeti + PDF",
+   "kaynak": ""
+  },
+  {
+   "vid": "0-ZfT8xznPM",
+   "baslik": "İngilizce Yer Edatları Konu Anlatımı (In, On, Near, Under, Above, Between...) Prepositions Of Place",
+   "kaynak": ""
+  },
+  {
+   "vid": "hGzkD6J-nCI",
+   "baslik": "6. SINIF İNGİLİZCE DERSİ 3. ÜNİTE DOWNTOWN - PRESENT CONTINUOUS TENSE [Şimdiki Zaman] KONU ANLATIMI",
+   "kaynak": ""
+  }
+ ],
+ "en_transport": [
+  {
+   "vid": "f7U4UW2BAvE",
+   "baslik": "İngilizce Ulaşım Araçları - Taşıtlar (Transportation)",
+   "kaynak": ""
+  },
+  {
+   "vid": "IprVEIfezF8",
+   "baslik": "İngilizce ulaşım araçları - Transportation",
+   "kaynak": ""
+  },
+  {
+   "vid": "Saol-ivDAoE",
+   "baslik": "Is it BY Foot or ON Foot?",
+   "kaynak": ""
+  },
+  {
+   "vid": "KWBUUAQT8a0",
+   "baslik": "\"Transport Song\" - Rockin' English (Vocabulary)",
+   "kaynak": "Rockin' English"
+  },
+  {
+   "vid": "DMtJEMG8Vpg",
+   "baslik": "Transportation Song - Vehicle Song - Cars, Boats, Trains, Planes - Kids English Learning",
+   "kaynak": ""
+  }
+ ],
+ "en_countries": [
+  {
+   "vid": "O4REprdqo8k",
+   "baslik": "Countries and Nationalities Konu Anlatımı - Ders 10",
+   "kaynak": ""
+  },
+  {
+   "vid": "EkxpyfyDzZ4",
+   "baslik": "İngilizce Ülkeler ve Milletler. Ülkelerin İsimleri, Okunuşu",
+   "kaynak": ""
+  },
+  {
+   "vid": "EgKoVGiuBn8",
+   "baslik": "5. SINIF İNGİLİZCE 1. ÜNİTE HELLO - COUNTRIES - LANGUAGES - NATIONALITIES",
+   "kaynak": "",
+   "not": "5. sınıf düzeyi (temel tekrar)"
+  },
+  {
+   "vid": "m2tG7F191V8",
+   "baslik": "Countries and Nationalities 5. Sınıf 1. Ünite",
+   "kaynak": "",
+   "not": "5. sınıf düzeyi (temel tekrar)"
+  }
+ ],
+ "en_food": [
+  {
+   "vid": "_ypp4A_JIHc",
+   "baslik": "6.SINIF İNGİLİZCE 2.ÜNİTE YUMMY BREAKFAST KELİMELERİ VE KONU ANLATIMI",
+   "kaynak": ""
+  },
+  {
+   "vid": "RNiOV7GNPUQ",
+   "baslik": "YUMMY BREAKFAST: 6. Sınıf İngilizce 2. Ünite Kelimeleri ve Konu Anlatımı | Duygu Şenkayalı #2",
+   "kaynak": "Duygu Şenkayalı"
+  },
+  {
+   "vid": "KZo74C6C4R8",
+   "baslik": "6.Sınıf İngilizce 2.Ünite Yummy Breakfast Konu Anlatımı",
+   "kaynak": ""
+  },
+  {
+   "vid": "yYpZGBzj6r8",
+   "baslik": "6. Sınıf 2. Ünite - Yummy Breakfast / Konu Anlatımı",
+   "kaynak": ""
+  },
+  {
+   "vid": "vtyF7OC0QcQ",
+   "baslik": "6. SINIF İNGİLİZCE 2. ÜNİTE / YUMMY BREAKFAST",
+   "kaynak": ""
+  }
+ ],
+ "en_nature": [
+  {
+   "vid": "WGuga_F5uc0",
+   "baslik": "6. Sınıf İngilizce - The Simple Past Tense (Irregular Verbs)",
+   "kaynak": ""
+  },
+  {
+   "vid": "pVq2CXjlaNc",
+   "baslik": "6. Sınıf İngilizce - the Simple Past Tense (Regular Verbs)",
+   "kaynak": ""
+  },
+  {
+   "vid": "kpUEktfSwyA",
+   "baslik": "6. Sınıf İngilizce 7. Ünite Konu Anlatımı (Simple Past Tense)",
+   "kaynak": ""
+  },
+  {
+   "vid": "q9EX1w6krW4",
+   "baslik": "Irregular Verbs-Düzensiz Fiiller",
+   "kaynak": ""
+  },
+  {
+   "vid": "Tu-FpevVg_w",
+   "baslik": "6. SINIF İNGİLİZCE 8. ÜNİTE KONU ANLATIMI VE KELİMELERİ",
+   "kaynak": ""
+  }
+ ],
+ "en_environment": [
+  {
+   "vid": "wrb0NMaJjeQ",
+   "baslik": "SAVING THE PLANET: 6. Sınıf İngilizce 9. Ünite Kelimeleri ve Konu Anlatımı | Duygu Şenkayalı #9",
+   "kaynak": "Duygu Şenkayalı"
+  },
+  {
+   "vid": "4xHEsRn1w3k",
+   "baslik": "İngilizce 6. Sınıf 9. Ünite Saving The Planet Konu Anlatımı (Yeni MEB kitabı uyumlu)",
+   "kaynak": ""
+  },
+  {
+   "vid": "DIWdxW2vjyI",
+   "baslik": "6. SINIF İNGİLİZCE DERSİ 9. ÜNİTE SAVING THE PLANET - [SHOULD] [SHOULDN'T] (Konu Anlatımı)",
+   "kaynak": ""
+  },
+  {
+   "vid": "qmgbk0KywE8",
+   "baslik": "105- Have to / Has to / Must / Mustn't Konu Anlatımı",
+   "kaynak": ""
+  },
+  {
+   "vid": "o6fSj6cPqvA",
+   "baslik": "Sıfırdan İngilizce Öğreniyorum: Have to, Has to, Must, Mustn't Konu Anlatımı",
+   "kaynak": ""
+  }
+ ],
+ "en_planets": [
+  {
+   "vid": "g2HopF6socw",
+   "baslik": "Planets tonguçCUP 4.Sezon - 7ING10 #2024",
+   "kaynak": "Tonguç Akademi"
+  },
+  {
+   "vid": "PCxjuDePdCI",
+   "baslik": "The Planets of our Solar System Song (featuring The Hoover Jam)",
+   "kaynak": "The Hoover Jam"
+  },
+  {
+   "vid": "W6FidMj27ZM",
+   "baslik": "Planets in Order Song for Kids",
+   "kaynak": ""
+  },
+  {
+   "vid": "kAqUCn48lGk",
+   "baslik": "Planets / Akıcı Konu Anlatımı 7.Sınıf İngilizce #2023",
+   "kaynak": "Tonguç Akademi",
+   "not": "7. sınıf videosu (konu benzer)"
+  },
+  {
+   "vid": "DFBAPgkd6A0",
+   "baslik": "7. Sınıf İngilizce 10. Ünite Planets",
+   "kaynak": "",
+   "not": "7. sınıf videosu (konu benzer)"
+  }
+ ],
+ "en_future": [
+  {
+   "vid": "hbzDsigUZ-A",
+   "baslik": "WEATHER AND EMOTIONS: 6. Sınıf İngilizce 4. Ünite Kelimeleri ve Konu Anlatımı | Duygu Şenkayalı #4",
+   "kaynak": "Duygu Şenkayalı"
+  },
+  {
+   "vid": "f-JhPgTFRg0",
+   "baslik": "İngilizce 6. Sınıf 4. Ünite Weather and Emotions Konu Anlatımı (Yeni MEB kitabı uyumlu)",
+   "kaynak": ""
+  },
+  {
+   "vid": "cnEogc-He-k",
+   "baslik": "6.SINIF İNGİLİZCE 4.ÜNİTE WEATHER AND EMOTIONS KELİMELERİ VE KONU ANLATIMI",
+   "kaynak": ""
+  },
+  {
+   "vid": "uS4fClJEkF4",
+   "baslik": "İngilizcede Future Tense'i Detaylıca Öğren! (Be going to & Will)",
+   "kaynak": ""
+  },
+  {
+   "vid": "_tgeqvunQOc",
+   "baslik": "Will - Be going to Farkı #33",
+   "kaynak": ""
+  }
+ ]
+};
+
+/* Sosyal Bilgiler ve Din Kültürü videoları (YouTube aramasından derlendi). */
+Object.assign(window.HAZIR_VIDEOLAR, {
+ "s_gruplar": [
+  {
+   "vid": "JU3AQsOaXys",
+   "baslik": "Zaman İçinde Değişen Gruplar ve Roller 6SOS1 #2026",
+   "kaynak": "Tonguç"
+  },
+  {
+   "vid": "3Gs19kQPLFc",
+   "baslik": "Zaman İçinde Değişen Gruplar ve Roller",
+   "kaynak": ""
+  },
+  {
+   "vid": "E8S93PqhdVQ",
+   "baslik": "6. Sınıf Sosyal Bilgiler | Roller",
+   "kaynak": ""
+  }
+ ],
+ "s_kultur": [
+  {
+   "vid": "awhPI6IPAX4",
+   "baslik": "Kültürel Bağlarımızın ve Millî Değerlerimizin Toplumsal Birlikteliğe Etkisi 6SOS2 #2026",
+   "kaynak": "Tonguç"
+  },
+  {
+   "vid": "3OPe7aMY6_E",
+   "baslik": "Kültürel Bağlarımızın Toplumsal Birlikteliğe Etkisi",
+   "kaynak": ""
+  },
+  {
+   "vid": "bTdmQALanLs",
+   "baslik": "Kültürel Bağlar ve Millî Değerler (LGS'ye hazırlık)",
+   "kaynak": ""
+  }
+ ],
+ "s_sorunlar": [
+  {
+   "vid": "Y68vFi17aRQ",
+   "baslik": "Toplumsal Sorunlar ve Çözüm Önerileri 6SOS3 #2026",
+   "kaynak": "Tonguç"
+  },
+  {
+   "vid": "6n972X7JzkI",
+   "baslik": "6. Sınıf Sosyal 1. Dönem 1. Yazılıya Hazırlık",
+   "kaynak": "Tonguç"
+  }
+ ],
+ "s_konum": [
+  {
+   "vid": "63tB3CrPkCM",
+   "baslik": "Ülkemizin, Kıtaların ve Okyanusların Konum Özellikleri 6SOS4 #2026",
+   "kaynak": "Tonguç"
+  },
+  {
+   "vid": "K0pscnIbpW0",
+   "baslik": "Ülkemizin, Kıtaların ve Okyanusların Konum Özellikleri - 2",
+   "kaynak": ""
+  },
+  {
+   "vid": "rsr0cTu9J14",
+   "baslik": "Türkiye'nin Matematik ve Özel Konumu",
+   "kaynak": "Yardımcı Öğretmen"
+  },
+  {
+   "vid": "vyH_qLXoyLY",
+   "baslik": "4 Dakikada Kıtalar ve Okyanuslar",
+   "kaynak": ""
+  }
+ ],
+ "s_cevre": [
+  {
+   "vid": "5rJut2AqFJk",
+   "baslik": "Doğal ve Beşerî Çevre Özellikleri Arasındaki İlişki 6SOS5 #2026",
+   "kaynak": "Tonguç"
+  },
+  {
+   "vid": "Kj0YPUIRIFI",
+   "baslik": "Evimiz Dünya - Doğal ve Beşerî Çevre",
+   "kaynak": ""
+  }
+ ],
+ "s_turkdunyasi": [
+  {
+   "vid": "qfoOygewYnw",
+   "baslik": "Ülkemizin Türk Dünyasıyla Kültürel İş Birlikleri 6SOS6 #2026",
+   "kaynak": "Tonguç"
+  },
+  {
+   "vid": "loQNyU2-MG4",
+   "baslik": "Ülkemizin Türk Dünyasıyla Kültürel İş Birlikleri",
+   "kaynak": ""
+  }
+ ],
+ "s_turkistan": [
+  {
+   "vid": "Ol4fbjYNols",
+   "baslik": "Türkistan'da Kurulan İlk Türk Devletlerinin Medeniyetimize Katkıları 6SOS7 #2026",
+   "kaynak": "Tonguç"
+  },
+  {
+   "vid": "ZdRWH5MGs6I",
+   "baslik": "Boylardan Devlete: İlk Türk Devletleri (Asya Hun, Kök Türk, Uygur)",
+   "kaynak": ""
+  },
+  {
+   "vid": "BnxsUkUygA0",
+   "baslik": "Orta Asya'da Kurulan İlk Türk Devletleri",
+   "kaynak": "Eğitim Tokat TV"
+  }
+ ],
+ "s_islam": [
+  {
+   "vid": "tq5IFgdHau4",
+   "baslik": "VII–XIII. Yüzyıllar Arasında İslam Medeniyetinin İnsanlığın Ortak Mirasına Katkıları 6SOS8 #2026",
+   "kaynak": "Tonguç"
+  },
+  {
+   "vid": "g-CFLYvzu64",
+   "baslik": "Türk-İslam Medeniyetinde Bilim",
+   "kaynak": ""
+  }
+ ],
+ "s_islamiyet": [
+  {
+   "vid": "xp54KfzOwMw",
+   "baslik": "İslamiyet'in Kabulüyle Türklerin Sosyal ve Kültürel Hayatlarında Meydana Gelen Değişimler",
+   "kaynak": ""
+  },
+  {
+   "vid": "gHowOWwrnww",
+   "baslik": "Türklerin İslamiyet'i Kabulü",
+   "kaynak": ""
+  },
+  {
+   "vid": "LKvh9Nz1_JY",
+   "baslik": "Türklerin İslamiyet'i Kabulü ve İlk Türk İslam Devletleri",
+   "kaynak": ""
+  }
+ ],
+ "s_anadolu": [
+  {
+   "vid": "HBBnNYJYeCQ",
+   "baslik": "Anadolu'nun Türkleşmesi",
+   "kaynak": "Tonguç"
+  },
+  {
+   "vid": "q2ClZ8ATPj0",
+   "baslik": "İlk Türk İslam Devletleri",
+   "kaynak": ""
+  },
+  {
+   "vid": "kRKqa-qovVs",
+   "baslik": "İlk Türk İslam Devletleri",
+   "kaynak": ""
+  }
+ ],
+ "d_peygamber": [
+  {
+   "vid": "gwarF8GTALs",
+   "baslik": "Peygamber ve İlahi Kitap İnancı-1 6DIN1 #2026",
+   "kaynak": "Tonguç"
+  },
+  {
+   "vid": "64JyMsP7rZE",
+   "baslik": "Peygamberlerin Özellikleri ve Görevleri",
+   "kaynak": "Ev Akademisi"
+  },
+  {
+   "vid": "-DzOxsEEqiY",
+   "baslik": "Peygamberler ve İlahi Kitap İnancı 6. Sınıf Din",
+   "kaynak": ""
+  }
+ ],
+ "d_vahiy": [
+  {
+   "vid": "gwarF8GTALs",
+   "baslik": "Peygamber ve İlahi Kitap İnancı-1 6DIN1 #2026",
+   "kaynak": "Tonguç"
+  },
+  {
+   "vid": "BbYe-zmpVPQ",
+   "baslik": "6. Sınıf 1. Ünite Peygamberler ve İlahi Kitap İnancı",
+   "kaynak": ""
+  },
+  {
+   "vid": "u7Fk2AwdwzY",
+   "baslik": "Peygamberlerin Sıfatları",
+   "kaynak": ""
+  }
+ ],
+ "d_kitaplar": [
+  {
+   "vid": "OHHBc6QYZiU",
+   "baslik": "İlahi Kitaplar - ders anlatım videosu",
+   "kaynak": "dindersi video"
+  },
+  {
+   "vid": "VILdqDFUx2Q",
+   "baslik": "İlahi Kitaplar ve Peygamberler",
+   "kaynak": "Abdullah Hoca"
+  },
+  {
+   "vid": "gwarF8GTALs",
+   "baslik": "Peygamber ve İlahi Kitap İnancı-1 6DIN1 #2026",
+   "kaynak": "Tonguç"
+  }
+ ],
+ "d_felak": [
+  {
+   "vid": "G-Ta1oopinc",
+   "baslik": "Çocuklar İçin Felak Suresi - tekrarlı okunuş ve anlamı",
+   "kaynak": "dindersi video"
+  },
+  {
+   "vid": "U6b5-V4JKOQ",
+   "baslik": "Felak Suresi Okunuşu ve Anlamı",
+   "kaynak": ""
+  },
+  {
+   "vid": "hq51qunWoZc",
+   "baslik": "Felak Suresi: Anlamı, Okunuşu, Türkçe Meali",
+   "kaynak": ""
+  }
+ ],
+ "d_ramazan": [
+  {
+   "vid": "ujuRSM4D0kI",
+   "baslik": "Ramazan ve Oruç - 1 6DIN3 #2026",
+   "kaynak": "Tonguç"
+  },
+  {
+   "vid": "zzBmE4gx_j8",
+   "baslik": "Ramazan ve Oruç Geniş Özeti (5. sınıf)",
+   "kaynak": ""
+  }
+ ],
+ "d_oruc": [
+  {
+   "vid": "ujuRSM4D0kI",
+   "baslik": "Ramazan ve Oruç - 1 6DIN3 #2026",
+   "kaynak": "Tonguç"
+  },
+  {
+   "vid": "zzBmE4gx_j8",
+   "baslik": "Ramazan ve Oruç Geniş Özeti (5. sınıf)",
+   "kaynak": ""
+  }
+ ],
+ "d_kazanim": [
+  {
+   "vid": "ujuRSM4D0kI",
+   "baslik": "Ramazan ve Oruç - 1 6DIN3 #2026",
+   "kaynak": "Tonguç"
+  }
+ ],
+ "d_iftar": [
+  {
+   "vid": "7jJ3M8VUlO4",
+   "baslik": "Çocuklar İçin Animasyonlu İftar Duası",
+   "kaynak": "dindersi video"
+  },
+  {
+   "vid": "X-eRmSR-DMw",
+   "baslik": "İftar Duası - Çocuklar İçin Talimli",
+   "kaynak": ""
+  },
+  {
+   "vid": "4qXdGXIix98",
+   "baslik": "İftar Duası ve Anlamı",
+   "kaynak": ""
+  }
+ ],
+ "d_dogru": [
+  {
+   "vid": "abI75Aoyjq0",
+   "baslik": "6. Sınıf Din 3. Ünite: Ahlaki Davranışlar ve Kunut Duaları",
+   "kaynak": ""
+  },
+  {
+   "vid": "HfWjvT2yyo8",
+   "baslik": "Ahlaki Davranışlar (7. sınıf)",
+   "kaynak": "Tonguç"
+  }
+ ],
+ "d_merhamet": [
+  {
+   "vid": "abI75Aoyjq0",
+   "baslik": "6. Sınıf Din 3. Ünite: Ahlaki Davranışlar ve Kunut Duaları",
+   "kaynak": ""
+  },
+  {
+   "vid": "h1zuPrXNx8A",
+   "baslik": "Güzel Ahlaki Tutum ve Davranışlar (7. sınıf)",
+   "kaynak": ""
+  }
+ ],
+ "d_adap": [
+  {
+   "vid": "abI75Aoyjq0",
+   "baslik": "6. Sınıf Din 3. Ünite: Ahlaki Davranışlar ve Kunut Duaları",
+   "kaynak": ""
+  },
+  {
+   "vid": "HfWjvT2yyo8",
+   "baslik": "Ahlaki Davranışlar (7. sınıf)",
+   "kaynak": "Tonguç"
+  }
+ ],
+ "d_vatan": [
+  {
+   "vid": "abI75Aoyjq0",
+   "baslik": "6. Sınıf Din 3. Ünite: Ahlaki Davranışlar ve Kunut Duaları",
+   "kaynak": ""
+  }
+ ],
+ "d_kunut": [
+  {
+   "vid": "_AHqmhWDhm4",
+   "baslik": "Kunut Duaları 1 ve 2 Ezberle (Okunuşu ve Anlamı)",
+   "kaynak": ""
+  },
+  {
+   "vid": "ST2fSXHxhLw",
+   "baslik": "Kunut Duaları Okunuşu ve Takibi",
+   "kaynak": ""
+  },
+  {
+   "vid": "76czzcfAyRs",
+   "baslik": "Kunut Duaları 1-2",
+   "kaynak": ""
+  }
+ ],
+ "d_cevre": [
+  {
+   "vid": "Dx9pW1WIupg",
+   "baslik": "Hz. Muhammed'in (sav) Hayatı 6. Sınıf Din",
+   "kaynak": ""
+  },
+  {
+   "vid": "6ABYU2cH0sU",
+   "baslik": "Hz. Muhammed'in (sav) Hayatı 6DIN4",
+   "kaynak": "Tonguç"
+  },
+  {
+   "vid": "Z7pUI9zNdCI",
+   "baslik": "Hz. Muhammed'in Hayatı 1. Bölüm: Doğumu, Gençliği",
+   "kaynak": ""
+  }
+ ],
+ "d_cocukluk": [
+  {
+   "vid": "Z7pUI9zNdCI",
+   "baslik": "Hz. Muhammed'in Hayatı 1. Bölüm: Doğumu, Gençliği",
+   "kaynak": ""
+  },
+  {
+   "vid": "Dx9pW1WIupg",
+   "baslik": "Hz. Muhammed'in (sav) Hayatı 6. Sınıf Din",
+   "kaynak": ""
+  },
+  {
+   "vid": "6ABYU2cH0sU",
+   "baslik": "Hz. Muhammed'in (sav) Hayatı 6DIN4",
+   "kaynak": "Tonguç"
+  }
+ ],
+ "d_genclik": [
+  {
+   "vid": "Z7pUI9zNdCI",
+   "baslik": "Hz. Muhammed'in Hayatı 1. Bölüm: Doğumu, Gençliği",
+   "kaynak": ""
+  },
+  {
+   "vid": "6ABYU2cH0sU",
+   "baslik": "Hz. Muhammed'in (sav) Hayatı 6DIN4",
+   "kaynak": "Tonguç"
+  },
+  {
+   "vid": "Dx9pW1WIupg",
+   "baslik": "Hz. Muhammed'in (sav) Hayatı 6. Sınıf Din",
+   "kaynak": ""
+  }
+ ],
+ "d_fil": [
+  {
+   "vid": "is19LubcuYM",
+   "baslik": "Çocuklar İçin Fil Suresi - tekrarlı okunuş",
+   "kaynak": "dindersi video"
+  },
+  {
+   "vid": "7ahMQcvWqiU",
+   "baslik": "Fil Suresi Okunuşu ve Takibi",
+   "kaynak": ""
+  },
+  {
+   "vid": "buY0PSmkdXM",
+   "baslik": "Çocuklar İçin Fil Suresi",
+   "kaynak": ""
+  }
+ ],
+ "d_gelenek": [
+  {
+   "vid": "dg4nJUY7S5g",
+   "baslik": "Mimarimizdeki Dinî Motifler",
+   "kaynak": ""
+  },
+  {
+   "vid": "AYGNnb9tIqA",
+   "baslik": "Mimarimizde Dinin İzleri (5. sınıf)",
+   "kaynak": "Ev Akademisi"
+  }
+ ],
+ "d_edebiyat": [
+  {
+   "vid": "5DY04S9ukTk",
+   "baslik": "Edebiyatımızda Dinin İzleri",
+   "kaynak": ""
+  },
+  {
+   "vid": "Bvk0Dw4H2mY",
+   "baslik": "Edebiyatımızda Dinin İzleri (5. sınıf)",
+   "kaynak": "Ev Akademisi"
+  }
+ ],
+ "d_musiki": [
+  {
+   "vid": "W4aeHGxDDYs",
+   "baslik": "Musikimizde Dinin İzleri",
+   "kaynak": ""
+  },
+  {
+   "vid": "dwTDx60Xuow",
+   "baslik": "Musikimizde Dinin İzleri (5. sınıf)",
+   "kaynak": "Ev Akademisi"
+  },
+  {
+   "vid": "sJ8l4Er3leE",
+   "baslik": "Musikimizde Dinin İzleri",
+   "kaynak": ""
+  }
+ ]
+});
+
+/* Çizgi film / şarkı videoları kaldırıldı, yerlerine konu anlatımı videoları eklendi (veli isteği). */
+(function () {
+  const V = window.HAZIR_VIDEOLAR;
+  const cikar = ["3FeYmoRYCuo", "EdsVvEFlXbM", "r9jeeXPZrJs", "hWnN5uypk7E", "Tl1svQEm5Zg", "xh0_fGNJCZI", "g2Xuc9H7cD4",
+    "48vTvapi8YI", "4HqXrSaYh9Y", "DMtJEMG8Vpg", "W6FidMj27ZM", "7jJ3M8VUlO4", "buY0PSmkdXM"];
+  for (const k of Object.keys(V)) V[k] = V[k].filter(v => !cikar.includes(v.vid));
+  const ekle = (k, l) => { V[k] = [...l.map(([vid, baslik, kaynak]) => ({ vid, baslik, kaynak: kaynak || "" })), ...(V[k] || [])]; };
+  ekle("tr_istiklal", [["Fee7G_tzQgQ", "İstiklal Marşı Nasıl Yazıldı? Dinleme Metni - 6. Sınıf"], ["Y75Km7dlt94", "İstiklal Marşı (orkestra eşliğinde)"]]);
+  ekle("tr_samsun", [["bNMBAYUfQVA", "Mustafa Kemal Atatürk'ün 19 Mayıs 1919'da Samsun'a Çıkışı"], ["K92I_1vNQb0", "Atatürk'ün Samsun'a Çıkışı"], ["QmCZlK2badY", "Millî Mücadele ruhunu taşıyan gemi: Bandırma"]]);
+  ekle("en_transport", [["f7U4UW2BAvE", "İngilizce Ulaşım Araçları - Taşıtlar (Transportation)"], ["IprVEIfezF8", "İngilizce Ulaşım Araçları - Transportation"]]);
+  // Peygamberimizin hayatı (Din Kültürü ek ünite)
+  ekle("d_hz_peygamberlik", [["Z7pUI9zNdCI", "Hz. Muhammed (sav)'in Hayatı 1: Doğumu, Gençliği, Peygamber Oluşu"], ["y6JEyx-H8vs", "Gençlik Yıllarında Peygamberimiz (6. sınıf)"]]);
+  ekle("d_hz_mekke", [["RyZb74HitSo", "Peygamberimize İlk Vahiy Nerede, Nasıl Geldi?"], ["-7KG57mLmVc", "Hz. Muhammed Hira Mağarası'nda Neler Yaşadı? (İlk Vahiy)"], ["npT3VoNeO08", "Hira Mağarası'nda İlk Vahiy"]]);
+  ekle("d_hz_hicret", [["Wihe_nrlBa8", "Peygamberimizin İzinde 14: Mekke'den Medine'ye Hicret"], ["xfAgr5kpH-U", "Mekke'den Medine'ye Hicret"]]);
+  ekle("d_hz_medine", [["NY-fEI9jsN0", "Hz. Muhammed (sav)'in Hayatı 18: Medine'de İlk Faaliyetler"], ["chgEL6HAXww", "Medine Dönemi 1: Hicret ve Sonrası"]]);
+  ekle("d_hz_fetih", [["u0Ii13Qz6UE", "Herkes İçin Siyer 25: Mekke'nin Fethi"], ["b0t9dY3bZZ8", "Tarih Saati: Mekke'nin Fethi"]]);
+  ekle("d_hz_veda", [["KMG7EHI2bAE", "Veda Hutbesi: Peygamberimizin Son Nasihatleri"], ["xDsn0cDtoqw", "Veda Hutbesi"]]);
+  ekle("d_hz_ahlak", [["ctehXyIv87U", "Rehberim Peygamberim (6. sınıf Peygamberimizin Hayatı)"], ["64JyMsP7rZE", "Peygamberlerin Özellikleri ve Görevleri (6. sınıf)", "Ev Akademisi"]]);
+  // Türkçe: noktalama ve konuşma
+  ekle("tr_nokta", [["1sLryRhKRwE", "6. Sınıf Türkçe: Noktalama İşaretleri 1 (Nokta, Virgül)"], ["1-G7_-bsTNo", "Noktalama İşaretleri 1: Nokta ve Virgül"]]);
+  ekle("tr_virgul", [["n7ZtUpekfAM", "Noktalama İşaretleri: Virgül"], ["0zKF2FgiCVo", "Nokta ve Virgül Nerelerde Kullanılır?"]]);
+  ekle("tr_isaretler", [["mouCyQO4lyQ", "Noktalama İşaretleri ( . , ; : … ? ! )"], ["YQjfydPmvTI", "Üç Nokta, Soru İşareti, Ünlem"], ["McAZeTJMhFA", "Üç Nokta, Ünlem ve Tırnak İşareti Nerelerde Kullanılır?"]]);
+  ekle("tr_konusma", [["siTSRg2Q6OM", "Etkili ve Güzel Konuşmanın 10 Temel Kuralı"], ["-cnLLcGxqq4", "Doğru ve Etkili Türkçe Konuşma 1"], ["eG0MhU0HSrQ", "4 Adımda Akıcı Konuşma Çalışmaları"]]);
+  // şarkı / çizgi film / flash-card videoları ve aynı videonun tekrarları çıkarılır
+  const cocukca = /\bsong\b|şarkı|rafadan|çizgi film|animasyon|talking flashcards|for kids|masal(lar)?\b/i;
+  for (const k of Object.keys(V)) { const gor = new Set(); V[k] = V[k].filter(v => !cocukca.test(v.baslik) && !gor.has(v.vid) && gor.add(v.vid)); }
+})();
