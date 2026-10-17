@@ -295,7 +295,7 @@
         z => { const d = sec(AILE), y = karistir(AILE.filter(a => a !== d)).slice(0, 2); return S({ kaz: "e3fam.this", duzey: "uygulama", zorluk: 1,
           soru: `Fotoğraftaki kişi senin <b>${d.tr}</b>. Onu nasıl tanıtırsın?`, gorsel: kart(d.e, d.tr), dogru: `This is my ${d.en}.`,
           yanlis: [[`This is my ${y[0].en}.`, "bilgi", `“${y[0].en}” ${y[0].tr} demektir.`], [`This is my ${y[1].en}.`, "dikkat", `“${y[1].en}” ${y[1].tr} demektir.`], [`I am my ${d.en}.`, "kavrama", "Başkasını tanıtırken “I am” değil, “This is my …” deriz."]],
-          ipucu: "Tanıtma kalıbı: This is my …", dogruNeden: `“This is my ${d.en}.” = Bu benim ${d.tr}m.`,
+          ipucu: "Tanıtma kalıbı: This is my …", dogruNeden: `“This is my ${d.en}.” cümlesinde ${d.en} = ${d.tr}.`,
           cozum: adimlar(["Fotoğraftaki kişiyi tanıtacağız.", "Tanıtırken: This is my … (Bu benim …).", `${d.tr} = ${d.en}.`, "“I am …” kendimizi anlatır; başkasını tanıtmaz.", "Kalıp doğru, sözcük doğru: This is my " + d.en + "."], `This is my ${d.en}.`, "Başkasını “This is my …” ile tanıtırız."), kural: "This is my + aile bireyi." }); },
         P("e3fam.this", "aciklama", 1, "“This is my father.” cümlesinin Türkçesi hangisidir?", "Bu benim babam.",
           [["Bu benim annem.", "bilgi", "Anne “mother” olur."], ["Ben babayım.", "kavrama", "“Ben” = I. Cümlede “This” (bu) var."], ["Babam nerede?", "bilgi", "Bu bir sorudur; cümlede soru yok."]],
