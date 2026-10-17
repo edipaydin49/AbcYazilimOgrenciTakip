@@ -279,6 +279,14 @@ body.uzak main { max-width: 1280px; }
 @media (max-width: 640px) { .hava-oda { grid-template-columns: 1fr; } .sehir-lot { min-height: 64px; } .bina { font-size: 1.6rem; } .bina-kart { width: 76px; } }
 @media (max-width: 560px) { .konu-satir { grid-template-columns: minmax(0, 1fr) 80px; } h1 { font-size: 1.35rem; } }
 @media (prefers-reduced-motion: no-preference) { .geri { animation: gel .25s ease-out; } @keyframes gel { from { opacity: .3; transform: translateY(4px); } to { opacity: 1; transform: none; } } }
+.profil-kartlar { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 14px; }
+.profil-kart { display: grid; justify-items: center; gap: 6px; padding: 22px 12px; border: 2px solid var(--line); border-radius: 20px; background: var(--sheet); cursor: pointer; font-size: 1.2rem; color: var(--ink); }
+.profil-kart:hover, .profil-kart:focus-visible { border-color: var(--cobalt); }
+.profil-avatar { font-size: 3.4rem; line-height: 1.1; }
+.profil-secim h1 { text-align: center; } .profil-secim > p { text-align: center; margin: 0; }
+.ogrenci-cip { display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; border-radius: 999px; border: 2px solid var(--line); background: var(--sheet); font-weight: 700; cursor: pointer; color: var(--ink); }
+.ogrenci-cip.aktif { border-color: var(--cobalt); background: var(--cobalt-soft); }
+html[data-sinif="3"] body { font-size: 19px; }
 </style>
 </head>
 <body>
@@ -289,59 +297,7 @@ body.uzak main { max-width: 1280px; }
   <button type="button" class="ikon-btn" id="veliBtn">Veli</button>
 </header>
 <main id="ana" aria-live="polite"></main>
-<script src="js/ortak.js"></script>
-<script src="js/icerik.js"></script>
-<script src="js/mat_ek.js"></script>
-<script src="js/mat_ek2.js"></script>
-<script src="js/mat_tgs.js"></script>
-<script src="js/fen.js"></script>
-<script src="js/fen1.js"></script>
-<script src="js/fen2.js"></script>
-<script src="js/fen3.js"></script>
-<script src="js/fen_ek1.js"></script>
-<script src="js/fen_ek2.js"></script>
-<script src="js/fen_tgs.js"></script>
-<script src="js/tr.js"></script>
-<script src="js/tr1.js"></script>
-<script src="js/tr2.js"></script>
-<script src="js/tr3.js"></script>
-<script src="js/tr_ek1.js"></script>
-<script src="js/tr_ek2.js"></script>
-<script src="js/tr_tgs.js"></script>
-<script src="js/tr4.js"></script>
-<script src="js/en.js"></script>
-<script src="js/en1.js"></script>
-<script src="js/en2.js"></script>
-<script src="js/en3.js"></script>
-<script src="js/en4.js"></script>
-<script src="js/en_ek1.js"></script>
-<script src="js/en_ek2.js"></script>
-<script src="js/en_tgs.js"></script>
-<script src="js/sos.js"></script>
-<script src="js/sos1.js"></script>
-<script src="js/sos2.js"></script>
-<script src="js/din.js"></script>
-<script src="js/din1.js"></script>
-<script src="js/din2.js"></script>
-<script src="js/din3.js"></script>
-<script src="js/bilsem.js"></script>
-<script src="js/gorsel_mat.js"></script>
-<script src="js/gorsel_fen.js"></script>
-<script src="js/gorsel_tr.js"></script>
-<script src="js/gorsel_en.js"></script>
-<script src="js/gorsel_sos.js"></script>
-<script src="js/gorsel_din.js"></script>
-<script src="js/videolar.js"></script>
-<script src="js/birlestir.js"></script>
-<script src="js/depo.js"></script>
-<script src="js/analiz.js"></script>
-<script src="js/oyun.js"></script>
-<script src="js/ingoyun.js"></script>
-<script src="js/uygulama.js"></script>
-<script src="js/pdfayristir.js"></script>
-<script src="js/pdfdeneme.js"></script>
-<script src="tgs/liste.js"></script>
-<script src="js/tgsdeneme.js"></script>
-<script src="js/macera.js"></script>
+<script src="js/profil.js"></script>
+<script>PROFIL.yukle();</script>
 </body>
 </html>

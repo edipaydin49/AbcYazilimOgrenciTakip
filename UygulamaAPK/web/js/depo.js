@@ -6,7 +6,9 @@
  */
 (function () {
   "use strict";
-  const DB_AD = "ogrenmeYolculugu", DB_SURUM = 1, AYAR_ANAHTAR = "ogr.ayar";
+  // Her öğrencinin (profil.js) kendi veritabanı ve ayarları vardır; 1. öğrenci eski adları kullanır.
+  const P = window.PROFIL;
+  const DB_AD = P ? P.dbAd() : "ogrenmeYolculugu", DB_SURUM = 1, AYAR_ANAHTAR = P ? P.ayarAnahtar() : "ogr.ayar";
   // UZAK_MOD: veli paneli bilgisayardan açıldı (veli.html). Veri tabletten okunur, bu cihazda hiçbir şey kaydedilmez.
   const UZAK = window.UZAK_MOD === true;
   let db = null;
@@ -203,14 +205,15 @@
   // Tablet: veriyi Android'deki küçük sunucuya verir (sunucu açıksa, değişiklik oldukça en geç 10 sn'de bir).
   function tabletVeri() {
     const { pin, bulutUrl, ...a } = ayar;
-    return JSON.stringify({ surum: 1, zaman: Date.now(), ogrenci: ayar.ogrenciAdi, ayar: a, olaylar: [...olaylar.values()].map(({ gonderildi, ...o }) => o) });
+    const pr = P && P.aktif();
+    return JSON.stringify({ surum: 1, zaman: Date.now(), ogrenci: ayar.ogrenciAdi, sinif: pr ? pr.sinif : 6, profilId: pr ? pr.id : "p1", ayar: a, olaylar: [...olaylar.values()].map(({ gonderildi, ...o }) => o) });
   }
   function tabletePaylas(zorla) {
     if (UZAK || !(window.Android && Android.sunucuAdres && Android.veriGuncelle)) return;
     if (!zorla && !tableteDegisti) return;
     if (!Android.sunucuAdres()) return;
     tableteDegisti = false;
-    try { Android.veriGuncelle(tabletVeri(), String(ayar.pin)); } catch (e) {}
+    try { Android.veriGuncelle(tabletVeri(), String(P ? P.veliPin() : ayar.pin)); } catch (e) {}
   }
   if (!UZAK) setInterval(() => tabletePaylas(false), 10000);
   // Bilgisayar: tabletten gelen veriyi yalnızca bellekte tutar.

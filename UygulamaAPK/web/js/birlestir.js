@@ -40,7 +40,14 @@
   }
 
   /* Yazılı sınavlar: her dersin varsayılan kapsamı, veli panelinden değiştirilebilir (DEPO.ayar.yazililar). */
-  const YAZILILAR = [
+  // 3. sınıfta notlu yazılı sınav yoktur: aynı dört dönem bölümü “değerlendirme” olarak adlandırılır.
+  const ILKOKUL = window.PROFIL && PROFIL.sinif() === 3;
+  const YAZILILAR = ILKOKUL ? [
+    { id: "d1y1", ad: "1. Dönem 1. Değerlendirme", kisa: "1. dönem · 1. değerlendirme" },
+    { id: "d1y2", ad: "1. Dönem 2. Değerlendirme", kisa: "1. dönem · 2. değerlendirme" },
+    { id: "d2y1", ad: "2. Dönem 1. Değerlendirme", kisa: "2. dönem · 1. değerlendirme" },
+    { id: "d2y2", ad: "2. Dönem 2. Değerlendirme", kisa: "2. dönem · 2. değerlendirme" },
+  ] : [
     { id: "d1y1", ad: "1. Dönem 1. Yazılı", kisa: "1. dönem · 1. yazılı" },
     { id: "d1y2", ad: "1. Dönem 2. Yazılı", kisa: "1. dönem · 2. yazılı" },
     { id: "d2y1", ad: "2. Dönem 1. Yazılı", kisa: "2. dönem · 1. yazılı" },

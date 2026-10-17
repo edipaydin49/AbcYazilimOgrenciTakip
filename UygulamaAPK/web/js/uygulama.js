@@ -19,7 +19,9 @@
   const DIGER_DERS = { bilsem: "BİLSEM tarzı", SOS: "Sosyal Bilgiler", "DİN": "Din Kültürü", "İNK": "İnkılap Tarihi", sos: "Sosyal Bilgiler", din: "Din Kültürü" };
   const dersAd = id => DERS[id] ? DERS[id].ad : DIGER_DERS[id] || "";
 
-  let veliAcik = false;
+  const PR = window.PROFIL, SINIF = PR ? PR.sinif() : 6, ALTI = SINIF === 6;   // 6. sınıfa özel bölümler (TGS, Bursluluk…)
+  let veliAcik = !!(PR && !DEPO.uzak && PR.veliGecisi());   // veli panelinden öğrenci değiştirince şifre yeniden sorulmaz
+  const veliPinDogru = p => p === (PR && !DEPO.uzak ? PR.veliPin() : String(DEPO.ayar.pin));
   let durum = {}; // ekranlar arası geçici durum (aktif test, sonuç...)
   let aktifDers = "mat";
   try { aktifDers = DERS[localStorage.getItem("ogr.ders")] ? localStorage.getItem("ogr.ders") : "mat"; } catch (e) {}
@@ -42,11 +44,17 @@
     veliAcik = false;
     if (yol === "ders") { dersSec(a); return anaSayfa(); }
     ({ "": anaSayfa, konu: () => konuSayfasi(a), anlatim: () => anlatim(a), video: () => videoSayfasi(a, +b || 0), test: testEkrani,
-      sonuc: sonucEkrani, gelisim: gelisimSayfasi, hatalar: () => hataDefteri(a, b), yanlislar: () => hataDefteri(a, b), yazili: () => yaziliSayfasi(a, b), deneme: denemeMerkezi, bursluluk: burslulukSayfasi, bilsem: bilsemSayfasi, olustur: () => { if (a) dersSec(a); olusturSayfasi(); }, pdf: () => PDFDENEME.ac(a, b), tgsd: () => TGSD.ac(a, b, c, d, e), oyun: () => { dersSec("tr"); OYUN.ac(a, b); }, macera: () => window.MACERA ? (dersSec("mat"), MACERA.ac(a, b, c)) : anaSayfa(), ing: () => { dersSec("en"); INGOYUN.ac(a, b); } }[yol] || anaSayfa)();
+      sonuc: sonucEkrani, gelisim: gelisimSayfasi, hatalar: () => hataDefteri(a, b), yanlislar: () => hataDefteri(a, b), yazili: () => yaziliSayfasi(a, b), deneme: denemeMerkezi, bursluluk: () => ALTI ? burslulukSayfasi() : denemeMerkezi(), genel: () => ALTI ? denemeMerkezi() : genelSayfasi(), bilsem: bilsemSayfasi, olustur: () => { if (a) dersSec(a); olusturSayfasi(); }, pdf: () => PDFDENEME.ac(a, b), tgsd: () => TGSD.ac(a, b, c, d, e), oyun: () => { dersSec("tr"); OYUN.ac(a, b); }, macera: () => window.MACERA ? (dersSec("mat"), MACERA.ac(a, b, c)) : anaSayfa(), ing: () => { dersSec("en"); INGOYUN.ac(a, b); } }[yol] || anaSayfa)();
   }
   window.addEventListener("hashchange", yonlendir);
   $("#evBtn").addEventListener("click", () => git("#/"));
   $("#veliBtn").addEventListener("click", () => git("#/veli"));
+  // Birden çok öğrenci varsa: “öğrenci değiştir” düğmesi (açılıştaki “Kim çalışacak?” ekranına döner)
+  if (PR && !DEPO.uzak && PR.liste().length > 1) {
+    const b = document.createElement("button"); b.type = "button"; b.className = "ikon-btn"; b.id = "ogrBtn";
+    b.textContent = (PR.aktif().avatar || "🙂") + " Değiştir"; b.title = "Öğrenci değiştir"; b.onclick = () => PR.cikis();
+    $("#veliBtn").before(b);
+  }
   function ustDurum() {
     const b = DEPO.bekleyenSayisi();
     $("#ustDurum").textContent = DEPO.ayar.bulutUrl ? (navigator.onLine ? (b ? b + " kayıt gönderilecek" : "eşitlendi") : "çevrimdışı · " + b + " kayıt bekliyor") : "";
@@ -75,6 +83,7 @@
       const r = await fetch("/api/veri", { cache: "no-store", headers: { "X-Pin": encodeURIComponent(uzakPin) } });
       const j = await r.json();
       if (!r.ok) { if (elle) toast(j.hata || "Veri alınamadı."); if (r.status === 401) { uzakHazir = false; uzakPin = null; yonlendir(); } return; }
+      if (PR && (j.sinif || 6) !== PR.sinif()) { try { sessionStorage.setItem("ogr.uzakPin", uzakPin); } catch (e) {} location.search = "?s=" + (j.sinif || 6); return; }
       if (j.zaman !== DEPO.uzakZaman() || elle) { DEPO.uzakYukle(j); yonlendir(); }
       if (elle) toast("Güncellendi.");
     } catch (e) { if (elle) toast("Tablete ulaşılamadı. Tablette uygulama açık ve “İzleme” açık olmalı."); }
@@ -96,12 +105,16 @@
           const r = await fetch("/api/veri", { cache: "no-store", headers: { "X-Pin": encodeURIComponent(uzakPin) } });
           const j = await r.json();
           if (!r.ok) { $("#uDurum").textContent = j.hata || "Bağlanılamadı."; uzakPin = null; return; }
+          if (PR && (j.sinif || 6) !== PR.sinif()) { try { sessionStorage.setItem("ogr.uzakPin", uzakPin); } catch (e) {} location.search = "?s=" + (j.sinif || 6); return; }
           DEPO.uzakYukle(j); uzakHazir = true;
           clearInterval(uzakSaat); uzakSaat = setInterval(() => uzakYenile(false), 15000);
           git("#/veli/ozet");
         } catch (e) { $("#uDurum").textContent = "Tablete ulaşılamadı. Tablette uygulamanın açık olduğundan emin olun."; uzakPin = null; }
       };
       b.onclick = dene; $("#uPin").onkeydown = e => { if (e.key === "Enter") dene(); }; $("#uPin").focus();
+      // Öğrenci (sınıf) değişince sayfa doğru içerikle yeniden açılır; şifre yeniden sorulmaz.
+      let kayitli = null; try { kayitli = sessionStorage.getItem("ogr.uzakPin"); sessionStorage.removeItem("ogr.uzakPin"); } catch (e) {}
+      if (kayitli) { $("#uPin").value = kayitli; dene(); }
     }
     $("#uYapistir").onclick = () => {
       try { const j = JSON.parse($("#uMetin").value); if (!Array.isArray(j.olaylar)) throw 0; DEPO.uzakYukle(j); uzakHazir = true; git("#/veli/ozet"); }
@@ -176,7 +189,7 @@
         <p class="muted kucuk-yazi">Unutmaya başladığın ${akilli.length} kazanım var. Bugün ${Math.min(5, akilli.length)} tanesinden 2'şer soru: ${akilli.slice(0, 5).map(x => kacis(x.ad)).join(" · ")}</p></section>` : ""}
       ${vadesi.length ? `<section class="kart"><h2>Tekrar zamanı</h2><p class="muted kucuk-yazi">Öğrendiklerini unutmamak için kısa tekrar testleri.</p>
         ${vadesi.map(p => `<div class="satir ara"><span>${KONU[p.konu].ad} · <b>${p.gun}. gün</b> tekrarı</span><button class="btn kucuk" data-test="tekrar${p.gun}" data-konu="${p.konu}">Başla</button></div>`).join("")}</section>` : ""}
-      <section class="kart"><h2>Yazılılara hazırlık · ${d.ad}</h2><p class="muted kucuk-yazi">Her yazılı için konu tekrarı, videolar, eksik kapatma ve yazılı provası.</p>
+      <section class="kart"><h2>${ALTI ? "Yazılılara hazırlık" : "Dönem değerlendirmeleri"} · ${d.ad}</h2><p class="muted kucuk-yazi">${ALTI ? "Her yazılı için konu tekrarı, videolar, eksik kapatma ve yazılı provası." : "Her dönem için konu tekrarı, videolar, eksik kapatma ve değerlendirme setleri."}</p>
         <div class="izgara">${YAZILILAR.map(y => yaziliKart(h, d.id, y)).join("")}</div></section>
       ${tgsKart()}
       ${d.temaListesi.map(t => `<section class="kart">
@@ -192,7 +205,7 @@
       <section class="izgara dar">
         <button class="btn ana" data-test="deneme" data-ders="${d.id}">${d.ad} genel deneme (20 soru)</button>
         <a class="btn ana" href="#/deneme">📝 Deneme merkezi</a>
-        <a class="btn" href="#/bursluluk">🎓 Bursluluk denemeleri</a>
+        ${ALTI ? `<a class="btn" href="#/bursluluk">🎓 Bursluluk denemeleri</a>` : `<a class="btn" href="#/genel">🧩 Genel denemeler</a>`}
         ${window.BILSEM ? `<a class="btn" href="#/bilsem">🧠 BİLSEM tarzı sorular</a>` : ""}
         <a class="btn" href="#/hatalar">📒 Yanlış defterim (${hataSay})</a>
         <a class="btn" href="#/gelisim">Gelişimim</a>
@@ -224,11 +237,11 @@
         <div class="izgara dar">
           <button class="btn ana" data-test="yaziliTekrar" data-ders="${dersId}" data-yazili="${yid}">1. Konu tekrar testi (12)</button>
           <button class="btn" data-test="yaziliEksik" data-ders="${dersId}" data-yazili="${yid}" ${zayif.length ? "" : "disabled"}>2. Eksiklerimi kapat (10)${zayif.length ? "" : " · eksik yok"}</button>
-          <button class="btn" data-test="yazili" data-ders="${dersId}" data-yazili="${yid}">3. Yazılı provası (20 soru · 40 dk)</button>
-          <button class="btn" data-test="tgs" data-yazili="${yid}">4. ${TGS_AD[yid]} (${DERSLER.length} ders · ${DERSLER.reduce((x, dd) => x + (TGS_DAGILIM[dd.id] || 10), 0)} soru · ${SINAV_DK.tgs} dk)</button>
+          <button class="btn" data-test="yazili" data-ders="${dersId}" data-yazili="${yid}">3. ${ALTI ? "Yazılı" : "Değerlendirme"} provası (20 soru · 40 dk)</button>
+          ${ALTI ? `<button class="btn" data-test="tgs" data-yazili="${yid}">4. ${TGS_AD[yid]} (${DERSLER.length} ders · ${DERSLER.reduce((x, dd) => x + (TGS_DAGILIM[dd.id] || 10), 0)} soru · ${SINAV_DK.tgs} dk)</button>` : ""}
           ${(window.TGS_LISTE || []).some(x => x.yaziliId === yid) ? `<a class="btn" href="#/tgsd">5. Ortak yazılı hazırlık denemeleri (${TGS_LISTE.filter(x => x.yaziliId === yid).length} deneme · 6 ders)</a>` : ""}
         </div></section>
-      <section class="kart"><h2>📑 ${y.ad} soru hazırlık setleri</h2><p class="muted kucuk-yazi">Her set bu yazılının konularından 20 soruluk, 40 dakikalık sabit bir sınavdır: aynı seti tekrar açarsan aynı sorular gelir, böylece ilerlemeni karşılaştırabilirsin.</p>
+      <section class="kart"><h2>📑 ${y.ad} soru hazırlık setleri</h2><p class="muted kucuk-yazi">Her set bu ${ALTI ? "yazılının" : "dönemin"} konularından 20 soruluk, 40 dakikalık sabit bir sınavdır: aynı seti tekrar açarsan aynı sorular gelir, böylece ilerlemeni karşılaştırabilirsin.</p>
         <div class="izgara dar">${Array.from({ length: YSET_SAYI }, (_, i) => i + 1).map(n => { const l = DEPO.liste("test").filter(x => x.tur === "yaziliSet" && x.ders === dersId && x.yazili === yid && x.no === n), s = l[l.length - 1];
           return `<button class="btn ${s ? "" : "ana"}" data-test="yaziliSet" data-ders="${dersId}" data-yazili="${yid}" data-no="${n}" ${kapsam.length ? "" : "disabled"}>${n}. set${s ? ` · son: ${String(s.net).replace(".", ",")} net` : ""}</button>`; }).join("")}</div></section>
       <section class="kart"><h2>Yazılı konuları</h2><p class="muted kucuk-yazi">Her konunun anlatımına, videolarına ve alıştırmasına buradan ulaşabilirsin.</p>
@@ -468,7 +481,7 @@
 
   /* ============================ TEST MOTORU ============================ */
   const TEST_AD = { alistirma: "Alıştırma", konuSonu: "Konu sonu testi", kendi: "Kendi tekrarım", hazir: "Hazır mıyız?", izleme: "İzleme testi", tema: "Tema / ünite değerlendirme", deneme: "Genel deneme sınavı", hata: "Hata defteri tekrarı",
-    yazili: "Yazılı provası", yaziliTekrar: "Yazılı konu tekrarı", yaziliEksik: "Yazılı: eksik kapatma", oyun: "Türkçe Diyarı oyunu", mini: "Mini deneme", karma: "Karma deneme", tgs: "TGS denemesi", ozel: "Kendi sınavım", tgsPdf: "Ortak yazılı / TGS hazırlık denemesi", akilliTekrar: "Akıllı tekrar", bursluluk: "Bursluluk (İOKBS tarzı) denemesi", yaziliSet: "Yazılı hazırlık seti", bilsem: "BİLSEM tarzı (özgün) çalışma", macera: "Matematik Macera Akademisi",
+    yazili: "Yazılı provası", yaziliTekrar: "Yazılı konu tekrarı", yaziliEksik: "Yazılı: eksik kapatma", oyun: "Türkçe Diyarı oyunu", mini: "Mini deneme", karma: "Karma deneme", tgs: "TGS denemesi", ozel: "Kendi sınavım", tgsPdf: "Ortak yazılı / TGS hazırlık denemesi", akilliTekrar: "Akıllı tekrar", bursluluk: "Bursluluk (İOKBS tarzı) denemesi", genel3: "3. sınıf genel deneme", yaziliSet: "Yazılı hazırlık seti", bilsem: "BİLSEM tarzı (özgün) çalışma", macera: "Matematik Macera Akademisi",
     tekrar1: "1. gün tekrar testi", tekrar3: "3. gün tekrar testi", tekrar7: "7. gün tekrar testi", tekrar30: "30. gün kalıcılık testi" };
   const KENDI_HATA = [["bilgi", "Konuyu bilmiyordum"], ["kavrama", "Soruyu yanlış anladım"], ["islem", "İşlem hatası yaptım"], ["dikkat", "Dikkatsizlik yaptım"], ["strateji", "Acele ettim / yol bulamadım"]];
 
@@ -489,6 +502,9 @@
   /* Bursluluk (İOKBS) 6. sınıf: Türkçe, Matematik, Fen Bilimleri 20'şer; Sosyal Bilgiler testi 20 (Sosyal Bilgiler + Din Kültürü) = 80 soru, 100 dk. */
   const BURS_DAGILIM = { tr: 20, mat: 20, fen: 20, sos: 12, din: 8 };
   const BURS_SAYI = 15, YSET_SAYI = 6;
+  /* 3. sınıf genel denemeleri: 5 dersten 10'ar soru (50 soru, 60 dk), sabit 10 deneme. */
+  const GENEL3_DAGILIM = { tr: 10, mat: 10, hb: 10, fen: 10, en: 10 }, GENEL3_SAYI = 10;
+  SINAV_DK.genel3 = 60;
   /* Aynı numaralı deneme / set her açılışta aynı soruları versin diye Math.random geçici olarak tohumlu üreteçle değiştirilir. */
   function tohumlu(tohum, fn) {
     const eski = Math.random; let a = tohum >>> 0 || 1;
@@ -507,7 +523,7 @@
     const l = YAZILILAR.slice(0, i + 1).flatMap(y => yaziliKapsam(dersId, y.id));
     return [...new Set(l)];
   }
-  const cokDersli = tur => tur === "karma" || tur === "tgs" || tur === "tgsPdf" || tur === "bursluluk";
+  const cokDersli = tur => tur === "karma" || tur === "tgs" || tur === "tgsPdf" || tur === "bursluluk" || tur === "genel3";
   function testBaslat(tur, { konu, tema, ders, yazili, kendiIstegi, ozel, no } = {}) {
     let plan = [];   // { kaz, zorluk } ya da { hazir: soru }
     ders = ders || (konu ? KONU[konu].ders : tema ? TEMA[tema].ders : aktifDers);
@@ -532,13 +548,15 @@
     }
     else if (tur === "bursluluk") { ders = "karma"; no = +no || 1;
       plan = tohumlu(no * 7919 + 13, () => Object.entries(BURS_DAGILIM).filter(([d]) => DERS[d]).flatMap(([d, n]) => dagit(dersKazanimlari(d), n).map((k, i) => ({ hazir: soruUret(k, [2, 1, 2, 3, 2][i % 5], true) })))); }
+    else if (tur === "genel3") { ders = "karma"; no = +no || 1;
+      plan = tohumlu(no * 6151 + 7, () => Object.entries(GENEL3_DAGILIM).filter(([d]) => DERS[d]).flatMap(([d, n]) => dagit(dersKazanimlari(d), n).map((k, i) => ({ hazir: soruUret(k, [1, 2, 1, 2, 3][i % 5], true) })))); }
     else if (tur === "yaziliSet") { no = +no || 1;
       plan = tohumlu(metinTohum(ders + yazili + no), () => dagit(konularKazanim(yaziliKapsam(ders, yazili)), 20).map((k, i) => ({ hazir: soruUret(k, [1, 2, 2, 3, 2][i % 5], true) }))); }
     else if (tur === "bilsem" && window.BILSEM) { ders = "bilsem"; plan = Array.from({ length: 10 }, (_, i) => ({ hazir: bilsemUret("bilsem." + tema, [1, 2, 2, 3][i % 4]) })).filter(x => x.hazir); tema = null; }
     else if (tur === "akilliTekrar") plan = ANALIZ.kazanimTekrar(ders).filter(x => x.vadesi).slice(0, 5).flatMap(x => [{ kaz: x.kaz, zorluk: null }, { kaz: x.kaz, zorluk: null }]);
     else if (tur === "hata") { plan = karistir(hataListesi(null)).slice(0, 10).map(o => ({ hazir: o.soruNesnesi, ref: o.id })); DEPO.kaydet("hataDefteri", {}); }
     if (!plan.length || plan.some(p => !p.hazir && p.kaz === undefined)) { toast("Bu test için soru bulunamadı."); return; }
-    const sinav = ["deneme", "yazili", "mini", "karma", "tgs", "bursluluk", "yaziliSet"].includes(tur) || (tur === "ozel" && ozel.sinav);
+    const sinav = ["deneme", "yazili", "mini", "karma", "tgs", "bursluluk", "genel3", "yaziliSet"].includes(tur) || (tur === "ozel" && ozel.sinav);
     durum.test = {
       tur, ders, yazili: yazili || null, no: no || null, konu: konu || null, tema: tema || (konu ? KONU[konu].tema : null), kendiIstegi: !!kendiIstegi || tur === "kendi",
       sinav, testId: DEPO.uid(), plan, i: 0, sonuclar: [], bas: Date.now(), seri: 0, zorlukKaydir: 0,
@@ -674,7 +692,7 @@
       if (s.cozum || (s.bitti && !sonDogru)) geri += cozumKutusu(q, { secilen: s.sonSecim });
     }
     const kalan = t.sure ? t.sure - (Date.now() - t.bas) : null;
-    const baslikEk = (t.no ? " · " + t.no + (t.tur === "bursluluk" ? ". deneme" : ". set") : "") + (t.konu ? " · " + KONU[t.konu].ad : t.yazili ? " · " + dersAd(t.ders) + " · " + YAZILILAR.find(x => x.id === t.yazili).ad : t.tema ? " · " + TEMA[t.tema].kisa : t.tur === "deneme" || t.tur === "mini" ? " · " + dersAd(t.ders) : "");
+    const baslikEk = (t.no ? " · " + t.no + (t.tur === "bursluluk" || t.tur === "genel3" ? ". deneme" : ". set") : "") + (t.konu ? " · " + KONU[t.konu].ad : t.yazili ? " · " + dersAd(t.ders) + " · " + YAZILILAR.find(x => x.id === t.yazili).ad : t.tema ? " · " + TEMA[t.tema].kisa : t.tur === "deneme" || t.tur === "mini" ? " · " + dersAd(t.ders) : "");
     ana.innerHTML = `<section class="kart vurgu">
       <div class="satir ara"><span class="etiket">${TEST_AD[t.tur]}${baslikEk}</span>
         <span class="sayac">${t.sinav ? `<span id="kalanSure">${sn(kalan)}</span> · ` : ""}${t.i + 1} / ${toplam}</span></div>
@@ -787,7 +805,7 @@
         ${t.konu ? `<a class="btn" href="#/konu/${t.konu}">Konuya dön</a>` : ""}
         ${t.konu && oranD < 0.7 ? `<a class="btn" href="#/anlatim/${t.konu}">Anlatımı tekrar oku</a>` : ""}
         ${t.yazili ? `<a class="btn" href="#/yazili/${t.ders}/${t.yazili}">Yazılı sayfasına dön</a>` : ""}
-        ${t.tur === "bursluluk" ? `<a class="btn" href="#/bursluluk">Bursluluk denemeleri</a>` : t.tur === "bilsem" ? `<a class="btn" href="#/bilsem">BİLSEM bölümü</a>` : t.sinav && !t.yazili ? `<a class="btn" href="#/deneme">Deneme merkezi</a>` : ""}
+        ${t.tur === "bursluluk" ? `<a class="btn" href="#/bursluluk">Bursluluk denemeleri</a>` : t.tur === "genel3" ? `<a class="btn" href="#/genel">Genel denemeler</a>` : t.tur === "bilsem" ? `<a class="btn" href="#/bilsem">BİLSEM bölümü</a>` : t.sinav && !t.yazili ? `<a class="btn" href="#/deneme">Deneme merkezi</a>` : ""}
         <a class="btn ana" href="#/">Ana sayfa</a></section>`;
     ana.querySelectorAll("[data-oz]").forEach(b => b.onclick = () => { DEPO.guncelle(test, { oz: +b.dataset.oz }); sonucEkrani(); toast("Teşekkürler!"); });
   }
@@ -931,7 +949,7 @@
   const gunAdi = g => new Date(g * ANALIZ.GUN).toLocaleDateString("tr-TR", { day: "numeric", month: "numeric" });
 
   /* ============================ DENEME MERKEZİ ============================ */
-  const DENEME_TUR = ["deneme", "mini", "karma", "yazili", "yaziliSet", "tgs", "tgsPdf", "pdfDeneme", "bursluluk"];
+  const DENEME_TUR = ["deneme", "mini", "karma", "yazili", "yaziliSet", "tgs", "tgsPdf", "pdfDeneme", "bursluluk", "genel3"];
   const netOran = t => t.n ? Math.max(0, (t.net != null ? t.net : t.dogru - (t.n - t.dogru) / 3) / t.n) : null;
   function denemeListesi(ders) { return DEPO.liste("test").filter(t => DENEME_TUR.includes(t.tur) && (!ders || t.ders === ders || (cokDersli(t.tur) && t.dagilim && t.dagilim[ders]))); }
   function denemeTablosu(l) {
@@ -945,6 +963,7 @@
     return son.length >= 2 ? cizgiGrafik(son.map(t => ({ ad: new Date(t.t).toLocaleDateString("tr-TR", { day: "numeric", month: "numeric" }), v: netOran(t), n: t.n }))) : '<p class="muted">İki deneme çözünce net gelişim grafiği burada oluşur.</p>';
   }
   function tgsKart() {
+    if (!ALTI) return "";
     return `<section class="kart"><h2>🇹🇷 Türkiye Geneli Sınav (TGS) tarzı denemeler</h2>
       <p class="kucuk-yazi muted">${DERSLER.map(d => d.ad + " " + (TGS_DAGILIM[d.id] || 10)).join(" · ")} = ${DERSLER.reduce((x, d) => x + (TGS_DAGILIM[d.id] || 10), 0)} soru, ${SINAV_DK.tgs} dakika. Kapsam o döneme kadar işlenen yazılı konularıdır (birikimli). Her denemede sorular yeniden seçilir.</p>
       <div class="izgara">${YAZILILAR.map(y => { const l = DEPO.liste("test").filter(t => t.tur === "tgs" && t.yazili === y.id), son = l[l.length - 1];
@@ -956,6 +975,16 @@
     const net = test.net || 0, puan = Math.max(0, Math.round(net / 80 * 500 * 100) / 100);
     return `<div class="geri bilgi" style="text-align:left"><b>Tahmini bursluluk puanı: ${String(puan).replace(".", ",")} / 500</b>
       <p class="kucuk-yazi">Her testte 3 yanlış 1 doğruyu götürür. Gerçek sınavda puan, bütün öğrencilerin ortalamasına göre (standart puan) hesaplanır; buradaki puan yalnızca fikir vermesi içindir.</p></div>`;
+  }
+  function genelSayfasi() {
+    const l = DEPO.liste("test").filter(x => x.tur === "genel3");
+    ana.innerHTML = `<section class="kart vurgu"><p class="yol-iz"><a href="#/deneme">Deneme merkezi</a> › Genel denemeler</p><h1>🧩 3. sınıf genel denemeleri</h1>
+        <p>Beş dersten 10'ar soru: <b>${DERSLER.filter(d => GENEL3_DAGILIM[d.id]).map(d => d.ad).join(", ")}</b>. Toplam 50 soru, ${SINAV_DK.genel3} dakika. Her deneme sabittir; aynı numarayı açarsan aynı sorular gelir.</p></section>
+      <section class="izgara">${Array.from({ length: GENEL3_SAYI }, (_, i) => i + 1).map(n => { const c = l.filter(x => x.no === n), s = c[c.length - 1];
+        return `<div class="kart"><h2>${n}. Genel deneme</h2><p class="kucuk-yazi muted">${s ? `${c.length} kez çözüldü · son <b>${s.dogru} doğru</b> / ${s.n} · ${tarih(s.t)}` : "Henüz çözülmedi"}</p>
+          <div><button class="btn ${s ? "" : "ana"} kucuk" data-test="genel3" data-no="${n}">${s ? "Yeniden çöz" : "Başla"}</button></div></div>`; }).join("")}</section>
+      ${l.length ? `<section class="kart"><h2>Genel deneme gelişimim</h2>${denemeGrafik(l)}</section>` : ""}`;
+    baglaOrtak();
   }
   function burslulukSayfasi() {
     const l = DEPO.liste("test").filter(x => x.tur === "bursluluk");
@@ -987,7 +1016,8 @@
       <section class="kart sari"><h2>🧩 Karma deneme (${DERSLER.length} ders · ${DERSLER.length * 10} soru · ${SINAV_DK.karma} dakika)</h2><p>${DERSLER.map(d => d.ad).join(", ")} derslerinden 10'ar soru — gerçek sınav provası.</p><div><button class="btn ana" data-test="karma">Karma denemeye başla</button></div></section>
       ${tgsKart()}
       ${window.TGS_LISTE && TGS_LISTE.length ? `<section class="kart sari"><div class="satir ara"><div><h2>🇹🇷 Ortak yazılı ve TGS hazırlık denemeleri</h2><p class="kucuk-yazi muted">${TGS_LISTE.length} deneme · 6 ders · 75 soru · tahmini puan, konu konu sonuç ve her sorunun adım adım çözümü.</p></div><a class="btn ana" href="#/tgsd">Aç</a></div></section>` : ""}
-      <section class="kart sari"><div class="satir ara"><div><h2>🎓 Bursluluk (İOKBS tarzı) denemeleri</h2><p class="kucuk-yazi muted">${BURS_SAYI} deneme · 80 soru · 100 dakika · Türkçe, Matematik, Fen, Sosyal Bilgiler (+Din Kültürü) · tahmini puan</p></div><a class="btn ana" href="#/bursluluk">Aç</a></div></section>
+      ${ALTI ? "" : `<section class="kart sari"><div class="satir ara"><div><h2>🧩 3. sınıf genel denemeleri</h2><p class="kucuk-yazi muted">${GENEL3_SAYI} sabit deneme · 50 soru · ${SINAV_DK.genel3} dakika · Türkçe, Matematik, Hayat Bilgisi, Fen Bilimleri, İngilizce</p></div><a class="btn ana" href="#/genel">Aç</a></div></section>`}
+      ${ALTI ? `<section class="kart sari"><div class="satir ara"><div><h2>🎓 Bursluluk (İOKBS tarzı) denemeleri</h2><p class="kucuk-yazi muted">${BURS_SAYI} deneme · 80 soru · 100 dakika · Türkçe, Matematik, Fen, Sosyal Bilgiler (+Din Kültürü) · tahmini puan</p></div><a class="btn ana" href="#/bursluluk">Aç</a></div></section>` : ""}
       ${window.BILSEM ? `<section class="kart sari"><div class="satir ara"><div><h2>🧠 BİLSEM tarzı zekâ soruları</h2><p class="kucuk-yazi muted">Şekil örüntüsü, matris, sayı, uzamsal düşünme, sözel mantık, dikkat · ipuçlu çalışma</p></div><a class="btn ana" href="#/bilsem">Aç</a></div></section>` : ""}
       <section class="kart"><div class="satir ara"><div><h2>🧩 Kendi sınavım</h2><p class="kucuk-yazi muted">Ders, ünite, konu, zorluk ve soru sayısını seçerek kişisel test hazırla.</p></div><a class="btn ana" href="#/olustur">Oluştur</a></div></section>
       <section class="kart"><div class="satir ara"><div><h2>📄 PDF denemelerim</h2><p class="kucuk-yazi muted">Elindeki deneme kitapçığının PDF'ini ve cevap anahtarını yükle; tablette optik formla, süre tutarak çöz.</p></div><a class="btn ana" href="#/pdf">Aç</a></div></section>
@@ -1134,7 +1164,7 @@
       ana.querySelectorAll("[data-p]").forEach(b => b.onclick = () => {
         const x = b.dataset.p;
         if (x === "Sil") pin = pin.slice(0, -1);
-        else if (x === "Tamam") { if (pin === String(DEPO.ayar.pin)) { veliAcik = true; return git("#/veli/ozet"); } toast("Şifre yanlış."); pin = ""; }
+        else if (x === "Tamam") { if (veliPinDogru(pin)) { veliAcik = true; return git("#/veli/ozet"); } toast("Şifre yanlış."); pin = ""; }
         else if (pin.length < 8) pin += x;
         ciz();
       });
@@ -1155,14 +1185,19 @@
     const grup = VELI_GRUP.find(g => g[3].includes(etkin)) || VELI_GRUP[0];
     const izin = k => !DEPO.uzak || (k !== "icerik" && k !== "ayar");
     const alt = grup[3].filter(izin);
-    const ust = `<section class="kart vurgu veli-ust"><div class="satir ara"><h1>👪 ${kacis(DEPO.ayar.ogrenciAdi)}</h1>
+    const ogrenciler = PR && !DEPO.uzak ? PR.liste() : [];
+    const ust = `<section class="kart vurgu veli-ust">${ogrenciler.length ? `<div class="satir">${ogrenciler.map(p => `<button class="ogrenci-cip ${p.id === PR.aktif().id ? "aktif" : ""}" data-ogrenci="${p.id}">${p.avatar || "🙂"} ${kacis(p.ad)} · ${p.sinif}. sınıf</button>`).join("")}<a class="ogrenci-cip" href="#/veli/ayar/ogrenci" style="text-decoration:none">＋ Öğrenci ekle</a></div>` : ""}
+      <div class="satir ara"><h1>👪 ${kacis(DEPO.ayar.ogrenciAdi)}${DEPO.uzak ? "" : ` <span class="kucuk-yazi muted">${SINIF}. sınıf</span>`}</h1>
       <span class="satir">${[[7, "7 gün"], [30, "30 gün"], [0, "Tümü"]].map(([g, a]) => `<button class="sekme ${aralik === g ? "aktif" : ""}" data-aralik="${g}">${a}</button>`).join("")}</span></div>
       <nav class="veli-grup">${VELI_GRUP.filter(g => g[3].some(izin)).map(g => `<a class="${g === grup ? "aktif" : ""}" href="#/veli/${g[3].find(izin)}"><span>${g[1]}</span>${g[2]}</a>`).join("")}</nav>
       ${alt.length > 1 ? `<nav class="sekmeler">${alt.map(k => `<a class="sekme ${k === etkin ? "aktif" : ""}" href="#/veli/${k}">${SEKMELER.find(x => x[0] === k)[1]}</a>`).join("")}</nav>` : ""}
       ${grup[0] === "ayar" ? "" : `<div class="ders-sec veli-ders">${[[null, "Tüm dersler"], ...DERSLER.map(d => [d.id, d.simge + " " + d.ad])].map(([id, a]) => `<button class="sekme ${veliDers === id ? "aktif" : ""}" data-vders="${id || ""}">${a}</button>`).join("")}</div>`}
       ${grup[0] === "dersler" ? `<p class="kucuk-yazi muted">Güven düzeyi: değerin yanında kaç soruya dayandığı yazar (5'ten az = düşük, 15+ = yüksek güven).</p>` : ""}</section>`;
     const icerik = { ozet: veliOzet, dersler: veliDersler, konu: veliKonuDetay, kazanim: veliKazanim, soru: veliSoru, anlatim: veliAnlatim, tekrar: veliTekrar, calisma: veliCalisma, yazili: veliYazili, denemeler: veliDenemeler, gunluk: veliGunluk, kayit: veliKayit, icerik: veliVideolar, ayar: veliAyar }[sekme] || veliOzet;
-    ana.innerHTML = ust + icerik(h, param);
+    ana.innerHTML = ust + (sekme === "ozet" && ogrenciler.length > 1 ? `<section class="kart"><h2>👨‍👩‍👧‍👦 Bütün öğrenciler</h2><div class="izgara" id="tumOgr">${ogrenciler.map(p => `<button class="konu-satir" data-ogrenci="${p.id}" id="to_${p.id}"><span><b>${p.avatar || "🙂"} ${kacis(p.ad)}</b> <span class="kucuk-yazi muted">${p.sinif}. sınıf</span><br><span class="kucuk-yazi muted">hesaplanıyor…</span></span></button>`).join("")}</div><p class="kucuk-yazi muted">Bir öğrencinin ayrıntılı raporu için adına dokunun.</p></section>` : "") + icerik(h, param);
+    ana.querySelectorAll("[data-ogrenci]").forEach(b => b.onclick = () => { if (b.dataset.ogrenci === PR.aktif().id) return veliPaneli("ozet"); PR.gec(b.dataset.ogrenci, { veli: true, hash: "#/veli/" + (sekme === "konu" ? "dersler" : sekme) }); });
+    if (sekme === "ozet" && ogrenciler.length > 1) ogrenciler.forEach(p => PR.ozet(p).then(o => { const e = document.getElementById("to_" + p.id); if (!e) return;
+      e.querySelector("span .muted:last-child").innerHTML = `Bugün <b>${Math.round(o.bugunDk)} dk</b> · 7 günde <b>${Math.round(o.haftaDk)} dk</b>, <b>${o.haftaSoru}</b> soru, ilk denemede doğru <b>${o.haftaSoru ? yuzde(o.haftaDogru / o.haftaSoru) : "—"}</b>${o.sonT ? " · son çalışma " + tarih(o.sonT) : ""}`; }));
     ana.querySelectorAll("[data-aralik]").forEach(b => b.onclick = () => { aralik = +b.dataset.aralik; veliPaneli(sekme, param); });
     ana.querySelectorAll("[data-vders]").forEach(b => b.onclick = () => { veliDers = b.dataset.vders || null; veliPaneli(sekme === "konu" ? "dersler" : sekme); });
     ana.querySelectorAll("[data-git]").forEach(b => b.onclick = () => git(b.dataset.git));
@@ -1645,7 +1680,15 @@
   }
   function veliAyar() {
     const a = DEPO.ayar;
-    return `<section class="kart"><h2>Öğrenci ve hedef</h2>
+    return (PR && !DEPO.uzak ? `<section class="kart" id="ogrenciler"><h2>👨‍👩‍👧‍👦 Öğrenciler</h2>
+        <p class="kucuk-yazi muted">Her öğrencinin verisi ayrı tutulur. Tablet açılınca öğrenci kendi adına dokunarak girer (şifresiz); veli paneli tek şifreyle açılır, üstteki isimlere dokunarak öğrenciler arasında geçilir.</p>
+        ${PR.liste().map(p => `<div class="satir ara"><span>${p.avatar || "🙂"} <b>${kacis(p.ad)}</b> · ${p.sinif}. sınıf${p.id === PR.aktif().id ? ' <span class="etiket iyi">açık</span>' : ""}</span>
+          <span class="satir">${p.id === PR.aktif().id ? "" : `<button class="btn kucuk" data-ogrenci-gec="${p.id}">Raporunu aç</button><button class="btn kucuk tehlike" data-ogrenci-sil="${p.id}">Sil</button>`}</span></div>`).join("")}
+        <fieldset class="o-tema"><legend><b>＋ Yeni öğrenci</b></legend><div class="izgara dar">
+          <label class="alan">Adı<input type="text" id="yoAd" maxlength="30" placeholder="Örn. Ali"></label>
+          <label class="alan">Sınıfı<select id="yoSinif"><option value="3">3. sınıf (ilkokul)</option><option value="6">6. sınıf</option></select></label>
+          <label class="alan">Günlük hedef (dk)<input type="number" id="yoHedef" value="20" min="5" max="180"></label></div>
+          <button class="btn ana" id="yoEkle">Öğrenciyi ekle</button></fieldset></section>` : "") + `<section class="kart"><h2>Öğrenci ve hedef</h2>
         <label class="alan">Öğrencinin adı<input type="text" id="aAd" value="${kacis(a.ogrenciAdi)}"></label>
         <label class="alan">Günlük çalışma hedefi (dakika)<input type="number" id="aHedef" value="${a.gunlukHedefDk}" min="5" max="240"></label>
         <label class="alan">Okul başarı puanı (OBP, 0–100 · isteğe bağlı)<input type="number" id="aObp" value="${a.obp || ""}" min="0" max="100" step="0.01" placeholder="ör. 92,45"></label>
@@ -1659,7 +1702,7 @@
           <label class="alan">Günlük üst sınır (dk, 0 = yok)<input type="number" id="aSinir" min="0" max="600" value="${a.gunlukSinirDk || 0}"></label></div>
           <p class="kucuk-yazi muted">Uyarılar tablette öğrenciye gösterilir ve veli özetinde “dikkat edilecekler” olarak listelenir. Uygulama internetsiz çalıştığı için velinin telefonuna anlık bildirim gönderilemez; bilgisayardan izleme ya da haftalık rapor paylaşımıyla takip edebilirsiniz.</p></fieldset>
         <p class="kucuk-yazi muted">OBP girilirse TGS/ortak yazılı denemelerinin sonucunda “OBP ile değerlendirme” de gösterilir (%70 sınav puanı + %30 OBP×5, bilgi amaçlı).</p>
-        <label class="alan">Veli paneli şifresi (yalnızca rakam)<input type="password" id="aPin" inputmode="numeric" value="${kacis(a.pin)}"></label>
+        <label class="alan">Veli paneli şifresi (yalnızca rakam)<input type="password" id="aPin" inputmode="numeric" value="${kacis(PR ? PR.veliPin() : a.pin)}"></label>
         <label class="satir"><input type="checkbox" id="aOyunAcik" ${a.oyunHepsiAcik ? "checked" : ""}> Türkçe Diyarı oyununda bütün adaları ve görevleri aç (sınıfta ileriki temalara geçildiyse)</label>
         <button class="btn ana" id="aKaydet">Kaydet</button></section>
       <section class="kart"><h2>💻 Bilgisayardan izleme (aynı Wi‑Fi ağı)</h2>
@@ -1776,14 +1819,22 @@ function doGet(e) {
         if (sil) sil.onclick = () => { delete DEPO.ayar.videolar[k]; DEPO.ayarKaydet(); veliPaneli("icerik"); };
       });
     },
-    ayar() {
+    ayar(param) {
+      if (PR && !DEPO.uzak) {
+        $("#yoEkle").onclick = () => { const ad = $("#yoAd").value.trim(); if (!ad) return toast("Öğrencinin adını yazın.");
+          const p = PR.ekle({ ad, sinif: $("#yoSinif").value, hedef: $("#yoHedef").value }); toast(ad + " eklendi."); veliPaneli("ayar"); return p; };
+        ana.querySelectorAll("[data-ogrenci-gec]").forEach(b => b.onclick = () => PR.gec(b.dataset.ogrenciGec, { veli: true }));
+        ana.querySelectorAll("[data-ogrenci-sil]").forEach(b => b.onclick = async () => { const p = PR.bul(b.dataset.ogrenciSil);
+          if (!p || !confirm(p.ad + " adlı öğrencinin bütün kayıtları silinecek. Emin misiniz?")) return; await PR.sil(p.id); toast("Silindi."); veliPaneli("ayar"); });
+        if (param === "ogrenci") { const e = $("#ogrenciler"); if (e) { e.scrollIntoView(); $("#yoAd").focus(); } }
+      }
       $("#aKaydet").onclick = () => {
         const pin = $("#aPin").value.trim();
         if (!/^\d{4,8}$/.test(pin)) return toast("Şifre 4–8 rakam olmalı.");
         Object.assign(DEPO.ayar, { ogrenciAdi: $("#aAd").value.trim() || DEPO.ayar.ogrenciAdi, gunlukHedefDk: Math.max(5, +$("#aHedef").value || 30), obp: Math.min(100, Math.max(0, +String($("#aObp").value).replace(",", ".") || 0)) || null,
           hedefler: { haftaSoru: Math.max(0, +$("#hSoru").value || 0), haftaVideoDk: Math.max(0, +$("#hVideo").value || 0), haftaDeneme: Math.max(0, +$("#hDeneme").value || 0), haftaGun: Math.min(7, Math.max(0, +$("#hGun").value || 0)) },
           molaDk: Math.max(0, +$("#aMola").value || 0), gunlukSinirDk: Math.max(0, +$("#aSinir").value || 0), pin, oyunHepsiAcik: $("#aOyunAcik").checked });
-        DEPO.ayarKaydet(); toast("Kaydedildi."); yonlendir();
+        DEPO.ayarKaydet(); if (PR) { PR.veliPinYaz(pin); const ak = PR.aktif(); if (ak && DEPO.ayar.ogrenciAdi !== ak.ad) PR.guncelle(ak.id, { ad: DEPO.ayar.ogrenciAdi }); } toast("Kaydedildi."); yonlendir();
       };
       $("#aUrlKaydet").onclick = () => { const u = $("#aUrl").value.trim(); if (u && !/^https:\/\//.test(u)) return toast("Adres https:// ile başlamalı."); DEPO.ayar.bulutUrl = u; DEPO.ayarKaydet(); toast("Adres kaydedildi."); };
       $("#aGonder").onclick = async () => { toast("Gönderiliyor…"); const r = await DEPO.gonder(); toast(r.ok ? r.n + " kayıt gönderildi." : "Gönderilemedi: " + r.neden); veliPaneli("ayar"); };
